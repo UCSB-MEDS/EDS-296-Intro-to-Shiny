@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "EDS 430"
+  navbar:
+    right:
+      - text: home
+        href: index.qmd
+      - text: syllabus
+        href: https://docs.google.com/document/d/19dAmJ8Y1zguK1Y9aVdp_I34ekRUMY5_suv_MFwsfuzo/edit?usp=sharing
+        target: _blank
+      - text: course materials
+        menu:
+          - text: part 1 (housekeeping)
+            href: course-materials/part1-housekeeping.qmd
+          - text: part 2 (what is shiny?)
+            href: course-materials/part2-shiny-overview.qmd
+      - text: resources
+        menu:
+          - text: MEDS installation guide
+            href: https://ucsb-meds.github.io/meds-install-guide.html
+            target: _blank
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com/UCSB-MEDS/EDS-430-Intro-to-Shiny
+            target: _blank
+          - text: Report a Bug
+            url:  https://github.com/UCSB-MEDS/EDS-430-Intro-to-Shiny/issues
+            target: _blank
+  page-footer:
+    background: dark
+    right: This website is built with {{< fa brands r-project title="R Project" >}} and [Quarto](https://quarto.org/)
+    left: |
+      <img src="images/bren-logo.png" alt="The Bren School of Environmental Science & Management logo" width="250"/>
+
+format:
+  html:
+    theme: meds-website-styles.scss
+    toc: false
+    page-layout: full
+    code-line-numbers: true
+
+
+
