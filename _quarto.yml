@@ -13,10 +13,12 @@ website:
         target: _blank
       - text: course materials
         menu:
-          - text: part 1 (housekeeping)
-            href: course-materials/part1-housekeeping.qmd
-          - text: part 2 (what is shiny?)
-            href: course-materials/part2-shiny-overview.qmd
+          - text: part 0 (setup)
+            href: course-materials/part0-setup.qmd
+          - text: part 1 (intro)
+            href: course-materials/part1-intro.qmd
+          - text: part 2 (building shiny apps)
+            href: course-materials/part2-building-shiny-apps.qmd
       - text: resources
         menu:
           - text: MEDS installation guide

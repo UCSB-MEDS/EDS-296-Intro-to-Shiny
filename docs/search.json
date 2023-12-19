@@ -1,10 +1,262 @@
 [
   {
-    "objectID": "course-materials/part2-shiny-overview.html#lecture-materials",
-    "href": "course-materials/part2-shiny-overview.html#lecture-materials",
-    "title": "What is Shiny?",
+    "objectID": "course-materials/part0-setup.html#prerequisites",
+    "href": "course-materials/part0-setup.html#prerequisites",
+    "title": "Setup",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nNo prior Shiny experience necessary for this course! However, we do assume that participants have the following:\n\nR / RStudio installed & a basic familiarity with the language\nA GitHub profile & git installed / configured\nYou have the required R packages installed. You can install/update them all at once by running:\n\n\ninstall.packages(pkgs = c(\"shiny\", \"shinydashboard\", \"shinyWidgets\", \"DT\", \"leaflet\", \"shinycssloaders\", \"tidyverse\", \"bslib\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\", \"markdown\"))\n\n\nPlease see the MEDS Installation Guide for instructions on installing the above software."
+  },
+  {
+    "objectID": "course-materials/part0-setup.html#reference-code",
+    "href": "course-materials/part0-setup.html#reference-code",
+    "title": "Setup",
+    "section": "Reference code",
+    "text": "Reference code\nWe’ll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on GitHub.\nWe’ll be creating our own GitHub repositories to house our apps, so you do not need to fork this repo (unless you want to, of course)."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#title-slide",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#title-slide",
+    "title": "EDS 430",
+    "section": "",
+    "text": "EDS 430: Part 2.1\nBuilding a single-file app\n\nWeek 1 | January 26th, 2024"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#build-app1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#build-app1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Building out your 1st app\n\n\nHere, we’ll create our first reactive objects and establish a general Shiny coding workflow."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#LO-app1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#LO-app1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Learning Objectives - App #1 (single-file app)\n\n\nBy the end of building out this first app, you should be a bit more familiar with:\n\n\n\n writing a single-file (app.R) shiny app\n\n\n\n\n adding and styling text in the UI using tags\n\n\n\n\n practicing data wrangling and visualization outside of your shiny app\n\n\n\n\n following a general workflow for building reactive apps, which includes adding inputs and outputs to the UI, then writing the server instructions on how to assemble user input values into outputs\n\n\n\n\n running and quitting apps in RStudio\n\n\n\n\nPackages introduced:\n\n\n\n\n {shiny}: framework for building our reactive app + standard widgets\n\n\n\n\n {DT}: interactive datatable widgets (that can be made reactive using shiny!)\n\n\n\n\n {tidyverse}: collection of packages for wrangling & visualizing data\n\n\n\n\n {palmerpenguins}: data"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#roadmap-app1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#roadmap-app1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Roadmap for App #1\n\n\nWe’ll start by building a small single-file app using data from the {palmerpenguins} package. We’ll build out the the following features:\n\n\n\n  \n\n(a) A title and subtitle\n\n\n(b) A slider widget for users to select a range of penguin body masses\n\n\n(c) A reactive scatterplot that updates based on user-supplied values"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#adding-text-plain",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#adding-text-plain",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Add text in the UI\n\nWe’ll do this in the UI within fluidPage(), a layout function that sets up the basic visual structure of the page and scales components in real time to fill all available browser width. Add a title and subtitle to your app (be sure to separate each with a comma, ,), save, and run:\n\n\n\n\n~/one-file-app/app.R\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # app title ----\n  \"My App Title\",\n  \n  # app subtitle ----\n  \"Exploring Antarctic Penguin Data\"\n  \n  )"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#adding-text-tags",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#adding-text-tags",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Add text in the UI\n\nRecall that the UI is actually just an HTML document. We can style our text by adding static HTML elements using tags – a list of functions that parallel common HTML tags (e.g. &lt;h1&gt; == tags$h1()) The most common tags also have wrapper functions (e.g. h1()).\n\n\n\n\n~/one-file-app/app.R\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # app title ----\n  tags$h1(\"My App Title\"), # alternatively, you can use the `h1()` wrapper function\n  \n  # app subtitle ----\n  p(strong(\"Exploring Antarctic Penguin Data\")) # alternatively, `tags$p(tags$strong(\"text\"))`\n  \n  )"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#inputs-outputs",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#inputs-outputs",
+    "title": "EDS 430",
+    "section": "",
+    "text": "What are inputs and outputs?\n\nNext, we will begin to add some inputs and outputs to our UI inside fluidPage() (anything that you put into fluidPage() will appear in our app’s user interface…and we want inputs and outputs to show up there!).\nInputs (or widgets) are the things that users can interact with (e.g. toggle, slide) and provide values to your app. The input functions below correspond to the widgets we saw in lecture 1.2?.\nOutputs are the R objects that your user sees (e.g. tables, plots) and are what respond when a user interacts with/changes an input value."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#input-output-fxns",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#input-output-fxns",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Examples of input & output functions\n\nThe shiny package comes with a number of input and output functions, but you can extend these with additional packages (e.g. shinyWidgets, plotly, DT, etc.; more on those later).\n\n\nExamples of Input Functions:\n actionButton()\n checkboxInput()\n checkboxGroupInput()\n dateInput()\n dateRangeInput()\n radioButtons()\n selectInput()\n sliderInput()\n textInput()\n See a full list of shiny input functions\n\n\n\nExamples of Output Functions:\n dataTableOutput() (inserts an interactive table)\n imageOutput() (inserts an image)\n plotOutput() (inserts a plot)\n tableOutput() (inserts a table)\n textOutput() (inserts text)\n See a full list of shiny output functions"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#reactive-plot-app1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#reactive-plot-app1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Adding our reactive plot\n\n\nNext, we’ll create a scatterplot of penguin bill lengths vs. penguin flipper lengths using the penguins data set from the {palmerpengiuns} package. We will make this scatterplot reactive by adding a sliderInput that allows users to filter the displayed data points by selecting a range of penguin body masses (e.g. only plot bill and flipper lengths for penguins with body masses ranging from 4,500 grams to 6,000 grams).\n\n\n\n\n\nTo create a reactive plot, we will follow these steps:\n\n\n1. Add an input (e.g. sliderInput) to the UI that users can interact with\n\n\n2. Add an output (e.g. plotOutput) to the UI that creates a placeholder space to fill with our eventual reactive output\n\n\n3. Tell the server how to assemble inputs into outputs"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#input-syntax",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#input-syntax",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Input function syntax\n\n\n All input functions have the same first argument, inputId (NOTE: Id not ID), which is used to connect the front end of your app (the UI) with the back end (the server). For example, if your UI has an inputId = \"name\", the server function will access that input value using the syntax input$name. The inputId has two constraints: (1) it must be a simple string containing only letters, numbers, and underscores, (2) it must be unique within your app.\n\n\n Most input functions have a second parameter called label, which is used to create a human-readable label for the control, which will appear in the UI.\n\n\n The remaining arguments are unique to each input function. Oftentimes, these include a value parameter, which lets you set the default value of your widget, where applicable.\n\n\nA couple examples:\n\n\nsliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\", value = c(3000, 4000), ...)\n\nselectInput(inputId = \"island_input\", label = \"Choose and island:\", ...)\n\n\n\nCheck out the interactive Shiny Widgets Gallery to learn how to implement the most common widgets."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#add-input",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#add-input",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Step 1: Add an input to your app\n\n\nFirst let’s add a sliderInput() that will allow users to select a range of penguin body masses (g).\n\n\n\n\n~/one-file-app/app.R\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider input ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\",\n              min = 2700, max = 6300, value = c(3000, 4000))\n  )\n\n\n\n\nWhen you run your app, you should see something similar to the image below. It’s operable, but does not yet have an associated output."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#output-syntax",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#output-syntax",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Output function syntax\n\n\nOutputs in the UI create placeholders which are later filled by the server function.\n\n\nSimilar to input functions, all output functions take the same first argument, outputId (again, note Id not ID), which connects the front end UI with the back end server. For example, if your UI contains an output function with an outputId = \"plot\", the server function will access it (or in other words, know to place the plot in that particular placeholder) using the syntax output$plot.\n\n\n\nA couple examples:\n\n\nplotOutput(outputId = \"bodyMass_scatterPlot\")\n\ndataTableOutput(outputId = \"penguin_data\")"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#add-output",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#add-output",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Step 2: Add an output to your app\n\n\nLet’s now add a plotOutput(), which will be updated based on the user inputs via the sliderInput(), then run the app.\n\n\n\n\n~/one-file-app/app.R\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider input ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\",\n              min = 2700, max = 6300, value = c(3000, 4000)),\n  \n  # body mass plot ouput ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\")\n  \n  )"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#wheres-my-output",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#wheres-my-output",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Where’s my output??\n\nOkay, it looks like nothing changed?? Remember, *Output() functions create placeholders, but we have not yet written the server instructions on how to fill and update those placeholders. We can inspect the HTML and see that there is, in fact, a placeholder area awaiting our eventual output, which will be a plot named “bodyMass_scatterPlot”:"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rendering-outputs",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rendering-outputs",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Rendering outputs\n\n\nEach *Output() function in the UI is coupled with a render*() function in the server, which contains the “instructions” for creating the output based on user inputs (or in other words, the instructions for making your output reactive).\n\n\n\nExamples of *Output() functions and their corresponding render*() functions:\n\n\n\n\n\nOutput function\nRender function\n\n\n\n\ndataTableOutput()\nrenderDataTable()\n\n\nimageOutput()\nrenderImage()\n\n\nplotOutput()\nrenderPlot()\n\n\ntableOutput()\nrenderTable()\n\n\ntextOutput()\nrenderText()"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#assemble",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#assemble",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Step 3: Tell the server how to assemble inputs into outputs\n\n\nNow that we’ve designed our input/output in the UI, we need to write the server instructions (i.e. write the server function) on how to use the input value(s) (i.e. penguin body mass range via a slider input) to update the output (scatter plot).\n\n\nThe server function is defined with two arguments, input and output, both of which are list-like objects. You must define both of these arguments within the server function. input contains the values of all the different inputs at any given time, while output is where you’ll save output objects to display in the app.\n\nThis part can be intimidating, but if you follow these three rules, you will successfully create reactivity within your shiny app!\n\n\nRules:\n\n\n\n1. Save objects you want to display to output$&lt;id&gt;\n\n\n2. Build reactive objects using a render*() function\n\n\n3. Access input values with input$&lt;id&gt;"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rule1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rule1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Rule 1: Save objects you want to display to output$&lt;id&gt;\n\n\n\n\n\n\n~/one-file-app/app.R\n\n# load packages ----\nlibrary(shiny)\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\",\n              min = 2700, max = 6300, value = c(3000, 4000)),\n  \n  # body mass plot output ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\") \n  \n)\n\n# server instructions ----\nserver &lt;- function(input, output) {\n  \n  # render the scatter plot ----\n  output$bodyMass_scatterPlot &lt;- # code to generate plot here\n  \n}\n\n\n\n\n\n\n\nIn our UI, we created a placeholder for our plot using the plotOutput() function and gave it the Id \"bodyMass_scatterplot\". In our server, we will save our plot to the output argument by its outputId.\n\n\nNote: In the UI, our outputId is quoted (\"bodyMass_scatterPlot\"), but not in the server (bodyMass_scatterPlot)."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rule2.1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rule2.1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Rule 2: Build reactive objects with render*()\n\n\nUse the appropriate render*() function to make your output reactive (e.g. if you have a plotOutput in your UI, you will need to use renderPlot() in your server). Within your render*(), write any code inside a set of curly braces, {}. This allows you to include as many lines of code as it takes to build your object.\n\n\n\n\n~/one-file-app/app.R\n\n# load packages ----\nlibrary(shiny)\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\",\n              min = 2700, max = 6300, value = c(3000, 4000)),\n  \n  # body mass plot output ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\") \n  \n)\n\n# server instructions ----\nserver &lt;- function(input, output) {\n  \n  # render the scatter plot ----\n  output$bodyMass_scatterPlot &lt;- renderPlot({\n    \n     # code to generate plot here\n    \n  }) \n}"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rule2.2",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rule2.2",
+    "title": "EDS 430",
+    "section": "",
+    "text": "An Aside: Draft objects in a separate script first\n\n\nI find it easier to experiment and draft my objects (e.g. plots) first in a separate script (outside by app directory), then copy the code over to the server after. I want to make a plot that looks like this:\n\n\nCodeOutput\n\n\n\n\n\n~/scratch/practice-script-app1-penguins.R\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\nggplot(na.omit(penguins), \n       aes(x = flipper_length_mm, y = bill_length_mm, \n           color = species, shape = species)) +\n  geom_point() +\n  scale_color_manual(values = c(\"Adelie\" = \"#FEA346\", \"Chinstrap\" = \"#B251F1\", \"Gentoo\" = \"#4BA4A4\")) +\n  scale_shape_manual(values = c(\"Adelie\" = 19, \"Chinstrap\" = 17, \"Gentoo\" = 15)) +\n  labs(x = \"Flipper length (mm)\", y = \"Bill length (mm)\", \n       color = \"Penguin species\", shape = \"Penguin species\") +\n  theme_minimal() +\n  theme(legend.position = c(0.85, 0.2),\n        legend.background = element_rect(color = \"white\"))"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rule2.3",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rule2.3",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Copy your plot code into the server\n\n\nCopy your code over to your app, placing it inside the {} (and make sure to add any additional required packages to the top of your app.R script). Run your app. What do you notice?\n\n\n\n\n~/one-file-app/app.R\n\n# load packages ----\nlibrary(shiny)\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\",\n              min = 2700, max = 6300, value = c(3000, 4000)),\n  \n  # body mass plot output ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\")\n  \n)\n\n# server instructions ----\nserver &lt;- function(input, output) {\n  \n  # render the scatter plot ----\n  output$bodyMass_scatterPlot &lt;- renderPlot({ \n      ggplot(na.omit(penguins),\n             aes(x = flipper_length_mm, y = bill_length_mm,\n                 color = species, shape = species)) + \n        geom_point() + \n        scale_color_manual(values = c(\"Adelie\" = \"#FEA346\", \"Chinstrap\" = \"#B251F1\", \"Gentoo\" = \"#4BA4A4\")) +\n        scale_shape_manual(values = c(\"Adelie\" = 19, \"Chinstrap\" = 17, \"Gentoo\" = 15)) +\n        labs(x = \"Flipper length (mm)\", y = \"Bill length (mm)\", \n             color = \"Penguin species\", shape = \"Penguin species\") + \n        theme_minimal() + \n        theme(legend.position = c(0.85, 0.2), \n              legend.background = element_rect(color = \"white\")) \n  })"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#non-reactive-plot",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#non-reactive-plot",
+    "title": "EDS 430",
+    "section": "",
+    "text": "A non-reactive plot now lives in our plotOutput() placeholder\n\n\nWe have a plot (yay!), but it isn’t reactive. We have not yet told the server how to update the plot based on user inputs via the sliderInput() in the UI. Let’s do that next…"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#practice-filtering",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#practice-filtering",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Practice filtering data in our separate script\n\n\nFirst, create a new data frame where we filter the body_mass_g column for observations within a specific range of values (in this example, values ranging from 3000 - 4000):\n\n\n\n\n\n~/scratch/practice-script-app1-penguins.R\n\n# load packages\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\n# filter penguins df for observations where body_mass_g &gt;= 3000 & &lt;= 4000\nbody_mass_df &lt;- penguins |&gt; \n  filter(body_mass_g %in% 3000:4000)\n\n\n\n\n\nThen, plot the new filtered data frame:\n\n\n\n\n\n\n~/scratch/practice-script-app1-penguins.R\n\n# plot new, filtered data\nggplot(na.omit(body_mass_df), # plot 'body_mass_df' rather than 'penguins' df\n       aes(x = flipper_length_mm, y = bill_length_mm, \n           color = species, shape = species)) +\n  geom_point() +\n  scale_color_manual(values = c(\"Adelie\" = \"#FEA346\", \"Chinstrap\" = \"#B251F1\", \"Gentoo\" = \"#4BA4A4\")) +\n  scale_shape_manual(values = c(\"Adelie\" = 19, \"Chinstrap\" = 17, \"Gentoo\" = 15)) +\n  labs(x = \"Flipper length (mm)\", y = \"Bill length (mm)\", \n       color = \"Penguin species\", shape = \"Penguin species\") +\n  theme_minimal() +\n  theme(legend.position = c(0.85, 0.2),\n        legend.background = element_rect(color = \"white\"))"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#what-needs-updating",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#what-needs-updating",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Which part of our code needs to be updated when a user changes the slider range input?\n\n\n\n\n\n~/scratch/practice-script-app1-penguins.R\n\nbody_mass_df &lt;- penguins |&gt; \n  filter(body_mass_g %in% 3000:4000) # 3000:4000 needs to be update-able (or in other words, reactive)!\n\n\n\n\n\nFor example:\n\n\n\n\nbody_mass_df &lt;- penguins |&gt; \n  filter(body_mass_g %in% 2857:5903)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbody_mass_df &lt;- penguins |&gt; \n  filter(body_mass_g %in% 3725:5191)"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rule3.1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rule3.1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Rule 3: Access input values with input$&lt;id&gt;\n\n\nRecall that in our UI, we gave our sliderInput() an inputId = \"body_mass_input\".\n\n\n\n\n~/one-file-app/app.R\n\n# load packages (omitted for brevity) ----\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\", \n              min = 2700, max = 6300, value = c(3000, 4000)),\n  \n  # body mass plot output ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\")\n  \n)\n\n# server instructions ----\nserver &lt;- function(input, output) {\n      \n  # render the scatter plot ----\n  output$bodyMass_scatterPlot &lt;- renderPlot({ \n      ggplot(na.omit(penguins, aes(...)) + # etc. (omitted for brevity)\n  }) \n    \n}"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#rule3.2",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#rule3.2",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Rule 3: Access input values with input$&lt;id&gt;\n\n\n\n\n\n\n~/one-file-app/app.R\n\n# load packages (omitted for brevity) ----\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # ~ previous code omitted for brevity ~\n  \n  # body mass slider ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g):\", \n              min = 2700, max = 6300, value = c(3000, 4000)),\n  \n  # body mass plot output ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\")\n  \n)\n\n# server instructions ----\nserver &lt;- function(input, output) {\n  \n  # filter body masses ----\n  body_mass_df &lt;- reactive({ \n    penguins |&gt; \n      filter(body_mass_g %in% input$body_mass_input[1]:input$body_mass_input[2]) \n  })\n      \n  # render the scatter plot ----\n  output$bodyMass_scatterPlot &lt;- renderPlot({ \n      ggplot(na.omit(body_mass_df(), aes(...)) + # etc. (omitted for brevity)\n  }) \n    \n}\n\n\n\n\nIn our server, we can access the values of that slider input using the syntax, input$body_mass_input. If you want your output to change according to the input values, substitute hard-coded values (e.g. 3725:5191) with the input values from the UI (e.g. input$body_mass_input[1]:input$body_mass_input[2]).\n\n\nImportantly, we need to use reactive() to create reactive data frames that update with user inputs. When you call your reactive data frame in your ggplot, the data frame name must be followed by ()."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#run-that-app",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#run-that-app",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Okay, RUN THAT APP!\n\n\nYou should now have a reactive Shiny app! Note that reactivity automatically occurs whenever you use an input value to render an output object."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#recapp-app1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#recapp-app1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Recap: We created our first reactive Shiny app following these steps:\n\n\n\n1. We created an app.R file in it’s own directory and began our app with the template, though you can also create a two-file Shiny app by using separate ui.R and server.R files.\n\n\n\n\n2. We added an input to the fluidPage() in our UI using an *Input() function and gave it a unique inputId (e.g. inputId = \"unique_input_Id_name\")\n\n\n\n\n3. We created a placeholder for our reactive object by using an *Output() function in the fluidPage() of our UI and gave it an outputId (e.g. outputId = \"output_Id_name\")\n\n\n\n\n4. We wrote the server instructions for how to assemble inputs into outputs, following these rules:\n\n\n save objects that you want to display to output$&lt;id&gt;\n\n\n build reactive objects using a render*() function (and similarly, build reactive data frames using reactive()\n\n\n access input values with input$&lt;id&gt;\n\n\n\n\n\nAnd we saw that reactivity automatically occurs whenever we use an input value to render an output object."
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Question Exercise 1: Add another reactive widget\n\n\nThe {DT} package provides an R interface to the JavaScript library DataTables (you may have already used the DT package in your knitted RMarkdown/Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.\n\n\n\n\n\nWorking alone or in groups, add a reactive DT datatable to your app with a checkboxGroupInput that allows users to select which year(s) to include in the table. Configure your checkboxGroupInput so that the years 2007 and 2008 are pre-selected.\n\n\nIn the end, your app should look something like the example to the right.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1-tips",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1-tips",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Lightbulb Exercise 1: Tips\n\nTips:\n\n Use ?checkboxGroupInput to learn more about which arguments you need (remember, all inputs require an inputId and oftentimes a label, but there are others required to make this work as well)\n\n\n Both {shiny} and {DT} packages have functions named dataTableOutput() and renderDataTable() – DT::renderDataTable() allows you to create both server-side and client-side DataTables and supports additional DataTables features while shiny::renderDataTable() only provides server-side DataTables. Be sure to use the one from the {DT} package using the syntax packageName::functionName().\n\n\n There are lots of ways to customize DT tables, but to create a basic one, all you need is DT::dataTable(your_dataframe)\n\nAnd remember to follow the steps outlined on the previous slides:\n\n1. Add an input (e.g. checkboxGroupInput) to the UI that users can interact with\n\n\n2. Add an output (e.g. DT::datatableOutput) to the UI that creates a placeholder space to fill with our eventual reactive output\n\n\n3. Tell the server how to assemble inputs into outputs following 3 rules:\n\n\n3.1 Save objects you want to display to output$&lt;id&gt;\n\n\n3.2 Build reactive objects using a render*() function\n\n\n3.3 Access input values with input$&lt;id&gt;\n\n\n\nSee next slide for a solution!"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1-solution",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1-solution",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Exercise 1: A solution\n\n\nPress the right arrow key to advance through the newly added lines of code.\n\n\n\n\n~/one-file-app/app.R\n\n# load packages ----\nlibrary(shiny)\nlibrary(palmerpenguins)\nlibrary(tidyverse)\nlibrary(DT)\n\n# user interface ----\nui &lt;- fluidPage(\n  \n  # app title ----\n  tags$h1(\"My App Title\"),\n  \n  # app subtitle ----\n  p(strong(\"Exploring Antarctic Penguin Data\")),\n  \n  # body mass slider input ----\n  sliderInput(inputId = \"body_mass_input\", label = \"Select a range of body masses (g)\",\n              min = 2700, max = 6300, value = c(3000, 4000)),\n\n  # body mass plot output ----\n  plotOutput(outputId = \"bodyMass_scatterPlot\"),\n  \n  # year input ----\n  checkboxGroupInput(inputId = \"year_input\", label = \"Select year(s):\",\n                     choices = c(\"2007\", \"2008\", \"2009\"), # or `unique(penguins$year_input)` | NOTE: update checkbox display name by using \"New name\" = \"observation name\" (e.g \"The year 2007\" = \"2007\")\n                     selected = c(\"2007\", \"2008\")),\n  \n  # DT output ----\n  DT::dataTableOutput(outputId = \"penguin_data\")\n  \n)\n\n# server instructions ----\nserver &lt;- function(input, output) {\n  \n  # filter body masses ----\n  body_mass_df &lt;- reactive({\n    penguins |&gt;\n      filter(body_mass_g %in% input$body_mass_input[1]:input$body_mass_input[2]) # return observations where body_mass_g is \"in\" the set of options provided by the user in the sliderInput\n  })\n\n  # render the scatterplot output ----\n  output$bodyMass_scatterPlot &lt;- renderPlot({\n\n    ggplot(na.omit(body_mass_df()),\n           aes(x = flipper_length_mm, y = bill_length_mm,\n               color = species, shape = species)) +\n      geom_point() +\n      scale_color_manual(values = c(\"Adelie\" = \"#FEA346\", \"Chinstrap\" = \"#B251F1\", \"Gentoo\" = \"#4BA4A4\")) +\n      scale_shape_manual(values = c(\"Adelie\" = 19, \"Chinstrap\" = 17, \"Gentoo\" = 15)) +\n      labs(x = \"Flipper length (mm)\", y = \"Bill length (mm)\",\n           color = \"Penguin species\", shape = \"Penguin species\") +\n      theme_minimal() +\n      theme(legend.position = c(0.85, 0.2),\n            legend.background = element_rect(color = \"white\"))\n    \n  }, alt = \"A scatterplot of penguin Bill length (mm) vs. Flipper length (mm) for Adelie (orange circles), Chinstrap (purple triangles), and Gentoo (green squares) penguins.\"\n  )\n  \n  # filter for years ----\n  years_df &lt;- reactive({\n    penguins |&gt; \n      filter(year %in% input$year_input) # return observations where year is \"in\" the set of options provided by the user via the checkboxGroupInput\n  })\n  \n  # render the DT::datatable ----\n  output$penguin_data &lt;- DT::renderDataTable({\n    \n    DT::datatable(years_df(),\n                  options = list(pagelength = 10),\n                  rownames = FALSE)\n    \n  })\n  \n}\n\n# combine UI & server into an app ----\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#common-mistakes",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#common-mistakes",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Common mistakes to look out for\n\n\nIt’s inevitable that you’ll make mistakes here and there as you build out your app…and they can be frustrating to catch. A few that I find myself making over and over again are:\n\n\n\n\n\n misspelling inputId as inputID (or outputId as outputID)\n\n\n misspelling your inputId (or outputId) name in the server (e.g. UI: inputId = \"myInputID\", server: input$my_Input_ID)\n\n\n repeating inputIds (each must be unique)\n\n\n forgetting to separate UI elements with a comma, ,\n\n\n forgetting the set of parentheses when calling the name of a reactive data frame in a plot (e.g. ggplot(my_reactive_df(), aes(...)))"
+  },
+  {
+    "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#end-section",
+    "href": "course-materials/slides/part2.1-single-file-app-slides.html#end-section",
+    "title": "EDS 430",
+    "section": "",
+    "text": "End part 2.1\n\n\nUp next: building out a two-file app\n\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#required-packages",
+    "href": "course-materials/part1-intro.html#required-packages",
+    "title": "Setup & Intro",
+    "section": "Required Packages",
+    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#required-data",
+    "href": "course-materials/part1-intro.html#required-data",
+    "title": "Setup & Intro",
+    "section": "Required Data",
+    "text": "Required Data\nNo data downloads required for this section"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#lecture-materials",
+    "href": "course-materials/part1-intro.html#lecture-materials",
+    "title": "Setup & Intro",
     "section": "Lecture Materials",
-    "text": "Lecture Materials\nWe’ll be referencing the following slide deck for Part 2:\n\n Part 2 slides"
+    "text": "Lecture Materials\nPart 1 is broken down into two lessons:\n\n\n\nWhat is Shiny?\n lecture 1.1 slides\n\n\n\n\nSetting up your app\n lecture 1.2 slides"
   },
   {
     "objectID": "about.html",
@@ -35,17 +287,164 @@
     "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
   },
   {
-    "objectID": "course-materials/part1-housekeeping.html#prerequisites",
-    "href": "course-materials/part1-housekeeping.html#prerequisites",
-    "title": "Housekeeping (prerequisites & reference code)",
-    "section": "Prerequisites",
-    "text": "Prerequisites\nNo prior Shiny experience necessary for this course! However, we do assume that participants have the following:\n\nR / RStudio installed & a basic familiarity with the language\nA GitHub profile & git installed / configured\nYou have the required R packages installed. You can install/update them all at once by running:\n\n\ninstall.packages(pkgs = c(\"shiny\", \"shinydashboard\", \"shinyWidgets\", \"DT\", \"leaflet\", \"shinycssloaders\", \"tidyverse\", \"bslib\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\", \"markdown\"))\n\n\nPlease see the MEDS Installation Guide for instructions on installing the above software."
+    "objectID": "course-materials/part2-building-shiny-apps.html",
+    "href": "course-materials/part2-building-shiny-apps.html",
+    "title": "Building Shiny apps",
+    "section": "",
+    "text": "ADD IMAGE HERE"
   },
   {
-    "objectID": "course-materials/part1-housekeeping.html#reference-code",
-    "href": "course-materials/part1-housekeeping.html#reference-code",
-    "title": "Housekeeping (prerequisites & reference code)",
-    "section": "Reference code",
-    "text": "Reference code\nWe’ll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on GitHub.\nWe’ll be creating our own GitHub repositories to house our apps, so you do not need to fork this repo (unless you want to, of course)."
+    "objectID": "course-materials/part2-building-shiny-apps.html#required-data",
+    "href": "course-materials/part2-building-shiny-apps.html#required-data",
+    "title": "Building Shiny apps",
+    "section": "Required Data",
+    "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html#lecture-materials",
+    "href": "course-materials/part2-building-shiny-apps.html#lecture-materials",
+    "title": "Building Shiny apps",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 2 is broken down into three lessons:\n\n\n\nSingle-file app\n lecture 2.1 slides\n\n\n\n\nTwo-file app\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#title-slide",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#title-slide",
+    "title": "EDS 430",
+    "section": "",
+    "text": "EDS 430: Part 1.1\nWhat is Shiny?\n\nWeek 1 | January 26th, 2024"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#what-is-shiny",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#what-is-shiny",
+    "title": "EDS 430",
+    "section": "",
+    "text": "What is Shiny?\n\n\nThink interactive web pages built by people who love to code in R (i.e. hopefully many of you!), no JavaScript experience necessary."
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#easy-web-apps",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#easy-web-apps",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Shiny makes building web apps easy\n\n\n“Shiny is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in R Markdown documents or build dashboards. You can also extend your Shiny apps with CSS themes, htmlwidgets, and JavaScript actions.” - RStudio\n\n\n\n\nWorldbank-Shiny app to visualize fertility rate vs. life expectancy from 1960 to 2015, by Andre Duarte"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#app-anatomy",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#app-anatomy",
+    "title": "EDS 430",
+    "section": "",
+    "text": "The anatomy of a Shiny app\n\n\nWhat does a Shiny app look like under the hood?"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#basic-anatomy",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#basic-anatomy",
+    "title": "EDS 430",
+    "section": "",
+    "text": "The basic anatomy of a Shiny app\n\n\nShiny apps are composed in two parts: (1) a web page that displays the app to a user (i.e. the user interface, or UI for short), and (2) a computer that powers the app (i.e. the server)\n\n\n\nThe UI controls the layout and appearance of your app and is written in HTML (except we use functions from the {shiny} package to write that HTML). The server handles the logic of the app – in other words, it is a set of instructions that tells the webpage what to display when a user interacts with it."
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#widgets",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#widgets",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Widgets are web elements that users can interact with via the UI\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Widgets collect information from the user which is then used to update outputs created in the server.\n\n\n Shiny comes with a set of of standard widgets (see left), but you can also explore widget extensions using a variety of other packages (e.g. {shinyWidgets}, {DT}, {plotly})"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#reactivity-intro",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#reactivity-intro",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Reactivity: a brief intro\n\n\nReactivity is what makes Shiny apps responsive i.e. it lets the app instantly update itself whenever the user makes a change. At a very basic level, it looks something like this:\n\n\n\nCheck out Garrett Grolemund’s article, How to understand reactivity in R for a more detailed overview of Shiny reactivity."
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#examples-please",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#examples-please",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Can I see an example please?\n\n\nI’m glad you asked! There are lots of great examples online, including those developed by Bren alumni, as well as built-in teaching examples."
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#shinyapp-examples",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#shinyapp-examples",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Example shiny apps (built by some familiar folks)\n\nLive apps:\n HydroTech Helper (video tutorial), by MEDS 2022 alumn, Daniel Kerstan, developed during his time as a USGS Hydrologic Technician – access real-time monitoring of USGS hydrology sites and equipment\n Marine Mammal Bycatch Impacts Exploration Tool (source code) by Dr. Megsie Siple and colleagues – compute population projections under different bycatch mortality levels\n Novel-gazing (source code) by Dr. Megsie Siple – a fun app for exploring your Goodreads data, inspired by community ecology\n\nApps which are no longer deployed:\n Moorea Coral Reef LTER Shiny Application (source code), by MEDS 2022 alumni, Allie Cole, Felicia Cruz, Jake Eisaguirre & Charles Henrickson as part of their MEDS capstone project – visualize spatial and temporal patterns of coral reef stressors surrounding Moorea, French Polynesia"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#built-in-examples",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#built-in-examples",
+    "title": "EDS 430",
+    "section": "",
+    "text": "The Shiny packages comes with 11 built-in examples\n\n\n Check out the available Shiny app examples by running this code in your console:\n\n\nlibrary(shiny)\nrunExample(example = NA)\n\n\n\n Run the first example, which plots R’s built-in faithful data set with a configurable number of bins:\n\n\nrunExample(\"01_hello\")\n\n\nChange the number of bins using the sliderInput widget and watch the histogram re-render.\n\n\n\n\n These working examples also come paired with source code for you to see how the app is built. For example, the sliderInput is built with the following code:\n\n\n# Input: Slider for the number of bins ----\nsliderInput(inputId = \"bins\",\n            label = \"Number of bins:\",\n             min = 1,\n             max = 50,\n             value = 30)\n\n\n\n\n\nNow let’s build our own!"
+  },
+  {
+    "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#end-section",
+    "href": "course-materials/slides/part1.1-shiny-overview-slides.html#end-section",
+    "title": "EDS 430",
+    "section": "",
+    "text": "End part 1\n\n\nUp next: building our own apps & dashboards\n\n\n\n\n\n−+\n01:00"
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#title-slide",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#title-slide",
+    "title": "EDS 430",
+    "section": "",
+    "text": "EDS 430: Part 1.2\nSetting up a Shiny app\n\nWeek 1 | January 26th, 2024"
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#setup",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#setup",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Play Setting up your Shiny app\n\n\nLet’s start with some standard operating procedures – things you’ll do each time you begin a new shiny app."
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#github-repo",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#github-repo",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Create your GitHub repo\n\n\nLet’s start by creating a GitHub repo to house our soon-to-be app(s), then we’ll clone our repo to our computer. I’m using RStudio to clone my repo in the example below, but you can also do this via the command line using git clone &lt;repo-url&gt;."
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#repo-structure",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#repo-structure",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Shiny app repo structure\n\n\nNot much is required to make a functional app (which is awesome) – for a basic app, you really just need an app.R file where you’ll write the code for your UI and server. To stay organized, we’ll place app.R into a subdirectory (e.g. /myapp), which will also house any dependencies (e.g. other scripts/files/etc.) used by app.R."
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#begin-the-same",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#begin-the-same",
+    "title": "EDS 430",
+    "section": "",
+    "text": "All Shiny apps begin (in almost) the same way\n\n\nYou have the option of creating either a single-file app or two-file app, and they look nearly the same (we’ll see both formats in the coming slides).\n\n\n\nWhy two options? Before v0.10.2, Shiny apps needed to be split into two separate files, ui.R and server.R, that defined the UI and server components, respectively. With v0.10.2+, users can create a single-file app, app.R, which contains both the UI and server components together. While it largely comes down to personal preference, a single-file format is best for smaller apps or when creating a reprex, while the two-file format is beneficial when writing large, complex apps where breaking apart code can make things a bit more navigable/maintainable."
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#single-file",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#single-file",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Create a single-file Shiny app\n\n\nYou can create a single-file app using RStudio’s built-in Shiny app template (e.g. File &gt; New Project… &gt; New Directory &gt; Shiny Application), but it’s just as easy to create it from scratch (and you’ll memorize the structure faster!). Let’s do that now.\n\n\n\n1. In your project repo, create a subdirectory to house your app – I’m calling mine, single-file-app.\n\n\n\n\n2. Create a new R script inside /single-file-app and name it app.R – you must name your script app.R. Copy/type the following code into app.R, or use the shinyapp snippet to automatically generate a shiny app template.\n\n\n# load packages ----\nlibrary(shiny)\n\n# user interface ----\nui &lt;- fluidPage()\n\n# server instructions ----\nserver &lt;- function(input, output) {}\n\n# combine UI & server into an app ----\nshinyApp(ui = ui, server = server)\n\n\nTip: Use code sections (denoted by # some text ----) to make navigating different sections of your app code a bit easier. Code sections will appear in your document outline (find the button at the top right corner of the script/editor panel)."
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#run-app",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#run-app",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Run your app\n\n\nOnce you have saved your app.R file, the “Run” code button should turn into a “Run App” button that looks like: . Click that button to run your app (alternatively, run runApp(\"directory-name\") in your console – for me, that looks like, runApp(\"single-file-app\"))!\n\n\n\nYou won’t see much yet, as we have only built a blank app (but a functioning app, nonetheless!). In your RStudio console, you should see something like: Listening on http://127.0.0.1:XXXX, which is the URL where your app can be found. 127.0.0.1 is a standard address that means “this computer,” and the last four digits represent a randomly assigned port number. You can click the “Open in Browser” button, , to see how your app will appear when viewed in your web browser.\n\n\nYou should also notice a red stop sign, , appear in the top right corner of your console indicating that R is busy–this is because your R session is currently acting as your Shiny app server and listening for any user interaction with your app. Because of this, you won’t be able to run any commands in the console until you quit your app. Do so by pressing the stop button."
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#two-file",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#two-file",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Create a two-file Shiny app\n\n\nIn practice, you will likely find yourself opting for the the two-file format – code expands quickly, even when building relatively small apps. This two-file approach (well, three if you use a global.R file, which is encouraged) will help to keep your code a bit more manageable.\n\n\n\n1. In your project repo, create a new subdirectory to house your app – I’m calling mine, two-file-app.\n\n\n\n\n2. Create two new R scripts inside /two-file-app named ui.R and server.R – you must name your scripts ui.R and server.R. Copy the following code into the respective files. Note: When splitting your UI and server into separate files, you do not need to include the shinyApp(ui = ui, server = server) line of code (as required in your single-file app).\n\n\n\n\n\n\n\nur.R\n\n# user interface ----\nui &lt;- fluidPage()\n\n\n\n\n\n\n\n\n\nserver.R\n\n# server instructions ----\nserver &lt;- function(input, output) {}\n\n\n\n\n\n\n\n3. Lastly, let’s create a global.R file within /two-file-app and add dependencies (right now, that’s just loading the shiny package). Run your app as we did earlier.\n\n\n\n\n\nglobal.R\n\n# load libraries ----\nlibrary(shiny)"
+  },
+  {
+    "objectID": "course-materials/slides/part1.2-setup-app-slides.html#end-section",
+    "href": "course-materials/slides/part1.2-setup-app-slides.html#end-section",
+    "title": "EDS 430",
+    "section": "",
+    "text": "End part 1.2\n\n\nUp next: building out a single-file app\n\n\n\n\n\n−+\n01:00"
   }
 ]

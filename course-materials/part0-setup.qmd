@@ -1,0 +1,41 @@
+---
+title: "Setup"
+subtitle: "Part 0"
+title-block-banner: true
+toc: true
+---
+
+```{r}
+#| eval: true 
+#| echo: false
+#| fig-align: "center"
+#| out-width: "60%" 
+#| fig-alt: "Logos for R Project, RStudio, GitHub, and git"
+knitr::include_graphics("images/software.png")
+```
+
+## Prerequisites
+
+[***No prior Shiny experience necessary for this course!***]{.teal-text} However, we do assume that participants have the following:
+
+- [R](https://cloud.r-project.org/) / [RStudio](https://posit.co/products/open-source/rstudio/) installed & a basic familiarity with the language  
+
+-  A [GitHub](https://github.com/) profile & [git](https://git-scm.com/) installed / configured
+
+- You have the required R packages installed. You can install/update them all at once by running:
+ 
+```{r}
+#| eval: false
+#| echo: true
+install.packages(pkgs = c("shiny", "shinydashboard", "shinyWidgets", "DT", "leaflet", "shinycssloaders", "tidyverse", "bslib", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder", "markdown"))
+```
+
+::: {.center-text .body-text-m .teal-text}
+**Please see the [MEDS Installation Guide](https://ucsb-meds.github.io/meds-install-guide.html) for instructions on installing the above software.**
+:::
+
+## Reference code
+
+We'll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app). 
+
+We'll be creating our own GitHub repositories to house our apps, so *you do not need to fork this repo* (unless you want to, of course).

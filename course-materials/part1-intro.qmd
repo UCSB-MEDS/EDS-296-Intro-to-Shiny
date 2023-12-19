@@ -1,0 +1,59 @@
+---
+title: "Setup & Intro"
+subtitle: "Part 1"
+title-block-banner: true
+toc: true
+---
+
+```{r}
+#| eval: true 
+#| echo: false
+#| fig-align: "center"
+#| out-width: "80%" 
+#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
+knitr::include_graphics("images/basic-shiny-app.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+A *very* basic illustration of a Shiny app
+:::
+
+## Required Packages
+
+We'll be loading the following R packages: 
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+library(shiny)
+```
+
+## Required Data
+
+*No data downloads required for this section*
+
+## Lecture Materials
+
+Part 1 is broken down into two lessons:
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.center-text}
+[**What is Shiny?**]{.teal-text .body-text-m}
+
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 1.1 slides](slides/part1.1-shiny-overview-slides.qmd){.btn role="button" target="_blank"} 
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.center-text}
+[**Setting up your app**]{.teal-text .body-text-m}
+
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 1.2 slides](slides/part1.2-setup-app-slides.qmd){.btn role="button" target="_blank"} 
+:::
+:::
+
+:::
+
