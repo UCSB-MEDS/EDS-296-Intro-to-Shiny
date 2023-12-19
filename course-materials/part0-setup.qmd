@@ -27,6 +27,7 @@ knitr::include_graphics("images/software.png")
 ```{r}
 #| eval: false
 #| echo: true
+#| code-line-numbers: false
 install.packages(pkgs = c("shiny", "shinydashboard", "shinyWidgets", "DT", "leaflet", "shinycssloaders", "tidyverse", "bslib", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder", "markdown"))
 ```
 

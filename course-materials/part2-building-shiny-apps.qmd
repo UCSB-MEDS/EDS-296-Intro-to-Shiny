@@ -60,7 +60,7 @@ Part 2 is broken down into three lessons:
 ::: {.center-text}
 [**Two-file app**]{.teal-text .body-text-m}
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/part2.2-two-file-app-slides.qmd){.btn role="button" target="_blank"} 
 :::
 :::
 

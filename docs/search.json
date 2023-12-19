@@ -238,76 +238,6 @@
     "text": "End part 2.1\n\n\nUp next: building out a two-file app\n\n\n\n\n\n−+\n05:00"
   },
   {
-    "objectID": "course-materials/part1-intro.html#required-packages",
-    "href": "course-materials/part1-intro.html#required-packages",
-    "title": "Setup & Intro",
-    "section": "Required Packages",
-    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)"
-  },
-  {
-    "objectID": "course-materials/part1-intro.html#required-data",
-    "href": "course-materials/part1-intro.html#required-data",
-    "title": "Setup & Intro",
-    "section": "Required Data",
-    "text": "Required Data\nNo data downloads required for this section"
-  },
-  {
-    "objectID": "course-materials/part1-intro.html#lecture-materials",
-    "href": "course-materials/part1-intro.html#lecture-materials",
-    "title": "Setup & Intro",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 1 is broken down into two lessons:\n\n\n\nWhat is Shiny?\n lecture 1.1 slides\n\n\n\n\nSetting up your app\n lecture 1.2 slides"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "Intro to Shiny - Building reactive apps and dashboards",
-    "section": "Course Description",
-    "text": "Course Description\nThis website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, EDS 430 - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.\nIn this workshop, students will learn how to build and deploy Shiny applications. The {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, shinyapps.io."
-  },
-  {
-    "objectID": "index.html#teaching-team",
-    "href": "index.html#teaching-team",
-    "title": "Intro to Shiny - Building reactive apps and dashboards",
-    "section": "Teaching Team",
-    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
-  },
-  {
-    "objectID": "index.html#acknowledgements",
-    "href": "index.html#acknowledgements",
-    "title": "Intro to Shiny - Building reactive apps and dashboards",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
-  },
-  {
-    "objectID": "course-materials/part2-building-shiny-apps.html",
-    "href": "course-materials/part2-building-shiny-apps.html",
-    "title": "Building Shiny apps",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part2-building-shiny-apps.html#required-data",
-    "href": "course-materials/part2-building-shiny-apps.html#required-data",
-    "title": "Building Shiny apps",
-    "section": "Required Data",
-    "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
-  },
-  {
-    "objectID": "course-materials/part2-building-shiny-apps.html#lecture-materials",
-    "href": "course-materials/part2-building-shiny-apps.html#lecture-materials",
-    "title": "Building Shiny apps",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 2 is broken down into three lessons:\n\n\n\nSingle-file app\n lecture 2.1 slides\n\n\n\n\nTwo-file app\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
-  },
-  {
     "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#title-slide",
     "href": "course-materials/slides/part1.1-shiny-overview-slides.html#title-slide",
     "title": "EDS 430",
@@ -382,7 +312,91 @@
     "href": "course-materials/slides/part1.1-shiny-overview-slides.html#end-section",
     "title": "EDS 430",
     "section": "",
-    "text": "End part 1\n\n\nUp next: building our own apps & dashboards\n\n\n\n\n\n−+\n01:00"
+    "text": "End part 1.1\n\n\nUp next: building our own apps & dashboards\n\n\n\n\n\n−+\n01:00"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html",
+    "href": "course-materials/part2-building-shiny-apps.html",
+    "title": "Building Shiny apps",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html#required-data",
+    "href": "course-materials/part2-building-shiny-apps.html#required-data",
+    "title": "Building Shiny apps",
+    "section": "Required Data",
+    "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html#lecture-materials",
+    "href": "course-materials/part2-building-shiny-apps.html#lecture-materials",
+    "title": "Building Shiny apps",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 2 is broken down into three lessons:\n\n\n\nSingle-file app\n lecture 2.1 slides\n\n\n\n\nTwo-file app\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Course Description",
+    "text": "Course Description\nThis website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, EDS 430 - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.\nIn this workshop, students will learn how to build and deploy Shiny applications. The {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, shinyapps.io."
+  },
+  {
+    "objectID": "index.html#teaching-team",
+    "href": "index.html#teaching-team",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Teaching Team",
+    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#required-packages",
+    "href": "course-materials/part1-intro.html#required-packages",
+    "title": "Setup & Intro",
+    "section": "Required Packages",
+    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#required-data",
+    "href": "course-materials/part1-intro.html#required-data",
+    "title": "Setup & Intro",
+    "section": "Required Data",
+    "text": "Required Data\nNo data downloads required for this section"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#lecture-materials",
+    "href": "course-materials/part1-intro.html#lecture-materials",
+    "title": "Setup & Intro",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 1 is broken down into two lessons:\n\n\n\nWhat is Shiny?\n lecture 1.1 slides\n\n\n\n\nSetting up your app\n lecture 1.2 slides"
+  },
+  {
+    "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#title-slide",
+    "href": "course-materials/slides/part2.2-two-file-app-slides.html#title-slide",
+    "title": "EDS 430",
+    "section": "",
+    "text": "EDS 430: Part 2.2\nBuilding a two-file app\n\nWeek 1 | January 26th, 2024"
+  },
+  {
+    "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#end-section",
+    "href": "course-materials/slides/part2.2-two-file-app-slides.html#end-section",
+    "title": "EDS 430",
+    "section": "",
+    "text": "End part 2.1\n\n\nUp next: building out a two-file app\n\n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "course-materials/slides/part1.2-setup-app-slides.html#title-slide",
