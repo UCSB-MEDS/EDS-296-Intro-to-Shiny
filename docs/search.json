@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "course-materials/part2-shiny-overview.html#lecture-materials",
+    "href": "course-materials/part2-shiny-overview.html#lecture-materials",
+    "title": "What is Shiny?",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nWe’ll be referencing the following slide deck for Part 2:\n\n Part 2 slides"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Course Description",
+    "text": "Course Description\nThis website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, EDS 430 - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.\nIn this workshop, students will learn how to build and deploy Shiny applications. The {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, shinyapps.io."
+  },
+  {
+    "objectID": "index.html#teaching-team",
+    "href": "index.html#teaching-team",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Teaching Team",
+    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
+  },
+  {
+    "objectID": "course-materials/part1-housekeeping.html#prerequisites",
+    "href": "course-materials/part1-housekeeping.html#prerequisites",
+    "title": "Housekeeping (prerequisites & reference code)",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nNo prior Shiny experience necessary for this course! However, we do assume that participants have the following:\n\nR / RStudio installed & a basic familiarity with the language\nA GitHub profile & git installed / configured\nYou have the required R packages installed. You can install/update them all at once by running:\n\n\ninstall.packages(pkgs = c(\"shiny\", \"shinydashboard\", \"shinyWidgets\", \"DT\", \"leaflet\", \"shinycssloaders\", \"tidyverse\", \"bslib\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\", \"markdown\"))\n\n\nPlease see the MEDS Installation Guide for instructions on installing the above software."
+  },
+  {
+    "objectID": "course-materials/part1-housekeeping.html#reference-code",
+    "href": "course-materials/part1-housekeeping.html#reference-code",
+    "title": "Housekeeping (prerequisites & reference code)",
+    "section": "Reference code",
+    "text": "Reference code\nWe’ll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on GitHub.\nWe’ll be creating our own GitHub repositories to house our apps, so you do not need to fork this repo (unless you want to, of course)."
+  }
+]
