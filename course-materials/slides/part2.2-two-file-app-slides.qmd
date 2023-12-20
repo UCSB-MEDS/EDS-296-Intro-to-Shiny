@@ -23,28 +23,8 @@ editor_options:
 
 ---
 
----
+{{< include /course-materials/slides/part2.2A.qmd >}}
 
-##  {#end-section data-menu-title="~~~ END ~~~" background="#047C90"}
+{{< include /course-materials/slides/part2.2B.qmd >}}
 
-<div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 2.1</p>
-<p class="caption-text">***Up next:** building out a two-file app*</p>
-</div>
-
-```{r}
-countdown::countdown(
-  minutes = 5,
-  # left = 0, right = 0,
-  # Fanfare when it's over
-  # play_sound = TRUE,
-  color_border              = "#FFFFFF",
-  color_text                = "#7aa81e",
-  color_running_background  = "#7aa81e",
-  color_running_text        = "#FFFFFF",
-  color_finished_background = "#ffa07a",
-  color_finished_text       = "#FFFFFF",
-  font_size = "2em",
-  )
-```
-
+{{< include /course-materials/slides/part2.2C.qmd >}}
