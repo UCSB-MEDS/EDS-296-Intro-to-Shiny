@@ -2154,7 +2154,7 @@ lake_data <- read_csv("data/lake_data_processed.csv")
 ##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 3/p>
+<p class="custom-subtitle bottombr">End part 3</p>
 <p class="caption-text">***Up next:** styling apps*</p>
 </div>
 
