@@ -665,188 +665,6 @@
     "text": "End part 2.3\n\n\nUp next: building shiny dashboards\n\n\n\n\n\n−+\n05:00"
   },
   {
-    "objectID": "course-materials/part3-building-shiny-dashboards.html",
-    "href": "course-materials/part3-building-shiny-dashboards.html",
-    "title": "Building Shiny dashboards",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part3-building-shiny-dashboards.html#required-packages",
-    "href": "course-materials/part3-building-shiny-dashboards.html#required-packages",
-    "title": "Building Shiny dashboards",
-    "section": "Required Packages",
-    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)\nlibrary(shinydashboard)\nlibrary(tidyverse)\nlibrary(shinycssloaders)\nlibrary(leaflet)\nlibrary(markdown)"
-  },
-  {
-    "objectID": "course-materials/part3-building-shiny-dashboards.html#required-data",
-    "href": "course-materials/part3-building-shiny-dashboards.html#required-data",
-    "title": "Building Shiny dashboards",
-    "section": "Required Data",
-    "text": "Required Data\nWe’ll be using publicly-available data via the Arctic Data Center for our shiny dashboard.\n\n\n\n\n\n\nData citation\n\n\n\nChristopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. doi:10.18739/A2JH3D41P.\n\n\nTake a few moments to review the metadata record and download FCWO_lakemonitoringdata_2011_2022_daily.csv."
-  },
-  {
-    "objectID": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
-    "href": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
-    "title": "Building Shiny dashboards",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 3 is contained in one lesson:\n\nShiny dashboard\n lecture 3 slides"
-  },
-  {
-    "objectID": "course-materials/part4-styling-apps.html",
-    "href": "course-materials/part4-styling-apps.html",
-    "title": "Styling apps",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part4-styling-apps.html#required-data",
-    "href": "course-materials/part4-styling-apps.html#required-data",
-    "title": "Styling apps",
-    "section": "Required Data",
-    "text": "Required Data"
-  },
-  {
-    "objectID": "course-materials/part4-styling-apps.html#lecture-materials",
-    "href": "course-materials/part4-styling-apps.html#lecture-materials",
-    "title": "Styling apps",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 4 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
-  },
-  {
-    "objectID": "course-materials/part5-improving-ux-ui.html",
-    "href": "course-materials/part5-improving-ux-ui.html",
-    "title": "Improving your app’s UX / UI",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part5-improving-ux-ui.html#required-data",
-    "href": "course-materials/part5-improving-ux-ui.html#required-data",
-    "title": "Improving your app’s UX / UI",
-    "section": "Required Data",
-    "text": "Required Data"
-  },
-  {
-    "objectID": "course-materials/part5-improving-ux-ui.html#lecture-materials",
-    "href": "course-materials/part5-improving-ux-ui.html#lecture-materials",
-    "title": "Improving your app’s UX / UI",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 5 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
-  },
-  {
-    "objectID": "course-materials/part2-building-shiny-apps.html",
-    "href": "course-materials/part2-building-shiny-apps.html",
-    "title": "Building Shiny apps",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part2-building-shiny-apps.html#required-data",
-    "href": "course-materials/part2-building-shiny-apps.html#required-data",
-    "title": "Building Shiny apps",
-    "section": "Required Data",
-    "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
-  },
-  {
-    "objectID": "course-materials/part2-building-shiny-apps.html#lecture-materials",
-    "href": "course-materials/part2-building-shiny-apps.html#lecture-materials",
-    "title": "Building Shiny apps",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 2 is broken down into three lessons:\n\n\n\n\nSingle-file app\n lecture 2.1 slides\n\n\n\n\nTwo-file app\n lecture 2.2 slides\n\n\n\n\nDeploying & Improving UX\n lecture 2.3 slides"
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "Intro to Shiny - Building reactive apps and dashboards",
-    "section": "Course Description",
-    "text": "Course Description\nThis website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, EDS 430 - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.\nIn this workshop, students will learn how to build and deploy Shiny applications. The {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, shinyapps.io."
-  },
-  {
-    "objectID": "index.html#teaching-team",
-    "href": "index.html#teaching-team",
-    "title": "Intro to Shiny - Building reactive apps and dashboards",
-    "section": "Teaching Team",
-    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
-  },
-  {
-    "objectID": "index.html#acknowledgements",
-    "href": "index.html#acknowledgements",
-    "title": "Intro to Shiny - Building reactive apps and dashboards",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "course-materials/part1-intro.html#required-packages",
-    "href": "course-materials/part1-intro.html#required-packages",
-    "title": "Setup & Intro",
-    "section": "Required Packages",
-    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)"
-  },
-  {
-    "objectID": "course-materials/part1-intro.html#required-data",
-    "href": "course-materials/part1-intro.html#required-data",
-    "title": "Setup & Intro",
-    "section": "Required Data",
-    "text": "Required Data\nNo data downloads required for this section"
-  },
-  {
-    "objectID": "course-materials/part1-intro.html#lecture-materials",
-    "href": "course-materials/part1-intro.html#lecture-materials",
-    "title": "Setup & Intro",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 1 is broken down into two lessons:\n\n\n\nWhat is Shiny?\n lecture 1.1 slides\n\n\n\n\nSetting up your app\n lecture 1.2 slides"
-  },
-  {
-    "objectID": "course-materials/part6-debugging-testing.html",
-    "href": "course-materials/part6-debugging-testing.html",
-    "title": "Debugging & testing",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part6-debugging-testing.html#required-data",
-    "href": "course-materials/part6-debugging-testing.html#required-data",
-    "title": "Debugging & testing",
-    "section": "Required Data",
-    "text": "Required Data"
-  },
-  {
-    "objectID": "course-materials/part6-debugging-testing.html#lecture-materials",
-    "href": "course-materials/part6-debugging-testing.html#lecture-materials",
-    "title": "Debugging & testing",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 6 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
-  },
-  {
-    "objectID": "course-materials/part7-streamlining-code.html",
-    "href": "course-materials/part7-streamlining-code.html",
-    "title": "Streamlining code",
-    "section": "",
-    "text": "ADD IMAGE HERE"
-  },
-  {
-    "objectID": "course-materials/part7-streamlining-code.html#required-data",
-    "href": "course-materials/part7-streamlining-code.html#required-data",
-    "title": "Streamlining code",
-    "section": "Required Data",
-    "text": "Required Data"
-  },
-  {
-    "objectID": "course-materials/part7-streamlining-code.html#lecture-materials",
-    "href": "course-materials/part7-streamlining-code.html#lecture-materials",
-    "title": "Streamlining code",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 7 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
-  },
-  {
     "objectID": "course-materials/slides/part3-shiny-dashboard-slides.html#title-slide",
     "href": "course-materials/slides/part3-shiny-dashboard-slides.html#title-slide",
     "title": "EDS 430",
@@ -1083,6 +901,405 @@
     "title": "EDS 430",
     "section": "",
     "text": "End part 3\n\n\nUp next: styling apps\n\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "course-materials/part3-building-shiny-dashboards.html",
+    "href": "course-materials/part3-building-shiny-dashboards.html",
+    "title": "Building Shiny dashboards",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part3-building-shiny-dashboards.html#required-packages",
+    "href": "course-materials/part3-building-shiny-dashboards.html#required-packages",
+    "title": "Building Shiny dashboards",
+    "section": "Required Packages",
+    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)\nlibrary(shinydashboard)\nlibrary(tidyverse)\nlibrary(shinycssloaders)\nlibrary(leaflet)\nlibrary(markdown)"
+  },
+  {
+    "objectID": "course-materials/part3-building-shiny-dashboards.html#required-data",
+    "href": "course-materials/part3-building-shiny-dashboards.html#required-data",
+    "title": "Building Shiny dashboards",
+    "section": "Required Data",
+    "text": "Required Data\nWe’ll be using publicly-available data via the Arctic Data Center for our shiny dashboard.\n\n\n\n\n\n\nData citation\n\n\n\nChristopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. doi:10.18739/A2JH3D41P.\n\n\nTake a few moments to review the metadata record and download FCWO_lakemonitoringdata_2011_2022_daily.csv."
+  },
+  {
+    "objectID": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
+    "href": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
+    "title": "Building Shiny dashboards",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 3 is contained in one lesson:\n\nShiny dashboard\n lecture 3 slides"
+  },
+  {
+    "objectID": "course-materials/part4-styling-apps.html",
+    "href": "course-materials/part4-styling-apps.html",
+    "title": "Styling apps",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part4-styling-apps.html#required-data",
+    "href": "course-materials/part4-styling-apps.html#required-data",
+    "title": "Styling apps",
+    "section": "Required Data",
+    "text": "Required Data\n\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "course-materials/part4-styling-apps.html#lecture-materials",
+    "href": "course-materials/part4-styling-apps.html#lecture-materials",
+    "title": "Styling apps",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 4 is broken down into two lessons:\n\n\n\n{bslib} & {fresh}\n lecture 4.1 slides\n\n\n\n\nStyling with CSS & Sass\n lecture 4.2 slides"
+  },
+  {
+    "objectID": "course-materials/part5-improving-ux-ui.html",
+    "href": "course-materials/part5-improving-ux-ui.html",
+    "title": "Improving your app’s UX / UI",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part5-improving-ux-ui.html#required-data",
+    "href": "course-materials/part5-improving-ux-ui.html#required-data",
+    "title": "Improving your app’s UX / UI",
+    "section": "Required Data",
+    "text": "Required Data"
+  },
+  {
+    "objectID": "course-materials/part5-improving-ux-ui.html#lecture-materials",
+    "href": "course-materials/part5-improving-ux-ui.html#lecture-materials",
+    "title": "Improving your app’s UX / UI",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 5 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html",
+    "href": "course-materials/part2-building-shiny-apps.html",
+    "title": "Building Shiny apps",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html#required-data",
+    "href": "course-materials/part2-building-shiny-apps.html#required-data",
+    "title": "Building Shiny apps",
+    "section": "Required Data",
+    "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
+  },
+  {
+    "objectID": "course-materials/part2-building-shiny-apps.html#lecture-materials",
+    "href": "course-materials/part2-building-shiny-apps.html#lecture-materials",
+    "title": "Building Shiny apps",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 2 is broken down into three lessons:\n\n\n\n\nSingle-file app\n lecture 2.1 slides\n\n\n\n\nTwo-file app\n lecture 2.2 slides\n\n\n\n\nDeploying & Improving UX\n lecture 2.3 slides"
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Course Description",
+    "text": "Course Description\nThis website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, EDS 430 - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.\nIn this workshop, students will learn how to build and deploy Shiny applications. The {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, shinyapps.io."
+  },
+  {
+    "objectID": "index.html#teaching-team",
+    "href": "index.html#teaching-team",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Teaching Team",
+    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Intro to Shiny - Building reactive apps and dashboards",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#required-packages",
+    "href": "course-materials/part1-intro.html#required-packages",
+    "title": "Setup & Intro",
+    "section": "Required Packages",
+    "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#required-data",
+    "href": "course-materials/part1-intro.html#required-data",
+    "title": "Setup & Intro",
+    "section": "Required Data",
+    "text": "Required Data\nNo data downloads required for this section"
+  },
+  {
+    "objectID": "course-materials/part1-intro.html#lecture-materials",
+    "href": "course-materials/part1-intro.html#lecture-materials",
+    "title": "Setup & Intro",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 1 is broken down into two lessons:\n\n\n\nWhat is Shiny?\n lecture 1.1 slides\n\n\n\n\nSetting up your app\n lecture 1.2 slides"
+  },
+  {
+    "objectID": "course-materials/part6-debugging-testing.html",
+    "href": "course-materials/part6-debugging-testing.html",
+    "title": "Debugging & testing",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part6-debugging-testing.html#required-data",
+    "href": "course-materials/part6-debugging-testing.html#required-data",
+    "title": "Debugging & testing",
+    "section": "Required Data",
+    "text": "Required Data"
+  },
+  {
+    "objectID": "course-materials/part6-debugging-testing.html#lecture-materials",
+    "href": "course-materials/part6-debugging-testing.html#lecture-materials",
+    "title": "Debugging & testing",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 6 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
+  },
+  {
+    "objectID": "course-materials/part7-streamlining-code.html",
+    "href": "course-materials/part7-streamlining-code.html",
+    "title": "Streamlining code",
+    "section": "",
+    "text": "ADD IMAGE HERE"
+  },
+  {
+    "objectID": "course-materials/part7-streamlining-code.html#required-data",
+    "href": "course-materials/part7-streamlining-code.html#required-data",
+    "title": "Streamlining code",
+    "section": "Required Data",
+    "text": "Required Data"
+  },
+  {
+    "objectID": "course-materials/part7-streamlining-code.html#lecture-materials",
+    "href": "course-materials/part7-streamlining-code.html#lecture-materials",
+    "title": "Streamlining code",
+    "section": "Lecture Materials",
+    "text": "Lecture Materials\nPart 7 is broken down into three lessons:\n\n\n\n\ntbd\n lecture 2.1 slides\n\n\n\n\ntbd\n lecture 2.2 slides\n\n\n\n\ntbd\n lecture 2.3 slides"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#title-slide",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#title-slide",
+    "title": "EDS 430",
+    "section": "",
+    "text": "EDS 430: Part 4.1\nTheming and styling apps with {bslib} & {fresh}\n\nWeek 2 | February 2nd, 2024"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#themeing-pkgs",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#themeing-pkgs",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Creating custom themes\n\n\nWe’ve built some really cool apps so far, but they all have a pretty standard and similar appearance. In this section, we’ll explore two packages for creating custom themes for your apps."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#LO-themeing",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#LO-themeing",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Learning Objectives - Themeing/Styling Apps\n\n\nBy the end of this section, you should be equipped with:\n\n\n\n an understanding of how to use packaged-based tooling for themeing and styling your shiny apps and dashboards\n\n\n\n\n\nPackages introduced:\n\n\n\n\n {bslib}: provides tools for customizing Bootstrap themes directly from R for shiny apps and RMarkdowns\n\n\n\n\n {fresh}: provides tools for creating custom themes for use with shiny, shinydashboard, and bs4Dash apps"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Using the {bslib} package to theme Shiny apps\n\n\nThe {bslib} package provides tools for customizing Bootstrap themes directly from R, making custom themeing for Shiny apps (and R Markdown docs!) quite easy.\n\n\n\n\n\nPros:\n\n\n\n easy to use\n\n\n includes a real-time themeing widget to try out themes before applying them to your own app\n\n\n plays well with the {thematic} package for matching plot styling to app\n\n\n {bslib} does more than just themeing! Check out the December 2022 announcement of new UI components made possible with the latest package release\n\n\n\n\nCons:\n\n\n\n does not work with shinydashboard ({bslib} is only intended for use with shiny apps)\n\n\n styling is constrained by the arguments available to bs_theme()\n\n\n\n\n\n\nLet’s practice applying new themes using bslib to our one-file-app (i.e. App #1)"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib-prebuilt-themes",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib-prebuilt-themes",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Apply a pre-built theme with {bslib}\n\n\nBy default, Shiny uses the Bootstrap v3 theme (which is not so exciting). Change the theme to a slightly more modern Bootstrap v5 theme by setting the theme argument of fluidPage() to bslib::bs_theme(version = 5), or supply bs_theme() with a pre-built bootswatch theme, as shown below (for a list of theme names, run bootswatch_themes() in your console):\n\n\n\n\n\n\n\n~/one-file-app/ui.R\n\nui &lt;- fluidPage(\n  \n  theme = bslib::bs_theme(bootswatch = \"solar\")\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 here (NOTE: applied themes are commented out)."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib-custom-themes",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib-custom-themes",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Create a custom theme with {bslib}\n\n\nAlternatively, you can fully customize your own theme. Explore the bslib vignette for detailed instructions. A small example here:\n\n\n\n\n\n\n\n~/one-file-app/ui.R\n\nui &lt;- fluidPage(\n  \n  theme = bslib::bs_theme(\n    bg = \"#A36F6F\", # background color\n    fg = \"#FDF7F7\", # foreground color\n    primary = \"#483132\", # primary accent color\n    base_font = font_google(\"Pacifico\"))\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 here (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBe sure to check out the interactive themeing widget to test custom color/font/etc. combos by running bs_theme_preview() in your console, or visit the hosted version here. You can also call bs_themer() within your server function to open the theme customization UI alongside your own app."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#thematic",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#thematic",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Use {thematic} to extend your theme to plots\n\n\nYou probably noticed that our scatterplot looks a little silly against the darker background of our themed app. Enter the {thematic} package, which is built to help simplify plot themeing. Call thematic_shiny() before launching your app to generate plots that reflect your application’s bs_theme(). For example:\n\n\n\n\n\n\n\n~/one-file-app/ui.R\n\nthematic::thematic_shiny()\n\nui &lt;- fluidPage(\n  \n  theme = bslib::bs_theme(\n    bg = \"#A36F6F\", # background color\n    fg = \"#FDF7F7\", # foreground color\n    primary = \"#483132\", # primary accent color\n    base_font = font_google(\"Pacifico\"))\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 here (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRead the vignette to learn more about using the thematic package to help match plot fonts to the fonts applied across your app."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Using the {fresh} package to theme Shiny apps & dashboards\n\n\nThe {fresh} package provides tools for creating custom themes to use in Shiny apps and dashboards – set parameters of your theme using create_theme(), generate a stylesheet based off your specifications, and apply your stylesheet to your app.\n\n\n\n\n\n\nPros:\n\n\n\n easy to use\n\n\n supports theme creation for both shiny apps and dashboards (and also {flexdashboard}s and {b4dash} applications)\n\n\n\n\n\n\nCons:\n\n\n\n styling is constrained by the variables available to create_theme()\n\n\n\n\n\n\n\nLet’s practice applying new themes using fresh to our two-file-app (i.e. App #2) and our shinydashbaord (i.e. App #3)"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh-workflow",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh-workflow",
+    "title": "EDS 430",
+    "section": "",
+    "text": "A general workflow for using fresh themes\n\n\nWhether you’re working on a shiny app or a shiny dashboard, you’ll need the following:\n\n\n1. a /www folder within your app’s directory – this is where we’ll save the stylesheet (a .css file) that fresh will generate for us\n\n\n2. a separate script for building our theme using the create_theme() function – I recommend saving this to ~/scratch (it seemed to cause issues when saved anywhere within my app directory)\n\n\n\nImportantly, create_theme() takes different variables to set the parameters of your theme, depending on what type of app you’re building: for shiny apps, you’ll need to use bs_vars_* variables, and for shiny dashboards you’ll use adminlte_* variables (examples on the following slides).\n\n\nThere are also a couple ways to apply your finished theme to your app, but we’ll use the method of generating a .css file, then calling that file in our app."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#create-fresh-app-theme",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#create-fresh-app-theme",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Creating a fresh theme for two-file-app\n\n\nIn this example, we update the colors of our app’s body, navbar, and tabPanels using the appropriate fresh variables for shiny apps. We specify a file path, two-file-app/www (you’ll need to create the /www directory, since we don’t have one yet), where our stylesheet (e.g. shiny-fresh-theme.css, as shown here) file will be saved to.\n\n\nOf course, these color combos are not recommended, but chosen purely for demonstration purposes .\n\n\n\n\n~/R/create-fresh-theme-shiny.R\n\n# load library ----\nlibrary(fresh)\n\n# create theme -----\ncreate_theme(\n  \n  # you can supply a bootstrap theme to begin with\n  theme = \"default\",\n\n  # global styling\n  bs_vars_global(\n    body_bg = \"#D2D0CA\", # beige\n    text_color = \"#F23ACB\", # hot pink\n    link_color = \"#0E4BE3\" # royal blue\n  ),\n\n  bs_vars_navbar(\n    default_bg = \"#13CC13\", # lime green\n    default_color = \"#66656C\" # gray\n  ),\n\n  # tabPanels\n  bs_vars_tabs(\n    border_color = \"#F90909\" # red\n  ),\n\n  # generate css file\n  output_file = \"two-file-app/www/shiny-fresh-theme.css\"\n)"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#apply-fresh-apps-theme",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#apply-fresh-apps-theme",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Apply a fresh theme to our app\n\n\nTo apply our theme, provide the theme argument of your fluidPage() or navbarPage() with the name of our stylesheet. Note: shiny knows to look in the /www directory, so you can omit that from your file path, as shown below:\n\n\n\n\n\n\n\n\n~/two-file-app/ui.R\n\n# navbar page ----\nui &lt;- navbarPage(\n\n  theme = \"shiny_fresh_theme.css\"\n  \n  # ~ additional UI code omitted for brevity ~\n  \n) # END navbarPage\n\n\n\nCheck out the complete source code for App #2 here (NOTE: applied themes are commented out)."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh-shinydashboard",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh-shinydashboard",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Creating a fresh theme for our shinydashboard\n\n\nIn this example, we update the colors of our app’s header, body, and sidebar using the appropriate fresh variables for shiny dashboards. We specify a file path, shinydashboard/www where our stylesheet (e.g. shinydashboard-fresh-theme.css, as shown here) file will be saved to. Again, these color combos are not recommended, but chosen purely for demonstration purposes.\n\n\n\n\n~/R/create-fresh-theme-shinydashboard.R\n\n# load libraries ----\nlibrary(fresh)\n\n# create theme ----\ncreate_theme(\n  \n  # change \"light-blue\"/\"primary\" color\n  adminlte_color(\n    light_blue = \"#150B5A\" # dark blue\n  ),\n  \n  # dashboardBody styling (includes boxes)\n  adminlte_global(\n    content_bg = \"#E7B5B5\" # blush pink\n  ),\n  \n  # dashboardSidebar styling\n  adminlte_sidebar(\n    width = \"400px\", \n    dark_bg = \"#57F8F3\", # light blue\n    dark_hover_bg = \"#BF21E6\", # magenta\n    dark_color = \"#F90000\" # red\n  ),\n  \n  # generate css file\n  output_file = \"shinydashboard/www/shinydashboard-fresh-theme.css\"\n  \n)"
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#apply-fresh-dashboard-theme",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#apply-fresh-dashboard-theme",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Apply a fresh theme to our dashboard\n\n\nTo apply our theme, use the fresh::use_theme() function inside your dashboardBody, providing it with the name of your stylesheet. Note: shiny knows to look in the /www directory, so you can omit that from your file path, as shown below:\n\n\n\n\n\n\n\n\n~/shinydashboard/ui.R\n\nbody &lt;- dashboardBody(\n  \n  # set theme\n  fresh::use_theme(\"shinydashboard_fresh_theme.css\")\n  \n  # ~ additional dashboardBody code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for the shinydashboard here (NOTE: applied themes are commented out)."
+  },
+  {
+    "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#end",
+    "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#end",
+    "title": "EDS 430",
+    "section": "",
+    "text": "End part 4.1\n\n\nUp next: fully custom themes using CSS & Sass\n\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#title-slide",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#title-slide",
+    "title": "EDS 430",
+    "section": "",
+    "text": "EDS 430: Part 4.3\nStyling apps with CSS & Sass\n\nWeek 2 | February 2nd, 2024"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#themeing-css-sass",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#themeing-css-sass",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Styling apps with CSS & Sass\n\n\nbslib & fresh are great ways to get started on your app customization journeys, but knowing some CSS & Sass can help you really fine-tune the appearance of your apps"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#sass-css",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#sass-css",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Using Sass & CSS to style Shiny apps & dashboards\n\n\nYou can write your own stylesheets using CSS and Sass to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike bslib and fresh, these are languages, meaning they can be a bit more challenging to get started with (but the payoff it big!).\n\n\n\n\n\nPros:\n\n\n\n applies to any web page (not just shiny apps)\n\n\n allows you to customize pretty much any aspect of your app\n\n\n can be combined with themes generated using bslib or fresh to fine-tune your app’s styling\n\n\n\n\n\n\nCons:\n\n\n\n a steeper learning curve/generally more complex than packages like bslib and fresh\n\n\n\n\n\n\n\nWe’ll review a little bit about CSS & Sass, then practice writing and applying custom styling to apps and dashboards."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#css-review",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#css-review",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Resources for a deeper dive\n\n\nWe’ll be doing a rather high-level and quick overview of Sass & CSS today, though I encourage you to check out the Customizing Quarto Websites workshop, which takes a much deeper dive (the information in that workshop is largely applicable here).\n\n\n\nW3Schools is my favorite online resource for all-things CSS – in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course)."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#what-are-sass-css",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#what-are-sass-css",
+    "title": "EDS 430",
+    "section": "",
+    "text": "What even is CSS? Sass?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCSS (Cascading Style Sheets) is a programming language that allows you to control how HTML elements look (e.g. colors, font styles, etc.) on a webpage.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSass (Syntactically Awesome Stylesheets) is a CSS extension language and CSS preprocessor – meaning Sass needs to be converted (aka compiled) to CSS before it can be interpreted by your web browser."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#css-rule-based",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#css-rule-based",
+    "title": "EDS 430",
+    "section": "",
+    "text": "CSS is a rule-based language\n\n\nCSS is a rule-based language, meaning that it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page. For example, “I want all level one headings (&lt;h1&gt; or tags$h1() as written in Shiny) in my app to be green with a bit of extra space between each letter” could be coded as:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Selectors select the HTML element(s) you want to style (e.g. level one headings, &lt;h1&gt;)\n\n\n Declarations sit inside curly brackets, {}, and are made up of property and value pairs. Each pair specifies the property of the HTML element(s) you’re selecting (e.g. the color property of the element &lt;h1&gt;), and a value you’d like to assign to that property (e.g. green)\n\n\n A property and it’s corresponding value are separated by a colon, :. Declarations end with a semicolon, ;\n\n\n\n\nThere are a variety of CSS selectors – check out some of the basics that will take you far in styling your apps, starting on this slide of the Customizing Quarto Websites workshop."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#css-3ways",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#css-3ways",
+    "title": "EDS 430",
+    "section": "",
+    "text": "3 ways to add CSS styling to your apps\n\n\nYou can (1) add styling directly to tags, (2) add CSS rules to your header, and/or (3) build a stylesheet that is applied to your app. Creating a stylesheet is often the preferred approach.\n\n\n1. tags2. header3. stylesheets\n\n\n\nAdd styling directly to tags. It’s best not to use a lot of these! It’s easy to lose track of your “in-line” styling in large projects, you can’t reuse rules easily, it’s hard to keep styling consistent, and it’s difficult to implement large stylistic changes.\n\n\n\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  # text color = purple\n  tags$h1(\"My app title\",\n          style = \"color: #711EBA;\"),\n  \n  # text color = blue; increase space between letters\n  tags$h3(\"Section 1\",\n          style = \"color: #1E4DBA; letter-spacing: 4px;\"),\n  \n  # no styling\n  tags$h3(\"Section 2\"),\n  \n  # increase border thickness and color green; round corners \n  tags$button(\"This is a button\",\n              style = \"border: 2px solid #1EBA38; border-radius: 5px\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd CSS rules to your app’s header (tags$head). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can’t be cached (i.e. saved for future usage when you reopen your app). Note: explore Google fonts here and check out this slide for instructions on selecting a font.\n\n\n\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  tags$head(\n    tags$style(\"\n    \n      @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n    \n      h1 {font-family: 'Lobster', cursive;}\n      \n      h3 {color: blue;}\n      \n      .wide-letters {letter-spacing: 4px;}\n      \n    \"\n    ) # END styles\n  ), # END head\n  \n  tags$h1(\"My app title\"),\n  \n  tags$h3(\"Section 1\"),\n  \n  tags$h3(class = \"wide-letters\", \"Section 2\"),\n  \n  tags$button(\"This is a button\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild a stylesheet (a .css file) inside your app’s www/ directory and apply your styles to your app’s header (for shinydashboards, include your header inside dashboardBody(). This is the most ideal approach – it allows for style reuse, caching, and keeps styling contained in one spot. Tip: use touch styles.css in the terminal to create a new .css file.\n\n\n\n\n# app.R\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"styles.css\")\n  ),\n  \n  tags$h1(\"My app title\"),\n  \n  tags$h3(\"Section 1\"),\n  \n  tags$h3(class = \"wide-letters\", \"Section 2\"),\n  \n  tags$button(\"This is a button\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n# www/styles.R\n/*import google fonts (Josephine Slab (serif) & Heebo (sans serfi))*/\n@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Josefin+Slab:wght@300&display=swap');\n\n/* element selectors */\nh1 {\n  font-family: 'Heebo', sans-serif;\n  color: #179A1F; /* green */\n}\n\nh3 {\n  font-family: 'Josefin Slab', serif;\n  color: #CA781C; /* orange */\n}\n\nbutton {\n  background-color: #FCF982; /* yellow */\n}\n\n\n/* class selectors */\n.wide-letters {\n  letter-spacing: 4px;\n}"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#dashboard-practice-css",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#dashboard-practice-css",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Let’s practice on a small dashboard first:\n\n\ndashboardui.Rserver.Rglobal.R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#........................dashboardHeader.........................\nheader &lt;- dashboardHeader(\n  \n  # add title ----\n  title = \"Penguin Dashboard\"\n  \n) # END dashboardHeader\n\n#........................dashboardSidebar........................\nsidebar &lt;- dashboardSidebar(\n  \n  # sidebarMenu ----\n  sidebarMenu(\n    \n    menuItem(text = \"Dashboard\", tabName = \"dashboard\", icon = icon(\"gauge\"))\n    \n  ) # END sidebarMenu\n  \n) # END dashboardSidebar\n\n#..........................dashboardBody.........................\nbody &lt;- dashboardBody(\n  \n  # tabItems ----\n  tabItems(\n    \n    # dashboard tabItem ----\n    tabItem(tabName = \"dashboard\",\n            \n            # fluidRow ----\n            fluidRow(\n              \n              # input box ----\n              box(width = 4,\n                  \n                  checkboxGroupInput(\n                    inputId = \"penguin_species\",\n                    label = \"Filter by species: \",\n                    choices = c(\"Adelie\", \"Chinstrap\", \"Gentoo\"),\n                    selected = c(\"Adelie\", \"Chinstrap\", \"Gentoo\")\n                    \n                  ) # END checkboxGroupInput\n                  \n              ), # END input box\n              \n              # output box ----\n              box(width = 8,\n                  \n                  plotOutput(outputId = \"penguin_plot\")\n                  \n              ) # END output box\n              \n            ), # END fluidRow\n            \n    ) # END dashboard tabItem\n    \n  ) # END tabItems\n  \n) # END dashboardBody\n\n#..................combine all in dashboardPage..................\ndashboardPage(header, sidebar, body)\n\n\n\n\nserver &lt;- function(input, output) {\n  \n  # penguin spp reactive df----\n  penguin_spp &lt;- reactive({\n    \n    palmerpenguins::penguins %&gt;%\n      filter(species %in% input$penguin_species) %&gt;%\n      select(species, island, bill_length_mm, bill_depth_mm)\n    \n  }) # END penguin spp reactive df\n  \n  \n  # plot ----\n  output$penguin_plot &lt;- renderPlot({\n    \n    ggplot(penguin_spp(), aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +\n      geom_point() + \n      scale_color_manual(values = c(\"Adelie\" = \"#FEA346\", \"Chinstrap\" = \"#B251F1\", \"Gentoo\" = \"#4BA4A4\"))\n    \n  }) # END plot \n  \n}\n\n\n\n\n# LOAD LIBRARIES ----\nlibrary(shiny)\nlibrary(shinydashboard)\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#inspect-webpages",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#inspect-webpages",
+    "title": "EDS 430",
+    "section": "",
+    "text": "What if I want to style an element, but don’t know how to target it?\n\n\nOftentimes, you’ll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, right click on an element of interest and choose Inspect (or Inspect Element) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g. adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#inspect-dashboard",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#inspect-dashboard",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Inspect & identify how to update box styling\n\n\nFor example, let’s say I want to change the color of this shinydashboard’s boxes and the color of the box text.\n\n\nFirst, we need to determine which type of HTML element creates our box. Right clicking on a box and choosing Inspect Element pulls up the HTML and CSS files underlying the app. Hovering over different parts of the HTML highlights different elements in the UI. The box is highlighted when I hover over &lt;div class=\"box-body\"&gt; – this tells me that boxes are formed using the &lt;div&gt; HTML element and they’re assigned a class called box-body.\n\n\nNext, we can (temporarily) adjust the CSS rules that style these boxes to see how they work. I can hop down to the CSS file (here, that’s located in the bottom half of my sidebar, but depending on the size of your window/layout, the HTML and CSS might be side-by-side) and find the .box-body class selector. You can add property/value pairs and/or update existing property values to adjust the appearance of our box. Notice that changing the .box-body class selector updates both boxes – upon inspecting the box containing our plot, you’ll notice that it is also of class, box-body. Therefore changes to this class selector will apply to both boxes. This process is purely for testing purposes – refreshing your app will remove any of these changes."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#write-box-css",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#write-box-css",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Finally, apply box styling to our dashboard\n\n\nNow that we know that we can use the box-body class to customize the appearance of our boxes, let’s create a stylesheet and add our new rules. The shinydashboard framework already provides the “standard” styling for boxes, contained in the box-body class. Anything we specify in our own stylesheet will build upon or modify existing styling.\n\n\nRemember to create a header and link your stylesheet within dashboardBody() to apply our styles.\n\n\nOur updated shinydashboardstyles.cssui.R\n\n\n\n\n \n\nCheck out the complete code for this small example dashboard here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.box-body {\n  background-color: #FCAE82; /* light orange */\n  color: #6368C6; /* purple-blue */\n}\n\n\n\n\n#........................dashboardHeader.........................\nheader &lt;- dashboardHeader(\n  \n  # add title ----\n  title = \"Penguin Dashboard\"\n  \n) # END dashboardHeader\n\n#........................dashboardSidebar........................\nsidebar &lt;- dashboardSidebar(\n  \n  # sidebarMenu ----\n  sidebarMenu(\n    \n    menuItem(text = \"Dashboard\", tabName = \"dashboard\", icon = icon(\"gauge\"))\n    \n  ) # END sidebarMenu\n  \n) # END dashboardSidebar\n\n#..........................dashboardBody.........................\nbody &lt;- dashboardBody(\n  \n  # link stylesheet\n  tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"styles.css\"),\n  ),\n  \n  # tabItems ----\n  tabItems(\n    \n    # dashboard tabItem ----\n    tabItem(tabName = \"dashboard\",\n            \n            # fluidRow ----\n            fluidRow(\n              \n              # input box ----\n              box(width = 4,\n                  \n                  checkboxGroupInput(\n                    inputId = \"penguin_species\",\n                    label = \"Filter by species: \",\n                    choices = c(\"Adelie\", \"Chinstrap\", \"Gentoo\"),\n                    selected = c(\"Adelie\", \"Chinstrap\", \"Gentoo\")\n                    \n                  ) # END checkboxGroupInput\n                  \n              ), # END input box\n              \n              # output box ----\n              box(width = 8,\n                  \n                  plotOutput(outputId = \"penguin_plot\")\n                  \n              ) # END output box\n              \n            ), # END fluidRow\n            \n    ) # END dashboard tabItem\n    \n  ) # END tabItems\n  \n) # END dashboardBody\n\n#..................combine all in dashboardPage..................\ndashboardPage(header, sidebar, body)"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#what-about-sass",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#what-about-sass",
+    "title": "EDS 430",
+    "section": "",
+    "text": "What about Sass?\n\n\nOkay, we wrote and applied some CSS styling to our apps, but what about Sass? You don’t need to write any Sass at all, however, it provides a number of benefits, including helping to reduce repetition.\n\n\nFor example, let’s say you’re working on an app that uses three primary colors throughout:\n\n\n\nYou might imagine how often you’ll need to type those HEX codes out as you developing your stylesheet…it can get annoying rather quickly."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#sass-vars",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#sass-vars",
+    "title": "EDS 430",
+    "section": "",
+    "text": "We can define and reference Sass variables throughout our stylesheet\n\n\nSass allows us to define variables (in the form $var-name: value;) for our colors to reference instead of writing out their HEX codes each time:\n\n\n// define Sass vars \n\n$darkblue: #053660;\n$teal: #147C91;\n$darkgray: #333333;\n\n// use vars in CSS rules\n\nh1 {\n  color: $darkblue;\n}\n\n.button-styling {\n  background: $teal;\n  color: $darkblue; \n  border-color: $darkgray;\n}\n\n\nIf you decide that you actually like a different shade of teal better, you’ll only need to update the hex code where you first define the $teal Sass variable, saving lots of time."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#sass-workflow",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#sass-workflow",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Sass for Shiny workflow\n\n\nTo style apps using both Sass and CSS, you’ll follow this general workflow:\n\n\n1. Create a .scss file inside ~/myapp/www using the touch command in the terminal (e.g. cd into the appropriate directory, then touch styles.scss). Write both your Sass variables and CSS rules in your .scss file (Note: you can write both Sass & CSS in a .scss file, but only CSS in a .css file)\n\n\n2. Compile (i.e. convert) Sass to CSS in global.R (or, if using a one-file app, at the top of your script before you define your UI) using the the sass() function from the {sass} package – this will generate a .css file that our shiny app can actually use. Be sure to save your .css file to your app’s /www directory.\n\n\n3. Apply your styles to your app by linking to to your .css file in your app’s header."
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#write-sass",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#write-sass",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Let’s build our Sass file\n\n\nWe’ll practice on our two-file-app – first, remove any reference to your bslib or fresh themes that we practiced applying earlier so that we’re starting off with just the default shiny styling.\n\n\n\nNext, create your Sass file within two-file-app/www/. Then, using your terminal, cd into ~/two-file-app/www and use the touch command to create a .scss file (I’m calling mine my-sass-styles.scss).\n\n\n\n\nAdd Sass variables and CSS rules to my-sass-styles.scss:\n\n\n\n\n~/two-file-app/www/my-sass-styles.scss\n\n// import 2 fonts\n@import url('https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap');\n\n// fonts\n$font-family-serif: 'Karma', serif;\n$font-family-sans-serif: 'Prompt', sans-serif;\n\n// colors\n$green: #8ca376;\n$blue: #525cd1; \n$orange: #E59C5E;\n$yellow: #f0eaa5;\n$white: #f1f7eb;\n\n// element selectors\n\nbody {\n  background-color: $green; \n  color: $white; \n}\n\nh2 {\n  letter-spacing: 5px;\n  font-family: $font-family-serif;\n}\n\nh4 {\n  color: $blue;\n  font-family: $font-family-serif;\n}\n\np {\n  font-family: $font-family-sans-serif;\n}\n\na {\n  color: $orange;\n}\n\n// class selectors\n\n.navbar-default {\n  background-color: $yellow;\n}\n\n.btn.default.active {\n  background-color: $green;\n}"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#convert-sass",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#convert-sass",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Then, compile Sass to CSS\n\n\nBecause web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the sass() function from the {sass} package. We can do this in global.R. The sass() function requires two arguments: a sass file input and a file path + named .css file output.\n\n\nWe also need to apply our styles to our app by linking this newly-generated .css file in our app’s header.\n\n\nNote: After running your app, you should see a my-sass-styles.css file appear in www/ – it should look quite familiar, except all of our Sass variables have been converted to CSS.\n\n\nour updated appglobal.Rui.Rmy-sass-styles.css\n\n\n\n\n \n\nCheck out the complete code for App #2 here (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# LOAD LIBRARIES ----\nlibrary(shiny)\nlibrary(sass)\n# ~ additional libraries omitted for brevity ~\n\n# COMPILE CSS ----\nsass(\n  input = sass_file(\"www/my_sass_styles.scss\"),\n  output = \"www/my_sass_styles.css\"\n)\n\n# ~ additional global.R objects omitted for brevity ~\n\n\n\n\n# navbar page ----\nui &lt;- navbarPage(\n  \n  # add css file ----\n  header = tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"my_sass_styles.css\")\n  )\n  \n  # ~ additional UI elements omitted for brevity ~\n)\n\n\n\n\n@import url(\"https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap\");\nbody {\n  background-color: #8ca376;\n  color: #f1f7eb;\n}\n\nh2 {\n  letter-spacing: 5px;\n  font-family: \"Karma\", serif;\n}\n\nh4 {\n  color: #525cd1;\n  font-family: \"Karma\", serif;\n}\n\np {\n  font-family: \"Prompt\", sans-serif;\n}\n\na {\n  color: #E59C5E;\n}\n\n.navbar-default {\n  background-color: #f0eaa5;\n}\n\n.btn.default.active {\n  background-color: #8ca376;\n}"
+  },
+  {
+    "objectID": "course-materials/slides/part4.2-css-sass-slides.html#end",
+    "href": "course-materials/slides/part4.2-css-sass-slides.html#end",
+    "title": "EDS 430",
+    "section": "",
+    "text": "End part 4.2\n\n\nUp next: Improving UX / UI\n\n\n\n\n\n−+\n05:00"
   },
   {
     "objectID": "course-materials/slides/part2.3B.html#improving-app2",

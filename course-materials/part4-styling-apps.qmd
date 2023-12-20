@@ -27,7 +27,11 @@ We'll be loading the following R packages:
 #| echo: true
 #| code-line-numbers: false
 library(shiny)
-
+library(shinydashboard)
+library(tidyverse)
+library(bslib)
+library(fresh)
+library(sass)
 ```
 
 ## Required Data
@@ -36,38 +40,30 @@ library(shiny)
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-
+library(palmerpenguins)
 ```
+
 
 ## Lecture Materials
 
-Part 4 is broken down into three lessons:
-
-<!-- UPDATE GGPLOT THEME TO FUNCTION  -->
+Part 4 is broken down into two lessons:
 
 ::: {.grid}
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6}
 ::: {.center-text}
-[**tbd**]{.teal-text .body-text-m}
+[**`{bslib}` & `{fresh}`**]{.teal-text .body-text-m}
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.1 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 4.1 slides](slides/part4.1-bslib-fresh-slides.qmd){.btn role="button" target="_blank"} 
 :::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+
+::: {.g-col-12 .g-col-md-6}
 ::: {.center-text}
-[**tbd**]{.teal-text .body-text-m}
+[**Styling with CSS & Sass**]{.teal-text .body-text-m}
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/tbds.qmd){.btn role="button" target="_blank"} 
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.center-text}
-[**tbd**]{.teal-text .body-text-m}
-
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.3 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 4.2 slides](slides/part4.2-css-sass-slides.qmd){.btn role="button" target="_blank"} 
 :::
 :::
 

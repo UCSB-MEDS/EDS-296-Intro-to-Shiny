@@ -1,0 +1,971 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    # code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme: 
+      - ../../meds-slides-styles.scss
+editor_options: 
+  chunk_output_type: console
+---
+
+## {#title-slide data-menu-title="Title Slide" background="#053660"} 
+
+[EDS 430: Part 4.3]{.custom-title}
+
+[*Styling apps with CSS & Sass*]{.custom-subtitle}
+
+<hr class="hr-teal">
+
+[Week 2 | February 2^nd^, 2024]{.custom-subtitle3}
+
+---
+
+##  {#themeing-css-sass data-menu-title="~~~ Styling Shiny Apps (with CSS & Sass) ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa paintbrush title="a paint brush" >}} Styling apps with CSS & Sass</p>
+<p class="caption-text">*`bslib` & `fresh` are great ways to get started on your app customization journeys, but knowing some CSS & Sass can help you really fine-tune the appearance of your apps*</p>
+</div>
+
+---
+
+##  {#sass-css data-menu-title="Sass & CSS"}
+
+[Using Sass & CSS to style Shiny apps & dashboards]{.slide-title2}
+
+<hr>
+
+<p class="body-text">You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html) and [Sass](https://sass-lang.com/) to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `bslib` and `fresh`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff it big!).</p>
+
+:::: {.columns}
+
+::: {.column width="45%"}
+<center><p class="body-text-l teal-text">Pros:</p></center>
+<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} applies to any web page (not just shiny apps)</p>
+<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} allows you to customize pretty much any aspect of your app</p> <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} can be combined with themes generated using `bslib` or `fresh` to fine-tune your app's styling</p>
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="45%"}
+<center><p class="body-text-l teal-text">Cons:</p></center>
+<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} a steeper learning curve/generally more complex than packages like `bslib` and `fresh`</p>
+:::
+
+::::
+
+<br>
+
+. . . 
+
+<center><p class="body-text topbr">**We'll review a little bit about CSS & Sass, then practice writing and applying custom styling to apps and dashboards.**</p></center>
+
+---
+
+##  {#css-review data-menu-title="CSS Review/Resources"}
+
+[Resources for a deeper dive]{.slide-title2}
+
+<hr>
+
+<p class="body-text">We'll be doing a rather high-level and quick overview of Sass & CSS today, though I encourage you to check out the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop, which takes a much deeper dive (the information in that workshop is largely applicable here).</p>
+
+. . . 
+
+<p class="body-text topbr">[W3Schools](https://www.w3schools.com/css/default.asp) is my favorite online resource for all-things CSS -- in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).</p>
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "30%"
+#| fig-alt: "The W3Schools logo, which is a green 'W' with a green '3' to the right."
+knitr::include_graphics("images/part4//w3.png")
+```
+
+---
+
+##  {#what-are-sass-css data-menu-title="What are Sass & CSS"}
+
+[What even is CSS? Sass?]{.slide-title2}
+
+<hr>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "80%"
+#| fig-alt: "The CSS 3 logo."
+knitr::include_graphics("images/part4/css3.png")
+```
+
+<center><p class="body-text-s">**CSS** (**C**ascading **S**tyle **S**heets) is a programming language that allows you to control how HTML elements look (e.g. colors, font styles, etc.) on a webpage.</p></center>
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "90%"
+#| fig-alt: "The Sass logo."
+knitr::include_graphics("images/part4/sass.png")
+```
+
+
+<center><p class="body-text-s topbr">**Sass** (**S**yntactically **A**wesome **S**tyle**s**heets) is a CSS extension language and CSS preprocessor -- meaning Sass needs to be converted (aka compiled) to CSS before it can be interpreted by your web browser.</p></center> 
+:::
+
+::::
+
+---
+
+##  {#css-rule-based data-menu-title="CSS is rule-based"}
+
+[CSS is a rule-based language]{.slide-title2}
+
+<hr>
+
+<p class="body-text">CSS is a rule-based language, meaning that it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page. For example, *"I want all level one headings (`<h1>` or `tags$h1()` as written in Shiny) in my app to be green with a bit of extra space between each letter"* could be coded as:</p>
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "An example of a CSS rule that modifies all h1 elements so that the text is green and that there's a bit more space between each letter."
+knitr::include_graphics("images/part4/CSS_syntax.png")
+```
+:::
+
+::: {.column width="50%"}
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Selectors** select the HTML element(s) you want to style (*e.g. level one headings, `<h1>`)*</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Declarations** sit inside curly brackets, `{}`, and are made up of [**property**](https://www.w3schools.com/cssref/index.php) and **value** pairs. Each pair specifies the property of the HTML element(s) you're selecting *(e.g. the color property of the element `<h1>`)*, and a value you'd like to assign to that property *(e.g. green)*</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} A property and it's corresponding value are separated by a colon, `:`. Declarations end with a semicolon, `;`</p>
+:::
+
+::::
+
+<p class="body-text-s">There are a variety of CSS selectors -- check out some of the basics that will take you far in styling your apps, starting [on this slide](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types) of the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop.</p>
+
+---
+
+##  {#css-3ways data-menu-title="3 ways to add CSS styling"}
+
+[3 ways to add CSS styling to your apps]{.slide-title3}
+
+<hr>
+
+<p class="body-text-s">You can **(1)** add styling directly to `tags`, **(2)** add CSS rules to your `header`, and/or **(3)** build a stylesheet that is applied to your app. **Creating a stylesheet is often the preferred approach.**</p>
+
+::: {.panel-tabset}
+
+## 1. tags
+
+<p class="body-text-xs">Add styling directly to tags. **It's best not to use a lot of these!** It's easy to lose track of your "in-line" styling in large projects, you can't reuse rules easily, it's hard to keep styling consistent, and it's difficult to implement large stylistic changes.</p>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#..............................setup.............................
+library(shiny)
+
+#...............................ui...............................
+ui <- fluidPage(
+  
+  # text color = purple
+  tags$h1("My app title",
+          style = "color: #711EBA;"),
+  
+  # text color = blue; increase space between letters
+  tags$h3("Section 1",
+          style = "color: #1E4DBA; letter-spacing: 4px;"),
+  
+  # no styling
+  tags$h3("Section 2"),
+  
+  # increase border thickness and color green; round corners 
+  tags$button("This is a button",
+              style = "border: 2px solid #1EBA38; border-radius: 5px")
+  
+)
+
+#.............................server.............................
+server <- function(input, output) {}
+
+#......................combine ui & server.......................
+shinyApp(ui, server)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "A basic app with a large purple level 1 header that reads, 'My App', a blue level 2 header that reads, 'Section 1' with a bit of extra space between letters, an un-styled level 2 header that reads, 'Section 2', and a button with a green border that reads, 'This is a button'."
+knitr::include_graphics("images/part4/in-line_styling.png")
+```
+:::
+
+::::
+
+## 2. header
+
+<p class="body-text-xs">Add CSS rules to your app's header (`tags$head`). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can't be cached (i.e. saved for future usage when you reopen your app). **Note:** explore Google fonts [here](https://fonts.google.com/) and check out [this slide](https://ucsb-meds.github.io/customizing-quarto-websites/#/select-fonts) for instructions on selecting a font.</p>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#..............................setup.............................
+library(shiny)
+
+#...............................ui...............................
+ui <- fluidPage(
+  
+  tags$head(
+    tags$style("
+    
+      @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    
+      h1 {font-family: 'Lobster', cursive;}
+      
+      h3 {color: blue;}
+      
+      .wide-letters {letter-spacing: 4px;}
+      
+    "
+    ) # END styles
+  ), # END head
+  
+  tags$h1("My app title"),
+  
+  tags$h3("Section 1"),
+  
+  tags$h3(class = "wide-letters", "Section 2"),
+  
+  tags$button("This is a button")
+  
+)
+
+#.............................server.............................
+server <- function(input, output) {}
+
+#......................combine ui & server.......................
+shinyApp(ui, server)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "A basic app with a large black level 1 header written in a cursive font that reads, 'My App', a blue level 2 header that reads, 'Section 1', a blue level 2 header that reads, 'Section 2' with a bit of extra space between letters, and an un-styled button that reads, 'This is a button'."
+knitr::include_graphics("images/part4/header_styling.png")
+```
+:::
+::::
+
+## 3. stylesheets
+
+<p class="body-text-xs">Build a stylesheet (a `.css` file) inside your app's `www/` directory and apply your styles to your app's header (for shinydashboards, include your header inside `dashboardBody()`. **This is the most ideal approach** -- it allows for style reuse, caching, and keeps styling contained in one spot. **Tip:** use `touch styles.css` in the terminal to create a new `.css` file.</p>
+
+:::: {.columns}
+
+::: {.column width="33%"}
+```{r}
+#| eval: false
+#| echo: true
+# app.R
+#..............................setup.............................
+library(shiny)
+
+#...............................ui...............................
+ui <- fluidPage(
+  
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
+  ),
+  
+  tags$h1("My app title"),
+  
+  tags$h3("Section 1"),
+  
+  tags$h3(class = "wide-letters", "Section 2"),
+  
+  tags$button("This is a button")
+  
+)
+
+#.............................server.............................
+server <- function(input, output) {}
+
+#......................combine ui & server.......................
+shinyApp(ui, server)
+```
+:::
+
+::: {.column width="33%"}
+```{css}
+#| eval: false
+#| echo: true
+# www/styles.R
+/*import google fonts (Josephine Slab (serif) & Heebo (sans serfi))*/
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Josefin+Slab:wght@300&display=swap');
+
+/* element selectors */
+h1 {
+  font-family: 'Heebo', sans-serif;
+  color: #179A1F; /* green */
+}
+
+h3 {
+  font-family: 'Josefin Slab', serif;
+  color: #CA781C; /* orange */
+}
+
+button {
+  background-color: #FCF982; /* yellow */
+}
+
+
+/* class selectors */
+.wide-letters {
+  letter-spacing: 4px;
+}
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "A basic app with a large green level 1 header that reads, 'My App' written in a sans-serif font, an orange level 2 header that reads, 'Section 1' with a bit of extra space between letters and written in a serif font, an orange level 2 header that reads, 'Section 2' written in a serf font, and a button with a yellow background that reads, 'This is a button'."
+knitr::include_graphics("images/part4/stylesheet_styling.png")
+```
+:::
+
+::::
+
+:::
+
+---
+
+##  {#dashboard-practice-css data-menu-title="Dashboard for practicing CSS"}
+
+[Let's practice on a small dashboard first:]{.slide-title2}
+
+<hr>
+
+::: {.panel-tabset}
+
+## dashboard
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part4/dashboard_css.png")
+```
+
+## `ui.R`
+
+```{r}
+#| eval: false
+#| echo: true
+#........................dashboardHeader.........................
+header <- dashboardHeader(
+  
+  # add title ----
+  title = "Penguin Dashboard"
+  
+) # END dashboardHeader
+
+#........................dashboardSidebar........................
+sidebar <- dashboardSidebar(
+  
+  # sidebarMenu ----
+  sidebarMenu(
+    
+    menuItem(text = "Dashboard", tabName = "dashboard", icon = icon("gauge"))
+    
+  ) # END sidebarMenu
+  
+) # END dashboardSidebar
+
+#..........................dashboardBody.........................
+body <- dashboardBody(
+  
+  # tabItems ----
+  tabItems(
+    
+    # dashboard tabItem ----
+    tabItem(tabName = "dashboard",
+            
+            # fluidRow ----
+            fluidRow(
+              
+              # input box ----
+              box(width = 4,
+                  
+                  checkboxGroupInput(
+                    inputId = "penguin_species",
+                    label = "Filter by species: ",
+                    choices = c("Adelie", "Chinstrap", "Gentoo"),
+                    selected = c("Adelie", "Chinstrap", "Gentoo")
+                    
+                  ) # END checkboxGroupInput
+                  
+              ), # END input box
+              
+              # output box ----
+              box(width = 8,
+                  
+                  plotOutput(outputId = "penguin_plot")
+                  
+              ) # END output box
+              
+            ), # END fluidRow
+            
+    ) # END dashboard tabItem
+    
+  ) # END tabItems
+  
+) # END dashboardBody
+
+#..................combine all in dashboardPage..................
+dashboardPage(header, sidebar, body)
+```
+
+## `server.R`
+
+```{r}
+#| eval: false
+#| echo: true
+server <- function(input, output) {
+  
+  # penguin spp reactive df----
+  penguin_spp <- reactive({
+    
+    palmerpenguins::penguins %>%
+      filter(species %in% input$penguin_species) %>%
+      select(species, island, bill_length_mm, bill_depth_mm)
+    
+  }) # END penguin spp reactive df
+  
+  
+  # plot ----
+  output$penguin_plot <- renderPlot({
+    
+    ggplot(penguin_spp(), aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+      geom_point() + 
+      scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4"))
+    
+  }) # END plot 
+  
+}
+```
+
+## `global.R`
+
+```{r}
+#| eval: false
+#| echo: true
+# LOAD LIBRARIES ----
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+:::
+
+---
+
+##  {#inspect-webpages data-menu-title="Inspecting"}
+
+[What if I want to style an element, but don't know how to target it?]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">Oftentimes, you'll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, right click on an element of interest and choose **Inspect** (or **Inspect Element**) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g. adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.</p>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "A shiny dashboard, opened in the RStudio viewer, with the Inspect pane open to the right. The top half of the inspect pane shows the underlying HTML and the bottom half shows the underlying CSS styles."
+knitr::include_graphics("images/part4/inspect_orientation.png")
+```
+
+---
+
+##  {#inspect-dashboard data-menu-title="Inspect dashboard box"}
+
+[Inspect & identify how to update box styling]{.slide-title3}
+
+<hr>
+
+<p class="body-text-s">For example, let's say I want to change the color of this shinydashboard's boxes and the color of the box text.</p> 
+
+<p class="body-text-s">**First, we need to determine which type of HTML element creates our box.** Right clicking on a box and choosing **Inspect Element** pulls up the HTML and CSS files underlying the app. Hovering over different parts of the HTML highlights different elements in the UI. The box is highlighted when I hover over `<div class="box-body">` -- this tells me that boxes are formed using the `<div>` HTML element and they're assigned a class called `box-body`.</p> 
+
+<p class="body-text-s">**Next, we can (temporarily) adjust the CSS rules that style these boxes to see how they work.** I can hop down to the CSS file (here, that's located in the bottom half of my sidebar, but depending on the size of your window/layout, the HTML and CSS might be side-by-side) and find the `.box-body` class selector. You can add property/value pairs and/or update existing property values to adjust the appearance of our box. Notice that changing the `.box-body` class selector updates **both** boxes -- upon inspecting the box containing our plot, you'll notice that it is also of class, `box-body`. Therefore changes to this class selector will apply to both boxes. *This process is purely for testing purposes -- refreshing your app will remove any of these changes.*</p>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part4/inspecting.gif")
+```
+
+---
+
+##  {#write-box-css data-menu-title="Write CSS for box styling"}
+
+[Finally, apply box styling to our dashboard]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">Now that we know that we can use the `box-body` class to customize the appearance of our boxes, let's create a stylesheet and add our new rules. The `shinydashboard` framework already provides the "standard" styling for boxes, contained in the `box-body` class. Anything we specify in our own stylesheet will build upon or modify existing styling.</p>
+
+<p class="body-text-s">Remember to create a header and link your stylesheet within `dashboardBody()` to apply our styles.</p>
+
+::: {.panel-tabset}
+
+## Our updated shinydashboard
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+<br>
+
+<p class="body-text">Check out the complete code for this small example dashboard [here](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/dashboard_css_example).</p>
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "An example shinydashboard with default colors (light blue dashboardHeader, dark blue dashboardSidebar, gray/blue dashboardBody) and two boxes, one containing a checkboxGroupInput and the other containing a scatterplot -- the box colors are colored orange, rather than the default white."
+knitr::include_graphics("images/part4/orange-boxes.png")
+```
+:::
+
+::::
+
+## `styles.css`
+```{css}
+#| eval: false
+#| echo: true
+.box-body {
+  background-color: #FCAE82; /* light orange */
+  color: #6368C6; /* purple-blue */
+}
+```
+
+## `ui.R`
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "24-27"
+#........................dashboardHeader.........................
+header <- dashboardHeader(
+  
+  # add title ----
+  title = "Penguin Dashboard"
+  
+) # END dashboardHeader
+
+#........................dashboardSidebar........................
+sidebar <- dashboardSidebar(
+  
+  # sidebarMenu ----
+  sidebarMenu(
+    
+    menuItem(text = "Dashboard", tabName = "dashboard", icon = icon("gauge"))
+    
+  ) # END sidebarMenu
+  
+) # END dashboardSidebar
+
+#..........................dashboardBody.........................
+body <- dashboardBody(
+  
+  # link stylesheet
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
+  ),
+  
+  # tabItems ----
+  tabItems(
+    
+    # dashboard tabItem ----
+    tabItem(tabName = "dashboard",
+            
+            # fluidRow ----
+            fluidRow(
+              
+              # input box ----
+              box(width = 4,
+                  
+                  checkboxGroupInput(
+                    inputId = "penguin_species",
+                    label = "Filter by species: ",
+                    choices = c("Adelie", "Chinstrap", "Gentoo"),
+                    selected = c("Adelie", "Chinstrap", "Gentoo")
+                    
+                  ) # END checkboxGroupInput
+                  
+              ), # END input box
+              
+              # output box ----
+              box(width = 8,
+                  
+                  plotOutput(outputId = "penguin_plot")
+                  
+              ) # END output box
+              
+            ), # END fluidRow
+            
+    ) # END dashboard tabItem
+    
+  ) # END tabItems
+  
+) # END dashboardBody
+
+#..................combine all in dashboardPage..................
+dashboardPage(header, sidebar, body)
+```
+
+:::
+
+---
+
+##  {#what-about-sass data-menu-title="What about Sass?"}
+
+[What about Sass?]{.slide-title2}
+
+<hr>
+
+<p class="body-text">Okay, we wrote and applied some CSS styling to our apps, but what about Sass? You don't *need* to write any Sass at all, however, it provides a number of benefits, including helping to reduce repetition.</p> 
+
+<p class="body-text">For example, let's say you're working on an app that uses three primary colors throughout:</p>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "A color palette consisting of three colors: dark blue, teal, and dark gray."
+knitr::include_graphics("images/part4/meds_colors.png")
+```
+
+<p class="body-text topbr">You might imagine how often you’ll need to type those HEX codes out as you developing your stylesheet…it can get annoying rather quickly.</p>
+
+---
+
+##  {#sass-vars data-menu-title="Sass variables"}
+
+[We can define and reference Sass variables throughout our stylesheet]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">Sass allows us to define variables (in the form `$var-name: value;`) for our colors to reference instead of writing out their HEX codes each time:</p>
+
+```{css}
+#| eval: false
+#| echo: true
+// define Sass vars 
+
+$darkblue: #053660;
+$teal: #147C91;
+$darkgray: #333333;
+
+// use vars in CSS rules
+
+h1 {
+  color: $darkblue;
+}
+
+.button-styling {
+  background: $teal;
+  color: $darkblue; 
+  border-color: $darkgray;
+}
+
+```
+
+<p class="body-text-s">If you decide that you actually like a *different* shade of teal better, you’ll only need to update the hex code where you first define the `$teal` Sass variable, saving lots of time.</p>
+
+---
+
+##  {#sass-workflow data-menu-title="Sass workflow"}
+
+[Sass for Shiny workflow]{.slide-title2}
+
+<hr>
+
+<p class="body-text">To style apps using both Sass *and* CSS, you'll follow this general workflow:</p>
+
+<p class="body-text-s topbr">**1.** Create a `.scss` file inside `~/myapp/www` using the `touch` command in the terminal (e.g. `cd` into the appropriate directory, then `touch styles.scss`). Write both your Sass variables and CSS rules in your `.scss` file (**Note:** you can write both Sass & CSS in a `.scss` file, but *only* CSS in a `.css` file)</p> 
+
+<p class="body-text-s topbr">**2.** Compile (i.e. convert) Sass to CSS in `global.R` (or, if using a one-file app, at the top of your script before you define your UI) using the the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html) -- this will generate a `.css` file that our shiny app can actually use. Be sure to save your `.css` file to your app's `/www` directory.</p>
+
+<p class="body-text-s topbr">**3.** Apply your styles to your app by linking to to your `.css` file in your app's header.</p>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "A chart showing the Sass to CSS workflow -- begin with writing Sass variables and CSS rule in a .scss file, then use the sass R package to compile sass to css, and finally use your compiled .css file to apply your styles to your app."
+knitr::include_graphics("images/part4/sass_to_css_workflow.png")
+```
+
+---
+
+##  {#write-sass data-menu-title="Write Sass"}
+
+[Let's build our Sass file]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">We'll practice on our `two-file-app` -- first, remove any reference to your `bslib` or `fresh` themes that we practiced applying earlier so that we're starting off with just the default shiny styling.</p>
+
+. . . 
+
+<p class="body-text-s">Next, create your Sass file within `two-file-app/www/`. Then, using your terminal, `cd` into `~/two-file-app/www` and use the `touch` command to create a `.scss` file (I'm calling mine `my-sass-styles.scss`).</p>
+
+. . . 
+
+<p class="body-text-s">Add Sass variables and CSS rules to `my-sass-styles.scss`:</p>
+
+```{css filename="~/two-file-app/www/my-sass-styles.scss"}
+#| eval: false
+#| echo: true
+// import 2 fonts
+@import url('https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap');
+
+// fonts
+$font-family-serif: 'Karma', serif;
+$font-family-sans-serif: 'Prompt', sans-serif;
+
+// colors
+$green: #8ca376;
+$blue: #525cd1; 
+$orange: #E59C5E;
+$yellow: #f0eaa5;
+$white: #f1f7eb;
+
+// element selectors
+
+body {
+  background-color: $green; 
+  color: $white; 
+}
+
+h2 {
+  letter-spacing: 5px;
+  font-family: $font-family-serif;
+}
+
+h4 {
+  color: $blue;
+  font-family: $font-family-serif;
+}
+
+p {
+  font-family: $font-family-sans-serif;
+}
+
+a {
+  color: $orange;
+}
+
+// class selectors
+
+.navbar-default {
+  background-color: $yellow;
+}
+
+.btn.default.active {
+  background-color: $green;
+}
+```
+
+---
+
+##  {#convert-sass data-menu-title="Convert Sass to CSS"}
+
+[Then, compile Sass to CSS]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html). We can do this in `global.R`. The `sass()` function requires two arguments: a sass file `input` and a file path + named `.css` file `output`.</p>
+
+<p class="body-text-s">We also need to apply our styles to our app by linking this newly-generated `.css` file in our app's header.</p>
+
+<p class="body-text-s">**Note:** After running your app, you should see a `my-sass-styles.css` file appear in `www/` -- it should look quite familiar, except all of our Sass variables have been converted to CSS.</p>
+
+::: {.panel-tabset}
+
+## our updated app
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+<br> 
+
+<p class="body-text">Check out the complete code for App #2 [here](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/two-file-app) (NOTE: applied themes are commented out).</p>
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "Our app, with our sass and css styling applied. The navbar is yellow, body is green, level 4 headings are blue, text is white, hyperlinks are orange, and header and body text font styles have been changed from the default."
+knitr::include_graphics("images/part4/app2_sass_css.png")
+```
+:::
+
+::::
+
+## `global.R`
+```{r}
+#| eval: false
+#| echo: true
+# LOAD LIBRARIES ----
+library(shiny)
+library(sass)
+# ~ additional libraries omitted for brevity ~
+
+# COMPILE CSS ----
+sass(
+  input = sass_file("www/my_sass_styles.scss"),
+  output = "www/my_sass_styles.css"
+)
+
+# ~ additional global.R objects omitted for brevity ~
+```
+
+## `ui.R`
+```{r}
+#| eval: false
+#| echo: true
+# navbar page ----
+ui <- navbarPage(
+  
+  # add css file ----
+  header = tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "my_sass_styles.css")
+  )
+  
+  # ~ additional UI elements omitted for brevity ~
+)
+```
+
+## `my-sass-styles.css`
+```{css}
+#| eval: false
+#| echo: true
+@import url("https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap");
+body {
+  background-color: #8ca376;
+  color: #f1f7eb;
+}
+
+h2 {
+  letter-spacing: 5px;
+  font-family: "Karma", serif;
+}
+
+h4 {
+  color: #525cd1;
+  font-family: "Karma", serif;
+}
+
+p {
+  font-family: "Prompt", sans-serif;
+}
+
+a {
+  color: #E59C5E;
+}
+
+.navbar-default {
+  background-color: #f0eaa5;
+}
+
+.btn.default.active {
+  background-color: #8ca376;
+}
+```
+
+:::
+
+---
+
+##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">End part 4.2</p>
+<p class="caption-text">***Up next:** Improving UX / UI*</p>
+</div>
+
+```{r}
+countdown::countdown(
+  minutes = 5,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+

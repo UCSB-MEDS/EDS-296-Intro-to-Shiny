@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../course-materials/part4-styling-apps.html" rel="" target="">
- <span class="dropdown-text">part 4 (building shiny apps)</span></a>
+ <span class="dropdown-text">part 4 (styling apps)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../course-materials/part5-improving-ux-ui.html" rel="" target="">
@@ -249,32 +249,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Required Packages</h1>
 <p>We’ll be loading the following R packages:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fresh)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="required-data" class="level2">
 <h2 class="anchored" data-anchor-id="required-data">Required Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="lecture-materials" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-materials">Lecture Materials</h2>
-<p>Part 4 is broken down into three lessons:</p>
-<!-- UPDATE GGPLOT THEME TO FUNCTION  -->
+<p>Part 4 is broken down into two lessons:</p>
 <div class="grid">
-<div class="g-col-12 g-col-md-4">
+<div class="g-col-12 g-col-md-6">
 <div class="center-text">
-<p><span class="teal-text body-text-m"><strong>tbd</strong></span></p>
-<p><a href="slides/tbd.qmd" class="btn" role="button" target="_blank"><i class="fa-solid fa-person-chalkboard" title="A person motioning at a chalkboard" aria-label="person-chalkboard"></i> lecture 2.1 slides</a></p>
+<p><span class="teal-text body-text-m"><strong><code>{bslib}</code> &amp; <code>{fresh}</code></strong></span></p>
+<p><a href="../course-materials/slides/part4.1-bslib-fresh-slides.html" class="btn" role="button" target="_blank"><i class="fa-solid fa-person-chalkboard" title="A person motioning at a chalkboard" aria-label="person-chalkboard"></i> lecture 4.1 slides</a></p>
 </div>
 </div>
-<div class="g-col-12 g-col-md-4">
+<div class="g-col-12 g-col-md-6">
 <div class="center-text">
-<p><span class="teal-text body-text-m"><strong>tbd</strong></span></p>
-<p><a href="slides/tbds.qmd" class="btn" role="button" target="_blank"><i class="fa-solid fa-person-chalkboard" title="A person motioning at a chalkboard" aria-label="person-chalkboard"></i> lecture 2.2 slides</a></p>
-</div>
-</div>
-<div class="g-col-12 g-col-md-4">
-<div class="center-text">
-<p><span class="teal-text body-text-m"><strong>tbd</strong></span></p>
-<p><a href="slides/tbd.qmd" class="btn" role="button" target="_blank"><i class="fa-solid fa-person-chalkboard" title="A person motioning at a chalkboard" aria-label="person-chalkboard"></i> lecture 2.3 slides</a></p>
+<p><span class="teal-text body-text-m"><strong>Styling with CSS &amp; Sass</strong></span></p>
+<p><a href="../course-materials/slides/part4.2-css-sass-slides.html" class="btn" role="button" target="_blank"><i class="fa-solid fa-person-chalkboard" title="A person motioning at a chalkboard" aria-label="person-chalkboard"></i> lecture 4.2 slides</a></p>
 </div>
 </div>
 </div>

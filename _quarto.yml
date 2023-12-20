@@ -21,7 +21,7 @@ website:
             href: course-materials/part2-building-shiny-apps.qmd
           - text: part 3 (building shiny dashboards)
             href: course-materials/part3-building-shiny-dashboards.qmd
-          - text: part 4 (building shiny apps)
+          - text: part 4 (styling apps)
             href: course-materials/part4-styling-apps.qmd
           - text: part 5 (improving ux / ui)
             href: course-materials/part5-improving-ux-ui.qmd
