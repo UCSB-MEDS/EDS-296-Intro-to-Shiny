@@ -23,7 +23,7 @@ website:
             href: course-materials/part3-building-shiny-dashboards.qmd
           - text: part 4 (styling apps)
             href: course-materials/part4-styling-apps.qmd
-          - text: part 5 (improving ux / ui)
+          - text: part 5 (user-centered design)
             href: course-materials/part5-improving-ux-ui.qmd
           - text: part 6 (debugging & testing)
             href: course-materials/part6-debugging-testing.qmd
@@ -36,6 +36,8 @@ website:
           - text: MEDS installation guide
             href: https://ucsb-meds.github.io/meds-install-guide.html
             target: _blank
+          - text: resources
+            href: resources.qmd
       - icon: github
         menu:
           - text: Source Code

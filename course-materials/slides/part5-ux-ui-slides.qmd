@@ -1,0 +1,393 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    # code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme: 
+      - ../../meds-slides-styles.scss
+editor_options: 
+  chunk_output_type: console
+---
+
+## {#title-slide data-menu-title="Title Slide" background="#053660"} 
+
+[EDS 430: Part 5.1]{.custom-title}
+
+[*User-centered design*]{.custom-subtitle}
+
+<hr class="hr-teal">
+
+[Week 2 | February 2^nd^, 2024]{.custom-subtitle3}
+
+---
+
+##  {#UX-UI data-menu-title="~~~ UX / UI Design ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa users title="three people" >}} UX/UI matters</p>
+<p class="caption-text">*When designing your app, it's critically important that you consider your user's needs and how they will interact with your app -- it doesn't matter how innovative you back-end computations are if people don't understand how to use your app!*</p>
+</div>
+
+---
+
+##  {#LO-ux-design data-menu-title="Learning Objectives - UX/UI Design"}
+
+[{{< fa book-open title="an open book" >}} Learning Objectives - UX/UI Design]{.slide-title}
+
+<hr>
+
+<p class="body-text-l teal-text bottombr">By the end of this section, you should:</p>
+
+. . . 
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a checklist of considerations to reference each time you build an app
+
+. . .
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a general understanding of what web accessibility means and who it can benefit (spoiler alert: it benefits us all!)
+
+. . . 
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to make a few small tweaks / updates to your application to make it more accessible for all users
+
+---
+
+##  {#UX-UI-design-tips data-menu-title="Tips for UX/UI design"}
+
+[Tips for designing your Shiny apps]{.slide-title}
+
+<hr>
+
+<p class="body-text">[Chapters 6](https://engineering-shiny.org/ux-matters.html) and [7](https://engineering-shiny.org/dont-rush-into-coding.html) of [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/index.html), by Colin Fay, Sébastien Rochette, Vincent Guyader, and Cervan Girard provide a list of considerations as you embark on your app-building journey. Some of their suggestions are summarized below, but check out the book for greater detail, examples, and additional considerations:</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}} **Simplicity is gold:**]{.teal-text} using the application shouldn't require reading a manual, and interfaces should be as self-explanatory as possible.</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}} **Adapt a defensive programming mindset:**]{.teal-text} your app should always fail gracefully and informatively (e.g. provide users with a helpful error message)</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}} **Build a self-explanatory app:**]{.teal-text} consider the following three suggestions for doing so -- [**(a)**]{.teal-text} remember the rule of least surprise (in UI design, **always do the least surprising thing** e.g. we often assume that underlined text is clickable, so if you include underlined text in your UI, there's a good chance a user will try clicking on it). [**(b)**]{.teal-text} think about progression (**design a clear pattern of moving forward** for your user), and [**(c)**]{.teal-text} related to [**b**]{.teal-text}, make sure that if an input is necessary, it is made clear to your user. Check out the [`{shinyjs}` package](https://deanattali.com/shinyjs/) for implementing nifty ways to improve the user experience of your shiny apps.</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}} **Avoid feature-creep:**]{.teal-text} feature-creep is the process of adding features to an app that complicates its usage and maintenance -- this includes adding too much *reactivity* and too much *interactivity* (e.g. `plotly`) -- interactivity adds visual noise, so it's best to not make elements interactive if there is no value is gained.</p> 
+
+---
+
+##  {#UX-UI-resources data-menu-title="UX/UI resources"}
+
+[Additional UX/UI resources]{.slide-title}
+
+<hr>
+
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Outstanding User Interfaces with Shiny](https://unleash-shiny.rinterface.com/index.html), by [David Granjon](https://divadnojnarg.github.io/)</p>
+
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Shiny Developer Series, Episode 20: Outstanding User Interfaces with David Granjon](https://www.youtube.com/watch?v=mxvMaoXOm70)</p>
+
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [15 User Experience Principles and Theories](https://pathumpmgux.medium.com/15-user-experience-principles-and-theories-80f19877bd5), by [Pathum Goonawardene](https://pathumpmgux.medium.com/)</p>
+
+---
+
+
+##  {#accessibility data-menu-title="~~~ Accessibility ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa universal-access title="the symbol for universal access - a person standing with the arms widespread inside a circle" >}} Building accessible apps</p>
+<p class="caption-text">*Consider web accessibilty guidelines to ensure that your app is usable by all*</p>
+</div>
+
+---
+
+##  {#what-is-accessibility data-menu-title="What is web accessibility?"}
+
+[{{< fa universal-access title="the symbol for universal access - a person standing with the arms widespread inside a circle" >}} What is web accessibility?]{.slide-title}
+
+<hr>
+
+<p class="body-text-s">From the [World Wide Web Consortium (W3C)](https://www.w3.org/)'s [Introduction to Web Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/):</p>
+
+::: {.quote-text-bg}
+<p class="body-text-s">**Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them.** More specifically, people can:</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} perceive, understand, navigate, and interact with the Web</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} contribute to the Web</p> 
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Web accessibility encompasses all disabilities that affect access to the Web, including: auditory, cognitive, neurological, physical, speech, and visual</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Web accessibility also benefits people without disabilities, for example:</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} people using mobile phones, smart watches, smart TVs, and other devices with small screens, different input modes, etc.</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} older people with changing abilities due to ageing</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} people with “temporary disabilities” such as a broken arm or lost glasses</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} people with “situational limitations” such as in bright sunlight or in an environment where they cannot listen to audio</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} people using a slow Internet connection, or who have limited or expensive bandwidth</p>
+:::
+
+<p class="body-text-s">Check out the [A11Y Project](https://www.a11yproject.com/) for lots of great tutorials and information about web accessibility.</p>
+
+---
+
+##  {#small-steps data-menu-title="Small steps help!"}
+
+[Small changes can lead to tangible increases in functionality for all users]{.slide-title3}
+
+<hr>
+
+<p class="body-text bottombr">Ensuring that your shiny apps are accessible can feel overwhelming -- but considering even a few small changes can have a large impact on user experience.</p>
+
+<p class="body-text topbr bottombr">The following suggestions have been borrowed and adapted from [Ch. 6.3 - Web Accessibility](https://engineering-shiny.org/ux-matters.html#web-accessibility) from [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/index.html), by Colin Fay, Sèbastien Rochette, Vincent Guyader, & Cervan Girard:</p>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<br>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Use HTML elements appropriately (e.g. consider hierarchy)</p> 
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Include alt text for graphical elements</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Consider navigation from a mobility perspective </p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Use colorblind-friendly palettes</p>
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "In the center, we see a computer monitor with the world wide web symbol on the screen. There is a circle around the computer made up of four smaller circles, each containing on of the following symbols: and eye, a hand with a finger touching something, a human head with a brain, and an ear."
+knitr::include_graphics("images/part5/web-access.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+Image Source: [Accessibility Stack](https://accessibilityspark.com/9-awesome-web-accessibility-tools/)
+:::
+
+:::
+
+::::
+
+---
+
+##  {#hierarchy data-menu-title="Heirarchy"}
+
+[Use HTML elements appropriately]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s bottombr">**Screen readers use HTML elements to understand web page organization.** Header elements create hierarchy within a webpage and are used by screen readers (i.e. devices used by those with visual impairments) to understand a page's organizational structure. An `<h1>` element is more important (hierarchically speaking) than an `<h2>`, which is more important than an `<h3>`, and so on.</p>
+
+. . . 
+
+:::: {.columms}
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+# load packages ----
+library(shiny)
+
+# user interface ----
+ui <- fluidPage(
+  tags$h1("This is my app's title"),
+  
+  tags$h2("Section 1"),
+  
+  tags$h3("Sub-section a"),
+  
+  tags$h3("Sub-section b"),
+  
+  tags$h3("Sub-section c"),
+  
+  tags$h2("Section 2"),
+)
+
+# server instructions ----
+server <- function(input, output) {}
+
+# combine UI & server into an app ----
+shinyApp(ui = ui, server = server)
+```
+:::
+
+::: {.column width="50%"}
+<br>
+
+<p class="body-text-s topbr">Ideally, you would only have one `<h1>` element (e.g. your app's **title**), a small number of `<h2>` elements, more `<h3>` elements, and so on. See the minimal example, to the left.</p>
+
+<p class="body-text-s topbr">You *should not* rely on headers for styling purposes -- for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop for [instruction on how to construct CSS selectors](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types) for styling HTML elements).</p>
+:::
+
+::::
+
+---
+
+##  {#alt-text data-menu-title="Alt text"}
+
+[Include alt text with all graphical elements]{.slide-title2}
+
+<hr>
+
+<p class="body-text bottombr">All images and graphical elements should include **alternative (alt) text** that describe the image and/or information being represented. This text won't appear in the UI, but is detected and read by screen readers.</p>
+
+. . . 
+
+<p class="body-text-s">Include the `alt` argument (similar to adding the `alt` attribute to an HTML element) when using [`renderPlot()`](https://shiny.rstudio.com/reference/shiny/1.7.1/renderplot) to add alt text to your reactive plots -- the `alt` argument lives *outside* of the `{}` but inside the `()`. For example:</p>
+
+```{r}
+#| eval: false
+#| echo: true
+# in your server
+renderPlot({
+
+    ggplot(data(), aes(x = var1, y = var2)) + 
+      geom_point() 
+    
+  }, alt = "Alt text description"
+  
+  )
+```
+
+. . . 
+
+<p class="body-text-s">Similarly, use the `alt` argument within `tags$img` when adding static images to your app. For example:</p>
+
+```{r}
+#| eval: false
+#| echo: true
+# in your UI
+tags$img(src = "file/path/to/img",
+         width = "100px", height = "100px",
+         alt = "Alt text for image")
+```
+
+---
+
+##  {#alt-text-tips data-menu-title="Alt text tips"}
+
+[Tips on writing alt text for data visualizations]{.slide-title3}
+
+<hr>
+
+<p class="body-text">A good rule of thumb for writing alt text for data visualizations is <em>alt="<span style="background-color: #F9C9C8;">Chart type</span> of <span style="background-color: #FDC790;">type of data</span> where <span style="background-color: #D1EAEE;">reason for including chart</span>"</em> (see [this post](https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81#:~:text=Alt%20text%20) by [Amy Cesal](https://www.amycesal.com/) for more). One example:</p>
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "Bar chart of gun murders per 100,000 people where America's murder rate is 6 times worse than Canada, and 30 times Australia."
+knitr::include_graphics("images/part5/alt-ex.png")
+```
+
+<p class="body-text"><em>alt="<span style="background-color: #F9C9C8;">Bar chart</span> of <span style="background-color: #FDC790;">gun murders per 100,000 people</span> where <span style="background-color: #D1EAEE;">America's murder rate is 6 times worse than Canada, and 30 times Australia</span>"</em></p>
+
+<p class="body-text-s topbr">For more great tips on how and when to use alt text, check out [this article](https://www.a11yproject.com/posts/alt-text/) by the A11Y Project. For examples of how to construct good alt text, take a peek at [this resource](https://academy.datawrapper.de/article/330-how-to-write-good-alternative-descriptions-for-your-data-visualization) by Datawrapper.</p>
+
+---
+
+##  {#mobility data-menu-title="Mobility"}
+
+[Consider UI navigation for those with mobility impairments]{.slide-title}
+
+<hr>
+
+<p class="body-text-s">For users with mobility impairments, using a mouse to navigate a UI packed with widgets may be challenging -- some users may even be exclusively using a keyboard to navigate the web.</p>
+
+<p class="body-text-s topbr">Ideally, actions required of your user can be done using a keyboard (e.g. pressing a button in the UI) -- however from a new shiny developer standpoint, this may be technically challenging to implement (the authors of Engineering Production-Grade Shiny Apps [suggest](https://engineering-shiny.org/ux-matters.html#c.-navigation) the [`{nter}` package](https://github.com/JohnCoene/nter) for building shiny action buttons that can be triggered by pressing `enter`, however, at the time of building this workshop, the package source code hadn't been updated since 2019).</p>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+<p class="body-text-s topbr">**At a minimum, consider spacing out and/or limiting the number of widgets on any given page to make navigation with a mouse as easy as possible.**</p>
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "A computer mouse and keyboard that's animated to show the left mouse button clicking and the left-hand side shift button being pressed."
+knitr::include_graphics("images/part5/keyboard_mouse.gif")
+```
+:::
+
+::::
+
+---
+
+##  {#color-palettes data-menu-title="Color Palettes"}
+
+[Use colorblind-friendly palettes]{.slide-title}
+
+<hr>
+
+<p class="body-text-s">About 1 in 12 males and 1 in 200 females have some form of colorblindness ([Wikipedia](https://en.wikipedia.org/wiki/Color_blindness)). Ensuring that your color choices are distinguishable from one another and/or providing an additional non-color-based way (e.g. patterns, shapes) of distinguishing between treatments/variables/etc. can greatly help with interpretation of data visualizations.</p>
+
+<p class="body-text-s">There are lots of great colorblind-accessible palettes and resources (check out [this one](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf) by [Alex Phillips](https://www.alexandraatleephillips.com/) to start). Google Chrome also has a built-in vision deficiency emulator (see gif, below right; right click in your web browser > Inspect > Rendering (add tab by clicking on the three stacked dots if it's not already open) > scroll down and choose emulation type from drop down where it says "Emulate vision deficiencies").</p>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<br>
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "Four color palette wheels showing the difference in perceived colors for those with normal vision, protanopia, deuteranopia, and tritanopia."
+knitr::include_graphics("images/part5/color-blind.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+Four different forms of colorblindness. Image Source: [Venngage](https://venngage.com/blog/color-blind-friendly-palette/)
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "A user opens up the developer tools pane in Google Chrome and uses the emulation tool to see how readers with various vision deficiencies would see the webpage."
+knitr::include_graphics("images/part5/chrome-visual.gif")
+```
+
+::: {.center-text .body-text-s .gray-text}
+Using Google Chrome's vision deficiency emulator to view webpages as seen by those with vision deficiencies
+:::
+:::
+
+::::
+
+---
+
+##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">End part 5</p>
+<p class="caption-text">***Up next:** debugging & testing*</p>
+</div>
+
+```{r}
+countdown::countdown(
+  minutes = 5,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+

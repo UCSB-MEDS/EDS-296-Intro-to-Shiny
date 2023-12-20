@@ -1,0 +1,68 @@
+---
+title: "Resources"
+subtitle: "there are SO many incredible (and free) resources to help you along your shiny journeys -- here are just a few"
+title-block-banner: true
+toc: true
+---
+
+## General Shiny Resources
+
+### Books
+
+- **[Mastering Shiny](https://mastering-shiny.org/basic-app.html)**, by Hadley Wickham 
+- **[Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/index.html)**, by Colin Fay, Sébastien Rochette, Vincent Guyader & Cervan Girard
+- **[Building Web Apps with R](https://debruine.github.io/shinyintro/index.html)**, by [Lisa DeBruine](https://github.com/debruine) -- a short course (paired with an online book with instructions, resources, etc.)
+
+### Tutorials
+
+- **[Building Shiny apps - an interactive tutorial](https://deanattali.com/blog/building-shiny-apps-tutorial/)**, by Dean Attali
+- **[Speeding Up R Shiny](https://www.r-bloggers.com/2021/06/speeding-up-r-shiny-the-definitive-guide/)**, by Jakub Sobolewski in R bloggers -- details methods on improving app performance
+- **[The Basics of Building Shiny Apps in R](https://github.com/allisonhorst/shiny-basics-sb-r-ladies)**, by Allison Horst
+
+### Testing
+
+- Barret Schloerke's rstudio::conf(2022) talk, *{shinytest2}: Unit testing for Shiny applications* ([recording](https://www.youtube.com/watch?v=DMgAW4m5aTI))
+- Barret Schloerke's 2022 Appsilon Shiny Confernce talk, *{shinytest2} Testing Shiny with {testthat}* ([recording](https://www.youtube.com/watch?v=EOVPBN5o8F8) & [GitHub repo](https://github.com/schloerke/presentation-2022-04-27-appsilon-shinytest2))
+- **[Shiny testing overview](https://shiny.rstudio.com/articles/testing-overview.html)**, by Winston Chang -- this article discussed the `shinytest2` predecessor, `shinytest` (which is now entering maintenance mode), but provides some helpful context and is worth a read
+
+### Modules
+
+- **[Modularizing Shiny App Code](https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806) & [associated materials](https://github.com/rstudio/ShinyDeveloperConference/tree/master/Modules/Demo)**, by [Garrett Grolemund](https://github.com/garrettgman) & [Joe Cheng](https://github.com/jcheng5) at the 2016 Shiny Developer's Conference -- **NOTE:** This 2016 talk is an *excellent* introduction to modules and is definitely worth a watch, especially because we just explored the exact example demoed by G. Grolemund. Please note, however, that Shiny modules were overhauled in 2020 with the introduction of `moduleServer()`. The code on the previous slides has been updated to reflect those changes, and therefore differs slightly from what's taught in this video.</p>
+- **[Mastering Shiny, Ch. 19 - Shiny Modules](https://mastering-shiny.org/scaling-modules.html#scaling-modules )**, by [Hadley Wickham](https://github.com/hadley)</p>
+- **[Modularizing Shiny app code](https://shiny.rstudio.com/articles/modules.html)**, by [Winston Chang](https://github.com/wch)</p>
+- **[Effective use of Shiny modules in application development](https://www.youtube.com/watch?v=ylLLVo2VL50)**, by [Eric Nantz](https://r-podcast.org/host/enantz/) at rstudio::conf(2019)</p>
+- [A beginners guide to Shiny modules](https://emilyriederer.netlify.app/post/shiny-modules/)**, by [Emily Riederer](https://emilyriederer.netlify.app/about/)</p>
+
+### Misc. Shiny Tools
+
+- **[R Shiny & FontAwesome Icons -- How to Use Them in Your Dashboards](https://www.r-bloggers.com/2022/09/r-shiny-fontawesome-icons-how-to-use-them-in-your-dashboards/)**, by Dario Radečić in R Bloggers -- instructions for setting up your [fontawesome](https://fontawesome.com/) kit
+- **[Shiny UI Editor](https://rstudio.github.io/shinyuieditor/) and [Nick Strayer](https://nickstrayer.me/)'s [rstudio::conf(2022) talk](https://www.rstudio.com/conference/2022/talks/new-way-to-build-shiny/) introducing it** -- a visual tool for building the UI portion of a Shiny application that generates clean and human-readable code 
+- **The [`{golem}` package](https://github.com/ThinkR-open/golem)** provides an opinionated framework for building production-grade shiny applications and is a part of a growing ecosystem of packages called the [`{golemverse}`](https://golemverse.org/). There are lots of accompanying learning materials, including the book, [Engineering Production Grade Shiny Apps](https://engineering-shiny.org/), by Colin Fay, Sébastien Rochette, Vincent Guyader, and Cervan Girard.
+
+## UX / UI 
+
+- **[Outstanding User Interfaces with Shiny](https://unleash-shiny.rinterface.com/index.html)**, by [David Granjon](https://divadnojnarg.github.io/)
+- **[Shiny Developer Series, Episode 20: Outstanding User Interfaces with David Granjon](https://www.youtube.com/watch?v=mxvMaoXOm70)**
+- **[15 User Experience Principles and Theories](https://pathumpmgux.medium.com/15-user-experience-principles-and-theories-80f19877bd5)**, by [Pathum Goonawardene](https://pathumpmgux.medium.com/)</p>
+
+## Accessibility
+
+### Colors
+
+- **[Palette Generator](https://www.learnui.design/tools/data-color-picker.html#palette), by Learn UI Design** -- supply a starting color(s) and this tool will generate a palette, single hue, or divergent color scheme
+- **[Viz Palette](https://projects.susielu.com/viz-palette), by Elijah Meeks and Susie Lu** -- a tool that shows you how well your chosen colors work for tiny lines and big areas, warns if you have colors sharing the same name (which can make it more challenging to talk about your designs, say, in a presentation), and can simulate color vision deficiencies 
+- **[Shade Generator](https://www.shadegenerator.com/047C90)** -- a tool for generating shade scales
+- **[Colorblind Safe Color Schemes](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf), by the NCEAS Science Communication Resource Center** -- tips and examples of colorblind-friendly color palettes
+- **[Color review](https://color.review/), by Anton Robsarve** -- for understanding foreground and background contrasts
+- **[Your Friendly Guide to Colors in Data Visualization](https://blog.datawrapper.de/colorguide/#Make-sure-your-colors-work), by Lisa Charlotte Muth** -- a blog post on useful tools for deciding data viz color palettes
+- **[What to consider when choosing colors for data visualization](https://blog.datawrapper.de/colors/), by Lisa Charlotte Muth** -- a blog post with explanations and examples
+- **[Subtleties of Color](https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/05/subtleties-of-color-part-1-of-6/), by Robert Simmon** -- a 6 part blog post series from NASA Earth Observatory about the use of color to map Earth observation data
+
+### Alternative (alt) text
+- **[How to write good alternative descriptions for your data visualization](https://academy.datawrapper.de/article/330-how-to-write-good-alternative-descriptions-for-your-data-visualization), by Amy Cesal** -- great instructions (and examples) on how to construct informative alt text for data visualizations 
+- **[Writing Alt Text for Data Visualization](https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81), also by Amy Cesal** -- more great example of alt text for data viz!
+- **[#TidyTuesday alt text instructions](https://github.com/rfordatascience/tidytuesday/blob/master/alt_text.md)** -- a simple formula for writing alt text for data visualizations, as recommended for #TidyTuesday participants
+
+## DEI in Data Visualization
+
+- **[Do No Harm Guide: Applying Equity Awareness in Data Visualization](https://www.urban.org/sites/default/files/publication/104296/do-no-harm-guide.pdf), by Jonathan Schwabish and Alice Feng** -- a guide for for approaching data work (and particularly visualizations) through a lens of diversity, equity, and inclusion 

@@ -1,0 +1,947 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    # code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme: 
+      - ../../meds-slides-styles.scss
+editor_options: 
+  chunk_output_type: console
+---
+
+## {#title-slide data-menu-title="Title Slide" background="#053660"} 
+
+[EDS 430: Part 7.2]{.custom-title}
+
+[*Modules*]{.custom-subtitle}
+
+<hr class="hr-teal">
+
+[Week 2 | February 2^nd^, 2024]{.custom-subtitle3}
+
+---
+
+##  {#modules data-menu-title="~~~ Shiny Modules ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa cubes title="three cubes stacked on top of one another in a pyramid shape" >}} Writing modules</p>
+<p class="caption-text">*We can take our code abstraction a step further and bundle repeated UI & server components together into **modules**, streamlining our code and increasing efficiency.*</p>
+</div>
+
+---
+
+##  {#LO-modules data-menu-title="Learning Objectives - Modules"}
+
+[{{< fa book-open title="an open book" >}} Learning Objectives - Modules]{.slide-title}
+
+<hr>
+
+<p class="body-text-l teal-text bottombr">By the end of this section, you should have an intro-level understanding of:</p>
+
+. .  .
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} what is a shiny module and when it might make sense to build one</p>
+
+. .  .
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} the structure of a shiny module</p>
+
+. .  .
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} how to use a module</p>
+
+. .  .
+
+<p class="body-text-l teal-text topbr">Packages introduced:</p> 
+
+. . . 
+
+<p class="body-text-s">`r fontawesome::fa("box-open", fill = "#05859B", a11y = "sem")` `{gapminder}`: data</p>
+
+----
+
+##  {#gapminder-app data-menu-title="Gapminder app"}
+
+[The utility of modules is best demonstrated by taking a look at an example app]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">This app, developed by [Garrett Grolemund](https://github.com/garrettgman) & [Joe Cheng's](https://github.com/jcheng5) as part of their [Modules](https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806) lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.</p>
+
+<p class="body-text-s">It uses the `gapminder` data set to display life expectancy by GDP per capita from 1952 to 2007 for Africa, the Americas, Asia, Europe, Oceania, and all regions collectively. The only difference between each tab is the subset of data displayed.</p> 
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "80%"
+#| fig-alt: "The gapminder app, which has 6 tabs, one for each global region. A bubble plot takes up the width of the ap and displays Life Expectancy by GDP per capita, where each bubble represents a country and the size of bubbles represent the population size of that country. An automated sliderInput advances through the years (1952-2007), and the plot updates accordingly."
+knitr::include_graphics("images/part7/gapminder-app.gif")
+```
+
+---
+
+##  {#gapminder-code data-menu-title="Gapminder code"}
+
+[The code for this app isn't particularly complex, but it's repetitive and long]{.slide-title2}
+
+<hr>
+
+```{r filename="~/modularized-app/app.R"}
+#| eval: false
+#| echo: true
+# app.R
+
+#..............................setup.............................
+library(shiny)
+library(gapminder)
+library(dplyr)
+
+# Note: This code creates data sets to use in each tab.
+# It removes Kuwait since Kuwait distorts the gdp scale
+all_data <- filter(gapminder, country != "Kuwait")
+africa_data <- filter(gapminder, continent == "Africa")
+americas_data <- filter(gapminder, continent == "Americas")
+asia_data <- filter(gapminder, continent == "Asia", country != "Kuwait")
+europe_data <- filter(gapminder, continent == "Europe")
+oceania_data <- filter(gapminder, continent == "Oceania")
+
+#...............................ui...............................
+ui <- fluidPage(
+  
+  # app title ----
+  titlePanel("Gapminder"),
+  
+  # continent tabsetPanel ----
+  tabsetPanel(id = "continent", 
+              
+              # All tab ----
+              tabPanel(title = "All", 
+                       plotOutput(outputId = "all_plot"),
+                       sliderInput(inputId = "all_year", label = "Select Year", 
+                                   value = 1952, min = 1952, max = 2007, step = 5, 
+                                   animate = animationOptions(interval = 500))
+              ), # END All tab
+              
+              # Africa tab ----
+              tabPanel(title = "Africa", 
+                       plotOutput(outputId = "africa_plot"),
+                       sliderInput(inputId = "africa_year", label = "Select Year", 
+                                   value = 1952, min = 1952, max = 2007, step = 5, 
+                                   animate = animationOptions(interval = 500))
+              ), # END Africa tab 
+              
+              # Americas tab ----
+              tabPanel(title = "Americas", 
+                       plotOutput(outputId = "americas_plot"),
+                       sliderInput(inputId = "americas_year", label = "Select Year", 
+                                   value = 1952, min = 1952, max = 2007, step = 5, 
+                                   animate = animationOptions(interval = 500))
+              ), # END Americas tab
+              
+              # Asia tab ----
+              tabPanel(title = "Asia", 
+                       plotOutput(outputId = "asia_plot"),
+                       sliderInput(inputId = "asia_year", label = "Select Year", 
+                                   value = 1952, min = 1952, max = 2007, step = 5, 
+                                   animate = animationOptions(interval = 500))
+              ), # END Asia tab
+              
+              # Europe tab ----
+              tabPanel(title = "Europe", 
+                       plotOutput(outputId = "europe_plot"),
+                       sliderInput(inputId = "europe_year", label = "Select Year", 
+                                   value = 1952, min = 1952, 
+                                   max = 2007, step = 5, animate = animationOptions(interval = 500))
+              ), # END Europe
+              
+              # Oceania tab ----
+              tabPanel(title = "Oceania", 
+                       plotOutput(outputId = "oceania_plot"),
+                       sliderInput(inputId = "oceania_year", label = "Select Year", 
+                                   value = 1952, min = 1952, max = 2007, step = 5, 
+                                   animate = animationOptions(interval = 500))
+              ) # END Oceania tab
+              
+  ) # END continent tabsetPanel
+  
+) # END fluidPage
+
+#.............................server.............................
+server <- function(input, output) {
+  
+  # ---- collect one year of data ----
+  ydata_all <- reactive({
+    filter(all_data, year == input$all_year)
+  })
+  
+  ydata_africa <- reactive({
+    filter(africa_data, year == input$africa_year)
+  })
+  
+  ydata_americas <- reactive({
+    filter(americas_data, year == input$americas_year)
+  })
+  
+  ydata_asia <- reactive({
+    filter(asia_data, year == input$asia_year)
+  })  
+  
+  ydata_europe <- reactive({
+    filter(europe_data, year == input$europe_year)
+  })
+  
+  ydata_oceania <- reactive({
+    filter(oceania_data, year == input$oceania_year)
+  })
+  
+  # ---- compute plot ranges ----
+  xrange_all <- range(all_data$gdpPercap)
+  yrange_all <- range(all_data$lifeExp)
+  
+  xrange_africa <- range(africa_data$gdpPercap)
+  yrange_africa <- range(africa_data$lifeExp)
+  
+  xrange_americas <- range(americas_data$gdpPercap)
+  yrange_americas <- range(americas_data$lifeExp)
+  
+  xrange_asia <- range(asia_data$gdpPercap)
+  yrange_asia <- range(asia_data$lifeExp)
+  
+  xrange_europe <- range(europe_data$gdpPercap)
+  yrange_europe <- range(europe_data$lifeExp)
+  
+  xrange_oceania <- range(oceania_data$gdpPercap)
+  yrange_oceania <- range(oceania_data$lifeExp)
+  
+  # ---- render plots ----
+  
+  # render all countries ----
+  output$all_plot <- renderPlot({
+    
+    # draw background plot with legend 
+    plot(all_data$gdpPercap, all_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_all), mean(yrange_all), input$all_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(all_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_all)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_all()$continent]
+    
+    # add bubbles 
+    symbols(ydata_all()$gdpPercap, ydata_all()$lifeExp, 
+            circles = sqrt(ydata_all()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+  # render africa ----
+  output$africa_plot <- renderPlot({
+    
+    # draw background plot with legend
+    plot(africa_data$gdpPercap, africa_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_africa), mean(yrange_africa), input$africa_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(africa_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_africa)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_africa()$continent]
+    
+    # add bubbles
+    symbols(ydata_africa()$gdpPercap, ydata_africa()$lifeExp, 
+            circles = sqrt(ydata_africa()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+  # render americas ----
+  output$americas_plot <- renderPlot({
+    
+    # draw background plot with legend
+    plot(americas_data$gdpPercap, americas_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_americas), mean(yrange_americas), input$americas_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(americas_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_americas)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_americas()$continent]
+    
+    # add bubbles
+    symbols(ydata_americas()$gdpPercap, ydata_americas()$lifeExp, 
+            circles = sqrt(ydata_americas()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+  # render asia ----
+  output$asia_plot <- renderPlot({
+    
+    # draw background plot with legend
+    plot(asia_data$gdpPercap, asia_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_asia), mean(yrange_asia), input$asia_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(asia_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_asia)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_asia()$continent]
+    
+    # add bubbles
+    symbols(ydata_asia()$gdpPercap, ydata_asia()$lifeExp, 
+            circles = sqrt(ydata_asia()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+  # render europe ----
+  output$europe_plot <- renderPlot({
+    stop("Error: Don't look at Europe")
+    # draw background plot with legend
+    plot(europe_data$gdpPercap, europe_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_europe), mean(yrange_europe), input$europe_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(europe_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_europe)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_europe()$continent]
+    
+    # add bubbles
+    symbols(ydata_europe()$gdpPercap, ydata_europe()$lifeExp, 
+            circles = sqrt(ydata_europe()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+  # render oceania ----
+  output$oceania_plot <- renderPlot({
+    
+    # draw background plot with legend
+    plot(oceania_data$gdpPercap, oceania_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_oceania), mean(yrange_oceania), input$oceania_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(oceania_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_oceania)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_oceania()$continent]
+    
+    # add bubbles ----
+    symbols(ydata_oceania()$gdpPercap, ydata_oceania()$lifeExp, 
+            circles = sqrt(ydata_oceania()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+} # END server
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+---
+
+##  {#repeated-code data-menu-title="Repeated gapminder code"}
+
+[Repeated code sections]{.slide-title3}
+
+<hr>
+
+<p class="body-text-s">Taking a closer look at the gapminder app code, we'll see that the following sections of code are repeated for each region (6 times total; only code sections for "all" regions shown below):</p>
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `tabPanel` (**UI**)</p>
+```{r}
+#| eval: false
+#| echo: true
+# "All" tabPanel (repeated 5 more times for each subregion) 
+tabPanel(title = "All", 
+         plotOutput(outputId = "all_plot"),
+         sliderInput(inputId = "all_year", label = "Select Year", 
+                     value = 1952, min = 1952, max = 2007, step = 5, 
+                     animate = animationOptions(interval = 500)))
+```
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reactive data frame (**server**)</p>
+```{r}
+#| eval: false
+#| echo: true
+# "All" reactive data frame (repeated 5 more times for each subregion)
+ydata_all <- reactive({
+  filter(all_data, year == input$all_year)
+})
+```
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reactive data frame (**server**)</p>
+```{r}
+#| eval: false
+#| echo: true
+# "All" reactive data frame (repeated 5 more times for each subregion)
+ydata_all <- reactive({
+  filter(all_data, year == input$all_year)
+})
+```
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} calculating date ranges (**server**)</p>
+```{r}
+#| eval: false
+#| echo: true
+# "All" date range (repeated 5 more times for each subregion)
+xrange_all <- range(all_data$gdpPercap)
+yrange_all <- range(all_data$lifeExp)
+```
+
+---
+
+##  {#repeated-code-cont data-menu-title="Repeated gapminder code (cont.)"}
+
+[Repeated code sections (cont.)]{.slide-title2}
+
+<hr>
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `renderPlot({})` (**server**)</p>
+
+```{r}
+#| eval: false
+#| echo: true
+# "All" plot (repeated 5 more times for each subregion)
+output$all_plot <- renderPlot({
+    
+    # draw background plot with legend 
+    plot(all_data$gdpPercap, all_data$lifeExp, type = "n", 
+         xlab = "GDP per capita", ylab = "Life Expectancy", 
+         panel.first = {
+           grid()
+           text(mean(xrange_all), mean(yrange_all), input$all_year, 
+                col = "grey90", cex = 5)
+         }
+    )
+    
+    # build legend
+    legend("bottomright", legend = levels(all_data$continent), 
+           cex = 1.3, inset = 0.01, text.width = diff(xrange_all)/5,
+           fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", "#984EA399", "#FF7F0099")
+    )
+    
+    # Determine bubble colors
+    cols <- c("Africa" = "#E41A1C99",
+              "Americas" = "#377EB899",
+              "Asia" = "#4DAF4A99",
+              "Europe" = "#984EA399",
+              "Oceania" = "#FF7F0099")[ydata_all()$continent]
+    
+    # add bubbles 
+    symbols(ydata_all()$gdpPercap, ydata_all()$lifeExp, 
+            circles = sqrt(ydata_all()$pop), bg = cols, inches = 0.5, fg = "white", 
+            add = TRUE)
+  })
+  
+```
+
+---
+
+##  {#enter-modules data-menu-title="Enter shiny modules"}
+
+[Enter Shiny modules]{.slide-title}
+
+<hr>
+
+<br>
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **A shiny module is a piece of a shiny app** -- it can't be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.
+
+. . . 
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Modules can represent inputs, outputs, or both** (*we'll be building a module that represents both*). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.
+
+. . .
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Modules help to solve a *namespacing* problem** -- recall that all `Id`s (e.g. `inputId`s) *must* be unique across your app. **Namespacing** is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax `package::function()` e.g. `plyr::arrange()` vs `dplyr::arrange()`).
+
+---
+
+##  {#modules-structure data-menu-title="Structure of modules"}
+
+[What do modules look like?]{.slide-title2}
+
+<hr>
+
+<p class="body-text">Modules are a coding pattern, organized into **two** functions: one that creates the **UI elements** and one that **loads the server logic**. They can look a bit different, depending on your module, but they generally follow this pattern:</p>
+
+```{r filename="myModule.R"}
+#| eval: false
+#| echo: true
+#..........................ui function...........................
+
+myModuleUI <- function(id) {
+  
+  ns <- NS(id)
+  
+  tagList(
+    # inputs with ids wrapped in ns() (e.g. `sliderInput(id = ns("slider"))`)
+    # outputs with ids wrapped in ns() (e.g. `plotOutput(id = "ns(plot"))`)
+  )
+  
+}
+
+#........................server function.........................
+myModuleServer <- function(id, ...) { # where `...` includes any number of additional parameters
+  
+  moduleServer(id, function(input, output, session) {
+    
+    # server logic
+    
+  }) 
+  
+} 
+```
+
+---
+
+##  {#where-to-define-modules data-menu-title="Where to define modules"}
+
+[Where should I define / save my module?]{.slide-title}
+
+<hr>
+
+<p class="body-text">Part of the appeal of creating modules is breaking your long `app.R` (or `ui.R` & `server.R`) scripts into smaller pieces. **Creating a separate R script to house a given module (both the UI *and* Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix "Module" e.g. `gapModule.R`).** There are a variety of places you can write and/or save your modularized code to, but I recommend one of the following two options (at least while we're just getting started on our shiny modules journey):</p>
+
+<br>
+
+. . . 
+
+[**(1)**]{.teal-text} save your modularized code script inside your app's directory (e.g. `~/app-directory/myModule.R`)
+
+<p class="body-text-s">If you choose this option, call `source("myModule.R")` from `global.R` (if using `ui.R` / `server.R`) or `app.R`.</p>
+
+<br>
+
+. . . 
+
+[**(2)**]{.teal-text} save your modularized code script inside the `/R` subdirectory of your application (e.g. `~/app-directory/R/myModule.R`)</p>
+
+<p class="body-text-s">If you choose this option, your module will automatically be sourced (as of Shiny 1.5.0) when the application is loaded.</p>
+
+---
+
+##  {#ui-function data-menu-title="UI function"}
+
+[Breaking down the UI function:]{.slide-title}
+
+<hr>
+
+[The UI part of a module needs to do **two** things: [**(1)**]{.teal-text} return a shiny element (e.g. an input & output), and [**(2)**]{.teal-text} assign module elements to a unique namespace using `NS()`. `NS()` provides an easy way to help with namespacing within your module, ensuring that each time your module is called, a unique `id` is assigned.]{.body-text-s}
+
+[The UI function for our gapminder module will look like this (**NOTE:** code comments below denote the general order of operations I followed when writing this UI function):]{.body-text-s}
+
+```{r filename="~/modularized-app/R/gapModule.R"}
+#| eval: false
+#| echo: true
+# step 1: a good function naming convention is a descriptive base name, suffixed by `UI`
+
+gapModuleUI <- function(id) { # step 2: the first argument to a UI function should always be `id` -- this is the namespace for the module 
+  
+  ns <- NS(id) # step 3: the function body starts with the statement `ns <- NS(id)`
+  
+  tagList( # step 4: surrounding all inputs & outputs in `tagList()`, which ensures that they are ALL returned (not necessary if you're just returning a single element)
+    
+    plotOutput(outputId = ns("plot")), # step 5.1: wrap outputId in `ns()`
+    
+    sliderInput(inputId = ns("year"), label = "Select Year", # step 5.2: wrap inputId in `ns()`
+                value = 1952, min = 1952, max = 2007, step = 5,  
+                animate = animationOptions(interval = 500))
+    
+  ) # END taglist
+  
+} # END gapModuleUI function
+```
+
+---
+
+##  {#ns data-menu-title="ns()"}
+
+[A note on `ns()`]{.slide-title}
+
+<hr>
+
+<br>
+
+**Wrapping our input and output `Id`s in `ns()` will create unique Ids each time our module is called** , preventing things from overwriting one one another. For example:
+
+. . . 
+
+<br>
+
+If we call `gapModuleUI(id = "myFirstModuleCall")`:
+
+- [`outputId` will be set to `myFirstModuleCall-plot`]{.body-text-s}
+- [`inputId` will be set to `myFirstModuleCall-year`]{.body-text-s}
+
+. . .
+
+<br>
+
+Calling our module a second time (e.g. `gapModuleUI(id = "mySecondModuleCall")`): 
+
+- [`outputId` will be set to `mySecondModuleCall-plot`]{.body-text-s}
+- [`inputId` will be set to `mySecondModuleCall-year`]{.body-text-s}
+
+---
+
+##  {#server-function1 data-menu-title="Server function"}
+
+[Breaking down the Server function:]{.slide-title}
+
+<hr>
+
+The server part of a module looks very similar to a normal (i.e. non-modular) Shiny app server function. 
+
+<br>
+
+[**(1)**]{.teal-text} Begin by defining your module server function name (e.g. `gapModuleServer`) and provide it with the first *required* parameter, `id`, along with any other necessary parameters (we also need to pass our particular function a `data` parameter to differentiate between data subsets (e.g. **All** vs. **Africa** vs. **Asia** etc.)).
+
+<br>
+
+. . .
+
+[**(2)**]{.teal-text} Next, call `moduleServer()` *inside* your server function and pass it the `id` variable, along with the module function. The module function *must* have three parameters: `input`, `output`, and `session`. You *do not* have to use `ns()` to refer to inputs and outputs here. Copy server code from our original app, plop it inside the module function, and substitute in our `data` parameter wherever a data frame subset is called.</p>
+
+<br>
+
+::: {.center-text .body-text-l .teal-text}
+See code on the following slide
+:::
+
+---
+
+##  {#server-function2 data-menu-title="Server function"}
+
+[Breaking down the Server function:]{.slide-title3}
+
+<hr>
+
+<br>
+
+```{r filename="~/modularized-app/R/gapModule.R"}
+#| eval: false
+#| echo: true
+# step 1: a good function naming convention is a descriptive base name, suffixed by `Server`
+
+gapModuleServer <- function(id, data) { # step 2: the first argument to a server function should always be `id`, followed by any other necessary arguments; here we include a 'data' parameter, since we need to be able to tell our server function which data subset to plot in each tab
+  
+  moduleServer(id, function(input, output, session) { # step 3: call `moduleServer()`, and pass it two things -- (a) a string id that corresponds with the id used to call the module's UI function, and (b) a module server function (this MUST use the three arguments: input, output, and session)
+    
+    # step 4: copy server logic into the module function (only need to do this ONCE, not 6x); update inputIds (now 'year', rather than 'all_year' etc.) & sub in 'data' parameter for hard-coded data subsets
+    
+    # creactive df to collect one year of data ----
+    ydata <- reactive({
+      filter(data, year == input$year)
+    }) # END reactive df
+    
+    # set slider range ----
+    xrange <- range(data$gdpPercap)
+    yrange <- range(data$lifeExp)
+    
+    # render plot (NOTE: plotting with base R, so this looks a bit different than you may be used to) -----
+    output$plot <- renderPlot({
+      
+      # draw background plot with legend
+      plot(data$gdpPercap, data$lifeExp, type = "n", 
+           xlab = "GDP per capita", ylab = "Life Expectancy", 
+           panel.first = {
+             grid()
+             text(mean(xrange), mean(yrange), input$year, 
+                  col = "grey90", cex = 5)
+           })
+      
+      # build legend
+      legend("bottomright", legend = levels(data$continent), 
+             cex = 1.3, inset = 0.01, text.width = diff(xrange)/5,
+             fill = c("#E41A1C99", "#377EB899", "#4DAF4A99", 
+                                 "#984EA399", "#FF7F0099"))
+                                 
+      # determine bubble colors
+      cols <- c("Africa" = "#E41A1C99",
+                "Americas" = "#377EB899",
+                "Asia" = "#4DAF4A99",
+                "Europe" = "#984EA399",
+                "Oceania" = "#FF7F0099")[ydata()$continent]
+      
+      # add bubbles
+      symbols(ydata()$gdpPercap, ydata()$lifeExp, circles = sqrt(ydata()$pop),
+              bg = cols, inches = 0.5, fg = "white", add = TRUE)
+      
+    }) # END renderPlot
+    
+  }) # END moduleServer
+  
+} # END server function
+```
+
+---
+
+##  {#using-module-1 data-menu-title="Using your module 1"}
+
+[Now let's use our module:]{.slide-title}
+
+<hr>
+
+First, since we've saved our `gapModule.R` file to our app's directory, we'll need to source it at the top of our `app.R` file:
+
+```{r filename="~/modularized-app/app.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "5"
+#..............................setup.............................
+library(shiny)
+library(gapminder) 
+library(dplyr)
+source("gapModule.R") 
+
+# Note: This code creates data sets to use in each tab.
+# It removes Kuwait since Kuwait distorts the gdp scale
+all_data <- filter(gapminder, country != "Kuwait")
+africa_data <- filter(gapminder, continent == "Africa")
+americas_data <- filter(gapminder, continent == "Americas")
+asia_data <- filter(gapminder, continent == "Asia", country != "Kuwait")
+europe_data <- filter(gapminder, continent == "Europe")
+oceania_data <- filter(gapminder, continent == "Oceania")
+```
+
+---
+
+##  {#using-module-2 data-menu-title="Using your module 2"}
+
+[Now let's use our module:]{.slide-title}
+
+<hr>
+
+<p class="body-text-s">Next, let's use our module's UI function. We'll need to define / name each of our `tabPanel`s (one for each of our six regions), but rather than building a `plotOutput` and `sliderInput` inside each `tabPanel` (each with unique `Id`s), we can instead call our `gapModuleUI()` function, and ensure that each time we call it to supply a unique character string for our `id` parameter.</p>
+
+```{r filename="~/modularized-app/app.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "25-30"
+#..............................setup.............................
+library(shiny)
+library(gapminder) 
+library(dplyr)
+source("gapModule.R") 
+
+# Note: This code creates data sets to use in each tab.
+# It removes Kuwait since Kuwait distorts the gdp scale
+all_data <- filter(gapminder, country != "Kuwait")
+africa_data <- filter(gapminder, continent == "Africa")
+americas_data <- filter(gapminder, continent == "Americas")
+asia_data <- filter(gapminder, continent == "Asia", country != "Kuwait")
+europe_data <- filter(gapminder, continent == "Europe")
+oceania_data <- filter(gapminder, continent == "Oceania")
+
+#...............................ui...............................
+ui <- fluidPage(
+  
+  # app title ----
+  titlePanel("Gapminder"),
+  
+  # continent tabsetPanel ----
+  tabsetPanel(id = "continent", 
+              
+              tabPanel(title = "All", gapModuleUI(id = "all")),
+              tabPanel(title = "Africa", gapModuleUI(id = "africa")),
+              tabPanel(title = "Americas", gapModuleUI(id = "americas")),
+              tabPanel(title = "Asia", gapModuleUI(id = "asia")),
+              tabPanel(title = "Europe", gapModuleUI(id = "europe")),
+              tabPanel(title = "Oceania", gapModuleUI(id = "oceania"))
+              
+  ) # END continent tabsetPanel
+  
+) # END fluidPage
+```
+
+---
+
+##  {#using-module-3 data-menu-title="Using your module 3"}
+
+[Now let's use our module:]{.slide-title}
+
+<hr>
+
+<p class="body-text-s">Finally, we can re-write our server. Rather than writing out the *lengthy* code required to make each plot six times over, we can instead call our `gapModuleServer()` function, supplying each call with `id`s that match those used in `gapModuleUI()`, along with the appropriate data subset. Now, run your app! If written correctly, your app should run exactly the same as your initial version.</p>
+
+```{r filename="~/modularized-app/app.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "39-44"
+#..............................setup.............................
+library(shiny)
+library(gapminder) 
+library(dplyr)
+source("gapModule.R") 
+
+# Note: This code creates data sets to use in each tab.
+# It removes Kuwait since Kuwait distorts the gdp scale
+all_data <- filter(gapminder, country != "Kuwait")
+africa_data <- filter(gapminder, continent == "Africa")
+americas_data <- filter(gapminder, continent == "Americas")
+asia_data <- filter(gapminder, continent == "Asia", country != "Kuwait")
+europe_data <- filter(gapminder, continent == "Europe")
+oceania_data <- filter(gapminder, continent == "Oceania")
+
+#...............................ui...............................
+ui <- fluidPage(
+  
+  # app title ----
+  titlePanel("Gapminder"),
+  
+  # continent tabsetPanel ----
+  tabsetPanel(id = "continent", 
+              
+              tabPanel(title = "All", gapModuleUI(id = "all")),
+              tabPanel(title = "Africa", gapModuleUI(id = "africa")),
+              tabPanel(title = "Americas", gapModuleUI(id = "americas")),
+              tabPanel(title = "Asia", gapModuleUI(id = "asia")),
+              tabPanel(title = "Europe", gapModuleUI(id = "europe")),
+              tabPanel(title = "Oceania", gapModuleUI(id = "oceania"))
+              
+  ) # END continent tabsetPanel
+  
+) # END fluidPage
+
+#.............................server.............................
+server <- function(input, output) {
+  
+  gapModuleServer(id = "all", data = all_data)
+  gapModuleServer(id = "africa", data = africa_data)
+  gapModuleServer(id = "americas", data = americas_data)
+  gapModuleServer(id = "asia", data = asia_data)
+  gapModuleServer(id = "europe", data = europe_data)
+  gapModuleServer(id = "oceania", data = oceania_data)
+
+} # END server
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+---
+
+##  {#module-resources data-menu-title="Module resources"}
+
+[Additional module resources]{.slide-title}
+
+<hr>
+
+<br>
+<br>
+<br>
+
+::: {.center-text .body-text-l}
+We've barely scratched the surface of modules! 
+:::
+
+<br>
+
+::: {.center-text .body-text-l .teal-text}
+Continue your learning journey's with suggested readings and videos on the **[resources page]()**.
+:::
+
+---
+
+##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">End part 7.2</p>
+<p class="caption-text">***Up next:** wrap up*</p>
+</div>
+
+```{r}
+countdown::countdown(
+  minutes = 5,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```

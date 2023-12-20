@@ -1,0 +1,370 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    # code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme: 
+      - ../../meds-slides-styles.scss
+editor_options: 
+  chunk_output_type: console
+---
+
+## {#title-slide data-menu-title="Title Slide" background="#053660"} 
+
+[EDS 430: Part 6.2]{.custom-title}
+
+[*Testing*]{.custom-subtitle}
+
+<hr class="hr-teal">
+
+[Week 2 | February 2^nd^, 2024]{.custom-subtitle3}
+
+---
+
+##  {#testing data-menu-title="~~~ Testing ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa file-code title="a file with the code symbol, </>, on it" >}} Testing</p>
+<p class="caption-text">*Creating automated tests for your apps can save time and effort, ensuring that they continue working as expected.*</p>
+</div>
+
+---
+
+##  {#LO-testing data-menu-title="Learning Objectives - Testing"}
+
+[{{< fa book-open title="an open book" >}} Learning Objectives for Testing]{.slide-title}
+
+<hr>
+
+<p class="body-text-l teal-text bottombr">After this section, you should:</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the reasons why apps break and the benefit of having automated tests</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to create regression tests</p>
+
+. . . 
+
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun tests</p>
+
+. . . 
+
+<p class="body-text-l teal-text topbr">Packages introduced:</p> 
+
+. . . 
+
+<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications</p>
+
+---
+
+##  {#why-test data-menu-title="Why test?"}
+
+[Why test our Shiny apps?]{.slide-title}
+
+<hr>
+
+<br>
+
+It's almost inevitable that apps will break -- there are lots of reasons why this happens, but to name a few:
+
+. . . 
+
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an upgraded R package(s) has a different behavior (this includes `shiny`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</p>
+
+. . . 
+
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} you make changes to your app</p>
+
+. . . 
+
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an external data source stops working or returns data in a different format than expected by your app</p>
+
+. . . 
+
+<br>
+
+**It can save a lot of time and headache (for you *and* your collaborators) to have an automated system that checks if your app is working as expected.**
+
+---
+
+##  {#shinytest2 data-menu-title="{shinytest2}"}
+
+[Enter the `{shinytest2}` package]{.slide-title}
+
+<hr>
+
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) is a useful tool for conducting regression testing on shiny apps -- or in other words, testing existing app behavior for consistency over time.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+<p class="body-text">From the `shinytest2` documentation:</p>
+
+<p class="body-text-s quote-text-bg">"*`shinytest2` uses `testthat`’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.*"</p> 
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "A hex that's split down the middle horizontally. The top half is the blue Shiny hex and the bottom half looks like the red {testthat} hex, except it reads 'test2'."
+knitr::include_graphics("images/part6/shinytest2-hex.png")
+```
+:::
+
+::::
+
+<p class="body-text-s">Rather than having to write tests by hand, you can interact with your app via the "app recorder" and `shinytest2` will record the test code automatically for you. Simply rerun tests to check for consistency.</p>
+
+---
+
+##  {#shinytest2-resources data-menu-title="{shinytest2} resources"}
+
+[`shinytest2` resources & demos]{.slide-title}
+
+<hr>
+
+<br>
+
+The following demo comes straight from the [`{shinytest2}` vignette](https://rstudio.github.io/shinytest2/articles/shinytest2.html), though a similar app and testing workflow is demoed by Barret Schloerke in his recorded talk, [*Getting Started with {shinytest2} Part I || Example + basics*](https://www.youtube.com/watch?v=Gucwz865aqQ).
+
+<br>
+<br>
+<br>
+
+::: {.center-text .body-text-l .teal-text}
+Check out the **[resources page](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/resources.html)** on the course website for additional talks / tutorials / resources about testing shiny apps.
+:::
+
+---
+
+##  {#app-for-testing data-menu-title="The app we'll test"}
+
+[Let's test the following app]{.slide-title}
+
+<hr>
+
+This small app accepts a text input for users to type their name. When the "Greet" button is pressed, the app returns a short greeting message that says, "Hello *name*!
+
+To get started, create a subdirectory called `~/testing_app`, add a file named `app.R`, and drop this code in your file. Take a moment to try out the app.
+
+```{r filename="~/testing_app/app.R"}
+#| eval: false
+#| echo: true
+library(shiny)
+
+ui <- fluidPage(
+  
+  textInput("name", "What is your name?"),
+  actionButton("greet", "Greet"),
+  textOutput("greeting")
+  
+)
+
+server <- function(input, output, session) {
+  
+  output$greeting <- renderText({
+    req(input$greet)
+    paste0("Hello ", isolate(input$name), "!")
+    
+  })
+  
+}
+
+shinyApp(ui, server)
+```
+
+---
+
+##  {#testing-procedure data-menu-title="Testing procedure"}
+
+[Testing using `shinytest2`]{.slide-title}
+
+<hr>
+
+**Recording tests requires the following steps:**
+
+. . . 
+
+[[**(1)**]{.teal-text} Run `record_test(<app-directory>)` to launch the app recorder in browser window]{.body-text-s}
+
+. . . 
+
+[[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation (e.g. an expected value when inputX is updated) on the state at various points]{.body-text-s}
+
+. . . 
+
+[[**(3)**]{.teal-text} Quit the recorder to save and execute your tests]{.body-text-s}
+
+. . . 
+
+<br>
+
+**To test our app specifically, we'll do the following:**
+
+[[**(1)**]{.teal-text} run `shinytest2::record_test("testing_app")` in the console to launch the recorder in a browser window]{.body-text-s}
+
+[[**(2)**]{.teal-text} interact with your app by first typing a name (e.g. Sam), then pressing the "Greet" button to display the output text]{.body-text-s}
+
+[[**(3)**]{.teal-text} click the "Expect Shiny values" button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)]{.body-text-s}
+
+[[**(4)**]{.teal-text} give your test a name in the recorder app sidebar, then click "Save test and exit" - this will save the recorded test and setup the testing infrastructure, if it doesn't exit already]{.body-text-s}
+
+---
+
+##  {#creating-test1-example data-menu-title="Creating our first test"}
+
+[Creating our first test]{.slide-title}
+
+<hr>
+
+Following the steps on the previous slide, creating your test should look similar to this:
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "A user begins recording a test by typing shinytest2::record_test('testing_app') in the RStudio console, which opens up the app in an iframe with the recorder in a pane to the right. The user types 'Sam' into the text box, clicks the 'Greet' button, then clicks 'Expect Shiny values' in the recorder. Finally, the user names and saves the test, which then runs automatically once the recorder is quit."
+knitr::include_graphics("images/part6/sam-test.gif")
+```
+
+<br>
+
+**Note:** Your test is automatically run as soon as you save and exit the recorder. See the results of your test in your console (it should pass!).
+
+---
+
+##  {#test-files-created data-menu-title="Test files created"}
+
+[Test files are generated automatically]{.slide-title}
+
+<hr>
+
+After recording your first test, a `/tests` folder is generated, containing a number of different files and subdirectories. Some important files to note:
+
+::: {.panel-tabset}
+
+## `setup-shinytest2.R`
+
+[For more complex apps, you'll often have support files (e.g. those contained in `<app-directory>/R` and / or `global.R`) -- content from those files will be stored here so that it is made accessible to your test(s). Since we don't have any support files for our rather small/somewhat simple app, you should only see the following:]{.body-text-s}
+
+```{r filename="<app-directory>/tests/testthat/setup-shinytest2.R"}
+#| eval: false
+#| echo: true
+# Load application support files into testing environment
+shinytest2::load_app_env()
+```
+
+## `test-shinytest2.R`
+
+[This test script contains your recorded test, and should automatically open when you finish recording and save your test. You can manually modify this test (e.g. add additional interactions and expectations), if you wish. Yours should look similar to this:]{.body-text-s}
+
+```{r filename="<app-directory>/tests/testthat/test-shinytest2.R"}
+#| eval: false
+#| echo: true
+library(shinytest2)
+
+test_that("{shinytest2} recording: sam-test", {
+  app <- AppDriver$new(name = "sam-test", height = 509, width = 657)
+  app$set_inputs(name = "Sam")
+  app$click("greet")
+  app$expect_values()
+})
+```
+
+## `*_.png`
+
+[**(located at `<app-directory>/tests/testthat/_snaps/shinytest2/*_.png`)**; This is a screenshot of your app from when `app$expect_values()` was called -- this file should be tracked using git so that you know how your app visually changes over time. My `.png` file looks like this:]{.body-text-s}
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "40%"
+#| fig-align: "center"
+#| fig-alt: "A screenshot from my app, with the text 'Sam' printed in the text input box beneath the prompt, 'What is your name?'. Below the text box is a button that says 'Greet'. Below that, the text, 'Hello Sam!' is printed."
+knitr::include_graphics("images/part6/sam-test-001_.png")
+```
+
+## `*.json`
+
+[This is a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called -- you'll see the state of all input, output, and export values at the time of the snapshot (we don't have any exports in our example app, but we do have a name input and a greeting output). This file should be tracked with git so that you have a record of your expected results. Your `.json` file should look something like this:]{.body-text-s}
+
+```{json filename="<app-directory>/tests/testthat/_snaps/shinytest2/*.json"}
+#| eval: false
+#| echo: true
+{
+  "input": {
+    "greet": 1,
+    "name": "Sam"
+  },
+  "output": {
+    "greeting": "Hello Sam!"
+  },
+  "export": {
+
+  }
+}
+```
+
+:::
+
+---
+
+##  {#testing-tips data-menu-title="Testing tips"}
+
+[Tips for testing]{.slide-title}
+
+<hr>
+
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Record subsequent tests following the same workflow, giving each a unique name. Run `test_app("path/to/app")` to run all test scripts in your app's `tests/testhat` directory.</p>
+
+<p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Use `record_test()` fairly often -- Barret Schloerke argues that you should make a test recording for each feature of your app (many little recordings are encouraged!)</p>
+
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Limit testing to objects under your control. For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update the `DT` package, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `DT`.</p>
+
+. . .
+
+<br>
+
+<center><p class="body-text-l teal-text">This is only a brief intro to `shinytest2`! Dig into the [documentation](https://rstudio.github.io/shinytest2/index.html) to learn more.</p></center>
+
+---
+
+##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">End part 6.1</p>
+<p class="caption-text">***Up next:** streamlinging code*</p>
+</div>
+
+```{r}
+countdown::countdown(
+  minutes = 5,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+
