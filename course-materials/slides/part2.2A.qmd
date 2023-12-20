@@ -22,7 +22,7 @@ editor_options:
 
 ##  {#LO-app2v1 data-menu-title="Learning Objectives - App #2v1"}
 
-[{{< fa book-open title="an open book" >}} Learning Objectives - App #2v1 (two-file app)]{.slide-title}
+[{{< fa book-open title="an open book" >}} Learning Objectives - App #2 (two-file app)]{.slide-title}
 
 <hr>
 

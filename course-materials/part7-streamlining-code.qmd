@@ -1,0 +1,74 @@
+---
+title: "Streamlining code"
+subtitle: "Part 7"
+title-block-banner: true
+toc: true
+---
+
+```{r}
+#| eval: true 
+#| echo: false
+#| fig-align: "center"
+#| out-width: "80%" 
+#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
+# knitr::include_graphics("images/basic-shiny-app.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+ADD IMAGE HERE
+:::
+
+# Required Packages
+
+We'll be loading the following R packages: 
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+library(shiny)
+
+```
+
+## Required Data
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+
+```
+
+## Lecture Materials
+
+Part 7 is broken down into three lessons:
+
+<!-- UPDATE GGPLOT THEME TO FUNCTION  -->
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.center-text}
+[**tbd**]{.teal-text .body-text-m}
+
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.1 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.center-text}
+[**tbd**]{.teal-text .body-text-m}
+
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/tbds.qmd){.btn role="button" target="_blank"} 
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.center-text}
+[**tbd**]{.teal-text .body-text-m}
+
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.3 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
+:::
+:::
+
+:::

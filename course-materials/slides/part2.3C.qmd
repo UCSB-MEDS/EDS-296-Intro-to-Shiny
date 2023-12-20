@@ -1,0 +1,70 @@
+---
+format: 
+  revealjs:
+    slide-number: true
+    # code-link: true
+    highlight-style: a11y
+    chalkboard: true
+    theme: 
+      - ../../meds-slides-styles.scss
+editor_options: 
+  chunk_output_type: console
+---
+
+
+##  {#redeploying-apps data-menu-title="~~~ Redeploying apps ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa upload title="a symbol for uploading files -- a server with an upward facing arrow that originates at the server" >}} Redeploying apps with [shinyapps.io](https://www.shinyapps.io/)</p>
+<p class="caption-text">*Now that we've added some updates to our app, it's time to redeploy our newest version.*</p>
+</div>
+
+---
+
+##  {#howto-redeploy data-menu-title="How to Redeploy"}
+
+[Redeploying is similar to deploying for the first time]{.slide-title3}
+
+<hr>
+
+<br>
+
+Just a few quick steps before your updates are live at your URL from earlier:
+
+<br>
+
+<p class="body-text-s">**1.** double check to make sure any required packages are being imported in `global.R`</p>
+<p class="body-text-s topbr">**2.** Rerun `rsconnect::deployApp("<app-directory-nam")>` in your console and type `Y` when you see the prompt `Update application currently deployed at https://githubUserName.shinyapps.io/yourAppName? [Y/n]`</p>
+<p class="body-text-s topbr">**3.** Give it a minute (or few) to deploy. Your deployed app will open in a browser window once processed</p>
+<p class="body-text-s topbr">**4.** Push all your files (including the `/rsconnect` directory) to GitHub</p>
+
+<br>
+
+<center><p class="body-text-l teal-text">Check out my deployed app at <https://samanthacsik.shinyapps.io/two-file-app/></p></center>
+
+---
+
+##  {#end-section data-menu-title="~~~ BREAK ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">End part 2.3</p>
+<p class="caption-text">***Up next:** building shiny dashboards*</p>
+</div>
+
+```{r}
+countdown::countdown(
+  minutes = 5,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+
+

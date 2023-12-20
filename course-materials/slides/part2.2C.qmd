@@ -11,9 +11,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-##  {#lastly-text data-menu-title="Lastly, text"}
+##  {#add-text data-menu-title="Add text"}
 
-[Lastly: add background/other important information text]{.slide-title2}
+[Add background/other important information text]{.slide-title2}
 
 <hr>
 
@@ -172,7 +172,7 @@ ui <- navbarPage(
 
 ##  {#includeMarkdown data-menu-title="includeMarkdown()"}
 
-[Instead, use `includeMarkdown()` to read in text from separate `.md` files]{.slide-title2}
+[Instead, use `includeMarkdown()`]{.slide-title}
 
 <hr>
 
@@ -344,16 +344,16 @@ knitr::include_graphics("images/part2/app2_v1.gif")
 
 ##  {#app2-code data-menu-title="App #2 code (so far)"}
 
-[Code recap for app #2v1, so far:]{.slide-title2}
+[Code recap for app #2, so far:]{.slide-title}
 
 <hr>
 
-<p class="body-text-s">Additionally, you should have a `/text` folder within your app's directory (`/two-file-app`, if you named it as I did) that contains two markdown files, `about.md` and `footer.md`.</p>
+<!-- <p class="body-text-s">Additionally, you should have a `/text` folder within your app's directory (`/two-file-app`, if you named it as I did) that contains two markdown files, `about.md` and `footer.md`.</p> -->
 
 ::: {.panel-tabset}
 
 ## `global.R`
-```{r}
+```{r filename="global.R"}
 #| eval: false
 #| echo: true
 # LOAD LIBRARIES ----
@@ -394,7 +394,7 @@ myCustomTheme <- theme_light() +
 ```
 
 ## `ui.R`
-```{r}
+```{r filename="ui.R"}
 #| eval: false
 #| echo: true
 ui <- navbarPage(
@@ -504,7 +504,7 @@ ui <- navbarPage(
 ```
 
 ## `server.R`
-```{r}
+```{r filename="server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {
@@ -556,11 +556,38 @@ server <- function(input, output) {
   
 } # END server
 ```
+
+## `about.md`
+```{md filename="text/about.md"}
+#| eval: false
+#| echo: true
+## Welcome to the LTER Animal Data Explorer!
+
+<br>
+
+#### Why did we build this app?
+
+This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 430 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.
+
+<br>
+
+#### Where's the data? 
+
+Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/) and Adelie, Gentoo & Chinstrap penguins of the [Palmer Station LTER](https://pallter.marine.rutgers.edu/).
+```
+
+## `footer.md`
+```{md filename="text/footer.md"}
+#| eval: false
+#| echo: true
+*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*
+```
+
 :::
 
 ---
 
-##  {#end-section data-menu-title="~~~ BREAK ~~~" background="#047C90"}
+##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">End part 2.2</p>

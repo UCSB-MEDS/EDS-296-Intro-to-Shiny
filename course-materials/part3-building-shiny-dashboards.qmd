@@ -1,0 +1,57 @@
+---
+title: "Building Shiny dashboards"
+subtitle: "Part 3"
+title-block-banner: true
+toc: true
+---
+
+```{r}
+#| eval: true 
+#| echo: false
+#| fig-align: "center"
+#| out-width: "80%" 
+#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
+# knitr::include_graphics("images/basic-shiny-app.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+ADD IMAGE HERE
+:::
+
+## Required Packages
+
+We'll be loading the following R packages: 
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+library(shinycssloaders)
+library(leaflet)
+library(markdown)
+```
+
+## Required Data
+
+We'll be using publicly-available data via the [Arctic Data Center](https://arcticdata.io/catalog) for our shiny dashboard.
+
+::: {.callout-note icon=false}
+## Data citation
+Christopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. [doi:10.18739/A2JH3D41P](https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P).
+:::
+
+Take a few moments to review the [metadata record](https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P) and [download FCWO_lakemonitoringdata_2011_2022_daily.csv](https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3).
+
+## Lecture Materials
+
+Part 3 is contained in one lesson:
+
+::: {.center-text}
+[**Shiny dashboard**]{.teal-text .body-text-m}
+
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 3 slides](slides/part3-shiny-dashboard-slides.qmd){.btn role="button" target="_blank"} 
+:::
+

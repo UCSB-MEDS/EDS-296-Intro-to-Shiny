@@ -27,9 +27,11 @@ We'll be loading the following R packages:
 #| echo: true
 #| code-line-numbers: false
 library(shiny)
-library(DT)
 library(tidyverse)
+library(DT)
 library(shinyWidgets)
+library(shinycssloaders)
+library(markdown)
 ```
 
 ## Required Data

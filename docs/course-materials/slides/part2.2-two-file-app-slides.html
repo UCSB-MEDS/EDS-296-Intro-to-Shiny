@@ -415,7 +415,7 @@
 </section>
 <section id="LO-app2v1" class="slide level2" data-menu-title="Learning Objectives - App #2v1">
 <h2></h2>
-<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #2v1 (two-file app)</span></p>
+<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #2 (two-file app)</span></p>
 <hr>
 <p class="body-text-m teal-text bottombr">
 By the end of building out this second app, you should:
@@ -1539,7 +1539,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_0cb0054c" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_1c728226" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1835,16 +1835,16 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_82620d67" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_3856cfd2" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 </section>
-<section id="lastly-text" class="slide level2" data-menu-title="Lastly, text">
+<section id="add-text" class="slide level2" data-menu-title="Add text">
 <h2></h2>
-<p><span class="slide-title2">Lastly: add background/other important information text</span></p>
+<p><span class="slide-title2">Add background/other important information text</span></p>
 <hr>
 <p class="body-text">
 It’s usually valuable (and important) to provide some background information/context for your app – the landing page of your app can be a great place for this. We’re going to add text to our app’s landing page (i.e.&nbsp;the <strong>About this App</strong> page) so that it looks like the example below:
@@ -2002,7 +2002,7 @@ For example, I’ve added and formatted my landing page’s text directly in the
 </section>
 <section id="includeMarkdown" class="slide level2" data-menu-title="includeMarkdown()">
 <h2></h2>
-<p><span class="slide-title2">Instead, use <code>includeMarkdown()</code> to read in text from separate <code>.md</code> files</span></p>
+<p><span class="slide-title">Instead, use <code>includeMarkdown()</code></span></p>
 <hr>
 <p class="body-text-s">
 To maintain readability and an overall tidier-looking UI, you can write and style long bodies of text in separate markdown (<code>.md</code>) files that you then read into your UI using the <code>includeMarkdown()</code> function (<strong>Important:</strong> the <code>includeMarkdown()</code> function requires the <code>{markdown}</code> package – be sure to add <code>library(markdown)</code> to your <code>global.R</code> file!).
@@ -2172,16 +2172,18 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 </section>
 <section id="app2-code" class="slide level2" data-menu-title="App #2 code (so far)">
 <h2></h2>
-<p><span class="slide-title2">Code recap for app #2v1, so far:</span></p>
+<p><span class="slide-title">Code recap for app #2, so far:</span></p>
 <hr>
-<p class="body-text-s">
-Additionally, you should have a <code>/text</code> folder within your app’s directory (<code>/two-file-app</code>, if you named it as I did) that contains two markdown files, <code>about.md</code> and <code>footer.md</code>.
-</p>
+<!-- <p class="body-text-s">Additionally, you should have a `/text` folder within your app's directory (`/two-file-app`, if you named it as I did) that contains two markdown files, `about.md` and `footer.md`.</p> -->
 <div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1"><code>global.R</code></a></li><li><a href="#tabset-5-2"><code>ui.R</code></a></li><li><a href="#tabset-5-3"><code>server.R</code></a></li></ul>
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1"><code>global.R</code></a></li><li><a href="#tabset-5-2"><code>ui.R</code></a></li><li><a href="#tabset-5-3"><code>server.R</code></a></li><li><a href="#tabset-5-4"><code>about.md</code></a></li><li><a href="#tabset-5-5"><code>footer.md</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>global.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb27-3"><a href="#cb27-3"></a><span class="fu">library</span>(lterdatasampler)</span>
@@ -2219,8 +2221,13 @@ Additionally, you should have a <code>/text</code> folder within your app’s di
 <span id="cb27-35"><a href="#cb27-35"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
 <div id="tabset-5-2">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ui.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb28-2"><a href="#cb28-2"></a>  </span>
 <span id="cb28-3"><a href="#cb28-3"></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
@@ -2327,8 +2334,13 @@ Additionally, you should have a <code>/text</code> folder within your app’s di
 <span id="cb28-104"><a href="#cb28-104"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
 <div id="tabset-5-3">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>server.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb29-2"><a href="#cb29-2"></a>  </span>
 <span id="cb29-3"><a href="#cb29-3"></a>  <span class="co"># filter for channel types ----</span></span>
@@ -2380,9 +2392,42 @@ Additionally, you should have a <code>/text</code> folder within your app’s di
 </div>
 </div>
 </div>
+<div id="tabset-5-4">
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>text/about.md</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="fu">#### Why did we build this app?</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a>This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's <span class="co">[</span><span class="ot">Long Term Ecological Research (LTER)</span><span class="co">](https://lternet.edu/)</span> sites...but primarily, it was built as a teaching tool for <span class="co">[</span><span class="ot">EDS 430 (Intro to Shiny)</span><span class="co">](https://bren.ucsb.edu/courses/eds-430)</span> -- this workshop, taught through the <span class="co">[</span><span class="ot">Master of Environmental Data Science (MEDS) program</span><span class="co">](https://ucsb-meds.github.io/)</span> at the <span class="co">[</span><span class="ot">Bren School of Environmental Science and Management</span><span class="co">](https://bren.ucsb.edu/)</span>, is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.</span>
+<span id="cb30-8"><a href="#cb30-8"></a></span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="fu">#### Where's the data? </span></span>
+<span id="cb30-12"><a href="#cb30-12"></a></span>
+<span id="cb30-13"><a href="#cb30-13"></a>Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the <span class="co">[</span><span class="ot">Andrews Forest LTER</span><span class="co">](https://andrewsforest.oregonstate.edu/)</span> and Adelie, Gentoo &amp; Chinstrap penguins of the <span class="co">[</span><span class="ot">Palmer Station LTER</span><span class="co">](https://pallter.marine.rutgers.edu/)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-5-5">
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>text/footer.md</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1"></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="end-section" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
+<section id="end" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
 <h2></h2>
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">
@@ -2394,7 +2439,7 @@ End part 2.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_729c25f6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_09c5e6d1" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

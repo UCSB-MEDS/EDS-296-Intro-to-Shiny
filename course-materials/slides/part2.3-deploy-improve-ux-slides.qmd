@@ -24,3 +24,7 @@ editor_options:
 ---
 
 {{< include /course-materials/slides/part2.3A.qmd >}}
+
+{{< include /course-materials/slides/part2.3B.qmd >}}
+
+{{< include /course-materials/slides/part2.3C.qmd >}}
