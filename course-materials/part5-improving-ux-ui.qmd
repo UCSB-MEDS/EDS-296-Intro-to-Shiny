@@ -9,16 +9,16 @@ toc: true
 #| eval: true 
 #| echo: false
 #| fig-align: "center"
-#| out-width: "80%" 
-#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
-# knitr::include_graphics("images/basic-shiny-app.png")
+#| out-width: "40%" 
+#| fig-alt: "The symbol for universal web accessibilty, a person standing with arms outstretched inside a circle"
+knitr::include_graphics("images/univ-access.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-ADD IMAGE HERE
+Thy symbol for universal web accessibility. Image Source: [Designed to Inspire](https://www.designedtoinspire.com/blog/142365-searching-for-an-accessibility-symbol/)
 :::
 
-# Required Packages
+## Required Packages
 
 *No coding required in this section!*
 

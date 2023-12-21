@@ -9,18 +9,17 @@ toc: true
 #| eval: true 
 #| echo: false
 #| fig-align: "center"
-#| out-width: "80%" 
-#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
-# knitr::include_graphics("images/basic-shiny-app.png")
+#| out-width: "60%" 
+knitr::include_graphics("images/shinydashboard.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-ADD IMAGE HERE
+An example shinydashboard which displays streaming data from the RStudio CRAN mirror logs. Explore the [dashboard](https://gallery.shinyapps.io/087-crandash/) and [source code](https://github.com/rstudio/shiny-examples/tree/main/087-crandash).
 :::
 
 ## Required Packages
 
-We'll be loading the following R packages: 
+We'll be using the following R packages: 
 
 ```{r}
 #| eval: false

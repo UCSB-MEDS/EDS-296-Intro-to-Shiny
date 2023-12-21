@@ -9,64 +9,29 @@ toc: true
 #| eval: true 
 #| echo: false
 #| fig-align: "center"
-#| out-width: "80%" 
-#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
-# knitr::include_graphics("images/basic-shiny-app.png")
+#| out-width: "60%" 
+#| fig-alt: "Oprah with her hands in the air yelling 'You get a dashboard! You get a dashboard! Everybody gets a dashboard!'"
+knitr::include_graphics("images/oprah-dashboard.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-ADD IMAGE HERE
+But do you *really* need a dashboard? Image source: [X (formally Twitter)](https://twitter.com/pokateo_/status/1651968490863984640)
 :::
 
-# Required Packages
+## Required Packages
 
-We'll be loading the following R packages: 
-
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: false
-library(shiny)
-
-```
+*No coding required in this section!*
 
 ## Required Data
 
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: false
-
-```
+*No data downloads required for this section*
 
 ## Lecture Materials
 
-Part 8 is broken down into three lessons:
+Part 8 is contained in one lesson:
 
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-4}
 ::: {.center-text}
-[**tbd**]{.teal-text .body-text-m}
+[**Shiny alternatives**]{.teal-text .body-text-m}
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.1 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.center-text}
-[**tbd**]{.teal-text .body-text-m}
-
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/tbds.qmd){.btn role="button" target="_blank"} 
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.center-text}
-[**tbd**]{.teal-text .body-text-m}
-
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.3 slides](slides/tbd.qmd){.btn role="button" target="_blank"} 
-:::
-:::
-
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 8 slides](slipart8-wrap-up-slides.qmd){.btn role="button" target="_blank"} 
 :::

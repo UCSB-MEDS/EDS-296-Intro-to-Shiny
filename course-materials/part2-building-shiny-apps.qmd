@@ -20,7 +20,7 @@ Artwork by [Allison Horst](https://allisonhorst.com/)
 
 ## Required Packages
 
-We'll be loading the following R packages: 
+We'll be using the following R packages: 
 
 ```{r}
 #| eval: false

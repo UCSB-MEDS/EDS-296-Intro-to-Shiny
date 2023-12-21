@@ -85,11 +85,12 @@ editor_options:
 ::: {.column width="50%"}
 
 <br>
+<br>
 
-<p class="body-text-s">**(a)** a `dashboardHeader` with the name of your app</p>
-<p class="body-text-s">**(b)** a `dashboardSidebar` with two `menuItem`s</p>
-<p class="body-text-s">**(c)** a landing page with background information about your app</p>
-<p class="body-text-s">**(d)** an interactive *and* reactive `leaflet` map</p>
+<p class="body-text-s">[**(a)**]{.teal-text} a `dashboardHeader` with the name of your app</p>
+<p class="body-text-s">[**(b)**]{.teal-text} a `dashboardSidebar` with two `menuItem`s</p>
+<p class="body-text-s">[**(c)**]{.teal-text} a landing page with background information about your app</p>
+<p class="body-text-s">[**(d)**]{.teal-text} an interactive *and* reactive `leaflet` map</p>
 :::
 
 ::: {.column width="50%"}
@@ -113,7 +114,7 @@ knitr::include_graphics("images/part3/final-dashboard.gif")
 
 <hr>
 
-<p class="body-text">[`shinydashboard`](https://rstudio.github.io/shinydashboard/) is just an alternative framework for building shiny apps. In other words, shiny dashboards are just shiny apps, but with some different UI elements that make building apps with a classic "dashboard" feel to them a little bit easier.</p>
+<p class="body-text">[`{shinydashboard}`](https://rstudio.github.io/shinydashboard/) is just an alternative framework for building shiny apps. In other words, shiny dashboards are just shiny apps, but with some different UI elements that make building apps with a classic "dashboard" feel to them a little bit easier.</p>
 
 ```{r}
 #| eval: true
@@ -200,13 +201,13 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 ##  {#setup-dashboard-directory data-menu-title="Dashboard Setup"}
 
-[Setup your shiny dashboard]{.slide-title2}
+[Setup your shiny dashboard]{.slide-title}
 
 <hr>
 
-<p class="body-text bottombr">First, create a subdirectory called `/shinydashboard` and add a `ui.R`,  `server.R`, and `global.R` file.</p>
+<p class="body-text bottombr">First, create a subdirectory called `shinydashboard/` and add a `ui.R`,  `server.R`, and `global.R` file.</p>
 
-<p class="body-text-s bottombr">Add the server function to `server.R` and the three main UI components (header, sidebar, and body) to our dashboard page -- I typically recommend splitting the UI into separate pieces, then combining them into a `dashboardPage` the end of `ui.R` (as shown below) – this can help with organization as you app grows in complexity.</p>
+<p class="body-text-s bottombr">Add the server function to `server.R` and the three main UI components (header, sidebar, and body) to our dashboard page -- **I typically recommend splitting the UI into separate pieces, then combining them into a `dashboardPage` the end of `ui.R`** (as shown below) – this can help with organization as you app grows in complexity.</p>
 
 <p class="body-text-s bottombr">We'll set our dashboard aside for now while we work on downloading and pre-processing our data, as well as practice creating our data visualization *outside* of our app.</p>
 
@@ -214,7 +215,7 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 ## `ui.R`
 
-```{r filename="ui.R"}
+```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true
 #........................dashboardHeader.........................
@@ -232,7 +233,7 @@ dashboardPage(header, sidebar, body)
 
 ## `server.R`
 
-```{r filename="server.R"}
+```{r filename="~/shinydashboard/server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {}
@@ -240,7 +241,7 @@ server <- function(input, output) {}
 
 ## `global.R` 
 
-```{r filename="server.R"}
+```{r filename="~/shinydashboard/global.R"}
 #| eval: false
 #| echo: true
 # LOAD LIBRARIES ----
@@ -249,6 +250,30 @@ library(shinydashboard)
 ```
 
 :::
+
+---
+
+##  {#run-app-a-lot data-menu-title="Run app after each addition"}
+
+[Be sure to run your app after each new addition!]{.slide-title2}
+
+<hr>
+
+<br>
+
+[From here on out, [**you should be running your app after each new addition**]{.teal-text} to check that things work as expected -- aim to do so after each slide where code is added.]{.body-text-m}
+
+<br>
+
+. . . 
+
+[I don't explicitly call to do so on each slide, but this is a super important practice to get into!]{.body-text-m}
+
+<br>
+
+. . . 
+
+[Remember to give yourself proper [**space between lines**]{.teal-text} *and* [**add annotations**]{.teal-text} at the start and end of each parentheses -- *I highly recommend following along with the formatting I use throughout these materials.*]{.body-text-m} 
 
 ---
 
@@ -288,23 +313,23 @@ knitr::include_graphics("images/part3/adc_logo.png")
 
 ##  {#processing-storing-data data-menu-title="Processing & Storing Data"}
 
-[Pre-processing data is critical]{.slide-title3}
+[Pre-processing data is critical]{.slide-title}
 
 <hr>
 
-<p class="body-text-s">Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who "owns" those data. It is likely that you'll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Dean Attali's article, [Persistent data storage in Shiny apps](https://shiny.rstudio.com/articles/persistent-data-storage.html) to start. Because we are going to be working with a relatively small data set, we'll be downloading and storing our data locally (i.e. on our machines and in our GitHub repo).</p>
+<p class="body-text-s">**Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who "owns" those data.** It is likely that you'll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens' article, [Where to store your Shiny application data](https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data) to start. Because we are going to be working with a relatively small data set today, we'll bundle our data file with our dashboard inside our repository.</p>
 
-<p class="body-text-s topbr">Regardless of where you choose to store your data, you can help your application more quickly process inputs/outputs by providing it *only as much data as needed to run*. This means **pre-processing** your data.</p>
+<p class="body-text-s topbr">Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it *only as much data as needed to run*. This means **pre-processing** your data.</p>
 
 . . . 
 
 :::: {.columns}
 
-::: {.column width="45%"}
-<p class="body-text-s topbr">[`FCWO_lakemonitoringdata_2011_2022_daily.csv`](https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3) contains **8 attributes** (variables) and **18,894 observations** collected from a set of **11 lakes** located in the Fish Creek Watershed in northern Alaska between 2011-2022. We'll download and save the file to a `raw_data/` folder in the root directory of our repository. We'll then pre-process the data in a separate script(s) saved to `scratch/` and save a cleaned/processed version of the data to our app's directory, `/shinydashboard/data/lake_data_processed.csv`. Your repository structure should look similar to example on the right:</p>
+::: {.column width="50%"}
+<p class="body-text-s topbr">[`FCWO_lakemonitoringdata_2011_2022_daily.csv`](https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3) contains **8 attributes** (variables) and **18,994 observations** collected from a set of **11 lakes** located in the Fish Creek Watershed in northern Alaska between 2011-2022. We'll download and save the file to a `raw_data/` folder in the root directory of our repository. We'll then pre-process the data in a separate script(s) saved to `scratch/` and save a cleaned / processed version of the data to our app's directory, `/shinydashboard/data/lake_data_processed.csv`. Your repository structure should look similar to example on the right:</p>
 :::
 
-::: {.column width="55%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
@@ -364,7 +389,7 @@ knitr::include_graphics("images/part3/lakes_df.png")
 
 <hr>
 
-```{r filename="scratch/data_processing_app3_shinydashboard.R"}
+```{r filename="~/scratch/data_processing_app3_shinydashboard.R"}
 #| eval: false
 #| echo: true
 
@@ -417,7 +442,7 @@ write_csv(x = unique_lakes, file = "shinydashboard/data/lake_data_processed.csv"
 
 <hr>
 
-<p class="body-text-s">Oftentimes, you may choose to save your processed data frame as a `.rds` file (a data file format, native to R, which stores a single R object). `.rds` file are relatively small (and therefore take up little storage space), take less time to import/export, and preserve data types and classes (e.g. factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality -- you can't open a `.rds` file outside of R or read it in with another programming language (e.g. Python).</p>
+<p class="body-text-s">Oftentimes, you may choose to save your processed data frame as a `.rds` file (a data file format, native to R, which stores a single R object). `.rds` file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g. factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality -- you can't open a `.rds` file outside of R or read it in with another programming language (e.g. Python).</p>
 
 <p class="body-text-s topbr">While we'll be sticking to `.csv` files in this workshop, it's worth experimenting with `.rds` when you begin working with your own (likely larger) data. You can read in (`readRDS()`) and write out to (`saveRDS()`) `.rds` files as easily as `.csv` files.</p>
 
@@ -434,7 +459,7 @@ knitr::include_graphics("images/part3/rds.png")
 
 ##  {#draft-leaflet data-menu-title="Draft Leaflet"}
 
-[Draft `leaflet` map]{.slide-title2}
+[Draft `leaflet` map]{.slide-title}
 
 <hr>
 
@@ -480,7 +505,7 @@ map
 ```
 
 ## code
-```{r filename="scratch/practice_script_app3_shinydashboard.R"}
+```{r filename="~/scratch/practice_script_app3_shinydashboard.R"}
 #| eval: false
 #| echo: true
 #..............................SETUP.............................
@@ -575,7 +600,7 @@ map
 
 ## code
 
-```{r filename="scratch/practice_script_app3_shinydashboard.R"}
+```{r filename="~/scratch/practice_script_app3_shinydashboard.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "10-15|31-37"
@@ -623,7 +648,7 @@ leaflet() |>
 
 ##  {#sketch-ui data-menu-title="Sketch the UI"}
 
-[Sketch out our dashboard UI]{.slide-title2}
+[Sketch out our dashboard UI]{.slide-title}
 
 <hr>
 
@@ -669,14 +694,14 @@ knitr::include_graphics("images/part3/dashboard_sketch.png")
 
 <p class="body-text-s">Next, we'll build our `dashboardSidebar()`. Add a `sidebarMenu()` that contains two `menuItem`s. Be sure to provide each `menuItem()` with `text` as you'd like it to appear in your app (for me, that's **Welcome** and **Dashboard**), and a `tabName` which will be used to place `dashboardBody()` content in the appropriate `menuItem()`. Optionally, you can provide an icon. By default, `icon()` uses icons from [FontAwesome](https://fontawesome.com/).</p>
 
-```{r filename="ui.R"}
+```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "4-6|13-19"
 #........................dashboardHeader.........................
 header <- dashboardHeader(
   
-  # add title ----
+  # title ----
   title = "Fish Creek Watershed Lake Monitoring",
   titleWidth = 400
   
@@ -712,7 +737,7 @@ dashboardPage(header, sidebar, body)
 
 <p class="body-text-s">Next, we'll create `tabItems` in our `dashboardBody` -- we'll make a `tabItem` (singular) for each `menuItem` in our `dashboardSidebar`. In order to match a `menuItem` and a `tabItem`, ensure that they have matching a `tabName` (e.g. any content added to the **dashboard** `tabItem` will appear under the **dashboard** `menuItem`).</p>
 
-```{r filename="ui.R"}
+```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true 
 #| code-line-numbers: "26-43"
@@ -776,7 +801,7 @@ dashboardPage(header, sidebar, body)
 
 <p class="body-text-s">[Boxes](https://rstudio.github.io/shinydashboard/structure.html#boxes) are the primary building blocks of shinydashboards and can contain almost any Shiny UI element (e.g. text, inputs, outputs). Start by adding two side-by-side boxes to our **dashboard** tab inside a `fluidRow()`. Together, their widths will add up to 12 (the total width of a browser page). These boxes will eventually contain our `sliderInput`s and our `leafletOutput`.</p>
 
-```{r filename="ui.R"} 
+```{r filename="~/shinydashboard/ui.R"} 
 #| eval: false
 #| echo: true
 #| code-line-numbers: "39-56"
@@ -855,7 +880,7 @@ dashboardPage(header, sidebar, body)
 
 <p class="body-text-s">Lastly, add boxes to our **welcome** tab We'll use `column`s to place one box on the left-hand side of our page, and two stacked boxes on the right-hand side. Each `column` will take up half the page (**Note:** *For column-based layouts, use `NULL` for the box width, as the width is set by the column that contains the box*). We can create two `fluidRow`s within the right-hand column to stack two boxes vertically.</p>
 
-```{r filename="ui.R"}
+```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "32-71"
@@ -973,8 +998,8 @@ dashboardPage(header, sidebar, body)
 
 <hr>
 
-<p class="body-text">Remember to load your *pre-processed* data, which should live in the `/data` folder within your app's directory.</p>
-```{r filename="global.R"}
+<p class="body-text">Remember to load your *pre-processed* data, which should live in the `data/` folder within your app's directory.</p>
+```{r filename="~/shinydashboard/global.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "4-9"
@@ -989,6 +1014,13 @@ library(shinycssloaders)
 lake_data <- read_csv("data/lake_data_processed.csv")
 ```
 
+. . .
+
+**Some important notes:**
+
+- [Avoid using `here::here()` in your shiny apps, as it can cause some unexpected issues (read more about it in [this discussion](https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505))]{.body-text-s}
+- [The file path specified for reading in our data is *relative* to the application folder (`shinydashboard/`). *However* this line will not run alone within your script (you'd need to update it to read, `read_csv("shinydashboard/data/lake_data_processed.csv")`)]{.body-text-s}
+
 ---
 
 ##  {#add-sliderInput-leafletMap data-menu-title="Add Widget & Leaflet Map"}
@@ -999,10 +1031,10 @@ lake_data <- read_csv("data/lake_data_processed.csv")
 
 <p class="body-text-s">Start by adding just one `sliderInput` (for selecting a range of lake `Elevation`s) to the left-hand box in the **dashboard** tab. Then, add a `leafletOutput` to create a placeholder space for our map, along with a Spinner animation (from the `{shinycssloaders}` package). While we're here, we can also add `title`s to each box.</p>
 
-```{r filename="ui.R"}
+```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "84-89|96-99"
+#| code-line-numbers: "84-89|96-100"
 #........................dashboardHeader.........................
 header <- dashboardHeader(
   
@@ -1101,7 +1133,8 @@ body <- dashboardBody(
                   title = tags$strong("Monitored lakes within Fish Creek Watershed:"),
 
                   # leaflet output ----
-                  leafletOutput(outputId = "lake_map") |> withSpinner(type = 1, color = "#4287f5")
+                  leafletOutput(outputId = "lake_map_output") |> 
+                    withSpinner(type = 1, color = "#4287f5")
 
               ) # END leaflet box
 
@@ -1134,7 +1167,7 @@ dashboardPage(header, sidebar, body)
 server <- function(input, output) {
   
   # filter lake data ----
-  filtered_lakes <- reactive ({
+  filtered_lakes_df <- reactive ({
     
     lake_data |>
       filter(Elevation >= input$elevation_slider_input[1] & Elevation <= input$elevation_slider_input[2])
@@ -1144,7 +1177,7 @@ server <- function(input, output) {
   
   
   # build leaflet map ----
-  output$lake_map <- renderLeaflet({
+  output$lake_map_output <- renderLeaflet({
     
     leaflet() |>
       
@@ -1158,12 +1191,12 @@ server <- function(input, output) {
       addMiniMap(toggleDisplay = TRUE, minimized = TRUE) |>
       
       # add markers
-      addMarkers(data =  filtered_lakes(),
-                 lng = filtered_lakes()$Longitude, lat = filtered_lakes()$Latitude,
-                 popup = paste("Site Name:", filtered_lakes()$Site, "<br>",
-                               "Elevation:", filtered_lakes()$Elevation, "meters (above SL)", "<br>",
-                               "Avg Depth:", filtered_lakes()$AvgDepth, "meters", "<br>",
-                               "Avg Lake Bed Temperature:", filtered_lakes()$AvgTemp, "deg Celsius"))
+      addMarkers(data =  filtered_lakes_df(),
+                 lng = filtered_lakes_df()$Longitude, lat = filtered_lakes_df()$Latitude,
+                 popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
+                               "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
+                               "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
+                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "deg Celsius"))
     
   })
   
@@ -1340,7 +1373,8 @@ body <- dashboardBody(
                   title = tags$strong("Monitored lakes within Fish Creek Watershed:"),
 
                   # leaflet output ----
-                  leafletOutput(outputId = "lake_map") |> withSpinner(type = 1, color = "#4287f5")
+                  leafletOutput(outputId = "lake_map_output") |> 
+                    withSpinner(type = 1, color = "#4287f5")
 
               ) # END leaflet box
 
@@ -1364,7 +1398,7 @@ dashboardPage(header, sidebar, body)
 server <- function(input, output) {
   
   # filter lake data ----
-  filtered_lakes <- reactive ({
+  filtered_lakes_df <- reactive ({
     
     lake_data |>
       filter(Elevation >= input$elevation_slider_input[1] & Elevation <= input$elevation_slider_input[2])  |>
@@ -1376,7 +1410,7 @@ server <- function(input, output) {
   
   
   # build leaflet map ----
-  output$lake_map <- renderLeaflet({
+  output$lake_map_output <- renderLeaflet({
     
     leaflet() |>
       
@@ -1390,12 +1424,12 @@ server <- function(input, output) {
       addMiniMap(toggleDisplay = TRUE, minimized = TRUE) |>
       
       # add markers
-      addMarkers(data =  filtered_lakes(),
-                 lng = filtered_lakes()$Longitude, lat = filtered_lakes()$Latitude,
-                 popup = paste("Site Name:", filtered_lakes()$Site, "<br>",
-                               "Elevation:", filtered_lakes()$Elevation, "meters (above SL)", "<br>",
-                               "Avg Depth:", filtered_lakes()$AvgDepth, "meters", "<br>",
-                               "Avg Lake Bed Temperature:", filtered_lakes()$AvgTemp, "deg Celsius"))
+      addMarkers(data =  filtered_lakes_df(),
+                 lng = filtered_lakes_df()$Longitude, lat = filtered_lakes_df()$Latitude,
+                 popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
+                               "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
+                               "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
+                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "deg Celsius"))
     
   })
   
@@ -1414,20 +1448,20 @@ server <- function(input, output) {
 
 [**To Do:**]{.body-text-m}
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Add titles to each box</p>
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Create a `/text` folder within your app's directory and add three markdown (`.md`) files. Write/format text for the background info (left), data citation (top-right), and disclaimer (bottom-right) boxes. Example text below:</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Add titles to each box on the **Welcome** page</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Create a `text/` folder within your app's directory and add three markdown (`.md`) files. Write / format text for the background info (left), data citation (top-right), and disclaimer (bottom-right) boxes. Example text below:</p>
 
 ::: {.panel-tabset}
 
 ## `intro.md`
-```{markdown filename="text/intro.md"}
+```{markdown filename="~/shinydashboard/text/intro.md"}
 #| eval: false
 #| echo: true
 The [Fish Creek Watershed Observatory (FCWO)](http://www.fishcreekwatershed.org/) is a focal watershed within the [National Petroleum Reserve in Alaska (NPR-A)](https://www.blm.gov/programs/energy-and-minerals/oil-and-gas/about/alaska/NPR-A). Targeted lake and stream monitoring within the watershed provide site-specific data prior to and after the establishment of new petroleum development, as well as insight into dynamics related to climate change and variability. Eleven lakes of interest (Harry Potter, Hipbone, Iceshove, L9817, L9819, L9820, Little Alaska, Lower Snowman, M9925, Middle Snowman, and Serenity) are featured in this dashboard.
 ```
 
 ## `citation.md`
-```{markdown filename="text/citation.md"}
+```{markdown filename="~/shinydashboard/text/citation.md"}
 #| eval: false
 #| echo: true
 Data presented in this dashboard were collected as part of the [Fish Creek Watershed Observatory](http://www.fishcreekwatershed.org/) are archived and publicly accessible on the NSF [Arctic Data Center](https://arcticdata.io/). **Citation:** 
@@ -1436,7 +1470,7 @@ Data presented in this dashboard were collected as part of the [Fish Creek Water
 ```
 
 ## `disclaimer.md`
-```{markdown filename="text/disclaimer.md"}
+```{markdown filename="~/shinydashboard/text/disclaimer.md"}
 #| eval: false
 #| echo: true
 This app is build for demonstration/teaching purposes only and is not paid for or endorsed by the Fish Creek Watershed Observatory or affiliates in any way. The data as presented here are not intended for publication nor scientific interpretation. 
@@ -1461,6 +1495,25 @@ This app is build for demonstration/teaching purposes only and is not paid for o
 <p class="body-text-s">Press the right arrow key to advance through the newly added lines of code.</p>
 
 ::: {.panel-tabset}
+
+## `global.R`
+
+```{r filename="global.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "7"
+# LOAD LIBRARIES ----
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+library(leaflet)
+library(shinycssloaders)
+library(markdown)
+
+# READ IN DATA ----
+lake_data <- read_csv("data/lake_data_processed.csv")
+```
+
 
 ## `ui.R`
 
@@ -1593,24 +1646,6 @@ body <- dashboardBody(
 dashboardPage(header, sidebar, body)
 ```
 
-## `global.R`
-
-```{r filename="global.R"}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "7"
-# LOAD LIBRARIES ----
-library(shiny)
-library(shinydashboard)
-library(tidyverse)
-library(leaflet)
-library(shinycssloaders)
-library(markdown)
-
-# READ IN DATA ----
-lake_data <- read_csv("data/lake_data_processed.csv")
-```
-
 :::
 
 ---
@@ -1621,9 +1656,9 @@ lake_data <- read_csv("data/lake_data_processed.csv")
 
 <hr>
 
-<p class="body-text-s">As a final touch, let's add an image to the Welcome page, inside the left-hand box beneath our intro text. First, **create a `/www` folder inside your app's directory** (refer back to [this slide](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part1.2-setup-app-slides.html#/repo-structure) for a description of this special directory). Download the map of the Fish Creek Watershed from FCWO's website [here](http://www.fishcreekwatershed.org/images/FishCreekWatershedSiteMap_2020.jpg) and save it to your `/www` directory.</p>
+<p class="body-text-s">As a final touch, let's add an image to the Welcome page, inside the left-hand box beneath our intro text. First, **create a `www/` folder inside your app's directory** (refer back to [lecture 1.2](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part1.2-setup-app-slides.html#/repo-structure) for a description of this special directory). Download the map of the Fish Creek Watershed from FCWO's website [here](http://www.fishcreekwatershed.org/images/FishCreekWatershedSiteMap_2020.jpg) and save it to your `www/` directory.</p>
 
-<p class="body-text-s">Next, use the `img` tag to add your image. Supply a file path, relative to your `/www` directory, using the `src` argument, and alt text using the `alt` argument.</p>
+<p class="body-text-s">Next, use the `img` tag to add your image. Supply a file path, relative to your `www/` directory, using the `src` argument, and add alt text using the `alt` argument.</p>
 
 ```{r filename="ui.R"}
 #| eval: false
@@ -1669,7 +1704,7 @@ body <- dashboardBody(
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
                        includeMarkdown("text/intro.md"),
                        tags$img(src = "FishCreekWatershedSiteMap_2020.jpeg", 
-                           alt = "A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve.") 
+                                alt = "A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve.") 
 
                    ) # END box
 
@@ -1829,8 +1864,8 @@ body <- dashboardBody(
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
                        includeMarkdown("text/intro.md"),
                        tags$img(src = "FishCreekWatershedSiteMap_2020.jpeg", 
-                           alt = "A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve.",
-                       style = "max-width: 100%;"),
+                                alt = "A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve.",
+                                style = "max-width: 100%;"),
                        tags$h6(tags$em("Map Source:", tags$a(href = "http://www.fishcreekwatershed.org/", "FCWO")),
                                style = "text-align: center;")
 
@@ -1946,6 +1981,23 @@ knitr::include_graphics("images/part3/final-dashboard.gif")
 
 ::: {.panel-tabset}
 
+## `global.R`
+
+```{r filename="global.R"}
+#| eval: false
+#| echo: true
+# LOAD LIBRARIES ----
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+library(shinycssloaders)
+library(leaflet)
+library(markdown)
+
+# READ IN DATA ----
+lake_data <- read_csv("data/lake_data_processed.csv")
+```
+
 ## `ui.R`
 
 ```{r filename="ui.R"}
@@ -1976,9 +2028,6 @@ sidebar <- dashboardSidebar(
 #..........................dashboardBody.........................
 body <- dashboardBody(
   
-  # ---- set theme using {fresh} ----
-  # fresh::use_theme("shinydashboard_fresh_theme.css"),
-  
   # tabItems ----
   tabItems(
 
@@ -1994,8 +2043,8 @@ body <- dashboardBody(
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
                        includeMarkdown("text/intro.md"),
                        tags$img(src = "FishCreekWatershedSiteMap_2020.jpeg", 
-                           alt = "A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve.",
-                       style = "max-width: 100%;"),
+                                alt = "A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve.",
+                                style = "max-width: 100%;"),
                        tags$h6(tags$em("Map Source:", tags$a(href = "http://www.fishcreekwatershed.org/", "FCWO")),
                                style = "text-align: center;")
 
@@ -2068,7 +2117,8 @@ body <- dashboardBody(
                   title = tags$strong("Monitored lakes within Fish Creek Watershed:"),
 
                   # leaflet output ----
-                  leafletOutput(outputId = "lake_map") |> withSpinner(type = 1, color = "#4287f5")
+                  leafletOutput(outputId = "lake_map_output") |> 
+                    withSpinner(type = 1, color = "#4287f5")
 
               ) # END leaflet box
 
@@ -2092,7 +2142,7 @@ dashboardPage(header, sidebar, body)
 server <- function(input, output) {
   
   # filter lake data ----
-  filtered_lakes <- reactive ({
+  filtered_lakes_df <- reactive ({
     
     lake_data |>
       filter(Elevation >= input$elevation_slider_input[1] & Elevation <= input$elevation_slider_input[2])  |>
@@ -2104,7 +2154,7 @@ server <- function(input, output) {
   
   
   # build leaflet map ----
-  output$lake_map <- renderLeaflet({
+  output$lake_map_output <- renderLeaflet({
     
     leaflet() |>
       
@@ -2118,40 +2168,23 @@ server <- function(input, output) {
       addMiniMap(toggleDisplay = TRUE, minimized = TRUE) |>
       
       # add markers
-      addMarkers(data =  filtered_lakes(),
-                 lng = filtered_lakes()$Longitude, lat = filtered_lakes()$Latitude,
-                 popup = paste("Site Name:", filtered_lakes()$Site, "<br>",
-                               "Elevation:", filtered_lakes()$Elevation, "meters (above SL)", "<br>",
-                               "Avg Depth:", filtered_lakes()$AvgDepth, "meters", "<br>",
-                               "Avg Lake Bed Temperature:", filtered_lakes()$AvgTemp, "deg Celsius"))
+      addMarkers(data =  filtered_lakes_df(),
+                 lng = filtered_lakes_df()$Longitude, lat = filtered_lakes_df()$Latitude,
+                 popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
+                               "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
+                               "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
+                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "deg Celsius"))
     
   })
   
 }
 ```
 
-## `global.R`
-
-```{r filename="global.R"}
-#| eval: false
-#| echo: true
-# LOAD LIBRARIES ----
-library(shiny)
-library(shinydashboard)
-library(tidyverse)
-library(shinycssloaders)
-library(leaflet)
-library(markdown)
-
-# READ IN DATA ----
-lake_data <- read_csv("data/lake_data_processed.csv")
-```
-
 :::
 
 ---
 
-##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">End part 3</p>

@@ -480,18 +480,18 @@ In this section, we’ll be building a <strong>shinydashboard</strong> using dat
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br></p>
+<p><br> <br></p>
 <p class="body-text-s">
-<strong>(a)</strong> a <code>dashboardHeader</code> with the name of your app
+<span class="teal-text"><strong>(a)</strong></span> a <code>dashboardHeader</code> with the name of your app
 </p>
 <p class="body-text-s">
-<strong>(b)</strong> a <code>dashboardSidebar</code> with two <code>menuItem</code>s
+<span class="teal-text"><strong>(b)</strong></span> a <code>dashboardSidebar</code> with two <code>menuItem</code>s
 </p>
 <p class="body-text-s">
-<strong>(c)</strong> a landing page with background information about your app
+<span class="teal-text"><strong>(c)</strong></span> a landing page with background information about your app
 </p>
 <p class="body-text-s">
-<strong>(d)</strong> an interactive <em>and</em> reactive <code>leaflet</code> map
+<span class="teal-text"><strong>(d)</strong></span> an interactive <em>and</em> reactive <code>leaflet</code> map
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -511,7 +511,7 @@ In this section, we’ll be building a <strong>shinydashboard</strong> using dat
 <p><span class="slide-title2">But first, what do we mean by a shiny “dashboard”?</span></p>
 <hr>
 <p class="body-text">
-<a href="https://rstudio.github.io/shinydashboard/"><code>shinydashboard</code></a> is just an alternative framework for building shiny apps. In other words, shiny dashboards are just shiny apps, but with some different UI elements that make building apps with a classic “dashboard” feel to them a little bit easier.
+<a href="https://rstudio.github.io/shinydashboard/"><code>{shinydashboard}</code></a> is just an alternative framework for building shiny apps. In other words, shiny dashboards are just shiny apps, but with some different UI elements that make building apps with a classic “dashboard” feel to them a little bit easier.
 </p>
 
 <img data-src="images/part3/simple_dashboard.png" style="width:100.0%" alt="A simple shinydashboard with two boxes (one containing a histogram and one containing a sliderInput) in the body. The header reads 'Basic tabs' and the sidebar has two menu items: Dashboard and Widgets." class="r-stretch quarto-figure-center"></section>
@@ -581,13 +581,13 @@ The main difference between a <strong>shiny app</strong> and a <strong>shinydash
 </section>
 <section id="setup-dashboard-directory" class="slide level2" data-menu-title="Dashboard Setup">
 <h2></h2>
-<p><span class="slide-title2">Setup your shiny dashboard</span></p>
+<p><span class="slide-title">Setup your shiny dashboard</span></p>
 <hr>
 <p class="body-text bottombr">
-First, create a subdirectory called <code>/shinydashboard</code> and add a <code>ui.R</code>, <code>server.R</code>, and <code>global.R</code> file.
+First, create a subdirectory called <code>shinydashboard/</code> and add a <code>ui.R</code>, <code>server.R</code>, and <code>global.R</code> file.
 </p>
 <p class="body-text-s bottombr">
-Add the server function to <code>server.R</code> and the three main UI components (header, sidebar, and body) to our dashboard page – I typically recommend splitting the UI into separate pieces, then combining them into a <code>dashboardPage</code> the end of <code>ui.R</code> (as shown below) – this can help with organization as you app grows in complexity.
+Add the server function to <code>server.R</code> and the three main UI components (header, sidebar, and body) to our dashboard page – <strong>I typically recommend splitting the UI into separate pieces, then combining them into a <code>dashboardPage</code> the end of <code>ui.R</code></strong> (as shown below) – this can help with organization as you app grows in complexity.
 </p>
 <p class="body-text-s bottombr">
 We’ll set our dashboard aside for now while we work on downloading and pre-processing our data, as well as practice creating our data visualization <em>outside</em> of our app.
@@ -599,7 +599,7 @@ We’ll set our dashboard aside for now while we work on downloading and pre-pro
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/shinydashboard/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>()</span>
@@ -619,7 +619,7 @@ We’ll set our dashboard aside for now while we work on downloading and pre-pro
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>server.R</strong></pre>
+<pre><strong>~/shinydashboard/server.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -629,7 +629,7 @@ We’ll set our dashboard aside for now while we work on downloading and pre-pro
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>server.R</strong></pre>
+<pre><strong>~/shinydashboard/global.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(shiny)</span>
@@ -638,6 +638,21 @@ We’ll set our dashboard aside for now while we work on downloading and pre-pro
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="run-app-a-lot" class="slide level2" data-menu-title="Run app after each addition">
+<h2></h2>
+<p><span class="slide-title2">Be sure to run your app after each new addition!</span></p>
+<hr>
+<p><br></p>
+<p><span class="body-text-m">From here on out, <span class="teal-text"><strong>you should be running your app after each new addition</strong></span> to check that things work as expected – aim to do so after each slide where code is added.</span></p>
+<p><br></p>
+<div class="fragment">
+<p><span class="body-text-m">I don’t explicitly call to do so on each slide, but this is a super important practice to get into!</span></p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p><span class="body-text-m">Remember to give yourself proper <span class="teal-text"><strong>space between lines</strong></span> <em>and</em> <span class="teal-text"><strong>add annotations</strong></span> at the start and end of each parentheses – <em>I highly recommend following along with the formatting I use throughout these materials.</em></span></p>
 </div>
 </section>
 <section id="begin-with-data" class="slide level2" data-menu-title="Begin with Data">
@@ -673,21 +688,21 @@ Christopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water d
 </section>
 <section id="processing-storing-data" class="slide level2" data-menu-title="Processing &amp; Storing Data">
 <h2></h2>
-<p><span class="slide-title3">Pre-processing data is critical</span></p>
+<p><span class="slide-title">Pre-processing data is critical</span></p>
 <hr>
 <p class="body-text-s">
-Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who “owns” those data. It is likely that you’ll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Dean Attali’s article, <a href="https://shiny.rstudio.com/articles/persistent-data-storage.html">Persistent data storage in Shiny apps</a> to start. Because we are going to be working with a relatively small data set, we’ll be downloading and storing our data locally (i.e.&nbsp;on our machines and in our GitHub repo).
+<strong>Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who “owns” those data.</strong> It is likely that you’ll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens’ article, <a href="https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data">Where to store your Shiny application data</a> to start. Because we are going to be working with a relatively small data set today, we’ll bundle our data file with our dashboard inside our repository.
 </p>
 <p class="body-text-s topbr">
-Regardless of where you choose to store your data, you can help your application more quickly process inputs/outputs by providing it <em>only as much data as needed to run</em>. This means <strong>pre-processing</strong> your data.
+Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it <em>only as much data as needed to run</em>. This means <strong>pre-processing</strong> your data.
 </p>
 <div class="fragment">
 <div class="columns">
-<div class="column" style="width:45%;">
+<div class="column" style="width:50%;">
 <p class="body-text-s topbr">
-<a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3"><code>FCWO_lakemonitoringdata_2011_2022_daily.csv</code></a> contains <strong>8 attributes</strong> (variables) and <strong>18,894 observations</strong> collected from a set of <strong>11 lakes</strong> located in the Fish Creek Watershed in northern Alaska between 2011-2022. We’ll download and save the file to a <code>raw_data/</code> folder in the root directory of our repository. We’ll then pre-process the data in a separate script(s) saved to <code>scratch/</code> and save a cleaned/processed version of the data to our app’s directory, <code>/shinydashboard/data/lake_data_processed.csv</code>. Your repository structure should look similar to example on the right:
+<a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3"><code>FCWO_lakemonitoringdata_2011_2022_daily.csv</code></a> contains <strong>8 attributes</strong> (variables) and <strong>18,994 observations</strong> collected from a set of <strong>11 lakes</strong> located in the Fish Creek Watershed in northern Alaska between 2011-2022. We’ll download and save the file to a <code>raw_data/</code> folder in the root directory of our repository. We’ll then pre-process the data in a separate script(s) saved to <code>scratch/</code> and save a cleaned / processed version of the data to our app’s directory, <code>/shinydashboard/data/lake_data_processed.csv</code>. Your repository structure should look similar to example on the right:
 </p>
-</div><div class="column" style="width:55%;">
+</div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -740,7 +755,7 @@ Our goal is to create a <code>leaflet</code> map with makers placed on each of t
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>scratch/data_processing_app3_shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/data_processing_app3_shinydashboard.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#...............................................................................</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#                                                                              .</span></span>
@@ -789,7 +804,7 @@ Our goal is to create a <code>leaflet</code> map with makers placed on each of t
 <p><span class="slide-title">A note on file types</span></p>
 <hr>
 <p class="body-text-s">
-Oftentimes, you may choose to save your processed data frame as a <code>.rds</code> file (a data file format, native to R, which stores a single R object). <code>.rds</code> file are relatively small (and therefore take up little storage space), take less time to import/export, and preserve data types and classes (e.g.&nbsp;factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality – you can’t open a <code>.rds</code> file outside of R or read it in with another programming language (e.g.&nbsp;Python).
+Oftentimes, you may choose to save your processed data frame as a <code>.rds</code> file (a data file format, native to R, which stores a single R object). <code>.rds</code> file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g.&nbsp;factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality – you can’t open a <code>.rds</code> file outside of R or read it in with another programming language (e.g.&nbsp;Python).
 </p>
 <p class="body-text-s topbr">
 While we’ll be sticking to <code>.csv</code> files in this workshop, it’s worth experimenting with <code>.rds</code> when you begin working with your own (likely larger) data. You can read in (<code>readRDS()</code>) and write out to (<code>saveRDS()</code>) <code>.rds</code> files as easily as <code>.csv</code> files.
@@ -798,7 +813,7 @@ While we’ll be sticking to <code>.csv</code> files in this workshop, it’s wo
 <img data-src="images/part3/rds.png" style="width:100.0%" alt="The R language logo overlaid on top of a database stack -- often used to represent the rds data file format." class="r-stretch quarto-figure-center"></section>
 <section id="draft-leaflet" class="slide level2" data-menu-title="Draft Leaflet">
 <h2></h2>
-<p><span class="slide-title2">Draft <code>leaflet</code> map</span></p>
+<p><span class="slide-title">Draft <code>leaflet</code> map</span></p>
 <hr>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">leaflet map</a></li><li><a href="#tabset-2-2">code</a></li></ul>
@@ -809,8 +824,8 @@ There are lots of ways to customize <code>leaflet</code> maps. We’ll be keepin
 </p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f29544360e71d6cf338e" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-f29544360e71d6cf338e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter <br> Elevation: 12.3 meters (above SL) <br> Avg Depth: 2.3 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: Hipbone <br> Elevation: 21 meters (above SL) <br> Avg Depth: 2 meters <br> Avg Lake Bed Temperature: 10.7 deg Celsius","Site Name: Iceshove <br> Elevation: 20.3 meters (above SL) <br> Avg Depth: 1.8 meters <br> Avg Lake Bed Temperature: 10.9 deg Celsius","Site Name: L9817 <br> Elevation: 16.1 meters (above SL) <br> Avg Depth: 2.6 meters <br> Avg Lake Bed Temperature: 5.9 deg Celsius","Site Name: L9819 <br> Elevation: 8.2 meters (above SL) <br> Avg Depth: 1.7 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: L9820 <br> Elevation: 9.5 meters (above SL) <br> Avg Depth: 1.1 meters <br> Avg Lake Bed Temperature: 5.5 deg Celsius","Site Name: LittleAlaska <br> Elevation: 28.9 meters (above SL) <br> Avg Depth: 1.2 meters <br> Avg Lake Bed Temperature: 5.2 deg Celsius","Site Name: LowerSnowman <br> Elevation: 27.4 meters (above SL) <br> Avg Depth: 1.2 meters <br> Avg Lake Bed Temperature: 7.2 deg Celsius","Site Name: M9925 <br> Elevation: 14.7 meters (above SL) <br> Avg Depth: 0.9 meters <br> Avg Lake Bed Temperature: 7 deg Celsius","Site Name: MiddleSnowman <br> Elevation: 26.3 meters (above SL) <br> Avg Depth: 1.1 meters <br> Avg Lake Bed Temperature: 6.4 deg Celsius","Site Name: Serenity <br> Elevation: 12 meters (above SL) <br> Avg Depth: 3.9 meters <br> Avg Lake Bed Temperature: 10.7 deg Celsius"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b70c2086837af4172f3b" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-b70c2086837af4172f3b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter <br> Elevation: 12.3 meters (above SL) <br> Avg Depth: 2.3 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: Hipbone <br> Elevation: 21 meters (above SL) <br> Avg Depth: 2 meters <br> Avg Lake Bed Temperature: 10.7 deg Celsius","Site Name: Iceshove <br> Elevation: 20.3 meters (above SL) <br> Avg Depth: 1.8 meters <br> Avg Lake Bed Temperature: 10.9 deg Celsius","Site Name: L9817 <br> Elevation: 16.1 meters (above SL) <br> Avg Depth: 2.6 meters <br> Avg Lake Bed Temperature: 5.9 deg Celsius","Site Name: L9819 <br> Elevation: 8.2 meters (above SL) <br> Avg Depth: 1.7 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: L9820 <br> Elevation: 9.5 meters (above SL) <br> Avg Depth: 1.1 meters <br> Avg Lake Bed Temperature: 5.5 deg Celsius","Site Name: LittleAlaska <br> Elevation: 28.9 meters (above SL) <br> Avg Depth: 1.2 meters <br> Avg Lake Bed Temperature: 5.2 deg Celsius","Site Name: LowerSnowman <br> Elevation: 27.4 meters (above SL) <br> Avg Depth: 1.2 meters <br> Avg Lake Bed Temperature: 7.2 deg Celsius","Site Name: M9925 <br> Elevation: 14.7 meters (above SL) <br> Avg Depth: 0.9 meters <br> Avg Lake Bed Temperature: 7 deg Celsius","Site Name: MiddleSnowman <br> Elevation: 26.3 meters (above SL) <br> Avg Depth: 1.1 meters <br> Avg Lake Bed Temperature: 6.4 deg Celsius","Site Name: Serenity <br> Elevation: 12 meters (above SL) <br> Avg Depth: 3.9 meters <br> Avg Lake Bed Temperature: 10.7 deg Celsius"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -818,7 +833,7 @@ There are lots of ways to customize <code>leaflet</code> maps. We’ll be keepin
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>scratch/practice_script_app3_shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/practice_script_app3_shinydashboard.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#..............................SETUP.............................</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
@@ -868,8 +883,8 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 </p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-972f9358ddcdb28e434e" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-972f9358ddcdb28e434e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter <br> Elevation: 12.3 meters (above SL) <br> Avg Depth: 2.3 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: L9817 <br> Elevation: 16.1 meters (above SL) <br> Avg Depth: 2.6 meters <br> Avg Lake Bed Temperature: 5.9 deg Celsius"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-50c9e69c2598ee97f6cc" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-50c9e69c2598ee97f6cc">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter <br> Elevation: 12.3 meters (above SL) <br> Avg Depth: 2.3 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: L9817 <br> Elevation: 16.1 meters (above SL) <br> Avg Depth: 2.6 meters <br> Avg Lake Bed Temperature: 5.9 deg Celsius"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -877,7 +892,7 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>scratch/practice_script_app3_shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/practice_script_app3_shinydashboard.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7" data-code-line-numbers="10-15|31-37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#..............................SETUP.............................</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
@@ -924,7 +939,7 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 </section>
 <section id="sketch-ui" class="slide level2" data-menu-title="Sketch the UI">
 <h2></h2>
-<p><span class="slide-title2">Sketch out our dashboard UI</span></p>
+<p><span class="slide-title">Sketch out our dashboard UI</span></p>
 <hr>
 <p class="body-text-s">
 I want my dashboard to have two menu items: a welcome page with some background information, and a dashboard page with my reactive map. All elements will be placed inside <code>box</code>es, the primary building blocks of shinydashboards (more on that soon).
@@ -967,12 +982,12 @@ Next, we’ll build our <code>dashboardSidebar()</code>. Add a <code>sidebarMenu
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/shinydashboard/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8" data-code-line-numbers="4-6|13-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
 <span id="cb8-3"><a href="#cb8-3"></a>  </span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="co"># add title ----</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="co"># title ----</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a>  <span class="at">title =</span> <span class="st">"Fish Creek Watershed Lake Monitoring"</span>,</span>
 <span id="cb8-6"><a href="#cb8-6"></a>  <span class="at">titleWidth =</span> <span class="dv">400</span></span>
 <span id="cb8-7"><a href="#cb8-7"></a>  </span>
@@ -1009,7 +1024,7 @@ Next, we’ll create <code>tabItems</code> in our <code>dashboardBody</code> –
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/shinydashboard/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9" data-code-line-numbers="26-43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
@@ -1072,7 +1087,7 @@ Next, we’ll create <code>tabItems</code> in our <code>dashboardBody</code> –
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/shinydashboard/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10" data-code-line-numbers="39-56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
@@ -1152,7 +1167,7 @@ Lastly, add boxes to our <strong>welcome</strong> tab We’ll use <code>column</
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/shinydashboard/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11" data-code-line-numbers="32-71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
@@ -1266,12 +1281,12 @@ Lastly, add boxes to our <strong>welcome</strong> tab We’ll use <code>column</
 <p><span class="slide-title2">Read data into <code>global.R</code> &amp; add necessary packages</span></p>
 <hr>
 <p class="body-text">
-Remember to load your <em>pre-processed</em> data, which should live in the <code>/data</code> folder within your app’s directory.
+Remember to load your <em>pre-processed</em> data, which should live in the <code>data/</code> folder within your app’s directory.
 </p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>global.R</strong></pre>
+<pre><strong>~/shinydashboard/global.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12" data-code-line-numbers="4-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(shiny)</span>
@@ -1284,6 +1299,13 @@ Remember to load your <em>pre-processed</em> data, which should live in the <cod
 <span id="cb12-9"><a href="#cb12-9"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/lake_data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+<div class="fragment">
+<p><strong>Some important notes:</strong></p>
+<ul>
+<li><span class="body-text-s">Avoid using <code>here::here()</code> in your shiny apps, as it can cause some unexpected issues (read more about it in <a href="https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505">this discussion</a>)</span></li>
+<li><span class="body-text-s">The file path specified for reading in our data is <em>relative</em> to the application folder (<code>shinydashboard/</code>). <em>However</em> this line will not run alone within your script (you’d need to update it to read, <code>read_csv("shinydashboard/data/lake_data_processed.csv")</code>)</span></li>
+</ul>
+</div>
 </section>
 <section id="add-sliderInput-leafletMap" class="slide level2" data-menu-title="Add Widget &amp; Leaflet Map">
 <h2></h2>
@@ -1295,9 +1317,9 @@ Start by adding just one <code>sliderInput</code> (for selecting a range of lake
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/shinydashboard/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="84-89|96-99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="84-89|96-100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
 <span id="cb13-3"><a href="#cb13-3"></a>  </span>
 <span id="cb13-4"><a href="#cb13-4"></a>  <span class="co"># add title ----</span></span>
@@ -1395,20 +1417,21 @@ Start by adding just one <code>sliderInput</code> (for selecting a range of lake
 <span id="cb13-96"><a href="#cb13-96"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Monitored lakes within Fish Creek Watershed:"</span>),</span>
 <span id="cb13-97"><a href="#cb13-97"></a></span>
 <span id="cb13-98"><a href="#cb13-98"></a>                  <span class="co"># leaflet output ----</span></span>
-<span id="cb13-99"><a href="#cb13-99"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map"</span>) <span class="sc">|&gt;</span> <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
-<span id="cb13-100"><a href="#cb13-100"></a></span>
-<span id="cb13-101"><a href="#cb13-101"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
-<span id="cb13-102"><a href="#cb13-102"></a></span>
-<span id="cb13-103"><a href="#cb13-103"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
-<span id="cb13-104"><a href="#cb13-104"></a></span>
-<span id="cb13-105"><a href="#cb13-105"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
-<span id="cb13-106"><a href="#cb13-106"></a></span>
-<span id="cb13-107"><a href="#cb13-107"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
-<span id="cb13-108"><a href="#cb13-108"></a>  </span>
-<span id="cb13-109"><a href="#cb13-109"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
-<span id="cb13-110"><a href="#cb13-110"></a></span>
-<span id="cb13-111"><a href="#cb13-111"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
-<span id="cb13-112"><a href="#cb13-112"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-99"><a href="#cb13-99"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map_output"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-100"><a href="#cb13-100"></a>                    <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
+<span id="cb13-101"><a href="#cb13-101"></a></span>
+<span id="cb13-102"><a href="#cb13-102"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
+<span id="cb13-103"><a href="#cb13-103"></a></span>
+<span id="cb13-104"><a href="#cb13-104"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
+<span id="cb13-105"><a href="#cb13-105"></a></span>
+<span id="cb13-106"><a href="#cb13-106"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
+<span id="cb13-107"><a href="#cb13-107"></a></span>
+<span id="cb13-108"><a href="#cb13-108"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
+<span id="cb13-109"><a href="#cb13-109"></a>  </span>
+<span id="cb13-110"><a href="#cb13-110"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
+<span id="cb13-111"><a href="#cb13-111"></a></span>
+<span id="cb13-112"><a href="#cb13-112"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
+<span id="cb13-113"><a href="#cb13-113"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1427,7 +1450,7 @@ Remember to reference your practice data viz script and to follow our three step
 <div class="sourceCode cell-code" id="cb14" data-code-line-numbers="3-36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb14-2"><a href="#cb14-2"></a>  </span>
 <span id="cb14-3"><a href="#cb14-3"></a>  <span class="co"># filter lake data ----</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>  filtered_lakes <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  filtered_lakes_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
 <span id="cb14-5"><a href="#cb14-5"></a>    </span>
 <span id="cb14-6"><a href="#cb14-6"></a>    lake_data <span class="sc">|&gt;</span></span>
 <span id="cb14-7"><a href="#cb14-7"></a>      <span class="fu">filter</span>(Elevation <span class="sc">&gt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> Elevation <span class="sc">&lt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">2</span>])</span>
@@ -1437,7 +1460,7 @@ Remember to reference your practice data viz script and to follow our three step
 <span id="cb14-11"><a href="#cb14-11"></a>  </span>
 <span id="cb14-12"><a href="#cb14-12"></a>  </span>
 <span id="cb14-13"><a href="#cb14-13"></a>  <span class="co"># build leaflet map ----</span></span>
-<span id="cb14-14"><a href="#cb14-14"></a>  output<span class="sc">$</span>lake_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb14-14"><a href="#cb14-14"></a>  output<span class="sc">$</span>lake_map_output <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
 <span id="cb14-15"><a href="#cb14-15"></a>    </span>
 <span id="cb14-16"><a href="#cb14-16"></a>    <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
 <span id="cb14-17"><a href="#cb14-17"></a>      </span>
@@ -1451,12 +1474,12 @@ Remember to reference your practice data viz script and to follow our three step
 <span id="cb14-25"><a href="#cb14-25"></a>      <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb14-26"><a href="#cb14-26"></a>      </span>
 <span id="cb14-27"><a href="#cb14-27"></a>      <span class="co"># add markers</span></span>
-<span id="cb14-28"><a href="#cb14-28"></a>      <span class="fu">addMarkers</span>(<span class="at">data =</span>  <span class="fu">filtered_lakes</span>(),</span>
-<span id="cb14-29"><a href="#cb14-29"></a>                 <span class="at">lng =</span> <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Longitude, <span class="at">lat =</span> <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Latitude,</span>
-<span id="cb14-30"><a href="#cb14-30"></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb14-31"><a href="#cb14-31"></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb14-32"><a href="#cb14-32"></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb14-33"><a href="#cb14-33"></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
+<span id="cb14-28"><a href="#cb14-28"></a>      <span class="fu">addMarkers</span>(<span class="at">data =</span>  <span class="fu">filtered_lakes_df</span>(),</span>
+<span id="cb14-29"><a href="#cb14-29"></a>                 <span class="at">lng =</span> <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Longitude, <span class="at">lat =</span> <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Latitude,</span>
+<span id="cb14-30"><a href="#cb14-30"></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb14-31"><a href="#cb14-31"></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb14-32"><a href="#cb14-32"></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb14-33"><a href="#cb14-33"></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
 <span id="cb14-34"><a href="#cb14-34"></a>    </span>
 <span id="cb14-35"><a href="#cb14-35"></a>  })</span>
 <span id="cb14-36"><a href="#cb14-36"></a>  </span>
@@ -1604,20 +1627,21 @@ Remember to reference your practice data viz script and to follow our three step
 <span id="cb15-104"><a href="#cb15-104"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Monitored lakes within Fish Creek Watershed:"</span>),</span>
 <span id="cb15-105"><a href="#cb15-105"></a></span>
 <span id="cb15-106"><a href="#cb15-106"></a>                  <span class="co"># leaflet output ----</span></span>
-<span id="cb15-107"><a href="#cb15-107"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map"</span>) <span class="sc">|&gt;</span> <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
-<span id="cb15-108"><a href="#cb15-108"></a></span>
-<span id="cb15-109"><a href="#cb15-109"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
-<span id="cb15-110"><a href="#cb15-110"></a></span>
-<span id="cb15-111"><a href="#cb15-111"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
-<span id="cb15-112"><a href="#cb15-112"></a></span>
-<span id="cb15-113"><a href="#cb15-113"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
-<span id="cb15-114"><a href="#cb15-114"></a></span>
-<span id="cb15-115"><a href="#cb15-115"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
-<span id="cb15-116"><a href="#cb15-116"></a>  </span>
-<span id="cb15-117"><a href="#cb15-117"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
-<span id="cb15-118"><a href="#cb15-118"></a></span>
-<span id="cb15-119"><a href="#cb15-119"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
-<span id="cb15-120"><a href="#cb15-120"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-107"><a href="#cb15-107"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map_output"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-108"><a href="#cb15-108"></a>                    <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
+<span id="cb15-109"><a href="#cb15-109"></a></span>
+<span id="cb15-110"><a href="#cb15-110"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
+<span id="cb15-111"><a href="#cb15-111"></a></span>
+<span id="cb15-112"><a href="#cb15-112"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
+<span id="cb15-113"><a href="#cb15-113"></a></span>
+<span id="cb15-114"><a href="#cb15-114"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
+<span id="cb15-115"><a href="#cb15-115"></a></span>
+<span id="cb15-116"><a href="#cb15-116"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
+<span id="cb15-117"><a href="#cb15-117"></a>  </span>
+<span id="cb15-118"><a href="#cb15-118"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
+<span id="cb15-119"><a href="#cb15-119"></a></span>
+<span id="cb15-120"><a href="#cb15-120"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
+<span id="cb15-121"><a href="#cb15-121"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1630,7 +1654,7 @@ Remember to reference your practice data viz script and to follow our three step
 <div class="sourceCode cell-code" id="cb16" data-code-line-numbers="8-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb16-2"><a href="#cb16-2"></a>  </span>
 <span id="cb16-3"><a href="#cb16-3"></a>  <span class="co"># filter lake data ----</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  filtered_lakes <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  filtered_lakes_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
 <span id="cb16-5"><a href="#cb16-5"></a>    </span>
 <span id="cb16-6"><a href="#cb16-6"></a>    lake_data <span class="sc">|&gt;</span></span>
 <span id="cb16-7"><a href="#cb16-7"></a>      <span class="fu">filter</span>(Elevation <span class="sc">&gt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> Elevation <span class="sc">&lt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">2</span>])  <span class="sc">|&gt;</span></span>
@@ -1642,7 +1666,7 @@ Remember to reference your practice data viz script and to follow our three step
 <span id="cb16-13"><a href="#cb16-13"></a>  </span>
 <span id="cb16-14"><a href="#cb16-14"></a>  </span>
 <span id="cb16-15"><a href="#cb16-15"></a>  <span class="co"># build leaflet map ----</span></span>
-<span id="cb16-16"><a href="#cb16-16"></a>  output<span class="sc">$</span>lake_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb16-16"><a href="#cb16-16"></a>  output<span class="sc">$</span>lake_map_output <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
 <span id="cb16-17"><a href="#cb16-17"></a>    </span>
 <span id="cb16-18"><a href="#cb16-18"></a>    <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
 <span id="cb16-19"><a href="#cb16-19"></a>      </span>
@@ -1656,12 +1680,12 @@ Remember to reference your practice data viz script and to follow our three step
 <span id="cb16-27"><a href="#cb16-27"></a>      <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb16-28"><a href="#cb16-28"></a>      </span>
 <span id="cb16-29"><a href="#cb16-29"></a>      <span class="co"># add markers</span></span>
-<span id="cb16-30"><a href="#cb16-30"></a>      <span class="fu">addMarkers</span>(<span class="at">data =</span>  <span class="fu">filtered_lakes</span>(),</span>
-<span id="cb16-31"><a href="#cb16-31"></a>                 <span class="at">lng =</span> <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Longitude, <span class="at">lat =</span> <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Latitude,</span>
-<span id="cb16-32"><a href="#cb16-32"></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb16-33"><a href="#cb16-33"></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb16-34"><a href="#cb16-34"></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb16-35"><a href="#cb16-35"></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
+<span id="cb16-30"><a href="#cb16-30"></a>      <span class="fu">addMarkers</span>(<span class="at">data =</span>  <span class="fu">filtered_lakes_df</span>(),</span>
+<span id="cb16-31"><a href="#cb16-31"></a>                 <span class="at">lng =</span> <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Longitude, <span class="at">lat =</span> <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Latitude,</span>
+<span id="cb16-32"><a href="#cb16-32"></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb16-33"><a href="#cb16-33"></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb16-34"><a href="#cb16-34"></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb16-35"><a href="#cb16-35"></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
 <span id="cb16-36"><a href="#cb16-36"></a>    </span>
 <span id="cb16-37"><a href="#cb16-37"></a>  })</span>
 <span id="cb16-38"><a href="#cb16-38"></a>  </span>
@@ -1678,10 +1702,10 @@ Remember to reference your practice data viz script and to follow our three step
 <hr>
 <p><span class="body-text-m"><strong>To Do:</strong></span></p>
 <p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Add titles to each box
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Add titles to each box on the <strong>Welcome</strong> page
 </p>
 <p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Create a <code>/text</code> folder within your app’s directory and add three markdown (<code>.md</code>) files. Write/format text for the background info (left), data citation (top-right), and disclaimer (bottom-right) boxes. Example text below:
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Create a <code>text/</code> folder within your app’s directory and add three markdown (<code>.md</code>) files. Write / format text for the background info (left), data citation (top-right), and disclaimer (bottom-right) boxes. Example text below:
 </p>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1"><code>intro.md</code></a></li><li><a href="#tabset-5-2"><code>citation.md</code></a></li><li><a href="#tabset-5-3"><code>disclaimer.md</code></a></li></ul>
@@ -1690,7 +1714,7 @@ Remember to reference your practice data viz script and to follow our three step
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/intro.md</strong></pre>
+<pre><strong>~/shinydashboard/text/intro.md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a>The <span class="co">[</span><span class="ot">Fish Creek Watershed Observatory (FCWO)</span><span class="co">](http://www.fishcreekwatershed.org/)</span> is a focal watershed within the <span class="co">[</span><span class="ot">National Petroleum Reserve in Alaska (NPR-A)</span><span class="co">](https://www.blm.gov/programs/energy-and-minerals/oil-and-gas/about/alaska/NPR-A)</span>. Targeted lake and stream monitoring within the watershed provide site-specific data prior to and after the establishment of new petroleum development, as well as insight into dynamics related to climate change and variability. Eleven lakes of interest (Harry Potter, Hipbone, Iceshove, L9817, L9819, L9820, Little Alaska, Lower Snowman, M9925, Middle Snowman, and Serenity) are featured in this dashboard.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1700,7 +1724,7 @@ Remember to reference your practice data viz script and to follow our three step
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/citation.md</strong></pre>
+<pre><strong>~/shinydashboard/text/citation.md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1"></a>Data presented in this dashboard were collected as part of the <span class="co">[</span><span class="ot">Fish Creek Watershed Observatory</span><span class="co">](http://www.fishcreekwatershed.org/)</span> are archived and publicly accessible on the NSF <span class="co">[</span><span class="ot">Arctic Data Center</span><span class="co">](https://arcticdata.io/)</span>. **Citation:** </span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
@@ -1712,7 +1736,7 @@ Remember to reference your practice data viz script and to follow our three step
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/disclaimer.md</strong></pre>
+<pre><strong>~/shinydashboard/text/disclaimer.md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a>This app is build for demonstration/teaching purposes only and is not paid for or endorsed by the Fish Creek Watershed Observatory or affiliates in any way. The data as presented here are not intended for publication nor scientific interpretation. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1734,137 +1758,24 @@ Remember to reference your practice data viz script and to follow our three step
 Press the right arrow key to advance through the newly added lines of code.
 </p>
 <div class="panel-tabset">
-<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1"><code>ui.R</code></a></li><li><a href="#tabset-6-2"><code>global.R</code></a></li></ul>
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1"><code>global.R</code></a></li><li><a href="#tabset-6-2"><code>ui.R</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="38-39|54-55|67-68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
-<span id="cb20-3"><a href="#cb20-3"></a>  </span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="co"># add title ----</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="at">title =</span> <span class="st">"Fish Creek Watershed Lake Monitoring"</span>,</span>
-<span id="cb20-6"><a href="#cb20-6"></a>  <span class="at">titleWidth =</span> <span class="dv">400</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a>  </span>
-<span id="cb20-8"><a href="#cb20-8"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardHeader</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a></span>
-<span id="cb20-10"><a href="#cb20-10"></a><span class="co">#........................dashboardSidebar........................</span></span>
-<span id="cb20-11"><a href="#cb20-11"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>(</span>
-<span id="cb20-12"><a href="#cb20-12"></a>  </span>
-<span id="cb20-13"><a href="#cb20-13"></a>  <span class="co"># sidebarMenu ----</span></span>
-<span id="cb20-14"><a href="#cb20-14"></a>  <span class="fu">sidebarMenu</span>(</span>
-<span id="cb20-15"><a href="#cb20-15"></a></span>
-<span id="cb20-16"><a href="#cb20-16"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Welcome"</span>, <span class="at">tabName =</span> <span class="st">"welcome"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"star"</span>)),</span>
-<span id="cb20-17"><a href="#cb20-17"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Dashboard"</span>, <span class="at">tabName =</span> <span class="st">"dashboard"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"gauge"</span>))</span>
-<span id="cb20-18"><a href="#cb20-18"></a></span>
-<span id="cb20-19"><a href="#cb20-19"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> sidebarMenu</span></span>
-<span id="cb20-20"><a href="#cb20-20"></a></span>
-<span id="cb20-21"><a href="#cb20-21"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardSidebar</span></span>
-<span id="cb20-22"><a href="#cb20-22"></a></span>
-<span id="cb20-23"><a href="#cb20-23"></a><span class="co">#..........................dashboardBody.........................</span></span>
-<span id="cb20-24"><a href="#cb20-24"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
-<span id="cb20-25"><a href="#cb20-25"></a>  </span>
-<span id="cb20-26"><a href="#cb20-26"></a>  <span class="co"># tabItems ----</span></span>
-<span id="cb20-27"><a href="#cb20-27"></a>  <span class="fu">tabItems</span>(</span>
-<span id="cb20-28"><a href="#cb20-28"></a></span>
-<span id="cb20-29"><a href="#cb20-29"></a>    <span class="co"># welcome tabItem ----</span></span>
-<span id="cb20-30"><a href="#cb20-30"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"welcome"</span>,</span>
-<span id="cb20-31"><a href="#cb20-31"></a></span>
-<span id="cb20-32"><a href="#cb20-32"></a>            <span class="co"># left-hand column ----</span></span>
-<span id="cb20-33"><a href="#cb20-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb20-34"><a href="#cb20-34"></a></span>
-<span id="cb20-35"><a href="#cb20-35"></a>                   <span class="co"># box ----</span></span>
-<span id="cb20-36"><a href="#cb20-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-37"><a href="#cb20-37"></a>                       </span>
-<span id="cb20-38"><a href="#cb20-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
-<span id="cb20-39"><a href="#cb20-39"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>)</span>
-<span id="cb20-40"><a href="#cb20-40"></a></span>
-<span id="cb20-41"><a href="#cb20-41"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
-<span id="cb20-42"><a href="#cb20-42"></a></span>
-<span id="cb20-43"><a href="#cb20-43"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
-<span id="cb20-44"><a href="#cb20-44"></a></span>
-<span id="cb20-45"><a href="#cb20-45"></a>            <span class="co"># right-hand column ----</span></span>
-<span id="cb20-46"><a href="#cb20-46"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb20-47"><a href="#cb20-47"></a></span>
-<span id="cb20-48"><a href="#cb20-48"></a>                   <span class="co"># first fluidRow ----</span></span>
-<span id="cb20-49"><a href="#cb20-49"></a>                   <span class="fu">fluidRow</span>(</span>
-<span id="cb20-50"><a href="#cb20-50"></a></span>
-<span id="cb20-51"><a href="#cb20-51"></a>                     <span class="co"># data source box ----</span></span>
-<span id="cb20-52"><a href="#cb20-52"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-53"><a href="#cb20-53"></a>                         </span>
-<span id="cb20-54"><a href="#cb20-54"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"table"</span>), <span class="fu">strong</span>(<span class="st">"Data Source"</span>)),</span>
-<span id="cb20-55"><a href="#cb20-55"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/citation.md"</span>)</span>
-<span id="cb20-56"><a href="#cb20-56"></a></span>
-<span id="cb20-57"><a href="#cb20-57"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> data source box</span></span>
-<span id="cb20-58"><a href="#cb20-58"></a></span>
-<span id="cb20-59"><a href="#cb20-59"></a>                   ), <span class="co"># </span><span class="re">END</span><span class="co"> first fluidRow</span></span>
-<span id="cb20-60"><a href="#cb20-60"></a></span>
-<span id="cb20-61"><a href="#cb20-61"></a>                   <span class="co"># second fluiRow ----</span></span>
-<span id="cb20-62"><a href="#cb20-62"></a>                   <span class="fu">fluidRow</span>(</span>
-<span id="cb20-63"><a href="#cb20-63"></a></span>
-<span id="cb20-64"><a href="#cb20-64"></a>                     <span class="co"># disclaimer box ----</span></span>
-<span id="cb20-65"><a href="#cb20-65"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-66"><a href="#cb20-66"></a></span>
-<span id="cb20-67"><a href="#cb20-67"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"triangle-exclamation"</span>), <span class="fu">strong</span>(<span class="st">"Disclaimer"</span>)),</span>
-<span id="cb20-68"><a href="#cb20-68"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/disclaimer.md"</span>)</span>
-<span id="cb20-69"><a href="#cb20-69"></a></span>
-<span id="cb20-70"><a href="#cb20-70"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> disclaimer box</span></span>
-<span id="cb20-71"><a href="#cb20-71"></a></span>
-<span id="cb20-72"><a href="#cb20-72"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> second fluidRow</span></span>
-<span id="cb20-73"><a href="#cb20-73"></a></span>
-<span id="cb20-74"><a href="#cb20-74"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> right-hand column</span></span>
-<span id="cb20-75"><a href="#cb20-75"></a></span>
-<span id="cb20-76"><a href="#cb20-76"></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> welcome tabItem</span></span>
-<span id="cb20-77"><a href="#cb20-77"></a></span>
-<span id="cb20-78"><a href="#cb20-78"></a>    <span class="co"># dashboard tabItem ----</span></span>
-<span id="cb20-79"><a href="#cb20-79"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"dashboard"</span>,</span>
-<span id="cb20-80"><a href="#cb20-80"></a></span>
-<span id="cb20-81"><a href="#cb20-81"></a>            <span class="co"># fluidRow ----</span></span>
-<span id="cb20-82"><a href="#cb20-82"></a>            <span class="fu">fluidRow</span>(</span>
-<span id="cb20-83"><a href="#cb20-83"></a></span>
-<span id="cb20-84"><a href="#cb20-84"></a>              <span class="co"># input box ----</span></span>
-<span id="cb20-85"><a href="#cb20-85"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">4</span>,</span>
-<span id="cb20-86"><a href="#cb20-86"></a>                  </span>
-<span id="cb20-87"><a href="#cb20-87"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Adjust lake parameter ranges:"</span>),</span>
-<span id="cb20-88"><a href="#cb20-88"></a></span>
-<span id="cb20-89"><a href="#cb20-89"></a>                  <span class="co"># sliderInputs ----</span></span>
-<span id="cb20-90"><a href="#cb20-90"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"elevation_slider"</span>, <span class="at">label =</span> <span class="st">"Elevation (meters above SL):"</span>,</span>
-<span id="cb20-91"><a href="#cb20-91"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation),</span>
-<span id="cb20-92"><a href="#cb20-92"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation))),</span>
-<span id="cb20-93"><a href="#cb20-93"></a></span>
-<span id="cb20-94"><a href="#cb20-94"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"depth_slider"</span>, <span class="at">label =</span> <span class="st">"Average depth (meters):"</span>,</span>
-<span id="cb20-95"><a href="#cb20-95"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
-<span id="cb20-96"><a href="#cb20-96"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
-<span id="cb20-97"><a href="#cb20-97"></a></span>
-<span id="cb20-98"><a href="#cb20-98"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
-<span id="cb20-99"><a href="#cb20-99"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
-<span id="cb20-100"><a href="#cb20-100"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
-<span id="cb20-101"><a href="#cb20-101"></a></span>
-<span id="cb20-102"><a href="#cb20-102"></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> input box</span></span>
-<span id="cb20-103"><a href="#cb20-103"></a></span>
-<span id="cb20-104"><a href="#cb20-104"></a>              <span class="co"># leaflet box ----</span></span>
-<span id="cb20-105"><a href="#cb20-105"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">8</span>,</span>
-<span id="cb20-106"><a href="#cb20-106"></a></span>
-<span id="cb20-107"><a href="#cb20-107"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Monitored lakes within Fish Creek Watershed:"</span>),</span>
-<span id="cb20-108"><a href="#cb20-108"></a></span>
-<span id="cb20-109"><a href="#cb20-109"></a>                  <span class="co"># leaflet output ----</span></span>
-<span id="cb20-110"><a href="#cb20-110"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map"</span>) <span class="sc">|&gt;</span> <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
-<span id="cb20-111"><a href="#cb20-111"></a></span>
-<span id="cb20-112"><a href="#cb20-112"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
-<span id="cb20-113"><a href="#cb20-113"></a></span>
-<span id="cb20-114"><a href="#cb20-114"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
-<span id="cb20-115"><a href="#cb20-115"></a></span>
-<span id="cb20-116"><a href="#cb20-116"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
-<span id="cb20-117"><a href="#cb20-117"></a></span>
-<span id="cb20-118"><a href="#cb20-118"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
-<span id="cb20-119"><a href="#cb20-119"></a>  </span>
-<span id="cb20-120"><a href="#cb20-120"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
-<span id="cb20-121"><a href="#cb20-121"></a></span>
-<span id="cb20-122"><a href="#cb20-122"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
-<span id="cb20-123"><a href="#cb20-123"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">library</span>(shinycssloaders)</span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="co"># READ IN DATA ----</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/lake_data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1872,18 +1783,131 @@ Press the right arrow key to advance through the newly added lines of code.
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>global.R</strong></pre>
+<pre><strong>ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="fu">library</span>(shinydashboard)</span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="fu">library</span>(shinycssloaders)</span>
-<span id="cb21-7"><a href="#cb21-7"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb21-8"><a href="#cb21-8"></a></span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="co"># READ IN DATA ----</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/lake_data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="38-39|54-55|67-68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  </span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="co"># add title ----</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="at">title =</span> <span class="st">"Fish Creek Watershed Lake Monitoring"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="at">titleWidth =</span> <span class="dv">400</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>  </span>
+<span id="cb21-8"><a href="#cb21-8"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardHeader</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">#........................dashboardSidebar........................</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>(</span>
+<span id="cb21-12"><a href="#cb21-12"></a>  </span>
+<span id="cb21-13"><a href="#cb21-13"></a>  <span class="co"># sidebarMenu ----</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>  <span class="fu">sidebarMenu</span>(</span>
+<span id="cb21-15"><a href="#cb21-15"></a></span>
+<span id="cb21-16"><a href="#cb21-16"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Welcome"</span>, <span class="at">tabName =</span> <span class="st">"welcome"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"star"</span>)),</span>
+<span id="cb21-17"><a href="#cb21-17"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Dashboard"</span>, <span class="at">tabName =</span> <span class="st">"dashboard"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"gauge"</span>))</span>
+<span id="cb21-18"><a href="#cb21-18"></a></span>
+<span id="cb21-19"><a href="#cb21-19"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> sidebarMenu</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a></span>
+<span id="cb21-21"><a href="#cb21-21"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardSidebar</span></span>
+<span id="cb21-22"><a href="#cb21-22"></a></span>
+<span id="cb21-23"><a href="#cb21-23"></a><span class="co">#..........................dashboardBody.........................</span></span>
+<span id="cb21-24"><a href="#cb21-24"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
+<span id="cb21-25"><a href="#cb21-25"></a>  </span>
+<span id="cb21-26"><a href="#cb21-26"></a>  <span class="co"># tabItems ----</span></span>
+<span id="cb21-27"><a href="#cb21-27"></a>  <span class="fu">tabItems</span>(</span>
+<span id="cb21-28"><a href="#cb21-28"></a></span>
+<span id="cb21-29"><a href="#cb21-29"></a>    <span class="co"># welcome tabItem ----</span></span>
+<span id="cb21-30"><a href="#cb21-30"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"welcome"</span>,</span>
+<span id="cb21-31"><a href="#cb21-31"></a></span>
+<span id="cb21-32"><a href="#cb21-32"></a>            <span class="co"># left-hand column ----</span></span>
+<span id="cb21-33"><a href="#cb21-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb21-34"><a href="#cb21-34"></a></span>
+<span id="cb21-35"><a href="#cb21-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb21-36"><a href="#cb21-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-37"><a href="#cb21-37"></a>                       </span>
+<span id="cb21-38"><a href="#cb21-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
+<span id="cb21-39"><a href="#cb21-39"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>)</span>
+<span id="cb21-40"><a href="#cb21-40"></a></span>
+<span id="cb21-41"><a href="#cb21-41"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb21-42"><a href="#cb21-42"></a></span>
+<span id="cb21-43"><a href="#cb21-43"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
+<span id="cb21-44"><a href="#cb21-44"></a></span>
+<span id="cb21-45"><a href="#cb21-45"></a>            <span class="co"># right-hand column ----</span></span>
+<span id="cb21-46"><a href="#cb21-46"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb21-47"><a href="#cb21-47"></a></span>
+<span id="cb21-48"><a href="#cb21-48"></a>                   <span class="co"># first fluidRow ----</span></span>
+<span id="cb21-49"><a href="#cb21-49"></a>                   <span class="fu">fluidRow</span>(</span>
+<span id="cb21-50"><a href="#cb21-50"></a></span>
+<span id="cb21-51"><a href="#cb21-51"></a>                     <span class="co"># data source box ----</span></span>
+<span id="cb21-52"><a href="#cb21-52"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-53"><a href="#cb21-53"></a>                         </span>
+<span id="cb21-54"><a href="#cb21-54"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"table"</span>), <span class="fu">strong</span>(<span class="st">"Data Source"</span>)),</span>
+<span id="cb21-55"><a href="#cb21-55"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/citation.md"</span>)</span>
+<span id="cb21-56"><a href="#cb21-56"></a></span>
+<span id="cb21-57"><a href="#cb21-57"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> data source box</span></span>
+<span id="cb21-58"><a href="#cb21-58"></a></span>
+<span id="cb21-59"><a href="#cb21-59"></a>                   ), <span class="co"># </span><span class="re">END</span><span class="co"> first fluidRow</span></span>
+<span id="cb21-60"><a href="#cb21-60"></a></span>
+<span id="cb21-61"><a href="#cb21-61"></a>                   <span class="co"># second fluiRow ----</span></span>
+<span id="cb21-62"><a href="#cb21-62"></a>                   <span class="fu">fluidRow</span>(</span>
+<span id="cb21-63"><a href="#cb21-63"></a></span>
+<span id="cb21-64"><a href="#cb21-64"></a>                     <span class="co"># disclaimer box ----</span></span>
+<span id="cb21-65"><a href="#cb21-65"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-66"><a href="#cb21-66"></a></span>
+<span id="cb21-67"><a href="#cb21-67"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"triangle-exclamation"</span>), <span class="fu">strong</span>(<span class="st">"Disclaimer"</span>)),</span>
+<span id="cb21-68"><a href="#cb21-68"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/disclaimer.md"</span>)</span>
+<span id="cb21-69"><a href="#cb21-69"></a></span>
+<span id="cb21-70"><a href="#cb21-70"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> disclaimer box</span></span>
+<span id="cb21-71"><a href="#cb21-71"></a></span>
+<span id="cb21-72"><a href="#cb21-72"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> second fluidRow</span></span>
+<span id="cb21-73"><a href="#cb21-73"></a></span>
+<span id="cb21-74"><a href="#cb21-74"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> right-hand column</span></span>
+<span id="cb21-75"><a href="#cb21-75"></a></span>
+<span id="cb21-76"><a href="#cb21-76"></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> welcome tabItem</span></span>
+<span id="cb21-77"><a href="#cb21-77"></a></span>
+<span id="cb21-78"><a href="#cb21-78"></a>    <span class="co"># dashboard tabItem ----</span></span>
+<span id="cb21-79"><a href="#cb21-79"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"dashboard"</span>,</span>
+<span id="cb21-80"><a href="#cb21-80"></a></span>
+<span id="cb21-81"><a href="#cb21-81"></a>            <span class="co"># fluidRow ----</span></span>
+<span id="cb21-82"><a href="#cb21-82"></a>            <span class="fu">fluidRow</span>(</span>
+<span id="cb21-83"><a href="#cb21-83"></a></span>
+<span id="cb21-84"><a href="#cb21-84"></a>              <span class="co"># input box ----</span></span>
+<span id="cb21-85"><a href="#cb21-85"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">4</span>,</span>
+<span id="cb21-86"><a href="#cb21-86"></a>                  </span>
+<span id="cb21-87"><a href="#cb21-87"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Adjust lake parameter ranges:"</span>),</span>
+<span id="cb21-88"><a href="#cb21-88"></a></span>
+<span id="cb21-89"><a href="#cb21-89"></a>                  <span class="co"># sliderInputs ----</span></span>
+<span id="cb21-90"><a href="#cb21-90"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"elevation_slider"</span>, <span class="at">label =</span> <span class="st">"Elevation (meters above SL):"</span>,</span>
+<span id="cb21-91"><a href="#cb21-91"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation),</span>
+<span id="cb21-92"><a href="#cb21-92"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation))),</span>
+<span id="cb21-93"><a href="#cb21-93"></a></span>
+<span id="cb21-94"><a href="#cb21-94"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"depth_slider"</span>, <span class="at">label =</span> <span class="st">"Average depth (meters):"</span>,</span>
+<span id="cb21-95"><a href="#cb21-95"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
+<span id="cb21-96"><a href="#cb21-96"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
+<span id="cb21-97"><a href="#cb21-97"></a></span>
+<span id="cb21-98"><a href="#cb21-98"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb21-99"><a href="#cb21-99"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
+<span id="cb21-100"><a href="#cb21-100"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
+<span id="cb21-101"><a href="#cb21-101"></a></span>
+<span id="cb21-102"><a href="#cb21-102"></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> input box</span></span>
+<span id="cb21-103"><a href="#cb21-103"></a></span>
+<span id="cb21-104"><a href="#cb21-104"></a>              <span class="co"># leaflet box ----</span></span>
+<span id="cb21-105"><a href="#cb21-105"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">8</span>,</span>
+<span id="cb21-106"><a href="#cb21-106"></a></span>
+<span id="cb21-107"><a href="#cb21-107"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Monitored lakes within Fish Creek Watershed:"</span>),</span>
+<span id="cb21-108"><a href="#cb21-108"></a></span>
+<span id="cb21-109"><a href="#cb21-109"></a>                  <span class="co"># leaflet output ----</span></span>
+<span id="cb21-110"><a href="#cb21-110"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map"</span>) <span class="sc">|&gt;</span> <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
+<span id="cb21-111"><a href="#cb21-111"></a></span>
+<span id="cb21-112"><a href="#cb21-112"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
+<span id="cb21-113"><a href="#cb21-113"></a></span>
+<span id="cb21-114"><a href="#cb21-114"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
+<span id="cb21-115"><a href="#cb21-115"></a></span>
+<span id="cb21-116"><a href="#cb21-116"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
+<span id="cb21-117"><a href="#cb21-117"></a></span>
+<span id="cb21-118"><a href="#cb21-118"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
+<span id="cb21-119"><a href="#cb21-119"></a>  </span>
+<span id="cb21-120"><a href="#cb21-120"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
+<span id="cb21-121"><a href="#cb21-121"></a></span>
+<span id="cb21-122"><a href="#cb21-122"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
+<span id="cb21-123"><a href="#cb21-123"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1895,10 +1919,10 @@ Press the right arrow key to advance through the newly added lines of code.
 <p><span class="slide-title">Add a static image</span></p>
 <hr>
 <p class="body-text-s">
-As a final touch, let’s add an image to the Welcome page, inside the left-hand box beneath our intro text. First, <strong>create a <code>/www</code> folder inside your app’s directory</strong> (refer back to <a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part1.2-setup-app-slides.html#/repo-structure">this slide</a> for a description of this special directory). Download the map of the Fish Creek Watershed from FCWO’s website <a href="http://www.fishcreekwatershed.org/images/FishCreekWatershedSiteMap_2020.jpg">here</a> and save it to your <code>/www</code> directory.
+As a final touch, let’s add an image to the Welcome page, inside the left-hand box beneath our intro text. First, <strong>create a <code>www/</code> folder inside your app’s directory</strong> (refer back to <a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part1.2-setup-app-slides.html#/repo-structure">lecture 1.2</a> for a description of this special directory). Download the map of the Fish Creek Watershed from FCWO’s website <a href="http://www.fishcreekwatershed.org/images/FishCreekWatershedSiteMap_2020.jpg">here</a> and save it to your <code>www/</code> directory.
 </p>
 <p class="body-text-s">
-Next, use the <code>img</code> tag to add your image. Supply a file path, relative to your <code>/www</code> directory, using the <code>src</code> argument, and alt text using the <code>alt</code> argument.
+Next, use the <code>img</code> tag to add your image. Supply a file path, relative to your <code>www/</code> directory, using the <code>src</code> argument, and add alt text using the <code>alt</code> argument.
 </p>
 <div class="cell">
 <div class="code-with-filename">
@@ -1945,7 +1969,7 @@ Next, use the <code>img</code> tag to add your image. Supply a file path, relati
 <span id="cb22-38"><a href="#cb22-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
 <span id="cb22-39"><a href="#cb22-39"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>),</span>
 <span id="cb22-40"><a href="#cb22-40"></a>                       tags<span class="sc">$</span><span class="fu">img</span>(<span class="at">src =</span> <span class="st">"FishCreekWatershedSiteMap_2020.jpeg"</span>, </span>
-<span id="cb22-41"><a href="#cb22-41"></a>                           <span class="at">alt =</span> <span class="st">"A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>) </span>
+<span id="cb22-41"><a href="#cb22-41"></a>                                <span class="at">alt =</span> <span class="st">"A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>) </span>
 <span id="cb22-42"><a href="#cb22-42"></a></span>
 <span id="cb22-43"><a href="#cb22-43"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
 <span id="cb22-44"><a href="#cb22-44"></a></span>
@@ -2094,8 +2118,8 @@ I’ve also added a caption below our image that links to the image source, and 
 <span id="cb23-38"><a href="#cb23-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
 <span id="cb23-39"><a href="#cb23-39"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>),</span>
 <span id="cb23-40"><a href="#cb23-40"></a>                       tags<span class="sc">$</span><span class="fu">img</span>(<span class="at">src =</span> <span class="st">"FishCreekWatershedSiteMap_2020.jpeg"</span>, </span>
-<span id="cb23-41"><a href="#cb23-41"></a>                           <span class="at">alt =</span> <span class="st">"A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>,</span>
-<span id="cb23-42"><a href="#cb23-42"></a>                       <span class="at">style =</span> <span class="st">"max-width: 100%;"</span>),</span>
+<span id="cb23-41"><a href="#cb23-41"></a>                                <span class="at">alt =</span> <span class="st">"A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>,</span>
+<span id="cb23-42"><a href="#cb23-42"></a>                                <span class="at">style =</span> <span class="st">"max-width: 100%;"</span>),</span>
 <span id="cb23-43"><a href="#cb23-43"></a>                       tags<span class="sc">$</span><span class="fu">h6</span>(tags<span class="sc">$</span><span class="fu">em</span>(<span class="st">"Map Source:"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"http://www.fishcreekwatershed.org/"</span>, <span class="st">"FCWO"</span>)),</span>
 <span id="cb23-44"><a href="#cb23-44"></a>                               <span class="at">style =</span> <span class="st">"text-align: center;"</span>)</span>
 <span id="cb23-45"><a href="#cb23-45"></a></span>
@@ -2199,145 +2223,24 @@ There’s a ton more to learn about building shinydashboards. Check out the <a h
 <p><span class="slide-title2">Complete code for our dashboard thus far:</span></p>
 <hr>
 <div class="panel-tabset">
-<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1"><code>ui.R</code></a></li><li><a href="#tabset-7-2"><code>server.R</code></a></li><li><a href="#tabset-7-3"><code>global.R</code></a></li></ul>
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1"><code>global.R</code></a></li><li><a href="#tabset-7-2"><code>ui.R</code></a></li><li><a href="#tabset-7-3"><code>server.R</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
-<span id="cb24-3"><a href="#cb24-3"></a>  </span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="co"># add title ----</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">title =</span> <span class="st">"Fish Creek Watershed Lake Monitoring"</span>,</span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="at">titleWidth =</span> <span class="dv">400</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>  </span>
-<span id="cb24-8"><a href="#cb24-8"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardHeader</span></span>
-<span id="cb24-9"><a href="#cb24-9"></a></span>
-<span id="cb24-10"><a href="#cb24-10"></a><span class="co">#........................dashboardSidebar........................</span></span>
-<span id="cb24-11"><a href="#cb24-11"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>(</span>
-<span id="cb24-12"><a href="#cb24-12"></a>  </span>
-<span id="cb24-13"><a href="#cb24-13"></a>  <span class="co"># sidebarMenu ----</span></span>
-<span id="cb24-14"><a href="#cb24-14"></a>  <span class="fu">sidebarMenu</span>(</span>
-<span id="cb24-15"><a href="#cb24-15"></a></span>
-<span id="cb24-16"><a href="#cb24-16"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Welcome"</span>, <span class="at">tabName =</span> <span class="st">"welcome"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"star"</span>)),</span>
-<span id="cb24-17"><a href="#cb24-17"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Dashboard"</span>, <span class="at">tabName =</span> <span class="st">"dashboard"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"gauge"</span>))</span>
-<span id="cb24-18"><a href="#cb24-18"></a></span>
-<span id="cb24-19"><a href="#cb24-19"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> sidebarMenu</span></span>
-<span id="cb24-20"><a href="#cb24-20"></a></span>
-<span id="cb24-21"><a href="#cb24-21"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardSidebar</span></span>
-<span id="cb24-22"><a href="#cb24-22"></a></span>
-<span id="cb24-23"><a href="#cb24-23"></a><span class="co">#..........................dashboardBody.........................</span></span>
-<span id="cb24-24"><a href="#cb24-24"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
-<span id="cb24-25"><a href="#cb24-25"></a>  </span>
-<span id="cb24-26"><a href="#cb24-26"></a>  <span class="co"># ---- set theme using {fresh} ----</span></span>
-<span id="cb24-27"><a href="#cb24-27"></a>  <span class="co"># fresh::use_theme("shinydashboard_fresh_theme.css"),</span></span>
-<span id="cb24-28"><a href="#cb24-28"></a>  </span>
-<span id="cb24-29"><a href="#cb24-29"></a>  <span class="co"># tabItems ----</span></span>
-<span id="cb24-30"><a href="#cb24-30"></a>  <span class="fu">tabItems</span>(</span>
-<span id="cb24-31"><a href="#cb24-31"></a></span>
-<span id="cb24-32"><a href="#cb24-32"></a>    <span class="co"># welcome tabItem ----</span></span>
-<span id="cb24-33"><a href="#cb24-33"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"welcome"</span>,</span>
-<span id="cb24-34"><a href="#cb24-34"></a></span>
-<span id="cb24-35"><a href="#cb24-35"></a>            <span class="co"># left-hand column ----</span></span>
-<span id="cb24-36"><a href="#cb24-36"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb24-37"><a href="#cb24-37"></a></span>
-<span id="cb24-38"><a href="#cb24-38"></a>                   <span class="co"># box ----</span></span>
-<span id="cb24-39"><a href="#cb24-39"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
-<span id="cb24-40"><a href="#cb24-40"></a>                       </span>
-<span id="cb24-41"><a href="#cb24-41"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
-<span id="cb24-42"><a href="#cb24-42"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>),</span>
-<span id="cb24-43"><a href="#cb24-43"></a>                       tags<span class="sc">$</span><span class="fu">img</span>(<span class="at">src =</span> <span class="st">"FishCreekWatershedSiteMap_2020.jpeg"</span>, </span>
-<span id="cb24-44"><a href="#cb24-44"></a>                           <span class="at">alt =</span> <span class="st">"A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>,</span>
-<span id="cb24-45"><a href="#cb24-45"></a>                       <span class="at">style =</span> <span class="st">"max-width: 100%;"</span>),</span>
-<span id="cb24-46"><a href="#cb24-46"></a>                       tags<span class="sc">$</span><span class="fu">h6</span>(tags<span class="sc">$</span><span class="fu">em</span>(<span class="st">"Map Source:"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"http://www.fishcreekwatershed.org/"</span>, <span class="st">"FCWO"</span>)),</span>
-<span id="cb24-47"><a href="#cb24-47"></a>                               <span class="at">style =</span> <span class="st">"text-align: center;"</span>)</span>
-<span id="cb24-48"><a href="#cb24-48"></a></span>
-<span id="cb24-49"><a href="#cb24-49"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
-<span id="cb24-50"><a href="#cb24-50"></a></span>
-<span id="cb24-51"><a href="#cb24-51"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
-<span id="cb24-52"><a href="#cb24-52"></a></span>
-<span id="cb24-53"><a href="#cb24-53"></a>            <span class="co"># right-hand column ----</span></span>
-<span id="cb24-54"><a href="#cb24-54"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
-<span id="cb24-55"><a href="#cb24-55"></a></span>
-<span id="cb24-56"><a href="#cb24-56"></a>                   <span class="co"># first fluidRow ----</span></span>
-<span id="cb24-57"><a href="#cb24-57"></a>                   <span class="fu">fluidRow</span>(</span>
-<span id="cb24-58"><a href="#cb24-58"></a></span>
-<span id="cb24-59"><a href="#cb24-59"></a>                     <span class="co"># data source box ----</span></span>
-<span id="cb24-60"><a href="#cb24-60"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
-<span id="cb24-61"><a href="#cb24-61"></a>                         </span>
-<span id="cb24-62"><a href="#cb24-62"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"table"</span>), <span class="fu">strong</span>(<span class="st">"Data Source"</span>)),</span>
-<span id="cb24-63"><a href="#cb24-63"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/citation.md"</span>)</span>
-<span id="cb24-64"><a href="#cb24-64"></a></span>
-<span id="cb24-65"><a href="#cb24-65"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> data source box</span></span>
-<span id="cb24-66"><a href="#cb24-66"></a></span>
-<span id="cb24-67"><a href="#cb24-67"></a>                   ), <span class="co"># </span><span class="re">END</span><span class="co"> first fluidRow</span></span>
-<span id="cb24-68"><a href="#cb24-68"></a></span>
-<span id="cb24-69"><a href="#cb24-69"></a>                   <span class="co"># second fluiRow ----</span></span>
-<span id="cb24-70"><a href="#cb24-70"></a>                   <span class="fu">fluidRow</span>(</span>
-<span id="cb24-71"><a href="#cb24-71"></a></span>
-<span id="cb24-72"><a href="#cb24-72"></a>                     <span class="co"># disclaimer box ----</span></span>
-<span id="cb24-73"><a href="#cb24-73"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
-<span id="cb24-74"><a href="#cb24-74"></a></span>
-<span id="cb24-75"><a href="#cb24-75"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"triangle-exclamation"</span>), <span class="fu">strong</span>(<span class="st">"Disclaimer"</span>)),</span>
-<span id="cb24-76"><a href="#cb24-76"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/disclaimer.md"</span>)</span>
-<span id="cb24-77"><a href="#cb24-77"></a></span>
-<span id="cb24-78"><a href="#cb24-78"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> disclaimer box</span></span>
-<span id="cb24-79"><a href="#cb24-79"></a></span>
-<span id="cb24-80"><a href="#cb24-80"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> second fluidRow</span></span>
-<span id="cb24-81"><a href="#cb24-81"></a></span>
-<span id="cb24-82"><a href="#cb24-82"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> right-hand column</span></span>
-<span id="cb24-83"><a href="#cb24-83"></a></span>
-<span id="cb24-84"><a href="#cb24-84"></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> welcome tabItem</span></span>
-<span id="cb24-85"><a href="#cb24-85"></a></span>
-<span id="cb24-86"><a href="#cb24-86"></a>    <span class="co"># dashboard tabItem ----</span></span>
-<span id="cb24-87"><a href="#cb24-87"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"dashboard"</span>,</span>
-<span id="cb24-88"><a href="#cb24-88"></a></span>
-<span id="cb24-89"><a href="#cb24-89"></a>            <span class="co"># fluidRow ----</span></span>
-<span id="cb24-90"><a href="#cb24-90"></a>            <span class="fu">fluidRow</span>(</span>
-<span id="cb24-91"><a href="#cb24-91"></a></span>
-<span id="cb24-92"><a href="#cb24-92"></a>              <span class="co"># input box ----</span></span>
-<span id="cb24-93"><a href="#cb24-93"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">4</span>,</span>
-<span id="cb24-94"><a href="#cb24-94"></a>                  </span>
-<span id="cb24-95"><a href="#cb24-95"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Adjust lake parameter ranges:"</span>),</span>
-<span id="cb24-96"><a href="#cb24-96"></a></span>
-<span id="cb24-97"><a href="#cb24-97"></a>                  <span class="co"># sliderInputs ----</span></span>
-<span id="cb24-98"><a href="#cb24-98"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"elevation_slider_input"</span>, <span class="at">label =</span> <span class="st">"Elevation (meters above SL):"</span>,</span>
-<span id="cb24-99"><a href="#cb24-99"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation),</span>
-<span id="cb24-100"><a href="#cb24-100"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation))),</span>
-<span id="cb24-101"><a href="#cb24-101"></a></span>
-<span id="cb24-102"><a href="#cb24-102"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"depth_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average depth (meters):"</span>,</span>
-<span id="cb24-103"><a href="#cb24-103"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
-<span id="cb24-104"><a href="#cb24-104"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
-<span id="cb24-105"><a href="#cb24-105"></a></span>
-<span id="cb24-106"><a href="#cb24-106"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
-<span id="cb24-107"><a href="#cb24-107"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
-<span id="cb24-108"><a href="#cb24-108"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
-<span id="cb24-109"><a href="#cb24-109"></a></span>
-<span id="cb24-110"><a href="#cb24-110"></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> input box</span></span>
-<span id="cb24-111"><a href="#cb24-111"></a></span>
-<span id="cb24-112"><a href="#cb24-112"></a>              <span class="co"># leaflet box ----</span></span>
-<span id="cb24-113"><a href="#cb24-113"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">8</span>,</span>
-<span id="cb24-114"><a href="#cb24-114"></a></span>
-<span id="cb24-115"><a href="#cb24-115"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Monitored lakes within Fish Creek Watershed:"</span>),</span>
-<span id="cb24-116"><a href="#cb24-116"></a></span>
-<span id="cb24-117"><a href="#cb24-117"></a>                  <span class="co"># leaflet output ----</span></span>
-<span id="cb24-118"><a href="#cb24-118"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map"</span>) <span class="sc">|&gt;</span> <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
-<span id="cb24-119"><a href="#cb24-119"></a></span>
-<span id="cb24-120"><a href="#cb24-120"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
-<span id="cb24-121"><a href="#cb24-121"></a></span>
-<span id="cb24-122"><a href="#cb24-122"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
-<span id="cb24-123"><a href="#cb24-123"></a></span>
-<span id="cb24-124"><a href="#cb24-124"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
-<span id="cb24-125"><a href="#cb24-125"></a></span>
-<span id="cb24-126"><a href="#cb24-126"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
-<span id="cb24-127"><a href="#cb24-127"></a>  </span>
-<span id="cb24-128"><a href="#cb24-128"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
-<span id="cb24-129"><a href="#cb24-129"></a></span>
-<span id="cb24-130"><a href="#cb24-130"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
-<span id="cb24-131"><a href="#cb24-131"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">library</span>(shinydashboard)</span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">library</span>(shinycssloaders)</span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="fu">library</span>(markdown)</span>
+<span id="cb24-8"><a href="#cb24-8"></a></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co"># READ IN DATA ----</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/lake_data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2345,47 +2248,137 @@ There’s a ton more to learn about building shinydashboards. Check out the <a h
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>server.R</strong></pre>
+<pre><strong>ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb25-2"><a href="#cb25-2"></a>  </span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="co"># filter lake data ----</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a>  filtered_lakes <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb25-5"><a href="#cb25-5"></a>    </span>
-<span id="cb25-6"><a href="#cb25-6"></a>    lake_data <span class="sc">|&gt;</span></span>
-<span id="cb25-7"><a href="#cb25-7"></a>      <span class="fu">filter</span>(Elevation <span class="sc">&gt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> Elevation <span class="sc">&lt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">2</span>])  <span class="sc">|&gt;</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a>      <span class="fu">filter</span>(AvgDepth <span class="sc">&gt;=</span> input<span class="sc">$</span>depth_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> AvgDepth <span class="sc">&lt;=</span> input<span class="sc">$</span>depth_slider_input[<span class="dv">2</span>]) <span class="sc">|&gt;</span></span>
-<span id="cb25-9"><a href="#cb25-9"></a>      <span class="fu">filter</span>(AvgTemp <span class="sc">&gt;=</span> input<span class="sc">$</span>temp_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> AvgTemp <span class="sc">&lt;=</span> input<span class="sc">$</span>temp_slider_input[<span class="dv">2</span>])</span>
-<span id="cb25-10"><a href="#cb25-10"></a>    </span>
-<span id="cb25-11"><a href="#cb25-11"></a>  })</span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">#........................dashboardHeader.........................</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>header <span class="ot">&lt;-</span> <span class="fu">dashboardHeader</span>(</span>
+<span id="cb25-3"><a href="#cb25-3"></a>  </span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="co"># add title ----</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="at">title =</span> <span class="st">"Fish Creek Watershed Lake Monitoring"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="at">titleWidth =</span> <span class="dv">400</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>  </span>
+<span id="cb25-8"><a href="#cb25-8"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardHeader</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="co">#........................dashboardSidebar........................</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a>sidebar <span class="ot">&lt;-</span> <span class="fu">dashboardSidebar</span>(</span>
 <span id="cb25-12"><a href="#cb25-12"></a>  </span>
-<span id="cb25-13"><a href="#cb25-13"></a>  </span>
-<span id="cb25-14"><a href="#cb25-14"></a>  </span>
-<span id="cb25-15"><a href="#cb25-15"></a>  <span class="co"># build leaflet map ----</span></span>
-<span id="cb25-16"><a href="#cb25-16"></a>  output<span class="sc">$</span>lake_map <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
-<span id="cb25-17"><a href="#cb25-17"></a>    </span>
-<span id="cb25-18"><a href="#cb25-18"></a>    <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-19"><a href="#cb25-19"></a>      </span>
-<span id="cb25-20"><a href="#cb25-20"></a>      <span class="co"># add tiles</span></span>
-<span id="cb25-21"><a href="#cb25-21"></a>      <span class="fu">addProviderTiles</span>(<span class="st">"Esri.WorldImagery"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-22"><a href="#cb25-22"></a>      </span>
-<span id="cb25-23"><a href="#cb25-23"></a>      <span class="co"># set view over AK</span></span>
-<span id="cb25-24"><a href="#cb25-24"></a>      <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">152.048442</span>, <span class="at">lat =</span> <span class="fl">70.249234</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-25"><a href="#cb25-25"></a>      </span>
-<span id="cb25-26"><a href="#cb25-26"></a>      <span class="co"># add mini map</span></span>
-<span id="cb25-27"><a href="#cb25-27"></a>      <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-28"><a href="#cb25-28"></a>      </span>
-<span id="cb25-29"><a href="#cb25-29"></a>      <span class="co"># add markers</span></span>
-<span id="cb25-30"><a href="#cb25-30"></a>      <span class="fu">addMarkers</span>(<span class="at">data =</span>  <span class="fu">filtered_lakes</span>(),</span>
-<span id="cb25-31"><a href="#cb25-31"></a>                 <span class="at">lng =</span> <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Longitude, <span class="at">lat =</span> <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Latitude,</span>
-<span id="cb25-32"><a href="#cb25-32"></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb25-33"><a href="#cb25-33"></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb25-34"><a href="#cb25-34"></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb25-35"><a href="#cb25-35"></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
-<span id="cb25-36"><a href="#cb25-36"></a>    </span>
-<span id="cb25-37"><a href="#cb25-37"></a>  })</span>
-<span id="cb25-38"><a href="#cb25-38"></a>  </span>
-<span id="cb25-39"><a href="#cb25-39"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-13"><a href="#cb25-13"></a>  <span class="co"># sidebarMenu ----</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a>  <span class="fu">sidebarMenu</span>(</span>
+<span id="cb25-15"><a href="#cb25-15"></a></span>
+<span id="cb25-16"><a href="#cb25-16"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Welcome"</span>, <span class="at">tabName =</span> <span class="st">"welcome"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"star"</span>)),</span>
+<span id="cb25-17"><a href="#cb25-17"></a>    <span class="fu">menuItem</span>(<span class="at">text =</span> <span class="st">"Dashboard"</span>, <span class="at">tabName =</span> <span class="st">"dashboard"</span>, <span class="at">icon =</span> <span class="fu">icon</span>(<span class="st">"gauge"</span>))</span>
+<span id="cb25-18"><a href="#cb25-18"></a></span>
+<span id="cb25-19"><a href="#cb25-19"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> sidebarMenu</span></span>
+<span id="cb25-20"><a href="#cb25-20"></a></span>
+<span id="cb25-21"><a href="#cb25-21"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardSidebar</span></span>
+<span id="cb25-22"><a href="#cb25-22"></a></span>
+<span id="cb25-23"><a href="#cb25-23"></a><span class="co">#..........................dashboardBody.........................</span></span>
+<span id="cb25-24"><a href="#cb25-24"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
+<span id="cb25-25"><a href="#cb25-25"></a>  </span>
+<span id="cb25-26"><a href="#cb25-26"></a>  <span class="co"># tabItems ----</span></span>
+<span id="cb25-27"><a href="#cb25-27"></a>  <span class="fu">tabItems</span>(</span>
+<span id="cb25-28"><a href="#cb25-28"></a></span>
+<span id="cb25-29"><a href="#cb25-29"></a>    <span class="co"># welcome tabItem ----</span></span>
+<span id="cb25-30"><a href="#cb25-30"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"welcome"</span>,</span>
+<span id="cb25-31"><a href="#cb25-31"></a></span>
+<span id="cb25-32"><a href="#cb25-32"></a>            <span class="co"># left-hand column ----</span></span>
+<span id="cb25-33"><a href="#cb25-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb25-34"><a href="#cb25-34"></a></span>
+<span id="cb25-35"><a href="#cb25-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb25-36"><a href="#cb25-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
+<span id="cb25-37"><a href="#cb25-37"></a>                       </span>
+<span id="cb25-38"><a href="#cb25-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
+<span id="cb25-39"><a href="#cb25-39"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>),</span>
+<span id="cb25-40"><a href="#cb25-40"></a>                       tags<span class="sc">$</span><span class="fu">img</span>(<span class="at">src =</span> <span class="st">"FishCreekWatershedSiteMap_2020.jpeg"</span>, </span>
+<span id="cb25-41"><a href="#cb25-41"></a>                                <span class="at">alt =</span> <span class="st">"A map of Northern Alaksa, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>,</span>
+<span id="cb25-42"><a href="#cb25-42"></a>                                <span class="at">style =</span> <span class="st">"max-width: 100%;"</span>),</span>
+<span id="cb25-43"><a href="#cb25-43"></a>                       tags<span class="sc">$</span><span class="fu">h6</span>(tags<span class="sc">$</span><span class="fu">em</span>(<span class="st">"Map Source:"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"http://www.fishcreekwatershed.org/"</span>, <span class="st">"FCWO"</span>)),</span>
+<span id="cb25-44"><a href="#cb25-44"></a>                               <span class="at">style =</span> <span class="st">"text-align: center;"</span>)</span>
+<span id="cb25-45"><a href="#cb25-45"></a></span>
+<span id="cb25-46"><a href="#cb25-46"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb25-47"><a href="#cb25-47"></a></span>
+<span id="cb25-48"><a href="#cb25-48"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
+<span id="cb25-49"><a href="#cb25-49"></a></span>
+<span id="cb25-50"><a href="#cb25-50"></a>            <span class="co"># right-hand column ----</span></span>
+<span id="cb25-51"><a href="#cb25-51"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb25-52"><a href="#cb25-52"></a></span>
+<span id="cb25-53"><a href="#cb25-53"></a>                   <span class="co"># first fluidRow ----</span></span>
+<span id="cb25-54"><a href="#cb25-54"></a>                   <span class="fu">fluidRow</span>(</span>
+<span id="cb25-55"><a href="#cb25-55"></a></span>
+<span id="cb25-56"><a href="#cb25-56"></a>                     <span class="co"># data source box ----</span></span>
+<span id="cb25-57"><a href="#cb25-57"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
+<span id="cb25-58"><a href="#cb25-58"></a>                         </span>
+<span id="cb25-59"><a href="#cb25-59"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"table"</span>), <span class="fu">strong</span>(<span class="st">"Data Source"</span>)),</span>
+<span id="cb25-60"><a href="#cb25-60"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/citation.md"</span>)</span>
+<span id="cb25-61"><a href="#cb25-61"></a></span>
+<span id="cb25-62"><a href="#cb25-62"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> data source box</span></span>
+<span id="cb25-63"><a href="#cb25-63"></a></span>
+<span id="cb25-64"><a href="#cb25-64"></a>                   ), <span class="co"># </span><span class="re">END</span><span class="co"> first fluidRow</span></span>
+<span id="cb25-65"><a href="#cb25-65"></a></span>
+<span id="cb25-66"><a href="#cb25-66"></a>                   <span class="co"># second fluiRow ----</span></span>
+<span id="cb25-67"><a href="#cb25-67"></a>                   <span class="fu">fluidRow</span>(</span>
+<span id="cb25-68"><a href="#cb25-68"></a></span>
+<span id="cb25-69"><a href="#cb25-69"></a>                     <span class="co"># disclaimer box ----</span></span>
+<span id="cb25-70"><a href="#cb25-70"></a>                     <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
+<span id="cb25-71"><a href="#cb25-71"></a></span>
+<span id="cb25-72"><a href="#cb25-72"></a>                         <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"triangle-exclamation"</span>), <span class="fu">strong</span>(<span class="st">"Disclaimer"</span>)),</span>
+<span id="cb25-73"><a href="#cb25-73"></a>                         <span class="fu">includeMarkdown</span>(<span class="st">"text/disclaimer.md"</span>)</span>
+<span id="cb25-74"><a href="#cb25-74"></a></span>
+<span id="cb25-75"><a href="#cb25-75"></a>                     ) <span class="co"># </span><span class="re">END</span><span class="co"> disclaimer box</span></span>
+<span id="cb25-76"><a href="#cb25-76"></a></span>
+<span id="cb25-77"><a href="#cb25-77"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> second fluidRow</span></span>
+<span id="cb25-78"><a href="#cb25-78"></a></span>
+<span id="cb25-79"><a href="#cb25-79"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> right-hand column</span></span>
+<span id="cb25-80"><a href="#cb25-80"></a></span>
+<span id="cb25-81"><a href="#cb25-81"></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> welcome tabItem</span></span>
+<span id="cb25-82"><a href="#cb25-82"></a></span>
+<span id="cb25-83"><a href="#cb25-83"></a>    <span class="co"># dashboard tabItem ----</span></span>
+<span id="cb25-84"><a href="#cb25-84"></a>    <span class="fu">tabItem</span>(<span class="at">tabName =</span> <span class="st">"dashboard"</span>,</span>
+<span id="cb25-85"><a href="#cb25-85"></a></span>
+<span id="cb25-86"><a href="#cb25-86"></a>            <span class="co"># fluidRow ----</span></span>
+<span id="cb25-87"><a href="#cb25-87"></a>            <span class="fu">fluidRow</span>(</span>
+<span id="cb25-88"><a href="#cb25-88"></a></span>
+<span id="cb25-89"><a href="#cb25-89"></a>              <span class="co"># input box ----</span></span>
+<span id="cb25-90"><a href="#cb25-90"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">4</span>,</span>
+<span id="cb25-91"><a href="#cb25-91"></a>                  </span>
+<span id="cb25-92"><a href="#cb25-92"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Adjust lake parameter ranges:"</span>),</span>
+<span id="cb25-93"><a href="#cb25-93"></a></span>
+<span id="cb25-94"><a href="#cb25-94"></a>                  <span class="co"># sliderInputs ----</span></span>
+<span id="cb25-95"><a href="#cb25-95"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"elevation_slider_input"</span>, <span class="at">label =</span> <span class="st">"Elevation (meters above SL):"</span>,</span>
+<span id="cb25-96"><a href="#cb25-96"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation),</span>
+<span id="cb25-97"><a href="#cb25-97"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>Elevation), <span class="fu">max</span>(lake_data<span class="sc">$</span>Elevation))),</span>
+<span id="cb25-98"><a href="#cb25-98"></a></span>
+<span id="cb25-99"><a href="#cb25-99"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"depth_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average depth (meters):"</span>,</span>
+<span id="cb25-100"><a href="#cb25-100"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
+<span id="cb25-101"><a href="#cb25-101"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
+<span id="cb25-102"><a href="#cb25-102"></a></span>
+<span id="cb25-103"><a href="#cb25-103"></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb25-104"><a href="#cb25-104"></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
+<span id="cb25-105"><a href="#cb25-105"></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
+<span id="cb25-106"><a href="#cb25-106"></a></span>
+<span id="cb25-107"><a href="#cb25-107"></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> input box</span></span>
+<span id="cb25-108"><a href="#cb25-108"></a></span>
+<span id="cb25-109"><a href="#cb25-109"></a>              <span class="co"># leaflet box ----</span></span>
+<span id="cb25-110"><a href="#cb25-110"></a>              <span class="fu">box</span>(<span class="at">width =</span> <span class="dv">8</span>,</span>
+<span id="cb25-111"><a href="#cb25-111"></a></span>
+<span id="cb25-112"><a href="#cb25-112"></a>                  <span class="at">title =</span> tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Monitored lakes within Fish Creek Watershed:"</span>),</span>
+<span id="cb25-113"><a href="#cb25-113"></a></span>
+<span id="cb25-114"><a href="#cb25-114"></a>                  <span class="co"># leaflet output ----</span></span>
+<span id="cb25-115"><a href="#cb25-115"></a>                  <span class="fu">leafletOutput</span>(<span class="at">outputId =</span> <span class="st">"lake_map_output"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-116"><a href="#cb25-116"></a>                    <span class="fu">withSpinner</span>(<span class="at">type =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"#4287f5"</span>)</span>
+<span id="cb25-117"><a href="#cb25-117"></a></span>
+<span id="cb25-118"><a href="#cb25-118"></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> leaflet box</span></span>
+<span id="cb25-119"><a href="#cb25-119"></a></span>
+<span id="cb25-120"><a href="#cb25-120"></a>            ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
+<span id="cb25-121"><a href="#cb25-121"></a></span>
+<span id="cb25-122"><a href="#cb25-122"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> dashboard tabItem</span></span>
+<span id="cb25-123"><a href="#cb25-123"></a></span>
+<span id="cb25-124"><a href="#cb25-124"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabItems</span></span>
+<span id="cb25-125"><a href="#cb25-125"></a>  </span>
+<span id="cb25-126"><a href="#cb25-126"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> dashboardBody</span></span>
+<span id="cb25-127"><a href="#cb25-127"></a></span>
+<span id="cb25-128"><a href="#cb25-128"></a><span class="co">#..................combine all in dashboardPage..................</span></span>
+<span id="cb25-129"><a href="#cb25-129"></a><span class="fu">dashboardPage</span>(header, sidebar, body)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2393,25 +2386,54 @@ There’s a ton more to learn about building shinydashboards. Check out the <a h
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>global.R</strong></pre>
+<pre><strong>server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="fu">library</span>(shinydashboard)</span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb26-5"><a href="#cb26-5"></a><span class="fu">library</span>(shinycssloaders)</span>
-<span id="cb26-6"><a href="#cb26-6"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb26-7"><a href="#cb26-7"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb26-8"><a href="#cb26-8"></a></span>
-<span id="cb26-9"><a href="#cb26-9"></a><span class="co"># READ IN DATA ----</span></span>
-<span id="cb26-10"><a href="#cb26-10"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/lake_data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb26-2"><a href="#cb26-2"></a>  </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="co"># filter lake data ----</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  filtered_lakes_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb26-5"><a href="#cb26-5"></a>    </span>
+<span id="cb26-6"><a href="#cb26-6"></a>    lake_data <span class="sc">|&gt;</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>      <span class="fu">filter</span>(Elevation <span class="sc">&gt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> Elevation <span class="sc">&lt;=</span> input<span class="sc">$</span>elevation_slider_input[<span class="dv">2</span>])  <span class="sc">|&gt;</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a>      <span class="fu">filter</span>(AvgDepth <span class="sc">&gt;=</span> input<span class="sc">$</span>depth_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> AvgDepth <span class="sc">&lt;=</span> input<span class="sc">$</span>depth_slider_input[<span class="dv">2</span>]) <span class="sc">|&gt;</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a>      <span class="fu">filter</span>(AvgTemp <span class="sc">&gt;=</span> input<span class="sc">$</span>temp_slider_input[<span class="dv">1</span>] <span class="sc">&amp;</span> AvgTemp <span class="sc">&lt;=</span> input<span class="sc">$</span>temp_slider_input[<span class="dv">2</span>])</span>
+<span id="cb26-10"><a href="#cb26-10"></a>    </span>
+<span id="cb26-11"><a href="#cb26-11"></a>  })</span>
+<span id="cb26-12"><a href="#cb26-12"></a>  </span>
+<span id="cb26-13"><a href="#cb26-13"></a>  </span>
+<span id="cb26-14"><a href="#cb26-14"></a>  </span>
+<span id="cb26-15"><a href="#cb26-15"></a>  <span class="co"># build leaflet map ----</span></span>
+<span id="cb26-16"><a href="#cb26-16"></a>  output<span class="sc">$</span>lake_map_output <span class="ot">&lt;-</span> <span class="fu">renderLeaflet</span>({</span>
+<span id="cb26-17"><a href="#cb26-17"></a>    </span>
+<span id="cb26-18"><a href="#cb26-18"></a>    <span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a>      </span>
+<span id="cb26-20"><a href="#cb26-20"></a>      <span class="co"># add tiles</span></span>
+<span id="cb26-21"><a href="#cb26-21"></a>      <span class="fu">addProviderTiles</span>(<span class="st">"Esri.WorldImagery"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-22"><a href="#cb26-22"></a>      </span>
+<span id="cb26-23"><a href="#cb26-23"></a>      <span class="co"># set view over AK</span></span>
+<span id="cb26-24"><a href="#cb26-24"></a>      <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">152.048442</span>, <span class="at">lat =</span> <span class="fl">70.249234</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-25"><a href="#cb26-25"></a>      </span>
+<span id="cb26-26"><a href="#cb26-26"></a>      <span class="co"># add mini map</span></span>
+<span id="cb26-27"><a href="#cb26-27"></a>      <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-28"><a href="#cb26-28"></a>      </span>
+<span id="cb26-29"><a href="#cb26-29"></a>      <span class="co"># add markers</span></span>
+<span id="cb26-30"><a href="#cb26-30"></a>      <span class="fu">addMarkers</span>(<span class="at">data =</span>  <span class="fu">filtered_lakes_df</span>(),</span>
+<span id="cb26-31"><a href="#cb26-31"></a>                 <span class="at">lng =</span> <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Longitude, <span class="at">lat =</span> <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Latitude,</span>
+<span id="cb26-32"><a href="#cb26-32"></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb26-33"><a href="#cb26-33"></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb26-34"><a href="#cb26-34"></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb26-35"><a href="#cb26-35"></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
+<span id="cb26-36"><a href="#cb26-36"></a>    </span>
+<span id="cb26-37"><a href="#cb26-37"></a>  })</span>
+<span id="cb26-38"><a href="#cb26-38"></a>  </span>
+<span id="cb26-39"><a href="#cb26-39"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="end" class="slide level2" data-menu-title="~~~ END ~~~" data-background="#047C90">
+<section id="end" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
 <h2></h2>
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">
@@ -2423,7 +2445,7 @@ End part 3
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_457835f1" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_ffba2d5a" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
