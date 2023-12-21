@@ -38,7 +38,9 @@ editor_options:
 
 <hr>
 
-<p class="quote-text-bg body-text bottombr">*"**Shiny is an R package that makes it easy to build interactive web apps straight from R.** You can host standalone apps on a webpage or embed them in [R Markdown](https://rmarkdown.rstudio.com/?_ga=2.5356915.1997816511.1640293283-2019993402.1637352626) documents or build [dashboards](http://rstudio.github.io/shinydashboard/?_ga=2.242738759.492023234.1673556996-309155161.1666221806). You can also extend your Shiny apps with [CSS themes](http://rstudio.github.io/shinythemes/?_ga=2.162383609.492023234.1673556996-309155161.1666221806), [htmlwidgets](http://www.htmlwidgets.org/), and JavaScript [actions.](https://github.com/daattali/shinyjs/blob/master/README.md)"* **- RStudio**</p>
+<p class="quote-text-bg body-text bottombr">*Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge.* **-Posit**</p>
+
+<br>
 
 ```{r}
 #| eval: true
@@ -68,7 +70,7 @@ knitr::include_graphics("images/part1/worldbank-shiny.gif")
 
 <hr>
 
-<p class="body-text bottombr">Shiny apps are composed in *two* parts: (1) a **web page** that displays the app to a user (i.e. the **user interface**, or **UI** for short), and (2) a **computer** that powers the app (i.e. the **server**)</p>
+<p class="body-text bottombr">Shiny apps are composed in *two* parts: [**(1)**]{.teal-text} a **web page** that displays the app to a user (i.e. the **user interface**, or **UI** for short), and [**(2)**]{.teal-text} a **computer** that powers the app (i.e. the **server**)</p>
 
 ```{r}
 #| eval: true
@@ -79,7 +81,7 @@ knitr::include_graphics("images/part1/worldbank-shiny.gif")
 knitr::include_graphics("images/part1/basic_shiny_app.png")
 ```
 
-<p class="body-text bottombr">The **UI** controls the **layout and appearance** of your app and is written in HTML (except we use functions from the `{shiny}` package to write that HTML). The **server** handles the **logic** of the app -- in other words, it is a set of instructions that tells the webpage what to display when a user interacts with it.</p>
+<p class="body-text bottombr">The **UI** controls the **layout and appearance** of your app and is written in HTML (but we use functions from the `{shiny}` package to write that HTML). The **server** handles the **logic** of the app -- in other words, it is a set of instructions that tells the webpage what to display when a user interacts with it.</p>
 
 ---
 
@@ -226,7 +228,7 @@ sliderInput(inputId = "bins",
 
 ```{r}
 countdown::countdown(
-  minutes = 1,
+  minutes = 5,
   # left = 0, right = 0,
   # Fanfare when it's over
   # play_sound = TRUE,

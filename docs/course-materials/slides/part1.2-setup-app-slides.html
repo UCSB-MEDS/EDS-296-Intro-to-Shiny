@@ -450,14 +450,18 @@ You can create a single-file app using RStudio’s built-in Shiny app template (
 </p>
 <div class="fragment">
 <p class="body-text-s topbr">
-<strong>1.</strong> In your project repo, create a subdirectory to house your app – I’m calling mine, <code>single-file-app</code>.
+<span class="teal-text"><strong>(1)</strong></span> In your project repo, create a subdirectory to house your app – I’m calling mine, <code>single-file-app</code>.
 </p>
 </div>
 <div class="fragment">
 <p class="body-text-s">
-<strong>2.</strong> Create a new R script inside <code>/single-file-app</code> and name it <code>app.R</code> – you <strong>must</strong> name your script <code>app.R</code>. Copy/type the following code into <code>app.R</code>, or use the <code>shinyapp</code> <a href="https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html">snippet</a> to automatically generate a shiny app template.
+<span class="teal-text"><strong>(2)</strong></span> Create a new R script inside <code>single-file-app/</code> and name it <code>app.R</code> – you <strong>must</strong> name your script <code>app.R</code>. Copy / type the following code into <code>app.R</code>, or use the <code>shinyapp</code> <a href="https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html">snippet</a> to automatically generate a shiny app template.
 </p><p>
 </p><div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>~/single-file-app/app.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -470,14 +474,15 @@ You can create a single-file app using RStudio’s built-in Shiny app template (
 <span id="cb1-10"><a href="#cb1-10"></a><span class="co"># combine UI &amp; server into an app ----</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p class="body-text-xs">
+</div>
+<p class="body-text-s">
 <strong>Tip:</strong> Use code sections (denoted by <code># some text ----</code>) to make navigating different sections of your app code a bit easier. Code sections will appear in your document outline (find the button at the top right corner of the script/editor panel).
 </p>
 </div>
 </section>
 <section id="run-app" class="slide level2" data-menu-title="Run Your App">
 <h2></h2>
-<p><span class="slide-title2">Run your app</span></p>
+<p><span class="slide-title">Run your app</span></p>
 <hr>
 <p class="body-text-s">
 Once you have saved your <code>app.R</code> file, the “Run” code button should turn into a “Run App” button that looks like: <img src="images/part1/run-app.png" alt="A green, right facing triangular arrow next to the words 'Run App'" style="display: inline-block; margin: 0; position: relative; top: 3px; width:80px;height:20px;">. Click that button to run your app (alternatively, run <code>runApp("directory-name")</code> in your console – for me, that looks like, <code>runApp("single-file-app")</code>)!
@@ -487,7 +492,7 @@ Once you have saved your <code>app.R</code> file, the “Run” code button shou
 You won’t see much yet, as we have only built a blank app (but a functioning app, nonetheless!). In your RStudio console, you should see something like: <code>Listening on http://127.0.0.1:XXXX</code>, which is the URL where your app can be found. 127.0.0.1 is a standard address that means “this computer,” and the last four digits represent a randomly assigned port number. You can click the “Open in Browser” button, <img src="images/part1/open-in-browser.png" alt="A button found on the top left-hand side of the RStudio viewer window that says 'Open in Browser' next to a small browser window icon with an arrow pointing up and to the right." style="display: inline-block; margin: 0; position: relative; top: 3px; width:110px;height:20px;">, to see how your app will appear when viewed in your web browser.
 </p>
 <p class="body-text-s topbr">
-You should also notice a red stop sign, <img src="images/part1/stop.png" alt="A red hexagon with the word 'STOP' printed in white across the center." style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;">, appear in the top right corner of your console indicating that R is busy–this is because your R session is currently acting as your Shiny app server and listening for any user interaction with your app. Because of this, you won’t be able to run any commands in the console until you quit your app. Do so by pressing the stop button.
+You should also notice a red stop sign, <img src="images/part1/stop.png" alt="A red hexagon with the word 'STOP' printed in white across the center." style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;">, appear in the top right corner of your console indicating that R is busy – this is because your R session is currently acting as your Shiny app server and listening for any user interaction with your app. Because of this, you won’t be able to run any commands in the console until you quit your app. Do so by pressing the stop button.
 </p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -516,40 +521,36 @@ You should also notice a red stop sign, <img src="images/part1/stop.png" alt="A 
 </section>
 <section id="two-file" class="slide level2" data-menu-title="Two-file App">
 <h2></h2>
-<p><span class="slide-title2">Create a two-file Shiny app</span></p>
+<p><span class="slide-title">Create a two-file Shiny app</span></p>
 <hr>
 <p class="body-text">
 In practice, you will likely find yourself opting for the the two-file format – code expands quickly, even when building relatively small apps. This two-file approach (well, three if you use a <code>global.R</code> file, which is encouraged) will help to keep your code a bit more manageable.
 </p>
 <div class="fragment">
 <p class="body-text-s topbr">
-<strong>1.</strong> In your project repo, create a new subdirectory to house your app – I’m calling mine, <code>two-file-app</code>.
+<span class="teal-text"><strong>(1)</strong></span> In your project repo’s root directory, create a new subdirectory to house your app – I’m calling mine, <code>two-file-app</code>.
 </p>
 </div>
 <div class="fragment">
 <p class="body-text-s">
-<strong>2.</strong> Create two new R scripts inside <code>/two-file-app</code> named <code>ui.R</code> and <code>server.R</code> – you <strong>must</strong> name your scripts <code>ui.R</code> and <code>server.R</code>. Copy the following code into the respective files. <strong>Note:</strong> When splitting your UI and server into separate files, you do not need to include the <code>shinyApp(ui = ui, server = server)</code> line of code (as required in your single-file app).
+<span class="teal-text"><strong>(2)</strong></span> Create two new R scripts inside <code>two-file-app/</code> named <code>ui.R</code> and <code>server.R</code> – you <strong>must</strong> name your scripts <code>ui.R</code> and <code>server.R</code>. Copy the following code into the respective files. <strong>Note:</strong> When splitting your UI and server into separate files, you do not need to include the <code>shinyApp(ui = ui, server = server)</code> line of code (as required in your single-file app).
 </p><p>
 </p><div class="columns">
-<div class="column" style="width:45%;">
-<!-- <p class="body-text">**`ui.R`**</p> -->
+<div class="column" style="width:50%;">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ur.R</strong></pre>
+<pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># user interface ----</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:45%;">
-<!-- <p class="body-text">**`server.R`**</p> -->
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>server.R</strong></pre>
+<pre><strong>~/two-file-app/server.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># server instructions ----</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -560,13 +561,12 @@ In practice, you will likely find yourself opting for the the two-file format �
 </div>
 <div class="fragment">
 <p class="body-text-s">
-<strong>3.</strong> Lastly, let’s create a <code>global.R</code> file within <code>/two-file-app</code> and add dependencies (right now, that’s just loading the <code>shiny</code> package). Run your app as we did earlier.
+<span class="teal-text"><strong>(3)</strong></span> Lastly, let’s create a <code>global.R</code> file within <code>two-file-app/</code> and add dependencies (right now, that’s just loading the <code>shiny</code> package). Run your app as we did earlier.
 </p>
-<!-- <p class="body-text">**`global.R`**</p> -->
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>global.R</strong></pre>
+<pre><strong>~/two-file-app/global.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># load libraries ----</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(shiny)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -586,7 +586,7 @@ End part 1.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b6a98389" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_761b6a4f" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

@@ -22,13 +22,13 @@ knitr::include_graphics("images/software.png")
 
 -  A [GitHub](https://github.com/) profile & [git](https://git-scm.com/) installed / configured
 
-- You have the required R packages installed. You can install/update them all at once by running:
+- You have the required R packages installed. You can install / update them all at once by running:
  
 ```{r}
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-install.packages(pkgs = c("shiny", "shinydashboard", "shinyWidgets", "DT", "leaflet", "shinycssloaders", "tidyverse", "bslib", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder", "markdown"))
+install.packages(pkgs = c( "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder"))
 ```
 
 ::: {.center-text .body-text-m .teal-text}

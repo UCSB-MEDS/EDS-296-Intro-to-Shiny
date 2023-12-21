@@ -101,13 +101,13 @@ knitr::include_graphics("images/part1/one-vs-two.png")
 
 . . . 
 
-<p class="body-text-s topbr">**1.** In your project repo, create a subdirectory to house your app -- I'm calling mine, `single-file-app`.</p>
+<p class="body-text-s topbr">[**(1)**]{.teal-text} In your project repo, create a subdirectory to house your app -- I'm calling mine, `single-file-app`.</p>
 
 . . . 
 
-<p class="body-text-s">**2.** Create a new R script inside `/single-file-app` and name it `app.R` -- you **must** name your script `app.R`. Copy/type the following code into `app.R`, or use the `shinyapp` [snippet](https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html) to automatically generate a shiny app template.<p>
+<p class="body-text-s">[**(2)**]{.teal-text} Create a new R script inside `single-file-app/` and name it `app.R` -- you **must** name your script `app.R`. Copy / type the following code into `app.R`, or use the `shinyapp` [snippet](https://rstudio.github.io/rstudio-extensions/rstudio_snippets.html) to automatically generate a shiny app template.<p>
 
-```{r filename-"app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 # load packages ----
@@ -123,13 +123,13 @@ server <- function(input, output) {}
 shinyApp(ui = ui, server = server)
 ```
 
-<p class="body-text-xs">**Tip:** Use code sections (denoted by `# some text ----`) to make navigating different sections of your app code a bit easier. Code sections will appear in your document outline (find the button at the top right corner of the script/editor panel).</p>
+<p class="body-text-s">**Tip:** Use code sections (denoted by `# some text ----`) to make navigating different sections of your app code a bit easier. Code sections will appear in your document outline (find the button at the top right corner of the script/editor panel).</p>
 
 ---
 
 ##  {#run-app data-menu-title="Run Your App"}
 
-[Run your app]{.slide-title2}
+[Run your app]{.slide-title}
 
 <hr>
 
@@ -139,7 +139,7 @@ shinyApp(ui = ui, server = server)
 
 <p class="body-text-s topbr">You won't see much yet, as we have only built a blank app (but a functioning app, nonetheless!). In your RStudio console, you should see something like: `Listening on http://127.0.0.1:XXXX`, which is the URL where your app can be found. 127.0.0.1 is a standard address that means "this computer," and the last four digits represent a randomly assigned port number. You can click the "Open in Browser" button, <img src="images/part1/open-in-browser.png" alt="A button found on the top left-hand side of the RStudio viewer window that says 'Open in Browser' next to a small browser window icon with an arrow pointing up and to the right." style="display: inline-block; margin: 0; position: relative; top: 3px; width:110px;height:20px;"/>, to see how your app will appear when viewed in your web browser.</p>
 
-<p class="body-text-s topbr">You should also notice a red stop sign, <img src="images/part1/stop.png" alt="A red hexagon with the word 'STOP' printed in white across the center." style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"/>, appear in the top right corner of your console indicating that R is busy--this is because your R session is currently acting as your Shiny app server and listening for any user interaction with your app. Because of this, you won't be able to run any commands in the console until you quit your app. Do so by pressing the stop button.</p>
+<p class="body-text-s topbr">You should also notice a red stop sign, <img src="images/part1/stop.png" alt="A red hexagon with the word 'STOP' printed in white across the center." style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"/>, appear in the top right corner of your console indicating that R is busy -- this is because your R session is currently acting as your Shiny app server and listening for any user interaction with your app. Because of this, you won't be able to run any commands in the console until you quit your app. Do so by pressing the stop button.</p>
 
 :::: {.columns}
 
@@ -171,7 +171,7 @@ knitr::include_graphics("images/part1/run-app-RStudio.png")
 
 ##  {#two-file data-menu-title="Two-file App"}
 
-[Create a two-file Shiny app]{.slide-title2}
+[Create a two-file Shiny app]{.slide-title}
 
 <hr>
 
@@ -179,17 +179,16 @@ knitr::include_graphics("images/part1/run-app-RStudio.png")
 
 . . . 
 
-<p class="body-text-s topbr">**1.** In your project repo, create a new subdirectory to house your app -- I'm calling mine, `two-file-app`.</p>
+<p class="body-text-s topbr">[**(1)**]{.teal-text} In your project repo's root directory, create a new subdirectory to house your app -- I'm calling mine, `two-file-app`.</p>
 
 . . . 
 
-<p class="body-text-s">**2.** Create two new R scripts inside `/two-file-app` named `ui.R` and `server.R` -- you **must** name your scripts `ui.R` and `server.R`. Copy the following code into the respective files. **Note:** When splitting your UI and server into separate files, you do not need to include the `shinyApp(ui = ui, server = server)` line of code (as required in your single-file app).<p>
+<p class="body-text-s">[**(2)**]{.teal-text} Create two new R scripts inside `two-file-app/` named `ui.R` and `server.R` -- you **must** name your scripts `ui.R` and `server.R`. Copy the following code into the respective files. **Note:** When splitting your UI and server into separate files, you do not need to include the `shinyApp(ui = ui, server = server)` line of code (as required in your single-file app).<p>
 
 :::: {.columns}
 
-::: {.column width="45%"}
-<!-- <p class="body-text">**`ui.R`**</p> -->
-```{r filename="ur.R"}
+::: {.column width="50%"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 # user interface ----
@@ -197,12 +196,8 @@ ui <- fluidPage()
 ```
 :::
 
-::: {.column width="10%"}
-:::
-
-::: {.column width="45%"}
-<!-- <p class="body-text">**`server.R`**</p> -->
-```{r filename="server.R"}
+::: {.column width="50%"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 # server instructions ----
@@ -214,10 +209,9 @@ server <- function(input, output) {}
 
 . . . 
 
-<p class="body-text-s">**3.** Lastly, let's create a `global.R` file within `/two-file-app` and add dependencies (right now, that's just loading the `shiny` package). Run your app as we did earlier.</p>
+<p class="body-text-s">[**(3)**]{.teal-text} Lastly, let's create a `global.R` file within `two-file-app/` and add dependencies (right now, that's just loading the `shiny` package). Run your app as we did earlier.</p>
 
-<!-- <p class="body-text">**`global.R`**</p> -->
-```{r filename="global.R"}
+```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
 # load libraries ----

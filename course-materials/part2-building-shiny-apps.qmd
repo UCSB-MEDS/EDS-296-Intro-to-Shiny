@@ -10,7 +10,7 @@ toc: true
 #| echo: false
 #| fig-align: "center"
 #| out-width: "80%" 
-#| fig-alt: "A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs."
+#| fig-alt: ""
 # knitr::include_graphics("images/basic-shiny-app.png")
 ```
 
