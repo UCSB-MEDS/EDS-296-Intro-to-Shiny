@@ -866,7 +866,7 @@ ui <- navbarPage(
 
 <hr>
 
-<p class="body-text-s bottombr">We'll be using the [`and_vertebrates` dataset](https://lter.github.io/lterdatasampler/reference/and_vertebrates.html) from the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/) to create our first reactive plot. These data contain coastal cutthroat trout (*Oncorhynchus clarkii clarkii*) lengths and weights collected in Mack Creek, [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/). Original data can be found on the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-and.4027.14). Refer back to [this slide]() to revisit our practice data wrangling & visualization script.</p>
+<p class="body-text-s bottombr">We'll be using the [`and_vertebrates` dataset](https://lter.github.io/lterdatasampler/reference/and_vertebrates.html) from the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/) to create our first reactive plot. These data contain coastal cutthroat trout (*Oncorhynchus clarkii clarkii*) lengths and weights collected in Mack Creek, [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/). Original data can be found on the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-and.4027.14). Refer back to [this slide](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part2.2-two-file-app-slides.html#/app2-trout-plot) to revisit our practice data wrangling & visualization script.</p>
 
 <br>
 
@@ -895,7 +895,7 @@ In addition to the [`{lterdatasampler}` package](https://lter.github.io/lterdata
 
 **Import those three packages at the top of your `global.R` file**
 
-```{r filename="global.R"}
+```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "3-5"
@@ -914,9 +914,9 @@ library(shinyWidgets)
 
 <hr>
 
-<p class="body-text-s">We can also do the bulk of our data wrangling here, rather than in the server. If we were reading in a data file (e.g. `.csv`), we would do that here too. Our new data object `clean_trout`, will now be available for us to call directly in our server (**NOTE:** we can copy our wrangling code over from our [practice script]()).</p>
+<p class="body-text-s">We can also do the bulk of our data wrangling here, rather than in the server. If we were reading in a data file (e.g. `.csv`), we would do that here too. Our new data object `clean_trout`, will now be available for us to call directly in our server (**NOTE:** we can copy our wrangling code over from our [practice script](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part2.2-two-file-app-slides.html#/app2-trout-plot)).</p>
 
-```{r filename="global.R"}
+```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "6-24"
@@ -1061,7 +1061,7 @@ server <- function(input, output) {
 ::: {.column width="35%"}
 <p class="body-text">**A couple notes / reminders:**</p>
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text}  If needed, reference your [practice script]() to remind yourself how you planned to filter and plot your data</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text}  If needed, reference your [practice script](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part2.2-two-file-app-slides.html#/app2-trout-plot) to remind yourself how you planned to filter and plot your data</p>
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text}  Reactive data frames need a set of parentheses, `()`, following the name of the df (see `ggplot(trout_filtered_df() ...)`)</p>
 

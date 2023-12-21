@@ -571,7 +571,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterPlot") 
+  plotOutput(outputId = "bodyMass_scatterplot_output") 
   
 )
 
@@ -664,7 +664,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterPlot")
+  plotOutput(outputId = "bodyMass_scatterplot_output")
   
 )
 
@@ -672,7 +672,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # render penguin scatter plot ----
-  output$bodyMass_scatterPlot <- renderPlot({ 
+  output$bodyMass_scatterplot_output <- renderPlot({ 
       ggplot(na.omit(penguins),
              aes(x = flipper_length_mm, y = bill_length_mm,
                  color = species, shape = species)) + 
@@ -799,7 +799,7 @@ body_mass_df <- penguins |>
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: false
 #| echo: true
@@ -817,10 +817,7 @@ knitr::include_graphics("images/part2/2857-5903.png")
 ```
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: false
 #| echo: true
@@ -867,7 +864,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterPlot")
+  plotOutput(outputId = "bodyMass_scatterplot_output")
   
 )
 
@@ -875,7 +872,7 @@ ui <- fluidPage(
 server <- function(input, output) {
       
   # render the scatter plot ----
-  output$bodyMass_scatterPlot <- renderPlot({ 
+  output$bodyMass_scatterplot_output <- renderPlot({ 
       ggplot(na.omit(penguins, aes(...)) + # etc. (omitted for brevity)
   }) 
     
@@ -1015,16 +1012,13 @@ And we saw that reactivity automatically occurs whenever we use an ***input valu
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 <br>
 <p class="body-text-s topbr">**Working alone or in groups, add a reactive `DT` datatable to your app with a `checkboxGroupInput` that allows users to select which year(s) to include in the table. Configure your `checkboxGroupInput` so that the years 2007 and 2008 are pre-selected.**</p>
 <p class="body-text-s topbr">In the end, your app should look something like the example to the right.</p>
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
