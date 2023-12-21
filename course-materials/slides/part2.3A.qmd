@@ -26,7 +26,7 @@ editor_options:
 
 <hr>
 
-<p class="body-text-s">Go to [shinyapps.io](https://www.shinyapps.io/) and login or create an account (if you don't already have one) -- I created my account and login with GitHub. To use shinyapps.io, you first need to link your account with RStudio on your computer. Follow the instructions on shinyapps.io when you first create your account to install the [`{rsconnect}` package](https://github.com/rstudio/rsconnect) and authorize your account:</p>
+<p class="body-text-s">Go to [shinyapps.io](https://www.shinyapps.io/) and login or create an account (if you don't already have one) -- **I recommend creating your account and logging in using GitHub**. To use [shinyapps.io](https://www.shinyapps.io/), you first need to link your account with RStudio on your computer. Follow the instructions on [shinyapps.io](https://www.shinyapps.io/) when you first create your account to install the [`{rsconnect}` package](https://github.com/rstudio/rsconnect) and authorize your account:</p>
 
 ```{r}
 #| eval: true
@@ -45,9 +45,9 @@ knitr::include_graphics("images/part2/shinyapps_setup.png")
 
 <hr>
 
-<p class="body-text-s">Once your account has been authorized, run `rsconnect::deployApp("<app_directory_name>")` in your console to deploy your app to shinyapps.io. Here, we'll run `rsconnect::deployApp("two-file-app")` to deploy the app we've been working on.</p>
+<p class="body-text-s">Once your account has been authorized, run `rsconnect::deployApp("<app_directory_name>")` in your console to deploy your app to [shinyapps.io](https://www.shinyapps.io/). Here, we'll run `rsconnect::deployApp("two-file-app")` to deploy the app we've been working on.</p>
 
-<p class="body-text-s">Once deployed, a browser will open to your application. The URL will take the form: **https://username.shinyapps.io/your_app_directory_name**. You should also now see an `/rsconnect` folder within your app's directory -- this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e. the name, title, server address, account, URL, and time). **This `/rsconnect` folder should be added and committed into version control (i.e. push it to GitHub!)** so that future re-deployments target the same endpoint (i.e. your app's URL).</p>
+<p class="body-text-s">Once deployed, a browser will open to your application. The URL will take the form: [**https://username.shinyapps.io/your_app_directory_name**]{.teal-text}. You should also now see an `/rsconnect` folder within your app's directory -- this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e. the name, title, server address, account, URL, and time). **This `/rsconnect` folder should be added and committed into version control (i.e. push it to GitHub!)** so that future re-deployments target the same endpoint (i.e. your app's URL).</p>
 
 ```{r}
 #| eval: true
@@ -66,7 +66,7 @@ knitr::include_graphics("images/part2/deployed_v1.gif")
 
 <hr>
 
-<p class="body-text-s">Your shinyapps.io dashboard provides tons of information about your application metrics, instance (the virtualized server that your app is hosted on) and worker (a special type of R process that an Application Instance runs to service requests to an application) settings, plan management, and more. The free plan (the plan we're using here today) allows you to deploy **five** Shiny apps. You are able to archive and/or delete once-deployed apps to make space for new ones.</p>
+<p class="body-text-s">Your [shinyapps.io](https://www.shinyapps.io/) dashboard provides tons of information about your application metrics, instance (the virtualized server that your app is hosted on) and worker (a special type of R process that an Application Instance runs to service requests to an application) settings, plan management, and more. The free plan (the plan we're using here today) allows you to deploy **five** Shiny apps. You are able to archive and / or delete once-deployed apps to make space for new ones.</p>
 
 ```{r}
 #| eval: true
@@ -77,7 +77,9 @@ knitr::include_graphics("images/part2/deployed_v1.gif")
 knitr::include_graphics("images/part2/shinapps_dashboard.png")
 ```
 
-<p class="body-text-s">Check out the [shinyapps.io user guide](https://docs.posit.co/shinyapps.io/index.html) for more information on hosting your apps on shinyapps.io.</p>
+::: {.footer}
+Check out the [shinyapps.io user guide](https://docs.posit.co/shinyapps.io/index.html) for more information on hosting your apps on [shinyapps.io](https://www.shinyapps.io/).
+:::
 
 ---
 
@@ -95,7 +97,7 @@ knitr::include_graphics("images/part2/shinapps_dashboard.png")
 
 [**Posit also offers the following:**]{.body-text-m .teal-text}
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Shiny server](https://posit.co/products/open-source/shinyserver/) is an open source server which you can deploy for free on your own hardware. It requires more setup and configuration, but can be used without a fee. The Bren and NCEAS servers are configured with Shiny Server for hosting for some in-house apps.</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Shiny server](https://posit.co/products/open-source/shinyserver/) is an open source server platform which you can deploy for free on your own hardware. It requires more setup and configuration, but can be used without a fee. The Bren and NCEAS servers are configured with Shiny Server for hosting for some in-house apps.</p>
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Posit connect](https://posit.co/products/enterprise/connect/) is a paid product that provides an advanced suite of services for hosting Shiny apps, Quarto and R Markdown reports, APIs, and more.</p>
 
@@ -107,7 +109,7 @@ knitr::include_graphics("images/part2/shinapps_dashboard.png")
 
 <hr>
 
-<p class="body-text">The Bren compute team will work with groups to deploy and maintain apps on in-house servers for up to 6 months after capstone/GP presentations *or until they break*.</p>
+<p class="body-text">The Bren compute team will work with groups to deploy and maintain apps on in-house servers for up to 6 months after capstone / GP presentations ***or until they break***.</p>
 
 . . . 
 
@@ -115,10 +117,10 @@ knitr::include_graphics("images/part2/shinapps_dashboard.png")
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Preferred:** Stick with the **free** tier of [shinyapps.io](https://www.shinyapps.io/), if you can! This is by far the most straightforward option that requires no server maintenance for you or your client. If your app exceeds the limitations set by the free tier (e.g. requires more active hours, needs more RAM or instances to support high traffic usage, etc.), you/your client have the option to upgrade to a paid tier -- there are [5 paid plan types](https://docs.posit.co/shinyapps.io/billing-and-account-management.html#plan-types). Check out the [shinyapps.io user guide](https://docs.posit.co/shinyapps.io/index.html) for more information. **Consider setting aside your allocated capstone/GP funds to help support a paid shinyapps.io plan.**</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}} **Preferred:**]{.teal-text} Stick with the **free** tier of [shinyapps.io](https://www.shinyapps.io/), if you can! This is by far the most straightforward option that requires no server maintenance for you or your client. If your app exceeds the limitations set by the free tier (e.g. requires more active hours, needs more RAM or instances to support high traffic usage, etc.), you / your client have the option to upgrade to a paid tier -- there are [5 paid plan types](https://docs.posit.co/shinyapps.io/billing-and-account-management.html#plan-types). Check out the [shinyapps.io user guide](https://docs.posit.co/shinyapps.io/index.html) for more information. **Consider setting aside your allocated capstone / GP funds to help support a paid shinyapps.io plan.**</p>
 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} If you have a server-savvy client, they may want to deploy/host your app using their own infrastructure. If your client plans to pursue this option, but does not yet have a their own server configured to do so, we recommend directing them to the [online instructions](https://posit.co/download/shiny-server/) for getting started with Shiny Server. **PLEASE NOTE that Bren staff (including the compute team) are unable to provide technical support for clients in server configuration and app deployment/maintenance.**</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} If you have a server-savvy client, they may want to deploy / host your app using their own infrastructure. If your client plans to pursue this option, but does not yet have a their own server configured to do so, we recommend directing them to the [online instructions](https://posit.co/download/shiny-server/) for getting started with Shiny Server. **[PLEASE NOTE]{.teal-text} that Bren staff (including the compute team) are unable to provide technical support for clients in server configuration and app deployment / maintenance.**</p>
 
 . . . 
 
@@ -126,4 +128,66 @@ knitr::include_graphics("images/part2/shinapps_dashboard.png")
 
 . . . 
 
+---
 
+##  {#failed-deployments data-menu-title="Failed deployments" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa triangle-exclamation title="an exclamation point inside a triangle" >}} A quick note on failed deployments</p>
+<p class="caption-text">*It's not uncommon to encounter a failed deployment or even a successful deployment with broken features. The [shinyapps.io](https://www.shinyapps.io/) log should be the first place you turn to for troubleshooting.*</p>
+</div>
+
+---
+
+##  {#motivating-ex data-menu-title="A motivating example"}
+
+[A (recent) motivating example:]{.slide-title}
+
+<hr>
+
+[I was recently walking through these workshop materials and following my own instructions for building App #2 (`two-file-app`). While the app seemed to working just fine locally, the deployment wasn't so happy. . . rather than seeing a trout scatterplot and penguin histogram, a red error message which read, **Error: An error has occurred. Check your logs or contact the app author for clarification**, appeared instead:]{.body-text-s}
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part2/deploy-error.png")
+```
+
+---
+
+##  {#check-log data-menu-title="Check the log!"}
+
+[Check the deployment log!]{.slide-title}
+
+<hr>
+
+[Heed the error message! After heading over to [shinyapps.io](https://www.shinyapps.io/) deployment log, we (pretty quickly) see the source of the error: `Warning: Error in myCustomTheme: could not find function "myCustomTheme"`]{.body-text-s}:
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part2/deploy-log.png")
+```
+
+---
+
+
+##  {#missing-theme data-menu-title="Check the code"}
+
+[Sure enough. . . `myCustomTheme()` is missing]{.slide-title2}
+
+<hr>
+
+[While I'm not sure exactly how `myCustomTheme()` disappeared from `global.R` -- it's possible I accidentally deleted it, but had it stored in my global environment so that my app still ran fine locally -- adding it back in, then redeploying lead to a fully functioning, deployed application:]{.body-text-s}
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part2/deploy-rstudio.png")
+```

@@ -32,6 +32,7 @@ library(DT)
 library(shinyWidgets)
 library(shinycssloaders)
 library(markdown)
+library(rsconnect)
 ```
 
 ## Required Data

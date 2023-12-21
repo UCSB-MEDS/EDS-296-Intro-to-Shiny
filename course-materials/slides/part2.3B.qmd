@@ -56,7 +56,7 @@ editor_options:
 
 ##  {#roadmap-app2v2 data-menu-title="Roadmap App #2v2"}
 
-[Roadmap for App #2v2]{.slide-title2}
+[Roadmap for App #2 (v2)]{.slide-title}
 
 <hr>
 
@@ -70,11 +70,11 @@ We'll be refining our **two-file app** with a focus on creating a more user-frie
 
 <br>
 
-**(a)** user-friendly validation error messages that appear when widgets are used to deselect all data
+[**(a)**]{.teal-text} user-friendly validation error messages that appear when widgets are used to deselect all data
 
-**(b)** loading animations for both two reactive plots
+[**(b)**]{.teal-text} loading animations for both two reactive plots
 
-**(c)** alternate (alt) text for all data visualizations
+[**(c)**]{.teal-text} alternate (alt) text for all data visualizations
 :::
 
 ::: {.column width="60%"}
@@ -135,9 +135,11 @@ knitr::include_graphics("images/part2/confusing_sign.png")
 
 <hr>
 
-<p class="body-text-s">`validate()` tests a condition and returns an error if that conditions fails. It's used in conjunction with `need()`, which takes an expression that returns `TRUE` or `FALSE`, along with a character string to return if the condition is `FALSE`.</p>
+<p class="body-text-s">**`validate()` tests a condition and returns an error if that conditions fails.** It's used in conjunction with `need()`, which takes an expression that returns `TRUE` or `FALSE`, along with a character string to return if the condition is `FALSE`.</p>
 
-<p class="body-text-s">Place your validation test(s) at the start of any `reactive()` or `render*()` expression that calls `input$data`. For example, we can add two validation tests inside the reactive that generates our `trout_filtered_df` -- we'll need two separate validation tests, one for each of our inputs where users can deselect all data.</p>
+<p class="body-text-s">Place your validation test(s) at the start of any `reactive()` or `render*()` expression that calls `input$data`.</p>
+
+<p class="body-text-s">For example, we can add two validation tests inside the reactive that generates our `trout_filtered_df` -- we'll need two separate validation tests, one for each of our inputs where users can deselect all data.</p>
 
 ```{r filename="server.R"}
 #| eval: false
@@ -266,7 +268,7 @@ server <- function(input, output) {
 
 <hr>
 
-<p class="body-text-s">The [`{shinycssloaders}` package](https://github.com/daattali/shinycssloaders) makes it easy to add visual indicators to outputs as they're loading or re-rendering. This can be particularly helpful if you have outputs that take a few seconds to render -- it alerts users that their updated inputs were recognized and that the app is working to re-render outputs.</p>
+<p class="body-text-s">**The [`{shinycssloaders}` package](https://github.com/daattali/shinycssloaders) makes it easy to add visual indicators to outputs as they're loading or re-rendering.** This can be particularly helpful if you have outputs that take more than a second or so to render -- it alerts users that their updated inputs were recognized and that the app is working to re-render outputs.</p>
 
 <p class="body-text-s">Check out the [demo app](https://daattali.com/shiny/shinycssloaders-demo/) to start designing your own "spinner" (choose style, color, size).</p>
 
@@ -306,7 +308,7 @@ knitr::include_graphics("images/part2/spinners.gif")
 
 ##  {#include-alt-text data-menu-title="Include alt text"}
 
-[Include alt text for all data visualizations]{.slide-title2}
+[Include alt text for all data visualizations]{.slide-title}
 
 <hr>
 
@@ -345,7 +347,7 @@ output$trout_scatterplot <- renderPlot({
 
  },
   
-  alt = "A scatterplot of the relationship between cutthroat trout lengths (mm) (x-axis) and weights (g) (y-axis), with data points colored and shaped based on the water channel type from which they were collected. Trout tend to be longer, but weight less in waterways within the old growth forest. Trout tend to be shorter, but weight more in waterways within the clear cut forest."
+  alt = "A scatterplot of the relationship between cutthroat trout lengths (mm) and weights (g), with data points colored and shaped based on the water channel type from which they were collected. Trout tend to be longer, but weigh less in waterways within the old growth forest. Trout tend to be shorter, but weigh more in waterways within the clear cut forest."
   
 ) # END render trout scatterplot
 
@@ -370,3 +372,22 @@ output$flipperLength_histogram <- renderPlot({
 :::
 
 ::::
+
+---
+
+##  {#see-alt-text data-menu-title="Verify alt text"}
+
+[Make sure your alt text was successfully added]{.slide-title2}
+
+<hr>
+
+**Right click** on your plot > choose **Inspect Element** > you should see your alt tag and text appear in the developer pane beside your plot. 
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+#| fig-alt: "Loading animations appear each time an input value is changed and plot outputs are re-rendered. The trout plot has a blue animation of three perpendicular vertical bars that undulate in length. The penguin plot has a green trailing circular pattern of small circles that grow and shrink in size as they rotate."
+knitr::include_graphics("images/part2/verify-alt-text.png")
+```

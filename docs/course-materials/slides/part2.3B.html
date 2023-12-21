@@ -444,16 +444,16 @@ Packages introduced:
 </section>
 <section id="roadmap-app2v2" class="slide level2" data-menu-title="Roadmap App #2v2">
 <h2></h2>
-<p><span class="slide-title2">Roadmap for App #2v2</span></p>
+<p><span class="slide-title">Roadmap for App #2 (v2)</span></p>
 <hr>
 <p>We’ll be refining our <strong>two-file app</strong> with a focus on creating a more user-friendly experience. When finished with v2, we’ll have added:</p>
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:35%;">
 <p><br></p>
-<p><strong>(a)</strong> user-friendly validation error messages that appear when widgets are used to deselect all data</p>
-<p><strong>(b)</strong> loading animations for both two reactive plots</p>
-<p><strong>(c)</strong> alternate (alt) text for all data visualizations</p>
+<p><span class="teal-text"><strong>(a)</strong></span> user-friendly validation error messages that appear when widgets are used to deselect all data</p>
+<p><span class="teal-text"><strong>(b)</strong></span> loading animations for both two reactive plots</p>
+<p><span class="teal-text"><strong>(c)</strong></span> alternate (alt) text for all data visualizations</p>
 </div><div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -496,10 +496,13 @@ Packages introduced:
 <p><span class="slide-title">Writing validation tests</span></p>
 <hr>
 <p class="body-text-s">
-<code>validate()</code> tests a condition and returns an error if that conditions fails. It’s used in conjunction with <code>need()</code>, which takes an expression that returns <code>TRUE</code> or <code>FALSE</code>, along with a character string to return if the condition is <code>FALSE</code>.
+<strong><code>validate()</code> tests a condition and returns an error if that conditions fails.</strong> It’s used in conjunction with <code>need()</code>, which takes an expression that returns <code>TRUE</code> or <code>FALSE</code>, along with a character string to return if the condition is <code>FALSE</code>.
 </p>
 <p class="body-text-s">
-Place your validation test(s) at the start of any <code>reactive()</code> or <code>render*()</code> expression that calls <code>input$data</code>. For example, we can add two validation tests inside the reactive that generates our <code>trout_filtered_df</code> – we’ll need two separate validation tests, one for each of our inputs where users can deselect all data.
+Place your validation test(s) at the start of any <code>reactive()</code> or <code>render*()</code> expression that calls <code>input$data</code>.
+</p>
+<p class="body-text-s">
+For example, we can add two validation tests inside the reactive that generates our <code>trout_filtered_df</code> – we’ll need two separate validation tests, one for each of our inputs where users can deselect all data.
 </p>
 <div class="cell">
 <div class="code-with-filename">
@@ -619,7 +622,7 @@ See next slide for a solution!
 <p><span class="slide-title2">Add loading animations to re-rendering outputs</span></p>
 <hr>
 <p class="body-text-s">
-The <a href="https://github.com/daattali/shinycssloaders"><code>{shinycssloaders}</code> package</a> makes it easy to add visual indicators to outputs as they’re loading or re-rendering. This can be particularly helpful if you have outputs that take a few seconds to render – it alerts users that their updated inputs were recognized and that the app is working to re-render outputs.
+<strong>The <a href="https://github.com/daattali/shinycssloaders"><code>{shinycssloaders}</code> package</a> makes it easy to add visual indicators to outputs as they’re loading or re-rendering.</strong> This can be particularly helpful if you have outputs that take more than a second or so to render – it alerts users that their updated inputs were recognized and that the app is working to re-render outputs.
 </p>
 <p class="body-text-s">
 Check out the <a href="https://daattali.com/shiny/shinycssloaders-demo/">demo app</a> to start designing your own “spinner” (choose style, color, size).
@@ -657,7 +660,7 @@ We can pipe the <code>withSpinner()</code> function directly into our <code>plot
 </section>
 <section id="include-alt-text" class="slide level2" data-menu-title="Include alt text">
 <h2></h2>
-<p><span class="slide-title2">Include alt text for all data visualizations</span></p>
+<p><span class="slide-title">Include alt text for all data visualizations</span></p>
 <hr>
 <p class="body-text-s">
 Alt text are <strong>written descriptions</strong> added to images, and importantly, to data visualizations, to <strong>help more users understand the content</strong>. Assistive technologies (e.g.&nbsp;screen readers) read alt text out loud for users to hear. When alt text is successfully added, the <code>alt</code> tag (along with your text) should appear in the HTML (right click on your app’s data viz to <strong>Inspect</strong> and ensure that it was added).
@@ -690,7 +693,7 @@ We’ll talk a bit more about alt text later on, but for now we can add alt text
 <span id="cb4-14"><a href="#cb4-14"></a></span>
 <span id="cb4-15"><a href="#cb4-15"></a> },</span>
 <span id="cb4-16"><a href="#cb4-16"></a>  </span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="at">alt =</span> <span class="st">"A scatterplot of the relationship between cutthroat trout lengths (mm) (x-axis) and weights (g) (y-axis), with data points colored and shaped based on the water channel type from which they were collected. Trout tend to be longer, but weight less in waterways within the old growth forest. Trout tend to be shorter, but weight more in waterways within the clear cut forest."</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>  <span class="at">alt =</span> <span class="st">"A scatterplot of the relationship between cutthroat trout lengths (mm) and weights (g), with data points colored and shaped based on the water channel type from which they were collected. Trout tend to be longer, but weigh less in waterways within the old growth forest. Trout tend to be shorter, but weigh more in waterways within the clear cut forest."</span></span>
 <span id="cb4-18"><a href="#cb4-18"></a>  </span>
 <span id="cb4-19"><a href="#cb4-19"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> render trout scatterplot</span></span>
 <span id="cb4-20"><a href="#cb4-20"></a></span>
@@ -714,8 +717,15 @@ We’ll talk a bit more about alt text later on, but for now we can add alt text
 </div>
 </div>
 </div>
+</section>
+<section id="see-alt-text" class="slide level2" data-menu-title="Verify alt text">
+<h2></h2>
+<p><span class="slide-title2">Make sure your alt text was successfully added</span></p>
+<hr>
+<p><strong>Right click</strong> on your plot &gt; choose <strong>Inspect Element</strong> &gt; you should see your alt tag and text appear in the developer pane beside your plot.</p>
 
-<div class="footer footer-default">
+
+<img data-src="images/part2/verify-alt-text.png" style="width:100.0%" alt="Loading animations appear each time an input value is changed and plot outputs are re-rendered. The trout plot has a blue animation of three perpendicular vertical bars that undulate in length. The penguin plot has a green trailing circular pattern of small circles that grow and shrink in size as they rotate." class="r-stretch quarto-figure-center"><div class="footer footer-default">
 
 </div>
 </section>
