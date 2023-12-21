@@ -9,16 +9,16 @@ toc: true
 #| eval: true 
 #| echo: false
 #| fig-align: "center"
-#| out-width: "80%" 
+#| out-width: "60%" 
 #| fig-alt: ""
-# knitr::include_graphics("images/basic-shiny-app.png")
+knitr::include_graphics("images/pkg-logos.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-ADD IMAGE HERE
+Artwork by [Allison Horst](https://allisonhorst.com/)
 :::
 
-# Required Packages
+## Required Packages
 
 We'll be loading the following R packages: 
 

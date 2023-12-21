@@ -601,7 +601,7 @@ server <- function(input, output) {
 
 ## Code
 
-```{r filename="~/scratch/practice-script-app1-penguins.R"}
+```{r filename="~/scratch/practice-script-app1.R"}
 #| eval: false
 #| echo: true
 # load packages ----
@@ -718,7 +718,7 @@ knitr::include_graphics("images/part2/nonreactive-app.gif")
 
 . . . 
 
-```{r filename="~/scratch/practice-script-app1-penguins.R"}
+```{r filename="~/scratch/practice-script-app1.R"}
 #| eval: true
 #| echo: true
 # load packages ----
@@ -737,7 +737,7 @@ body_mass_df <- penguins |>
 :::: {.columns}
 
 :::{.column width="55%"}
-```{r filename="~/scratch/practice-script-app1-penguins.R"}
+```{r filename="~/scratch/practice-script-app1.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "2"
@@ -783,7 +783,7 @@ knitr::include_graphics("images/part2/filtered-penguin-plot.png")
 
 . . . 
 
-```{r filename="~/scratch/practice-script-app1-penguins.R"}
+```{r filename="~/scratch/practice-script-app1.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "2"

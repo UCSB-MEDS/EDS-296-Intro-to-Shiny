@@ -397,7 +397,7 @@
 
 <section id="add-text" class="slide level2" data-menu-title="Add text">
 <h2></h2>
-<p><span class="slide-title2">Add background/other important information text</span></p>
+<p><span class="slide-title">Add background / other important text</span></p>
 <hr>
 <p class="body-text">
 It’s usually valuable (and important) to provide some background information/context for your app – the landing page of your app can be a great place for this. We’re going to add text to our app’s landing page (i.e.&nbsp;the <strong>About this App</strong> page) so that it looks like the example below:
@@ -409,13 +409,13 @@ It’s usually valuable (and important) to provide some background information/c
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/landing-text.png" style="width:80.0%" alt="The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."></p>
+<p><img data-src="images/part2/landing-text.png" style="width:100.0%" alt="The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<br>
+<p><br> <br></p>
 <p class="body-text bottombr">
 <strong>Some important pieces for information to consider adding:</strong>
 </p>
@@ -426,7 +426,7 @@ It’s usually valuable (and important) to provide some background information/c
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> brief instructions for exploring the data
 </p>
 <p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> who maintains the app, where the code lives, how to submit issues/suggestions
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> who maintains the app, where the code lives, how to submit issues / suggestions
 </p>
 </div>
 </div>
@@ -441,7 +441,7 @@ For example, I’ve added and formatted my landing page’s text directly in the
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb1" data-code-line-numbers="8-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  </span>
@@ -504,7 +504,7 @@ For example, I’ve added and formatted my landing page’s text directly in the
 <span id="cb1-59"><a href="#cb1-59"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
 <span id="cb1-60"><a href="#cb1-60"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb1-61"><a href="#cb1-61"></a>                          </span>
-<span id="cb1-62"><a href="#cb1-62"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot"</span>) </span>
+<span id="cb1-62"><a href="#cb1-62"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
 <span id="cb1-63"><a href="#cb1-63"></a>                          </span>
 <span id="cb1-64"><a href="#cb1-64"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
 <span id="cb1-65"><a href="#cb1-65"></a>                        </span>
@@ -522,14 +522,14 @@ For example, I’ve added and formatted my landing page’s text directly in the
 <span id="cb1-77"><a href="#cb1-77"></a>                        <span class="fu">sidebarPanel</span>(</span>
 <span id="cb1-78"><a href="#cb1-78"></a>                          </span>
 <span id="cb1-79"><a href="#cb1-79"></a>                          <span class="co"># island pickerInput ----</span></span>
-<span id="cb1-80"><a href="#cb1-80"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
+<span id="cb1-80"><a href="#cb1-80"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
 <span id="cb1-81"><a href="#cb1-81"></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
 <span id="cb1-82"><a href="#cb1-82"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb1-83"><a href="#cb1-83"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
 <span id="cb1-84"><a href="#cb1-84"></a>                                      <span class="at">multiple =</span> T), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
 <span id="cb1-85"><a href="#cb1-85"></a>                          </span>
 <span id="cb1-86"><a href="#cb1-86"></a>                          <span class="co"># bin number sliderInput ----</span></span>
-<span id="cb1-87"><a href="#cb1-87"></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
+<span id="cb1-87"><a href="#cb1-87"></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
 <span id="cb1-88"><a href="#cb1-88"></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
 <span id="cb1-89"><a href="#cb1-89"></a>                          </span>
 <span id="cb1-90"><a href="#cb1-90"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
@@ -537,7 +537,7 @@ For example, I’ve added and formatted my landing page’s text directly in the
 <span id="cb1-92"><a href="#cb1-92"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
 <span id="cb1-93"><a href="#cb1-93"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb1-94"><a href="#cb1-94"></a>                          </span>
-<span id="cb1-95"><a href="#cb1-95"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram"</span>) </span>
+<span id="cb1-95"><a href="#cb1-95"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>) </span>
 <span id="cb1-96"><a href="#cb1-96"></a>                          </span>
 <span id="cb1-97"><a href="#cb1-97"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
 <span id="cb1-98"><a href="#cb1-98"></a>                        </span>
@@ -558,19 +558,19 @@ For example, I’ve added and formatted my landing page’s text directly in the
 <p><span class="slide-title">Instead, use <code>includeMarkdown()</code></span></p>
 <hr>
 <p class="body-text-s">
-To maintain readability and an overall tidier-looking UI, you can write and style long bodies of text in separate markdown (<code>.md</code>) files that you then read into your UI using the <code>includeMarkdown()</code> function (<strong>Important:</strong> the <code>includeMarkdown()</code> function requires the <code>{markdown}</code> package – be sure to add <code>library(markdown)</code> to your <code>global.R</code> file!).
+To maintain readability and an overall tidier-looking UI, you can write and style long bodies of text in separate markdown (<code>.md</code>) files that you then read into your UI using the <code>includeMarkdown()</code> function (<strong>Important:</strong> the <code>includeMarkdown()</code> function requires the <code>{markdown}</code> package – be sure to add <code>library(markdown)</code> to your <code>global.R</code> file!). I recommend saving those <code>.md</code> files in a subdirectory named <code>/text</code> within your app’s directory (e.g.&nbsp;<code>~/two-file-app/text/mytext.md</code>).
 </p>
 <p class="body-text-s">
-I recommend saving those <code>.md</code> files in a subdirectory named <code>/text</code> within your app’s directory (e.g.&nbsp;<code>~/two-file-app/text/mytext.md</code>). See how I simplified my UI by saving my long landing page text to two new files, <code>about.md</code> and <code>footer.md</code>, then imported them into my UI using <code>includeMarkdown()</code>.
+Below shows how we can use this approach to simplify our UI:
 </p>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>ui.R</code></a></li><li><a href="#tabset-1-2"><code>text/about.md</code></a></li><li><a href="#tabset-1-3"><code>text/footer.md</code></a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>ui.R</code></a></li><li><a href="#tabset-1-2"><code>about.md</code></a></li><li><a href="#tabset-1-3"><code>text/footer.md</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb2" data-code-line-numbers="8-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  </span>
@@ -630,7 +630,7 @@ I recommend saving those <code>.md</code> files in a subdirectory named <code>/t
 <span id="cb2-56"><a href="#cb2-56"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
 <span id="cb2-57"><a href="#cb2-57"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb2-58"><a href="#cb2-58"></a>                          </span>
-<span id="cb2-59"><a href="#cb2-59"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot"</span>) </span>
+<span id="cb2-59"><a href="#cb2-59"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
 <span id="cb2-60"><a href="#cb2-60"></a>                          </span>
 <span id="cb2-61"><a href="#cb2-61"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
 <span id="cb2-62"><a href="#cb2-62"></a>                        </span>
@@ -648,7 +648,7 @@ I recommend saving those <code>.md</code> files in a subdirectory named <code>/t
 <span id="cb2-74"><a href="#cb2-74"></a>                        <span class="fu">sidebarPanel</span>(</span>
 <span id="cb2-75"><a href="#cb2-75"></a>                          </span>
 <span id="cb2-76"><a href="#cb2-76"></a>                          <span class="co"># island pickerInput ----</span></span>
-<span id="cb2-77"><a href="#cb2-77"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
+<span id="cb2-77"><a href="#cb2-77"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
 <span id="cb2-78"><a href="#cb2-78"></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
 <span id="cb2-79"><a href="#cb2-79"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb2-80"><a href="#cb2-80"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
@@ -663,7 +663,7 @@ I recommend saving those <code>.md</code> files in a subdirectory named <code>/t
 <span id="cb2-89"><a href="#cb2-89"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
 <span id="cb2-90"><a href="#cb2-90"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb2-91"><a href="#cb2-91"></a>                          </span>
-<span id="cb2-92"><a href="#cb2-92"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram"</span>)</span>
+<span id="cb2-92"><a href="#cb2-92"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>)</span>
 <span id="cb2-93"><a href="#cb2-93"></a>                          </span>
 <span id="cb2-94"><a href="#cb2-94"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
 <span id="cb2-95"><a href="#cb2-95"></a>                        </span>
@@ -683,7 +683,7 @@ I recommend saving those <code>.md</code> files in a subdirectory named <code>/t
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/about.md</strong></pre>
+<pre><strong>~/two-file-app/text/about.md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
@@ -705,7 +705,7 @@ I recommend saving those <code>.md</code> files in a subdirectory named <code>/t
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/footer/md</strong></pre>
+<pre><strong>~/two-file-app/text/footer/md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -727,7 +727,6 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <h2></h2>
 <p><span class="slide-title">Code recap for app #2, so far:</span></p>
 <hr>
-<!-- <p class="body-text-s">Additionally, you should have a `/text` folder within your app's directory (`/two-file-app`, if you named it as I did) that contains two markdown files, `about.md` and `footer.md`.</p> -->
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1"><code>global.R</code></a></li><li><a href="#tabset-2-2"><code>ui.R</code></a></li><li><a href="#tabset-2-3"><code>server.R</code></a></li><li><a href="#tabset-2-4"><code>about.md</code></a></li><li><a href="#tabset-2-5"><code>footer.md</code></a></li></ul>
 <div class="tab-content">
@@ -735,7 +734,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>global.R</strong></pre>
+<pre><strong>~/two-file-app/global.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(shiny)</span>
@@ -765,13 +764,17 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb5-26"><a href="#cb5-26"></a>  <span class="fu">drop_na</span>()</span>
 <span id="cb5-27"><a href="#cb5-27"></a></span>
 <span id="cb5-28"><a href="#cb5-28"></a><span class="co"># GGPLOT THEME ----</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a>myCustomTheme <span class="ot">&lt;-</span> <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb5-30"><a href="#cb5-30"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb5-31"><a href="#cb5-31"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb5-32"><a href="#cb5-32"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb5-33"><a href="#cb5-33"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
-<span id="cb5-34"><a href="#cb5-34"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb5-35"><a href="#cb5-35"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-29"><a href="#cb5-29"></a>myCustomTheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-30"><a href="#cb5-30"></a>  </span>
+<span id="cb5-31"><a href="#cb5-31"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb5-33"><a href="#cb5-33"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb5-34"><a href="#cb5-34"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb5-35"><a href="#cb5-35"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
+<span id="cb5-36"><a href="#cb5-36"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb5-37"><a href="#cb5-37"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span>
+<span id="cb5-38"><a href="#cb5-38"></a>  </span>
+<span id="cb5-39"><a href="#cb5-39"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -779,7 +782,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>ui.R</strong></pre>
+<pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  </span>
@@ -839,7 +842,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb6-56"><a href="#cb6-56"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
 <span id="cb6-57"><a href="#cb6-57"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb6-58"><a href="#cb6-58"></a>                          </span>
-<span id="cb6-59"><a href="#cb6-59"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot"</span>) </span>
+<span id="cb6-59"><a href="#cb6-59"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
 <span id="cb6-60"><a href="#cb6-60"></a>                          </span>
 <span id="cb6-61"><a href="#cb6-61"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
 <span id="cb6-62"><a href="#cb6-62"></a>                        </span>
@@ -857,10 +860,10 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb6-74"><a href="#cb6-74"></a>                        <span class="fu">sidebarPanel</span>(</span>
 <span id="cb6-75"><a href="#cb6-75"></a>                          </span>
 <span id="cb6-76"><a href="#cb6-76"></a>                          <span class="co"># island pickerInput ----</span></span>
-<span id="cb6-77"><a href="#cb6-77"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island"</span>, <span class="at">label =</span> <span class="st">"Select an island(s):"</span>,</span>
+<span id="cb6-77"><a href="#cb6-77"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island(s):"</span>,</span>
 <span id="cb6-78"><a href="#cb6-78"></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb6-79"><a href="#cb6-79"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-80"><a href="#cb6-80"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb6-79"><a href="#cb6-79"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb6-80"><a href="#cb6-80"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb6-81"><a href="#cb6-81"></a>                                      <span class="at">multiple =</span> T), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
 <span id="cb6-82"><a href="#cb6-82"></a>                          </span>
 <span id="cb6-83"><a href="#cb6-83"></a>                          <span class="co"># bin number sliderInput ----</span></span>
@@ -872,7 +875,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb6-89"><a href="#cb6-89"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
 <span id="cb6-90"><a href="#cb6-90"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb6-91"><a href="#cb6-91"></a>                          </span>
-<span id="cb6-92"><a href="#cb6-92"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram"</span>) </span>
+<span id="cb6-92"><a href="#cb6-92"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_input"</span>) </span>
 <span id="cb6-93"><a href="#cb6-93"></a>                          </span>
 <span id="cb6-94"><a href="#cb6-94"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
 <span id="cb6-95"><a href="#cb6-95"></a>                        </span>
@@ -892,7 +895,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>server.R</strong></pre>
+<pre><strong>~/two-file-app/server.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  </span>
@@ -906,7 +909,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb7-10"><a href="#cb7-10"></a>    })</span>
 <span id="cb7-11"><a href="#cb7-11"></a></span>
 <span id="cb7-12"><a href="#cb7-12"></a>  <span class="co"># trout scatterplot ----</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>  output<span class="sc">$</span>trout_scatterplot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb7-13"><a href="#cb7-13"></a>  output<span class="sc">$</span>trout_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
 <span id="cb7-14"><a href="#cb7-14"></a></span>
 <span id="cb7-15"><a href="#cb7-15"></a>    <span class="fu">ggplot</span>(<span class="fu">trout_filtered_df</span>(), <span class="fu">aes</span>(<span class="at">x =</span> length_mm, <span class="at">y =</span> weight_g, <span class="at">color =</span> channel_type, <span class="at">shape =</span> channel_type)) <span class="sc">+</span></span>
 <span id="cb7-16"><a href="#cb7-16"></a>      <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
@@ -917,7 +920,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb7-21"><a href="#cb7-21"></a>                                    <span class="st">"pool"</span> <span class="ot">=</span> <span class="dv">18</span>, <span class="st">"rapid"</span> <span class="ot">=</span> <span class="dv">8</span>, <span class="st">"step (small falls)"</span> <span class="ot">=</span> <span class="dv">23</span>,</span>
 <span id="cb7-22"><a href="#cb7-22"></a>                                    <span class="st">"side channel"</span> <span class="ot">=</span> <span class="dv">25</span>)) <span class="sc">+</span></span>
 <span id="cb7-23"><a href="#cb7-23"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trout Length (mm)"</span>, <span class="at">y =</span> <span class="st">"Trout Weight (g)"</span>, <span class="at">color =</span> <span class="st">"Channel Type"</span>, <span class="at">shape =</span> <span class="st">"Channel Type"</span>) <span class="sc">+</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a>      myCustomTheme</span>
+<span id="cb7-24"><a href="#cb7-24"></a>      <span class="fu">myCustomTheme</span>()</span>
 <span id="cb7-25"><a href="#cb7-25"></a></span>
 <span id="cb7-26"><a href="#cb7-26"></a>  })</span>
 <span id="cb7-27"><a href="#cb7-27"></a>  </span>
@@ -925,15 +928,15 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <span id="cb7-29"><a href="#cb7-29"></a>  island_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb7-30"><a href="#cb7-30"></a></span>
 <span id="cb7-31"><a href="#cb7-31"></a>    penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-32"><a href="#cb7-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island)</span>
+<span id="cb7-32"><a href="#cb7-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island_input)</span>
 <span id="cb7-33"><a href="#cb7-33"></a></span>
 <span id="cb7-34"><a href="#cb7-34"></a>  })</span>
 <span id="cb7-35"><a href="#cb7-35"></a></span>
 <span id="cb7-36"><a href="#cb7-36"></a>  <span class="co"># render the flipper length histogram ----</span></span>
-<span id="cb7-37"><a href="#cb7-37"></a>  output<span class="sc">$</span>flipperLength_histogram <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb7-37"><a href="#cb7-37"></a>  output<span class="sc">$</span>flipperLength_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
 <span id="cb7-38"><a href="#cb7-38"></a></span>
 <span id="cb7-39"><a href="#cb7-39"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">island_df</span>()), <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb7-40"><a href="#cb7-40"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">bins =</span> input<span class="sc">$</span>bin_num_input) <span class="sc">+</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> input<span class="sc">$</span>bin_num_input) <span class="sc">+</span></span>
 <span id="cb7-41"><a href="#cb7-41"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
 <span id="cb7-42"><a href="#cb7-42"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
 <span id="cb7-43"><a href="#cb7-43"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
@@ -949,7 +952,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/about.md</strong></pre>
+<pre><strong>~/two-file-app/text/about.md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
@@ -971,7 +974,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>text/footer.md</strong></pre>
+<pre><strong>~/two-file-app/text/footer.md</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -992,7 +995,7 @@ End part 2.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_fd23d42c" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_ea558d45" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

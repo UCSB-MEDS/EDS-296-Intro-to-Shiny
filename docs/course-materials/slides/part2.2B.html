@@ -400,7 +400,7 @@
 <p><span class="slide-title2">Add data viz: Next up, penguins</span></p>
 <hr>
 <p class="body-text-s bottombr">
-We’ll be using the <code>penguins</code> dataset from the <a href="https://allisonhorst.github.io/palmerpenguins/"><code>{palmerpenguins}</code> package</a> to create our second reactive plot. These data contain penguin (genus <em>Pygoscelis</em>) body size measurements collected from three islands in the Palmer Archipelago, Antarctica, as part of the <a href="https://pallter.marine.rutgers.edu/">Palmer Station LTER</a>. Original data can be found on the EDI Data Portal (<a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.219.5">Adélie data</a>, <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.220.5">Gentoo data</a>, and <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.221.6">Chinstrap data</a>). Refer back to <a href="https://ucsb-meds.github.io/EDS430-Shiny/#/app2-plots">this slide</a> to revisit our practice data wrangling &amp; visualization script.
+We’ll be using the <code>penguins</code> dataset from the <a href="https://allisonhorst.github.io/palmerpenguins/"><code>{palmerpenguins}</code> package</a> to create our second reactive plot. These data contain penguin (genus <em>Pygoscelis</em>) body size measurements collected from three islands in the Palmer Archipelago, Antarctica, as part of the <a href="https://pallter.marine.rutgers.edu/">Palmer Station LTER</a>. Original data can be found on the EDI Data Portal (<a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.219.5">Adélie data</a>, <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.220.5">Gentoo data</a>, and <a href="https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.221.6">Chinstrap data</a>). Refer back to <a href="">this slide</a> to revisit our practice data wrangling &amp; visualization script.
 </p>
 <p><br></p>
 
@@ -417,33 +417,32 @@ Artwork by <a href="https://allisonhorst.com/"><span class="citation" data-cites
 Working alone or in groups, add a reactive histogram of penguin flipper lengths (using the <code>penguins</code> data set from the <a href="https://allisonhorst.github.io/palmerpenguins/"><code>{palmerpenguins}</code> package</a>) to the <strong>Penguins</strong> tab. Your plot should have the following features and look like the example below, when complete:
 </p>
 <div class="columns">
-<div class="column" style="width:45%;">
+<div class="column" style="width:50%;">
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> data colored by penguin <code>species</code>
 </p>
 <p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> a <code>shinyWidgets::pickerInput</code> that allows users to filter data based on <code>island</code>, and that includes buttons to <strong>Select All</strong> / <strong>Deselect All</strong> island options at once
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> a <code>shinyWidgets::pickerInput()</code> that allows users to filter data based on <code>island</code>, and that includes buttons to <strong>Select All</strong> / <strong>Deselect All</strong> island options at once
 </p>
 <p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> a <code>shiny::sliderInput</code> that allows users to change the number of histogram bins and that by default, displays a histogram with <strong>25</strong> bins
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> a <code>shiny::sliderInput()</code> that allows users to change the number of histogram bins and that by default, displays a histogram with <strong>25</strong> bins
 </p>
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> the two widgets should be placed in the <code>sidebarPanel</code> and the reactive histogram should be placed in the <code>mainPanel</code> of the <strong>Penguins</strong> tab
 </p>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column" style="width:45%;">
+</div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/penguin_plot.gif" style="width:80.0%" alt="A user navigates to the Penguins tab of our app to reveal a histogram of penguins flipper lengths. Data are colored by species (Adelie = orange, Chinstrap = purple, Gentoo = green). The user uses a pickerInput to filter data based on the island where they were collected. The user also adjust the bin number using a sliderInput."></p>
+<p><img data-src="images/part2/penguin_plot.gif" style="width:100.0%" alt="A user navigates to the Penguins tab of our app to reveal a histogram of penguins flipper lengths. Data are colored by species (Adelie = orange, Chinstrap = purple, Gentoo = green). The user uses a pickerInput to filter data based on the island where they were collected. The user also adjust the bin number using a sliderInput."></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
+<p><br></p>
 <center>
 <p class="body-text-l teal-text">
 See next slide for some tips on getting started!
@@ -452,11 +451,10 @@ See next slide for some tips on getting started!
 </section>
 <section id="exercise3-tips" class="slide level2" data-menu-title="** Exercise 3 Tips **" data-background="#d2e3f3">
 <h2></h2>
-<p><span class="slide-title2"><i class="fa-solid fa-lightbulb" title="a lightbulb" aria-label="lightbulb"></i> Exercise 3: Tips</span></p>
+<p><span class="slide-title"><i class="fa-solid fa-lightbulb" title="a lightbulb" aria-label="lightbulb"></i> Exercise 3: Tips</span></p>
 <hr>
-<p class="body-text topbr">
-<strong>Tips:</strong>
-</p>
+<p><br></p>
+<p><strong>Tips:</strong></p>
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Remember to load the <code>palmerpenguins</code> package at the top of <code>global.R</code> so that your app can find the data
 </p>
@@ -466,9 +464,8 @@ See next slide for some tips on getting started!
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Try changing the histogram bin number in your practice code script first, before attempting to make it reactive
 </p>
-<p class="body-text topbr">
-<strong>And remember</strong> to follow the our three steps for building reactive outputs (1. add input to UI, 2. add output to UI, 3. tell server how to assemble inputs into outputs)!
-</p>
+<p><br></p>
+<p><strong>And remember</strong> to follow the our three steps for building reactive outputs (<span class="teal-text"><strong>(1)</strong></span> add input to UI, <span class="teal-text"><strong>(2)</strong></span> add output to UI, <span class="teal-text"><strong>(3)</strong></span> tell server how to assemble inputs into outputs)!</p>
 <p><br> <br> <br></p>
 <center>
 <p class="body-text-l teal-text">
@@ -478,7 +475,7 @@ See next slide for a solution!
 </section>
 <section id="exercise3-solution" class="slide level2" data-menu-title="** Exercise 3 Solution **" data-background="#d2e3f3">
 <h2></h2>
-<p><span class="slide-title2"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i> Exercise 3: A solution</span></p>
+<p><span class="slide-title"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i> Exercise 3: A solution</span></p>
 <hr>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>global.R</code></a></li><li><a href="#tabset-1-2"><code>ui.R</code></a></li><li><a href="#tabset-1-3"><code>server.R</code></a></li></ul>
@@ -569,7 +566,7 @@ See next slide for a solution!
 <span id="cb2-41"><a href="#cb2-41"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
 <span id="cb2-42"><a href="#cb2-42"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb2-43"><a href="#cb2-43"></a>                          </span>
-<span id="cb2-44"><a href="#cb2-44"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot"</span>)</span>
+<span id="cb2-44"><a href="#cb2-44"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>)</span>
 <span id="cb2-45"><a href="#cb2-45"></a>                          </span>
 <span id="cb2-46"><a href="#cb2-46"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
 <span id="cb2-47"><a href="#cb2-47"></a>                        </span>
@@ -602,7 +599,7 @@ See next slide for a solution!
 <span id="cb2-74"><a href="#cb2-74"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
 <span id="cb2-75"><a href="#cb2-75"></a>                        <span class="fu">mainPanel</span>(</span>
 <span id="cb2-76"><a href="#cb2-76"></a>                          </span>
-<span id="cb2-77"><a href="#cb2-77"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram"</span>) </span>
+<span id="cb2-77"><a href="#cb2-77"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>) </span>
 <span id="cb2-78"><a href="#cb2-78"></a>                          </span>
 <span id="cb2-79"><a href="#cb2-79"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
 <span id="cb2-80"><a href="#cb2-80"></a>                        </span>
@@ -631,7 +628,7 @@ See next slide for a solution!
 <span id="cb3-10"><a href="#cb3-10"></a>    })</span>
 <span id="cb3-11"><a href="#cb3-11"></a></span>
 <span id="cb3-12"><a href="#cb3-12"></a>  <span class="co"># trout scatterplot ----</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>  output<span class="sc">$</span>trout_scatterplot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  output<span class="sc">$</span>trout_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
 <span id="cb3-14"><a href="#cb3-14"></a></span>
 <span id="cb3-15"><a href="#cb3-15"></a>    <span class="fu">ggplot</span>(<span class="fu">trout_filtered_df</span>(), <span class="fu">aes</span>(<span class="at">x =</span> length_mm, <span class="at">y =</span> weight_g, <span class="at">color =</span> channel_type, <span class="at">shape =</span> channel_type)) <span class="sc">+</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a>      <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
@@ -642,7 +639,7 @@ See next slide for a solution!
 <span id="cb3-21"><a href="#cb3-21"></a>                                    <span class="st">"pool"</span> <span class="ot">=</span> <span class="dv">18</span>, <span class="st">"rapid"</span> <span class="ot">=</span> <span class="dv">8</span>, <span class="st">"step (small falls)"</span> <span class="ot">=</span> <span class="dv">23</span>,</span>
 <span id="cb3-22"><a href="#cb3-22"></a>                                    <span class="st">"side channel"</span> <span class="ot">=</span> <span class="dv">25</span>)) <span class="sc">+</span></span>
 <span id="cb3-23"><a href="#cb3-23"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trout Length (mm)"</span>, <span class="at">y =</span> <span class="st">"Trout Weight (g)"</span>, <span class="at">color =</span> <span class="st">"Channel Type"</span>, <span class="at">shape =</span> <span class="st">"Channel Type"</span>) <span class="sc">+</span></span>
-<span id="cb3-24"><a href="#cb3-24"></a>      myCustomTheme</span>
+<span id="cb3-24"><a href="#cb3-24"></a>      <span class="fu">myCustomTheme</span>()</span>
 <span id="cb3-25"><a href="#cb3-25"></a></span>
 <span id="cb3-26"><a href="#cb3-26"></a>  })</span>
 <span id="cb3-27"><a href="#cb3-27"></a>  </span>
@@ -650,19 +647,19 @@ See next slide for a solution!
 <span id="cb3-29"><a href="#cb3-29"></a>  island_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb3-30"><a href="#cb3-30"></a></span>
 <span id="cb3-31"><a href="#cb3-31"></a>    penguins <span class="sc">%&gt;%</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island)</span>
+<span id="cb3-32"><a href="#cb3-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island_input)</span>
 <span id="cb3-33"><a href="#cb3-33"></a></span>
 <span id="cb3-34"><a href="#cb3-34"></a>  })</span>
 <span id="cb3-35"><a href="#cb3-35"></a></span>
 <span id="cb3-36"><a href="#cb3-36"></a>  <span class="co"># render the flipper length histogram ----</span></span>
-<span id="cb3-37"><a href="#cb3-37"></a>  output<span class="sc">$</span>flipperLength_histogram <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb3-37"><a href="#cb3-37"></a>  output<span class="sc">$</span>flipperLength_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
 <span id="cb3-38"><a href="#cb3-38"></a></span>
 <span id="cb3-39"><a href="#cb3-39"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">island_df</span>()), <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">bins =</span> input<span class="sc">$</span>bin_num_input) <span class="sc">+</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> input<span class="sc">$</span>bin_num_input) <span class="sc">+</span></span>
 <span id="cb3-41"><a href="#cb3-41"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
 <span id="cb3-42"><a href="#cb3-42"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
 <span id="cb3-43"><a href="#cb3-43"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb3-44"><a href="#cb3-44"></a>      myCustomTheme</span>
+<span id="cb3-44"><a href="#cb3-44"></a>      <span class="fu">myCustomTheme</span>()</span>
 <span id="cb3-45"><a href="#cb3-45"></a>    </span>
 <span id="cb3-46"><a href="#cb3-46"></a>  })</span>
 <span id="cb3-47"><a href="#cb3-47"></a>  </span>
@@ -684,7 +681,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_07700a06" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_d0452f0c" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

@@ -13,7 +13,7 @@ editor_options:
 
 ##  {#add-text data-menu-title="Add text"}
 
-[Add background/other important information text]{.slide-title2}
+[Add background / other important text]{.slide-title}
 
 <hr>
 
@@ -28,7 +28,7 @@ editor_options:
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "80%"
+#| out-width: "100%"
 #| fig-alt: "The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."
 knitr::include_graphics("images/part2/landing-text.png")
 ```
@@ -36,11 +36,13 @@ knitr::include_graphics("images/part2/landing-text.png")
 
 ::: {.column width="50%"}
 <br>
+<br>
+
 <p class="body-text bottombr">**Some important pieces for information to consider adding:**</p>
 
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} motivation for building the app</p>
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} brief instructions for exploring the data</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} who maintains the app, where the code lives, how to submit issues/suggestions</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} who maintains the app, where the code lives, how to submit issues / suggestions</p>
 :::
 
 ::::
@@ -55,7 +57,7 @@ knitr::include_graphics("images/part2/landing-text.png")
 
 <p class="body-text-s">For example, I've added and formatted my landing page's text directly in the **UI** using lots of nested `tags` -- I've done this inside the `tabPanel` titled **About this App** (**Note:** I've formatted the layout of this page a bit using `fluidRow` and `column`s to create some white space around the edges. I've also created a faint gray horizontal line, using `hr()`, beneath which I added a footnote):</p>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "8-24"
@@ -120,7 +122,7 @@ ui <- navbarPage(
                         # trout plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "trout_scatterplot") 
+                          plotOutput(outputId = "trout_scatterplot_output") 
                           
                         ) # END trout plot mainPanel
                         
@@ -138,14 +140,14 @@ ui <- navbarPage(
                         sidebarPanel(
                           
                           # island pickerInput ----
-                          pickerInput(inputId = "penguin_island", label = "Select an island:",
+                          pickerInput(inputId = "penguin_island_input", label = "Select an island:",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
                                       options = pickerOptions(actionsBox = TRUE),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
                                       multiple = T), # END island pickerInput
                           
                           # bin number sliderInput ----
-                          sliderInput(inputId = "bin_num", label = "Select number of bins:",
+                          sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
                                       value = 25, max = 100, min = 1), # END bin number sliderInput
                           
                         ), # END penguin plot sidebarPanel
@@ -153,7 +155,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram") 
+                          plotOutput(outputId = "flipperLength_histogram_output") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -176,14 +178,14 @@ ui <- navbarPage(
 
 <hr>
 
-<p class="body-text-s">To maintain readability and an overall tidier-looking UI, you can write and style long bodies of text in separate markdown (`.md`) files that you then read into your UI using the `includeMarkdown()` function (**Important:** the `includeMarkdown()` function requires the `{markdown}` package -- be sure to add `library(markdown)` to your `global.R` file!).</p>
+<p class="body-text-s">To maintain readability and an overall tidier-looking UI, you can write and style long bodies of text in separate markdown (`.md`) files that you then read into your UI using the `includeMarkdown()` function (**Important:** the `includeMarkdown()` function requires the `{markdown}` package -- be sure to add `library(markdown)` to your `global.R` file!). I recommend saving those `.md` files in a subdirectory named `/text` within your app's directory (e.g. `~/two-file-app/text/mytext.md`).</p>
 
-<p class="body-text-s">I recommend saving those `.md` files in a subdirectory named `/text` within your app's directory (e.g. `~/two-file-app/text/mytext.md`). See how I simplified my UI by saving my long landing page text to two new files, `about.md` and `footer.md`, then imported them into my UI using `includeMarkdown()`.</p>
+<p class="body-text-s">Below shows how we can use this approach to simplify our UI:</p>
 
 ::: {.panel-tabset}
 
 ## `ui.R`
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "8-21"
@@ -245,7 +247,7 @@ ui <- navbarPage(
                         # trout plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "trout_scatterplot") 
+                          plotOutput(outputId = "trout_scatterplot_output") 
                           
                         ) # END trout plot mainPanel
                         
@@ -263,7 +265,7 @@ ui <- navbarPage(
                         sidebarPanel(
                           
                           # island pickerInput ----
-                          pickerInput(inputId = "penguin_island", label = "Select an island:",
+                          pickerInput(inputId = "penguin_island_input", label = "Select an island:",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
                                       options = pickerOptions(actionsBox = TRUE),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
@@ -278,7 +280,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram")
+                          plotOutput(outputId = "flipperLength_histogram_output")
                           
                         ) # END penguin plot mainPanel
                         
@@ -293,8 +295,8 @@ ui <- navbarPage(
 ) # END navbarPage
 ```
 
-## `text/about.md`
-```{markdown filename="text/about.md"}
+## `about.md`
+```{markdown filename="~/two-file-app/text/about.md"}
 #| eval: false
 #| echo: true
 ## Welcome to the LTER Animal Data Explorer!
@@ -313,7 +315,7 @@ Check out the **Explore the Data** page to find interactive data visualizations 
 ```
 
 ## `text/footer.md`
-```{markdown filename="text/footer/md"}
+```{markdown filename="~/two-file-app/text/footer/md"}
 #| eval: false
 #| echo: true
 *This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*
@@ -348,12 +350,10 @@ knitr::include_graphics("images/part2/app2_v1.gif")
 
 <hr>
 
-<!-- <p class="body-text-s">Additionally, you should have a `/text` folder within your app's directory (`/two-file-app`, if you named it as I did) that contains two markdown files, `about.md` and `footer.md`.</p> -->
-
 ::: {.panel-tabset}
 
 ## `global.R`
-```{r filename="global.R"}
+```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
 # LOAD LIBRARIES ----
@@ -384,17 +384,22 @@ clean_trout <- and_vertebrates |>
   drop_na()
 
 # GGPLOT THEME ----
-myCustomTheme <- theme_light() +
+myCustomTheme <- function() {
+  
+  theme_light() +
   theme(axis.text = element_text(color = "black", size = 12),
     axis.title = element_text(size = 14, face = "bold"),
     legend.title = element_text(size = 14, face = "bold"),
     legend.text = element_text(size = 13),
     legend.position = "bottom",
     panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+  
+}
+
 ```
 
 ## `ui.R`
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 ui <- navbarPage(
@@ -455,7 +460,7 @@ ui <- navbarPage(
                         # trout plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "trout_scatterplot") 
+                          plotOutput(outputId = "trout_scatterplot_output") 
                           
                         ) # END trout plot mainPanel
                         
@@ -473,10 +478,10 @@ ui <- navbarPage(
                         sidebarPanel(
                           
                           # island pickerInput ----
-                          pickerInput(inputId = "penguin_island", label = "Select an island(s):",
+                          pickerInput(inputId = "penguin_island_input", label = "Select an island(s):",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
-                                      options = pickerOptions(actionsBox = TRUE),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
+                                      options = pickerOptions(actionsBox = TRUE),
                                       multiple = T), # END island pickerInput
                           
                           # bin number sliderInput ----
@@ -488,7 +493,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram") 
+                          plotOutput(outputId = "flipperLength_histogram_input") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -504,7 +509,7 @@ ui <- navbarPage(
 ```
 
 ## `server.R`
-```{r filename="server.R"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {
@@ -519,7 +524,7 @@ server <- function(input, output) {
     })
 
   # trout scatterplot ----
-  output$trout_scatterplot <- renderPlot({
+  output$trout_scatterplot_output <- renderPlot({
 
     ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
@@ -530,7 +535,7 @@ server <- function(input, output) {
                                     "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
                                     "side channel" = 25)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
-      myCustomTheme
+      myCustomTheme()
 
   })
   
@@ -538,15 +543,15 @@ server <- function(input, output) {
   island_df <- reactive({
 
     penguins |> 
-      filter(island %in% input$penguin_island)
+      filter(island %in% input$penguin_island_input)
 
   })
 
   # render the flipper length histogram ----
-  output$flipperLength_histogram <- renderPlot({
+  output$flipperLength_histogram_output <- renderPlot({
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
-      geom_histogram(alpha = 0.6, bins = input$bin_num_input) +
+      geom_histogram(alpha = 0.6, position = "identity", bins = input$bin_num_input) +
       scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
       labs(x = "Flipper length (mm)", y = "Frequency",
            fill = "Penguin species") +
@@ -558,7 +563,7 @@ server <- function(input, output) {
 ```
 
 ## `about.md`
-```{md filename="text/about.md"}
+```{md filename="~/two-file-app/text/about.md"}
 #| eval: false
 #| echo: true
 ## Welcome to the LTER Animal Data Explorer!
@@ -577,7 +582,7 @@ Check out the **Explore the Data** page to find interactive data visualizations 
 ```
 
 ## `footer.md`
-```{md filename="text/footer.md"}
+```{md filename="~/two-file-app/text/footer.md"}
 #| eval: false
 #| echo: true
 *This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*

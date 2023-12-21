@@ -50,7 +50,7 @@ editor_options:
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully publish an app using [shinyapps.io](https://www.shinyapps.io/)</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully deploy an app using [shinyapps.io](https://www.shinyapps.io/)</p>
 
 . . .
 
@@ -66,29 +66,25 @@ editor_options:
 
 ---
 
-##  {#roadmap-app2v1 data-menu-title="Roadmap App #2v1"}
+##  {#roadmap-app2v1 data-menu-title="Roadmap App #2"}
 
-[Roadmap for App #2v1]{.slide-title2}
+[Roadmap for App #2]{.slide-title2}
 
 <hr>
 
-<p class="body-text">We'll be building out our **two-file app** using data from the `{lterdatasampler}` and `{palmerpenguins}` packages. We'll focus on creating a functional app that has a more visually pleasing UI layout (and we'll refine it's appearance even further in [v2]()). By the end of v1, we'll have created:</p>
+<p class="body-text">We'll be building out our **two-file app** using data from the `{lterdatasampler}` and `{palmerpenguins}` packages. We'll focus on creating a functional app that has a more visually pleasing UI layout. Our goals are to create:</p>
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 <br>
-<p class="body-text-s">**(a)** A navigation bar with two pages, one of which will contain two tabs (one tab for each plot)</p>
-<p class="body-text-s">**(b)** A `pickerInput` *and* `checkboxGroupButtons` for users to filter cutthroat trout data in a reactive scatterplot</p>
-<p class="body-text-s">**(c)** A `pickerInput` for users to filter penguin data *and* a `sliderInput` to adjust the number of bins in a reactive histogram</p>
+<br>
+<p class="body-text-s">[**(a)**]{.teal-text} A navigation bar with two pages, one of which will contain two tabs (one tab for each plot)</p>
+<p class="body-text-s">[**(b)**]{.teal-text} A `pickerInput` *and* `checkboxGroupButtons` for users to filter cutthroat trout data in a reactive scatterplot</p>
+<p class="body-text-s">[**(c)**]{.teal-text} A `pickerInput` for users to filter penguin data *and* a `sliderInput` to adjust the number of bins in a reactive histogram</p>
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
-<br>
-
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
@@ -97,14 +93,13 @@ editor_options:
 #| fig-alt: "An app titled 'LTER Animal Data Explorer'. The user starts on the 'About this App' page, which includes a couple paragraphs of intro text. The user then clicks on the 'Explore the Data' page which has two tabs: Trout and Penguins. On the Trout tab, we see a scatterplot with Trout Length (mm) on the x-axis and Trout Weight (g) on the y-axis. The user first filters data by Channel Type using a drop down list selector widget, then by Forest Section using two buttons that toggle on data from clear cut vs. old growth forest. In the Penguin tab, we see a histogram displaying Flipper Lengths (mm) of three penguin species. The user uses a drop down list selector widget to filter data by Island, then uses a slider widget to adjust the number of histogram bins."
 knitr::include_graphics("images/part2/app2_v1.gif")
 ```
-
 :::
 
 ::::
 
 . . . 
 
-<p class="body-text-s">You'll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) -- we'll learn about ways to improve this in v2 of our app.</p>
+<p class="body-text-s">You'll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) -- we'll learn about ways to improve this in the [next section](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part2.3-deploy-improve-ux-slides.html#/LO-app2v2).</p>
 
 ---
 
@@ -129,22 +124,18 @@ knitr::include_graphics("images/part2/two_source.png")
 
 ---
 
-##  {#app2-plots data-menu-title="Draft Plots (app#2)"}
+##  {#app2-trout-plot data-menu-title="Draft Plots (App#2, trout)"}
 
-[Practice data wrangling, filtering & viz first!]{.slide-title2}
+[Practice on your scratch script -- Trout]{.slide-title}
 
 <hr>
 
-<p class="body-text-s">Here's what I've done in my `~scratch/practice_script_app2_lter.R` file:</p>
-
-::: {.panel-tabset}
-
-## Trout plot
+In a `~scratch/practice_script_app2.R` file, practice wrangling & plotting trout data. . .
 
 :::: {.columns}
 
-::: {.column width="45%"}
-```{r, filename="practice_script_app2_lter.R"}
+::: {.column width="50%"}
+```{r, filename="~/scratch/practice_script_app2.R"}
 #| eval: false
 #| echo: true
 #..........................load packages.........................
@@ -152,13 +143,15 @@ library(lterdatasampler)
 library(tidyverse)
 
 #............custom ggplot theme (apply to both plots)...........
-myCustomTheme <- theme_light() +
+myCustomTheme <- function() {
+  theme_light() +
   theme(axis.text = element_text(size = 12),
     axis.title = element_text(size = 14, face = "bold"),
     legend.title = element_text(size = 14, face = "bold"),
     legend.text = element_text(size = 13),
     legend.position = "bottom",
     panel.border = element_rect(linewidth = 0.7))
+}
 
 #.......................wrangle trout data.......................
 clean_trout <- and_vertebrates |>
@@ -194,15 +187,11 @@ ggplot(trout_filtered_df, aes(x = length_mm, y = weight_g, color = channel_type,
                                 "pool" = 18, "rapid" = 8, "step (small falls)" = 23, 
                                 "side channel" = 25)) +
   labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
-  myCustomTheme
+  myCustomTheme()
 ```
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
-
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
@@ -212,17 +201,27 @@ ggplot(trout_filtered_df, aes(x = length_mm, y = weight_g, color = channel_type,
 knitr::include_graphics("images/part2/trout_plot.png")
 ```
 
-<center><p class="body-text-xs gray-text">We'll use the `and_vertebrates` data set from `{lterdatasampler}` to create a scatter plot of trout weights by lengths. When we move to shiny, we'll build 2 inputs for filtering our data: one to select `channel_type` and one to select `section`.</p></center>
+::: {.center-text .body-text-s .gray-text}
+We'll use the `and_vertebrates` data set from `{lterdatasampler}` to create a scatter plot of trout weights by lengths. When we move to shiny, we'll build two inputs for filtering our data: one to select `channel_type` and one to select `section`.
+:::
 :::
 
 ::::
 
-## Penguin plot
+---
+
+##  {#app2-penguin-plot data-menu-title="Draft Plots (App#2, Penguins)"}
+
+[Practice on your scratch script -- Penguins]{.slide-title}
+
+<hr>
+
+. . .and penguin data
 
 :::: {.columns}
 
-::: {.column width="45%"}
-```{r, filename="practice_script_app2_lter.R"}
+::: {.column width="50%"}
+```{r filename="~/scratch/practice_script_app2.R"}
 #| eval: false
 #| echo: true
 #..........................load packages.........................
@@ -235,18 +234,15 @@ island_df <- penguins %>%
 
 #........................plot penguin data.......................
 ggplot(na.omit(island_df), aes(x = flipper_length_mm, fill = species)) +
-  geom_histogram(alpha = 0.6, bins = 25) +
+  geom_histogram(alpha = 0.6, position = "identity", bins = 25) +
   scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
   labs(x = "Flipper length (mm)", y = "Frequency",
        fill = "Penguin species") +
-  myCustomTheme
+  myCustomTheme()
 ```
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
@@ -256,21 +252,23 @@ ggplot(na.omit(island_df), aes(x = flipper_length_mm, fill = species)) +
 knitr::include_graphics("images/part2/penguin_plot.png")
 ```
 
-<center><p class="body-text-xs gray-text">We'll use the `penguins` data set from `{palmerpenguins}` to create a histogram of penguin flipper lengths. When we move to shiny, we'll build 2 inputs for filtering our data: one to select `island` and one to change the number of histogram bins.</p></center>
+::: {.center-text .body-text-s .gray-text}
+We'll use the `penguins` data set from `{palmerpenguins}` to create a histogram of penguin flipper lengths. When we move to shiny, we'll build two inputs for filtering our data: one to select `island` and one to change the number of histogram bins.
+:::
 :::
 
 ::::
-:::
+
 
 ---
 
 ##  {#global.R data-menu-title="global.R"}
 
-[A `global.R` file can help you keep code organized]{.slide-title2}
+[We'll use our `global.R` file to help with organization]{.slide-title3}
 
 <hr>
 
-<p class="body-text bottombr">While not a requirement of a shiny app, a `global.R` file will help reduce redundant code, increase your app's speed, and help keep code more clearly organized. It works by running once when your app is first launched, making any logic, objects, etc. contained in it available to both the `ui.R` and `server.R` files (or, in the case of a single-file shiny app, the `app.R` file). It's a great place for things like:</p>
+<p class="body-text bottombr">While *not* a requirement of a shiny app, a `global.R` file will help reduce redundant code, increase your app's speed, and help you better organize your code. It works by running once when your app is first launched, making any logic, objects, etc. contained in it available to both the `ui.R` and `server.R` files (or, in the case of a single-file shiny app, the `app.R` file). It's a great place for things like:</p>
 
 <br>
 
@@ -292,7 +290,7 @@ knitr::include_graphics("images/part2/penguin_plot.png")
 
 . . . 
 
-<p class="body-text topbr bottombr">**Reminder:** `global.R` *must* be saved to the same directory as your `ui.R` and `server.R` files.</p>
+**Reminder:** `global.R` *must* be saved to the same directory as your `ui.R` and `server.R` files.
 
 ---
 
@@ -304,18 +302,17 @@ knitr::include_graphics("images/part2/penguin_plot.png")
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 <br>
 <br>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} nothing really grabs your eye</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} inputs & outputs are stacked vertically on top of one another (which requires a lot of vertical scrolling)</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} widget label text is difficult to distinguish from other text</p>
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} nothing really grabs your eye
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} inputs & outputs are stacked vertically on top of one another (which requires a lot of vertical scrolling)
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} widget label text is difficult to distinguish from other text
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
@@ -330,7 +327,9 @@ knitr::include_graphics("images/part2/app1.gif")
 
 <br>
 
-<p class="body-text">Before we jump into adding reactive outputs to our next app, we'll first plan out the visual structure of our UI -- first on paper, then with layout functions.</p>
+::: {.center-text}
+**Before we jump into adding reactive outputs to our next app, we'll first plan out the visual structure of our UI -- first on paper, then with layout functions.**
+:::
 
 ---
 
@@ -351,15 +350,18 @@ sidebarLayout(
   sidebarPanel(),
   mainPanel()
 )
+
 # multi-row fluid layout (add any number of fluidRow()s to a fluidPage())
 fluidRow(
   column(4, ...),
   column(8, ...)
 )
+
 # tabPanel()s to contain HTML components (e.g. inputs/outputs) within the tabsetPanel() container
 tabsetPanel(
   tabPanel()
 )
+
 # NOTE: can use navbarPage() in place of fluidPage(); creates a page with top-level navigation bar that can be used to toggle tabPanel() elements
 navbarPage(
   tabPanel()
@@ -370,7 +372,7 @@ navbarPage(
 
 ##  {#layout-function-examples data-menu-title="Layout Examples"}
 
-[Example UI layouts]{.slide-title}
+[Example UI layouts (adapted from [Mastering Shiny, Ch. 6](https://mastering-shiny.org/action-layout.html#action-layout))]{.slide-title3}
 
 <hr>
 
@@ -531,8 +533,6 @@ knitr::include_graphics("images/part2/navbarPage_layout.png")
 
 :::
 
-<center><p class="body-text-s">Examples adapted from [Mastering Shiny, Ch. 6](https://mastering-shiny.org/action-layout.html#action-layout), by Hadley Wickham:</p></center>
-
 ---
 
 
@@ -554,14 +554,14 @@ knitr::include_graphics("images/part2/app2-layout-fxns.png")
 
 ##  {#build-navbar data-menu-title="Build navbar"}
 
-[Build a navbar with two pages]{.slide-title2}
+[Build a navbar with two pages]{.slide-title}
 
 <hr>
 
-<p class="body-text-s">First, let's build a UI that has a navigation bar with two tabs -- one for background information and one to contain our data visualizations. To do this, we'll use `navbarPage()` instead of `fluidPage()` to create our webpage.</p>
+<p class="body-text-s">First, **let's build a UI that has a navigation bar with two tabs** -- one for background information and one to contain our data visualizations. To do this, we'll use `navbarPage()` instead of `fluidPage()` to create our webpage.</p>
 
-<p class="body-text-s">**Tip:** It can be *super* helpful add code comments at the start and end of each UI element -- for example, see `# data viz tabPanel---` and `# END data viz tabPanel`, below. Adding text that you will eventually replace with content (e.g. plots, tables, images, longer text) may help to visualize what you're working towards as well.</p>
-```{r, filename="ui.R"}
+<p class="body-text-s">**Tip:** It can be *super* helpful add code comments at the start and end of each UI element -- for example, see `# (Page 1) intro tabPanel---` and `# END (Page 1) intro tabPanel`, below. Adding text that you will eventually replace with content (e.g. plots, tables, images, longer text) may help to visualize what you're working towards as well.</p>
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 ui <- navbarPage(
@@ -578,9 +578,9 @@ ui <- navbarPage(
   # (Page 2) data viz tabPanel ----
   tabPanel(title =  "Explore the Data",
            
-           "reactive plots will go here" # REPLACE THIS WITH CONTENT
+           "inputs and outputs will live here" # REPLACE THIS WITH CONTENT
            
-  ) # END (Page 2) data viz tabsetPanel
+  ) # END (Page 2) data viz tabPanel
   
 ) # END navbarPage
 ```
@@ -595,10 +595,10 @@ ui <- navbarPage(
 
 <p class="body-text-s">Give your tabs the following titles: `Trout` and `Penguins`.</p>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "15-34"
+#| code-line-numbers: "15-32"
 ui <- navbarPage(
   
   title = "LTER Animal Data Explorer",
@@ -647,7 +647,7 @@ ui <- navbarPage(
 
 <p class="body-text-s">We'll eventually place our input in the sidebar and output in the main panel.</p>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "21-38"
@@ -719,16 +719,23 @@ ui <- navbarPage(
 ::: {.column width="50%"}
 <br>
 <br>
+
+I encourage you to type the code out yourself, rather than copy/paste! 
+
 <br>
+
+Be sure to add text where your input/output will eventually be placed. 
+
 <br>
-I encourage you to type the code out yourself, rather than copy/paste! And be sure to add text where your input/output will eventually be placed. When you're done, you app should look like this:
+
+When you're done, you app should look like this {{< fa arrow-right title="arrow pointing right" >}}
 :::
 
 ::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
-#| out-width: "100%"
+#| out-width: "90%"
 #| fig-align: "center"
 #| fig-alt: "Our new app, which does not yet contain any content (e.g inputs and outputs), but does have an organized layout structure. There is a navbar across the top of the page, with the title 'My app title' on the left-hand side of the navbar. There are two pages on the navbar: one says 'Welcome to my app' and the second says 'Explore the data'. The user clicks into the second page to reveal two tabs named 'Trout', and 'Bison'. Each tab has a gray box (a sidebar) on the lefthand side and a main panel space to the right."
 knitr::include_graphics("images/part2/app2_layout.gif")
@@ -745,7 +752,9 @@ knitr::include_graphics("images/part2/app2_layout.gif")
 
 [{{< fa check title="a check mark" >}} Exercise 2: A solution]{.slide-title2}
 
-```{r filename="ui.R"}
+<hr>
+
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "45-62"
@@ -857,7 +866,7 @@ ui <- navbarPage(
 
 <hr>
 
-<p class="body-text-s bottombr">We'll be using the [`and_vertebrates` dataset](https://lter.github.io/lterdatasampler/reference/and_vertebrates.html) from the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/) to create our first reactive plot. These data contain coastal cutthroat trout (*Oncorhynchus clarkii clarkii*) lengths and weights collected in Mack Creek, [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/). Original data can be found on the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-and.4027.14). Refer back to [this slide](https://ucsb-meds.github.io/EDS430-Shiny/#/app2-plots) to revisit our practice data wrangling & visualization script.</p>
+<p class="body-text-s bottombr">We'll be using the [`and_vertebrates` dataset](https://lter.github.io/lterdatasampler/reference/and_vertebrates.html) from the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/) to create our first reactive plot. These data contain coastal cutthroat trout (*Oncorhynchus clarkii clarkii*) lengths and weights collected in Mack Creek, [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/). Original data can be found on the [EDI Data Portal](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-and.4027.14). Refer back to [this slide]() to revisit our practice data wrangling & visualization script.</p>
 
 <br>
 
@@ -876,13 +885,15 @@ knitr::include_graphics("images/part2/trout.png")
 
 ##  {#import-packages-global data-menu-title="Import packages in global.R"}
 
-[Add packages & wrangle data in `global.R`]{.slide-title3}
+[Add packages & wrangle data in `global.R`]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s">In addition to the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/), we'll also be using the `{tidyverse}` for data wrangling/visualization, and the [`{shinyWidgets}` package ](https://github.com/dreamRs/shinyWidgets) to add a `pickerInput` and a `checkboxGroupInput` to our app.</p>  
+In addition to the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/), we'll also be using the `{tidyverse}` for data wrangling/visualization, and the [`{shinyWidgets}` package ](https://github.com/dreamRs/shinyWidgets) to add a `pickerInput` and a `checkboxGroupInput` to our app. 
 
-<p class="body-text-s">**Import those three packages at the top of your `global.R` file**</p>
+<br>
+
+**Import those three packages at the top of your `global.R` file**
 
 ```{r filename="global.R"}
 #| eval: false
@@ -903,7 +914,8 @@ library(shinyWidgets)
 
 <hr>
 
-<p class="body-text-s">We can also do the bulk of our data wrangling here, rather than in the server. If we were reading in a data file (e.g. .csv), we would do that here too. Our new data object `clean_trout`, will now be available for us to call directly in our server (NOTE: we can easily copy our wrangling code over from our [practice script](https://ucsb-meds.github.io/EDS0430-Intro-to-Shiny/#/app2-plots)).</p>
+<p class="body-text-s">We can also do the bulk of our data wrangling here, rather than in the server. If we were reading in a data file (e.g. `.csv`), we would do that here too. Our new data object `clean_trout`, will now be available for us to call directly in our server (**NOTE:** we can copy our wrangling code over from our [practice script]()).</p>
+
 ```{r filename="global.R"}
 #| eval: false
 #| echo: true
@@ -942,20 +954,20 @@ clean_trout <- and_vertebrates |>
 
 <hr>
 
-<p class="body-text-s">The `channel_type` variable (originally called `unittype` -- we updated the name when wrangling data (see line 9 on [previous slide](https://ucsb-meds.github.io/EDS430-Shiny/#/wrangle-data-global))) represents the type of water body (*cascade, riffle, isolated pool, pool, rapid, step (small falls), or side channel*) data were collected in. We'll start by building a `shinyWidgets::pickerInput()` to allow users to filter data based on `channel_type`.</p>
+<p class="body-text-s">The `channel_type` variable (originally called `unittype` -- we updated the name when wrangling data) represents the type of water body (*cascade, riffle, isolated pool, pool, rapid, step (small falls), or side channel*) where data were collected. We'll start by building a `shinyWidgets::pickerInput()` to allow users to filter data based on `channel_type`.</p>
 
 . . . 
 
 <p class="body-text-s topbr">**Reminder:** When we we designed our UI layout, we added a `sidebarPanel` to our **Trout** tab with the placeholder text `"trout plot input(s) go here"`. Replace that text with the code for your `pickerInput`:</p>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 # channel type pickerInput ----
 pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
             choices = unique(clean_trout$channel_type), # alternatively: choices = c("rapid", "cascade" ...)
-            options = pickerOptions(actionsBox = TRUE), # creates "Select All / Deselect All" buttons
             selected = c("cascade", "pool"), 
+            options = pickerOptions(actionsBox = TRUE), # creates "Select All / Deselect All" buttons
             multiple = TRUE) # END channel type pickerInput
 ```
 
@@ -979,10 +991,10 @@ A `shinyWidgets::pickerInput()` is functionally equivalent to `shiny::selectInpu
 
 <p class="body-text-s topbr">**Reminder:** When we we designed our UI layout, we added a `mainPanel` to our **Trout** tab with the placeholder text `"trout plot output goes here"`. Replace that text with the code for your `plotOuput()`:</p>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
-plotOutput(outputId = "trout_scatterplot")
+plotOutput(outputId = "trout_scatterplot_output")
 ```
 
 <p class="body-text-s topbr">Save and run your app -- it won't look different at first glance, but inspecting your app in a browser window (using Chrome, right click > Inspect) will reveal a placeholder box for your plot output to eventually live:</p>
@@ -1009,7 +1021,7 @@ knitr::include_graphics("images/part2/trout_plotOutput.png")
 :::: {.columns}
 
 ::: {.column width="55%"}
-```{r filename="server.R"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "3-25"
@@ -1024,7 +1036,7 @@ server <- function(input, output) {
   })
   
   # trout scatterplot ----
-  output$trout_scatterplot <- renderPlot({
+  output$trout_scatterplot_output <- renderPlot({
     
     ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
@@ -1047,13 +1059,13 @@ server <- function(input, output) {
 :::
 
 ::: {.column width="35%"}
-<p class="body-text">**A couple notes/reminders:**</p>
+<p class="body-text">**A couple notes / reminders:**</p>
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text}  If needed, reference your [practice script](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/#/app2-plots) to remind yourself how you planned to filter and plot your data</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text}  If needed, reference your [practice script]() to remind yourself how you planned to filter and plot your data</p>
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text}  Reactive data frames need a set of parentheses, `()`, following the name of the df (see `ggplot(trout_filtered_df() ...)`)</p>
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} For a cohesive appearance, save your ggplot theme parameters to a named object in `global.R` (here, `myCustomTheme`), then apply to all plots in your app. See the [following slide](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/#/ggplot-theme) for code.</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} For a cohesive appearance, save your custom ggplot theme function to `global.R` (here, `myCustomTheme()`), then apply to all plots in your app. See code on the following slide.</p>
 :::
 
 ::::
@@ -1062,16 +1074,16 @@ server <- function(input, output) {
 
 ##  {#ggplot-theme data-menu-title="Save theme to global.R"}
 
-[Save a custom `ggplot` theme to `global.R`]{.slide-title2}
+[Save your custom `ggplot` theme to `global.R`]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s">Rather than re-typing your ggplot theme parameters out for every plot in your app, do so once in `global.R`, and save to an object name. You can then easily add your custom theme as a layer to each of your ggplots. **Bonus:** If you decide to modify your plot theme, you only have to do so in one place!</p>
+<p class="body-text-s">This allows us to easily add our theme as a layer to each of our ggplots. **Bonus:** If you decide to modify your plot theme, you only have to do so in one place.</p>
 
-```{r filename="global.R"}
+```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "27-34"
+#| code-line-numbers: "27-38"
 # LOAD LIBRARIES ----
 library(shiny)
 library(lterdatasampler)
@@ -1099,13 +1111,17 @@ clean_trout <- and_vertebrates |>
   drop_na()
 
 # GGPLOT THEME ----
-myCustomTheme <- theme_light() +
+myCustomTheme <- function() {
+  
+  theme_light() +
   theme(axis.text = element_text(color = "black", size = 12),
     axis.title = element_text(size = 14, face = "bold"),
     legend.title = element_text(size = 14, face = "bold"),
     legend.text = element_text(size = 13),
     legend.position = "bottom",
     panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+  
+}
 ```
 
 ---
@@ -1135,7 +1151,7 @@ knitr::include_graphics("images/part2/app2_plot1_widget1.gif")
 
 <p class="body-text-s">You can have more than one input control the same output. Let's now add a `checkboxGroupButtons` widget to our **UI** for selecting forest `section` (either clear cut forest or old growth forest). Check out the [function documentation](https://dreamrs.github.io/shinyWidgets/reference/checkboxGroupButtons.html) for more information on how to customize the appearance of your buttons.</p>
 
-<p class="body-text-s">Be sure to add the widget to the same `sidebarPanel` as our `pickerInput` (and separate them with a comma!:</p>
+<p class="body-text-s">Be sure to add the widget to the same `sidebarPanel` as our `pickerInput` (and separate them with a comma!):</p>
 
 ```{r filename="ui.R"}
 #| eval: false
@@ -1185,7 +1201,7 @@ trout_filtered_df <- reactive({
   })
 
 # trout scatterplot ----
-output$trout_scatterplot <- renderPlot({
+output$trout_scatterplot_output <- renderPlot({
 
   ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
     geom_point(alpha = 0.7, size = 5) +

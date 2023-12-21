@@ -17,7 +17,7 @@ editor_options:
 
 <hr>
 
-<p class="body-text-s bottombr">We'll be using the `penguins` dataset from the [`{palmerpenguins}` package](https://allisonhorst.github.io/palmerpenguins/) to create our second reactive plot. These data contain penguin (genus *Pygoscelis*) body size measurements collected from three islands in the Palmer Archipelago, Antarctica, as part of the [Palmer Station LTER](https://pallter.marine.rutgers.edu/). Original data can be found on the EDI Data Portal ([Adélie data](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.219.5), [Gentoo data](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.220.5), and [Chinstrap data](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.221.6)). Refer back to [this slide](https://ucsb-meds.github.io/EDS430-Shiny/#/app2-plots) to revisit our practice data wrangling & visualization script.</p>
+<p class="body-text-s bottombr">We'll be using the `penguins` dataset from the [`{palmerpenguins}` package](https://allisonhorst.github.io/palmerpenguins/) to create our second reactive plot. These data contain penguin (genus *Pygoscelis*) body size measurements collected from three islands in the Palmer Archipelago, Antarctica, as part of the [Palmer Station LTER](https://pallter.marine.rutgers.edu/). Original data can be found on the EDI Data Portal ([Adélie data](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.219.5), [Gentoo data](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.220.5), and [Chinstrap data](https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-pal.221.6)). Refer back to [this slide]() to revisit our practice data wrangling & visualization script.</p>
 
 <br>
 
@@ -44,25 +44,22 @@ knitr::include_graphics("images/part2/meet_the_penguins.png")
 
 :::: {.columns}
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} data colored by penguin `species`</p>
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} a `shinyWidgets::pickerInput` that allows users to filter data based on `island`, and that includes buttons to **Select All** / **Deselect All** island options at once</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} a `shinyWidgets::pickerInput()` that allows users to filter data based on `island`, and that includes buttons to **Select All** / **Deselect All** island options at once</p>
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} a `shiny::sliderInput` that allows users to change the number of histogram bins and that by default, displays a histogram with **25** bins</p>
+<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} a `shiny::sliderInput()` that allows users to change the number of histogram bins and that by default, displays a histogram with **25** bins</p>
 
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} the two widgets should be placed in the `sidebarPanel` and the reactive histogram should be placed in the `mainPanel` of the **Penguins** tab</p>
 :::
 
-::: {.column width="5%"}
-:::
-
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "80%"
+#| out-width: "100%"
 #| fig-alt: "A user navigates to the Penguins tab of our app to reveal a histogram of penguins flipper lengths. Data are colored by species (Adelie = orange, Chinstrap = purple, Gentoo = green). The user uses a pickerInput to filter data based on the island where they were collected. The user also adjust the bin number using a sliderInput."
 knitr::include_graphics("images/part2/penguin_plot.gif")
 ```
@@ -70,17 +67,21 @@ knitr::include_graphics("images/part2/penguin_plot.gif")
 
 ::::
 
+<br>
+
 <center><p class="body-text-l teal-text">See next slide for some tips on getting started!</p></center>
 
 ---
 
 ##  {#exercise3-tips data-menu-title="** Exercise 3 Tips **" background="#d2e3f3"}
 
-[{{< fa lightbulb title="a lightbulb" >}} Exercise 3: Tips]{.slide-title2}
+[{{< fa lightbulb title="a lightbulb" >}} Exercise 3: Tips]{.slide-title}
 
 <hr>
 
-<p class="body-text topbr">**Tips:**</p>
+<br>
+
+**Tips:**
 
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Remember to load the `palmerpenguins` package at the top of `global.R` so that your app can find the data</p>
 
@@ -88,7 +89,9 @@ knitr::include_graphics("images/part2/penguin_plot.gif")
 
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Try changing the histogram bin number in your practice code script first, before attempting to make it reactive</p>
 
-<p class="body-text topbr">**And remember** to follow the our three steps for building reactive outputs (1. add input to UI, 2. add output to UI, 3. tell server how to assemble inputs into outputs)!</p>
+<br>
+
+**And remember** to follow the our three steps for building reactive outputs ([**(1)**]{.teal-text} add input to UI, [**(2)**]{.teal-text} add output to UI, [**(3)**]{.teal-text} tell server how to assemble inputs into outputs)!
 
 <br>
 <br>
@@ -100,7 +103,7 @@ knitr::include_graphics("images/part2/penguin_plot.gif")
 
 ##  {#exercise3-solution data-menu-title="** Exercise 3 Solution **" background="#d2e3f3"}
 
-[{{< fa check title="check mark" >}} Exercise 3: A solution]{.slide-title2}
+[{{< fa check title="check mark" >}} Exercise 3: A solution]{.slide-title}
 
 <hr>
 
@@ -200,7 +203,7 @@ ui <- navbarPage(
                         # trout plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "trout_scatterplot")
+                          plotOutput(outputId = "trout_scatterplot_output")
                           
                         ) # END trout plot mainPanel
                         
@@ -233,7 +236,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram") 
+                          plotOutput(outputId = "flipperLength_histogram_output") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -266,7 +269,7 @@ server <- function(input, output) {
     })
 
   # trout scatterplot ----
-  output$trout_scatterplot <- renderPlot({
+  output$trout_scatterplot_output <- renderPlot({
 
     ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
@@ -277,7 +280,7 @@ server <- function(input, output) {
                                     "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
                                     "side channel" = 25)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
-      myCustomTheme
+      myCustomTheme()
 
   })
   
@@ -285,19 +288,19 @@ server <- function(input, output) {
   island_df <- reactive({
 
     penguins %>%
-      filter(island %in% input$penguin_island)
+      filter(island %in% input$penguin_island_input)
 
   })
 
   # render the flipper length histogram ----
-  output$flipperLength_histogram <- renderPlot({
+  output$flipperLength_histogram_output <- renderPlot({
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
-      geom_histogram(alpha = 0.6, bins = input$bin_num_input) +
+      geom_histogram(alpha = 0.6, position = "identity", bins = input$bin_num_input) +
       scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
       labs(x = "Flipper length (mm)", y = "Frequency",
            fill = "Penguin species") +
-      myCustomTheme
+      myCustomTheme()
     
   })
   
