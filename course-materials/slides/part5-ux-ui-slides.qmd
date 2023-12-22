@@ -42,15 +42,15 @@ editor_options:
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a checklist of considerations to reference each time you build an app
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a checklist of considerations to reference each time you build an app]{.body-text-s}
 
 . . .
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a general understanding of what web accessibility means and who it can benefit (spoiler alert: it benefits us all!)
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a general understanding of what web accessibility means and who it can benefit (spoiler alert: it benefits us all!)]{.body-text-s}
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to make a few small tweaks / updates to your application to make it more accessible for all users
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to make a few small tweaks / updates to your application to make it more accessible for all users]{.body-text-s}
 
 ---
 
@@ -82,15 +82,20 @@ editor_options:
 
 ##  {#UX-UI-resources data-menu-title="UX/UI resources"}
 
-[Additional UX/UI resources]{.slide-title}
+[Looking for more resources?]{.slide-title}
 
 <hr>
 
-<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Outstanding User Interfaces with Shiny](https://unleash-shiny.rinterface.com/index.html), by [David Granjon](https://divadnojnarg.github.io/)</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [Shiny Developer Series, Episode 20: Outstanding User Interfaces with David Granjon](https://www.youtube.com/watch?v=mxvMaoXOm70)</p>
-
-<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} [15 User Experience Principles and Theories](https://pathumpmgux.medium.com/15-user-experience-principles-and-theories-80f19877bd5), by [Pathum Goonawardene](https://pathumpmgux.medium.com/)</p>
+::: {.center-text .body-text-l .teal-text}
+Check out the **[resources page](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/resources.html#ux-ui)** on the course website for some additional books, videos, and articles on designing effective UIs.
+:::
 
 ---
 
@@ -125,7 +130,9 @@ editor_options:
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} people using a slow Internet connection, or who have limited or expensive bandwidth</p>
 :::
 
-<p class="body-text-s">Check out the [A11Y Project](https://www.a11yproject.com/) for lots of great tutorials and information about web accessibility.</p>
+::: {.footer}
+Check out the [A11Y Project](https://www.a11yproject.com/) for lots of great tutorials and information about web accessibility.
+:::
 
 ---
 
@@ -135,13 +142,14 @@ editor_options:
 
 <hr>
 
-<p class="body-text bottombr">Ensuring that your shiny apps are accessible can feel overwhelming -- but considering even a few small changes can have a large impact on user experience.</p>
+<p class="body-text-s bottombr">Ensuring that your shiny apps are accessible can feel overwhelming -- but considering even a few small changes can have a large impact on user experience.</p>
 
-<p class="body-text topbr bottombr">The following suggestions have been borrowed and adapted from [Ch. 6.3 - Web Accessibility](https://engineering-shiny.org/ux-matters.html#web-accessibility) from [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/index.html), by Colin Fay, Sèbastien Rochette, Vincent Guyader, & Cervan Girard:</p>
+<p class="body-text-s topbr bottombr">The following suggestions have been borrowed and adapted from [Ch. 6.3 - Web Accessibility](https://engineering-shiny.org/ux-matters.html#web-accessibility) from [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/index.html), by Colin Fay, Sèbastien Rochette, Vincent Guyader, & Cervan Girard:</p>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
+<br>
 <br>
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Use HTML elements appropriately (e.g. consider hierarchy)</p> 
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Include alt text for graphical elements</p>
@@ -179,7 +187,7 @@ Image Source: [Accessibility Stack](https://accessibilityspark.com/9-awesome-web
 
 . . . 
 
-:::: {.columms}
+:::: {.columns}
 
 ::: {.column width="50%"}
 ```{r}
@@ -212,11 +220,11 @@ shinyApp(ui = ui, server = server)
 :::
 
 ::: {.column width="50%"}
+Ideally, you would only have one `<h1>` element (e.g. your app's **title**), a small number of `<h2>` elements, more `<h3>` elements, and so on. See the minimal example, to the left.
+
 <br>
 
-<p class="body-text-s topbr">Ideally, you would only have one `<h1>` element (e.g. your app's **title**), a small number of `<h2>` elements, more `<h3>` elements, and so on. See the minimal example, to the left.</p>
-
-<p class="body-text-s topbr">You *should not* rely on headers for styling purposes -- for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop for [instruction on how to construct CSS selectors](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types) for styling HTML elements).</p>
+[You *should not* rely on headers for styling purposes -- for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop for [instruction on how to construct CSS selectors](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types) for styling HTML elements).]{.body-text-s}
 :::
 
 ::::
@@ -303,14 +311,14 @@ knitr::include_graphics("images/part5/alt-ex.png")
 
 <br>
 
-<p class="body-text-s topbr">**At a minimum, consider spacing out and/or limiting the number of widgets on any given page to make navigation with a mouse as easy as possible.**</p>
+<p class="body-text-s topbr">**At a minimum, consider spacing out and / or limiting the number of widgets on any given page to make navigation with a mouse as easy as possible.**</p>
 :::
 
 ::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
-#| out-width: "100%"
+#| out-width: "60%"
 #| fig-align: "center"
 #| fig-alt: "A computer mouse and keyboard that's animated to show the left mouse button clicking and the left-hand side shift button being pressed."
 knitr::include_graphics("images/part5/keyboard_mouse.gif")
@@ -323,13 +331,13 @@ knitr::include_graphics("images/part5/keyboard_mouse.gif")
 
 ##  {#color-palettes data-menu-title="Color Palettes"}
 
-[Use colorblind-friendly palettes]{.slide-title}
+[Use colorblind-friendly palettes]{.slide-title3}
 
 <hr>
 
-<p class="body-text-s">About 1 in 12 males and 1 in 200 females have some form of colorblindness ([Wikipedia](https://en.wikipedia.org/wiki/Color_blindness)). Ensuring that your color choices are distinguishable from one another and/or providing an additional non-color-based way (e.g. patterns, shapes) of distinguishing between treatments/variables/etc. can greatly help with interpretation of data visualizations.</p>
+<p class="body-text-s">About 1 in 12 males and 1 in 200 females have some form of colorblindness ([Wikipedia](https://en.wikipedia.org/wiki/Color_blindness)). Ensuring that your color choices are distinguishable from one another and / or providing an additional non-color-based way (e.g. patterns, shapes) of distinguishing between groups can greatly help with interpretation of data visualizations.</p>
 
-<p class="body-text-s">There are lots of great colorblind-accessible palettes and resources (check out [this one](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf) by [Alex Phillips](https://www.alexandraatleephillips.com/) to start). Google Chrome also has a built-in vision deficiency emulator (see gif, below right; right click in your web browser > Inspect > Rendering (add tab by clicking on the three stacked dots if it's not already open) > scroll down and choose emulation type from drop down where it says "Emulate vision deficiencies").</p>
+<p class="body-text-s">There are lots of great colorblind-accessible palettes and resources (check out [this one](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf) by [Alex Phillips](https://www.alexandraatleephillips.com/) to start). Google Chrome also has a built-in vision deficiency emulator (see gif, below right; **right click** in your web browser > **Inspect** > **Rendering** (add tab by clicking on the three stacked dots if it's not already open) > scroll down and **choose emulation type** from drop down where it says "Emulate vision deficiencies").</p>
 
 :::: {.columns}
 

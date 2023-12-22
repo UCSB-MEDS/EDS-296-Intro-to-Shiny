@@ -421,13 +421,13 @@
 By the end of this section, you should:
 </p>
 <div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a checklist of considerations to reference each time you build an app</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a checklist of considerations to reference each time you build an app</span></p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a general understanding of what web accessibility means and who it can benefit (spoiler alert: it benefits us all!)</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a general understanding of what web accessibility means and who it can benefit (spoiler alert: it benefits us all!)</span></p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to make a few small tweaks / updates to your application to make it more accessible for all users</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to make a few small tweaks / updates to your application to make it more accessible for all users</span></p>
 </div>
 </section>
 <section id="UX-UI-design-tips" class="slide level2" data-menu-title="Tips for UX/UI design">
@@ -460,17 +460,12 @@ By the end of this section, you should:
 </section>
 <section id="UX-UI-resources" class="slide level2" data-menu-title="UX/UI resources">
 <h2></h2>
-<p><span class="slide-title">Additional UX/UI resources</span></p>
+<p><span class="slide-title">Looking for more resources?</span></p>
 <hr>
-<p class="body-text topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <a href="https://unleash-shiny.rinterface.com/index.html">Outstanding User Interfaces with Shiny</a>, by <a href="https://divadnojnarg.github.io/">David Granjon</a>
-</p>
-<p class="body-text topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <a href="https://www.youtube.com/watch?v=mxvMaoXOm70">Shiny Developer Series, Episode 20: Outstanding User Interfaces with David Granjon</a>
-</p>
-<p class="body-text topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <a href="https://pathumpmgux.medium.com/15-user-experience-principles-and-theories-80f19877bd5">15 User Experience Principles and Theories</a>, by <a href="https://pathumpmgux.medium.com/">Pathum Goonawardene</a>
-</p>
+<p><br> <br> <br> <br> <br> <br></p>
+<div class="center-text body-text-l teal-text">
+<p>Check out the <strong><a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/resources.html#ux-ui">resources page</a></strong> on the course website for some additional books, videos, and articles on designing effective UIs.</p>
+</div>
 </section>
 <section id="accessibility" class="slide level2" data-menu-title="~~~ Accessibility ~~~" data-background="#047C90">
 <h2></h2>
@@ -522,23 +517,23 @@ From the <a href="https://www.w3.org/">World Wide Web Consortium (W3C)</a>’s <
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> people using a slow Internet connection, or who have limited or expensive bandwidth
 </p>
 </div>
-<p class="body-text-s">
-Check out the <a href="https://www.a11yproject.com/">A11Y Project</a> for lots of great tutorials and information about web accessibility.
-</p>
+<div class="footer">
+<p>Check out the <a href="https://www.a11yproject.com/">A11Y Project</a> for lots of great tutorials and information about web accessibility.</p>
+</div>
 </section>
 <section id="small-steps" class="slide level2" data-menu-title="Small steps help!">
 <h2></h2>
 <p><span class="slide-title3">Small changes can lead to tangible increases in functionality for all users</span></p>
 <hr>
-<p class="body-text bottombr">
+<p class="body-text-s bottombr">
 Ensuring that your shiny apps are accessible can feel overwhelming – but considering even a few small changes can have a large impact on user experience.
 </p>
-<p class="body-text topbr bottombr">
+<p class="body-text-s topbr bottombr">
 The following suggestions have been borrowed and adapted from <a href="https://engineering-shiny.org/ux-matters.html#web-accessibility">Ch. 6.3 - Web Accessibility</a> from <a href="https://engineering-shiny.org/index.html">Engineering Production-Grade Shiny Apps</a>, by Colin Fay, Sèbastien Rochette, Vincent Guyader, &amp; Cervan Girard:
 </p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<br>
+<br> <br>
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Use HTML elements appropriately (e.g.&nbsp;consider hierarchy)
 </p>
@@ -575,7 +570,7 @@ The following suggestions have been borrowed and adapted from <a href="https://e
 <strong>Screen readers use HTML elements to understand web page organization.</strong> Header elements create hierarchy within a webpage and are used by screen readers (i.e.&nbsp;devices used by those with visual impairments) to understand a page’s organizational structure. An <code>&lt;h1&gt;</code> element is more important (hierarchically speaking) than an <code>&lt;h2&gt;</code>, which is more important than an <code>&lt;h3&gt;</code>, and so on.
 </p>
 <div class="fragment">
-<div class="columms">
+<div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages ----</span></span>
@@ -602,15 +597,10 @@ The following suggestions have been borrowed and adapted from <a href="https://e
 <span id="cb1-22"><a href="#cb1-22"></a><span class="co"># combine UI &amp; server into an app ----</span></span>
 <span id="cb1-23"><a href="#cb1-23"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="column" style="width:50%;">
+</div><div class="column" style="width:50%;">
+<p>Ideally, you would only have one <code>&lt;h1&gt;</code> element (e.g.&nbsp;your app’s <strong>title</strong>), a small number of <code>&lt;h2&gt;</code> elements, more <code>&lt;h3&gt;</code> elements, and so on. See the minimal example, to the left.</p>
 <p><br></p>
-<p class="body-text-s topbr">
-Ideally, you would only have one <code>&lt;h1&gt;</code> element (e.g.&nbsp;your app’s <strong>title</strong>), a small number of <code>&lt;h2&gt;</code> elements, more <code>&lt;h3&gt;</code> elements, and so on. See the minimal example, to the left.
-</p>
-<p class="body-text-s topbr">
-You <em>should not</em> rely on headers for styling purposes – for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide">Customizing Quarto Websites</a> workshop for <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types">instruction on how to construct CSS selectors</a> for styling HTML elements).
-</p>
+<p><span class="body-text-s">You <em>should not</em> rely on headers for styling purposes – for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide">Customizing Quarto Websites</a> workshop for <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types">instruction on how to construct CSS selectors</a> for styling HTML elements).</span></p>
 </div>
 </div>
 </div>
@@ -679,14 +669,14 @@ Ideally, actions required of your user can be done using a keyboard (e.g.&nbsp;p
 <div class="column" style="width:50%;">
 <p><br></p>
 <p class="body-text-s topbr">
-<strong>At a minimum, consider spacing out and/or limiting the number of widgets on any given page to make navigation with a mouse as easy as possible.</strong>
+<strong>At a minimum, consider spacing out and / or limiting the number of widgets on any given page to make navigation with a mouse as easy as possible.</strong>
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part5/keyboard_mouse.gif" style="width:100.0%" alt="A computer mouse and keyboard that's animated to show the left mouse button clicking and the left-hand side shift button being pressed."></p>
+<p><img data-src="images/part5/keyboard_mouse.gif" style="width:60.0%" alt="A computer mouse and keyboard that's animated to show the left mouse button clicking and the left-hand side shift button being pressed."></p>
 </figure>
 </div>
 </div>
@@ -696,13 +686,13 @@ Ideally, actions required of your user can be done using a keyboard (e.g.&nbsp;p
 </section>
 <section id="color-palettes" class="slide level2" data-menu-title="Color Palettes">
 <h2></h2>
-<p><span class="slide-title">Use colorblind-friendly palettes</span></p>
+<p><span class="slide-title3">Use colorblind-friendly palettes</span></p>
 <hr>
 <p class="body-text-s">
-About 1 in 12 males and 1 in 200 females have some form of colorblindness (<a href="https://en.wikipedia.org/wiki/Color_blindness">Wikipedia</a>). Ensuring that your color choices are distinguishable from one another and/or providing an additional non-color-based way (e.g.&nbsp;patterns, shapes) of distinguishing between treatments/variables/etc. can greatly help with interpretation of data visualizations.
+About 1 in 12 males and 1 in 200 females have some form of colorblindness (<a href="https://en.wikipedia.org/wiki/Color_blindness">Wikipedia</a>). Ensuring that your color choices are distinguishable from one another and / or providing an additional non-color-based way (e.g.&nbsp;patterns, shapes) of distinguishing between groups can greatly help with interpretation of data visualizations.
 </p>
 <p class="body-text-s">
-There are lots of great colorblind-accessible palettes and resources (check out <a href="https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf">this one</a> by <a href="https://www.alexandraatleephillips.com/">Alex Phillips</a> to start). Google Chrome also has a built-in vision deficiency emulator (see gif, below right; right click in your web browser &gt; Inspect &gt; Rendering (add tab by clicking on the three stacked dots if it’s not already open) &gt; scroll down and choose emulation type from drop down where it says “Emulate vision deficiencies”).
+There are lots of great colorblind-accessible palettes and resources (check out <a href="https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf">this one</a> by <a href="https://www.alexandraatleephillips.com/">Alex Phillips</a> to start). Google Chrome also has a built-in vision deficiency emulator (see gif, below right; <strong>right click</strong> in your web browser &gt; <strong>Inspect</strong> &gt; <strong>Rendering</strong> (add tab by clicking on the three stacked dots if it’s not already open) &gt; scroll down and <strong>choose emulation type</strong> from drop down where it says “Emulate vision deficiencies”).
 </p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -747,7 +737,7 @@ End part 5
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_76ae4bd6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_67d82ae6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
