@@ -454,7 +454,7 @@ Packages introduced:
 <p>It’s almost inevitable that apps will break – there are lots of reasons why this happens, but to name a few:</p>
 <div class="fragment">
 <p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> an upgraded R package(s) has a different behavior (this includes <code>shiny</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> an upgraded R package(s) has a different behavior (this includes <code>{shiny}</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators
 </p>
 </div>
 <div class="fragment">
@@ -479,12 +479,12 @@ Packages introduced:
 <p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> is a useful tool for conducting regression testing on shiny apps – or in other words, testing existing app behavior for consistency over time.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br></p>
+<p><br> <br> <br></p>
 <p class="body-text">
 From the <code>shinytest2</code> documentation:
 </p>
 <p class="body-text-s quote-text-bg">
-“<em><code>shinytest2</code> uses <code>testthat</code>’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.</em>”
+“<em><code>{shinytest2}</code> uses <code>{testthat}</code>’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.</em>”
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -518,11 +518,11 @@ Rather than having to write tests by hand, you can interact with your app via th
 <p><span class="slide-title">Let’s test the following app</span></p>
 <hr>
 <p>This small app accepts a text input for users to type their name. When the “Greet” button is pressed, the app returns a short greeting message that says, “Hello <em>name</em>!</p>
-<p>To get started, create a subdirectory called <code>~/testing_app</code>, add a file named <code>app.R</code>, and drop this code in your file. Take a moment to try out the app.</p>
+<p>To get started, create a subdirectory called <code>~/testing-app/</code>, add a file named <code>app.R</code>, and drop this code in your file. Take a moment to try out the app.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/testing_app/app.R</strong></pre>
+<pre><strong>~/testing-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -554,7 +554,7 @@ Rather than having to write tests by hand, you can interact with your app via th
 <hr>
 <p><strong>Recording tests requires the following steps:</strong></p>
 <div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Run <code>record_test(&lt;app-directory&gt;)</code> to launch the app recorder in browser window</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Run <code>record_test(&lt;app-directory&gt;)</code> to launch the app recorder in a browser window</span></p>
 </div>
 <div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation (e.g.&nbsp;an expected value when inputX is updated) on the state at various points</span></p>
@@ -564,11 +564,11 @@ Rather than having to write tests by hand, you can interact with your app via th
 </div>
 <div class="fragment">
 <p><br></p>
-<p><strong>To test our app specifically, we’ll do the following:</strong></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> run <code>shinytest2::record_test("testing_app")</code> in the console to launch the recorder in a browser window</span></p>
+<p><strong>To test <em>our</em> app specifically, we’ll do the following:</strong></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> run <code>shinytest2::record_test("testing-app")</code> in the console to launch the recorder in a browser window</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> interact with your app by first typing a name (e.g.&nbsp;Sam), then pressing the “Greet” button to display the output text</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> click the “Expect Shiny values” button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> give your test a name in the recorder app sidebar, then click “Save test and exit” - this will save the recorded test and setup the testing infrastructure, if it doesn’t exit already</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> click the <strong>Expect Shiny values</strong> button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> give your test a name in the recorder app sidebar, then click <strong>Save test and exit</strong> - this will save the recorded test and setup the testing infrastructure, if it doesn’t exit already</span></p>
 </div>
 </section>
 <section id="creating-test1-example" class="slide level2" data-menu-title="Creating our first test">
@@ -585,16 +585,16 @@ Rather than having to write tests by hand, you can interact with your app via th
 <h2></h2>
 <p><span class="slide-title">Test files are generated automatically</span></p>
 <hr>
-<p>After recording your first test, a <code>/tests</code> folder is generated, containing a number of different files and subdirectories. Some important files to note:</p>
+<p>After recording your first test, a <code>tests/</code> folder is generated, containing a number of different files and subdirectories. Some important files to note:</p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>setup-shinytest2.R</code></a></li><li><a href="#tabset-1-2"><code>test-shinytest2.R</code></a></li><li><a href="#tabset-1-3"><code>*_.png</code></a></li><li><a href="#tabset-1-4"><code>*.json</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<p><span class="body-text-s">For more complex apps, you’ll often have support files (e.g.&nbsp;those contained in <code>&lt;app-directory&gt;/R</code> and / or <code>global.R</code>) – content from those files will be stored here so that it is made accessible to your test(s). Since we don’t have any support files for our rather small/somewhat simple app, you should only see the following:</span></p>
+<p><span class="body-text-s">For more complex apps, you’ll often have support files (e.g.&nbsp;those contained in <code>~/&lt;app-directory&gt;/R</code> and / or <code>global.R</code>) – content from those files will be stored here so that it is made accessible to your test(s). Since we don’t have any support files for our rather small/somewhat simple app, you should only see the following:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>&lt;app-directory&gt;/tests/testthat/setup-shinytest2.R</strong></pre>
+<pre><strong>~/testing-app/tests/testthat/setup-shinytest2.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load application support files into testing environment</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>shinytest2<span class="sc">::</span><span class="fu">load_app_env</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -606,7 +606,7 @@ Rather than having to write tests by hand, you can interact with your app via th
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>&lt;app-directory&gt;/tests/testthat/test-shinytest2.R</strong></pre>
+<pre><strong>~/testing-app/tests/testthat/test-shinytest2.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(shinytest2)</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
@@ -620,7 +620,7 @@ Rather than having to write tests by hand, you can interact with your app via th
 </div>
 </div>
 <div id="tabset-1-3">
-<p><span class="body-text-s"><strong>(located at <code>&lt;app-directory&gt;/tests/testthat/_snaps/shinytest2/*_.png</code>)</strong>; This is a screenshot of your app from when <code>app$expect_values()</code> was called – this file should be tracked using git so that you know how your app visually changes over time. My <code>.png</code> file looks like this:</span></p>
+<p><span class="body-text-s"><strong>(located at <code>~/&lt;app-directory&gt;/tests/testthat/_snaps/shinytest2/*_.png</code>)</strong>; This is a screenshot of your app from when <code>app$expect_values()</code> was called – this file should be tracked using git so that you know how your app visually changes over time. My <code>.png</code> file looks like this:</span></p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -637,7 +637,7 @@ Rather than having to write tests by hand, you can interact with your app via th
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>&lt;app-directory&gt;/tests/testthat/_snaps/shinytest2/*.json</strong></pre>
+<pre><strong>~/testing-app/tests/testthat/_snaps/shinytest2/*.json</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">{</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">"input"</span><span class="fu">:</span> <span class="fu">{</span></span>
@@ -662,13 +662,13 @@ Rather than having to write tests by hand, you can interact with your app via th
 <p><span class="slide-title">Tips for testing</span></p>
 <hr>
 <p class="body-text topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Record subsequent tests following the same workflow, giving each a unique name. Run <code>test_app("path/to/app")</code> to run all test scripts in your app’s <code>tests/testhat</code> directory.
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Record subsequent tests following the same workflow, giving each a unique name. Run <code>test_app("path/to/app")</code> to run all test scripts in your app’s <code>tests/testhat/</code> directory.
 </p>
 <p class="body-text">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Use <code>record_test()</code> fairly often – Barret Schloerke argues that you should make a test recording for each feature of your app (many little recordings are encouraged!)
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Use <code>record_test()</code> fairly often</strong> – Barret Schloerke argues that you should make a test recording for each feature of your app (many little recordings are encouraged!)
 </p>
 <p class="body-text topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Limit testing to objects under your control. For example, let’s say you have a reactive data frame that you then send to a <code>DT::datatable</code> – if package maintainers update the <code>DT</code> package, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to <code>DT</code>.
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Limit testing to objects under your control.</strong> For example, let’s say you have a reactive data frame that you then send to a <code>DT::datatable</code> – if package maintainers update the <code>DT</code> package, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to <code>DT</code>.
 </p>
 <div class="fragment">
 <p><br></p>
@@ -679,11 +679,11 @@ This is only a brief intro to <code>shinytest2</code>! Dig into the <a href="htt
 </center>
 </div>
 </section>
-<section id="end" class="slide level2" data-menu-title="~~~ END ~~~" data-background="#047C90">
+<section id="end" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
 <h2></h2>
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">
-End part 6.1
+End part 6.2
 </p>
 <p class="caption-text">
 <em><strong>Up next:</strong> streamlinging code</em>
@@ -691,7 +691,7 @@ End part 6.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_f95a9ff9" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_29aa8f14" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

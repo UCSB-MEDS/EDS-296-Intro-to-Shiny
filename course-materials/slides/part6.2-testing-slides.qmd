@@ -74,7 +74,7 @@ It's almost inevitable that apps will break -- there are lots of reasons why thi
 
 . . . 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an upgraded R package(s) has a different behavior (this includes `shiny`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an upgraded R package(s) has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</p>
 
 . . . 
 
@@ -105,10 +105,12 @@ The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shiny
 ::: {.column width="50%"}
 
 <br>
+<br>
+<br>
 
 <p class="body-text">From the `shinytest2` documentation:</p>
 
-<p class="body-text-s quote-text-bg">"*`shinytest2` uses `testthat`’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.*"</p> 
+<p class="body-text-s quote-text-bg">"*`{shinytest2}` uses `{testthat}`’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.*"</p> 
 :::
 
 ::: {.column width="50%"}
@@ -156,9 +158,9 @@ Check out the **[resources page](https://ucsb-meds.github.io/EDS-430-Intro-to-Sh
 
 This small app accepts a text input for users to type their name. When the "Greet" button is pressed, the app returns a short greeting message that says, "Hello *name*!
 
-To get started, create a subdirectory called `~/testing_app`, add a file named `app.R`, and drop this code in your file. Take a moment to try out the app.
+To get started, create a subdirectory called `~/testing-app/`, add a file named `app.R`, and drop this code in your file. Take a moment to try out the app.
 
-```{r filename="~/testing_app/app.R"}
+```{r filename="~/testing-app/app.R"}
 #| eval: false
 #| echo: true
 library(shiny)
@@ -196,7 +198,7 @@ shinyApp(ui, server)
 
 . . . 
 
-[[**(1)**]{.teal-text} Run `record_test(<app-directory>)` to launch the app recorder in browser window]{.body-text-s}
+[[**(1)**]{.teal-text} Run `record_test(<app-directory>)` to launch the app recorder in a browser window]{.body-text-s}
 
 . . . 
 
@@ -210,15 +212,15 @@ shinyApp(ui, server)
 
 <br>
 
-**To test our app specifically, we'll do the following:**
+**To test *our* app specifically, we'll do the following:**
 
-[[**(1)**]{.teal-text} run `shinytest2::record_test("testing_app")` in the console to launch the recorder in a browser window]{.body-text-s}
+[[**(1)**]{.teal-text} run `shinytest2::record_test("testing-app")` in the console to launch the recorder in a browser window]{.body-text-s}
 
 [[**(2)**]{.teal-text} interact with your app by first typing a name (e.g. Sam), then pressing the "Greet" button to display the output text]{.body-text-s}
 
-[[**(3)**]{.teal-text} click the "Expect Shiny values" button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)]{.body-text-s}
+[[**(3)**]{.teal-text} click the **Expect Shiny values** button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)]{.body-text-s}
 
-[[**(4)**]{.teal-text} give your test a name in the recorder app sidebar, then click "Save test and exit" - this will save the recorded test and setup the testing infrastructure, if it doesn't exit already]{.body-text-s}
+[[**(4)**]{.teal-text} give your test a name in the recorder app sidebar, then click **Save test and exit** - this will save the recorded test and setup the testing infrastructure, if it doesn't exit already]{.body-text-s}
 
 ---
 
@@ -253,15 +255,15 @@ knitr::include_graphics("images/part6/sam-test.gif")
 
 <hr>
 
-After recording your first test, a `/tests` folder is generated, containing a number of different files and subdirectories. Some important files to note:
+After recording your first test, a `tests/` folder is generated, containing a number of different files and subdirectories. Some important files to note:
 
 ::: {.panel-tabset}
 
 ## `setup-shinytest2.R`
 
-[For more complex apps, you'll often have support files (e.g. those contained in `<app-directory>/R` and / or `global.R`) -- content from those files will be stored here so that it is made accessible to your test(s). Since we don't have any support files for our rather small/somewhat simple app, you should only see the following:]{.body-text-s}
+[For more complex apps, you'll often have support files (e.g. those contained in `~/<app-directory>/R` and / or `global.R`) -- content from those files will be stored here so that it is made accessible to your test(s). Since we don't have any support files for our rather small/somewhat simple app, you should only see the following:]{.body-text-s}
 
-```{r filename="<app-directory>/tests/testthat/setup-shinytest2.R"}
+```{r filename="~/testing-app/tests/testthat/setup-shinytest2.R"}
 #| eval: false
 #| echo: true
 # Load application support files into testing environment
@@ -272,7 +274,7 @@ shinytest2::load_app_env()
 
 [This test script contains your recorded test, and should automatically open when you finish recording and save your test. You can manually modify this test (e.g. add additional interactions and expectations), if you wish. Yours should look similar to this:]{.body-text-s}
 
-```{r filename="<app-directory>/tests/testthat/test-shinytest2.R"}
+```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
 library(shinytest2)
@@ -287,7 +289,7 @@ test_that("{shinytest2} recording: sam-test", {
 
 ## `*_.png`
 
-[**(located at `<app-directory>/tests/testthat/_snaps/shinytest2/*_.png`)**; This is a screenshot of your app from when `app$expect_values()` was called -- this file should be tracked using git so that you know how your app visually changes over time. My `.png` file looks like this:]{.body-text-s}
+[**(located at `~/<app-directory>/tests/testthat/_snaps/shinytest2/*_.png`)**; This is a screenshot of your app from when `app$expect_values()` was called -- this file should be tracked using git so that you know how your app visually changes over time. My `.png` file looks like this:]{.body-text-s}
 
 <br>
 
@@ -304,7 +306,7 @@ knitr::include_graphics("images/part6/sam-test-001_.png")
 
 [This is a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called -- you'll see the state of all input, output, and export values at the time of the snapshot (we don't have any exports in our example app, but we do have a name input and a greeting output). This file should be tracked with git so that you have a record of your expected results. Your `.json` file should look something like this:]{.body-text-s}
 
-```{json filename="<app-directory>/tests/testthat/_snaps/shinytest2/*.json"}
+```{json filename="~/testing-app/tests/testthat/_snaps/shinytest2/*.json"}
 #| eval: false
 #| echo: true
 {
@@ -331,11 +333,11 @@ knitr::include_graphics("images/part6/sam-test-001_.png")
 
 <hr>
 
-<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Record subsequent tests following the same workflow, giving each a unique name. Run `test_app("path/to/app")` to run all test scripts in your app's `tests/testhat` directory.</p>
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Record subsequent tests following the same workflow, giving each a unique name. Run `test_app("path/to/app")` to run all test scripts in your app's `tests/testhat/` directory.</p>
 
-<p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Use `record_test()` fairly often -- Barret Schloerke argues that you should make a test recording for each feature of your app (many little recordings are encouraged!)</p>
+<p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Use `record_test()` fairly often** -- Barret Schloerke argues that you should make a test recording for each feature of your app (many little recordings are encouraged!)</p>
 
-<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Limit testing to objects under your control. For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update the `DT` package, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `DT`.</p>
+<p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update the `DT` package, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `DT`.</p>
 
 . . .
 
@@ -345,10 +347,10 @@ knitr::include_graphics("images/part6/sam-test-001_.png")
 
 ---
 
-##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 6.1</p>
+<p class="custom-subtitle bottombr">End part 6.2</p>
 <p class="caption-text">***Up next:** streamlinging code*</p>
 </div>
 
