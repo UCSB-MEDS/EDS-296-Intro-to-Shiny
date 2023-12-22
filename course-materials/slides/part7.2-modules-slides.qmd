@@ -68,7 +68,7 @@ editor_options:
 
 <hr>
 
-<p class="body-text-s">This app, developed by [Garrett Grolemund](https://github.com/garrettgman) & [Joe Cheng's](https://github.com/jcheng5) as part of their [Modules](https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806) lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.</p>
+<p class="body-text-s">This app, developed by [Garrett Grolemund](https://github.com/garrettgman) & [Joe Cheng](https://github.com/jcheng5) as part of their [Modules](https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806) lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.</p>
 
 <p class="body-text-s">It uses the `gapminder` data set to display life expectancy by GDP per capita from 1952 to 2007 for Africa, the Americas, Asia, Europe, Oceania, and all regions collectively. The only difference between each tab is the subset of data displayed.</p> 
 
@@ -96,8 +96,8 @@ knitr::include_graphics("images/part7/gapminder-app.gif")
 
 #..............................setup.............................
 library(shiny)
+library(tidyverse)
 library(gapminder)
-library(dplyr)
 
 # Note: This code creates data sets to use in each tab.
 # It removes Kuwait since Kuwait distorts the gdp scale
@@ -418,9 +418,9 @@ shinyApp(ui = ui, server = server)
 
 ---
 
-##  {#repeated-code data-menu-title="Repeated gapminder code"}
+##  {#repeated-code1 data-menu-title="Repeated gapminder code (1/2)"}
 
-[Repeated code sections]{.slide-title3}
+[Repeated code sections (1/2)]{.slide-title}
 
 <hr>
 
@@ -448,16 +448,6 @@ ydata_all <- reactive({
 })
 ```
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reactive data frame (**server**)</p>
-```{r}
-#| eval: false
-#| echo: true
-# "All" reactive data frame (repeated 5 more times for each subregion)
-ydata_all <- reactive({
-  filter(all_data, year == input$all_year)
-})
-```
-
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} calculating date ranges (**server**)</p>
 ```{r}
 #| eval: false
@@ -469,9 +459,9 @@ yrange_all <- range(all_data$lifeExp)
 
 ---
 
-##  {#repeated-code-cont data-menu-title="Repeated gapminder code (cont.)"}
+##  {#repeated-code2 data-menu-title="Repeated gapminder code (2/2)"}
 
-[Repeated code sections (cont.)]{.slide-title2}
+[Repeated code sections (2/2)]{.slide-title}
 
 <hr>
 
@@ -524,15 +514,15 @@ output$all_plot <- renderPlot({
 
 <br>
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **A shiny module is a piece of a shiny app** -- it can't be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.
+[{{< fa angle-right title="a bullet point" >}} **A shiny module is a piece of a shiny app**]{.teal-text} -- it can't be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Modules can represent inputs, outputs, or both** (*we'll be building a module that represents both*). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.
+[{{< fa angle-right title="a bullet point" >}} **Modules can represent inputs, outputs, or both**]{.teal-text} (*we'll be building a module that represents both*). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.
 
 . . .
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Modules help to solve a *namespacing* problem** -- recall that all `Id`s (e.g. `inputId`s) *must* be unique across your app. **Namespacing** is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax `package::function()` e.g. `plyr::arrange()` vs `dplyr::arrange()`).
+[{{< fa angle-right title="a bullet point" >}} **Modules help to solve a *namespacing* problem**]{.teal-text} -- recall that all `Id`s (e.g. `inputId`s) *must* be unique across your app. **Namespacing** is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax `package::function()` e.g. `plyr::arrange()` vs `dplyr::arrange()`).
 
 ---
 
@@ -580,21 +570,21 @@ myModuleServer <- function(id, ...) { # where `...` includes any number of addit
 
 <hr>
 
-<p class="body-text">Part of the appeal of creating modules is breaking your long `app.R` (or `ui.R` & `server.R`) scripts into smaller pieces. **Creating a separate R script to house a given module (both the UI *and* Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix "Module" e.g. `gapModule.R`).** There are a variety of places you can write and/or save your modularized code to, but I recommend one of the following two options (at least while we're just getting started on our shiny modules journey):</p>
+<p class="body-text">Part of the appeal of creating modules is breaking your long `app.R` (or `ui.R` & `server.R`) scripts into smaller pieces. **Creating a separate R script to house a given module (both the UI *and* Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix "Module" e.g. `gapModule.R`).** There are a variety of places you can write and / or save your modularized code to, but I recommend one of the following two options (at least while we're just getting started on our shiny modules journey):</p>
 
 <br>
 
 . . . 
 
-[**(1)**]{.teal-text} save your modularized code script inside your app's directory (e.g. `~/app-directory/myModule.R`)
+[**(1)**]{.teal-text} save your modularized code script inside your app's directory (e.g. `~/<app-directory>/myModule.R`)
 
-<p class="body-text-s">If you choose this option, call `source("myModule.R")` from `global.R` (if using `ui.R` / `server.R`) or `app.R`.</p>
+<p class="body-text-s">If you choose this option, call `source("myModule.R")` into `global.R` (if using `ui.R` / `server.R`) or `app.R`.</p>
 
 <br>
 
 . . . 
 
-[**(2)**]{.teal-text} save your modularized code script inside the `/R` subdirectory of your application (e.g. `~/app-directory/R/myModule.R`)</p>
+[**(2)**]{.teal-text} save your modularized code script inside the `R/` subdirectory of your application (e.g. `~/<app-directory>/R/myModule.R`)</p>
 
 <p class="body-text-s">If you choose this option, your module will automatically be sourced (as of Shiny 1.5.0) when the application is loaded.</p>
 
@@ -762,47 +752,46 @@ gapModuleServer <- function(id, data) { # step 2: the first argument to a server
 
 <hr>
 
-First, since we've saved our `gapModule.R` file to our app's directory, we'll need to source it at the top of our `app.R` file:
+<!-- First, since we've saved our `gapModule.R` file to our app's directory, we'll need to source it at the top of our `app.R` file: -->
+
+<!-- ```{r filename="~/modularized-app/app.R"} -->
+<!-- #| eval: false -->
+<!-- #| echo: true -->
+<!-- #| code-line-numbers: "5" -->
+<!-- #..............................setup............................. -->
+<!-- library(shiny) -->
+<!-- library(gapminder)  -->
+<!-- library(dplyr) -->
+<!-- source("gapModule.R")  -->
+
+<!-- # Note: This code creates data sets to use in each tab. -->
+<!-- # It removes Kuwait since Kuwait distorts the gdp scale -->
+<!-- all_data <- filter(gapminder, country != "Kuwait") -->
+<!-- africa_data <- filter(gapminder, continent == "Africa") -->
+<!-- americas_data <- filter(gapminder, continent == "Americas") -->
+<!-- asia_data <- filter(gapminder, continent == "Asia", country != "Kuwait") -->
+<!-- europe_data <- filter(gapminder, continent == "Europe") -->
+<!-- oceania_data <- filter(gapminder, continent == "Oceania") -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ##  {#using-module-2 data-menu-title="Using your module 2"} -->
+
+<!-- [Now let's use our module:]{.slide-title} -->
+
+<!-- <hr> -->
+
+<p class="body-text-s">First, let's use our module's UI function. We'll need to define / name each of our `tabPanel`s (one for each of our six regions), but rather than building a `plotOutput` and `sliderInput` inside each `tabPanel` (each with unique `Id`s), we can instead call our `gapModuleUI()` function, and ensure that each time we call it to supply a unique character string for our `id` parameter.</p>
 
 ```{r filename="~/modularized-app/app.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "5"
+#| code-line-numbers: "24-29"
 #..............................setup.............................
 library(shiny)
+library(tidyverse)
 library(gapminder) 
-library(dplyr)
-source("gapModule.R") 
-
-# Note: This code creates data sets to use in each tab.
-# It removes Kuwait since Kuwait distorts the gdp scale
-all_data <- filter(gapminder, country != "Kuwait")
-africa_data <- filter(gapminder, continent == "Africa")
-americas_data <- filter(gapminder, continent == "Americas")
-asia_data <- filter(gapminder, continent == "Asia", country != "Kuwait")
-europe_data <- filter(gapminder, continent == "Europe")
-oceania_data <- filter(gapminder, continent == "Oceania")
-```
-
----
-
-##  {#using-module-2 data-menu-title="Using your module 2"}
-
-[Now let's use our module:]{.slide-title}
-
-<hr>
-
-<p class="body-text-s">Next, let's use our module's UI function. We'll need to define / name each of our `tabPanel`s (one for each of our six regions), but rather than building a `plotOutput` and `sliderInput` inside each `tabPanel` (each with unique `Id`s), we can instead call our `gapModuleUI()` function, and ensure that each time we call it to supply a unique character string for our `id` parameter.</p>
-
-```{r filename="~/modularized-app/app.R"}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "25-30"
-#..............................setup.............................
-library(shiny)
-library(gapminder) 
-library(dplyr)
-source("gapModule.R") 
 
 # Note: This code creates data sets to use in each tab.
 # It removes Kuwait since Kuwait distorts the gdp scale
@@ -847,12 +836,11 @@ ui <- fluidPage(
 ```{r filename="~/modularized-app/app.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "39-44"
+#| code-line-numbers: "38-43"
 #..............................setup.............................
 library(shiny)
+library(tidyverse)
 library(gapminder) 
-library(dplyr)
-source("gapModule.R") 
 
 # Note: This code creates data sets to use in each tab.
 # It removes Kuwait since Kuwait distorts the gdp scale
@@ -923,7 +911,7 @@ Continue your learning journey's with suggested readings and videos on the **[re
 
 ---
 
-##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
+##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">End part 7.2</p>
