@@ -498,12 +498,12 @@ Cons:
 By default, Shiny uses the Bootstrap v3 theme (which is not so exciting). Change the theme to a slightly more modern Bootstrap v5 theme by setting the <code>theme</code> argument of <code>fluidPage()</code> to <code>bslib::bs_theme(version = 5)</code>, <em>or</em> supply <code>bs_theme()</code> with a pre-built bootswatch theme, as shown below (for a list of theme names, run <code>bootswatch_themes()</code> in your console):
 </p>
 <div class="columns">
-<div class="column" style="width:45%;">
+<div class="column" style="width:50%;">
 <p><br></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/one-file-app/ui.R</strong></pre>
+<pre><strong>~/single-file-app/ui.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  </span>
@@ -515,11 +515,9 @@ By default, Shiny uses the Bootstrap v3 theme (which is not so exciting). Change
 </div>
 </div>
 <p class="body-text-s">
-Check out the complete source code for App #1 <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app">here</a> (NOTE: applied themes are commented out).
+Check out the complete <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app">source code</a> for App #1 (NOTE: applied themes are commented out).
 </p>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column" style="width:45%;">
+</div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -537,31 +535,34 @@ Check out the complete source code for App #1 <a href="https://github.com/samant
 <p><span class="slide-title">Create a custom theme with {bslib}</span></p>
 <hr>
 <p class="body-text-s">
-Alternatively, you can fully customize your own theme. Explore the <a href="https://rstudio.github.io/bslib/articles/bslib.html"><code>bslib</code> vignette</a> for detailed instructions. A small example here:
+Alternatively, you can fully customize your own theme. Explore the <a href="https://rstudio.github.io/bslib/index.html"><code>bslib</code> pkgdown site</a> for detailed instructions. A small example here:
 </p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/one-file-app/ui.R</strong></pre>
+<pre><strong>~/single-file-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="at">bg =</span> <span class="st">"#A36F6F"</span>, <span class="co"># background color</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="at">fg =</span> <span class="st">"#FDF7F7"</span>, <span class="co"># foreground color</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="at">primary =</span> <span class="st">"#483132"</span>, <span class="co"># primary accent color</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>))</span>
-<span id="cb2-8"><a href="#cb2-8"></a>  </span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>  </span>
-<span id="cb2-11"><a href="#cb2-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># ~ additional libraries omitted for brevity ~</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  </span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="at">bg =</span> <span class="st">"#A36F6F"</span>, <span class="co"># background color</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="at">fg =</span> <span class="st">"#FDF7F7"</span>, <span class="co"># foreground color</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="at">primary =</span> <span class="st">"#483132"</span>, <span class="co"># primary accent color</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>))</span>
+<span id="cb2-12"><a href="#cb2-12"></a>  </span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>  </span>
+<span id="cb2-15"><a href="#cb2-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="body-text-s">
-Check out the complete source code for App #1 <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app">here</a> (NOTE: applied themes are commented out).
+Check out the complete <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app">source code</a> for App #1 (NOTE: applied themes are commented out).
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -576,7 +577,7 @@ Check out the complete source code for App #1 <a href="https://github.com/samant
 </div>
 </div>
 <p class="body-text-s">
-Be sure to check out the interactive themeing widget to test custom color/font/etc. combos by running <code>bs_theme_preview()</code> in your console, or visit the hosted version <a href="https://testing-apps.shinyapps.io/themer-demo/">here</a>. You can also call <code>bs_themer()</code> within your <code>server</code> function to open the theme customization UI alongside your own app.
+Be sure to check out the interactive themeing widget to test custom color/font/etc. combos by running <code>bs_theme_preview()</code> in your console, or visit the <a href="https://testing-apps.shinyapps.io/themer-demo/">hosted version</a>. You can also call <code>bs_themer()</code> within your <code>server</code> function to open the theme customization UI alongside your own app.
 </p>
 </section>
 <section id="thematic" class="slide level2" data-menu-title="{thematic} for plot themeing">
@@ -588,29 +589,32 @@ You probably noticed that our scatterplot looks a little silly against the darke
 </p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/one-file-app/ui.R</strong></pre>
+<pre><strong>~/single-file-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>thematic<span class="sc">::</span><span class="fu">thematic_shiny</span>()</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  </span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(</span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="at">bg =</span> <span class="st">"#A36F6F"</span>, <span class="co"># background color</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="at">fg =</span> <span class="st">"#FDF7F7"</span>, <span class="co"># foreground color</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    <span class="at">primary =</span> <span class="st">"#483132"</span>, <span class="co"># primary accent color</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>))</span>
-<span id="cb3-10"><a href="#cb3-10"></a>  </span>
-<span id="cb3-11"><a href="#cb3-11"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>  </span>
-<span id="cb3-13"><a href="#cb3-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># ~ additional libraries omitted for brevity ~</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>thematic<span class="sc">::</span><span class="fu">thematic_shiny</span>()</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  </span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="at">bg =</span> <span class="st">"#A36F6F"</span>, <span class="co"># background color</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="at">fg =</span> <span class="st">"#FDF7F7"</span>, <span class="co"># foreground color</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="at">primary =</span> <span class="st">"#483132"</span>, <span class="co"># primary accent color</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>))</span>
+<span id="cb3-14"><a href="#cb3-14"></a>  </span>
+<span id="cb3-15"><a href="#cb3-15"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>  </span>
+<span id="cb3-17"><a href="#cb3-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="body-text-s">
-Check out the complete source code for App #1 <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app">here</a> (NOTE: applied themes are commented out).
+Check out the complete <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app">source code</a> for App #1 (NOTE: applied themes are commented out).
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -625,7 +629,7 @@ Check out the complete source code for App #1 <a href="https://github.com/samant
 </div>
 </div>
 <p class="body-text-s">
-Read the <a href="https://rstudio.github.io/thematic/index.html">vignette</a> to learn more about using the <code>thematic</code> package to help match plot fonts to the fonts applied across your app.
+Check out the <a href="https://rstudio.github.io/thematic/index.html">pkgdown site</a> to learn more about using <code>{thematic}</code> to match plot fonts to the fonts applied across your app.
 </p>
 </section>
 <section id="fresh" class="slide level2" data-menu-title="{fresh}">
@@ -666,7 +670,7 @@ Cons:
 <div class="fragment">
 <center>
 <p class="body-text topbr">
-<strong>Let’s practice applying new themes using <code>fresh</code> to our <code>two-file-app</code> (i.e.&nbsp;App #2) and our <code>shinydashbaord</code> (i.e.&nbsp;App #3)</strong>
+<strong>Let’s practice applying new themes using <code>{fresh}</code> to our <code>two-file-app</code> (i.e.&nbsp;App #2) and our <code>shinydashbaord</code> (i.e.&nbsp;App #3)</strong>
 </p>
 </center>
 </div>
@@ -679,10 +683,10 @@ Cons:
 Whether you’re working on a shiny <em>app</em> or a shiny <em>dashboard</em>, you’ll need the following:
 </p>
 <p class="body-text-s topbr">
-<strong>1.</strong> a <code>/www</code> folder within your app’s directory – this is where we’ll save the stylesheet (a <code>.css</code> file) that <code>fresh</code> will generate for us
+<span class="teal-text"><strong>(1)</strong></span> a <code>www/</code> folder within your app’s directory – this is where we’ll save the stylesheet (a <code>.css</code> file) that <code>{fresh}</code> will generate for us
 </p>
 <p class="body-text-s topbr">
-<strong>2.</strong> a separate script for building our theme using the <code>create_theme()</code> function – I recommend saving this to <code>~/scratch</code> (it seemed to cause issues when saved anywhere within my app directory)
+<span class="teal-text"><strong>(2)</strong></span> a separate script for building our theme using the <code>create_theme()</code> function – I recommend saving this to <code>scratch/</code> (it seemed to cause issues when saved anywhere within my app directory)
 </p>
 <div class="fragment">
 <p class="body-text topbr">
@@ -698,10 +702,7 @@ There are also a <a href="https://cran.r-project.org/web/packages/fresh/vignette
 <p><span class="slide-title3">Creating a <code>fresh</code> theme for <code>two-file-app</code></span></p>
 <hr>
 <p class="body-text-s">
-In this example, we update the colors of our app’s body, navbar, and tabPanels using the appropriate <code>fresh</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shiny.html">variables for shiny <em>apps</em></a>. We specify a file path, <code>two-file-app/www</code> (you’ll need to create the <code>/www</code> directory, since we don’t have one yet), where our stylesheet (e.g.&nbsp;<code>shiny-fresh-theme.css</code>, as shown here) file will be saved to.
-</p>
-<p class="body-text-s">
-Of course, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes <i class="fa-solid fa-face-smile" title="a smiling face" aria-label="face-smile"></i>.
+In this example, we update the colors of our app’s body, navbar, and tabPanels using the appropriate <code>{fresh}</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shiny.html">variables for shiny <em>apps</em></a>. We specify a file path, <code>two-file-app/www</code> (you’ll need to create the <code>www/</code> directory, since we don’t have one yet), where our stylesheet (e.g.&nbsp;<code>shiny-fresh-theme.css</code>, as shown here) file will be saved to. Of course, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes <i class="fa-solid fa-face-smile" title="a smiling face" aria-label="face-smile"></i>.
 </p>
 <div class="cell">
 <div class="code-with-filename">
@@ -714,35 +715,31 @@ Of course, these color combos are <em>not</em> recommended, but chosen purely fo
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co"># create theme -----</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="fu">create_theme</span>(</span>
 <span id="cb4-6"><a href="#cb4-6"></a>  </span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="co"># you can supply a bootstrap theme to begin with</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="at">theme =</span> <span class="st">"default"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a>  <span class="co"># global styling</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">bs_vars_global</span>(</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    <span class="at">body_bg =</span> <span class="st">"#D2D0CA"</span>, <span class="co"># beige</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="at">text_color =</span> <span class="st">"#F23ACB"</span>, <span class="co"># hot pink</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a>    <span class="at">link_color =</span> <span class="st">"#0E4BE3"</span> <span class="co"># royal blue</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a>  ),</span>
-<span id="cb4-16"><a href="#cb4-16"></a></span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="fu">bs_vars_navbar</span>(</span>
-<span id="cb4-18"><a href="#cb4-18"></a>    <span class="at">default_bg =</span> <span class="st">"#13CC13"</span>, <span class="co"># lime green</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a>    <span class="at">default_color =</span> <span class="st">"#66656C"</span> <span class="co"># gray</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>  ),</span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a>  <span class="co"># tabPanels</span></span>
-<span id="cb4-23"><a href="#cb4-23"></a>  <span class="fu">bs_vars_tabs</span>(</span>
-<span id="cb4-24"><a href="#cb4-24"></a>    <span class="at">border_color =</span> <span class="st">"#F90909"</span> <span class="co"># red</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a>  ),</span>
-<span id="cb4-26"><a href="#cb4-26"></a></span>
-<span id="cb4-27"><a href="#cb4-27"></a>  <span class="co"># generate css file</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a>  <span class="at">output_file =</span> <span class="st">"two-file-app/www/shiny-fresh-theme.css"</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="at">theme =</span> <span class="st">"default"</span>, <span class="co"># you can supply a bootstrap theme to begin with</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  </span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">bs_vars_global</span>( <span class="co"># global styling</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="at">body_bg =</span> <span class="st">"#D2D0CA"</span>, <span class="co"># beige</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="at">text_color =</span> <span class="st">"#F23ACB"</span>, <span class="co"># hot pink</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="at">link_color =</span> <span class="st">"#0E4BE3"</span> <span class="co"># royal blue</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>  ),</span>
+<span id="cb4-14"><a href="#cb4-14"></a>  </span>
+<span id="cb4-15"><a href="#cb4-15"></a>  <span class="fu">bs_vars_navbar</span>( <span class="co"># navbar styling</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="at">default_bg =</span> <span class="st">"#13CC13"</span>, <span class="co"># lime green</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="at">default_color =</span> <span class="st">"#66656C"</span> <span class="co"># gray</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a>  ),</span>
+<span id="cb4-19"><a href="#cb4-19"></a>  </span>
+<span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">bs_vars_tabs</span>( <span class="co"># tab styling</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="at">border_color =</span> <span class="st">"#F90909"</span> <span class="co"># red</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>  ),</span>
+<span id="cb4-23"><a href="#cb4-23"></a>  </span>
+<span id="cb4-24"><a href="#cb4-24"></a>  <span class="at">output_file =</span> <span class="st">"two-file-app/www/shiny-fresh-theme.css"</span> <span class="co"># generate css file &amp; save to www/</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="apply-fresh-apps-theme" class="slide level2" data-menu-title="Apply {fresh} app theme">
 <h2></h2>
-<p><span class="slide-title2">Apply a <code>fresh</code> theme to our app</span></p>
+<p><span class="slide-title">Apply a <code>fresh</code> theme to our app</span></p>
 <hr>
 <p class="body-text">
 To apply our theme, provide the <code>theme</code> argument of your <code>fluidPage()</code> or <code>navbarPage()</code> with the name of our stylesheet. <strong>Note:</strong> shiny knows to look in the <code>/www</code> directory, so you can omit that from your file path, as shown below:
@@ -759,7 +756,7 @@ To apply our theme, provide the <code>theme</code> argument of your <code>fluidP
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># navbar page ----</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">theme =</span> <span class="st">"shiny_fresh_theme.css"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">theme =</span> <span class="st">"shiny-fresh-theme.css"</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a>  </span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
 <span id="cb5-7"><a href="#cb5-7"></a>  </span>
@@ -767,7 +764,7 @@ To apply our theme, provide the <code>theme</code> argument of your <code>fluidP
 </div>
 </div>
 <p class="body-text-s">
-Check out the complete source code for App #2 <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/two-file-app">here</a> (NOTE: applied themes are commented out).
+Check out the complete <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/two-file-app">source code</a> for App #2 (NOTE: applied themes are commented out).
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -787,7 +784,7 @@ Check out the complete source code for App #2 <a href="https://github.com/samant
 <p><span class="slide-title3">Creating a <code>fresh</code> theme for our <code>shinydashboard</code></span></p>
 <hr>
 <p class="body-text-s">
-In this example, we update the colors of our app’s header, body, and sidebar using the appropriate <code>fresh</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html">variables for shiny <em>dashboards</em></a>. We specify a file path, <code>shinydashboard/www</code> where our stylesheet (e.g.&nbsp;<code>shinydashboard-fresh-theme.css</code>, as shown here) file will be saved to. Again, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes.
+In this example, we update the colors of our app’s header, body, and sidebar using the appropriate <code>fresh</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html">variables for shiny <em>dashboards</em></a>. We specify a file path, <code>shinydashboard/www/</code> where our stylesheet (e.g.&nbsp;<code>shinydashboard-fresh-theme.css</code>, as shown here) file will be saved to. Again, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes.
 </p>
 <div class="cell">
 <div class="code-with-filename">
@@ -817,11 +814,8 @@ In this example, we update the colors of our app’s header, body, and sidebar u
 <span id="cb6-21"><a href="#cb6-21"></a>    <span class="at">dark_hover_bg =</span> <span class="st">"#BF21E6"</span>, <span class="co"># magenta</span></span>
 <span id="cb6-22"><a href="#cb6-22"></a>    <span class="at">dark_color =</span> <span class="st">"#F90000"</span> <span class="co"># red</span></span>
 <span id="cb6-23"><a href="#cb6-23"></a>  ),</span>
-<span id="cb6-24"><a href="#cb6-24"></a>  </span>
-<span id="cb6-25"><a href="#cb6-25"></a>  <span class="co"># generate css file</span></span>
-<span id="cb6-26"><a href="#cb6-26"></a>  <span class="at">output_file =</span> <span class="st">"shinydashboard/www/shinydashboard-fresh-theme.css"</span></span>
-<span id="cb6-27"><a href="#cb6-27"></a>  </span>
-<span id="cb6-28"><a href="#cb6-28"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-24"><a href="#cb6-24"></a>  <span class="at">output_file =</span> <span class="st">"shinydashboard/www/shinydashboard-fresh-theme.css"</span> <span class="co"># generate css file &amp; save to www/</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -830,7 +824,7 @@ In this example, we update the colors of our app’s header, body, and sidebar u
 <p><span class="slide-title2">Apply a <code>fresh</code> theme to our dashboard</span></p>
 <hr>
 <p class="body-text">
-To apply our theme, use the <code>fresh::use_theme()</code> function inside your <code>dashboardBody</code>, providing it with the name of your stylesheet. <strong>Note:</strong> shiny knows to look in the <code>/www</code> directory, so you can omit that from your file path, as shown below:
+To apply our theme, use the <code>fresh::use_theme()</code> function inside your <code>dashboardBody</code>, providing it with the name of your stylesheet. <strong>Note:</strong> shiny knows to look in the <code>www/</code> directory, so you can omit that from your file path, as shown below:
 </p>
 <p><br></p>
 <div class="columns">
@@ -844,7 +838,7 @@ To apply our theme, use the <code>fresh::use_theme()</code> function inside your
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="co"># set theme</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  fresh<span class="sc">::</span><span class="fu">use_theme</span>(<span class="st">"shinydashboard_fresh_theme.css"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  fresh<span class="sc">::</span><span class="fu">use_theme</span>(<span class="st">"shinydashboard-fresh-theme.css"</span>)</span>
 <span id="cb7-5"><a href="#cb7-5"></a>  </span>
 <span id="cb7-6"><a href="#cb7-6"></a>  <span class="co"># ~ additional dashboardBody code omitted for brevity ~</span></span>
 <span id="cb7-7"><a href="#cb7-7"></a>  </span>
@@ -852,7 +846,7 @@ To apply our theme, use the <code>fresh::use_theme()</code> function inside your
 </div>
 </div>
 <p class="body-text-s">
-Check out the complete source code for the shinydashboard <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/shinydashboard">here</a> (NOTE: applied themes are commented out).
+Check out the complete <a href="ttps://github.com/samanthacsik/EDS430-shiny-app/tree/main/shinydashboard">source code</a> for the shinydashboard (NOTE: applied themes are commented out).
 </p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -879,7 +873,7 @@ End part 4.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_22d26300" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_2608aefa" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

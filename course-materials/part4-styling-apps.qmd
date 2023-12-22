@@ -37,6 +37,7 @@ library(sass)
 #| echo: true
 #| code-line-numbers: false
 library(palmerpenguins)
+library(lterdatasampler)
 ```
 
 
