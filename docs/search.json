@@ -767,21 +767,63 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#do-you-need-shiny",
     "title": "EDS 430",
     "section": "",
-    "text": "Consider if you need Shiny at all\n\n\nWhile a well-developed shiny app is fun and appealing, it’s worth having a conversation about whether shiny is truly necessary, or if taking an alternative approach to sharing your data might be better."
+    "text": "Consider if you need Shiny at all\n\n\nWhile a well-developed shiny app is fun, appealing, and an effective way for users to explore data, it’s worth having a conversation about whether shiny is truly necessary. . . or if taking an alternative approach to sharing your data might be better."
   },
   {
-    "objectID": "course-materials/slides/part8-wrap-up-slides.html#shiny-alternatives",
-    "href": "course-materials/slides/part8-wrap-up-slides.html#shiny-alternatives",
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#shiny-not-bad",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#shiny-not-bad",
     "title": "EDS 430",
     "section": "",
-    "text": "Additional data presentation frameworks\n\n\nShiny is awesome, but depending on your goals and end users, you may not need the full functionality that shiny provides. Importantly, you also can potentially save yourself (and your clients) the stress of deploying and maintaining shiny apps by first considering other options:\n\n\n\n Embed interactive htmlwidgets into your R Markdown & Quarto markdown documents that range from geo-spatial mapping with {leaflet} to generating network graph diagrams with {DiagrammeR}. Check out the htmlwidgets for R - gallery for many more options.\n\n\n\n\n Compose multiple widgets into a dashboard using {flexdashboard}. Based in R Markdown, this framework allows you to produce dynamic dashboards using tools you are already familiar with. Find example projects and their source code.\n\n\n\n\n Compose multiple widgets into a Quarto dashboard. One of Quarto’s latest new features! Similar to {flexdashboard}, this framework can be used to publish a group of related visualizations, widgets, and tables as a dashboard. It provides a flexible layout with built-in responsiveness for display on browers and mobile devices. Importantly, dashboards can be deployed as static web pages (no special server required). Find example dashboards and their source code.\n\n\n\n\n Embed reactive shiny components (e.g. inputs & outputs) in Quarto documents. By using some fun new code chunk options, you can instruct Quarto to spin up it’s own self-contained shiny server to run your reactives. Read the Quarto documentation to learn more and check out some teaching examples."
+    "text": "Shiny isn’t bad – in fact, it’s a really powerful tool\n\n\nFirst, we don’t think shiny apps are inherently bad. In fact, they’re popular (particularly as Capstone deliverables) for a good reason – they can:\n\n\n(1) effectively expose data / analytics to those who don’t have the technical or computational skills or the time to process data\n\n\n(2) they can streamline otherwise obtuse workflows (Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries (MEDS Capstone, 2023) is an excellent example of this)\n\n\n(3) allow users to derive greater insights as they interact with the data"
   },
   {
-    "objectID": "course-materials/slides/part8-wrap-up-slides.html#flexdashboard-examples",
-    "href": "course-materials/slides/part8-wrap-up-slides.html#flexdashboard-examples",
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#considerations",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#considerations",
     "title": "EDS 430",
     "section": "",
-    "text": "Example flexdashboards built by some familiar folks \n\n\n Energy Siting Dashboard (source code), developed by MEDS 2022 alumni Paloma Cartwright, Joe DeCesaro, Daniel Kerstan & Desik Somasundaram as part of their MEDS capstone project – explore predictions of the most suitable locations for large, utility-scale wind and solar projects across the United States\n\n\n @ADELPHIRESEARCH TWEETS Dashboard (source code), developed by R-Lady Shannon Pileggi as part of a job interview – read about this clever approach to showcasing your skills to a potential employer in Shannon’s blogpost, A job interview presentation inspired by the R community."
+    "text": "But there are some important considerations\n\n\n\n\nA dashboard is only as good as the data pipeline that feeds it! You should focus most of your energy on your analytics / crafting effective data visualizations.\nRelated to the point above, remember that it’s easiest if we do all our data wrangling / visualization outside of the shiny framework first, before making it reactive. I recommend you continue to adopt this approach as you embark on your Capstones / GPs / projects. Ultimately, those parts are the most difficult / time-consuming / challenging to get right.\nShiny apps are difficult to maintain – they often require skilled IT personnel to deploy them onto servers, and are prone to breaking with updates to server infrastructure. Have a maintenance plan in place (including a plan for who will maintain / update the code base).\nConsider if reactivity allows for insights that you can’t provide using alternative tools / formats, which may be easier to maintain."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#htmlwidgets",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#htmlwidgets",
+    "title": "EDS 430",
+    "section": "",
+    "text": "htmlwidgets\n\n\n Embed interactive htmlwidgets into your R Markdown & Quarto markdown documents that range from geo-spatial mapping with {leaflet} to generating network graph diagrams with {DiagrammeR}. Check out the htmlwidgets for R - gallery for many more options."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#dashboards",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#dashboards",
+    "title": "EDS 430",
+    "section": "",
+    "text": "dashboards\n\n\n Compose multiple widgets into a dashboard using {flexdashboard}. Based in R Markdown, this framework allows you to produce dynamic dashboards using tools you are already familiar with. Find example projects and their source code.\n\n\n Compose multiple widgets into a Quarto dashboard. One of Quarto’s latest new features! Similar to {flexdashboard}, this framework can be used to publish a group of related visualizations, widgets, and tables as a dashboard. It provides a flexible layout with built-in responsiveness for display on browers and mobile devices. Importantly, dashboards can be deployed as static web pages (no special server required). Find example dashboards and their source code.\n\n\n Energy Siting Dashboard (source code), developed by MEDS 2022 alumni Paloma Cartwright, Joe DeCesaro, Daniel Kerstan & Desik Somasundaram as part of their MEDS capstone project – explore predictions of the most suitable locations for large, utility-scale wind and solar projects across the United States\n\n\n @ADELPHIRESEARCH TWEETS Dashboard (source code), developed by R-Lady Shannon Pileggi as part of a job interview – read about this clever approach to showcasing your skills to a potential employer in Shannon’s blogpost, A job interview presentation inspired by the R community."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#shiny-quarto",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#shiny-quarto",
+    "title": "EDS 430",
+    "section": "",
+    "text": "shiny & quarto\n\n\n Embed reactive shiny components (e.g. inputs & outputs) in Quarto documents. By using some fun new code chunk options, you can instruct Quarto to spin up it’s own self-contained shiny server to run your reactives. Read the Quarto documentation to learn more and check out some teaching examples."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#shinylive",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#shinylive",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Shinylive"
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#recap",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#recap",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Recap\n\n\nWe covered a lot over the past two days! Let’s quickly review some of the topics that we discussed."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#what-is-shiny",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#what-is-shiny",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Shiny makes building web apps easy\n\nShiny is an open source R package that provides a framework for building interactive web apps without having to know HTML / CSS/ JavaScript\nThey’re made up of a UI (which controls the layout / appearance; the part a user sees / interacts with) and a Server (which handles the logic)\nReactivity = a user updates values via widgets in the UI &gt; server performs some logic (e.g. filtering a data frame based on user inputs to return an updated output)"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#TheEnd",

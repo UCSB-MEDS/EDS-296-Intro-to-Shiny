@@ -27,57 +27,217 @@ editor_options:
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">{{< fa arrows-left-right title="a double-sided arrow, pointint to the left and right" >}} Consider if you need Shiny at all</p>
-<p class="caption-text">*While a well-developed shiny app is fun and appealing, it's worth having a conversation about whether shiny is truly necessary, or if taking an alternative approach to sharing your data might be better.*</p>
+<p class="caption-text">*While a well-developed shiny app is fun, appealing, and an effective way for users to explore data, it's worth having a conversation about whether shiny is truly necessary. . . or if taking an alternative approach to sharing your data might be better.*</p>
 </div>
 
 ---
 
-##  {#shiny-alternatives data-menu-title="Other options"}
+##  {#shiny-not-bad data-menu-title="Shiny isn't bad?"}
 
-[Additional data presentation frameworks]{.slide-title}
+[Shiny isn't *bad* -- in fact, it's a really powerful tool]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s">Shiny is awesome, but depending on your goals and end users, you may not need the full functionality that shiny provides. **Importantly, you *also* can potentially save yourself (and your clients) the stress of deploying and maintaining shiny apps by first considering other options:**</p>
+<br>
+
+First, we don't think shiny apps are inherently *bad*. In fact, they're popular (particularly as Capstone deliverables) for a good reason -- they can:
+
+<br>
+
+. . .
+
+[[**(1)**]{.teal-text} effectively **expose data / analytics** to those who don't have the technical or computational skills *or* the time to process data]{.body-text-s}
+
+. . . 
+
+[[**(2)**]{.teal-text} they can **streamline otherwise obtuse workflows** ([Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries](https://bren.ucsb.edu/projects/improving-monitoring-and-evaluation-enforcement-coastal-marine-protected-areas-and) (MEDS Capstone, 2023) is an excellent example of this)]{.body-text-s}
+
+. . . 
+
+[[**(3)**]{.teal-text} allow users to **derive greater insights** as they interact with the data]{.body-text-s}
+
+---
+
+##  {#considerations data-menu-title="Considerations"}
+
+[But there are some important considerations]{.slide-title2}
+
+<hr>
+
+:::: {.columns}
+
+::: {.column width="60%" .incremental}
+- [**A dashboard is only as good as the data pipeline that feeds it!** You should focus most of your energy on your analytics /  crafting effective data visualizations.]{.body-text-s}
+
+- [Related to the point above, remember that **it's easiest if we do all our data wrangling / visualization *outside* of the shiny framework *first***, before making it reactive. I recommend you continue to adopt this approach as you embark on your Capstones / GPs / projects. Ultimately, those parts are the most difficult / time-consuming / challenging to get right.]{.body-text-s}
+
+- [Shiny apps are **difficult to maintain** -- they often require skilled IT personnel to deploy them onto servers, and are prone to breaking with updates to server infrastructure. Have a maintenance plan in place (including a plan for *who* will maintain / update the code base).]{.body-text-s}
+
+- [**Consider if reactivity allows for insights that you can't provide using alternative tools / formats**, which may be easier to maintain.]{.body-text-s}
+:::
+
+::: {.column width="40%"}
+
+<br>
+<br>
 
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "60%"
-#| fig-alt: "Logos for htmlwidgets, flexdashboard, and quarto."
-#knitr::include_graphics("images/part8/shiny_alts.png")
+#| out-width: "1000%"
+knitr::include_graphics("images/part8/barbenheimer.png")
 ```
 
-. . . 
+:::
+
+::::
+
+---
+
+##  {#htmlwidgets data-menu-title="htmlwidgets"}
+
+[htmlwidgets]{.slide-title}
+
+<hr>
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Embed interactive [htmlwidgets](https://www.htmlwidgets.org/) into your R Markdown & Quarto markdown documents** that range from geo-spatial mapping with `{leaflet}` to generating network graph diagrams with `{DiagrammeR}`. Check out the [htmlwidgets for R - gallery](http://gallery.htmlwidgets.org/) for many more options.</p>
 
-. . . 
+---
+
+##  {#dashboards data-menu-title="dashboards"}
+
+[dashboards]{.slide-title}
+
+<hr>
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Compose multiple widgets into a dashboard using `{flexdashboard}`.** Based in R Markdown, this framework allows you to produce dynamic dashboards using tools you are already familiar with. Find [example projects and their source code](https://pkgs.rstudio.com/flexdashboard/articles/examples.html).</p>
 
-. . . 
-
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Compose multiple widgets into a [Quarto dashboard](https://quarto.org/docs/dashboards/).** One of Quarto's latest new features! Similar to `{flexdashboard}`, this framework can be used to publish a group of related visualizations, widgets, and tables as a dashboard. It provides a flexible layout with built-in responsiveness for display on browers and mobile devices. **Importantly,** dashboards can be deployed as static web pages (no special server required). Find [example dashboards and their source code](https://quarto.org/docs/dashboards/examples/).</p>
 
-. . . 
+<p class="body-text-s topbr">[{{< fa sun title="a sun" >}}]{.teal-text} [Energy Siting Dashboard](https://energysiting.github.io/energysiting-dashboard/) ([source code](https://github.com/energysiting/energysiting-dashboard)), *developed by MEDS 2022 alumni [Paloma Cartwright](https://palomacartwright.github.io/), [Joe DeCesaro](https://joedecesaro.github.io/), [Daniel Kerstan](https://www.linkedin.com/in/daniel-kerstan-5b162321b/) & [Desik Somasundaram](https://www.linkedin.com/in/desik-somasundaram-902a8a120/) as part of their MEDS capstone project* -- explore predictions of the most suitable locations for large, utility-scale wind and solar projects across the United States</p>
+
+<p class="body-text-s topbr">[{{< fa handshake title="two hands shaking" >}}]{.teal-text} [@ADELPHIRESEARCH TWEETS Dashboard](https://spileggi.shinyapps.io/Pileggi_presentation_shiny/) ([source code](https://github.com/shannonpileggi/Adelphi-tweets)), *developed by R-Lady [Shannon Pileggi](https://www.pipinghotdata.com/index.html) as part of a job interview* -- read about this clever approach to showcasing your skills to a potential employer in Shannon's blogpost, [A job interview presentation inspired by the R community](https://www.pipinghotdata.com/posts/2020-08-30-a-job-interview-presentation-inspired-by-the-r-community/).</p>
+
+---
+
+##  {#shiny-quarto data-menu-title="Shiny & Quarto"}
+
+[shiny & quarto]{.slide-title}
+
+<hr>
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Embed reactive shiny components (e.g. inputs & outputs) in Quarto documents.** By using some fun new code chunk options, you can instruct Quarto to spin up it's own self-contained shiny server to run your reactives. Read the [Quarto documentation](https://quarto.org/docs/interactive/shiny/) to learn more and check out some [teaching examples](https://quarto.org/docs/interactive/shiny/#examples).</p>
 
 ---
 
-##  {#flexdashboard-examples data-menu-title="Examples of flexdashboards"}
+##  {#shinylive data-menu-title="Shinylive"}
 
-[Example flexdashboards built by some familiar folks {{< fa face-smile title="a smiling face" >}}]{.slide-title}
+[Shinylive]{.slide-title}
 
 <hr>
 
-<p class="body-text-s topbr">[{{< fa sun title="a sun" >}}]{.teal-text} [Energy Siting Dashboard](https://energysiting.github.io/energysiting-dashboard/) ([source code](https://github.com/energysiting/energysiting-dashboard)), *developed by MEDS 2022 alumni [Paloma Cartwright](https://palomacartwright.github.io/), [Joe DeCesaro](https://joedecesaro.github.io/), [Daniel Kerstan](https://www.linkedin.com/in/daniel-kerstan-5b162321b/) & [Desik Somasundaram](https://www.linkedin.com/in/desik-somasundaram-902a8a120/) as part of their MEDS capstone project* -- explore predictions of the most suitable locations for large, utility-scale wind and solar projects across the United States</p>
+---
 
-<p class="body-text-s topbr">[{{< fa handshake title="two hands shaking" >}}]{.teal-text} [@ADELPHIRESEARCH TWEETS Dashboard](https://spileggi.shinyapps.io/Pileggi_presentation_shiny/) ([source code](https://github.com/shannonpileggi/Adelphi-tweets)), *developed by R-Lady [Shannon Pileggi](https://www.pipinghotdata.com/index.html) as part of a job interview* -- read about this clever approach to showcasing your skills to a potential employer in Shannon's blogpost, [A job interview presentation inspired by the R community](https://www.pipinghotdata.com/posts/2020-08-30-a-job-interview-presentation-inspired-by-the-r-community/).</p>
- 
- ---
+##  {#recap data-menu-title="~~~ Recap ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">{{< fa backward title="rewind, denoted by two backwards-facing triangles" >}} Recap</p>
+<p class="caption-text">*We covered a lot over the past two days! Let's quickly review some of the topics that we discussed.*</p>
+</div>
+
+---
+
+##  {#what-is-shiny data-menu-title="What is shiny?"}
+
+[Shiny makes building web apps easy]{.slide-title}
+
+<hr>
+
+Shiny is an open source R package that provides a framework for building interactive web apps without having to know HTML / CSS/ JavaScript
+
+They're made up of a **UI** (which controls the layout / appearance; the part a user sees / interacts with) and a **Server** (which handles the logic)
+
+Reactivity = a user updates values via **widgets** in the UI > server performs some logic (e.g. filtering a data frame based on user inputs to return an updated output)
+
+---
+
+Using a single-file (`app.R`) setup is great for small apps or for reprexes. Two-file apps (`ui.R` + `server.R`) are best for most apps. Use a `global.R` file to store objects that are used across your app (libraries, data, etc.)
+
+---
+
+layout functions help to to better organize the visual structure of our UI. The `{shinydashboard}` package provides additional layout functions or organizing the UI in a more modern, "dashboard-style" layout
+
+It's critically important to keep track of your parentheses -- use code comments and appropriate spacing between lines to stay organized
+
+---
+
+reactivity automatically occurs whenever we use an input value to render an output object.
+
+The golden rules for creating reactive outputs:
+
+1 Add an input (e.g. sliderInput) to the UI that users can interact with
+2 Add an output (e.g. plotOutput) to the UI that creates a placeholder space to fill with our eventual reactive output
+3 Tell the server how to assemble inputs into outputs:
+- save objects you want to display to `output$<id>`
+- Build reactive objects using a render*() function
+- Access input values with input$<id>
+
+And always build your data filtering pipelines & visualizations outside of shiny before trying to make them reactive
+
+---
+
+there are a number of ways to deploy a shiny app, but stick with <shinyapps.io> whenever possible
+the shinyapps.io dashboard provides you with lots of helpful information, particularly the log -- look here for information about failed deployments 
+
+---
+
+there are lots of tools for styling your apps 
+
+fresh & bslib provide functions for generating CSS to update colors & fonts
+
+or generate your own Sass & CSS files to fully customize your app's appearance -- Shiny will only accept a CSS file (not a `.scss` file), therefore you need to use the `{sass}` package to compile (convert) it to `.css`
+
+---
+
+take out any guesswork for your users
+
+remember:
+
+- keep things simple
+- apps should fail gracefully (use validation tests to provide users with (non-intimidating) error messages that provide clear guidance on how to proceed)
+- app shouldn't need a manual to understand how to use it; and it should always do the least surprising thing
+- add loading animations 
+- avoid feature-creep
+
+---
+
+accessibility features benefit us all
+
+- add alt text
+- use html elements appropriately
+- consider spacing and limiting number of widgets
+- colorblind-friendly palettes
+
+---
+
+debugging is hard 
+- comment out stuff
+- add diagnostic messages
+- `{reactlog}` 
+
+Testing (using frameworks like `{shinytest2}`) can save you lots of time and headache in the future (automated checks that your app is working as expected)
+
+---
+
+while not necessary, you can streamline your code using functions and / or modules
+
+create functions for code that is either comletely on the UI side or competely on the server side
+create modules for code that spans both
+
+you can always go back and refactor (restructure / rewrite) your code after you have a working application to improve it's structure / organization 
+
+---
 
 ## {#TheEnd data-menu-title="~End Slide~"}
 
