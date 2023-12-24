@@ -774,42 +774,42 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#shiny-not-bad",
     "title": "EDS 430",
     "section": "",
-    "text": "Shiny isn’t bad – in fact, it’s a really powerful tool\n\n\nFirst, we don’t think shiny apps are inherently bad. In fact, they’re popular (particularly as Capstone deliverables) for a good reason – they can:\n\n\n(1) effectively expose data / analytics to those who don’t have the technical or computational skills or the time to process data\n\n\n(2) they can streamline otherwise obtuse workflows (Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries (MEDS Capstone, 2023) is an excellent example of this)\n\n\n(3) allow users to derive greater insights as they interact with the data"
+    "text": "Shiny isn’t bad – in fact, it’s a really powerful tool\n\n\nFirst, we don’t think shiny apps are inherently bad. They’re popular (particularly as Capstone deliverables) for a good reason – they can:\n\n\n(1) effectively expose data / analytics to those who don’t have the technical or computational skills or the time to process data\n\n\n(2) they can streamline otherwise obtuse workflows (Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries (MEDS Capstone, 2023) is an excellent example of this)\n\n\n(3) allow users to derive greater insights as they interact with the data"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#considerations",
     "href": "course-materials/slides/part8-wrap-up-slides.html#considerations",
     "title": "EDS 430",
     "section": "",
-    "text": "But there are some important considerations\n\n\n\n\nA dashboard is only as good as the data pipeline that feeds it! You should focus most of your energy on your analytics / crafting effective data visualizations.\nRelated to the point above, remember that it’s easiest if we do all our data wrangling / visualization outside of the shiny framework first, before making it reactive. I recommend you continue to adopt this approach as you embark on your Capstones / GPs / projects. Ultimately, those parts are the most difficult / time-consuming / challenging to get right.\nShiny apps are difficult to maintain – they often require skilled IT personnel to deploy them onto servers, and are prone to breaking with updates to server infrastructure. Have a maintenance plan in place (including a plan for who will maintain / update the code base).\nConsider if reactivity allows for insights that you can’t provide using alternative tools / formats, which may be easier to maintain."
+    "text": "But there are some important considerations\n\n\n\n\nA dashboard is only as good as the data pipeline that feeds it! You should focus most of your energy on your analytics / crafting effective data visualizations.\nRelated to the point above, remember that it’s easiest if we do all our data wrangling / visualization outside of the shiny framework first, before making it reactive. I recommend you continue to adopt this approach as you embark on your Capstones / GPs / projects. Ultimately, those parts are the most difficult / time-consuming / challenging to get right.\nShiny apps are difficult to maintain – they often require skilled IT personnel to deploy them onto servers, and are prone to breaking with updates to server infrastructure. Have a maintenance plan in place (including a plan for who will maintain / update the code base).\nConsider if reactivity allows for insights that you can’t provide using alternative tools / formats, which may be easier to maintain.\n\n\n \n\n\n\n\n\n\n\n\n\n\nImage Source: Reddit"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#htmlwidgets",
     "href": "course-materials/slides/part8-wrap-up-slides.html#htmlwidgets",
     "title": "EDS 430",
     "section": "",
-    "text": "htmlwidgets\n\n\n Embed interactive htmlwidgets into your R Markdown & Quarto markdown documents that range from geo-spatial mapping with {leaflet} to generating network graph diagrams with {DiagrammeR}. Check out the htmlwidgets for R - gallery for many more options."
+    "text": "Embed htmlwidgets into your reports / websites\n\nhtmlwidgets allow you to create interactive data visualizations using JavaScript libraries in R. They can be embedded into Shiny apps (recall we used both the {DT} package to create an interactive datatable and the {leaflet} package to create an interactive map), or into RMarkdown and Quarto Markdown reports. A well-designed reproducible report with interactive widgets is powerful, easier to maintain, and can be deployed on the web (for free) using tools like GitHub pages. Explore 130 registered widgets on the htmlwidget gallery.\n\n\n\n\n\n\n\n\n\n\n\n\nAn example leaflet map embedded in an RMarkdown report. Image Source: htmlwidgets for R\n\n\n\n\n\n\n\n\n\n\n\n\nAn example leaflet map embedded in an Quarto website. Image Source: my website"
   },
   {
-    "objectID": "course-materials/slides/part8-wrap-up-slides.html#dashboards",
-    "href": "course-materials/slides/part8-wrap-up-slides.html#dashboards",
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#widget-dashboards",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#widget-dashboards",
     "title": "EDS 430",
     "section": "",
-    "text": "dashboards\n\n\n Compose multiple widgets into a dashboard using {flexdashboard}. Based in R Markdown, this framework allows you to produce dynamic dashboards using tools you are already familiar with. Find example projects and their source code.\n\n\n Compose multiple widgets into a Quarto dashboard. One of Quarto’s latest new features! Similar to {flexdashboard}, this framework can be used to publish a group of related visualizations, widgets, and tables as a dashboard. It provides a flexible layout with built-in responsiveness for display on browers and mobile devices. Importantly, dashboards can be deployed as static web pages (no special server required). Find example dashboards and their source code.\n\n\n Energy Siting Dashboard (source code), developed by MEDS 2022 alumni Paloma Cartwright, Joe DeCesaro, Daniel Kerstan & Desik Somasundaram as part of their MEDS capstone project – explore predictions of the most suitable locations for large, utility-scale wind and solar projects across the United States\n\n\n @ADELPHIRESEARCH TWEETS Dashboard (source code), developed by R-Lady Shannon Pileggi as part of a job interview – read about this clever approach to showcasing your skills to a potential employer in Shannon’s blogpost, A job interview presentation inspired by the R community."
+    "text": "Compose multiple widgets into a dashboard\n\nHave lots of interactive htmlwidgets to present? Consider composing multiple widgets into a dashboard using {flexdashboard} (based in RMarkdown) or Quarto dashboard. Both frameworks support UI layouts similar to those achieved using {shiny} / {shinydashboard} (columns, rows, tabsets, navbars, value boxes etc.). You can also optionally use Shiny to embed reactive outputs. Check out the {flexdashboard} gallery and Quarto dashboard gallery for examples and source code.\n\n\n\n\n\n\n\n\n\n\n\n\nWaste Lands - America’s Forgotten Nuclear Legacy, (built using {flexdashboard})\n\n\n\n\n\n\n\n\n\n\n\n\nRecent Earthquakes in Aotearoa New Zealand (built using Quarto)"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#shiny-quarto",
     "href": "course-materials/slides/part8-wrap-up-slides.html#shiny-quarto",
     "title": "EDS 430",
     "section": "",
-    "text": "shiny & quarto\n\n\n Embed reactive shiny components (e.g. inputs & outputs) in Quarto documents. By using some fun new code chunk options, you can instruct Quarto to spin up it’s own self-contained shiny server to run your reactives. Read the Quarto documentation to learn more and check out some teaching examples."
+    "text": "Embed shiny components in Quarto docs\n\nEmbed reactive shiny components (e.g. a plot with sliders that control its inputs) in Quarto documents. By using some fun new code chunk options, you can instruct Quarto to spin up it’s own self-contained shiny server to run your reactives. Read the Quarto documentation to learn more and check out some teaching examples.\n\n\n\n\n\n\n\n\n\n\n\n\nOld Faithful, which demonstrates incorporating an interactive plot into the main flow of a document. Source code\n\n\n\n\n\n\n\n\n\n\n\n\nIris K-Means Clustering, which demonstrates using a more “application-like” page layout (sidebar and main panel). Source code"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#shinylive",
     "href": "course-materials/slides/part8-wrap-up-slides.html#shinylive",
     "title": "EDS 430",
     "section": "",
-    "text": "Shinylive"
+    "text": "Run serverless shiny apps using Shinylive\n\nShiylive is a serverless version of Shiny, which was recently annoucned at posit::conf(2023) by Joe Cheng (rewatch his talk!). It supports Shiny for both R and Python (that’s right, you can build shiny apps using Python too! See Shiny for Python. for more info). You have a few options:\n\n\n \n\nConvert shiny apps to static websites using this [{shinylive}] package for R or [{shinylive}] package for Python\nWrite, run, and share Shiny apps right in the browser at https://shinylive.io/r/examples/ (R) or https://shinylive.io/py/examples/ (Python)\nInclude Shiny apps in Quarto docs using the Shinylive Quarto extension\n\n\n\n\n\n\n\n\n\n\n\n\nImage Source: Run a Shiny app in the browser with shinylive for R, by Veerle van Leemput"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#recap",
@@ -823,7 +823,63 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#what-is-shiny",
     "title": "EDS 430",
     "section": "",
-    "text": "Shiny makes building web apps easy\n\nShiny is an open source R package that provides a framework for building interactive web apps without having to know HTML / CSS/ JavaScript\nThey’re made up of a UI (which controls the layout / appearance; the part a user sees / interacts with) and a Server (which handles the logic)\nReactivity = a user updates values via widgets in the UI &gt; server performs some logic (e.g. filtering a data frame based on user inputs to return an updated output)"
+    "text": "Shiny apps are made up of a UI & a server\n\n\nShiny is an open source R package that provides a framework for building interactive web apps without having to know HTML / CSS/ JavaScript.\n\n\n\nApps made up of a UI (which controls the layout / appearance; the part a user sees / interacts with) and a Server (which handles the logic)\n\n\n\n\n\n\n\n\n\n\nReactivity = a user updates values via widgets in the UI  server performs some logic to return an updated output  output is rendered in the UI"
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#file-org",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#file-org",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Choose a single-file or two-file setup\n\nWe can create apps using either a single-file, (app.R) or two files (ui.R + server.R). A single-file setup are great for building small apps, and especially great for building reprexes. A two-file setup is best for larger apps (and likely what you’ll want to opt for).\n\n\n\nYou can optionally use a global.R file to store objects that are used across your app (libraries, data, etc.)."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#reactivity-rules",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#reactivity-rules",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Follow three rules for creating reactivity:\n\n\n(1) Add an input (e.g. sliderInput) to the UI  that users can interact with\n\n(2) Add an output (e.g. plotOutput) to the UI that creates a placeholder space to fill with our eventual reactive output\n\n(3) Tell the server how to assemble inputs into outputs:\n\nsave objects you want to display to output$&lt;id&gt;\nBuild reactive objects using a render*() function\nAccess input values with input$\n\n\nAnd remember to always build your data filtering pipelines & visualizations outside of shiny before trying to make them reactive."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#layout-fxns",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#layout-fxns",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Use layout functions to organize your UI\n\nHow you organize the visual structure of your app’s UI can affect not only how aesthetically-pleasing it is, but also how users will interact with it. {shiny} includes a number of layout functions, or use {shinydashboard} to access additional functions for creating classic “dashboard-style” layouts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n  It’s easy to lose track of parentheses when using lots of layout functions. Remember to use rainbow parentheses, code comments, and appropriate spacing between lines to stay organized."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#deploying",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#deploying",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Deploy with shinyapps.io, if possible\n\nThere are a number of ways to deploy a shiny app, but stick with shinyapps.io whenever possible – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.\n\n\n\n\n\n\n\n\n\n\n\n\nThe shinyapps.io dashboard\n\n\n\n\n\n\n\n\n\n\n\n\nA deployment log on shinyapps.io\n\n\n\nThe shinyapps.io dashboard provides lots of helpful information, particularly the deployment log – remember to here for information about failed deployments."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#style-apps",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#style-apps",
+    "title": "EDS 430",
+    "section": "",
+    "text": "There are a number of tools for styling apps\n\n{bslib} and {fresh} provide user-friendly functions for automatically generating and applying CSS styles to update update colors & fonts across your app.\nAlternatively, write your own Sass (.scss) file to fully customize your app’s appearance. Use the {sass} package to compile it to CSS and link the resulting .css file in your app’s header."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#ux-ui",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#ux-ui",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Design for your users\n\nTake out any guesswork:\n\nuse validation tests that return (non-intimidating) error messages that provide clear guidance on how to proceed\nuse {shinycssloaders} to add loading animations to shiny outputs\n\n\nKeep in mind some fundamnetal UX / UI rules:\n\nkeep things simple\nyour app shouldn’t need a manual to understand how to use it\nyour app should always do the least surprising thing\navoid feature-creep\n\n\n\nBuild accessible apps:\n\nadd alt text\ndon’t overcrowd widgets\nuse colorblind-friendly color palettes"
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#debusing-testing",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#debusing-testing",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Debugging is tricky, but there are tools / strategies\n\n\n Debugging shiny apps can be tricky, since code execution isn’t linear and because code runs behind a web server and the shiny framework. When you encounter errors, remember to try the following:\n\nisolate errors in the UI by commenting out code from the outside in\nreduce your app to just problematic code by commenting out as much correctly-functioning code as possible\nadd diagnostic messages to reactives\nuse {reactlog} to visualize reactivity errors\n\n\n\n Creating automated checks that your app is working as expected (using frameworks like {shinytest2}) can also save you lots of time and headache in the future."
+  },
+  {
+    "objectID": "course-materials/slides/part8-wrap-up-slides.html#streamline-code",
+    "href": "course-materials/slides/part8-wrap-up-slides.html#streamline-code",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Streamline code with functions & modules\n\nTurning portions of your app into functions or modules is not necessary(!), but it can help you better organize your code base, reduce redundancy and complexity, increase code comprehension, and increase testability. Create functions for code that are either completely on the UI side or completely on the server side. Create modules for code that spans both.\n\n\n\nIt can be a lot to get comfortable with the shiny framework and work on your analyses / visualizations and write functions / modules. Consider writing parts (or even all) of your application first, then go back to refactor (restructure / rewrite) your code to improve it’s structure / organization."
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#TheEnd",

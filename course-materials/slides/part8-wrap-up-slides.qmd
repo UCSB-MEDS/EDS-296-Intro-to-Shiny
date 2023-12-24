@@ -40,7 +40,7 @@ editor_options:
 
 <br>
 
-First, we don't think shiny apps are inherently *bad*. In fact, they're popular (particularly as Capstone deliverables) for a good reason -- they can:
+First, we don't think shiny apps are inherently *bad*. They're popular (particularly as Capstone deliverables) for a good reason -- they can:
 
 <br>
 
@@ -89,6 +89,9 @@ First, we don't think shiny apps are inherently *bad*. In fact, they're popular 
 knitr::include_graphics("images/part8/barbenheimer.png")
 ```
 
+::: {.center-text .body-text-s .gray-text}
+Image Source: [Reddit](https://www.reddit.com/r/dataengineering/comments/15f9uab/fancy_dashboards_with_volatile_data_pipelines/)
+:::
 :::
 
 ::::
@@ -97,45 +100,175 @@ knitr::include_graphics("images/part8/barbenheimer.png")
 
 ##  {#htmlwidgets data-menu-title="htmlwidgets"}
 
-[htmlwidgets]{.slide-title}
+[Embed htmlwidgets into your reports / websites]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Embed interactive [htmlwidgets](https://www.htmlwidgets.org/) into your R Markdown & Quarto markdown documents** that range from geo-spatial mapping with `{leaflet}` to generating network graph diagrams with `{DiagrammeR}`. Check out the [htmlwidgets for R - gallery](http://gallery.htmlwidgets.org/) for many more options.</p>
+[**[htmlwidgets](https://www.htmlwidgets.org/) allow you to create interactive data visualizations using JavaScript libraries in R.** They can be embedded into Shiny apps (recall we used both the [`{DT}` package](https://rstudio.github.io/DT/) to create an interactive datatable and the [`{leaflet}` package](https://rstudio.github.io/leaflet/) to create an interactive map), *or* into RMarkdown and Quarto Markdown reports. **A well-designed reproducible report with interactive widgets is powerful, easier to maintain, and can be deployed on the web (for free) using tools like [GitHub pages](https://pages.github.com/).** Explore 130 registered widgets on the [htmlwidget gallery](https://gallery.htmlwidgets.org/).]{.body-text-s}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/htmlwidget.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+An example leaflet map embedded in an RMarkdown report. Image Source: [htmlwidgets for R](https://www.htmlwidgets.org/index.html)
+:::
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/leaflet-mywebsite.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+An example leaflet map embedded in an Quarto website. Image Source: [my website](https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby)
+:::
+
+:::
+
+::::
 
 ---
 
-##  {#dashboards data-menu-title="dashboards"}
+##  {#widget-dashboards data-menu-title="Widget dashboards"}
 
-[dashboards]{.slide-title}
+[Compose multiple widgets into a dashboard]{.slide-title}
 
 <hr>
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Compose multiple widgets into a dashboard using `{flexdashboard}`.** Based in R Markdown, this framework allows you to produce dynamic dashboards using tools you are already familiar with. Find [example projects and their source code](https://pkgs.rstudio.com/flexdashboard/articles/examples.html).</p>
+[Have lots of interactive htmlwidgets to present? **Consider composing multiple widgets into a dashboard using [`{flexdashboard}`](https://pkgs.rstudio.com/flexdashboard/) (based in RMarkdown) or [Quarto dashboard](https://quarto.org/docs/dashboards/).** Both frameworks support UI layouts similar to those achieved using `{shiny}` / `{shinydashboard}` (columns, rows, tabsets, navbars, value boxes etc.). You can also optionally use Shiny to embed reactive outputs. Check out the [`{flexdashboard}` gallery](https://pkgs.rstudio.com/flexdashboard/articles/examples.html) and [Quarto dashboard gallery](https://quarto.org/docs/dashboards/examples/) for examples and source code.]{.body-text-s}
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Compose multiple widgets into a [Quarto dashboard](https://quarto.org/docs/dashboards/).** One of Quarto's latest new features! Similar to `{flexdashboard}`, this framework can be used to publish a group of related visualizations, widgets, and tables as a dashboard. It provides a flexible layout with built-in responsiveness for display on browers and mobile devices. **Importantly,** dashboards can be deployed as static web pages (no special server required). Find [example dashboards and their source code](https://quarto.org/docs/dashboards/examples/).</p>
+:::: {.columns}
 
-<p class="body-text-s topbr">[{{< fa sun title="a sun" >}}]{.teal-text} [Energy Siting Dashboard](https://energysiting.github.io/energysiting-dashboard/) ([source code](https://github.com/energysiting/energysiting-dashboard)), *developed by MEDS 2022 alumni [Paloma Cartwright](https://palomacartwright.github.io/), [Joe DeCesaro](https://joedecesaro.github.io/), [Daniel Kerstan](https://www.linkedin.com/in/daniel-kerstan-5b162321b/) & [Desik Somasundaram](https://www.linkedin.com/in/desik-somasundaram-902a8a120/) as part of their MEDS capstone project* -- explore predictions of the most suitable locations for large, utility-scale wind and solar projects across the United States</p>
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/flexdashboard.png")
+```
 
-<p class="body-text-s topbr">[{{< fa handshake title="two hands shaking" >}}]{.teal-text} [@ADELPHIRESEARCH TWEETS Dashboard](https://spileggi.shinyapps.io/Pileggi_presentation_shiny/) ([source code](https://github.com/shannonpileggi/Adelphi-tweets)), *developed by R-Lady [Shannon Pileggi](https://www.pipinghotdata.com/index.html) as part of a job interview* -- read about this clever approach to showcasing your skills to a potential employer in Shannon's blogpost, [A job interview presentation inspired by the R community](https://www.pipinghotdata.com/posts/2020-08-30-a-job-interview-presentation-inspired-by-the-r-community/).</p>
+::: {.center-text .body-text-s .gray-text}
+[Waste Lands - America's Forgotten Nuclear Legacy](https://testing-apps.shinyapps.io/flexdashboard-leaflet-waste/), (built using `{flexdashboard}`)
+:::
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/quarto-dashboard.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+[Recent Earthquakes in Aotearoa New Zealand](https://colorado.posit.co/rsc/nz-quakes/quakes.html) (built using Quarto)
+:::
+
+:::
+
+::::
 
 ---
 
 ##  {#shiny-quarto data-menu-title="Shiny & Quarto"}
 
-[shiny & quarto]{.slide-title}
+[Embed shiny components in Quarto docs]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Embed reactive shiny components (e.g. inputs & outputs) in Quarto documents.** By using some fun new code chunk options, you can instruct Quarto to spin up it's own self-contained shiny server to run your reactives. Read the [Quarto documentation](https://quarto.org/docs/interactive/shiny/) to learn more and check out some [teaching examples](https://quarto.org/docs/interactive/shiny/#examples).</p>
+[**Embed reactive shiny components (e.g. a plot with sliders that control its inputs) in Quarto documents.** By using some fun new code chunk options, you can instruct Quarto to spin up it's own self-contained shiny server to run your reactives. Read the [Quarto documentation](https://quarto.org/docs/interactive/shiny/) to learn more and check out some [teaching examples](https://quarto.org/docs/interactive/shiny/#examples).]{.body-text-s}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/quarto-shiny-faithful.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+[Old Faithful](https://jjallaire.shinyapps.io/shiny-old-faithful/), which demonstrates incorporating an interactive plot into the main flow of a document. [Source code](https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/old-faithful/shiny-old-faithful.qmd)
+:::
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/quarto-shiny-kmeans.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+[Iris K-Means Clustering](https://jjallaire.shinyapps.io/shiny-k-means/), which demonstrates using a more “application-like” page layout (sidebar and main panel). [Source code](https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/k-means/shiny-k-means.qmd)
+:::
+
+:::
+
+::::
 
 ---
 
 ##  {#shinylive data-menu-title="Shinylive"}
 
-[Shinylive]{.slide-title}
+[Run serverless shiny apps using Shinylive]{.slide-title}
 
 <hr>
+
+[**Shiylive is a serverless version of Shiny**, which was recently annoucned at [posit::conf(2023)](https://posit.co/conference/) by Joe Cheng (rewatch his [talk ](https://www.youtube.com/watch?v=j1M6YyU2ZX8&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=88)!). It supports Shiny for both R *and* Python (that's right, you can build shiny apps using Python too! See [Shiny for Python](https://shiny.posit.co/py/). for more info). You have a few options:]{.body-text-s}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+<br>
+
+- [**Convert shiny apps to static websites** using this [[`{shinylive}`] package for R](https://github.com/posit-dev/r-shinylive) or [[`{shinylive}`] package for Python](https://github.com/posit-dev/py-shinylive)]{.body-text-s}
+- [**Write, run, and share Shiny apps right in the browser** at <https://shinylive.io/r/examples/> (R) or <https://shinylive.io/py/examples/> (Python)]{.body-text-s}
+- [**Include Shiny apps in Quarto docs** using the [Shinylive Quarto extension](https://github.com/quarto-ext/shinylive)]{.body-text-s}
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/shinylive.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+Image Source: [Run a Shiny app in the browser with shinylive for R](https://hypebright.nl/index.php/en/2023/10/02/run-a-shiny-app-in-the-browser-with-shinylive-for-r/), by [Veerle van Leemput](https://hypebright.nl/index.php/en/author/veerlevanleemputlive-nl/)
+:::
+:::
+
+::::
 
 ---
 
@@ -150,92 +283,267 @@ knitr::include_graphics("images/part8/barbenheimer.png")
 
 ##  {#what-is-shiny data-menu-title="What is shiny?"}
 
-[Shiny makes building web apps easy]{.slide-title}
+[Shiny apps are made up of a UI & a server]{.slide-title}
 
 <hr>
 
-Shiny is an open source R package that provides a framework for building interactive web apps without having to know HTML / CSS/ JavaScript
+<br>
 
-They're made up of a **UI** (which controls the layout / appearance; the part a user sees / interacts with) and a **Server** (which handles the logic)
+Shiny is an open source R package that provides a framework for building interactive web apps without having to know HTML / CSS/ JavaScript.
 
-Reactivity = a user updates values via **widgets** in the UI > server performs some logic (e.g. filtering a data frame based on user inputs to return an updated output)
+<br>
 
----
+:::: {.columns}
 
-Using a single-file (`app.R`) setup is great for small apps or for reprexes. Two-file apps (`ui.R` + `server.R`) are best for most apps. Use a `global.R` file to store objects that are used across your app (libraries, data, etc.)
+::: {.column width="50%"}
+[Apps made up of a **UI** (which controls the layout / appearance; the part a user sees / interacts with) and a **Server** (which handles the logic)]{.body-text-s}
 
----
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/basic_shiny_app.png")
+```
+:::
 
-layout functions help to to better organize the visual structure of our UI. The `{shinydashboard}` package provides additional layout functions or organizing the UI in a more modern, "dashboard-style" layout
+::: {.column width="50%"}
+[Reactivity = a user updates values via widgets in the UI {{< fa arrow-right title="an arrow pointing to the right" >}} server performs some logic to return an updated output {{< fa arrow-right title="an arrow pointing to the right" >}} output is rendered in the UI]{.body-text-s}
 
-It's critically important to keep track of your parentheses -- use code comments and appropriate spacing between lines to stay organized
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/reactivity-intro.png")
+```
+:::
 
----
-
-reactivity automatically occurs whenever we use an input value to render an output object.
-
-The golden rules for creating reactive outputs:
-
-1 Add an input (e.g. sliderInput) to the UI that users can interact with
-2 Add an output (e.g. plotOutput) to the UI that creates a placeholder space to fill with our eventual reactive output
-3 Tell the server how to assemble inputs into outputs:
-- save objects you want to display to `output$<id>`
-- Build reactive objects using a render*() function
-- Access input values with input$<id>
-
-And always build your data filtering pipelines & visualizations outside of shiny before trying to make them reactive
-
----
-
-there are a number of ways to deploy a shiny app, but stick with <shinyapps.io> whenever possible
-the shinyapps.io dashboard provides you with lots of helpful information, particularly the log -- look here for information about failed deployments 
+::::
 
 ---
 
-there are lots of tools for styling your apps 
+##  {#file-org data-menu-title="Shiny files"}
 
-fresh & bslib provide functions for generating CSS to update colors & fonts
+[Choose a single-file or two-file setup]{.slide-title}
 
-or generate your own Sass & CSS files to fully customize your app's appearance -- Shiny will only accept a CSS file (not a `.scss` file), therefore you need to use the `{sass}` package to compile (convert) it to `.css`
+<hr>
 
----
+We can create apps using either a single-file, (`app.R`) or two files (`ui.R` + `server.R`). A single-file setup are great for building *small* apps, and especially great for building reprexes. A two-file setup is best for larger apps (and likely what you'll want to opt for). 
 
-take out any guesswork for your users
+<br>
 
-remember:
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/one-vs-two.png")
+```
 
-- keep things simple
-- apps should fail gracefully (use validation tests to provide users with (non-intimidating) error messages that provide clear guidance on how to proceed)
-- app shouldn't need a manual to understand how to use it; and it should always do the least surprising thing
-- add loading animations 
-- avoid feature-creep
+<br>
 
----
-
-accessibility features benefit us all
-
-- add alt text
-- use html elements appropriately
-- consider spacing and limiting number of widgets
-- colorblind-friendly palettes
+You can optionally use a `global.R` file to store objects that are used across your app (libraries, data, etc.).
 
 ---
 
-debugging is hard 
-- comment out stuff
-- add diagnostic messages
-- `{reactlog}` 
+##  {#reactivity-rules data-menu-title="Reactivity rules"}
 
-Testing (using frameworks like `{shinytest2}`) can save you lots of time and headache in the future (automated checks that your app is working as expected)
+[Follow three rules for creating reactivity:]{.slide-title}
+
+<hr>
+
+<br>
+
+[**(1)**]{.teal-text} **Add an input** (e.g. sliderInput) **to the UI ** that users can interact with
+
+<br>
+
+[**(2)**]{.teal-text} **Add an output** (e.g. plotOutput) **to the UI** that creates a placeholder space to fill with our eventual reactive output
+
+<br>
+
+[**(3)**]{.teal-text} **Tell the server how to assemble inputs into outputs**:
+
+  - save objects you want to display to `output$<id>`
+    
+  - Build reactive objects using a render*() function
+    
+  - Access input values with input$<id>
+
+<br>
+
+*And remember to always build your data filtering pipelines & visualizations **outside of shiny** before trying to make them reactive.*
 
 ---
 
-while not necessary, you can streamline your code using functions and / or modules
+##  {#layout-fxns data-menu-title="Layouts"}
 
-create functions for code that is either comletely on the UI side or competely on the server side
-create modules for code that spans both
+[Use layout functions to organize your UI]{.slide-title}
 
-you can always go back and refactor (restructure / rewrite) your code after you have a working application to improve it's structure / organization 
+<hr>
+
+[How you organize the visual structure of your app's UI can affect not only how aesthetically-pleasing it is, but also how users will interact with it. `{shiny}` includes a number of layout functions, or use `{shinydashboard}` to access additional functions for creating classic "dashboard-style" layouts.]{.body-text-s}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/app2-layout-fxns.png")
+```
+:::
+
+::: {.column width="30%"}
+<br>
+<br>
+[It's easy to lose track of parentheses when using lots of layout functions. Remember to **use rainbow parentheses**, **code comments**, and **appropriate spacing between lines** to stay organized.]{.body-text-s}
+:::
+
+::::
+
+---
+
+##  {#deploying data-menu-title="Deploying apps"}
+
+[Deploy with shinyapps.io, if possible]{.slide-title}
+
+<hr>
+
+[There are a number of ways to deploy a shiny app, but **stick with [shinyapps.io](https://www.shinyapps.io/) whenever possible** -- it's the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it's easily scalable with a number of paid plan options.]{.body-text-s}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/shinyapps_dashboard.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+The shinyapps.io dashboard
+:::
+
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/deploy-log.png")
+```
+
+::: {.center-text .body-text-s .gray-text}
+A deployment log on shinyapps.io
+:::
+
+:::
+
+::::
+
+[The shinyapps.io dashboard provides lots of helpful information, particularly the deployment log -- remember to here for information about failed deployments.]{.body-text-s}
+
+---
+
+##  {#style-apps data-menu-title="Styling apps"}
+
+[There are a number of tools for styling apps]{.slide-title2}
+
+<hr>
+
+[`{bslib}` and `{fresh}` provide user-friendly functions for automatically generating and applying CSS styles to update update colors & fonts across your app.]{.body-text-s}
+
+[Alternatively, write your own Sass (.scss) file to fully customize your app's appearance. Use the `{sass}` package to compile it to CSS and link the resulting .css file in your app's header.]{.body-text-s}
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part8/sass-to-css-workflow.png")
+```
+
+---
+
+##  {#ux-ui data-menu-title="UX / UI"}
+
+[Design for your users]{.slide-title}
+
+<hr>
+
+[Take out any guesswork:]{.body-text-m}
+
+- [use validation tests that return (non-intimidating) error messages that provide clear guidance on how to proceed]{.body-text-s}
+- [use `{shinycssloaders}` to add loading animations to shiny outputs]{.body-text-s}
+
+. . . 
+
+[Keep in mind some fundamnetal UX / UI rules:]{.body-text-m}
+
+- [keep things simple]{.body-text-s}
+- [your app shouldn't need a manual to understand how to use it]{.body-text-s}
+- [your app should always do the least surprising thing]{.body-text-s}
+- [avoid feature-creep]{.body-text-s}
+
+. . . 
+
+[Build accessible apps: ]{.body-text-m}
+
+- [add alt text]{.body-text-s}
+- [don't overcrowd widgets]{.body-text-s}
+- [use colorblind-friendly color palettes]{.body-text-s}
+
+---
+
+##  {#debusing-testing data-menu-title="Debugging & testing"}
+
+[Debugging is tricky, but there are tools / strategies]{.slide-title2}
+
+<hr>
+
+<br>
+
+{{< fa bug title="a bug" >}} Debugging shiny apps can be tricky, since code execution isn't linear and because code runs behind a web server and the shiny framework. When you encounter errors, remember to try the following:
+
+- [isolate errors in the UI by commenting out code from the outside in]{.body-text-s}
+- [reduce your app to just problematic code by commenting out as much correctly-functioning code as possible]{.body-text-s}
+- [add diagnostic messages to reactives]{.body-text-s}
+- [use {reactlog} to visualize reactivity errors]{.body-text-s}
+
+<br>
+
+. . .
+
+{{< fa laptop-code title="a laptop with the code symbol on the screen" >}} Creating automated checks that your app is working as expected (using frameworks like `{shinytest2}`) can also save you lots of time and headache in the future. 
+
+---
+
+##  {#streamline-code data-menu-title="Streamline code"}
+
+[Streamline code with functions & modules]{.slide-title}
+
+<hr>
+
+[Turning portions of your app into functions or modules **is not necessary(!)**, but it can help you better organize your code base, reduce redundancy and complexity, increase code comprehension, and increase testability. Create functions for code that are either completely on the UI side or completely on the server side. Create modules for code that spans both.]{.body-text-s}
+
+::: {.center-text .large-fa-icon .teal-text}
+{{< fa code title="symbol for code, </>" >}}
+:::
+
+[It can be a lot to get comfortable with the shiny framework *and* work on your analyses / visualizations *and* write functions / modules. **Consider writing parts (or even all) of your application first, then go back to refactor (restructure / rewrite) your code to improve it's structure / organization.**]{.body-text-s}
 
 ---
 
