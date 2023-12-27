@@ -851,7 +851,7 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#deploying",
     "title": "EDS 430",
     "section": "",
-    "text": "Deploy with shinyapps.io, if possible\n\nThere are a number of ways to deploy a shiny app, but stick with shinyapps.io whenever possible – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.\n\n\n\n\n\n\n\n\n\n\n\n\nThe shinyapps.io dashboard\n\n\n\n\n\n\n\n\n\n\n\n\nA deployment log on shinyapps.io\n\n\n\nThe shinyapps.io dashboard provides lots of helpful information, particularly the deployment log – remember to here for information about failed deployments."
+    "text": "Deploy with shinyapps.io, if possible\n\nThere are a number of ways to deploy a shiny app, but stick with shinyapps.io whenever possible – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.\n\n\n\n\n\n\n\n\n\n\n\n\nThe shinyapps.io dashboard\n\n\n\n\n\n\n\n\n\n\n\n\nA deployment log on shinyapps.io\n\n\n\nThe shinyapps.io dashboard provides lots of helpful information, particularly the deployment log – remember to check here for information about failed deployments."
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#style-apps",
@@ -865,7 +865,7 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#ux-ui",
     "title": "EDS 430",
     "section": "",
-    "text": "Design for your users\n\nTake out any guesswork:\n\nuse validation tests that return (non-intimidating) error messages that provide clear guidance on how to proceed\nuse {shinycssloaders} to add loading animations to shiny outputs\n\n\nKeep in mind some fundamnetal UX / UI rules:\n\nkeep things simple\nyour app shouldn’t need a manual to understand how to use it\nyour app should always do the least surprising thing\navoid feature-creep\n\n\n\nBuild accessible apps:\n\nadd alt text\ndon’t overcrowd widgets\nuse colorblind-friendly color palettes"
+    "text": "Design for your users\n\nTake out any guesswork:\n\nuse validation tests that return (non-intimidating) error messages that provide clear guidance on how to proceed\nuse {shinycssloaders} to add loading animations to shiny outputs\n\n\nKeep in mind some fundamental UX / UI rules:\n\nkeep things simple\nyour app shouldn’t need a manual to understand how to use it\nyour app should always do the least surprising thing\navoid feature-creep\n\n\n\nBuild accessible apps:\n\nadd alt text\ndon’t overcrowd widgets\nuse colorblind-friendly color palettes"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#debusing-testing",

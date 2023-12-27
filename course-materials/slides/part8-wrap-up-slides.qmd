@@ -452,7 +452,7 @@ A deployment log on shinyapps.io
 
 ::::
 
-[The shinyapps.io dashboard provides lots of helpful information, particularly the deployment log -- remember to here for information about failed deployments.]{.body-text-s}
+[The shinyapps.io dashboard provides lots of helpful information, particularly the deployment log -- remember to check here for information about failed deployments.]{.body-text-s}
 
 ---
 
@@ -491,7 +491,7 @@ knitr::include_graphics("images/part8/sass-to-css-workflow.png")
 
 . . . 
 
-[Keep in mind some fundamnetal UX / UI rules:]{.body-text-m}
+[Keep in mind some fundamental UX / UI rules:]{.body-text-m}
 
 - [keep things simple]{.body-text-s}
 - [your app shouldn't need a manual to understand how to use it]{.body-text-s}
@@ -518,10 +518,10 @@ knitr::include_graphics("images/part8/sass-to-css-workflow.png")
 
 {{< fa bug title="a bug" >}} Debugging shiny apps can be tricky, since code execution isn't linear and because code runs behind a web server and the shiny framework. When you encounter errors, remember to try the following:
 
-- [isolate errors in the UI by commenting out code from the outside in]{.body-text-s}
-- [reduce your app to just problematic code by commenting out as much correctly-functioning code as possible]{.body-text-s}
-- [add diagnostic messages to reactives]{.body-text-s}
-- [use {reactlog} to visualize reactivity errors]{.body-text-s}
+- [isolate errors in the UI by **commenting out code** from the outside in]{.body-text-s}
+- [**reduce your app** to just problematic code by commenting out as much correctly-functioning code as possible]{.body-text-s}
+- [add **diagnostic messages** to reactives]{.body-text-s}
+- [use **`{reactlog}`** to visualize reactivity errors]{.body-text-s}
 
 <br>
 
