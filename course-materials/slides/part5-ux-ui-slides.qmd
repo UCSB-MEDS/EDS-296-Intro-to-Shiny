@@ -331,13 +331,17 @@ knitr::include_graphics("images/part5/keyboard_mouse.gif")
 
 ##  {#color-palettes data-menu-title="Color Palettes"}
 
-[Use colorblind-friendly palettes]{.slide-title3}
+[Use colorblind-friendly palettes]{.slide-title}
 
 <hr>
 
-<p class="body-text-s">About 1 in 12 males and 1 in 200 females have some form of colorblindness ([Wikipedia](https://en.wikipedia.org/wiki/Color_blindness)). Ensuring that your color choices are distinguishable from one another and / or providing an additional non-color-based way (e.g. patterns, shapes) of distinguishing between groups can greatly help with interpretation of data visualizations.</p>
+<p class="body-text-s">About 1 in 12 males and 1 in 200 females have some form of colorblindness ([Wikipedia](https://en.wikipedia.org/wiki/Color_blindness)). Ensuring that your color choices are distinguishable from one another and / or providing an additional non-color-based way (e.g. patterns, shapes) of distinguishing between groups is critical.</p>
 
-<p class="body-text-s">There are lots of great colorblind-accessible palettes and resources (check out [this one](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf) by [Alex Phillips](https://www.alexandraatleephillips.com/) to start). Google Chrome also has a built-in vision deficiency emulator (see gif, below right; **right click** in your web browser > **Inspect** > **Rendering** (add tab by clicking on the three stacked dots if it's not already open) > scroll down and **choose emulation type** from drop down where it says "Emulate vision deficiencies").</p>
+<!-- can greatly help with interpretation of data visualizations. -->
+
+<p class="body-text-s">There are lots of great colorblind-accessible palettes and resources (check out [this one](https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf) by [Alex Phillips](https://www.alexandraatleephillips.com/), as well as the [`{paletteer}` package](https://emilhvitfeldt.github.io/paletteer/), a near comprehensive collection of all R color palette packages). Using the [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck) Google Chrome extension can help you quickly assess the accessibility of you visualizations / apps.</p>
+
+<!-- Google Chrome also has a built-in vision deficiency emulator (see gif, below right; **right click** in your web browser > **Inspect** > **Rendering** (add tab by clicking on the three stacked dots if it's not already open) > scroll down and **choose emulation type** from drop down where it says "Emulate vision deficiencies").</p> -->
 
 :::: {.columns}
 
@@ -364,11 +368,11 @@ Four different forms of colorblindness. Image Source: [Venngage](https://venngag
 #| out-width: "100%"
 #| fig-align: "center"
 #| fig-alt: "A user opens up the developer tools pane in Google Chrome and uses the emulation tool to see how readers with various vision deficiencies would see the webpage."
-knitr::include_graphics("images/part5/chrome-visual.gif")
+knitr::include_graphics("images/part5/lgcb.gif")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-Using Google Chrome's vision deficiency emulator to view webpages as seen by those with vision deficiencies
+Using Google Chrome's [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck) extension to simulate different types of color blindness
 :::
 :::
 

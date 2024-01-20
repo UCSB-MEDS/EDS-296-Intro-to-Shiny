@@ -31,8 +31,10 @@ knitr::include_graphics("images/software.png")
 install.packages(pkgs = c( "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder"))
 ```
 
+- **(Optional, but recommended)** Install the [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck) Google Chrome extension
+
 ::: {.center-text .body-text-m .teal-text}
-**Please see the [MEDS Installation Guide](https://ucsb-meds.github.io/meds-install-guide.html) for instructions on installing the above software.**
+**Please see the [MEDS Installation Guide](https://ucsb-meds.github.io/meds-install-guide.html) for more detailed instructions on installing the above software.**
 :::
 
 ## Reference code
