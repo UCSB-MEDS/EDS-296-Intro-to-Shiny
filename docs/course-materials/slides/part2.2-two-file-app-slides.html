@@ -1538,7 +1538,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9375624e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_d48e6088" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1643,36 +1643,37 @@ See next slide for a solution!
 <span id="cb20-5"><a href="#cb20-5"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb20-6"><a href="#cb20-6"></a><span class="fu">library</span>(shinyWidgets)</span>
 <span id="cb20-7"><a href="#cb20-7"></a></span>
-<span id="cb20-8"><a href="#cb20-8"></a><span class="co"># DATA WRANGLING ----</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a></span>
-<span id="cb20-10"><a href="#cb20-10"></a><span class="co"># trout data</span></span>
-<span id="cb20-11"><a href="#cb20-11"></a>clean_trout <span class="ot">&lt;-</span> and_vertebrates <span class="sc">|&gt;</span></span>
-<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Cutthroat trout"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb20-13"><a href="#cb20-13"></a>  <span class="fu">select</span>(sampledate, section, species, <span class="at">length_mm =</span> length_1_mm, weight_g, <span class="at">channel_type =</span> unittype) <span class="sc">|&gt;</span> </span>
-<span id="cb20-14"><a href="#cb20-14"></a>  <span class="fu">mutate</span>(<span class="at">channel_type =</span> <span class="fu">case_when</span>(</span>
-<span id="cb20-15"><a href="#cb20-15"></a>    channel_type <span class="sc">==</span> <span class="st">"C"</span> <span class="sc">~</span> <span class="st">"cascade"</span>,</span>
-<span id="cb20-16"><a href="#cb20-16"></a>    channel_type <span class="sc">==</span> <span class="st">"I"</span> <span class="sc">~</span> <span class="st">"riffle"</span>,</span>
-<span id="cb20-17"><a href="#cb20-17"></a>    channel_type <span class="sc">==</span><span class="st">"IP"</span> <span class="sc">~</span> <span class="st">"isolated pool"</span>,</span>
-<span id="cb20-18"><a href="#cb20-18"></a>    channel_type <span class="sc">==</span><span class="st">"P"</span> <span class="sc">~</span> <span class="st">"pool"</span>,</span>
-<span id="cb20-19"><a href="#cb20-19"></a>    channel_type <span class="sc">==</span><span class="st">"R"</span> <span class="sc">~</span> <span class="st">"rapid"</span>,</span>
-<span id="cb20-20"><a href="#cb20-20"></a>    channel_type <span class="sc">==</span><span class="st">"S"</span> <span class="sc">~</span> <span class="st">"step (small falls)"</span>,</span>
-<span id="cb20-21"><a href="#cb20-21"></a>    channel_type <span class="sc">==</span><span class="st">"SC"</span> <span class="sc">~</span> <span class="st">"side channel"</span></span>
-<span id="cb20-22"><a href="#cb20-22"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb20-23"><a href="#cb20-23"></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">case_when</span>(</span>
-<span id="cb20-24"><a href="#cb20-24"></a>    section <span class="sc">==</span> <span class="st">"CC"</span> <span class="sc">~</span> <span class="st">"clear cut forest"</span>,</span>
-<span id="cb20-25"><a href="#cb20-25"></a>    section <span class="sc">==</span> <span class="st">"OG"</span> <span class="sc">~</span> <span class="st">"old growth forest"</span></span>
-<span id="cb20-26"><a href="#cb20-26"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb20-27"><a href="#cb20-27"></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb20-28"><a href="#cb20-28"></a></span>
-<span id="cb20-29"><a href="#cb20-29"></a><span class="co"># GGPLOT THEME ----</span></span>
-<span id="cb20-30"><a href="#cb20-30"></a>myCustomTheme <span class="ot">&lt;-</span> <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb20-31"><a href="#cb20-31"></a>  <span class="fu">theme</span>(<span class="co">#text = element_text(family = "mono"), </span></span>
-<span id="cb20-32"><a href="#cb20-32"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb20-33"><a href="#cb20-33"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb20-34"><a href="#cb20-34"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb20-35"><a href="#cb20-35"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
-<span id="cb20-36"><a href="#cb20-36"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb20-37"><a href="#cb20-37"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="co"># GGPLOT THEME ----</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>myCustomTheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb20-10"><a href="#cb20-10"></a>  </span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb20-13"><a href="#cb20-13"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb20-14"><a href="#cb20-14"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb20-15"><a href="#cb20-15"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
+<span id="cb20-16"><a href="#cb20-16"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb20-17"><a href="#cb20-17"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span>
+<span id="cb20-18"><a href="#cb20-18"></a>  </span>
+<span id="cb20-19"><a href="#cb20-19"></a>}</span>
+<span id="cb20-20"><a href="#cb20-20"></a></span>
+<span id="cb20-21"><a href="#cb20-21"></a><span class="co"># DATA WRANGLING ----</span></span>
+<span id="cb20-22"><a href="#cb20-22"></a>clean_trout <span class="ot">&lt;-</span> and_vertebrates <span class="sc">|&gt;</span></span>
+<span id="cb20-23"><a href="#cb20-23"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Cutthroat trout"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb20-24"><a href="#cb20-24"></a>  <span class="fu">select</span>(sampledate, section, species, <span class="at">length_mm =</span> length_1_mm, weight_g, <span class="at">channel_type =</span> unittype) <span class="sc">|&gt;</span> </span>
+<span id="cb20-25"><a href="#cb20-25"></a>  <span class="fu">mutate</span>(<span class="at">channel_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-26"><a href="#cb20-26"></a>    channel_type <span class="sc">==</span> <span class="st">"C"</span> <span class="sc">~</span> <span class="st">"cascade"</span>,</span>
+<span id="cb20-27"><a href="#cb20-27"></a>    channel_type <span class="sc">==</span> <span class="st">"I"</span> <span class="sc">~</span> <span class="st">"riffle"</span>,</span>
+<span id="cb20-28"><a href="#cb20-28"></a>    channel_type <span class="sc">==</span><span class="st">"IP"</span> <span class="sc">~</span> <span class="st">"isolated pool"</span>,</span>
+<span id="cb20-29"><a href="#cb20-29"></a>    channel_type <span class="sc">==</span><span class="st">"P"</span> <span class="sc">~</span> <span class="st">"pool"</span>,</span>
+<span id="cb20-30"><a href="#cb20-30"></a>    channel_type <span class="sc">==</span><span class="st">"R"</span> <span class="sc">~</span> <span class="st">"rapid"</span>,</span>
+<span id="cb20-31"><a href="#cb20-31"></a>    channel_type <span class="sc">==</span><span class="st">"S"</span> <span class="sc">~</span> <span class="st">"step (small falls)"</span>,</span>
+<span id="cb20-32"><a href="#cb20-32"></a>    channel_type <span class="sc">==</span><span class="st">"SC"</span> <span class="sc">~</span> <span class="st">"side channel"</span></span>
+<span id="cb20-33"><a href="#cb20-33"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb20-34"><a href="#cb20-34"></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-35"><a href="#cb20-35"></a>    section <span class="sc">==</span> <span class="st">"CC"</span> <span class="sc">~</span> <span class="st">"clear cut forest"</span>,</span>
+<span id="cb20-36"><a href="#cb20-36"></a>    section <span class="sc">==</span> <span class="st">"OG"</span> <span class="sc">~</span> <span class="st">"old growth forest"</span></span>
+<span id="cb20-37"><a href="#cb20-37"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb20-38"><a href="#cb20-38"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1847,7 +1848,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_84113cc2" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_e76491e9" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2455,7 +2456,7 @@ End part 2.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5df4c24e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_1d8fef50" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

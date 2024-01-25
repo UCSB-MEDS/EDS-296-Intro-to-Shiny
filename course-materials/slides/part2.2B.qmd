@@ -122,9 +122,20 @@ library(palmerpenguins)
 library(tidyverse)
 library(shinyWidgets)
 
-# DATA WRANGLING ----
+# GGPLOT THEME ----
+myCustomTheme <- function() {
+  
+  theme_light() +
+  theme(axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(size = 14, face = "bold"),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 13),
+    legend.position = "bottom",
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+  
+}
 
-# trout data
+# DATA WRANGLING ----
 clean_trout <- and_vertebrates |>
   filter(species == c("Cutthroat trout")) |>
   select(sampledate, section, species, length_mm = length_1_mm, weight_g, channel_type = unittype) |> 
@@ -142,16 +153,6 @@ clean_trout <- and_vertebrates |>
     section == "OG" ~ "old growth forest"
   )) |> 
   drop_na()
-
-# GGPLOT THEME ----
-myCustomTheme <- theme_light() +
-  theme(#text = element_text(family = "mono"), 
-    axis.text = element_text(color = "black", size = 12),
-    axis.title = element_text(size = 14, face = "bold"),
-    legend.title = element_text(size = 14, face = "bold"),
-    legend.text = element_text(size = 13),
-    legend.position = "bottom",
-    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
 ```
 
 ## `ui.R`

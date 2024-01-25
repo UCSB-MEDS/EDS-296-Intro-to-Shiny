@@ -160,6 +160,8 @@ server <- function(input, output) {
         filter(section %in% c(input$section_input))
         
     })
+  
+    # ~ additional code omitted for brevity ~
 }
 ```
 
@@ -199,17 +201,14 @@ server <- function(input, output) {
 ```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "39-41"
+#| code-line-numbers: "35-38"
 server <- function(input, output) {
   
   # filter for channel types ----
   trout_filtered_df <- reactive({
 
     validate(
-      need(length(input$channel_type_input) > 0, "Please select at least one channel type to visualize data for.")
-    )
-
-    validate(
+      need(length(input$channel_type_input) > 0, "Please select at least one channel type to visualize data for."),
       need(length(input$section_input) > 0, "Please select at least one section (clear cut forest or old growth forest) to visualize data for.")
     )
 
@@ -252,7 +251,7 @@ server <- function(input, output) {
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.6, bins = input$bin_num) +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
+      scale_fill_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
       labs(x = "Flipper length (mm)", y = "Frequency",
            fill = "Penguin species") +
       myCustomTheme()
@@ -357,7 +356,7 @@ output$flipperLength_histogram_output <- renderPlot({
 
   ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
     geom_histogram(alpha = 0.6, bins = input$bin_num) +
-    scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
+    scale_fill_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
     labs(x = "Flipper length (mm)", y = "Frequency",
          fill = "Penguin species") +
     myCustomTheme()
