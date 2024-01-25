@@ -141,7 +141,7 @@ knitr::include_graphics("images/part2/confusing_sign.png")
 
 <p class="body-text-s">For example, we can add two validation tests inside the reactive that generates our `trout_filtered_df` -- we'll need two separate validation tests, one for each of our inputs where users can deselect all data.</p>
 
-```{r filename="server.R"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "6-9"
@@ -196,7 +196,7 @@ server <- function(input, output) {
 
 <hr>
 
-```{r filename="server.R"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "39-41"
@@ -220,7 +220,7 @@ server <- function(input, output) {
     })
 
   # trout scatterplot ----
-  output$trout_scatterplot <- renderPlot({
+  output$trout_scatterplot_output <- renderPlot({
 
     ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
@@ -239,23 +239,23 @@ server <- function(input, output) {
   island_df <- reactive({
 
     validate(
-      need(length(input$penguin_island) > 0, "Please select at least one island to visualize data for.")
+      need(length(input$penguin_island_input) > 0, "Please select at least one island to visualize data for.")
     )
 
     penguins %>%
-      filter(island %in% input$penguin_island)
+      filter(island %in% input$penguin_island_input)
 
   })
 
   # render the flipper length histogram ----
-  output$flipperLength_histogram <- renderPlot({
+  output$flipperLength_histogram_output <- renderPlot({
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.6, bins = input$bin_num) +
       scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
       labs(x = "Flipper length (mm)", y = "Frequency",
            fill = "Penguin species") +
-      myCustomTheme
+      myCustomTheme()
     
   })
   
@@ -280,14 +280,14 @@ server <- function(input, output) {
 
 <br>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 plotOutput(outputId = "trout_scatterplot") |> 
-  withSpinner(color = "#006792", type = 1)
+  shinycssloaders::withSpinner(color = "#006792", type = 1)
 
 plotOutput(outputId = "flipperLength_histogram") |> 
-  withSpinner(color = "#4BA4A4", type = 4, size = 2)
+  shinycssloaders::withSpinner(color = "#4BA4A4", type = 4, size = 2)
 ```
 :::
 
@@ -326,7 +326,7 @@ knitr::include_graphics("images/part2/spinners.gif")
 :::
 
 ::: {.column width="60%"}
-```{r filename="server.R"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "17|34"
@@ -343,28 +343,28 @@ output$trout_scatterplot <- renderPlot({
                                     "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
                                     "side channel" = 25)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
-      myCustomTheme
+      myCustomTheme()
 
  },
   
-  alt = "A scatterplot of the relationship between cutthroat trout lengths (mm) and weights (g), with data points colored and shaped based on the water channel type from which they were collected. Trout tend to be longer, but weigh less in waterways within the old growth forest. Trout tend to be shorter, but weigh more in waterways within the clear cut forest."
+  alt = "A scatterplot of the relationship between cutthroat trout lengths (mm) and weights (g). Trout tend to be longer, but weigh less in waterways within the old growth forest. Trout tend to be shorter, but weigh more in waterways within the clear cut forest."
   
 ) # END render trout scatterplot
 
 
 # render flipperLength hisogram ----
-output$flipperLength_histogram <- renderPlot({
+output$flipperLength_histogram_output <- renderPlot({
 
   ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
     geom_histogram(alpha = 0.6, bins = input$bin_num) +
     scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
     labs(x = "Flipper length (mm)", y = "Frequency",
          fill = "Penguin species") +
-    myCustomTheme
+    myCustomTheme()
     
  },
   
-  alt = "A histogram of penguin flipper lengths (mm), with data colored by penguin species. Flipper lengths tend to be smallest on Adélie penguins and largest on Gentoo penguins."
+  alt = "A histogram of penguin flipper lengths (mm). Flipper lengths tend to be smallest on Adélie penguins tend to have the smallest flipper lengths and Gentoo have the largest."
   
 ) # END render flipperLength histogram
 

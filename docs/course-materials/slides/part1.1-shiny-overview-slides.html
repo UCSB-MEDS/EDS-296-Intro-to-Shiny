@@ -417,9 +417,13 @@
 <h2></h2>
 <p><span class="slide-title">Shiny makes building web apps easy</span></p>
 <hr>
-<p class="quote-text-bg body-text bottombr">
-<em>Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge.</em> <strong>-Posit</strong>
-</p>
+<blockquote>
+<p><em>“Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge.”</em></p>
+</blockquote>
+<div class="right-align-text">
+<p><strong>-Posit</strong></p>
+</div>
+<!-- <p class="quote-text-bg body-text bottombr">*"Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge."* **-Posit**</p> -->
 <p><br></p>
 
 <img data-src="images/part1/worldbank-shiny.gif" style="width:80.0%" alt="A gif of Andre Duarte's 'Worldbank-Shiny' app. On the lefthand side of the app, the title 'Gapminder Interactive Plot' sits above a series of three widgets. The first is a dropdown menu where the user can select a region (e.g. Europe &amp; Central Asia) or view all regions at the same time. The next two widgets are slider inputs -- the first allows the user to select a year between 1960 and 2014, and the second allows the user to select a population size between 500 and 5000. On the right hand side of the app is a bubble plot of Fertility Rate vs. Life Expectancy, which updates as inputs are changed by the user. Hovering a bubble displays thge corresponding Country, Region, Population, Life Expectancy, and Fertility Rate." class="r-stretch quarto-figure-center"><center>
@@ -427,6 +431,35 @@
 <a href="https://github.com/aguimaraesduarte/WorldBank-Shiny">Worldbank-Shiny</a> app to visualize fertility rate vs.&nbsp;life expectancy from 1960 to 2015, by <a href="https://github.com/aguimaraesduarte">Andre Duarte</a>
 </p>
 </center>
+</section>
+<section id="framework" class="slide level2" data-menu-title="Shiny framework">
+<h2></h2>
+<p><span class="slide-title">What’s a <em>framework</em>?</span></p>
+<hr>
+<p>A programming framework (like Shiny) is a <strong>set of tools that provide ready-made components and / or solutions</strong> for development.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<ul>
+<li class="fragment"><p><span class="body-text-s">Frameworks serve as a <strong>foundation</strong> so that you don’t need to start development entirely from scratch. They are a starting point for you to add the higher-level functionality that actually makes your software work.</span></p></li>
+<li class="fragment"><p><span class="body-text-s">Frameworks are often <strong>opinionated</strong>, meaning you need to follow the rules / structure of the framework.</span></p></li>
+<li class="fragment"><p><span class="body-text-s">Use the Shiny framework for developing apps / dashboards in <strong>R <em>or</em> Python</strong></span></p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/part1/shiny-r-python.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Read more about frameworks on <a href="https://www.codecademy.com/resources/blog/what-is-a-framework/">codecademy</a></p>
+</div>
 </section>
 <section id="app-anatomy" class="slide level2" data-menu-title="~~~ Anatomy of an app ~~~" data-background="#047C90">
 <h2></h2>
@@ -448,7 +481,7 @@ Shiny apps are composed in <em>two</em> parts: <span class="teal-text"><strong>(
 </p>
 
 <img data-src="images/part1/basic_shiny_app.png" style="width:80.0%" alt="A simple schematic of a Shiny app, which includes the User Interface (UI, colored in blue) and the Server (colored in orange). The UI creates what the user will see and interact with, while the server builds the outputs that react and update based on user inputs." class="r-stretch quarto-figure-center"><p class="body-text bottombr">
-The <strong>UI</strong> controls the <strong>layout and appearance</strong> of your app and is written in HTML (but we use functions from the <code>{shiny}</code> package to write that HTML). The <strong>server</strong> handles the <strong>logic</strong> of the app – in other words, it is a set of instructions that tells the webpage what to display when a user interacts with it.
+The <strong>UI</strong> controls the <strong>layout and appearance</strong> of your app and is written in HTML (but we use functions from the <code>{shiny}</code> package to write that HTML). The <strong>server</strong> handles the <strong>logic</strong> of the app – in other words, it is a set of instructions that tells the web page what to display when a user interacts with it.
 </p>
 </section>
 <section id="widgets" class="slide level2" data-menu-title="Widgets">
@@ -544,9 +577,9 @@ Change the number of bins using the <code>sliderInput</code> widget and watch th
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Input: Slider for the number of bins ----</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bins"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3"></a>            <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>             <span class="at">min =</span> <span class="dv">1</span>,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>             <span class="at">max =</span> <span class="dv">50</span>,</span>
-<span id="cb3-6"><a href="#cb3-6"></a>             <span class="at">value =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a>            <span class="at">min =</span> <span class="dv">1</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>            <span class="at">max =</span> <span class="dv">50</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>            <span class="at">value =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -569,7 +602,7 @@ End part 1.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3b3d61e4" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_c916a51d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

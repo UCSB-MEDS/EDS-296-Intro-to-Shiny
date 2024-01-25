@@ -17,7 +17,7 @@ editor_options:
 
 <hr>
 
-<p class="body-text">It's usually valuable (and important) to provide some background information/context for your app -- the landing page of your app can be a great place for this. We're going to add text to our app's landing page (i.e. the **About this App** page) so that it looks like the example below:</p>
+<p class="body-text">It's usually valuable (and important) to provide some background information / context for your app -- the landing page of your app can be a great place for this. We're going to add text to our app's landing page (i.e. the **About this App** page) so that it looks like the example below:</p>
 
 <br>
 
@@ -202,7 +202,7 @@ ui <- navbarPage(
              # use columns to create white space on sides
              column(1),
              column(10, includeMarkdown("text/about.md")),
-             column(1),
+             column(1)
              
            ), # END intro text fluidRow
            
@@ -231,8 +231,8 @@ ui <- navbarPage(
                           # channel type pickerInput ----
                           pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
                                       choices = unique(clean_trout$channel_type),
-                                      options = pickerOptions(actionsBox = TRUE),
                                       selected = c("cascade", "pool"),
+                                      options = pickerOptions(actionsBox = TRUE),
                                       multiple = TRUE), # END channel type pickerInput
                           
                           # # section checkboxGroupInput ----
@@ -267,9 +267,9 @@ ui <- navbarPage(
                           # island pickerInput ----
                           pickerInput(inputId = "penguin_island_input", label = "Select an island:",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
-                                      options = pickerOptions(actionsBox = TRUE),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
-                                      multiple = T), # END island pickerInput
+                                      options = pickerOptions(actionsBox = TRUE),
+                                      multiple = TRUE), # END island pickerInput
                           
                           # bin number sliderInput ----
                           sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
@@ -295,7 +295,7 @@ ui <- navbarPage(
 ) # END navbarPage
 ```
 
-## `about.md`
+## `text/about.md`
 ```{markdown filename="~/two-file-app/text/about.md"}
 #| eval: false
 #| echo: true
@@ -364,6 +364,19 @@ library(tidyverse)
 library(shinyWidgets)
 library(markdown)
 
+# GGPLOT THEME ----
+myCustomTheme <- function() {
+  
+  theme_light() +
+  theme(axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(size = 14, face = "bold"),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 13),
+    legend.position = "bottom",
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+  
+}
+
 # DATA WRANGLING ----
 clean_trout <- and_vertebrates |>
   filter(species == c("Cutthroat trout")) |>
@@ -382,20 +395,6 @@ clean_trout <- and_vertebrates |>
     section == "OG" ~ "old growth forest"
   )) |> 
   drop_na()
-
-# GGPLOT THEME ----
-myCustomTheme <- function() {
-  
-  theme_light() +
-  theme(axis.text = element_text(color = "black", size = 12),
-    axis.title = element_text(size = 14, face = "bold"),
-    legend.title = element_text(size = 14, face = "bold"),
-    legend.text = element_text(size = 13),
-    legend.position = "bottom",
-    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
-  
-}
-
 ```
 
 ## `ui.R`
@@ -415,7 +414,7 @@ ui <- navbarPage(
              # use columns to create white space on sides
              column(1),
              column(10, includeMarkdown("text/about.md")),
-             column(1),
+             column(1)
              
            ), # END intro text fluidRow
            
@@ -443,9 +442,9 @@ ui <- navbarPage(
                           
                           # channel type pickerInput ----
                           pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
-                                      choices = unique(clean_trout$channel_type),
-                                      options = pickerOptions(actionsBox = TRUE),
+                                      choices = unique(clean_trout$channel_type), # alternatively, include vector of options
                                       selected = c("cascade", "pool"),
+                                      options = pickerOptions(actionsBox = TRUE),
                                       multiple = TRUE), # END channel type pickerInput
                           
                           # # section checkboxGroupInput ----
@@ -453,7 +452,8 @@ ui <- navbarPage(
                                                choices = c("clear cut forest", "old growth forest"),
                                                selected = c("clear cut forest", "old growth forest"),
                                                individual = FALSE, justified = TRUE, size = "sm",
-                                               checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = icon("remove", lib = "glyphicon"))), # END section checkboxGroupInput
+                                               checkIcon = list(yes = icon("check", lib = "font-awesome"), 
+                                                                no = icon("xmark", lib = "font-awesome"))), # END section checkboxGroupInput
                           
                         ), # END trout plot sidebarPanel
                         
@@ -482,7 +482,7 @@ ui <- navbarPage(
                                       choices = c("Torgersen", "Dream", "Biscoe"),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
                                       options = pickerOptions(actionsBox = TRUE),
-                                      multiple = T), # END island pickerInput
+                                      multiple = TRUE), # END island pickerInput
                           
                           # bin number sliderInput ----
                           sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
@@ -493,7 +493,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram_input") 
+                          plotOutput(outputId = "flipperLength_histogram_output") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -555,7 +555,7 @@ server <- function(input, output) {
       scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
       labs(x = "Flipper length (mm)", y = "Frequency",
            fill = "Penguin species") +
-      myCustomTheme
+      myCustomTheme()
     
   })
   

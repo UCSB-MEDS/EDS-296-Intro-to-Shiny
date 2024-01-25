@@ -63,6 +63,7 @@ toc: true
 - **[Writing Alt Text for Data Visualization](https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81)**, also by [Amy Cesal](https://www.amycesal.com/) -- more great example of alt text for data viz!
 - **[#TidyTuesday alt text instructions](https://github.com/rfordatascience/tidytuesday/blob/master/alt_text.md)** -- a simple formula for writing alt text for data visualizations, as recommended for #TidyTuesday participants
 
-## DEI in Data Visualization
+## Data Visualization
 
-- **[Do No Harm Guide: Applying Equity Awareness in Data Visualization](https://www.urban.org/sites/default/files/publication/104296/do-no-harm-guide.pdf)**, by [Jonathan Schwabish](https://www.urban.org/author/jonathan-schwabish) and [Alice Feng](https://alicefeng.github.io/) -- a guide for for approaching data work (and particularly visualizations) through a lens of diversity, equity, and inclusion 
+There are *so* many incredible data viz resources. Check out the **[resources page](https://samanthacsik.github.io/EDS-240-data-viz/resources.html)** on the EDS 240: Data Visualization & Communication [course website](https://samanthacsik.github.io/EDS-240-data-viz/) for many of my favorites.
+

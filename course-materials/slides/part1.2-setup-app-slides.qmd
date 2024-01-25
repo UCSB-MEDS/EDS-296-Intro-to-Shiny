@@ -87,7 +87,7 @@ knitr::include_graphics("images/part1/repo-structure-details.png")
 knitr::include_graphics("images/part1/one-vs-two.png")
 ```
 
-<p class="body-text-s">Why two options? Before v0.10.2, Shiny apps needed to be split into **two separate files**, `ui.R` and `server.R`, that defined the UI and server components, respectively. With v0.10.2+, users can create a **single-file app**, `app.R`, which contains both the UI and server components together. While it largely comes down to personal preference, a **single-file format is best for smaller apps or when creating a [reprex](https://reprex.tidyverse.org/)**, while the **two-file format is beneficial when writing large, complex apps** where breaking apart code can make things a bit more navigable/maintainable.</p>                                                                
+<p class="body-text-s">Why two options? Before v0.10.2, Shiny apps needed to be split into **two separate files**, `ui.R` and `server.R`, that defined the UI and server components, respectively. With v0.10.2+, users can create a **single-file app**, `app.R`, which contains both the UI and server components together. While it largely comes down to personal preference, a **single-file format is best for smaller apps or when creating a [reprex](https://reprex.tidyverse.org/)**, while the **two-file format is beneficial when writing large, complex apps** where breaking apart code can make things a bit more navigable / maintainable.</p>                                                                
 
 ---
 
@@ -229,7 +229,7 @@ library(shiny)
 
 ```{r}
 countdown::countdown(
-  minutes = 1,
+  minutes = 5,
   # left = 0, right = 0,
   # Fanfare when it's over
   # play_sound = TRUE,

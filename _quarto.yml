@@ -33,11 +33,11 @@ website:
             href: course-materials/part8-wrap-up.qmd
       - text: resources
         menu:
+          - text: resources
+            href: resources.qmd
           - text: MEDS installation guide
             href: https://ucsb-meds.github.io/meds-install-guide.html
             target: _blank
-          - text: resources
-            href: resources.qmd
       - icon: github
         menu:
           - text: Source Code

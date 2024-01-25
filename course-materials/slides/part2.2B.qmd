@@ -111,7 +111,7 @@ knitr::include_graphics("images/part2/penguin_plot.gif")
 
 ## `global.R`
 
-```{r}
+```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "4"
@@ -156,7 +156,7 @@ myCustomTheme <- theme_light() +
 
 ## `ui.R`
 
-```{r}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "61-82"
@@ -187,8 +187,8 @@ ui <- navbarPage(
                           # channel type pickerInput ----
                           pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
                                       choices = unique(clean_trout$channel_type),
-                                      options = pickerOptions(actionsBox = TRUE),
                                       selected = c("cascade", "pool"),
+                                      options = pickerOptions(actionsBox = TRUE),
                                       multiple = TRUE), # END channel type pickerInput
                           
                           # # section checkboxGroupInput ----
@@ -196,7 +196,8 @@ ui <- navbarPage(
                                                choices = c("clear cut forest", "old growth forest"),
                                                selected = c("clear cut forest", "old growth forest"),
                                                individual = FALSE, justified = TRUE, size = "sm",
-                                               checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = icon("remove", lib = "glyphicon"))), # END section checkboxGroupInput
+                                               checkIcon = list(yes = icon("check", lib = "font-awesome"), 
+                                                                no = icon("xmark", lib = "font-awesome"))), # END section checkboxGroupInput
                           
                         ), # END trout plot sidebarPanel
                         
@@ -223,9 +224,9 @@ ui <- navbarPage(
                           # island pickerInput ----
                           pickerInput(inputId = "penguin_island_input", label = "Select an island(s):",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
-                                      options = pickerOptions(actionsBox = TRUE),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
-                                      multiple = T), # END island pickerInput
+                                      options = pickerOptions(actionsBox = TRUE),
+                                      multiple = TRUE), # END island pickerInput
                           
                           # bin number sliderInput ----
                           sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
@@ -253,7 +254,7 @@ ui <- navbarPage(
 
 ## `server.R`
 
-```{r}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "28-47"

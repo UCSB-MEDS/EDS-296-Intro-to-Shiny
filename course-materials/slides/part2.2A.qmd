@@ -120,7 +120,7 @@ knitr::include_graphics("images/part2/app2_v1.gif")
 knitr::include_graphics("images/part2/two_source.png")
 ```
 
-<p class="body-text topbr">This setup is certainly not required/necessary -- organize your IDE however you work best!</p>
+<p class="body-text topbr">This setup is certainly not required / necessary -- organize your IDE however you work best!</p>
 
 ---
 
@@ -552,6 +552,36 @@ knitr::include_graphics("images/part2/app2-layout-fxns.png")
 
 ---
 
+##  {#tips data-menu-title="Tips for success"}
+
+[Important tips for success]{.slide-title}
+
+<hr>
+
+<br>
+
+{{< fa rainbow title="rainbow" >}} **Enable rainbow parentheses**: Tools > Global Options > Code > Display > check Use rainbow parentheses 
+
+<br>
+
+. . . 
+
+{{< fa comment title="a comment bubble" >}} **Add code comments at the start and end of each UI element:** Even with rainbow parentheses, it can be easy to lose track or mistake what parentheses belong with which (see examples on follow slide)
+
+<br>
+
+. . . 
+
+{{< fa bookmark title="a bookmark" >}} **Add placeholder text within your layout functions:** Adding text, like `"slider input will live here"` and `"plot output here"` will help you better visualize what you're working towards. It also makes it easier to navigate large UIs as you begin adding real inputs and outputs.
+
+<br>
+
+. . . 
+
+{{< fa align-left title="left-aligned text" >}} **Use keyboard shortcuts to realign your code:** Select all your code using `cmd` / `ctrl` + `A`, then realign using `cmd` / `ctrl` + `I`.
+
+---
+
 ##  {#build-navbar data-menu-title="Build navbar"}
 
 [Build a navbar with two pages]{.slide-title}
@@ -560,7 +590,6 @@ knitr::include_graphics("images/part2/app2-layout-fxns.png")
 
 <p class="body-text-s">First, **let's build a UI that has a navigation bar with two tabs** -- one for background information and one to contain our data visualizations. To do this, we'll use `navbarPage()` instead of `fluidPage()` to create our webpage.</p>
 
-<p class="body-text-s">**Tip:** It can be *super* helpful add code comments at the start and end of each UI element -- for example, see `# (Page 1) intro tabPanel---` and `# END (Page 1) intro tabPanel`, below. Adding text that you will eventually replace with content (e.g. plots, tables, images, longer text) may help to visualize what you're working towards as well.</p>
 ```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
@@ -584,6 +613,10 @@ ui <- navbarPage(
   
 ) # END navbarPage
 ```
+
+<br>
+
+**Tip:** Run your app often while building out your UI to make sure it's looking as you'd expect!
 
 ---
 
@@ -724,7 +757,7 @@ I encourage you to type the code out yourself, rather than copy/paste!
 
 <br>
 
-Be sure to add text where your input/output will eventually be placed. 
+Be sure to add text where your input / output will eventually be placed. 
 
 <br>
 
@@ -889,7 +922,7 @@ knitr::include_graphics("images/part2/trout.png")
 
 <hr>
 
-In addition to the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/), we'll also be using the `{tidyverse}` for data wrangling/visualization, and the [`{shinyWidgets}` package ](https://github.com/dreamRs/shinyWidgets) to add a `pickerInput` and a `checkboxGroupInput` to our app. 
+In addition to the [`{lterdatasampler}` package](https://lter.github.io/lterdatasampler/), we'll also be using the `{tidyverse}` for data wrangling / visualization, and the [`{shinyWidgets}` package ](https://github.com/dreamRs/shinyWidgets) to add a `pickerInput` and a `checkboxGroupInput` to our app. 
 
 <br>
 
@@ -954,11 +987,11 @@ clean_trout <- and_vertebrates |>
 
 <hr>
 
-<p class="body-text-s">The `channel_type` variable (originally called `unittype` -- we updated the name when wrangling data) represents the type of water body (*cascade, riffle, isolated pool, pool, rapid, step (small falls), or side channel*) where data were collected. We'll start by building a `shinyWidgets::pickerInput()` to allow users to filter data based on `channel_type`.</p>
+<p class="body-text-s">The `channel_type` variable (originally called `unittype` -- we updated the name when wrangling data) represents the type of water body (*cascade, riffle, isolated pool, pool, rapid, step (small falls), or side channel*) where data were collected. We'll start by building a [`shinyWidgets::pickerInput()`](https://dreamrs.github.io/shinyWidgets/reference/pickerInput.html) to allow users to filter data based on `channel_type`.</p>
 
 . . . 
 
-<p class="body-text-s topbr">**Reminder:** When we we designed our UI layout, we added a `sidebarPanel` to our **Trout** tab with the placeholder text `"trout plot input(s) go here"`. Replace that text with the code for your `pickerInput`:</p>
+<p class="body-text-s topbr">**Reminder:** When we designed our UI layout, we added a `sidebarPanel` to our **Trout** tab with the placeholder text `"trout plot input(s) go here"`. Replace that text with the code for your `pickerInput`:</p>
 
 ```{r filename="~/two-file-app/ui.R"}
 #| eval: false
@@ -1047,7 +1080,7 @@ server <- function(input, output) {
                                     "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
                                     "side channel" = 25)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
-      myCustomTheme
+      myCustomTheme()
     
   }) 
   
@@ -1083,13 +1116,26 @@ server <- function(input, output) {
 ```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "27-38"
+#| code-line-numbers: "8-19"
 # LOAD LIBRARIES ----
 library(shiny)
 library(lterdatasampler)
 library(palmerpenguins)
 library(tidyverse)
 library(shinyWidgets)
+
+# GGPLOT THEME ----
+myCustomTheme <- function() {
+  
+  theme_light() +
+  theme(axis.text = element_text(color = "black", size = 12),
+    axis.title = element_text(size = 14, face = "bold"),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 13),
+    legend.position = "bottom",
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+  
+}
 
 # DATA WRANGLING ----
 clean_trout <- and_vertebrates |>
@@ -1109,19 +1155,6 @@ clean_trout <- and_vertebrates |>
     section == "OG" ~ "old growth forest"
   )) |> 
   drop_na()
-
-# GGPLOT THEME ----
-myCustomTheme <- function() {
-  
-  theme_light() +
-  theme(axis.text = element_text(color = "black", size = 12),
-    axis.title = element_text(size = 14, face = "bold"),
-    legend.title = element_text(size = 14, face = "bold"),
-    legend.text = element_text(size = 13),
-    legend.position = "bottom",
-    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
-  
-}
 ```
 
 ---
@@ -1153,18 +1186,18 @@ knitr::include_graphics("images/part2/app2_plot1_widget1.gif")
 
 <p class="body-text-s">Be sure to add the widget to the same `sidebarPanel` as our `pickerInput` (and separate them with a comma!):</p>
 
-```{r filename="ui.R"}
+```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "11-16"
+#| code-line-numbers: "11-17"
 # trout plot sidebarPanel ----
 sidebarPanel(
   
   # channel type pickerInput ----
   pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
               choices = unique(clean_trout$channel_type),
-              options = pickerOptions(actionsBox = TRUE),
               selected = c("cascade", "pool"),
+              options = pickerOptions(actionsBox = TRUE),
               multiple = TRUE), # END channel type pickerInput
 
   # section checkboxGroupButtons ----
@@ -1172,7 +1205,8 @@ sidebarPanel(
                        choices = c("clear cut forest", "old growth forest"),
                        selected = c("clear cut forest", "old growth forest"),
                        individual = FALSE, justified = TRUE, size = "sm",
-                       checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = icon("remove", lib = "glyphicon"))), # END section checkboxGroupInput
+                       checkIcon = list(yes = icon("check", lib = "font-awesome"), 
+                                        no = icon("xmark", lib = "font-awesome"))), # END section checkboxGroupInput
                    
             ) # END trout plot sidebarPanel
 ```
@@ -1187,7 +1221,7 @@ sidebarPanel(
 
 <p class="body-text-s">Return to your **server** to modify `trout_filtered_df` -- our data frame needs to be updated based on both the `pickerInput`, which selects for `channel_type`, *and* the `checkboxGrouptInput`, which selects for forest `section`:</p>
 
-```{r filename="server.R"}
+```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "6"

@@ -38,7 +38,13 @@ editor_options:
 
 <hr>
 
-<p class="quote-text-bg body-text bottombr">*Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge.* **-Posit**</p>
+>*"Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge."* 
+
+::: {.right-align-text}
+**-Posit**
+:::
+
+<!-- <p class="quote-text-bg body-text bottombr">*"Shiny is an open source R package that provides an elegant and powerful web framework for building web applications using R. Shiny helps you turn your analyses into interactive web applications without requiring HTML, CSS, or JavaScript knowledge."* **-Posit**</p> -->
 
 <br>
 
@@ -52,6 +58,45 @@ knitr::include_graphics("images/part1/worldbank-shiny.gif")
 ```
 
 <center><p class="body-text-s gray-text topbr">[Worldbank-Shiny](https://github.com/aguimaraesduarte/WorldBank-Shiny) app to visualize fertility rate vs. life expectancy from 1960 to 2015, by [Andre Duarte](https://github.com/aguimaraesduarte)</p></center>
+
+---
+
+##  {#framework data-menu-title="Shiny framework"}
+
+[What's a *framework*?]{.slide-title}
+
+<hr>
+
+A programming framework (like Shiny) is a **set of tools that provide ready-made components and / or solutions** for development. 
+
+:::: {.columns}
+
+::: {.column width="50%" .incremental}
+
+<br>
+
+- [Frameworks serve as a **foundation** so that you don't need to start development entirely from scratch. They are a starting point for you to add the higher-level functionality that actually makes your software work.]{.body-text-s}
+
+- [Frameworks are often **opinionated**, meaning you need to follow the rules / structure of the framework.]{.body-text-s}
+
+- [Use the Shiny framework for developing apps / dashboards in **R *or* Python**]{.body-text-s}
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part1/shiny-r-python.png")
+```
+:::
+
+::::
+
+::: {.footer}
+Read more about frameworks on [codecademy](https://www.codecademy.com/resources/blog/what-is-a-framework/)
+:::
 
 ---
 
@@ -81,7 +126,7 @@ knitr::include_graphics("images/part1/worldbank-shiny.gif")
 knitr::include_graphics("images/part1/basic_shiny_app.png")
 ```
 
-<p class="body-text bottombr">The **UI** controls the **layout and appearance** of your app and is written in HTML (but we use functions from the `{shiny}` package to write that HTML). The **server** handles the **logic** of the app -- in other words, it is a set of instructions that tells the webpage what to display when a user interacts with it.</p>
+<p class="body-text bottombr">The **UI** controls the **layout and appearance** of your app and is written in HTML (but we use functions from the `{shiny}` package to write that HTML). The **server** handles the **logic** of the app -- in other words, it is a set of instructions that tells the web page what to display when a user interacts with it.</p>
 
 ---
 
@@ -208,9 +253,9 @@ runExample("01_hello")
 # Input: Slider for the number of bins ----
 sliderInput(inputId = "bins",
             label = "Number of bins:",
-             min = 1,
-             max = 50,
-             value = 30)
+            min = 1,
+            max = 50,
+            value = 30)
 ```
 
 . . . 

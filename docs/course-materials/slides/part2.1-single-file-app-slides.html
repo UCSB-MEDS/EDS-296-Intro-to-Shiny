@@ -637,8 +637,11 @@ Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;peng
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>All input functions have the same first argument, <code>inputId</code></strong> (<strong>NOTE:</strong> <code>Id</code> <em>not</em> <code>ID</code>), <strong>which is used to connect the front end of your app (the UI) with the back end (the server).</strong> For example, if your UI has an <code>inputId = "name"</code>, the server function will access that input value using the syntax <code>input$name</code>. The <code>inputId</code> has two constraints:
 </p>
+<div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> it must be a simple string containing only letters, numbers, and underscores,</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> it must be unique within your app.</span></p>
+</div>
+<div class="fragment">
 <p class="body-text-s topbr">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Most input functions have a second parameter called <code>label</code>, which is used to create a human-readable label for the control, which will appear in the UI.
 </p>
@@ -654,6 +657,7 @@ Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;peng
 <p><br></p>
 <div class="footer">
 <p>Check out the interactive <a href="https://shiny.rstudio.com/gallery/widget-gallery.html">Shiny Widgets Gallery</a> to learn how to implement the most common widgets.</p>
+</div>
 </div>
 </section>
 <section id="add-input" class="slide level2" data-menu-title="Add an Input">
@@ -752,7 +756,7 @@ Let’s now add a <code>plotOutput()</code>, which will be updated based on the 
 <img data-src="images/part2/output-placeholder.png" style="width:100.0%" alt="A Google Chrome browser window with our Shiny app open on the left-hand side and the underlying HTML document open on the right. The app looks the same as before, except hovering over the HTML associated with our new plotOutput highlights a blue square region beneath the sliderInput. This highlighted region is the placeholder where our plot will eventually be rendered." class="r-stretch quarto-figure-center"></section>
 <section id="rendering-outputs" class="slide level2" data-menu-title="Rendering outputs">
 <h2></h2>
-<p><span class="slide-title">Render outputs with <code>*render*()</code> functions</span></p>
+<p><span class="slide-title">Render outputs with <code>render*()</code> functions</span></p>
 <hr>
 <p class="body-text">
 Each <code>*Output()</code> function in the UI is coupled with a <code>render*()</code> function in the server, which contains the “instructions” for creating the output based on user inputs (or in other words, the instructions for making your output <em>reactive</em>).
@@ -933,7 +937,7 @@ I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a
 <span id="cb9-7"><a href="#cb9-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, </span>
 <span id="cb9-8"><a href="#cb9-8"></a>           <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
 <span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"darkorange"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
 <span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
 <span id="cb9-12"><a href="#cb9-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
 <span id="cb9-13"><a href="#cb9-13"></a>       <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
@@ -944,11 +948,11 @@ I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a
 </div>
 </div>
 <div id="tabset-1-2">
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-filename="~/scratch/practice-script-app1.R">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/penguin-scatterplot.png" style="width:60.0%" alt="A scatterplot with Flipper length (mm) on the x-axis and Bill length (mm) on the y-axis. Data points are colored by penguins species: Adelie in orange circles, Chinstrap in purple triangles, and Gentoo in green squares."></p>
+<p><img data-src="part2.1-single-file-app-slides_files/figure-revealjs/unnamed-chunk-15-1.png" style="width:80.0%" alt="A scatterplot with Flipper length (mm) on the x-axis and Bill length (mm) on the y-axis. Data points are colored by penguins species: Adelie in orange circles, Chinstrap in purple triangles, and Gentoo in green squares."></p>
 </figure>
 </div>
 </div>
@@ -969,7 +973,7 @@ Copy your code over to your app, placing it inside the <code>{}</code> (and make
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># load packages ----</span></span>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="3-4,25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="fu">library</span>(tidyverse)</span>
@@ -1361,7 +1365,7 @@ Press the right arrow key to advance through the newly added lines of code.
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="5|23-29|59-72i"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># load packages ----</span></span>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="5|23-29|59-72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="fu">library</span>(tidyverse)</span>
@@ -1490,7 +1494,7 @@ End part 2.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b1d306d3" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_e0870a9f" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

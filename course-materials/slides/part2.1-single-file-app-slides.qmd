@@ -300,9 +300,13 @@ knitr::include_graphics("images/part2/reactive-app-v1.gif")
 
 <p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **All input functions have the same first argument, `inputId`** (**NOTE:** `Id` *not* `ID`), **which is used to connect the front end of your app (the UI) with the back end (the server).** For example, if your UI has an `inputId = "name"`, the server function will access that input value using the syntax `input$name`. The `inputId` has two constraints:</p>
 
+. . . 
+
 [[**(1)**]{.teal-text} it must be a simple string containing only letters, numbers, and underscores,]{.body-text-s}
 
 [[**(2)**]{.teal-text} it must be unique within your app.]{.body-text-s}
+
+. . . 
 
 <p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Most input functions have a second parameter called `label`, which is used to create a human-readable label for the control, which will appear in the UI.</p>
 
@@ -439,7 +443,7 @@ knitr::include_graphics("images/part2/output-placeholder.png")
 
 ##  {#rendering-outputs data-menu-title="Rendering outputs"}
 
-[Render outputs with `*render*()` functions]{.slide-title}
+[Render outputs with `render*()` functions]{.slide-title}
 
 <hr>
 
@@ -613,7 +617,7 @@ ggplot(na.omit(penguins),
        aes(x = flipper_length_mm, y = bill_length_mm, 
            color = species, shape = species)) +
   geom_point() +
-  scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
+  scale_color_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
   scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
   labs(x = "Flipper length (mm)", y = "Bill length (mm)", 
        color = "Penguin species", shape = "Penguin species") +
@@ -623,13 +627,37 @@ ggplot(na.omit(penguins),
 ```
 
 ## Output
+```{r filename="~/scratch/practice-script-app1.R"}
+#| eval: true
+#| echo: false
+#| out-width: "80%"
+#| fig-align: "center"
+#| fig-alt: "A scatterplot with Flipper length (mm) on the x-axis and Bill length (mm) on the y-axis. Data points are colored by penguins species: Adelie in orange circles, Chinstrap in purple triangles, and Gentoo in green squares."
+# load packages ----
+library(palmerpenguins)
+library(tidyverse)
+
+# create scatterplot ----
+ggplot(na.omit(penguins), 
+       aes(x = flipper_length_mm, y = bill_length_mm, 
+           color = species, shape = species)) +
+  geom_point() +
+  scale_color_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
+  scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
+  labs(x = "Flipper length (mm)", y = "Bill length (mm)", 
+       color = "Penguin species", shape = "Penguin species") +
+  theme_minimal() +
+  theme(legend.position = c(0.85, 0.2),
+        legend.background = element_rect(color = "white"))
+```
+
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
 #| out-width: "60%"
 #| fig-alt: "A scatterplot with Flipper length (mm) on the x-axis and Bill length (mm) on the y-axis. Data points are colored by penguins species: Adelie in orange circles, Chinstrap in purple triangles, and Gentoo in green squares."
-knitr::include_graphics("images/part2/penguin-scatterplot.png")
+#knitr::include_graphics("images/part2/penguin-scatterplot.png")
 ```
 
 :::
@@ -647,7 +675,7 @@ knitr::include_graphics("images/part2/penguin-scatterplot.png")
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "25-35" 
+#| code-line-numbers: "3-4,25-35" 
 
 # load packages ----
 library(shiny)
@@ -1073,7 +1101,7 @@ See next slide for some tips on getting started!
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "5|23-29|59-72i"
+#| code-line-numbers: "5|23-29|59-72"
 # load packages ----
 library(shiny)
 library(palmerpenguins)

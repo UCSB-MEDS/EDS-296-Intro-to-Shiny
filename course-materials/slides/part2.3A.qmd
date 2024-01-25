@@ -113,7 +113,7 @@ Check out the [shinyapps.io user guide](https://docs.posit.co/shinyapps.io/index
 
 . . . 
 
-<p class="body-text">If you and/or your client wish to continue using your app after this time, we recommend one of the following two options:</p>
+<p class="body-text">If you and / or your client wish to continue using your app after this time, we recommend one of the following two options:</p>
 
 . . . 
 
