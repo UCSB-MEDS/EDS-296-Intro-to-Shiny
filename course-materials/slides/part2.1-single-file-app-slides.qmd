@@ -1126,8 +1126,8 @@ ui <- fluidPage(
   
   # year input ----
   checkboxGroupInput(inputId = "year_input", label = "Select year(s):",
-                     choices = c("2007", "2008", "2009"), # or `unique(penguins$year_input)` | NOTE: update checkbox display name by using "New name" = "observation name" (e.g "The year 2007" = "2007")
-                     selected = c("2007", "2008")),
+                     choices = c(2007, 2008, 2009), # or `unique(penguins$year)` | NOTE: update checkbox display name by using "New name" = "observation name" (e.g "The year 2007" = 2007)
+                     selected = c(2007, 2008)),
   
   # DT output ----
   DT::dataTableOutput(outputId = "penguin_DT_output")
