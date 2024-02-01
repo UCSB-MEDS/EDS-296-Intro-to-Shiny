@@ -414,7 +414,7 @@
 <p><span class="custom-title">EDS 430: Part 3.1</span></p>
 <p><span class="custom-subtitle"><em>Building Shiny dashboards</em></span></p>
 <hr class="hr-teal">
-<p><span class="custom-subtitle3">Week 1 | January 26<sup>th</sup>, 2024</span></p>
+<p><span class="custom-subtitle3">Week 2 | February 2<sup>nd</sup>, 2024</span></p>
 </section>
 <section id="building-dashboards" class="slide level2" data-menu-title="~~~ Building Dashboards ~~~" data-background="#047C90">
 <h2></h2>
@@ -423,7 +423,7 @@
 <i class="fa-solid fa-gauge" title="a gauge" aria-label="gauge"></i> Building dashboards with <code>{shinydashboard}</code>
 </p>
 <p class="caption-text">
-<em>Shiny alone is powerful and flexible, however it can take a lot of work to create a sleek/modern UI. <code>{shinydashboard}</code> provides a “template” for quickly building visually appealing dashboard apps.</em>
+<em>Shiny alone is powerful and flexible, however it can take a lot of work to create a sleek / modern UI. <code>{shinydashboard}</code> provides a “template” for quickly building visually appealing dashboard apps.</em>
 </p>
 </div>
 </section>
@@ -510,9 +510,7 @@ In this section, we’ll be building a <strong>shinydashboard</strong> using dat
 <h2></h2>
 <p><span class="slide-title2">But first, what do we mean by a shiny “dashboard”?</span></p>
 <hr>
-<p class="body-text">
-<a href="https://rstudio.github.io/shinydashboard/"><code>{shinydashboard}</code></a> is just an alternative framework for building shiny apps. In other words, shiny dashboards are just shiny apps, but with some different UI elements that make building apps with a classic “dashboard” feel to them a little bit easier.
-</p>
+<p><span class="body-text-s">The <a href="https://rstudio.github.io/shinydashboard/"><code>{shinydashboard}</code> package</a> provides additional UI layout functions that make building apps with a more classic “dashboard” feel a bit easier. You’ll always need to import <code>{shiny}</code> alongside <code>{shinydashboard}</code> (i.e.&nbsp;it’s not a full replacement for <code>{shiny}</code>).</span></p>
 
 <img data-src="images/part3/simple_dashboard.png" style="width:100.0%" alt="A simple shinydashboard with two boxes (one containing a histogram and one containing a sliderInput) in the body. The header reads 'Basic tabs' and the sidebar has two menu items: Dashboard and Widgets." class="r-stretch quarto-figure-center"></section>
 <section id="dashboardPage" class="slide level2" data-menu-title="dashboardPage()">
@@ -773,12 +771,12 @@ Our goal is to create a <code>leaflet</code> map with makers placed on each of t
 <span id="cb5-14"><a href="#cb5-14"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-15"><a href="#cb5-15"></a></span>
 <span id="cb5-16"><a href="#cb5-16"></a><span class="co"># read in raw data ----</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a>lake_monitoring_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"raw_data"</span>, <span class="st">"FCWO_lakemonitoringdata_2011_2022_daily.csv"</span>))</span>
+<span id="cb5-17"><a href="#cb5-17"></a>lake_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"raw_data"</span>, <span class="st">"FCWO_lakemonitoringdata_2011_2022_daily.csv"</span>))</span>
 <span id="cb5-18"><a href="#cb5-18"></a></span>
 <span id="cb5-19"><a href="#cb5-19"></a><span class="co"># calculate avg depth &amp; temp ----</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>avg_depth_temp <span class="ot">&lt;-</span> lake_monitoring_data <span class="sc">|&gt;</span> </span>
+<span id="cb5-20"><a href="#cb5-20"></a>avg_depth_temp <span class="ot">&lt;-</span> lake_raw <span class="sc">|&gt;</span> </span>
 <span id="cb5-21"><a href="#cb5-21"></a>  <span class="fu">select</span>(Site, Depth, BedTemperature) <span class="sc">|&gt;</span> </span>
-<span id="cb5-22"><a href="#cb5-22"></a>  <span class="fu">filter</span>(Depth <span class="sc">!=</span> <span class="st">"NaN"</span>) <span class="sc">|&gt;</span>  <span class="co"># remove NaN ("snot a number") from Depth</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>  <span class="fu">filter</span>(Depth <span class="sc">!=</span> <span class="st">"NaN"</span>) <span class="sc">|&gt;</span>  <span class="co"># remove NaN ("not a number") from Depth</span></span>
 <span id="cb5-23"><a href="#cb5-23"></a>  <span class="fu">drop_na</span>(BedTemperature) <span class="sc">|&gt;</span> <span class="co"># remove NAs (missing data) from BedTemperature</span></span>
 <span id="cb5-24"><a href="#cb5-24"></a>  <span class="fu">group_by</span>(Site) <span class="sc">|&gt;</span> </span>
 <span id="cb5-25"><a href="#cb5-25"></a>  <span class="fu">summarize</span>(</span>
@@ -787,15 +785,15 @@ Our goal is to create a <code>leaflet</code> map with makers placed on each of t
 <span id="cb5-28"><a href="#cb5-28"></a>    )</span>
 <span id="cb5-29"><a href="#cb5-29"></a></span>
 <span id="cb5-30"><a href="#cb5-30"></a><span class="co"># join avg depth &amp; temp to original data (match rows based on 'Site') ---</span></span>
-<span id="cb5-31"><a href="#cb5-31"></a>lake_monitoring_data <span class="ot">&lt;-</span> <span class="fu">full_join</span>(lake_monitoring_data, avg_depth_temp)</span>
+<span id="cb5-31"><a href="#cb5-31"></a>joined_dfs <span class="ot">&lt;-</span> <span class="fu">full_join</span>(lake_raw, avg_depth_temp)</span>
 <span id="cb5-32"><a href="#cb5-32"></a></span>
 <span id="cb5-33"><a href="#cb5-33"></a><span class="co"># get unique lakes observations (with corresponding lat, lon, elev, avgDepth, avgTemp) for mapping ----</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a>unique_lakes <span class="ot">&lt;-</span> lake_monitoring_data <span class="sc">|&gt;</span> </span>
+<span id="cb5-34"><a href="#cb5-34"></a>unique_lakes <span class="ot">&lt;-</span> joined_dfs <span class="sc">|&gt;</span> </span>
 <span id="cb5-35"><a href="#cb5-35"></a>  <span class="fu">select</span>(Site, Latitude, Longitude, Elevation, AvgDepth, AvgTemp) <span class="sc">|&gt;</span> </span>
 <span id="cb5-36"><a href="#cb5-36"></a>  <span class="fu">distinct</span>()</span>
 <span id="cb5-37"><a href="#cb5-37"></a></span>
 <span id="cb5-38"><a href="#cb5-38"></a><span class="co"># save processed data to your app's data directory ----</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a><span class="fu">write_csv</span>(<span class="at">x =</span> unique_lakes, <span class="at">file =</span> <span class="st">"shinydashboard/data/lake_data_processed.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="fu">write_csv</span>(<span class="at">x =</span> unique_lakes, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"shinydashboard"</span>, <span class="st">"data"</span>, <span class="st">"lake_data_processed.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -824,8 +822,8 @@ There are lots of ways to customize <code>leaflet</code> maps. We’ll be keepin
 </p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b1f61d99fa34f8a294a3" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-b1f61d99fa34f8a294a3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter <br> Elevation: 12.3 meters (above SL) <br> Avg Depth: 2.3 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: Hipbone <br> Elevation: 21 meters (above SL) <br> Avg Depth: 2 meters <br> Avg Lake Bed Temperature: 10.7 deg Celsius","Site Name: Iceshove <br> Elevation: 20.3 meters (above SL) <br> Avg Depth: 1.8 meters <br> Avg Lake Bed Temperature: 10.9 deg Celsius","Site Name: L9817 <br> Elevation: 16.1 meters (above SL) <br> Avg Depth: 2.6 meters <br> Avg Lake Bed Temperature: 5.9 deg Celsius","Site Name: L9819 <br> Elevation: 8.2 meters (above SL) <br> Avg Depth: 1.7 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: L9820 <br> Elevation: 9.5 meters (above SL) <br> Avg Depth: 1.1 meters <br> Avg Lake Bed Temperature: 5.5 deg Celsius","Site Name: LittleAlaska <br> Elevation: 28.9 meters (above SL) <br> Avg Depth: 1.2 meters <br> Avg Lake Bed Temperature: 5.2 deg Celsius","Site Name: LowerSnowman <br> Elevation: 27.4 meters (above SL) <br> Avg Depth: 1.2 meters <br> Avg Lake Bed Temperature: 7.2 deg Celsius","Site Name: M9925 <br> Elevation: 14.7 meters (above SL) <br> Avg Depth: 0.9 meters <br> Avg Lake Bed Temperature: 7 deg Celsius","Site Name: MiddleSnowman <br> Elevation: 26.3 meters (above SL) <br> Avg Depth: 1.1 meters <br> Avg Lake Bed Temperature: 6.4 deg Celsius","Site Name: Serenity <br> Elevation: 12 meters (above SL) <br> Avg Depth: 3.9 meters <br> Avg Lake Bed Temperature: 10.7 deg Celsius"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-052d592a7f4e9c0c3a1e" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-052d592a7f4e9c0c3a1e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: Hipbone<br>Elevation: 21 meters (above SL)<br>Avg Depth: 2 meters<br>Avg Lake Bed Temperature: 10.7°C","Site Name: Iceshove<br>Elevation: 20.3 meters (above SL)<br>Avg Depth: 1.8 meters<br>Avg Lake Bed Temperature: 10.9°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C","Site Name: L9819<br>Elevation: 8.2 meters (above SL)<br>Avg Depth: 1.7 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9820<br>Elevation: 9.5 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 5.5°C","Site Name: LittleAlaska<br>Elevation: 28.9 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 5.2°C","Site Name: LowerSnowman<br>Elevation: 27.4 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 7.2°C","Site Name: M9925<br>Elevation: 14.7 meters (above SL)<br>Avg Depth: 0.9 meters<br>Avg Lake Bed Temperature: 7°C","Site Name: MiddleSnowman<br>Elevation: 26.3 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 6.4°C","Site Name: Serenity<br>Elevation: 12 meters (above SL)<br>Avg Depth: 3.9 meters<br>Avg Lake Bed Temperature: 10.7°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -842,7 +840,7 @@ There are lots of ways to customize <code>leaflet</code> maps. We’ll be keepin
 <span id="cb6-5"><a href="#cb6-5"></a><span class="fu">library</span>(leaflet)</span>
 <span id="cb6-6"><a href="#cb6-6"></a></span>
 <span id="cb6-7"><a href="#cb6-7"></a><span class="co"># read in data ----</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>filtered_lakes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"shinydashboard"</span>, <span class="st">"data"</span>, <span class="st">"lake_data_processed.csv"</span>))</span>
+<span id="cb6-8"><a href="#cb6-8"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"shinydashboard"</span>, <span class="st">"data"</span>, <span class="st">"lake_data_processed.csv"</span>))</span>
 <span id="cb6-9"><a href="#cb6-9"></a></span>
 <span id="cb6-10"><a href="#cb6-10"></a><span class="co">#..........................PRACTICE VIZ..........................</span></span>
 <span id="cb6-11"><a href="#cb6-11"></a></span>
@@ -858,12 +856,12 @@ There are lots of ways to customize <code>leaflet</code> maps. We’ll be keepin
 <span id="cb6-21"><a href="#cb6-21"></a>  <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb6-22"><a href="#cb6-22"></a>  </span>
 <span id="cb6-23"><a href="#cb6-23"></a>  <span class="co"># add markers</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> unique_lakes,</span>
-<span id="cb6-25"><a href="#cb6-25"></a>             <span class="at">lng =</span> unique_lakes<span class="sc">$</span>Longitude, <span class="at">lat =</span> unique_lakes<span class="sc">$</span>Latitude,</span>
-<span id="cb6-26"><a href="#cb6-26"></a>             <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, unique_lakes<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb6-27"><a href="#cb6-27"></a>                           <span class="st">"Elevation:"</span>, unique_lakes<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb6-28"><a href="#cb6-28"></a>                           <span class="st">"Avg Depth:"</span>, unique_lakes<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb6-29"><a href="#cb6-29"></a>                           <span class="st">"Avg Lake Bed Temperature:"</span>, unique_lakes<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-24"><a href="#cb6-24"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> lake_data, </span>
+<span id="cb6-25"><a href="#cb6-25"></a>             <span class="at">lng =</span> lake_data<span class="sc">$</span>Longitude, <span class="at">lat =</span> lake_data<span class="sc">$</span>Latitude,</span>
+<span id="cb6-26"><a href="#cb6-26"></a>             <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"Site Name: "</span>, lake_data<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27"></a>                           <span class="st">"Elevation: "</span>, lake_data<span class="sc">$</span>Elevation, <span class="st">" meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28"></a>                           <span class="st">"Avg Depth: "</span>, lake_data<span class="sc">$</span>AvgDepth, <span class="st">" meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb6-29"><a href="#cb6-29"></a>                           <span class="st">"Avg Lake Bed Temperature: "</span>, lake_data<span class="sc">$</span>AvgTemp, <span class="st">"\u00B0C"</span>)) <span class="co"># </span><span class="al">NOTE</span><span class="co">: Unicode for degree symbol icon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -883,8 +881,8 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 </p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-11b50f74a7afa2f20a99" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-11b50f74a7afa2f20a99">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter <br> Elevation: 12.3 meters (above SL) <br> Avg Depth: 2.3 meters <br> Avg Lake Bed Temperature: 5.6 deg Celsius","Site Name: L9817 <br> Elevation: 16.1 meters (above SL) <br> Avg Depth: 2.6 meters <br> Avg Lake Bed Temperature: 5.9 deg Celsius"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-16049ae4c3608c3968ab" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-16049ae4c3608c3968ab">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -901,11 +899,11 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 <span id="cb7-5"><a href="#cb7-5"></a><span class="fu">library</span>(leaflet)</span>
 <span id="cb7-6"><a href="#cb7-6"></a></span>
 <span id="cb7-7"><a href="#cb7-7"></a><span class="co"># read in data ----</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>unique_lakes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"shinydashboard"</span>, <span class="st">"data"</span>, <span class="st">"lake_data_processed.csv"</span>))</span>
+<span id="cb7-8"><a href="#cb7-8"></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"shinydashboard"</span>, <span class="st">"data"</span>, <span class="st">"lake_data_processed.csv"</span>))</span>
 <span id="cb7-9"><a href="#cb7-9"></a></span>
 <span id="cb7-10"><a href="#cb7-10"></a><span class="co">#.......................PRACTICE FILTERING.......................</span></span>
 <span id="cb7-11"><a href="#cb7-11"></a></span>
-<span id="cb7-12"><a href="#cb7-12"></a>filtered_lakes <span class="ot">&lt;-</span> unique_lakes <span class="sc">|&gt;</span> </span>
+<span id="cb7-12"><a href="#cb7-12"></a>filtered_lakes <span class="ot">&lt;-</span> lake_data <span class="sc">|&gt;</span> </span>
 <span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">filter</span>(Elevation <span class="sc">&gt;=</span> <span class="dv">8</span> <span class="sc">&amp;</span> Elevation <span class="sc">&lt;=</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-14"><a href="#cb7-14"></a>  <span class="fu">filter</span>(AvgDepth <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> AvgDepth <span class="sc">&lt;=</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-15"><a href="#cb7-15"></a>  <span class="fu">filter</span>(AvgTemp <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">&amp;</span> AvgTemp <span class="sc">&lt;=</span> <span class="dv">6</span>)</span>
@@ -925,12 +923,12 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 <span id="cb7-29"><a href="#cb7-29"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">152.048442</span>, <span class="at">lat =</span> <span class="fl">70.249234</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-30"><a href="#cb7-30"></a>  </span>
 <span id="cb7-31"><a href="#cb7-31"></a>  <span class="co"># add markers</span></span>
-<span id="cb7-32"><a href="#cb7-32"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span>  filtered_lakes,</span>
+<span id="cb7-32"><a href="#cb7-32"></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> filtered_lakes,</span>
 <span id="cb7-33"><a href="#cb7-33"></a>             <span class="at">lng =</span> filtered_lakes<span class="sc">$</span>Longitude, <span class="at">lat =</span> filtered_lakes<span class="sc">$</span>Latitude,</span>
-<span id="cb7-34"><a href="#cb7-34"></a>             <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, filtered_lakes<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb7-35"><a href="#cb7-35"></a>                           <span class="st">"Elevation:"</span>, filtered_lakes<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb7-36"><a href="#cb7-36"></a>                           <span class="st">"Avg Depth:"</span>, filtered_lakes<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb7-37"><a href="#cb7-37"></a>                           <span class="st">"Avg Lake Bed Temperature:"</span>, filtered_lakes<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-34"><a href="#cb7-34"></a>             <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"Site Name: "</span>, filtered_lakes<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb7-35"><a href="#cb7-35"></a>                           <span class="st">"Elevation: "</span>, filtered_lakes<span class="sc">$</span>Elevation, <span class="st">" meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb7-36"><a href="#cb7-36"></a>                           <span class="st">"Avg Depth: "</span>, filtered_lakes<span class="sc">$</span>AvgDepth, <span class="st">" meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb7-37"><a href="#cb7-37"></a>                           <span class="st">"Avg Lake Bed Temperature: "</span>, filtered_lakes<span class="sc">$</span>AvgTemp, <span class="st">"\u00B0C"</span>)) <span class="co"># </span><span class="al">NOTE</span><span class="co">: Unicode for degree symbol icon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1278,7 +1276,7 @@ Lastly, add boxes to our <strong>welcome</strong> tab We’ll use <code>column</
 </section>
 <section id="import-data" class="slide level2" data-menu-title="Read in data">
 <h2></h2>
-<p><span class="slide-title2">Read data into <code>global.R</code> &amp; add necessary packages</span></p>
+<p><span class="slide-title3">Read data into <code>global.R</code> &amp; add necessary packages</span></p>
 <hr>
 <p class="body-text">
 Remember to load your <em>pre-processed</em> data, which should live in the <code>data/</code> folder within your app’s directory.
@@ -1300,10 +1298,11 @@ Remember to load your <em>pre-processed</em> data, which should live in the <cod
 </div>
 </div>
 <div class="fragment">
-<p><strong>Some important notes:</strong></p>
+<p><br></p>
+<p><span class="teal-text"><strong>Some important notes:</strong></span></p>
 <ul>
-<li><span class="body-text-s">Avoid using <code>here::here()</code> in your shiny apps, as it can cause some unexpected issues (read more about it in <a href="https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505">this discussion</a>)</span></li>
-<li><span class="body-text-s">The file path specified for reading in our data is <em>relative</em> to the application folder (<code>shinydashboard/</code>). <em>However</em> this line will not run alone within your script (you’d need to update it to read, <code>read_csv("shinydashboard/data/lake_data_processed.csv")</code>)</span></li>
+<li><span class="body-text-s"><strong>Avoid using <code>here::here()</code> in your shiny apps</strong>, as it can cause some unexpected issues (read more about it in <a href="https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505">this discussion</a>)</span></li>
+<li><span class="body-text-s">The <strong>file path</strong> specified for reading in our data <strong>is relative</strong> to the app files (<code>ui.R</code>, <code>server.R</code>). It’s important to note, however, that you won’t be able to run your code line-by-line (like in a typical script; the file path won’t be recognized) – this is expected!.</span></li>
 </ul>
 </div>
 </section>
@@ -1353,12 +1352,12 @@ Start by adding just one <code>sliderInput</code> (for selecting a range of lake
 <span id="cb13-32"><a href="#cb13-32"></a>            <span class="co"># left-hand column ----</span></span>
 <span id="cb13-33"><a href="#cb13-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
 <span id="cb13-34"><a href="#cb13-34"></a></span>
-<span id="cb13-35"><a href="#cb13-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb13-35"><a href="#cb13-35"></a>                   <span class="co"># background box ----</span></span>
 <span id="cb13-36"><a href="#cb13-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
 <span id="cb13-37"><a href="#cb13-37"></a>                       </span>
 <span id="cb13-38"><a href="#cb13-38"></a>                       <span class="st">"background info here"</span></span>
 <span id="cb13-39"><a href="#cb13-39"></a></span>
-<span id="cb13-40"><a href="#cb13-40"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb13-40"><a href="#cb13-40"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> background box</span></span>
 <span id="cb13-41"><a href="#cb13-41"></a></span>
 <span id="cb13-42"><a href="#cb13-42"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
 <span id="cb13-43"><a href="#cb13-43"></a></span>
@@ -1555,12 +1554,12 @@ Remember to reference your practice data viz script and to follow our three step
 <span id="cb15-32"><a href="#cb15-32"></a>            <span class="co"># left-hand column ----</span></span>
 <span id="cb15-33"><a href="#cb15-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
 <span id="cb15-34"><a href="#cb15-34"></a></span>
-<span id="cb15-35"><a href="#cb15-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb15-35"><a href="#cb15-35"></a>                   <span class="co"># background box ----</span></span>
 <span id="cb15-36"><a href="#cb15-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
 <span id="cb15-37"><a href="#cb15-37"></a>                       </span>
 <span id="cb15-38"><a href="#cb15-38"></a>                       <span class="st">"background info here"</span></span>
 <span id="cb15-39"><a href="#cb15-39"></a></span>
-<span id="cb15-40"><a href="#cb15-40"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb15-40"><a href="#cb15-40"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> background box</span></span>
 <span id="cb15-41"><a href="#cb15-41"></a></span>
 <span id="cb15-42"><a href="#cb15-42"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
 <span id="cb15-43"><a href="#cb15-43"></a></span>
@@ -1819,13 +1818,13 @@ Press the right arrow key to advance through the newly added lines of code.
 <span id="cb21-32"><a href="#cb21-32"></a>            <span class="co"># left-hand column ----</span></span>
 <span id="cb21-33"><a href="#cb21-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
 <span id="cb21-34"><a href="#cb21-34"></a></span>
-<span id="cb21-35"><a href="#cb21-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb21-35"><a href="#cb21-35"></a>                   <span class="co"># background box ----</span></span>
 <span id="cb21-36"><a href="#cb21-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
 <span id="cb21-37"><a href="#cb21-37"></a>                       </span>
 <span id="cb21-38"><a href="#cb21-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
 <span id="cb21-39"><a href="#cb21-39"></a>                       <span class="fu">includeMarkdown</span>(<span class="st">"text/intro.md"</span>)</span>
 <span id="cb21-40"><a href="#cb21-40"></a></span>
-<span id="cb21-41"><a href="#cb21-41"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb21-41"><a href="#cb21-41"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> background box</span></span>
 <span id="cb21-42"><a href="#cb21-42"></a></span>
 <span id="cb21-43"><a href="#cb21-43"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
 <span id="cb21-44"><a href="#cb21-44"></a></span>
@@ -1963,7 +1962,7 @@ Next, use the <code>img</code> tag to add your image. Supply a file path, relati
 <span id="cb22-32"><a href="#cb22-32"></a>            <span class="co"># left-hand column ----</span></span>
 <span id="cb22-33"><a href="#cb22-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
 <span id="cb22-34"><a href="#cb22-34"></a></span>
-<span id="cb22-35"><a href="#cb22-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb22-35"><a href="#cb22-35"></a>                   <span class="co"># background box ----</span></span>
 <span id="cb22-36"><a href="#cb22-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
 <span id="cb22-37"><a href="#cb22-37"></a>                       </span>
 <span id="cb22-38"><a href="#cb22-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
@@ -1971,7 +1970,7 @@ Next, use the <code>img</code> tag to add your image. Supply a file path, relati
 <span id="cb22-40"><a href="#cb22-40"></a>                       tags<span class="sc">$</span><span class="fu">img</span>(<span class="at">src =</span> <span class="st">"FishCreekWatershedSiteMap_2020.jpeg"</span>, </span>
 <span id="cb22-41"><a href="#cb22-41"></a>                                <span class="at">alt =</span> <span class="st">"A map of Northern Alaska, showing Fish Creek Watershed located within the National Petroleum Reserve."</span>) </span>
 <span id="cb22-42"><a href="#cb22-42"></a></span>
-<span id="cb22-43"><a href="#cb22-43"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb22-43"><a href="#cb22-43"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> background box</span></span>
 <span id="cb22-44"><a href="#cb22-44"></a></span>
 <span id="cb22-45"><a href="#cb22-45"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
 <span id="cb22-46"><a href="#cb22-46"></a></span>
@@ -2112,7 +2111,7 @@ I’ve also added a caption below our image that links to the image source, and 
 <span id="cb23-32"><a href="#cb23-32"></a>            <span class="co"># left-hand column ----</span></span>
 <span id="cb23-33"><a href="#cb23-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
 <span id="cb23-34"><a href="#cb23-34"></a></span>
-<span id="cb23-35"><a href="#cb23-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb23-35"><a href="#cb23-35"></a>                   <span class="co"># background box ----</span></span>
 <span id="cb23-36"><a href="#cb23-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
 <span id="cb23-37"><a href="#cb23-37"></a>                       </span>
 <span id="cb23-38"><a href="#cb23-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
@@ -2123,7 +2122,7 @@ I’ve also added a caption below our image that links to the image source, and 
 <span id="cb23-43"><a href="#cb23-43"></a>                       tags<span class="sc">$</span><span class="fu">h6</span>(tags<span class="sc">$</span><span class="fu">em</span>(<span class="st">"Map Source:"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"http://www.fishcreekwatershed.org/"</span>, <span class="st">"FCWO"</span>)),</span>
 <span id="cb23-44"><a href="#cb23-44"></a>                               <span class="at">style =</span> <span class="st">"text-align: center;"</span>)</span>
 <span id="cb23-45"><a href="#cb23-45"></a></span>
-<span id="cb23-46"><a href="#cb23-46"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb23-46"><a href="#cb23-46"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> background box</span></span>
 <span id="cb23-47"><a href="#cb23-47"></a></span>
 <span id="cb23-48"><a href="#cb23-48"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
 <span id="cb23-49"><a href="#cb23-49"></a></span>
@@ -2284,7 +2283,7 @@ There’s a ton more to learn about building shinydashboards. Check out the <a h
 <span id="cb25-32"><a href="#cb25-32"></a>            <span class="co"># left-hand column ----</span></span>
 <span id="cb25-33"><a href="#cb25-33"></a>            <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">6</span>,</span>
 <span id="cb25-34"><a href="#cb25-34"></a></span>
-<span id="cb25-35"><a href="#cb25-35"></a>                   <span class="co"># box ----</span></span>
+<span id="cb25-35"><a href="#cb25-35"></a>                   <span class="co"># background box ----</span></span>
 <span id="cb25-36"><a href="#cb25-36"></a>                   <span class="fu">box</span>(<span class="at">width =</span> <span class="cn">NULL</span>,</span>
 <span id="cb25-37"><a href="#cb25-37"></a>                       </span>
 <span id="cb25-38"><a href="#cb25-38"></a>                       <span class="at">title =</span> <span class="fu">tagList</span>(<span class="fu">icon</span>(<span class="st">"water"</span>), <span class="fu">strong</span>(<span class="st">"Monitoring Fish Creek Watershed"</span>)),</span>
@@ -2295,7 +2294,7 @@ There’s a ton more to learn about building shinydashboards. Check out the <a h
 <span id="cb25-43"><a href="#cb25-43"></a>                       tags<span class="sc">$</span><span class="fu">h6</span>(tags<span class="sc">$</span><span class="fu">em</span>(<span class="st">"Map Source:"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"http://www.fishcreekwatershed.org/"</span>, <span class="st">"FCWO"</span>)),</span>
 <span id="cb25-44"><a href="#cb25-44"></a>                               <span class="at">style =</span> <span class="st">"text-align: center;"</span>)</span>
 <span id="cb25-45"><a href="#cb25-45"></a></span>
-<span id="cb25-46"><a href="#cb25-46"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> box</span></span>
+<span id="cb25-46"><a href="#cb25-46"></a>                   ) <span class="co"># </span><span class="re">END</span><span class="co"> background box</span></span>
 <span id="cb25-47"><a href="#cb25-47"></a></span>
 <span id="cb25-48"><a href="#cb25-48"></a>            ), <span class="co"># </span><span class="re">END</span><span class="co"> left-hand column</span></span>
 <span id="cb25-49"><a href="#cb25-49"></a></span>
@@ -2445,7 +2444,7 @@ End part 3
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ff70bb3a" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_33a20ff0" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

@@ -19,7 +19,7 @@ editor_options:
 
 <hr class="hr-teal">
 
-[Week 1 | January 26^th^, 2024]{.custom-subtitle3}
+[Week 2 | February 2^nd^, 2024]{.custom-subtitle3}
 
 ---
 
@@ -27,7 +27,7 @@ editor_options:
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">{{< fa gauge title="a gauge" >}} Building dashboards with `{shinydashboard}`</p>
-<p class="caption-text">*Shiny alone is powerful and flexible, however it can take a lot of work to create a sleek/modern UI. `{shinydashboard}` provides a "template" for quickly building visually appealing dashboard apps.*</p>
+<p class="caption-text">*Shiny alone is powerful and flexible, however it can take a lot of work to create a sleek / modern UI. `{shinydashboard}` provides a "template" for quickly building visually appealing dashboard apps.*</p>
 </div>
 
 ---
@@ -114,7 +114,7 @@ knitr::include_graphics("images/part3/final-dashboard.gif")
 
 <hr>
 
-<p class="body-text">[`{shinydashboard}`](https://rstudio.github.io/shinydashboard/) is just an alternative framework for building shiny apps. In other words, shiny dashboards are just shiny apps, but with some different UI elements that make building apps with a classic "dashboard" feel to them a little bit easier.</p>
+[The [`{shinydashboard}` package](https://rstudio.github.io/shinydashboard/) provides additional UI layout functions that make building apps with a more classic "dashboard" feel a bit easier. You'll always need to import `{shiny}` alongside `{shinydashboard}` (i.e. it's not a full replacement for `{shiny}`).]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -409,12 +409,12 @@ knitr::include_graphics("images/part3/lakes_df.png")
 library(tidyverse)
 
 # read in raw data ----
-lake_monitoring_data <- read_csv(here::here("raw_data", "FCWO_lakemonitoringdata_2011_2022_daily.csv"))
+lake_raw <- read_csv(here::here("raw_data", "FCWO_lakemonitoringdata_2011_2022_daily.csv"))
 
 # calculate avg depth & temp ----
-avg_depth_temp <- lake_monitoring_data |> 
+avg_depth_temp <- lake_raw |> 
   select(Site, Depth, BedTemperature) |> 
-  filter(Depth != "NaN") |>  # remove NaN ("snot a number") from Depth
+  filter(Depth != "NaN") |>  # remove NaN ("not a number") from Depth
   drop_na(BedTemperature) |> # remove NAs (missing data) from BedTemperature
   group_by(Site) |> 
   summarize(
@@ -423,15 +423,15 @@ avg_depth_temp <- lake_monitoring_data |>
     )
 
 # join avg depth & temp to original data (match rows based on 'Site') ---
-lake_monitoring_data <- full_join(lake_monitoring_data, avg_depth_temp)
+joined_dfs <- full_join(lake_raw, avg_depth_temp)
 
 # get unique lakes observations (with corresponding lat, lon, elev, avgDepth, avgTemp) for mapping ----
-unique_lakes <- lake_monitoring_data |> 
+unique_lakes <- joined_dfs |> 
   select(Site, Latitude, Longitude, Elevation, AvgDepth, AvgTemp) |> 
   distinct()
 
 # save processed data to your app's data directory ----
-write_csv(x = unique_lakes, file = "shinydashboard/data/lake_data_processed.csv")
+write_csv(x = unique_lakes, file = here::here("shinydashboard", "data", "lake_data_processed.csv"))
 ```
 
 ---
@@ -479,7 +479,7 @@ library(tidyverse)
 library(leaflet)
 
 # read in data ----
-filtered_lakes <- read_csv(here::here("data", "lake_data_processed.csv"))
+lake_data <- read_csv(here::here("data", "lake_data_processed.csv"))
 
 # map it ----
 map <- leaflet() |> 
@@ -494,12 +494,12 @@ map <- leaflet() |>
   addMiniMap(toggleDisplay = TRUE, minimized = FALSE) |> 
   
   # add markers
-  addMarkers(data = filtered_lakes,
-             lng = filtered_lakes$Longitude, lat = filtered_lakes$Latitude,
-             popup = paste("Site Name:", filtered_lakes$Site, "<br>",
-                           "Elevation:", filtered_lakes$Elevation, "meters (above SL)", "<br>",
-                           "Avg Depth:", filtered_lakes$AvgDepth, "meters", "<br>",
-                           "Avg Lake Bed Temperature:", filtered_lakes$AvgTemp, "deg Celsius"))
+  addMarkers(data = lake_data, 
+             lng = lake_data$Longitude, lat = lake_data$Latitude,
+             popup = paste0("Site Name: ", lake_data$Site, "<br>",
+                           "Elevation: ", lake_data$Elevation, " meters (above SL)", "<br>",
+                           "Avg Depth: ", lake_data$AvgDepth, " meters", "<br>",
+                           "Avg Lake Bed Temperature: ", lake_data$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
 
 map
 ```
@@ -515,7 +515,7 @@ library(tidyverse)
 library(leaflet)
 
 # read in data ----
-filtered_lakes <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
+lake_data <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
 
 #..........................PRACTICE VIZ..........................
 
@@ -531,12 +531,12 @@ leaflet() |>
   addMiniMap(toggleDisplay = TRUE, minimized = FALSE) |> 
   
   # add markers
-  addMarkers(data = unique_lakes,
-             lng = unique_lakes$Longitude, lat = unique_lakes$Latitude,
-             popup = paste("Site Name:", unique_lakes$Site, "<br>",
-                           "Elevation:", unique_lakes$Elevation, "meters (above SL)", "<br>",
-                           "Avg Depth:", unique_lakes$AvgDepth, "meters", "<br>",
-                           "Avg Lake Bed Temperature:", unique_lakes$AvgTemp, "deg Celsius"))
+  addMarkers(data = lake_data, 
+             lng = lake_data$Longitude, lat = lake_data$Latitude,
+             popup = paste0("Site Name: ", lake_data$Site, "<br>",
+                           "Elevation: ", lake_data$Elevation, " meters (above SL)", "<br>",
+                           "Avg Depth: ", lake_data$AvgDepth, " meters", "<br>",
+                           "Avg Lake Bed Temperature: ", lake_data$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
 ```
 
 :::
@@ -567,10 +567,10 @@ library(tidyverse)
 library(leaflet)
 
 # read in data ----
-lakes_cleaned <- read_csv(here::here("data", "lake_data_processed.csv"))
+lake_data <- read_csv(here::here("data", "lake_data_processed.csv"))
 
 #.......................PRACTICE FILTERING.......................
-filtered_lakes <- lakes_cleaned |> 
+filtered_lakes <- lake_data |> 
   filter(Elevation >= 8 & Elevation <= 20) |> 
   filter(AvgDepth >= 2 & AvgDepth <= 3) |> 
   filter(AvgTemp >= 4 & AvgTemp <= 6)
@@ -590,10 +590,10 @@ map <- leaflet() |>
   # add markers
   addMarkers(data = filtered_lakes,
              lng = filtered_lakes$Longitude, lat = filtered_lakes$Latitude,
-             popup = paste("Site Name:", filtered_lakes$Site, "<br>",
-                           "Elevation:", filtered_lakes$Elevation, "meters (above SL)", "<br>",
-                           "Avg Depth:", filtered_lakes$AvgDepth, "meters", "<br>",
-                           "Avg Lake Bed Temperature:", filtered_lakes$AvgTemp, "deg Celsius"))
+             popup = paste0("Site Name: ", filtered_lakes$Site, "<br>",
+                           "Elevation: ", filtered_lakes$Elevation, " meters (above SL)", "<br>",
+                           "Avg Depth: ", filtered_lakes$AvgDepth, " meters", "<br>",
+                           "Avg Lake Bed Temperature: ", filtered_lakes$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
 
 map
 ```
@@ -611,11 +611,11 @@ library(tidyverse)
 library(leaflet)
 
 # read in data ----
-unique_lakes <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
+lake_data <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
 
 #.......................PRACTICE FILTERING.......................
 
-filtered_lakes <- unique_lakes |> 
+filtered_lakes <- lake_data |> 
   filter(Elevation >= 8 & Elevation <= 20) |> 
   filter(AvgDepth >= 2 & AvgDepth <= 3) |> 
   filter(AvgTemp >= 4 & AvgTemp <= 6)
@@ -635,12 +635,12 @@ leaflet() |>
   setView(lng = -152.048442, lat = 70.249234, zoom = 6) |> 
   
   # add markers
-  addMarkers(data =  filtered_lakes,
+  addMarkers(data = filtered_lakes,
              lng = filtered_lakes$Longitude, lat = filtered_lakes$Latitude,
-             popup = paste("Site Name:", filtered_lakes$Site, "<br>",
-                           "Elevation:", filtered_lakes$Elevation, "meters (above SL)", "<br>",
-                           "Avg Depth:", filtered_lakes$AvgDepth, "meters", "<br>",
-                           "Avg Lake Bed Temperature:", filtered_lakes$AvgTemp, "deg Celsius"))
+             popup = paste0("Site Name: ", filtered_lakes$Site, "<br>",
+                           "Elevation: ", filtered_lakes$Elevation, " meters (above SL)", "<br>",
+                           "Avg Depth: ", filtered_lakes$AvgDepth, " meters", "<br>",
+                           "Avg Lake Bed Temperature: ", filtered_lakes$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
 ```
 :::
 
@@ -994,7 +994,7 @@ dashboardPage(header, sidebar, body)
 
 ##  {#import-data data-menu-title="Read in data"}
 
-[Read data into `global.R` & add necessary packages]{.slide-title2}
+[Read data into `global.R` & add necessary packages]{.slide-title3}
 
 <hr>
 
@@ -1016,10 +1016,12 @@ lake_data <- read_csv("data/lake_data_processed.csv")
 
 . . .
 
-**Some important notes:**
+<br>
 
-- [Avoid using `here::here()` in your shiny apps, as it can cause some unexpected issues (read more about it in [this discussion](https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505))]{.body-text-s}
-- [The file path specified for reading in our data is *relative* to the application folder (`shinydashboard/`). *However* this line will not run alone within your script (you'd need to update it to read, `read_csv("shinydashboard/data/lake_data_processed.csv")`)]{.body-text-s}
+[**Some important notes:**]{.teal-text}
+
+- [**Avoid using `here::here()` in your shiny apps**, as it can cause some unexpected issues (read more about it in [this discussion](https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505))]{.body-text-s}
+- [The **file path** specified for reading in our data **is relative** to the app files (`ui.R`, `server.R`). It's important to note, however, that you won't be able to run your code line-by-line (like in a typical script; the file path won't be recognized) -- this is expected!.]{.body-text-s}
 
 ---
 
@@ -1069,12 +1071,12 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
 
-                   # box ----
+                   # background box ----
                    box(width = NULL,
                        
                        "background info here"
 
-                   ) # END box
+                   ) # END background box
 
             ), # END left-hand column
 
@@ -1301,12 +1303,12 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
 
-                   # box ----
+                   # background box ----
                    box(width = NULL,
                        
                        "background info here"
 
-                   ) # END box
+                   ) # END background box
 
             ), # END left-hand column
 
@@ -1555,13 +1557,13 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
 
-                   # box ----
+                   # background box ----
                    box(width = NULL,
                        
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
                        includeMarkdown("text/intro.md")
 
-                   ) # END box
+                   ) # END background box
 
             ), # END left-hand column
 
@@ -1698,7 +1700,7 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
 
-                   # box ----
+                   # background box ----
                    box(width = NULL,
                        
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
@@ -1706,7 +1708,7 @@ body <- dashboardBody(
                        tags$img(src = "FishCreekWatershedSiteMap_2020.jpeg", 
                                 alt = "A map of Northern Alaska, showing Fish Creek Watershed located within the National Petroleum Reserve.") 
 
-                   ) # END box
+                   ) # END background box
 
             ), # END left-hand column
 
@@ -1858,7 +1860,7 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
 
-                   # box ----
+                   # background box ----
                    box(width = NULL,
                        
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
@@ -1869,7 +1871,7 @@ body <- dashboardBody(
                        tags$h6(tags$em("Map Source:", tags$a(href = "http://www.fishcreekwatershed.org/", "FCWO")),
                                style = "text-align: center;")
 
-                   ) # END box
+                   ) # END background box
 
             ), # END left-hand column
 
@@ -2037,7 +2039,7 @@ body <- dashboardBody(
             # left-hand column ----
             column(width = 6,
 
-                   # box ----
+                   # background box ----
                    box(width = NULL,
                        
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
@@ -2048,7 +2050,7 @@ body <- dashboardBody(
                        tags$h6(tags$em("Map Source:", tags$a(href = "http://www.fishcreekwatershed.org/", "FCWO")),
                                style = "text-align: center;")
 
-                   ) # END box
+                   ) # END background box
 
             ), # END left-hand column
 
