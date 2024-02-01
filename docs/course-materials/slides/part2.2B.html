@@ -662,7 +662,7 @@ See next slide for a solution!
 <span id="cb3-28"><a href="#cb3-28"></a>  <span class="co"># filter for island ----</span></span>
 <span id="cb3-29"><a href="#cb3-29"></a>  island_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb3-30"><a href="#cb3-30"></a></span>
-<span id="cb3-31"><a href="#cb3-31"></a>    penguins <span class="sc">%&gt;%</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a>    penguins <span class="sc">|&gt;</span> </span>
 <span id="cb3-32"><a href="#cb3-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island_input)</span>
 <span id="cb3-33"><a href="#cb3-33"></a></span>
 <span id="cb3-34"><a href="#cb3-34"></a>  })</span>
@@ -698,7 +698,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_8ae8b143" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_440c17bc" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

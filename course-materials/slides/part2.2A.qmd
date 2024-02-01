@@ -229,7 +229,7 @@ library(palmerpenguins)
 library(tidyverse)
 
 #..................practice filtering for island.................
-island_df <- penguins %>%
+island_df <- penguins |> 
   filter(island %in% c("Dream", "Torgesen"))
 
 #........................plot penguin data.......................

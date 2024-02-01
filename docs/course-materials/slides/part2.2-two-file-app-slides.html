@@ -612,7 +612,7 @@ This setup is certainly not required / necessary – organize your IDE however y
 <span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-4"><a href="#cb2-4"></a></span>
 <span id="cb2-5"><a href="#cb2-5"></a><span class="co">#..................practice filtering for island.................</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>island_df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>island_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
 <span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">filter</span>(island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Dream"</span>, <span class="st">"Torgesen"</span>))</span>
 <span id="cb2-8"><a href="#cb2-8"></a></span>
 <span id="cb2-9"><a href="#cb2-9"></a><span class="co">#........................plot penguin data.......................</span></span>
@@ -1538,7 +1538,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_f2544d55" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_106a4920" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1812,7 +1812,7 @@ See next slide for a solution!
 <span id="cb22-28"><a href="#cb22-28"></a>  <span class="co"># filter for island ----</span></span>
 <span id="cb22-29"><a href="#cb22-29"></a>  island_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb22-30"><a href="#cb22-30"></a></span>
-<span id="cb22-31"><a href="#cb22-31"></a>    penguins <span class="sc">%&gt;%</span></span>
+<span id="cb22-31"><a href="#cb22-31"></a>    penguins <span class="sc">|&gt;</span> </span>
 <span id="cb22-32"><a href="#cb22-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island_input)</span>
 <span id="cb22-33"><a href="#cb22-33"></a></span>
 <span id="cb22-34"><a href="#cb22-34"></a>  })</span>
@@ -1848,7 +1848,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_a564b23f" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_00e5b770" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2456,7 +2456,7 @@ End part 2.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3cbd9f3e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_fe099ead" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

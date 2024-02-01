@@ -289,7 +289,7 @@ server <- function(input, output) {
   # filter for island ----
   island_df <- reactive({
 
-    penguins %>%
+    penguins |> 
       filter(island %in% input$penguin_island_input)
 
   })

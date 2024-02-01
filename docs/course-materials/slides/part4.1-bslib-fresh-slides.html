@@ -444,11 +444,12 @@ Packages introduced:
 </section>
 <section id="bslib" class="slide level2" data-menu-title="{bslib}">
 <h2></h2>
-<p><span class="slide-title">Using the <a href="https://rstudio.github.io/bslib/"><code>{bslib}</code> package</a> to theme Shiny apps</span></p>
+<p><span class="slide-title2">Using the <a href="https://rstudio.github.io/bslib/"><code>{bslib}</code> package</a> to theme Shiny apps</span></p>
 <hr>
 <p class="body-text">
-The <a href="https://rstudio.github.io/bslib/"><code>{bslib}</code> package</a> provides tools for customizing <a href="https://getbootstrap.com/docs/4.6/getting-started/theming/">Bootstrap themes</a> directly from R, making custom themeing for Shiny apps (and R Markdown docs!) quite easy.
+The <a href="https://rstudio.github.io/bslib/"><code>{bslib}</code> package</a> provides a modern UI toolkit for Shiny and R Markdown based on <a href="https://getbootstrap.com/">Bootstrap</a>, making custom themeing for Shiny apps (and R Markdown docs!) quite easy.
 </p>
+<p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <center>
@@ -466,7 +467,7 @@ Pros:
 <span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> plays well with the <code>{thematic}</code> package for matching plot styling to app
 </p>
 <p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> <code>{bslib}</code> does more than just themeing! Check out the <a href="https://shiny.rstudio.com/blog/announcing-new-r-shiny-ui-components.html">December 2022 announcement</a> of new UI components made possible with the latest package release
+<span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> <code>{bslib}</code> does more than just themeing! Read more on their <a href="https://rstudio.github.io/bslib/index.html">pkgdown site</a>
 </p>
 </div><div class="column" style="width:50%;">
 <center>
@@ -475,7 +476,7 @@ Cons:
 </p>
 </center>
 <p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-xmark" title="an ‘x’ mark" aria-label="xmark"></i></span> does <strong>not</strong> work with <code>shinydashboard</code> (<code>{bslib}</code> is only intended for use with <code>shiny</code> <em>apps</em>)
+<span class="teal-text"><i class="fa-solid fa-xmark" title="an ‘x’ mark" aria-label="xmark"></i></span> does <strong>not</strong> work with <code>shinydashboard</code> (<code>{bslib}</code> is only intended for use with <code>shiny</code> <em>apps</em>), though one of the latest releases includes tooling to create and customize dashboard-style shiny apps – check out their <a href="https://rstudio.github.io/bslib/articles/dashboards/">vignette</a> for more
 </p>
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-xmark" title="an ‘x’ mark" aria-label="xmark"></i></span> styling is constrained by the arguments available to <code>bs_theme()</code>
@@ -483,11 +484,10 @@ Cons:
 </div>
 </div>
 <div class="fragment">
-<center>
-<p class="body-text topbr">
-<strong>Let’s practice applying new themes using <code>bslib</code> to our <code>one-file-app</code> (i.e.&nbsp;App #1)</strong>
-</p>
-</center>
+<p><br></p>
+<div class="center-text">
+<p><strong>Let’s practice applying new themes using <code>bslib</code> to our <code>one-file-app</code> (i.e.&nbsp;App #1)</strong></p>
+</div>
 </div>
 </section>
 <section id="bslib-prebuilt-themes" class="slide level2" data-menu-title="Pre-built themes with {bslib}">
@@ -505,13 +505,17 @@ By default, Shiny uses the Bootstrap v3 theme (which is not so exciting). Change
 <div class="code-with-filename-file">
 <pre><strong>~/single-file-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">theme =</span> bslib<span class="sc">::</span><span class="fu">bs_theme</span>(<span class="at">bootswatch =</span> <span class="st">"solar"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  </span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># ~ additional libraries omitted for brevity ~</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb1-6"><a href="#cb1-6"></a>  </span>
-<span id="cb1-7"><a href="#cb1-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(<span class="at">bootswatch =</span> <span class="st">"solar"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  </span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  </span>
+<span id="cb1-11"><a href="#cb1-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="body-text-s">
@@ -554,7 +558,7 @@ Alternatively, you can fully customize your own theme. Explore the <a href="http
 <span id="cb2-8"><a href="#cb2-8"></a>    <span class="at">bg =</span> <span class="st">"#A36F6F"</span>, <span class="co"># background color</span></span>
 <span id="cb2-9"><a href="#cb2-9"></a>    <span class="at">fg =</span> <span class="st">"#FDF7F7"</span>, <span class="co"># foreground color</span></span>
 <span id="cb2-10"><a href="#cb2-10"></a>    <span class="at">primary =</span> <span class="st">"#483132"</span>, <span class="co"># primary accent color</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>))</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>)),</span>
 <span id="cb2-12"><a href="#cb2-12"></a>  </span>
 <span id="cb2-13"><a href="#cb2-13"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
 <span id="cb2-14"><a href="#cb2-14"></a>  </span>
@@ -577,7 +581,7 @@ Check out the complete <a href="https://github.com/samanthacsik/EDS430-shiny-app
 </div>
 </div>
 <p class="body-text-s">
-Be sure to check out the interactive themeing widget to test custom color/font/etc. combos by running <code>bs_theme_preview()</code> in your console, or visit the <a href="https://testing-apps.shinyapps.io/themer-demo/">hosted version</a>. You can also call <code>bs_themer()</code> within your <code>server</code> function to open the theme customization UI alongside your own app.
+Be sure to check out the interactive themeing widget to test custom color / font / etc. combos by running <code>bs_theme_preview()</code> in your console, or visit the <a href="https://testing-apps.shinyapps.io/themer-demo/">hosted version</a>. You can also call <code>bs_themer()</code> within your <code>server</code> function to open the theme customization UI alongside your own app.
 </p>
 </section>
 <section id="thematic" class="slide level2" data-menu-title="{thematic} for plot themeing">
@@ -606,7 +610,7 @@ You probably noticed that our scatterplot looks a little silly against the darke
 <span id="cb3-10"><a href="#cb3-10"></a>    <span class="at">bg =</span> <span class="st">"#A36F6F"</span>, <span class="co"># background color</span></span>
 <span id="cb3-11"><a href="#cb3-11"></a>    <span class="at">fg =</span> <span class="st">"#FDF7F7"</span>, <span class="co"># foreground color</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a>    <span class="at">primary =</span> <span class="st">"#483132"</span>, <span class="co"># primary accent color</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>))</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Pacifico"</span>)),</span>
 <span id="cb3-14"><a href="#cb3-14"></a>  </span>
 <span id="cb3-15"><a href="#cb3-15"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a>  </span>
@@ -689,6 +693,7 @@ Whether you’re working on a shiny <em>app</em> or a shiny <em>dashboard</em>, 
 <span class="teal-text"><strong>(2)</strong></span> a separate script for building our theme using the <code>create_theme()</code> function – I recommend saving this to <code>scratch/</code> (it seemed to cause issues when saved anywhere within my app directory)
 </p>
 <div class="fragment">
+<p><br></p>
 <p class="body-text topbr">
 Importantly, <code>create_theme()</code> takes <strong>different variables</strong> to set the parameters of your theme, depending on what type of app you’re building: for <strong>shiny apps</strong>, you’ll need to use <a href="https://dreamrs.github.io/fresh/articles/vars-shiny.html"><code>bs_vars_*</code> variables</a>, and for <strong>shiny dashboards</strong> you’ll use <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html"><code>adminlte_*</code> variables</a> (examples on the following slides).
 </p>
@@ -756,7 +761,7 @@ To apply our theme, provide the <code>theme</code> argument of your <code>fluidP
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># navbar page ----</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">theme =</span> <span class="st">"shiny-fresh-theme.css"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">theme =</span> <span class="st">"shiny-fresh-theme.css"</span>,</span>
 <span id="cb5-5"><a href="#cb5-5"></a>  </span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
 <span id="cb5-7"><a href="#cb5-7"></a>  </span>
@@ -838,7 +843,7 @@ To apply our theme, use the <code>fresh::use_theme()</code> function inside your
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="co"># set theme</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  fresh<span class="sc">::</span><span class="fu">use_theme</span>(<span class="st">"shinydashboard-fresh-theme.css"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  fresh<span class="sc">::</span><span class="fu">use_theme</span>(<span class="st">"shinydashboard-fresh-theme.css"</span>),</span>
 <span id="cb7-5"><a href="#cb7-5"></a>  </span>
 <span id="cb7-6"><a href="#cb7-6"></a>  <span class="co"># ~ additional dashboardBody code omitted for brevity ~</span></span>
 <span id="cb7-7"><a href="#cb7-7"></a>  </span>
@@ -873,7 +878,7 @@ End part 4.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_236bddf6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_5ab5d0a6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

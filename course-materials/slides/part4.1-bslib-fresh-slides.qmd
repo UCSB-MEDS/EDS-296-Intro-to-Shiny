@@ -62,11 +62,13 @@ editor_options:
 
 ##  {#bslib data-menu-title="{bslib}"}
 
-[Using the [`{bslib}` package](https://rstudio.github.io/bslib/) to theme Shiny apps]{.slide-title}
+[Using the [`{bslib}` package](https://rstudio.github.io/bslib/) to theme Shiny apps]{.slide-title2}
 
 <hr>
 
-<p class="body-text">The [`{bslib}` package](https://rstudio.github.io/bslib/) provides tools for customizing [Bootstrap themes](https://getbootstrap.com/docs/4.6/getting-started/theming/) directly from R, making custom themeing for Shiny apps (and R Markdown docs!) quite easy.</p>
+<p class="body-text">The [`{bslib}` package](https://rstudio.github.io/bslib/) provides a modern UI toolkit for Shiny and R Markdown based on [Bootstrap](https://getbootstrap.com/), making custom themeing for Shiny apps (and R Markdown docs!) quite easy.</p>
+
+<br>
 
 :::: {.columns}
 
@@ -75,12 +77,12 @@ editor_options:
 <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} easy to use</p>
 <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} includes a [real-time themeing widget](https://testing-apps.shinyapps.io/themer-demo/) to try out themes before applying them to your own app</p>
 <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} plays well with the `{thematic}` package for matching plot styling to app</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} `{bslib}` does more than just themeing! Check out the [December 2022 announcement](https://shiny.rstudio.com/blog/announcing-new-r-shiny-ui-components.html) of new UI components made possible with the latest package release</p>
+<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} `{bslib}` does more than just themeing! Read more on their [pkgdown site](https://rstudio.github.io/bslib/index.html)</p>
 :::
 
 ::: {.column width="50%"}
 <center><p class="body-text-l teal-text">Cons:</p></center>
-<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} does **not** work with `shinydashboard` (`{bslib}` is only intended for use with `shiny` *apps*)</p>
+<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} does **not** work with `shinydashboard` (`{bslib}` is only intended for use with `shiny` *apps*), though one of the latest releases includes tooling to create and customize dashboard-style shiny apps -- check out their [vignette](https://rstudio.github.io/bslib/articles/dashboards/) for more</p>
 <p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} styling is constrained by the arguments available to `bs_theme()`</p>
 :::
 
@@ -88,7 +90,11 @@ editor_options:
 
 . . . 
 
-<center><p class="body-text topbr">**Let's practice applying new themes using `bslib` to our `one-file-app` (i.e. App #1)**</p></center>
+<br>
+
+::: {.center-text}
+**Let's practice applying new themes using `bslib` to our `one-file-app` (i.e. App #1)**
+:::
 
 ---
 
@@ -109,9 +115,13 @@ editor_options:
 ```{r filename="~/single-file-app/ui.R"}
 #| eval: false
 #| echo: true
+library(shiny)
+library(bslib)
+# ~ additional libraries omitted for brevity ~
+
 ui <- fluidPage(
   
-  theme = bslib::bs_theme(bootswatch = "solar")
+  theme = bs_theme(bootswatch = "solar"),
   
   # ~ additional UI code omitted for brevity ~
   
@@ -160,7 +170,7 @@ ui <- fluidPage(
     bg = "#A36F6F", # background color
     fg = "#FDF7F7", # foreground color
     primary = "#483132", # primary accent color
-    base_font = font_google("Pacifico"))
+    base_font = font_google("Pacifico")),
   
   # ~ additional UI code omitted for brevity ~
   
@@ -183,7 +193,7 @@ knitr::include_graphics("images/part4/custom-bslib.png")
 
 ::::
 
-<p class="body-text-s">Be sure to check out the interactive themeing widget to test custom color/font/etc. combos by running `bs_theme_preview()` in your console, or visit the [hosted version](https://testing-apps.shinyapps.io/themer-demo/). You can also call `bs_themer()` within your `server` function to open the theme customization UI alongside your own app.</p>
+<p class="body-text-s">Be sure to check out the interactive themeing widget to test custom color / font / etc. combos by running `bs_theme_preview()` in your console, or visit the [hosted version](https://testing-apps.shinyapps.io/themer-demo/). You can also call `bs_themer()` within your `server` function to open the theme customization UI alongside your own app.</p>
 
 ----
 
@@ -214,7 +224,7 @@ ui <- fluidPage(
     bg = "#A36F6F", # background color
     fg = "#FDF7F7", # foreground color
     primary = "#483132", # primary accent color
-    base_font = font_google("Pacifico"))
+    base_font = font_google("Pacifico")),
   
   # ~ additional UI code omitted for brevity ~
   
@@ -291,6 +301,8 @@ knitr::include_graphics("images/part4/bslib-thematic.png")
 
 . . .
 
+<br>
+
 <p class="body-text topbr">Importantly, `create_theme()` takes **different variables** to set the parameters of your theme, depending on what type of app you're building: for **shiny apps**, you'll need to use [`bs_vars_*` variables](https://dreamrs.github.io/fresh/articles/vars-shiny.html), and for **shiny dashboards** you'll use [`adminlte_*` variables](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html) (examples on the following slides).</p>
 
 <p class="body-text topbr">There are also a [couple ways](https://cran.r-project.org/web/packages/fresh/vignettes/fresh.html) to apply your finished theme to your app, but we'll use the method of generating a `.css` file, then calling that file in our app.</p>
@@ -359,7 +371,7 @@ create_theme(
 # navbar page ----
 ui <- navbarPage(
 
-  theme = "shiny-fresh-theme.css"
+  theme = "shiny-fresh-theme.css",
   
   # ~ additional UI code omitted for brevity ~
   
@@ -447,7 +459,7 @@ create_theme(
 body <- dashboardBody(
   
   # set theme
-  fresh::use_theme("shinydashboard-fresh-theme.css")
+  fresh::use_theme("shinydashboard-fresh-theme.css"),
   
   # ~ additional dashboardBody code omitted for brevity ~
   

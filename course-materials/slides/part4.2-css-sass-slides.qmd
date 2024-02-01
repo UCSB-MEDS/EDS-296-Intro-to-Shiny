@@ -38,19 +38,19 @@ editor_options:
 
 <hr>
 
-<p class="body-text">You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html) and [Sass](https://sass-lang.com/) to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `bslib` and `fresh`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff it big!).</p>
+<p class="body-text">You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html) and [Sass](https://sass-lang.com/) to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `{bslib}` and `{fresh}`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff it big!).</p>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 <center><p class="body-text-l teal-text">Pros:</p></center>
 <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} applies to any web page (not just shiny apps / dashboards)</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} allows you to customize pretty much any aspect of your app</p> <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} can be combined with themes generated using `bslib` or `fresh` to fine-tune your app's styling</p>
+<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} allows you to customize pretty much any aspect of your app</p> <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} can be combined with themes generated using `{bslib}` or `{fresh}` to fine-tune your app's styling</p>
 :::
 
 ::: {.column width="50%"}
 <center><p class="body-text-l teal-text">Cons:</p></center>
-<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} a steeper learning curve / generally more complex than packages like `bslib` and `fresh`</p>
+<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} a steeper learning curve / generally more complex than packages like `{bslib}` and `{fresh}`</p>
 :::
 
 ::::
@@ -69,11 +69,11 @@ editor_options:
 
 <hr>
 
-<p class="body-text">We'll be doing a rather high-level and quick overview of Sass & CSS today, though I encourage you to check out the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop, which takes a much deeper dive (the information in that workshop is largely applicable here).</p>
+<p class="body-text">We'll be doing a rather high-level and quick overview of Sass & CSS today, though I encourage you to **check out the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop materials**, which takes a much deeper dive (the information in that workshop is largely applicable here).</p>
 
 . . . 
 
-<p class="body-text topbr">[W3Schools](https://www.w3schools.com/css/default.asp) is my favorite online resource for all-things CSS -- in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).</p>
+<p class="body-text topbr">**[W3Schools](https://www.w3schools.com/css/default.asp) is my favorite online resource for all-things CSS** -- in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).</p>
 
 <br>
 
@@ -136,7 +136,7 @@ knitr::include_graphics("images/part4/sass.png")
 
 <hr>
 
-<p class="body-text">CSS is a rule-based language, meaning that it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page. For example, *"I want all level one headings (`<h1>` or `tags$h1()` as written in Shiny) in my app to be green with a bit of extra space between each letter"* could be coded as:</p>
+<p class="body-text">CSS is a rule-based language, meaning that **it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page**. For example, *"I want all level one headings (`<h1>` or `tags$h1()`, as written in Shiny) in my app to be green with a bit of extra space between each letter"* could be coded as:</p>
 
 <br>
 
@@ -147,7 +147,7 @@ knitr::include_graphics("images/part4/sass.png")
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "100%"
+#| out-width: "90%"
 #| fig-alt: "An example of a CSS rule that modifies all h1 elements so that the text is green and that there's a bit more space between each letter."
 knitr::include_graphics("images/part4/CSS_syntax.png")
 ```
@@ -171,7 +171,7 @@ knitr::include_graphics("images/part4/CSS_syntax.png")
 
 <hr>
 
-<p class="body-text-s">You can [**(1)**]{.teal-text} add styling directly to `tags`, [**(2)**]{.teal-text} add CSS rules to your `header`, and/or [**(3)**]{.teal-text} build a stylesheet that is applied to your app. **Creating a stylesheet is often the preferred approach.**</p>
+<!-- <p class="body-text-s">You can [**(1)**]{.teal-text} add styling directly to `tags`, [**(2)**]{.teal-text} add CSS rules to your `header`, and/or [**(3)**]{.teal-text} build a stylesheet that is applied to your app. **Creating a stylesheet is often the preferred approach.**</p> -->
 
 ::: {.panel-tabset}
 
@@ -290,7 +290,7 @@ knitr::include_graphics("images/part4/header_styling.png")
 :::
 ::::
 
-## 3. stylesheets
+## 3. stylesheets (preferred)
 
 <p class="body-text-xs">Build a stylesheet (a `.css` file) inside your app's `www/` directory and apply your styles to your app's header (for shinydashboards, include your header inside `dashboardBody()`. [**This is the most ideal approach**]{.teal-text} -- it allows for style reuse, caching, and keeps styling contained in one spot. **Tip:** use `touch styles.css` in the terminal to create a new `.css` file.</p>
 
@@ -385,17 +385,19 @@ knitr::include_graphics("images/part4/stylesheet_styling.png")
 
 ## dashboard
 
+[Create a new subdirectory called `css-dashboard/`, and add the following `ui.R`, `server.R`, and `global.R` files.]{.body-text-s}
+
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "100%"
+#| out-width: "70%"
 knitr::include_graphics("images/part4/dashboard_css.png")
 ```
 
 ## `ui.R`
 
-```{r}
+```{r filename="~/css-dashboard/ui.R"}
 #| eval: false
 #| echo: true
 #........................dashboardHeader.........................
@@ -464,7 +466,7 @@ dashboardPage(header, sidebar, body)
 
 ## `server.R`
 
-```{r}
+```{r filename="~/css-dashboard/server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {
@@ -472,8 +474,8 @@ server <- function(input, output) {
   # penguin spp reactive df----
   penguin_spp <- reactive({
     
-    palmerpenguins::penguins %>%
-      filter(species %in% input$penguin_species) %>%
+    na.omit(penguins) |> 
+      filter(species %in% input$penguin_species) |> 
       select(species, island, bill_length_mm, bill_depth_mm)
     
   }) # END penguin spp reactive df
@@ -493,7 +495,7 @@ server <- function(input, output) {
 
 ## `global.R`
 
-```{r}
+```{r filename="~/css-dashboard/global.R"}
 #| eval: false
 #| echo: true
 # LOAD LIBRARIES ----
@@ -513,7 +515,7 @@ library(palmerpenguins)
 
 <hr>
 
-<p class="body-text-s">Oftentimes, you'll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, right click on an element of interest and choose **Inspect** (or **Inspect Element**) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g. adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.</p>
+<p class="body-text-s">Oftentimes, you'll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, **right click on an element of interest** > choose **Inspect** (or **Inspect Element**) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g. adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.</p>
 
 ```{r}
 #| eval: true
@@ -526,17 +528,44 @@ knitr::include_graphics("images/part4/inspect_orientation.png")
 
 ---
 
-##  {#inspect-dashboard data-menu-title="Inspect dashboard box"}
+##  {#inspect-dashboard1 data-menu-title="Inspect dashboard box 1"}
 
 [Inspect & identify how to update box styling]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s">For example, let's say I want to change the color of this shinydashboard's boxes and the color of the box text.</p> 
+<p class="body-text-s">For example, let's say I want to change the color of this shinydashboard's boxes and the color of the box text (find a gif of these steps on the next slide).</p> 
 
-<p class="body-text-s">**First, we need to determine which type of HTML element creates our box.** Right clicking on a box and choosing **Inspect Element** pulls up the HTML and CSS files underlying the app. Hovering over different parts of the HTML highlights different elements in the UI. The box is highlighted when I hover over `<div class="box-body">` -- this tells me that boxes are formed using the `<div>` HTML element and they're assigned a class called `box-body`.</p> 
+. . .
 
-<p class="body-text-s">**Next, we can (temporarily) adjust the CSS rules that style these boxes to see how they work.** I can hop down to the CSS file (here, that's located in the bottom half of my sidebar, but depending on the size of your window / layout, the HTML and CSS might be side-by-side) and find the `.box-body` class selector. You can add property / value pairs and / or update existing property values to adjust the appearance of our box. Notice that changing the `.box-body` class selector updates **both** boxes -- upon inspecting the box containing our plot, you'll notice that it is also of class, `box-body`. Therefore changes to this class selector will apply to both boxes. *This process is purely for testing purposes -- refreshing your app will remove any of these changes.*</p>
+1. [**Determine which type of HTML element creates our box**]{.teal-text}
+
+- [right click on the box > choose **Inspect Element** to pull up the HTML and CSS files underlying the app]{.body-text-s}
+- [hover over different parts of the HTML to highlight different elements in the UI]{.body-text-s}
+
+. . .
+
+[The box is highlighted when I hover over `<div class="box-body">` -- this tells me that boxes are formed using the `<div>` HTML element and they're assigned a class called `box-body`.]{.body-text-s}
+
+. . .
+
+2. [**(Temporarily) adjust the CSS rules that style these boxes to see how they work**]{.teal-text}
+
+- [in the CSS file (for me, that's located in the bottom half of the developer pane), find the `.body-body` class selector]{.body-text-s}
+- [add property / value pairs and / or update existing property values to adjust the appearance of the box]{.body-text-s}
+  - [**note:** changing the `.box-body` class selector updates **both** boxes (if you inspect the box containing the plot, you'll notice that it also has the class `.box-body`, so any changes will apply to both)]{.body-text-s}
+  
+. . . 
+
+[*This process is purely for testing purposes -- refreshing your app will remove any of these changes.*]{.body-text-s}
+
+---
+
+##  {#inspect-dashboard2 data-menu-title="Inspect dashboard box 2"}
+
+[Inspect & identify how to update box styling]{.slide-title2}
+
+<hr>
 
 ```{r}
 #| eval: true
@@ -554,7 +583,7 @@ knitr::include_graphics("images/part4/inspecting.gif")
 
 <hr>
 
-<p class="body-text-s">Now that we know that we can use the `box-body` class to customize the appearance of our boxes, let's create a stylesheet and add our new CSS rule. The `shinydashboard` framework already provides the "standard" styling for boxes, contained in the `box-body` class. Anything we specify in our own stylesheet will build upon or modify existing styling.</p>
+<p class="body-text-s">Now that we know that we can use the `.box-body` class to customize the appearance of our boxes, let's create a stylesheet **inside our `www/` folder** and add our new CSS rule. The `shinydashboard` framework already provides the "standard" styling for boxes, contained in the `.box-body` class. Anything we specify in our own stylesheet will build upon or modify existing styling.</p>
 
 <p class="body-text-s">Remember to create a header and link your stylesheet within `dashboardBody()` to apply our styles.</p>
 
@@ -586,7 +615,7 @@ knitr::include_graphics("images/part4/orange-boxes.png")
 ::::
 
 ## `styles.css`
-```{css}
+```{css filename="~/css-dashboard/www/styles.css"}
 #| eval: false
 #| echo: true
 .box-body {
@@ -596,7 +625,7 @@ knitr::include_graphics("images/part4/orange-boxes.png")
 ```
 
 ## `ui.R`
-```{r}
+```{r filename="~/css-dashboard/ui.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "24-27"
@@ -704,7 +733,7 @@ knitr::include_graphics("images/part4/meds-colors.png")
 
 <p class="body-text-s">Sass allows us to define variables (in the form `$var-name: value;`) for our colors to reference instead of writing out their HEX codes each time:</p>
 
-```{css}
+```{css filename="example-stylesheet.scss"}
 #| eval: false
 #| echo: true
 // define Sass vars 
@@ -739,7 +768,7 @@ h1 {
 
 <p class="body-text">To style apps using both Sass *and* CSS, you'll follow this general workflow:</p>
 
-<p class="body-text-s topbr">[**(1)**]{.teal-text} Create a `.scss` file inside `~/myApp/www/` using the `touch` command in the terminal (e.g. `cd` into the appropriate directory, then `touch styles.scss`). Write both your Sass variables and CSS rules in your `.scss` file (**Note:** you can write both Sass & CSS in a `.scss` file, but *only* CSS in a `.css` file)</p> 
+<p class="body-text-s topbr">[**(1)**]{.teal-text} Create a `.scss` file inside `~/myApp/www/` (either through the terminal using the `touch` command, or using RStudio's New File > Text File button). Write both your Sass variables and CSS rules in your `.scss` file (**Note:** you can write both Sass & CSS in a `.scss` file, but *only* CSS in a `.css` file)</p> 
 
 <p class="body-text-s topbr">[**(2)**]{.teal-text} Compile (i.e. convert) Sass to CSS in `global.R` (or, if using a one-file app, at the top of your script before you define your UI) using the the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html) -- this will generate a `.css` file that our shiny app can actually use. Be sure to save your `.css` file to your app's `/www` directory.</p>
 
@@ -870,7 +899,8 @@ library(sass)
 # COMPILE CSS ----
 sass(
   input = sass_file("www/sass-styles.scss"),
-  output = "www/sass-styles.css"
+  output = "www/sass-styles.css",
+  options = sass_options(output_style = "compressed") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable
 )
 
 # ~ additional global.R objects omitted for brevity ~

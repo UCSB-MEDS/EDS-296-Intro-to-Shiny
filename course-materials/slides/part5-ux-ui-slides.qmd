@@ -237,7 +237,7 @@ Ideally, you would only have one `<h1>` element (e.g. your app's **title**), a s
 
 <hr>
 
-<p class="body-text bottombr">All images and graphical elements should include **alternative (alt) text** that describe the image and/or information being represented. This text won't appear in the UI, but is detected and read by screen readers.</p>
+<p class="body-text bottombr">All images and graphical elements should include **alternative (alt) text** that describe the image and / or information being represented. This text won't appear in the UI, but is detected and read by screen readers.</p>
 
 . . . 
 

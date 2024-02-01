@@ -100,7 +100,7 @@ Many of us experienced the frustrations of finding unmatched parentheses, typos,
 
 <br>
 
-**My preferred approach for troubleshooting a situation like this is to [comment out all code moving from the highest-level layout function (e.g. `navbarPage()`) inwards]{.teal-text}, re-running your app each time you un-comment the next little bit of code, until you find the place where your app breaks.**
+**My preferred approach for troubleshooting a situation like this is to [comment out all code inside the highest-level layout function (e.g. `navbarPage()`)]{.teal-text}, re-run your app to ensure that it works, uncomment the next inner-most pieces, re-run, etc. until you find the place where your app breaks.**
 
 <br>
 <br>
@@ -226,7 +226,7 @@ knitr::include_graphics("images/part6/buggy-app.gif")
 
 ::: {.column width="50%"}
 
-```{r filename="~/reactlog-working/app.R"}
+```{r filename="~/working-app/app.R"}
 #| eval: false
 #| echo: true
 # load packages ----
@@ -353,7 +353,7 @@ shinyApp(ui = ui, server = server)
 <!-- `reactlog-broken` -->
 <!-- ::: -->
 
-```{r filename="~/reactlog-broken/app.R"}
+```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
 # load packages ----

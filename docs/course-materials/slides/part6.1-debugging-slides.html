@@ -484,7 +484,7 @@ We’ll touch on each of these, briefly, but be sure to check out the Shiny arti
 <p><br></p>
 <p>Many of us experienced the frustrations of finding unmatched parentheses, typos, missing commas, etc. when building out our UI layout for App #2, and tracking down the issue can require some patience and persistence.</p>
 <p><br></p>
-<p><strong>My preferred approach for troubleshooting a situation like this is to <span class="teal-text">comment out all code moving from the highest-level layout function (e.g.&nbsp;<code>navbarPage()</code>) inwards</span>, re-running your app each time you un-comment the next little bit of code, until you find the place where your app breaks.</strong></p>
+<p><strong>My preferred approach for troubleshooting a situation like this is to <span class="teal-text">comment out all code inside the highest-level layout function (e.g.&nbsp;<code>navbarPage()</code>)</span>, re-run your app to ensure that it works, uncomment the next inner-most pieces, re-run, etc. until you find the place where your app breaks.</strong></p>
 <p><br> <br></p>
 <div class="center-text body-text-l teal-text">
 <p>See next slide for an example</p>
@@ -562,7 +562,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/reactlog-working/app.R</strong></pre>
+<pre><strong>~/working-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(shiny)</span>
@@ -687,7 +687,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/reactlog-broken/app.R</strong></pre>
+<pre><strong>~/broken-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(shiny)</span>
@@ -1280,7 +1280,7 @@ End part 6.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_135c0451" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_4c139a5e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
