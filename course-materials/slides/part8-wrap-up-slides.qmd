@@ -135,7 +135,7 @@ knitr::include_graphics("images/part8/leaflet-mywebsite.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-An example leaflet map embedded in an Quarto website. Image Source: [my website](https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby)
+An example leaflet map embedded in a Quarto website. Image Source: [my website](https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby)
 :::
 
 :::
@@ -240,7 +240,7 @@ knitr::include_graphics("images/part8/quarto-shiny-kmeans.png")
 
 <hr>
 
-[**Shiylive is a serverless version of Shiny**, which was recently annoucned at [posit::conf(2023)](https://posit.co/conference/) by Joe Cheng (rewatch his [talk ](https://www.youtube.com/watch?v=j1M6YyU2ZX8&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=88)!). It supports Shiny for both R *and* Python (that's right, you can build shiny apps using Python too! See [Shiny for Python](https://shiny.posit.co/py/). for more info). You have a few options:]{.body-text-s}
+[**Shinylive is a serverless version of Shiny**, which was recently annoucned at [posit::conf(2023)](https://posit.co/conference/) by Joe Cheng (rewatch his [talk ](https://www.youtube.com/watch?v=j1M6YyU2ZX8&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=88)!). It supports Shiny for both R *and* Python (that's right, you can build shiny apps using Python too! See [Shiny for Python](https://shiny.posit.co/py/) for more info). You have a few options:]{.body-text-s}
 
 :::: {.columns}
 
@@ -249,7 +249,7 @@ knitr::include_graphics("images/part8/quarto-shiny-kmeans.png")
 <br>
 <br>
 
-- [**Convert shiny apps to static websites** using this [[`{shinylive}`] package for R](https://github.com/posit-dev/r-shinylive) or [[`{shinylive}`] package for Python](https://github.com/posit-dev/py-shinylive)]{.body-text-s}
+- [**Convert shiny apps to static websites** using this [`{shinylive}` package for R](https://github.com/posit-dev/r-shinylive) or [`{shinylive}` package for Python](https://github.com/posit-dev/py-shinylive)]{.body-text-s}
 - [**Write, run, and share Shiny apps right in the browser** at <https://shinylive.io/r/examples/> (R) or <https://shinylive.io/py/examples/> (Python)]{.body-text-s}
 - [**Include Shiny apps in Quarto docs** using the [Shinylive Quarto extension](https://github.com/quarto-ext/shinylive)]{.body-text-s}
 :::
@@ -367,9 +367,9 @@ You can optionally use a `global.R` file to store objects that are used across y
 
   - save objects you want to display to `output$<id>`
     
-  - Build reactive objects using a render*() function
+  - Build reactive objects using a `render*()` function
     
-  - Access input values with input$<id>
+  - Access input values with `input$<id>`
 
 <br>
 

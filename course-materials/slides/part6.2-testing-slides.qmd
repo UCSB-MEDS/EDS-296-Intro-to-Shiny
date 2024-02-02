@@ -132,7 +132,7 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 ##  {#shinytest2-resources data-menu-title="{shinytest2} resources"}
 
-[`shinytest2` resources & demos]{.slide-title}
+[`{shinytest2}` resources & demos]{.slide-title}
 
 <hr>
 
@@ -145,7 +145,7 @@ The following demo comes straight from the [`{shinytest2}` vignette](https://rst
 <br>
 
 ::: {.center-text .body-text-l .teal-text}
-Check out the **[resources page](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/resources.html)** on the course website for additional talks / tutorials / resources about testing shiny apps.
+Check out the **[resources page](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/resources.html#testing)** on the course website for additional talks / tutorials / resources about testing shiny apps.
 :::
 
 ---
@@ -198,7 +198,7 @@ shinyApp(ui, server)
 
 . . . 
 
-[[**(1)**]{.teal-text} Run `record_test(<app-directory>)` to launch the app recorder in a browser window]{.body-text-s}
+[[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` to launch the app recorder in a browser window]{.body-text-s}
 
 . . . 
 

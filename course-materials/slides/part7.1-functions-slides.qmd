@@ -163,9 +163,9 @@ ui <- fluidPage(
              # species (scatterplot) pickerInput ----
              pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
-                         options = pickerOptions(actionsBox = TRUE),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
-                         multiple = T),
+                         options = pickerOptions(actionsBox = TRUE),
+                         multiple = TRUE),
              
              # scatterplot output ----
              plotOutput(outputId = "penguin_scatterplot_output")
@@ -179,8 +179,8 @@ ui <- fluidPage(
              # species (histogram) pickerInput ----
              pickerInput(inputId = "penguinSpp_histogram_input", label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
-                         options = pickerOptions(actionsBox = TRUE),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
+                         options = pickerOptions(actionsBox = TRUE),
                          multiple = TRUE),
              
              # scatterplot output ----
@@ -280,9 +280,9 @@ ui <- fluidPage(
              # species (scatterplot) pickerInput ----
              pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
-                         options = pickerOptions(actionsBox = TRUE),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
-                         multiple = T),
+                         options = pickerOptions(actionsBox = TRUE),
+                         multiple = TRUE),
              
              # scatterplot output ----
              plotOutput(outputId = "penguin_scatterplot_output")
@@ -296,8 +296,8 @@ ui <- fluidPage(
              # species (histogram) pickerInput ----
              pickerInput(inputId = "penguinSpp_histogram_input", label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
-                         options = pickerOptions(actionsBox = TRUE),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
+                         options = pickerOptions(actionsBox = TRUE),
                          multiple = TRUE),
              
              # scatterplot output ----
@@ -327,15 +327,15 @@ This app includes two `pickerInputs`, both of which allow users to select which 
 # Scatterplot pickerInput for selecting penguin species:
 pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select a species:",
             choices = c("Adelie", "Chinstrap", "Gentoo"),
-            options = pickerOptions(actionsBox = TRUE),
             selected = c("Adelie", "Chinstrap", "Gentoo"),
+            options = pickerOptions(actionsBox = TRUE),
             multiple = TRUE)
 
 # Histogram pickerInput for selecting penguin species:
 pickerInput(inputId = "penguinSpp_histogram_input", label = "Select a species:",
             choices = c("Adelie", "Chinstrap", "Gentoo"),
-            options = pickerOptions(actionsBox = TRUE),
             selected = c("Adelie", "Chinstrap", "Gentoo"),
+            options = pickerOptions(actionsBox = TRUE),
             multiple = TRUE)
 ```
 
@@ -355,7 +355,7 @@ Let's write a function for our **penguin species pickerInput** that we can use i
 
 <hr> 
 
-<p class="body-text-s">First, create an `R/` folder inside your `functions-app/` directory, then add a new script to this folder. I'm calling mine `penguinSpp_pickerInput.R`.</p>
+<p class="body-text-s">First, create an `R/` folder inside your `functions-app/` directory, then add a new script to this folder. I'm calling mine `penguinSpp-pickerInput.R`.</p>
 
 <p class="body-text-s">Since the only difference between our original two `pickerInput`s are their `inputId`s, we can write a function that takes `inputId` as an argument (**Recall** that `inputId`s must be unique within an app, so it makes sense that both of our `pickerInput`s have different `inputId`s).</p>
 
@@ -363,15 +363,15 @@ Let's write a function for our **penguin species pickerInput** that we can use i
 
 ::: {.panel-tabset}
 
-## `penguinSpp_pickerInput.R`
-```{r filename="~/functions-app/R/penguinSpp_pickerInput.R"}
+## `penguinSpp-pickerInput.R`
+```{r filename="~/functions-app/R/penguinSpp-pickerInput.R"}
 #| eval: false  
 #| echo: true
 penguinSpp_pickerInput <- function(inputId) {
   pickerInput(inputId = inputId, label = "Select a species:",
-              choices = c("Adelie", "Gentoo", "Chinstrap"),
+              choices = c("Adelie", "Chinstrap", "Gentoo"),
+              selected = c("Adelie", "Chinstrap", "Gentoo"),
               options = pickerOptions(actionsBox = TRUE),
-              selected = c("Adelie", "Gentoo", "Chinstrap"),
               multiple = TRUE)
 }
 ```
@@ -387,8 +387,8 @@ library(shinyWidgets)
 library(palmerpenguins)
 library(tidyverse)
 
-# IMPORT FUNCTIONS ----
-source("R/penguinSpp_pickerInput.R") # will source automatically with Shiny v1.5.0
+# IMPORT FUNCTIONS (ONLY IF NECESSARY) ----
+source("R/penguinSpp-pickerInput.R") # will source automatically with Shiny v1.5.0
 ```
 
 :::
@@ -456,7 +456,7 @@ So...what's the big deal with this??
 
 **By turning our `pickerInput` code into a function, we:**
 
-[[**(1)**]{.teal-text} **reduced *ten* lines of UI code into *two*** (not only does this make `ui.R` a bit more manageable to navigate, it also means we can more easily isolate `R/penguinSpp_pickerInput.R` when troubleshooting)]{.body-text-s}
+[[**(1)**]{.teal-text} **reduced *ten* lines of UI code into *two*** (not only does this make `ui.R` a bit more manageable to navigate, it also means we can more easily isolate `R/penguinSpp-pickerInput.R` when troubleshooting)]{.body-text-s}
 
 [[**(2)**]{.teal-text} **made our UI code a bit easier to read** (`penguinSpp_pickerInput()` tells a reader / collaborator / future you *exactly* what that line of code is meant to do, which is to create a `pickerInput` that allows users to select penguin species. Even without code comments or additional context, one may deduce what that line of code does)]{.body-text-s}
 
@@ -791,16 +791,16 @@ server <- function(input, output) {
 
 <hr>
 
-[`penguinSpp_pickerInput.R`]{.body-text-m}
+[`penguinSpp-pickerInput.R`]{.body-text-m}
 
-```{r filename="~/functions-app/R/penguinSpp_pickerInput.R"}
+```{r filename="~/functions-app/R/penguinSpp-pickerInput.R"}
 #| eval: false
 #| echo: true
 penguinSpp_pickerInput <- function(inputId) {
   pickerInput(inputId = inputId, label = "Select a species:",
-              choices = c("Adelie", "Gentoo", "Chinstrap"),
+              choices = c("Adelie", "Chinstrap", "Gentoo"),
+              selected = c("Adelie", "Chinstrap", "Gentoo"),
               options = pickerOptions(actionsBox = TRUE),
-              selected = c("Adelie", "Gentoo", "Chinstrap"),
               multiple = TRUE)
 }
 ```
@@ -815,9 +815,9 @@ penguinSpp_pickerInput <- function(inputId) {
 
 ::: {.panel-tabset}
 
-## `build_penguin_scatterplot.R`
+## `build-penguin-scatterplot.R`
 
-```{r filename="~/functions-app/R/build_penguin_scatterplot.R"}
+```{r filename="~/functions-app/R/build-penguin-scatterplot.R"}
 #| eval: false
 #| echo: true
 build_penguin_scatterplot <- function(input) {
@@ -849,9 +849,9 @@ build_penguin_scatterplot <- function(input) {
 }
 ```
 
-## `build_penguin_histogram.R`
+## `build-penguin-histogram.R`
 
-```{r filename="~/functions-app/R/build_penguin_histogram.R"}
+```{r filename="~/functions-app/R/build-penguin-histogram.R"}
 #| eval: false
 #| echo: true
 build_penguin_histogram <- function(input) {

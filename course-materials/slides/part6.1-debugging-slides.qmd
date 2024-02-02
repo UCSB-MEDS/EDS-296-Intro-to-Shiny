@@ -405,22 +405,18 @@ ui <- fluidPage(
 server <- function(input, output){
   
   # render penguin text ----
-  output$penguins_text <- renderText({
+  output$penguins_text_output <- renderText({
     
     if(input$img_input == "All penguins"){
-      message("Printing all penguins text")
       "Meet all of our lovely penguins species!"
     }
     else if(input$img_input == "Sassy chinstrap"){
-      message("Printing chinstrap text")
       "Chinstraps get their name from the thin black line that runs under their chins"
     }
     else if(input$img_input == "Staring gentoo"){
-      message("Printing gentoo text")
       "Gentoos stand out because of their bright orange bills and feet"
     }
     else if(input$img_input == "Adorable adelie"){
-      message("Printing adelie text")
       "Adelie penguins are my personal favorite <3"
     }
   }) # END renderText
@@ -430,19 +426,15 @@ server <- function(input, output){
   output$penguin_img_output <- renderImage({
     
     if(input$img_input == "All penguins"){
-      message("Displaying all penguins image")
       list(src = "www/all_penguins.jpeg", height = 240, width = 300)
     }
     else if(input$img_input == "Sassy chinstrap"){
-      message("Displaying chinstrap image")
       list(src = "www/chinstrap.jpeg", height = 240, width = 300)
     }
     else if(input$img_input == "Staring gentoo"){
-      message("Displaying all gentoo image")
       list(src = "www/gentoo.jpeg", height = 240, width = 300)
     }
     else if(input$img_input == "Adorable adelie"){
-      message("Displaying all adelie image")
       list(src = "www/adelie.gif", height = 240, width = 300)
     }
     
@@ -521,7 +513,7 @@ See next slide for code
 ::: {.panel-tabset}
 
 ## `app.R`
-```{r filename="~/reactlog-broken/app.R"}
+```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
 # load packages ----
@@ -663,7 +655,7 @@ knitr::include_graphics("images/part6/commented-out-code.gif")
 
 You can insert diagnostic messages within your reactives using `message()` -- here, we'll add a short message where each text and image output should be rendered. 
 
-```{r filename="~/reactlog-broken/app.R"}
+```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "53|57|61|65|75|79|83|87"
@@ -857,7 +849,7 @@ knitr::include_graphics("images/part6/reactlog.png")
 
 <hr>
 
-`reactlog` should already be installed as a dependency of `shiny` (but be sure to import the package at the top of your script using `library(reactlog)`). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.
+`reactlog` should already be installed as a dependency of `shiny` (but you'll need to load it using `library(reactlog)` in your console). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.
 
 <br>
 
@@ -969,7 +961,7 @@ knitr::include_graphics("images/part6/reactlog-broken.gif")
 
 <p class="body-text-s">Our `outputId` in the **UI** is set to `penguin_text_output`:</p>
 
-```{r filename="~/reactlog-broken/app.R"}
+```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "6"
@@ -985,7 +977,7 @@ ui <- fluidPage(
 
 <p class="body-text-s">But we call `penguins_text_output` (note the plural) when rendering our output in the **server**:</p>
 
-```{r filename="~/reactlog-broken/app.R"}
+```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "6"

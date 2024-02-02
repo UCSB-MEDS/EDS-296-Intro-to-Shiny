@@ -422,7 +422,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p>An example leaflet map embedded in an Quarto website. Image Source: <a href="https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby">my website</a></p>
+<p>An example leaflet map embedded in a Quarto website. Image Source: <a href="https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby">my website</a></p>
 </div>
 </div>
 </div>
@@ -501,12 +501,12 @@
 <h2></h2>
 <p><span class="slide-title">Run serverless shiny apps using Shinylive</span></p>
 <hr>
-<p><span class="body-text-s"><strong>Shiylive is a serverless version of Shiny</strong>, which was recently annoucned at <a href="https://posit.co/conference/">posit::conf(2023)</a> by Joe Cheng (rewatch his <a href="https://www.youtube.com/watch?v=j1M6YyU2ZX8&amp;list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&amp;index=88">talk</a>!). It supports Shiny for both R <em>and</em> Python (that’s right, you can build shiny apps using Python too! See <a href="https://shiny.posit.co/py/">Shiny for Python</a>. for more info). You have a few options:</span></p>
+<p><span class="body-text-s"><strong>Shinylive is a serverless version of Shiny</strong>, which was recently annoucned at <a href="https://posit.co/conference/">posit::conf(2023)</a> by Joe Cheng (rewatch his <a href="https://www.youtube.com/watch?v=j1M6YyU2ZX8&amp;list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&amp;index=88">talk</a>!). It supports Shiny for both R <em>and</em> Python (that’s right, you can build shiny apps using Python too! See <a href="https://shiny.posit.co/py/">Shiny for Python</a> for more info). You have a few options:</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
 <ul>
-<li><span class="body-text-s"><strong>Convert shiny apps to static websites</strong> using this <a href="https://github.com/posit-dev/r-shinylive">[<code>{shinylive}</code>] package for R</a> or <a href="https://github.com/posit-dev/py-shinylive">[<code>{shinylive}</code>] package for Python</a></span></li>
+<li><span class="body-text-s"><strong>Convert shiny apps to static websites</strong> using this <a href="https://github.com/posit-dev/r-shinylive"><code>{shinylive}</code> package for R</a> or <a href="https://github.com/posit-dev/py-shinylive"><code>{shinylive}</code> package for Python</a></span></li>
 <li><span class="body-text-s"><strong>Write, run, and share Shiny apps right in the browser</strong> at <a href="https://shinylive.io/r/examples/" class="uri">https://shinylive.io/r/examples/</a> (R) or <a href="https://shinylive.io/py/examples/" class="uri">https://shinylive.io/py/examples/</a> (Python)</span></li>
 <li><span class="body-text-s"><strong>Include Shiny apps in Quarto docs</strong> using the <a href="https://github.com/quarto-ext/shinylive">Shinylive Quarto extension</a></span></li>
 </ul>
@@ -592,8 +592,8 @@
 <p><span class="teal-text"><strong>(3)</strong></span> <strong>Tell the server how to assemble inputs into outputs</strong>:</p>
 <ul>
 <li><p>save objects you want to display to <code>output$&lt;id&gt;</code></p></li>
-<li><p>Build reactive objects using a render*() function</p></li>
-<li><p>Access input values with input$<id></id></p></li>
+<li><p>Build reactive objects using a <code>render*()</code> function</p></li>
+<li><p>Access input values with <code>input$&lt;id&gt;</code></p></li>
 </ul>
 <p><br></p>
 <p><em>And remember to always build your data filtering pipelines &amp; visualizations <strong>outside of shiny</strong> before trying to make them reactive.</em></p>

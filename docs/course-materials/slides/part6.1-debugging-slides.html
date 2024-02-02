@@ -738,79 +738,71 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <span id="cb2-47"><a href="#cb2-47"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
 <span id="cb2-48"><a href="#cb2-48"></a>  </span>
 <span id="cb2-49"><a href="#cb2-49"></a>  <span class="co"># render penguin text ----</span></span>
-<span id="cb2-50"><a href="#cb2-50"></a>  output<span class="sc">$</span>penguins_text <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb2-50"><a href="#cb2-50"></a>  output<span class="sc">$</span>penguins_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
 <span id="cb2-51"><a href="#cb2-51"></a>    </span>
 <span id="cb2-52"><a href="#cb2-52"></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb2-53"><a href="#cb2-53"></a>      <span class="fu">message</span>(<span class="st">"Printing all penguins text"</span>)</span>
-<span id="cb2-54"><a href="#cb2-54"></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
-<span id="cb2-55"><a href="#cb2-55"></a>    }</span>
-<span id="cb2-56"><a href="#cb2-56"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb2-57"><a href="#cb2-57"></a>      <span class="fu">message</span>(<span class="st">"Printing chinstrap text"</span>)</span>
-<span id="cb2-58"><a href="#cb2-58"></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
-<span id="cb2-59"><a href="#cb2-59"></a>    }</span>
-<span id="cb2-60"><a href="#cb2-60"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb2-61"><a href="#cb2-61"></a>      <span class="fu">message</span>(<span class="st">"Printing gentoo text"</span>)</span>
-<span id="cb2-62"><a href="#cb2-62"></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
+<span id="cb2-53"><a href="#cb2-53"></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a>    }</span>
+<span id="cb2-55"><a href="#cb2-55"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb2-56"><a href="#cb2-56"></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
+<span id="cb2-57"><a href="#cb2-57"></a>    }</span>
+<span id="cb2-58"><a href="#cb2-58"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb2-59"><a href="#cb2-59"></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
+<span id="cb2-60"><a href="#cb2-60"></a>    }</span>
+<span id="cb2-61"><a href="#cb2-61"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb2-62"><a href="#cb2-62"></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
 <span id="cb2-63"><a href="#cb2-63"></a>    }</span>
-<span id="cb2-64"><a href="#cb2-64"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb2-65"><a href="#cb2-65"></a>      <span class="fu">message</span>(<span class="st">"Printing adelie text"</span>)</span>
-<span id="cb2-66"><a href="#cb2-66"></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
-<span id="cb2-67"><a href="#cb2-67"></a>    }</span>
-<span id="cb2-68"><a href="#cb2-68"></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
-<span id="cb2-69"><a href="#cb2-69"></a>  </span>
-<span id="cb2-70"><a href="#cb2-70"></a>  </span>
-<span id="cb2-71"><a href="#cb2-71"></a>  <span class="co"># render penguin images ----</span></span>
-<span id="cb2-72"><a href="#cb2-72"></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
-<span id="cb2-73"><a href="#cb2-73"></a>    </span>
-<span id="cb2-74"><a href="#cb2-74"></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb2-75"><a href="#cb2-75"></a>      <span class="fu">message</span>(<span class="st">"Displaying all penguins image"</span>)</span>
-<span id="cb2-76"><a href="#cb2-76"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-77"><a href="#cb2-77"></a>    }</span>
-<span id="cb2-78"><a href="#cb2-78"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb2-79"><a href="#cb2-79"></a>      <span class="fu">message</span>(<span class="st">"Displaying chinstrap image"</span>)</span>
-<span id="cb2-80"><a href="#cb2-80"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-64"><a href="#cb2-64"></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
+<span id="cb2-65"><a href="#cb2-65"></a>  </span>
+<span id="cb2-66"><a href="#cb2-66"></a>  </span>
+<span id="cb2-67"><a href="#cb2-67"></a>  <span class="co"># render penguin images ----</span></span>
+<span id="cb2-68"><a href="#cb2-68"></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
+<span id="cb2-69"><a href="#cb2-69"></a>    </span>
+<span id="cb2-70"><a href="#cb2-70"></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb2-71"><a href="#cb2-71"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-72"><a href="#cb2-72"></a>    }</span>
+<span id="cb2-73"><a href="#cb2-73"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb2-74"><a href="#cb2-74"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-75"><a href="#cb2-75"></a>    }</span>
+<span id="cb2-76"><a href="#cb2-76"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb2-77"><a href="#cb2-77"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-78"><a href="#cb2-78"></a>    }</span>
+<span id="cb2-79"><a href="#cb2-79"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb2-80"><a href="#cb2-80"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
 <span id="cb2-81"><a href="#cb2-81"></a>    }</span>
-<span id="cb2-82"><a href="#cb2-82"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb2-83"><a href="#cb2-83"></a>      <span class="fu">message</span>(<span class="st">"Displaying all gentoo image"</span>)</span>
-<span id="cb2-84"><a href="#cb2-84"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-85"><a href="#cb2-85"></a>    }</span>
-<span id="cb2-86"><a href="#cb2-86"></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb2-87"><a href="#cb2-87"></a>      <span class="fu">message</span>(<span class="st">"Displaying all adelie image"</span>)</span>
-<span id="cb2-88"><a href="#cb2-88"></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-89"><a href="#cb2-89"></a>    }</span>
-<span id="cb2-90"><a href="#cb2-90"></a>    </span>
-<span id="cb2-91"><a href="#cb2-91"></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
+<span id="cb2-82"><a href="#cb2-82"></a>    </span>
+<span id="cb2-83"><a href="#cb2-83"></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
+<span id="cb2-84"><a href="#cb2-84"></a>  </span>
+<span id="cb2-85"><a href="#cb2-85"></a>  </span>
+<span id="cb2-86"><a href="#cb2-86"></a>  <span class="co"># filter body masses ----</span></span>
+<span id="cb2-87"><a href="#cb2-87"></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb2-88"><a href="#cb2-88"></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-89"><a href="#cb2-89"></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>]) </span>
+<span id="cb2-90"><a href="#cb2-90"></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> filter body masses</span></span>
+<span id="cb2-91"><a href="#cb2-91"></a>  </span>
 <span id="cb2-92"><a href="#cb2-92"></a>  </span>
-<span id="cb2-93"><a href="#cb2-93"></a>  </span>
-<span id="cb2-94"><a href="#cb2-94"></a>  <span class="co"># filter body masses ----</span></span>
-<span id="cb2-95"><a href="#cb2-95"></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb2-96"><a href="#cb2-96"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb2-97"><a href="#cb2-97"></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>]) </span>
-<span id="cb2-98"><a href="#cb2-98"></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> filter body masses</span></span>
-<span id="cb2-99"><a href="#cb2-99"></a>  </span>
-<span id="cb2-100"><a href="#cb2-100"></a>  </span>
-<span id="cb2-101"><a href="#cb2-101"></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb2-102"><a href="#cb2-102"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb2-103"><a href="#cb2-103"></a></span>
-<span id="cb2-104"><a href="#cb2-104"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
-<span id="cb2-105"><a href="#cb2-105"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
-<span id="cb2-106"><a href="#cb2-106"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb2-107"><a href="#cb2-107"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-108"><a href="#cb2-108"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb2-109"><a href="#cb2-109"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb2-110"><a href="#cb2-110"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb2-111"><a href="#cb2-111"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb2-112"><a href="#cb2-112"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-113"><a href="#cb2-113"></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
-<span id="cb2-114"><a href="#cb2-114"></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
-<span id="cb2-115"><a href="#cb2-115"></a></span>
-<span id="cb2-116"><a href="#cb2-116"></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
-<span id="cb2-117"><a href="#cb2-117"></a>  </span>
-<span id="cb2-118"><a href="#cb2-118"></a>  </span>
-<span id="cb2-119"><a href="#cb2-119"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
-<span id="cb2-120"><a href="#cb2-120"></a></span>
-<span id="cb2-121"><a href="#cb2-121"></a><span class="co"># combine UI &amp; server into an app ----</span></span>
-<span id="cb2-122"><a href="#cb2-122"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-93"><a href="#cb2-93"></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb2-94"><a href="#cb2-94"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-95"><a href="#cb2-95"></a></span>
+<span id="cb2-96"><a href="#cb2-96"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
+<span id="cb2-97"><a href="#cb2-97"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb2-98"><a href="#cb2-98"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb2-99"><a href="#cb2-99"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-100"><a href="#cb2-100"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb2-101"><a href="#cb2-101"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb2-102"><a href="#cb2-102"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb2-103"><a href="#cb2-103"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb2-104"><a href="#cb2-104"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-105"><a href="#cb2-105"></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
+<span id="cb2-106"><a href="#cb2-106"></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
+<span id="cb2-107"><a href="#cb2-107"></a></span>
+<span id="cb2-108"><a href="#cb2-108"></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
+<span id="cb2-109"><a href="#cb2-109"></a>  </span>
+<span id="cb2-110"><a href="#cb2-110"></a>  </span>
+<span id="cb2-111"><a href="#cb2-111"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
+<span id="cb2-112"><a href="#cb2-112"></a></span>
+<span id="cb2-113"><a href="#cb2-113"></a><span class="co"># combine UI &amp; server into an app ----</span></span>
+<span id="cb2-114"><a href="#cb2-114"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -842,7 +834,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/reactlog-broken/app.R</strong></pre>
+<pre><strong>~/broken-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(shiny)</span>
@@ -983,7 +975,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/reactlog-broken/app.R</strong></pre>
+<pre><strong>~/broken-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="53|57|61|65|75|79|83|87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># load packages ----</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(shiny)</span>
@@ -1148,7 +1140,7 @@ Reactivity can be confusing. I recommend watching Barret Schloerke’s talk, lin
 <h2></h2>
 <p><span class="slide-title">Using <code>{reactlog}</code></span></p>
 <hr>
-<p><code>reactlog</code> should already be installed as a dependency of <code>shiny</code> (but be sure to import the package at the top of your script using <code>library(reactlog)</code>). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.</p>
+<p><code>reactlog</code> should already be installed as a dependency of <code>shiny</code> (but you’ll need to load it using <code>library(reactlog)</code> in your console). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.</p>
 <p><br></p>
 <p><strong>To use <code>reactlog</code>, follow these steps:</strong></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Load the reactlog library in you console (<code>library(reactlog)</code>)</span></p>
@@ -1231,7 +1223,7 @@ Our <code>outputId</code> in the <strong>UI</strong> is set to <code>penguin_tex
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/reactlog-broken/app.R</strong></pre>
+<pre><strong>~/broken-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  </span>
@@ -1249,7 +1241,7 @@ But we call <code>penguins_text_output</code> (note the plural) when rendering o
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/reactlog-broken/app.R</strong></pre>
+<pre><strong>~/broken-app/app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  </span>
@@ -1280,7 +1272,7 @@ End part 6.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4c139a5e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_a0b64ee7" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
