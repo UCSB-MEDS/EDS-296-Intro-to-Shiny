@@ -170,9 +170,9 @@ Oftentimes, you'll need to identify larger, more complex errors, like why an out
 
 To demo these approaches, we'll use two pre-constructed apps as examples: 
 
-[[**(1)**]{.teal-text} [`reactlog-working`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-working) (a small app that's functioning as intended)]{.body-text-s} 
+[[**(1)**]{.teal-text} [`working-app`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-working) (a small app that's functioning as intended)]{.body-text-s} 
 
-[[**(2)**]{.teal-text} [`reactlog-broken`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-broken) (the same small app that's *not* functioning as intended)]{.body-text-s}
+[[**(2)**]{.teal-text} [`broken-app`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-broken) (the same small app that's *not* functioning as intended)]{.body-text-s}
 
 ---
 

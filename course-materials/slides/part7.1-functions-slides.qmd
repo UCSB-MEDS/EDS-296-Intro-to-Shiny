@@ -607,7 +607,7 @@ build_penguin_scatterplot <- function(input) {
 ```{r filename="~/functions-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "3-4"
+#| code-line-numbers: "4-5"
 server <- function(input, output) {
   
   

@@ -39,7 +39,7 @@
     "href": "course-materials/part0-setup.html#prerequisites",
     "title": "Setup",
     "section": "Prerequisites",
-    "text": "Prerequisites\nNo prior Shiny experience necessary for this course! However, we do assume that participants have the following:\n\nR / RStudio installed & a basic familiarity with the language\nA GitHub profile & git installed / configured\nYou have the required R packages installed. You can install / update them all at once by running:\n\n\ninstall.packages(pkgs = c( \"tidyverse\", \"shiny\", \"shinydashboard\", \"shinyWidgets\", \"shinycssloaders\", \"markdown\", \"DT\", \"leaflet\", \"bslib\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\"))\n\n\n(Optional, but recommended) Install the Let’s get color blind Google Chrome extension\n\n\nPlease see the MEDS Installation Guide for more detailed instructions on installing the above software."
+    "text": "Prerequisites\nNo prior Shiny experience necessary for this course! However, we do assume that participants have the following:\n\nR / RStudio installed & a basic familiarity with the language\nA GitHub profile & git installed / configured\nYou have the required R packages installed. You can install / update them all at once by running:\n\n\ninstall.packages(pkgs = c( \"tidyverse\", \"shiny\", \"shinydashboard\", \"shinyWidgets\", \"shinycssloaders\", \"markdown\", \"DT\", \"leaflet\", \"bslib\", \"thematic\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\"))\n\n\n(Optional, but recommended) Install the Let’s get color blind Google Chrome extension\n\n\nPlease see the MEDS Installation Guide for more detailed instructions on installing the above software."
   },
   {
     "objectID": "course-materials/part0-setup.html#reference-code",
@@ -319,7 +319,7 @@
     "href": "course-materials/slides/part6.1-debugging-slides.html#next",
     "title": "EDS 430",
     "section": "",
-    "text": "What about “larger” errors?\n\nOftentimes, you’ll need to identify larger, more complex errors, like why an output isn’t rendering correctly or even appearing in your app at all.\n\nI often turn to two strategies:\n(1) commenting out everything except the UI elements and server logic where I believe the issue is stemming from\n(2) adding diagnostic messages to my reactives\n\n(3) …and on rare occasions, I’ll try using the {reactlog} package to help visualize my app’s reactivity in an attempt to identify the problem.\n\n\n\nTo demo these approaches, we’ll use two pre-constructed apps as examples:\n(1) reactlog-working (a small app that’s functioning as intended)\n(2) reactlog-broken (the same small app that’s not functioning as intended)"
+    "text": "What about “larger” errors?\n\nOftentimes, you’ll need to identify larger, more complex errors, like why an output isn’t rendering correctly or even appearing in your app at all.\n\nI often turn to two strategies:\n(1) commenting out everything except the UI elements and server logic where I believe the issue is stemming from\n(2) adding diagnostic messages to my reactives\n\n(3) …and on rare occasions, I’ll try using the {reactlog} package to help visualize my app’s reactivity in an attempt to identify the problem.\n\n\n\nTo demo these approaches, we’ll use two pre-constructed apps as examples:\n(1) working-app (a small app that’s functioning as intended)\n(2) broken-app (the same small app that’s not functioning as intended)"
   },
   {
     "objectID": "course-materials/slides/part6.1-debugging-slides.html#non-buggy-app",
@@ -900,7 +900,7 @@
     "href": "course-materials/slides/part4.2-css-sass-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 4.3\nStyling apps with CSS & Sass\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 4.2\nStyling apps with CSS & Sass\n\nWeek 2 | February 2nd, 2024"
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#themeing-css-sass",
@@ -1285,7 +1285,7 @@
     "href": "course-materials/part6-debugging-testing.html#lecture-materials",
     "title": "Debugging & testing",
     "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 6 is broken down into two lessons:\n\n\n\nDebugging\n lecture 2.2 slides\n\n\n\n\nTesting\n lecture 2.3 slides"
+    "text": "Lecture Materials\nPart 6 is broken down into two lessons:\n\n\n\nDebugging\n lecture 6.1 slides\n\n\n\n\nTesting\n lecture 6.2 slides"
   },
   {
     "objectID": "course-materials/part1-intro.html#required-packages",
@@ -1565,7 +1565,7 @@
     "href": "course-materials/slides/part3-shiny-dashboard-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 3.1\nBuilding Shiny dashboards\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 3\nBuilding Shiny dashboards\n\nWeek 2 | February 2nd, 2024"
   },
   {
     "objectID": "course-materials/slides/part3-shiny-dashboard-slides.html#building-dashboards",
@@ -1894,7 +1894,7 @@
     "href": "course-materials/slides/part5-ux-ui-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 5.1\nUser-centered design\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 5\nUser-centered design\n\nWeek 2 | February 2nd, 2024"
   },
   {
     "objectID": "course-materials/slides/part5-ux-ui-slides.html#UX-UI",

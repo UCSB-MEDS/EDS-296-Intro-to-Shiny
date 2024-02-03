@@ -28,7 +28,7 @@ knitr::include_graphics("images/software.png")
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-install.packages(pkgs = c( "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder"))
+install.packages(pkgs = c( "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "thematic", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder"))
 ```
 
 - **(Optional, but recommended)** Install the [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck) Google Chrome extension

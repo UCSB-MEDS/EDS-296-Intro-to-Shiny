@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 5.1]{.custom-title}
+[EDS 430: Part 5]{.custom-title}
 
 [*User-centered design*]{.custom-subtitle}
 
