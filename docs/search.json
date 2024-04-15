@@ -1827,18 +1827,25 @@
     "text": "Learning Objectives for Testing\n\n\nAfter this section, you should:\n\n\n\n understand some of the reasons why apps break and the benefit of having automated tests\n\n\n\n\n have a basic understanding of how to use the {shinytest2} package to create regression tests\n\n\n\n\n know how to rerun tests\n\n\n\n\nPackages introduced:\n\n\n\n\n {shinytest2}: provides tools for creating and running automated tests on Shiny applications"
   },
   {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#what-is-testing",
+    "href": "course-materials/slides/part6.2-testing-slides.html#what-is-testing",
+    "title": "EDS 430",
+    "section": "",
+    "text": "What do we mean by “testing”?\n\n“Captur[ing] desired behavior of your code in a way that you can automatically verify that it keeps working the way you expect” (Mastering Shiny Ch 21)"
+  },
+  {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#why-test",
     "href": "course-materials/slides/part6.2-testing-slides.html#why-test",
     "title": "EDS 430",
     "section": "",
-    "text": "Why test our Shiny apps?\n\n\nIt’s almost inevitable that apps will break – there are lots of reasons why this happens, but to name a few:\n\n\n an upgraded R package(s) has a different behavior (this includes {shiny}) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators\n\n\n\n\n you make changes to your app\n\n\n\n\n an external data source stops working or returns data in a different format than expected by your app\n\n\n\n\nIt can save a lot of time and headache (for you and your collaborators) to have an automated system that checks if your app is working as expected."
+    "text": "Why test our Shiny apps?\n\n\nIt’s almost inevitable that apps will break – there are lots of reasons why this happens, but to name a few:\n\n\n an upgraded R package(s) has a different behavior (this includes {shiny}) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators\n\n\n\n\n you make changes to your app (e.g. add new features, refactor code)\n\n\n\n\n an external data source stops working or returns data in a different format than expected by your app\n\n\n\n\nIt can save a lot of time and headache (for you and your collaborators) to have an automated system that checks if your app is working as expected."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#shinytest2",
     "href": "course-materials/slides/part6.2-testing-slides.html#shinytest2",
     "title": "EDS 430",
     "section": "",
-    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package is a useful tool for conducting regression testing on shiny apps – or in other words, testing existing app behavior for consistency over time.\n\n\n  \n\nFrom the shinytest2 documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRather than having to write tests by hand, you can interact with your app via the “app recorder” and shinytest2 will record the test code automatically for you. Simply rerun tests to check for consistency."
+    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package is a useful tool for conducting regression testing on shiny apps – or in other words, testing existing app behavior for consistency over time.\n\n\n  \n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRather than having to write tests by hand, you can interact with your app via the “app recorder” and shinytest2 will record the test code automatically for you. Simply rerun tests to check for consistency."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#shinytest2-resources",

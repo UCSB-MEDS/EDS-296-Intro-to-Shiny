@@ -62,6 +62,16 @@ editor_options:
 
 ---
 
+##  {#what-is-testing data-menu-title="What is testing?"}
+
+[What do we mean by "testing"?]{.slide-title}
+
+<hr>
+
+"Captur[ing] desired behavior of your code in a way that you can automatically verify that it keeps working the way you expect" ([Mastering Shiny Ch 21](https://mastering-shiny.org/scaling-testing.html))
+
+---
+
 ##  {#why-test data-menu-title="Why test?"}
 
 [Why test our Shiny apps?]{.slide-title}
@@ -78,7 +88,7 @@ It's almost inevitable that apps will break -- there are lots of reasons why thi
 
 . . . 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} you make changes to your app</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} you make changes to your app (e.g. add new features, refactor code)</p>
 
 . . . 
 
@@ -98,7 +108,7 @@ It's almost inevitable that apps will break -- there are lots of reasons why thi
 
 <hr>
 
-The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) is a useful tool for conducting regression testing on shiny apps -- or in other words, testing existing app behavior for consistency over time.
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) is a useful tool for conducting **regression testing** on shiny apps -- or in other words, testing existing app behavior for consistency over time.
 
 :::: {.columns}
 
@@ -108,7 +118,7 @@ The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shiny
 <br>
 <br>
 
-<p class="body-text">From the `shinytest2` documentation:</p>
+<p class="body-text">From the `{shinytest2}` documentation:</p>
 
 <p class="body-text-s quote-text-bg">"*`{shinytest2}` uses `{testthat}`’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.*"</p> 
 :::

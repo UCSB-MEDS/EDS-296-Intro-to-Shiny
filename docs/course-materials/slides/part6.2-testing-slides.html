@@ -446,6 +446,12 @@ Packages introduced:
 </p>
 </div>
 </section>
+<section id="what-is-testing" class="slide level2" data-menu-title="What is testing?">
+<h2></h2>
+<p><span class="slide-title">What do we mean by “testing”?</span></p>
+<hr>
+<p>“Captur[ing] desired behavior of your code in a way that you can automatically verify that it keeps working the way you expect” (<a href="https://mastering-shiny.org/scaling-testing.html">Mastering Shiny Ch 21</a>)</p>
+</section>
 <section id="why-test" class="slide level2" data-menu-title="Why test?">
 <h2></h2>
 <p><span class="slide-title">Why test our Shiny apps?</span></p>
@@ -459,7 +465,7 @@ Packages introduced:
 </div>
 <div class="fragment">
 <p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> you make changes to your app
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> you make changes to your app (e.g.&nbsp;add new features, refactor code)
 </p>
 </div>
 <div class="fragment">
@@ -476,12 +482,12 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Enter the <code>{shinytest2}</code> package</span></p>
 <hr>
-<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> is a useful tool for conducting regression testing on shiny apps – or in other words, testing existing app behavior for consistency over time.</p>
+<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> is a useful tool for conducting <strong>regression testing</strong> on shiny apps – or in other words, testing existing app behavior for consistency over time.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br> <br></p>
 <p class="body-text">
-From the <code>shinytest2</code> documentation:
+From the <code>{shinytest2}</code> documentation:
 </p>
 <p class="body-text-s quote-text-bg">
 “<em><code>{shinytest2}</code> uses <code>{testthat}</code>’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.</em>”
@@ -691,7 +697,7 @@ End part 6.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_11f3837f" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_7deba285" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
