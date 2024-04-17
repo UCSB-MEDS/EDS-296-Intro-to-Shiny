@@ -24,6 +24,7 @@ toc: true
 - **[{shinytest2}: Unit testing for Shiny applications](https://www.youtube.com/watch?v=DMgAW4m5aTI)**, rstudio::conf(2022) talk by [Barret Schloerke](http://schloerke.com/)
 - **[{shinytest2} Testing Shiny with {testthat}](https://www.youtube.com/watch?v=EOVPBN5o8F8)**, 2022 Appsilon Shiny Conference talk by [Barret Schloerke](http://schloerke.com/) ([GitHub repo](https://github.com/schloerke/presentation-2022-04-27-appsilon-shinytest2))
 - **[Shiny testing overview](https://shiny.rstudio.com/articles/testing-overview.html)**, by [Winston Chang](https://github.com/wch) -- this article discussed the `shinytest2` predecessor, `shinytest` (which is now entering maintenance mode), but provides some helpful context and is worth a read
+- **[A Robust Framework for Automated Shiny App Testing](https://www.youtube.com/watch?v=KDNohZ3ySr4)**, an rstudio::conf(2022) talk by [Sydaeka Watson](https://www.sydeaka.com/) -- a really cool case study / overview of a (slightly more complex) framework for automated Shiny app testing
 
 ### Modules
 

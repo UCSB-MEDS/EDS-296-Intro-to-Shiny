@@ -446,11 +446,51 @@ Packages introduced:
 </p>
 </div>
 </section>
-<section id="what-is-testing" class="slide level2" data-menu-title="What is testing?">
+<section id="shiny-workflow" class="slide level2" data-menu-title="Shiny workflow">
 <h2></h2>
-<p><span class="slide-title">What do we mean by “testing”?</span></p>
+<p><span class="slide-title2">The Shiny workflow allows app developers to iterate quickly!</span></p>
 <hr>
+<ol type="1">
+<li>Add / adjust some reactivity</li>
+<li>Click “Run App”</li>
+<li>Manually experiment with the new feature to see if it works</li>
+<li>Rinse &amp; repeat</li>
+</ol>
+<div class="fragment">
+<p>But what if you have 20 apps, or many team members? It gets <strong>challenging</strong> to remember all the features you need to test, or how each works. Things get lost in translation with manually experimenting (e.g.&nbsp;can you explain to your coworker <em>all</em> of your app’s features and make sure that they manually test it properly?)</p>
+<div class="footer">
+<p>Slide adapted from Barret Schloerke’s rstudio::conf(2022) talk, <a href="https://www.youtube.com/watch?v=DMgAW4m5aTI"><code>{shinytest2}</code>: Unit testing for Shiny applications</a></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><code>{testthat}</code> package</p>
+<ul>
+<li>unit testing for R</li>
+<li>executes formal unit tests</li>
+<li>goals
+<ul>
+<li>fewer bugs</li>
+<li>robust code</li>
+<li>better code structure</li>
+<li>call to action</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
 <p>“Captur[ing] desired behavior of your code in a way that you can automatically verify that it keeps working the way you expect” (<a href="https://mastering-shiny.org/scaling-testing.html">Mastering Shiny Ch 21</a>)</p>
+</section>
+<section class="slide level2">
+
+<p><code>{shinytest2}</code></p>
+<ul>
+<li>(unit) regression testing for Shiny applications
+<ul>
+<li>testing that existing app behavior is consistent over time</li>
+</ul></li>
+</ul>
 </section>
 <section id="why-test" class="slide level2" data-menu-title="Why test?">
 <h2></h2>
@@ -485,7 +525,7 @@ Packages introduced:
 <p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> is a useful tool for conducting <strong>regression testing</strong> on shiny apps – or in other words, testing existing app behavior for consistency over time.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br> <br> <br></p>
+<p><br> <br></p>
 <p class="body-text">
 From the <code>{shinytest2}</code> documentation:
 </p>
@@ -497,16 +537,83 @@ From the <code>{shinytest2}</code> documentation:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part6/shinytest2-hex.png" style="width:100.0%" alt="A hex that's split down the middle horizontally. The top half is the blue Shiny hex and the bottom half looks like the red {testthat} hex, except it reads 'test2'."></p>
+<p><img data-src="images/part6/shinytest2-hex.png" style="width:70.0%" alt="A hex that's split down the middle horizontally. The top half is the blue Shiny hex and the bottom half looks like the red {testthat} hex, except it reads 'test2'."></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p class="body-text-s">
-Rather than having to write tests by hand, you can interact with your app via the “app recorder” and <code>shinytest2</code> will record the test code automatically for you. Simply rerun tests to check for consistency.
-</p>
+<p>Rather than having to write tests by hand, you can interact with your app via the “app recorder” and <code>{shinytest2}</code> will record the test code automatically for you. Simply rerun tests to check for consistency.</p>
+</section>
+<section class="slide level2">
+
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>global.R</code></a></li><li><a href="#tabset-1-2"><code>ui.R</code></a></li><li><a href="#tabset-1-3"><code>server.R</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load libraries ----</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(shiny)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">h1</span>(<span class="st">"Let's test this app!"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  </span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">br</span>(),</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  </span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="co"># Example 1 ------------------------------------------------------------------</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  </span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">h3</span>(<span class="st">"Example 1"</span>),</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  </span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="co"># fluidRow (Ex 1: greeting) ----</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    </span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="co"># greeting sidebarLayout ----</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb2-16"><a href="#cb2-16"></a>      </span>
+<span id="cb2-17"><a href="#cb2-17"></a>      <span class="co"># greeting sidebarPanel ----</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>      <span class="fu">sidebarPanel</span>(</span>
+<span id="cb2-19"><a href="#cb2-19"></a>        </span>
+<span id="cb2-20"><a href="#cb2-20"></a>        <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="st">"name_input"</span>, </span>
+<span id="cb2-21"><a href="#cb2-21"></a>                  <span class="at">label =</span> <span class="st">"What is your name?"</span>),</span>
+<span id="cb2-22"><a href="#cb2-22"></a>        </span>
+<span id="cb2-23"><a href="#cb2-23"></a>        <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"greet_input"</span>, </span>
+<span id="cb2-24"><a href="#cb2-24"></a>                     <span class="at">label =</span> <span class="st">"Greet"</span>),</span>
+<span id="cb2-25"><a href="#cb2-25"></a>        </span>
+<span id="cb2-26"><a href="#cb2-26"></a>      ), <span class="co"># </span><span class="re">END</span><span class="co"> greeting sidebarPanel</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>      </span>
+<span id="cb2-28"><a href="#cb2-28"></a>      <span class="co"># greeting mainPanel ----</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>      <span class="fu">mainPanel</span>(</span>
+<span id="cb2-30"><a href="#cb2-30"></a>        </span>
+<span id="cb2-31"><a href="#cb2-31"></a>        <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"greeting_output"</span>),</span>
+<span id="cb2-32"><a href="#cb2-32"></a>        <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"first_letter_output"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a>        </span>
+<span id="cb2-34"><a href="#cb2-34"></a>      ) <span class="co"># </span><span class="re">END</span><span class="co"> greeting mainPanel</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a>      </span>
+<span id="cb2-36"><a href="#cb2-36"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> greeting sidebarLayout </span></span>
+<span id="cb2-37"><a href="#cb2-37"></a>    </span>
+<span id="cb2-38"><a href="#cb2-38"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow (Ex 1: greeting)</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a>  </span>
+<span id="cb2-40"><a href="#cb2-40"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage (ui)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>akldsjfa;jdf;a</p>
 </section>
 <section id="shinytest2-resources" class="slide level2" data-menu-title="{shinytest2} resources">
 <h2></h2>
@@ -530,27 +637,27 @@ Rather than having to write tests by hand, you can interact with your app via th
 <div class="code-with-filename-file">
 <pre><strong>~/testing-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  </span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"What is your name?"</span>),</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">actionButton</span>(<span class="st">"greet"</span>, <span class="st">"Greet"</span>),</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">textOutput</span>(<span class="st">"greeting"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>  </span>
-<span id="cb1-9"><a href="#cb1-9"></a>)</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb1-12"><a href="#cb1-12"></a>  </span>
-<span id="cb1-13"><a href="#cb1-13"></a>  output<span class="sc">$</span>greeting <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb1-14"><a href="#cb1-14"></a>    <span class="fu">req</span>(input<span class="sc">$</span>greet)</span>
-<span id="cb1-15"><a href="#cb1-15"></a>    <span class="fu">paste0</span>(<span class="st">"Hello "</span>, <span class="fu">isolate</span>(input<span class="sc">$</span>name), <span class="st">"!"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16"></a>    </span>
-<span id="cb1-17"><a href="#cb1-17"></a>  })</span>
-<span id="cb1-18"><a href="#cb1-18"></a>  </span>
-<span id="cb1-19"><a href="#cb1-19"></a>}</span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  </span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"What is your name?"</span>),</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">actionButton</span>(<span class="st">"greet"</span>, <span class="st">"Greet"</span>),</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">textOutput</span>(<span class="st">"greeting"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  </span>
+<span id="cb4-9"><a href="#cb4-9"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb4-12"><a href="#cb4-12"></a>  </span>
+<span id="cb4-13"><a href="#cb4-13"></a>  output<span class="sc">$</span>greeting <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="fu">req</span>(input<span class="sc">$</span>greet)</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="fu">paste0</span>(<span class="st">"Hello "</span>, <span class="fu">isolate</span>(input<span class="sc">$</span>name), <span class="st">"!"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    </span>
+<span id="cb4-17"><a href="#cb4-17"></a>  })</span>
+<span id="cb4-18"><a href="#cb4-18"></a>  </span>
+<span id="cb4-19"><a href="#cb4-19"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -593,39 +700,39 @@ Rather than having to write tests by hand, you can interact with your app via th
 <hr>
 <p>After recording your first test, a <code>tests/</code> folder is generated, containing a number of different files and subdirectories. Some important files to note:</p>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>setup-shinytest2.R</code></a></li><li><a href="#tabset-1-2"><code>test-shinytest2.R</code></a></li><li><a href="#tabset-1-3"><code>*_.png</code></a></li><li><a href="#tabset-1-4"><code>*.json</code></a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1"><code>setup-shinytest2.R</code></a></li><li><a href="#tabset-2-2"><code>test-shinytest2.R</code></a></li><li><a href="#tabset-2-3"><code>*_.png</code></a></li><li><a href="#tabset-2-4"><code>*.json</code></a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-2-1">
 <p><span class="body-text-s">For more complex apps, you’ll often have support files (e.g.&nbsp;those contained in <code>~/&lt;app-directory&gt;/R</code> and / or <code>global.R</code>) – content from those files will be stored here so that it is made accessible to your test(s). Since we don’t have any support files for our rather small/somewhat simple app, you should only see the following:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>~/testing-app/tests/testthat/setup-shinytest2.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load application support files into testing environment</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>shinytest2<span class="sc">::</span><span class="fu">load_app_env</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Load application support files into testing environment</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>shinytest2<span class="sc">::</span><span class="fu">load_app_env</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-2-2">
 <p><span class="body-text-s">This test script contains your recorded test, and should automatically open when you finish recording and save your test. You can manually modify this test (e.g.&nbsp;add additional interactions and expectations), if you wish. Yours should look similar to this:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>~/testing-app/tests/testthat/test-shinytest2.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(shinytest2)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: sam-test"</span>, {</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"sam-test"</span>, <span class="at">height =</span> <span class="dv">509</span>, <span class="at">width =</span> <span class="dv">657</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name =</span> <span class="st">"Sam"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greet"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb3-8"><a href="#cb3-8"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(shinytest2)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: sam-test"</span>, {</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"sam-test"</span>, <span class="at">height =</span> <span class="dv">509</span>, <span class="at">width =</span> <span class="dv">657</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name =</span> <span class="st">"Sam"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greet"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
+<span id="cb6-8"><a href="#cb6-8"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<div id="tabset-1-3">
+<div id="tabset-2-3">
 <p><span class="body-text-s"><strong>(located at <code>~/&lt;app-directory&gt;/tests/testthat/_snaps/shinytest2/*_.png</code>)</strong>; This is a screenshot of your app from when <code>app$expect_values()</code> was called – this file should be tracked using git so that you know how your app visually changes over time. My <code>.png</code> file looks like this:</span></p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
@@ -638,25 +745,25 @@ Rather than having to write tests by hand, you can interact with your app via th
 </div>
 </div>
 </div>
-<div id="tabset-1-4">
+<div id="tabset-2-4">
 <p><span class="body-text-s">This is a <a href="https://www.json.org/json-en.html">JSON</a> representation of the state of the app when <code>app$expect_values()</code> was called – you’ll see the state of all input, output, and export values at the time of the snapshot (we don’t have any exports in our example app, but we do have a name input and a greeting output). This file should be tracked with git so that you have a record of your expected results. Your <code>.json</code> file should look something like this:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>~/testing-app/tests/testthat/_snaps/shinytest2/*.json</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">"input"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="dt">"greet"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Sam"</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">},</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="dt">"greeting"</span><span class="fu">:</span> <span class="st">"Hello Sam!"</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">},</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="dt">"export"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a></span>
-<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">}</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="dt">"input"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="dt">"greet"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Sam"</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">},</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="dt">"greeting"</span><span class="fu">:</span> <span class="st">"Hello Sam!"</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">},</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="dt">"export"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a></span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">}</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -697,7 +804,7 @@ End part 6.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7deba285" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_32305872" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

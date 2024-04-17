@@ -62,13 +62,47 @@ editor_options:
 
 ---
 
-##  {#what-is-testing data-menu-title="What is testing?"}
+##  {#shiny-workflow data-menu-title="Shiny workflow"}
 
-[What do we mean by "testing"?]{.slide-title}
+[The Shiny workflow allows app developers to iterate quickly!]{.slide-title2}
 
 <hr>
 
+1. Add / adjust some reactivity
+2. Click "Run App"
+3. Manually experiment with the new feature to see if it works
+5. Rinse & repeat
+
+. . . 
+
+But what if you have 20 apps, or many team members? It gets **challenging** to remember all the features you need to test, or how each works. Things get lost in translation with manually experimenting (e.g. can you explain to your coworker *all* of your app's features and make sure that they manually test it properly?)
+
+::: {.footer}
+Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`: Unit testing for Shiny applications](https://www.youtube.com/watch?v=DMgAW4m5aTI)
+:::
+
+---
+
+`{testthat}` package 
+
+- unit testing for R
+- executes formal unit tests
+- goals
+  - fewer bugs
+  - robust code
+  - better code structure
+  - call to action
+
+---
+
 "Captur[ing] desired behavior of your code in a way that you can automatically verify that it keeps working the way you expect" ([Mastering Shiny Ch 21](https://mastering-shiny.org/scaling-testing.html))
+
+---
+
+`{shinytest2}`
+
+- (unit) regression testing for Shiny applications
+  - testing that existing app behavior is consistent over time
 
 ---
 
@@ -116,7 +150,6 @@ The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shiny
 
 <br>
 <br>
-<br>
 
 <p class="body-text">From the `{shinytest2}` documentation:</p>
 
@@ -127,7 +160,7 @@ The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shiny
 ```{r}
 #| eval: true
 #| echo: false
-#| out-width: "100%"
+#| out-width: "70%"
 #| fig-align: "center"
 #| fig-alt: "A hex that's split down the middle horizontally. The top half is the blue Shiny hex and the bottom half looks like the red {testthat} hex, except it reads 'test2'."
 knitr::include_graphics("images/part6/shinytest2-hex.png")
@@ -136,7 +169,82 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 ::::
 
-<p class="body-text-s">Rather than having to write tests by hand, you can interact with your app via the "app recorder" and `shinytest2` will record the test code automatically for you. Simply rerun tests to check for consistency.</p>
+Rather than having to write tests by hand, you can interact with your app via the "app recorder" and `{shinytest2}` will record the test code automatically for you. Simply rerun tests to check for consistency.
+
+---
+
+::: {.panel-tabset}
+## `global.R`
+
+```{r}
+#| eval: false
+#| echo: true
+# load libraries ----
+library(shiny)
+```
+
+## `ui.R`
+
+```{r}
+#| eval: false
+#| echo: true
+ui <- fluidPage(
+  
+  h1("Let's test this app!"),
+  
+  br(),
+  
+  # Example 1 ------------------------------------------------------------------
+  
+  h3("Example 1"),
+  
+  # fluidRow (Ex 1: greeting) ----
+  fluidRow(
+    
+    # greeting sidebarLayout ----
+    sidebarLayout(
+      
+      # greeting sidebarPanel ----
+      sidebarPanel(
+        
+        textInput(inputId = "name_input", 
+                  label = "What is your name?"),
+        
+        actionButton(inputId = "greet_input", 
+                     label = "Greet"),
+        
+      ), # END greeting sidebarPanel
+      
+      # greeting mainPanel ----
+      mainPanel(
+        
+        textOutput(outputId = "greeting_output"),
+        textOutput(outputId = "first_letter_output")
+        
+      ) # END greeting mainPanel
+      
+    ) # END greeting sidebarLayout 
+    
+  ) # END fluidRow (Ex 1: greeting)
+  
+) # END fluidPage (ui)
+```
+
+## `server.R`
+
+```{r}
+#| eval: false
+#| echo: true
+server <- function(input, output) {
+  
+}
+```
+
+:::
+
+---
+
+akldsjfa;jdf;a
 
 ---
 
