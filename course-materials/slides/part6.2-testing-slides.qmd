@@ -287,8 +287,6 @@ knitr::include_graphics("images/part6/ex1-explore.gif")
 
 <br>
 
-. . . 
-
 ::: {.center-text}
 Let's say that you are satisfied with your work (yay!) and are now ready to write some automated tests to ensure consistent behavior as you continue to build out additional features.
 :::
@@ -370,6 +368,34 @@ countdown::countdown(
 ::: {.center-text .body-text-m}
 We'll repeat this workflow to test each of our three assumptions listed on the previous slide.
 :::
+
+---
+
+##  {#chromote-timeout data-menu-title="chromote time out"}
+
+[FYI (a warning about chromote time outs)]{.slide-title2}
+
+<hr>
+
+<br>
+<br>
+<br>
+
+If you receive the following error message after running, `shinytest2::record_test("testing-app")`, you'll need to restart R:
+
+<br>
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+Caused by error:
+! Chromote: timed out waiting for response to command Target.createTarget
+```
+
+<br>
+
+It's a pretty annoying error, which seems to be an [ongoing issue](https://github.com/rstudio/chromote/issues/94) with `{chromote}`. R may be slow to restart (and I've had to restart numerous times {{< fa face-sad-tear title="a sad face with a tear" >}}).
 
 ---
 
@@ -558,8 +584,6 @@ After quitting the test recorder, the following will happen:
 - [if you're running in the RStudio IDE, `test-shinytest2.R` will automatically open in the editor]{.body-text-s} 
 - [`shinytest2::test_app()` is run behind the scenes to execute the test script]{.body-text-s}
 
-<!-- [the test script will execute (`test_app()`, which is stored inside `tests/testthat.R`, is run behind the scenes)]{.body-text-s} -->
-
 You should see the following in your RStudio Console: 
 
 ```{r}
@@ -594,10 +618,11 @@ Duration: 1.5 s
 
 <hr>
 
-The first time you record a test, `{shinytest2}` generates number of directories / subdirectories, along with a bunch of files. The next few slides dives deeper into many of these.
+The first time you record a test, `{shinytest2}` generates number of directories / subdirectories, along with a bunch of files. The next few slides explain these in more detail.
 
 <br>
 
+After creating your first test, your repo structure should look something like this:
 ```{md}
 #| eval: false
 #| echo: true
@@ -653,14 +678,6 @@ test_that("{shinytest2} recording: one-name-greeting", {
 })
 ```
 
-::: {.center-text}
-**You can think of each test as a recipe for `{shinytest2}` to follow to simulate user actions, and verify that the resulting outcomes are as expected.**
-:::
-
-<!-- ::: {.footer} -->
-<!-- You're able to manually edit this test code and / or write test code from scratch, if you wish. -->
-<!-- ::: -->
-
 ---
 
 ##  {#snaps data-menu-title="The _snaps/ folder"}
@@ -671,11 +688,13 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 [When `shinytest2::test_app()` runs your test code (`test-shinytest2.R`), it plays back the specified actions (e.g. setting the textInput to `Sam`, then clicking the Greet button), and records your application's resulting state as a snapshot. Snapshots are saved to the `tests/testthat/shinytest2/_snaps/` folder. You should see two different snapshot files:]{.body-text-s}
 
+<br>
+
 :::: {.columns}
 
 ::: {.column width="50%"}
 ::: {.center-text .body-text-s}
-`one-name-greeting-001_.png`, a debug screenshot of the app when `app$expect_values()` was called.
+`one-name-greeting-001_.png`, a debug screenshot of the app when `app$expect_values()` was called:
 ```{r}
 #| eval: true
 #| echo: false
@@ -688,7 +707,7 @@ knitr::include_graphics("images/part6/one-name-greeting.png")
 
 ::: {.column width="50%"}
 ::: {.center-text .body-text-s}
-`one-name-greeting-001.json`, a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called
+`one-name-greeting-001.json`, a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called:
 :::
 
 ```{json}
@@ -696,11 +715,11 @@ knitr::include_graphics("images/part6/one-name-greeting.png")
 #| echo: true
 {
   "input": {
-    "greet": 1,
-    "name": "Sam"
+    "greeting_input": 1,
+    "name_input": "Sam"
   },
   "output": {
-    "greeting": "Hello Sam!"
+    "greeting_output": "Hello Sam!"
   },
   "export": {
 
@@ -711,47 +730,69 @@ knitr::include_graphics("images/part6/one-name-greeting.png")
 
 ::::
 
-<!-- ::: {.panel-tabset} -->
+::: {.footer}
+We don't have any exported values in our app, and we won't be covering those here. Read more about exported values in the [`{shinytest2}` documentation](https://rstudio.github.io/shinytest2/articles/in-depth.html#exported-values).
+:::
 
-<!-- ## `*_.png` -->
+---
 
-<!-- [**(located at `~/<app-directory>/tests/testthat/_snaps/shinytest2/*_.png`)**; This is a screenshot of your app from when `app$expect_values()` was called -- this file should be tracked using git so that you know how your app visually changes over time. My `.png` file looks like this:]{.body-text-s} -->
+##  {#test-recap data-menu-title="Test recap"}
 
-<!-- <br> -->
+[A quick recap of our test files]{.slide-title}
 
-<!-- ```{r} -->
-<!-- #| eval: true -->
-<!-- #| echo: false -->
-<!-- #| out-width: "40%" -->
-<!-- #| fig-align: "center" -->
-<!-- #| fig-alt: "A screenshot from my app, with the text 'Sam' printed in the text input box beneath the prompt, 'What is your name?'. Below the text box is a button that says 'Greet'. Below that, the text, 'Hello Sam!' is printed." -->
-<!-- knitr::include_graphics("images/part6/sam-test-001_.png") -->
-<!-- ``` -->
+<hr>
 
-<!-- ## `*.json` -->
+- **You can think of your test as a *recipe* for `{shinytest2}` to follow to simulate user actions (i.e. inputs).** 
+  - [These simulations are performed programmatically whenever you click **Run Test**.]{.body-text-s}
 
-<!-- [This is a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called -- you'll see the state of all input, output, and export values at the time of the snapshot (we don't have any exports in our example app, but we do have a name input and a greeting output). This file should be tracked with git so that you have a record of your expected results. Your `.json` file should look something like this:]{.body-text-s} -->
+. . . 
 
-<!-- ```{json filename="~/testing-app/tests/testthat/_snaps/shinytest2/*.json"} -->
-<!-- #| eval: false -->
-<!-- #| echo: true -->
-<!-- { -->
-<!--   "input": { -->
-<!--     "greet": 1, -->
-<!--     "name": "Sam" -->
-<!--   }, -->
-<!--   "output": { -->
-<!--     "greeting": "Hello Sam!" -->
-<!--   }, -->
-<!--   "export": { -->
+- **The JSON file defines your test's expected outputs given known inputs.**
+  - [When you rerun your test, the same user actions (inputs) are simulated and the resulting outputs are compared against prior snapshots. We expect the resulting outputs to be the same each time. If the resulting outputs differ from our expectations, the test will fail.]{.body-text-s}
 
-<!--   } -->
-<!-- } -->
-<!-- ``` -->
+. . .
 
-<!-- ::: -->
+- **The *debug* screenshot (`*_.png` file) can be used to visually inspect your app's state at the time of your test.**
+  - [The `*_.png` file differs from a `*.png` file (which we did not capture). `*.png` files are screenshots of the application from `app$expect_screenshot()` (i.e. by clicking *Expect screenshot* in the app recorder), which you can use to insure that the visual state of the application does not change. If subsequent screenshots differ (even by just a pixel!), your test will fail. This type of testing is quite brittle, and we won't be covering it further.]{.body-text-s}
 
-Future test runs are compared against snapshots to determine if your app is performing as your tests expects.
+. . .
+
+::: {.center-text .teal-text}
+**All of the above files should be tracked with `git` (ignore any `_.new.png` files).**
+:::
+
+---
+
+##  {#rerun-tests data-menu-title="Rerun the test"}
+
+[Rerun your test]{.slide-title}
+
+<hr>
+
+Rerun your test by clicking on the **Run Tests** button, which is visible when `test-shinytest2.R` is open. It should still pass (we haven't changed anything since our first test run)!
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/rerun-test.png")
+```
+
+---
+
+##  {#test-other-assumptions data-menu-title="Test remaining assumptions"}
+
+[Test our remaining assumptions]{.slide-title}
+
+<hr>
+
+| Action(s)                                                                                       | Expectation(s)                                                           |
+|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| {{< fa square-check title="a checked box" >}} Type [some text value] in text box, click Greet button                                          | Greeting output is "Hello [some text value]!"                            |
+| {{< fa square title="an unchecked box" >}} Type [some text value] in text box, click Greet button, type [some other text value] in text box, click Greet button | Greeting output is "Hello [some other text value]!" |
+| {{< fa square title="an unchecked box" >}} Click Greet button                                                                              | Greeting output is "Hello !"                                             |
+
 
 ---
 

@@ -1859,7 +1859,7 @@
     "href": "course-materials/slides/part6.2-testing-slides.html#run-ex1-appp",
     "title": "EDS 430",
     "section": "",
-    "text": "Manually test your app and make note of how it works\n\n\n\n\n\nLet’s say that you are satisfied with your work (yay!) and are now ready to write some automated tests to ensure consistent behavior as you continue to build out additional features."
+    "text": "Manually test your app and make note of how it works\n\n\n\n\nLet’s say that you are satisfied with your work (yay!) and are now ready to write some automated tests to ensure consistent behavior as you continue to build out additional features."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#testing-procedure",
@@ -1867,6 +1867,13 @@
     "title": "EDS 430",
     "section": "",
     "text": "Test your assumptions using the {shinytest2} workflow\n\n\nGenerally speaking, that workflow looks something like this:\n\n\n(1) Run shinytest2::record_test(&lt;app-directory&gt;) in your Console to launch the app recorder in a browser window\n\n\n\n(2) Interact with your application and tell the recorder to make an expectation of the app’s state, which will record all input, output, and exported values.\n\n\n\n\n(3) Give your test a unique name and quit the recorder to save and execute your tests\n\n\n\n\nWe’ll repeat this workflow to test each of our three assumptions listed on the previous slide."
+  },
+  {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#chromote-timeout",
+    "href": "course-materials/slides/part6.2-testing-slides.html#chromote-timeout",
+    "title": "EDS 430",
+    "section": "",
+    "text": "FYI (a warning about chromote time outs)\n\n  \nIf you receive the following error message after running, shinytest2::record_test(\"testing-app\"), you’ll need to restart R:\n\n\nCaused by error:\n! Chromote: timed out waiting for response to command Target.createTarget\n\n\nIt’s a pretty annoying error, which seems to be an ongoing issue with {chromote}. R may be slow to restart (and I’ve had to restart numerous times )."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#ft1-test1",
@@ -1880,28 +1887,49 @@
     "href": "course-materials/slides/part6.2-testing-slides.html#test-auto-executes",
     "title": "EDS 430",
     "section": "",
-    "text": "Your test should automatically run (and pass!)\n\nAfter quitting the test recorder, the following will happen:\n\na test script will be saved in &lt;your-app-subdirectory&gt;/tests/testthat/test-shinytest2.R\nif you’re running in the RStudio IDE, test-shinytest2.R will automatically open in the editor\nshinytest2::test_app() is run behind the scenes to execute the test script\n\n\nYou should see the following in your RStudio Console:\n\n• Saving test runner: tests/testthat.R\n• Saving test file: tests/testthat/test-shinytest2.R\n✔ Adding 'shinytest2::load_app_env()' to 'tests/testthat/setup-shinytest2.R'\n• Running recorded test: tests/testthat/test-shinytest2.R\n✔ | F W  S  OK | Context\n✔ |   2      1 | shinytest2 [1.4s]                                                         \n───────────────────────────────────────────────────────────────────────────────────────────\nWarning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting\nAdding new file snapshot: 'tests/testthat/_snaps/one-name-greeting-001_.png'\n\nWarning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting\nAdding new file snapshot: 'tests/testthat/_snaps/one-name-greeting-001.json'\n───────────────────────────────────────────────────────────────────────────────────────────\n\n══ Results ════════════════════════════════════════════════════════════════════════════════\nDuration: 1.5 s\n\n[ FAIL 0 | WARN 2 | SKIP 0 | PASS 1 ]"
+    "text": "Your test should automatically run (and pass!)\n\nAfter quitting the test recorder, the following will happen:\n\na test script will be saved in &lt;your-app-subdirectory&gt;/tests/testthat/test-shinytest2.R\nif you’re running in the RStudio IDE, test-shinytest2.R will automatically open in the editor\nshinytest2::test_app() is run behind the scenes to execute the test script\n\nYou should see the following in your RStudio Console:\n\n• Saving test runner: tests/testthat.R\n• Saving test file: tests/testthat/test-shinytest2.R\n✔ Adding 'shinytest2::load_app_env()' to 'tests/testthat/setup-shinytest2.R'\n• Running recorded test: tests/testthat/test-shinytest2.R\n✔ | F W  S  OK | Context\n✔ |   2      1 | shinytest2 [1.4s]                                                         \n───────────────────────────────────────────────────────────────────────────────────────────\nWarning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting\nAdding new file snapshot: 'tests/testthat/_snaps/one-name-greeting-001_.png'\n\nWarning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting\nAdding new file snapshot: 'tests/testthat/_snaps/one-name-greeting-001.json'\n───────────────────────────────────────────────────────────────────────────────────────────\n\n══ Results ════════════════════════════════════════════════════════════════════════════════\nDuration: 1.5 s\n\n[ FAIL 0 | WARN 2 | SKIP 0 | PASS 1 ]"
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#test-folder",
     "href": "course-materials/slides/part6.2-testing-slides.html#test-folder",
     "title": "EDS 430",
     "section": "",
-    "text": "Understanding the contents of tests/\n\nThe first time you record a test, {shinytest2} generates number of directories / subdirectories, along with a bunch of files. The next few slides dives deeper into many of these.\n\n\n.\n├── testing-app/                                  \n│   └── global.R                     \n│   └── ui.R                         \n│   └── server.R                      \n│   └── tests/                    # generated the first time you record and save a test    \n│      └── testthat.R             # see note below\n│      └── testthat/     \n│         └── setup-shinytest2.R  # see note below\n│         └── test-shinytest2.R   # see slide 15\n│         └── snaps/               \n│            └── shinytest2/      \n│               └── *001.json     # see slide X\n│               └── *001_.png     # see slide X \n\n\ntestthat.R: includes the code, shinytest2::test_app(), which is executed when you click the Run Tests button in RStudio\nsetup-shinytest2.R: includes the code, shinytest2::load_app_env(), which loads any application support files (e.g. global.R and / or anything inside R/) into the testing environment"
+    "text": "Understanding the contents of tests/\n\nThe first time you record a test, {shinytest2} generates number of directories / subdirectories, along with a bunch of files. The next few slides explain these in more detail.\n\nAfter creating your first test, your repo structure should look something like this:\n\n.\n├── testing-app/                                  \n│   └── global.R                     \n│   └── ui.R                         \n│   └── server.R                      \n│   └── tests/                    # generated the first time you record and save a test    \n│      └── testthat.R             # see note below\n│      └── testthat/     \n│         └── setup-shinytest2.R  # see note below\n│         └── test-shinytest2.R   # see slide 15\n│         └── snaps/               \n│            └── shinytest2/      \n│               └── *001.json     # see slide X\n│               └── *001_.png     # see slide X \n\n\ntestthat.R: includes the code, shinytest2::test_app(), which is executed when you click the Run Tests button in RStudio\nsetup-shinytest2.R: includes the code, shinytest2::load_app_env(), which loads any application support files (e.g. global.R and / or anything inside R/) into the testing environment"
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#test-shinytest2",
     "href": "course-materials/slides/part6.2-testing-slides.html#test-shinytest2",
     "title": "EDS 430",
     "section": "",
-    "text": "test-shinytest2.R (test code)\n\nAll tests will be saved to tests/testthat/test-shinytest2.R. Yours should look similar to the code below (sans annotations). You may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you’ll see multiple app$set_inputs() statements, reflecting these actions:\n\n\n\ntesting-app/tests/testthat/test-shinytest2.R\n\nlibrary(shinytest2)\n\n# runs our test\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  \n  # start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 838, width = 1298)\n  \n  # set the textInput (with Id `name_input`) to the value `Sam`\n  app$set_inputs(name_input = \"Sam\")\n  \n  # click the actionButton (with Id `greeting_input`)\n  app$click(\"greeting_input\")\n  \n  # save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app\n  app$expect_values()\n})\n\n\n\nYou can think of each test as a recipe for {shinytest2} to follow to simulate user actions, and verify that the resulting outcomes are as expected."
+    "text": "test-shinytest2.R (test code)\n\nAll tests will be saved to tests/testthat/test-shinytest2.R. Yours should look similar to the code below (sans annotations). You may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you’ll see multiple app$set_inputs() statements, reflecting these actions:\n\n\n\ntesting-app/tests/testthat/test-shinytest2.R\n\nlibrary(shinytest2)\n\n# runs our test\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  \n  # start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 838, width = 1298)\n  \n  # set the textInput (with Id `name_input`) to the value `Sam`\n  app$set_inputs(name_input = \"Sam\")\n  \n  # click the actionButton (with Id `greeting_input`)\n  app$click(\"greeting_input\")\n  \n  # save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app\n  app$expect_values()\n})"
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#snaps",
     "href": "course-materials/slides/part6.2-testing-slides.html#snaps",
     "title": "EDS 430",
     "section": "",
-    "text": "The snaps/ folder\n\nWhen shinytest2::test_app() runs your test code (test-shinytest2.R), it plays back the specified actions (e.g. setting the textInput to Sam, then clicking the Greet button), and records your application’s resulting state as a snapshot. Snapshots are saved to the tests/testthat/shinytest2/_snaps/ folder. You should see two different snapshot files:\n\n\n\none-name-greeting-001_.png, a debug screenshot of the app when app$expect_values() was called.\n\n\n\n\n\n\n\n\n\n\n\n\none-name-greeting-001.json, a JSON representation of the state of the app when app$expect_values() was called\n\n\n{\n  \"input\": {\n    \"greet\": 1,\n    \"name\": \"Sam\"\n  },\n  \"output\": {\n    \"greeting\": \"Hello Sam!\"\n  },\n  \"export\": {\n\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFuture test runs are compared against snapshots to determine if your app is performing as your tests expects."
+    "text": "The snaps/ folder\n\nWhen shinytest2::test_app() runs your test code (test-shinytest2.R), it plays back the specified actions (e.g. setting the textInput to Sam, then clicking the Greet button), and records your application’s resulting state as a snapshot. Snapshots are saved to the tests/testthat/shinytest2/_snaps/ folder. You should see two different snapshot files:\n\n\n\n\none-name-greeting-001_.png, a debug screenshot of the app when app$expect_values() was called:\n\n\n\n\n\n\n\n\n\n\n\n\none-name-greeting-001.json, a JSON representation of the state of the app when app$expect_values() was called:\n\n\n{\n  \"input\": {\n    \"greeting_input\": 1,\n    \"name_input\": \"Sam\"\n  },\n  \"output\": {\n    \"greeting_output\": \"Hello Sam!\"\n  },\n  \"export\": {\n\n  }\n}\n\n\n\n\nWe don’t have any exported values in our app, and we won’t be covering those here. Read more about exported values in the {shinytest2} documentation."
+  },
+  {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#test-recap",
+    "href": "course-materials/slides/part6.2-testing-slides.html#test-recap",
+    "title": "EDS 430",
+    "section": "",
+    "text": "A quick recap of our test files\n\n\nYou can think of your test as a recipe for {shinytest2} to follow to simulate user actions (i.e. inputs).\n\nThese simulations are performed programmatically whenever you click Run Test.\n\n\n\n\nThe JSON file defines your test’s expected outputs given known inputs.\n\nWhen you rerun your test, the same user actions (inputs) are simulated and the resulting outputs are compared against prior snapshots. We expect the resulting outputs to be the same each time. If the resulting outputs differ from our expectations, the test will fail.\n\n\n\n\n\nThe debug screenshot (*_.png file) can be used to visually inspect your app’s state at the time of your test.\n\nThe *_.png file differs from a *.png file (which we did not capture). *.png files are screenshots of the application from app$expect_screenshot() (i.e. by clicking Expect screenshot in the app recorder), which you can use to insure that the visual state of the application does not change. If subsequent screenshots differ (even by just a pixel!), your test will fail. This type of testing is quite brittle, and we won’t be covering it further.\n\n\n\n\n\nAll of the above files should be tracked with git (ignore any _.new.png files)."
+  },
+  {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#rerun-tests",
+    "href": "course-materials/slides/part6.2-testing-slides.html#rerun-tests",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Rerun your test\n\nRerun your test by clicking on the Run Tests button, which is visible when test-shinytest2.R is open. It should still pass (we haven’t changed anything since our first test run)!"
+  },
+  {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#test-other-assumptions",
+    "href": "course-materials/slides/part6.2-testing-slides.html#test-other-assumptions",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Test our remaining assumptions\n\n\n\n\n\n\n\n\nAction(s)\nExpectation(s)\n\n\n\n\n Type [some text value] in text box, click Greet button\nGreeting output is “Hello [some text value]!”\n\n\n Type [some text value] in text box, click Greet button, type [some other text value] in text box, click Greet button\nGreeting output is “Hello [some other text value]!”\n\n\n Click Greet button\nGreeting output is “Hello !”"
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#testing-tips",
