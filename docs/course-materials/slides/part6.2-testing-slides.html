@@ -421,19 +421,13 @@
 After this section, you should:
 </p>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand some of the reasons why apps break and the benefit of having automated tests
-</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand some of the reasons why apps break and the benefit of having automated tests</p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a basic understanding of how to use the <code>{shinytest2}</code> package to create regression tests
-</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a basic understanding of how to use the <code>{shinytest2}</code> package to create regression tests</p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to rerun tests
-</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to rerun tests</p>
 </div>
 <div class="fragment">
 <p class="body-text-l teal-text topbr">
@@ -441,63 +435,40 @@ Packages introduced:
 </p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shinytest2}</code>: provides tools for creating and running automated tests on Shiny applications
-</p>
+<p><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shinytest2}</code>: provides tools for creating and running automated tests on Shiny applications</p>
 </div>
 </section>
 <section id="shiny-workflow" class="slide level2" data-menu-title="Shiny workflow">
 <h2></h2>
-<p><span class="slide-title2">The Shiny workflow allows app developers to iterate quickly!</span></p>
+<p><span class="slide-title2">This workflow should look a bit familiar . . .</span></p>
 <hr>
 <ol type="1">
 <li>Add / adjust some reactivity</li>
 <li>Click “Run App”</li>
-<li>Manually experiment with the new feature to see if it works</li>
+<li>Manually experiment with (i.e.&nbsp;informally test) the new feature to see if it works</li>
 <li>Rinse &amp; repeat</li>
 </ol>
+<p><br></p>
 <div class="fragment">
-<p>But what if you have 20 apps, or many team members? It gets <strong>challenging</strong> to remember all the features you need to test, or how each works. Things get lost in translation with manually experimenting (e.g.&nbsp;can you explain to your coworker <em>all</em> of your app’s features and make sure that they manually test it properly?)</p>
+<p>But what if you have 20 apps?</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>Or many team members?</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p><strong>It becomes increasingly challenging to remember all the features you need to test, or how each works.</strong> Things can also get lost in translation with manual testing (e.g.&nbsp;can you explain to your coworker(s) <em>all</em> of your app’s features and make sure that they manually test it properly?).</p>
 <div class="footer">
 <p>Slide adapted from Barret Schloerke’s rstudio::conf(2022) talk, <a href="https://www.youtube.com/watch?v=DMgAW4m5aTI"><code>{shinytest2}</code>: Unit testing for Shiny applications</a></p>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p><code>{testthat}</code> package</p>
-<ul>
-<li>unit testing for R</li>
-<li>executes formal unit tests</li>
-<li>goals
-<ul>
-<li>fewer bugs</li>
-<li>robust code</li>
-<li>better code structure</li>
-<li>call to action</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>“Captur[ing] desired behavior of your code in a way that you can automatically verify that it keeps working the way you expect” (<a href="https://mastering-shiny.org/scaling-testing.html">Mastering Shiny Ch 21</a>)</p>
-</section>
-<section class="slide level2">
-
-<p><code>{shinytest2}</code></p>
-<ul>
-<li>(unit) regression testing for Shiny applications
-<ul>
-<li>testing that existing app behavior is consistent over time</li>
-</ul></li>
-</ul>
-</section>
 <section id="why-test" class="slide level2" data-menu-title="Why test?">
 <h2></h2>
 <p><span class="slide-title">Why test our Shiny apps?</span></p>
 <hr>
-<p><br></p>
-<p>It’s almost inevitable that apps will break – there are lots of reasons why this happens, but to name a few:</p>
+<p>It’s almost inevitable that our app(s) will (at some point) break – there are lots of reasons why this happens, but to name a few:</p>
 <div class="fragment">
 <p class="body-text-s topbr">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> an upgraded R package(s) has a different behavior (this includes <code>{shiny}</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators
@@ -510,22 +481,35 @@ Packages introduced:
 </div>
 <div class="fragment">
 <p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> an external data source stops working or returns data in a different format than expected by your app
+<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> an external data source stops working or returns data in a different format than that expected by your app
 </p>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>Manually testing Shiny apps is takes a lot of time and effort, is often inconsistent, and doesn’t scale well (e.g.&nbsp;for larger apps, many apps, or for larger teams of collaborators).</p>
 </div>
 <div class="fragment">
 <p><br></p>
 <p><strong>It can save a lot of time and headache (for you <em>and</em> your collaborators) to have an automated system that checks if your app is working as expected.</strong></p>
 </div>
 </section>
+<section class="slide level2">
+
+<p>Different levels/types of tests:</p>
+<ul>
+<li><strong>Unit tests</strong> test individual functions, components, modules of your app (e.g.&nbsp;can your app handle the expected data? does your user see what you expect them to see?)</li>
+<li><strong>Integration tests</strong> test how your app works with external systems (e.g.&nbsp;APIs)</li>
+</ul>
+<p><a href="https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing" class="uri">https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing</a></p>
+</section>
 <section id="shinytest2" class="slide level2" data-menu-title="{shinytest2}">
 <h2></h2>
 <p><span class="slide-title">Enter the <code>{shinytest2}</code> package</span></p>
 <hr>
-<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> is a useful tool for conducting <strong>regression testing</strong> on shiny apps – or in other words, testing existing app behavior for consistency over time.</p>
+<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. This process is also known as <a href="https://en.wikipedia.org/wiki/Regression_testing"><strong>regression testing</strong></a>, since we’ll be testing existing app behavior for consistency over time.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br> <br></p>
+<p><br></p>
 <p class="body-text">
 From the <code>{shinytest2}</code> documentation:
 </p>
@@ -537,221 +521,428 @@ From the <code>{shinytest2}</code> documentation:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part6/shinytest2-hex.png" style="width:70.0%" alt="A hex that's split down the middle horizontally. The top half is the blue Shiny hex and the bottom half looks like the red {testthat} hex, except it reads 'test2'."></p>
+<p><img data-src="images/part6/shinytest2-hex.png" style="width:60.0%" alt="A hex that's split down the middle horizontally. The top half is the blue Shiny hex and the bottom half looks like the red {testthat} hex, except it reads 'test2'."></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Rather than having to write tests by hand, you can interact with your app via the “app recorder” and <code>{shinytest2}</code> will record the test code automatically for you. Simply rerun tests to check for consistency.</p>
+<p><span class="body-text-s">With <code>{shinytest2}</code>, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.</span></p>
+<div class="footer">
+<p><code>{shinytest2}</code> uses <a href="https://rstudio.github.io/chromote/"><code>{chromote}</code></a> to render your app in a headless <a href="https://www.chromium.org/chromium-projects/">Chromium browser</a> – by default, it uses Google Chrome, so make sure you have that installed on your OS!</p>
+</div>
 </section>
-<section class="slide level2">
-
+<section id="setting-stage" class="slide level2" data-menu-title="Setting the stage">
+<h2></h2>
+<p><span class="slide-title">Let’s imagine . . .</span></p>
+<hr>
+<p><span class="body-text-s">Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. <strong>Create a new folder, <code>testing-app/</code>, in your GitHub repo and add the following files:</strong></span></p>
+<!-- --- -->
+<!-- ##  {#starting-app data-menu-title="Starting app"} -->
+<!-- [Let's start with the following app]{.slide-title} -->
+<!-- <hr> -->
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>global.R</code></a></li><li><a href="#tabset-1-2"><code>ui.R</code></a></li><li><a href="#tabset-1-3"><code>server.R</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>testing-app/global.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load libraries ----</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(shiny)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
 <div id="tabset-1-2">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>testing-app/ui.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">h1</span>(<span class="st">"Let's test this app!"</span>),</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  </span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">br</span>(),</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  </span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="co"># Example 1 ------------------------------------------------------------------</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  </span>
-<span id="cb2-9"><a href="#cb2-9"></a>  <span class="fu">h3</span>(<span class="st">"Example 1"</span>),</span>
-<span id="cb2-10"><a href="#cb2-10"></a>  </span>
-<span id="cb2-11"><a href="#cb2-11"></a>  <span class="co"># fluidRow (Ex 1: greeting) ----</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">fluidRow</span>(</span>
-<span id="cb2-13"><a href="#cb2-13"></a>    </span>
-<span id="cb2-14"><a href="#cb2-14"></a>    <span class="co"># greeting sidebarLayout ----</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb2-16"><a href="#cb2-16"></a>      </span>
-<span id="cb2-17"><a href="#cb2-17"></a>      <span class="co"># greeting sidebarPanel ----</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>      <span class="fu">sidebarPanel</span>(</span>
-<span id="cb2-19"><a href="#cb2-19"></a>        </span>
-<span id="cb2-20"><a href="#cb2-20"></a>        <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="st">"name_input"</span>, </span>
-<span id="cb2-21"><a href="#cb2-21"></a>                  <span class="at">label =</span> <span class="st">"What is your name?"</span>),</span>
-<span id="cb2-22"><a href="#cb2-22"></a>        </span>
-<span id="cb2-23"><a href="#cb2-23"></a>        <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"greet_input"</span>, </span>
-<span id="cb2-24"><a href="#cb2-24"></a>                     <span class="at">label =</span> <span class="st">"Greet"</span>),</span>
-<span id="cb2-25"><a href="#cb2-25"></a>        </span>
-<span id="cb2-26"><a href="#cb2-26"></a>      ), <span class="co"># </span><span class="re">END</span><span class="co"> greeting sidebarPanel</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>      </span>
-<span id="cb2-28"><a href="#cb2-28"></a>      <span class="co"># greeting mainPanel ----</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>      <span class="fu">mainPanel</span>(</span>
-<span id="cb2-30"><a href="#cb2-30"></a>        </span>
-<span id="cb2-31"><a href="#cb2-31"></a>        <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"greeting_output"</span>),</span>
-<span id="cb2-32"><a href="#cb2-32"></a>        <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"first_letter_output"</span>)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>        </span>
-<span id="cb2-34"><a href="#cb2-34"></a>      ) <span class="co"># </span><span class="re">END</span><span class="co"> greeting mainPanel</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>      </span>
-<span id="cb2-36"><a href="#cb2-36"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> greeting sidebarLayout </span></span>
-<span id="cb2-37"><a href="#cb2-37"></a>    </span>
-<span id="cb2-38"><a href="#cb2-38"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow (Ex 1: greeting)</span></span>
-<span id="cb2-39"><a href="#cb2-39"></a>  </span>
-<span id="cb2-40"><a href="#cb2-40"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage (ui)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="co"># Feature 1 ------------------------------------------------------------------</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">h3</span>(<span class="st">"Feature 1"</span>),</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="co"># fluidRow (Feature 1: greeting) ----</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="co"># greeting sidebarLayout ----</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>      <span class="co"># greeting sidebarPanel ----</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>      <span class="fu">sidebarPanel</span>(</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a>        <span class="fu">textInput</span>(<span class="at">inputId =</span> <span class="st">"name_input"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>                  <span class="at">label =</span> <span class="st">"What is your name?"</span>),</span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>        <span class="fu">actionButton</span>(<span class="at">inputId =</span> <span class="st">"greeting_input"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20"></a>                     <span class="at">label =</span> <span class="st">"Greet"</span>),</span>
+<span id="cb2-21"><a href="#cb2-21"></a></span>
+<span id="cb2-22"><a href="#cb2-22"></a>      ), <span class="co"># </span><span class="re">END</span><span class="co"> greeting sidebarPanel</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a>      <span class="co"># greeting mainPanel ----</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>      <span class="fu">mainPanel</span>(</span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a>        <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"greeting_output"</span>),</span>
+<span id="cb2-28"><a href="#cb2-28"></a></span>
+<span id="cb2-29"><a href="#cb2-29"></a>      ) <span class="co"># </span><span class="re">END</span><span class="co"> greeting mainPanel</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> greeting sidebarLayout</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a></span>
+<span id="cb2-33"><a href="#cb2-33"></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow (Feature 1: greeting)</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>  </span>
+<span id="cb2-35"><a href="#cb2-35"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 <div id="tabset-1-3">
 <div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>testing-app/server.R</strong></pre>
+</div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb3-2"><a href="#cb3-2"></a>  </span>
-<span id="cb3-3"><a href="#cb3-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="co"># Feature 1 ------------------------------------------------------------------</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  output<span class="sc">$</span>greeting_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="fu">req</span>(input<span class="sc">$</span>greeting_input) <span class="co"># req(): textOutput doesn't appear until button is first pressed</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="fu">paste0</span>(<span class="st">"Hello "</span>, <span class="fu">isolate</span>(input<span class="sc">$</span>name_input), <span class="st">"!"</span>) <span class="co"># isolate(): prevents textOutput from updating until button is pressed again</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>  }) </span>
+<span id="cb3-11"><a href="#cb3-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-ex1-appp" class="slide level2" data-menu-title="Run the app">
+<h2></h2>
+<p><span class="slide-title3">Manually test your app and make note of how it works</span></p>
+<hr>
+
+<img data-src="images/part6/ex1-explore.gif" style="width:80.0%" class="r-stretch quarto-figure-center"><p><br></p>
+<div class="fragment">
+<div class="center-text">
+<p>Let’s say that you are satisfied with your work (yay!) and are now ready to write some automated tests to ensure consistent behavior as you continue to build out additional features.</p>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<p>akldsjfa;jdf;a</p>
-</section>
-<section id="shinytest2-resources" class="slide level2" data-menu-title="{shinytest2} resources">
-<h2></h2>
-<p><span class="slide-title"><code>{shinytest2}</code> resources &amp; demos</span></p>
+<p><span class="slide-title">Write down your assumptions</span></p>
 <hr>
+<p>Before we dive into writing any tests, it’s super helpful to inspect your app and, <em>importantly</em> jot down any assumptions it makes of both the inputs and outputs.</p>
 <p><br></p>
-<p>The following demo comes straight from the <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> vignette</a>, though a similar app and testing workflow is demoed by Barret Schloerke in his recorded talk, <a href="https://www.youtube.com/watch?v=Gucwz865aqQ"><em>Getting Started with {shinytest2} Part I || Example + basics</em></a>.</p>
-<p><br> <br> <br></p>
-<div class="center-text body-text-l teal-text">
-<p>Check out the <strong><a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/resources.html#testing">resources page</a></strong> on the course website for additional talks / tutorials / resources about testing shiny apps.</p>
-</div>
-</section>
-<section id="app-for-testing" class="slide level2" data-menu-title="The app we'll test">
-<h2></h2>
-<p><span class="slide-title">Let’s test the following app</span></p>
-<hr>
-<p>This small app accepts a text input for users to type their name. When the “Greet” button is pressed, the app returns a short greeting message that says, “Hello <em>name</em>!</p>
-<p>To get started, create a subdirectory called <code>~/testing-app/</code>, add a file named <code>app.R</code>, and drop this code in your file. Take a moment to try out the app.</p>
+<p>I find it easiest to consider which <strong>actions</strong> can be taken, and what the <strong>expected outputs</strong> (aka assertions) in the app’s final state should be.</p>
+<p><br></p>
 <div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>~/testing-app/app.R</strong></pre>
+<div class="cell-output-display">
+<div class="countdown" id="timer_dc715794" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  </span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">textInput</span>(<span class="st">"name"</span>, <span class="st">"What is your name?"</span>),</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">actionButton</span>(<span class="st">"greet"</span>, <span class="st">"Greet"</span>),</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">textOutput</span>(<span class="st">"greeting"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>  </span>
-<span id="cb4-9"><a href="#cb4-9"></a>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a></span>
-<span id="cb4-11"><a href="#cb4-11"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  </span>
-<span id="cb4-13"><a href="#cb4-13"></a>  output<span class="sc">$</span>greeting <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb4-14"><a href="#cb4-14"></a>    <span class="fu">req</span>(input<span class="sc">$</span>greet)</span>
-<span id="cb4-15"><a href="#cb4-15"></a>    <span class="fu">paste0</span>(<span class="st">"Hello "</span>, <span class="fu">isolate</span>(input<span class="sc">$</span>name), <span class="st">"!"</span>)</span>
-<span id="cb4-16"><a href="#cb4-16"></a>    </span>
-<span id="cb4-17"><a href="#cb4-17"></a>  })</span>
-<span id="cb4-18"><a href="#cb4-18"></a>  </span>
-<span id="cb4-19"><a href="#cb4-19"></a>}</span>
-<span id="cb4-20"><a href="#cb4-20"></a></span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+<div class="fragment">
+<table>
+<colgroup>
+<col style="width: 56%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Action(s)</th>
+<th>Expectation(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Type [some text value] in text box, click Greet button</td>
+<td>Greeting output is “Hello [some text value]!”</td>
+</tr>
+<tr class="even">
+<td>Type [some text value] in text box, click Greet button, type [some other text value] in text box, click Greet button</td>
+<td>Greeting output is “Hello [some other text value]!”</td>
+</tr>
+<tr class="odd">
+<td>Click Greet button</td>
+<td>Greeting output is “Hello !”</td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="testing-procedure" class="slide level2" data-menu-title="Testing procedure">
 <h2></h2>
-<p><span class="slide-title">Testing using <code>shinytest2</code></span></p>
+<p><span class="slide-title2">Test your assumptions using the <code>{shinytest2}</code> workflow</span></p>
 <hr>
-<p><strong>Recording tests requires the following steps:</strong></p>
-<div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Run <code>shinytest2::record_test(&lt;app-directory&gt;)</code> to launch the app recorder in a browser window</span></p>
-</div>
-<div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation (e.g.&nbsp;an expected value when inputX is updated) on the state at various points</span></p>
-</div>
-<div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Quit the recorder to save and execute your tests</span></p>
-</div>
-<div class="fragment">
 <p><br></p>
-<p><strong>To test <em>our</em> app specifically, we’ll do the following:</strong></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> run <code>shinytest2::record_test("testing-app")</code> in the console to launch the recorder in a browser window</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> interact with your app by first typing a name (e.g.&nbsp;Sam), then pressing the “Greet” button to display the output text</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> click the <strong>Expect Shiny values</strong> button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> give your test a name in the recorder app sidebar, then click <strong>Save test and exit</strong> - this will save the recorded test and setup the testing infrastructure, if it doesn’t exit already</span></p>
+<p><span class="teal-text"><strong>Generally speaking, that workflow looks something like this:</strong></span></p>
+<p><br></p>
+<div class="fragment">
+<p><span class="teal-text"><strong>(1)</strong></span> Run <code>shinytest2::record_test(&lt;app-directory&gt;)</code> in your Console to launch the app recorder in a browser window</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation of the app’s state, which will record all <code>input</code>, <code>output</code>, and <code>exported</code> values.</p>
+<!-- (e.g. an expected value when inputX is updated) on the state at various points -->
+<p><br></p>
+</div>
+<div class="fragment">
+<p><span class="teal-text"><strong>(3)</strong></span> Give your test a unique name and quit the recorder to save and execute your tests</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<div class="center-text body-text-m">
+<p>We’ll repeat this workflow to test each of our three assumptions listed on the previous slide.</p>
+</div>
 </div>
 </section>
-<section id="creating-test1-example" class="slide level2" data-menu-title="Creating our first test">
+<section id="ft1-test1" class="slide level2" data-menu-title="Feature 1, test 1">
 <h2></h2>
-<p><span class="slide-title">Creating our first test</span></p>
+<p><span class="slide-title">Let’s test our first assumption . . .</span></p>
 <hr>
-<p>Following the steps on the previous slide, creating your test should look similar to this:</p>
+<p>…which is that when a user types [some text value] into the text box and clicks the Greet button (<strong>i.e.&nbsp;the actions</strong>), the greeting output will return <code>Hello [some text value]!</code> (<strong>i.e.&nbsp;the expectation</strong>). We’ll substitute a known value (e.g.&nbsp;“Sam”) for [some text value] in our test.</p>
 <p><br></p>
-
-<img data-src="images/part6/sam-test.gif" style="width:100.0%" alt="A user begins recording a test by typing shinytest2::record_test('testing_app') in the RStudio console, which opens up the app in an iframe with the recorder in a pane to the right. The user types 'Sam' into the text box, clicks the 'Greet' button, then clicks 'Expect Shiny values' in the recorder. Finally, the user names and saves the test, which then runs automatically once the recorder is quit." class="r-stretch quarto-figure-center"><p><br></p>
-<p><strong>Note:</strong> Your test is automatically run as soon as you save and exit the recorder. See the results of your test in your console (it should pass!).</p>
-</section>
-<section id="test-files-created" class="slide level2" data-menu-title="Test files created">
-<h2></h2>
-<p><span class="slide-title">Test files are generated automatically</span></p>
-<hr>
-<p>After recording your first test, a <code>tests/</code> folder is generated, containing a number of different files and subdirectories. Some important files to note:</p>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1"><code>setup-shinytest2.R</code></a></li><li><a href="#tabset-2-2"><code>test-shinytest2.R</code></a></li><li><a href="#tabset-2-3"><code>*_.png</code></a></li><li><a href="#tabset-2-4"><code>*.json</code></a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<p><span class="body-text-s">For more complex apps, you’ll often have support files (e.g.&nbsp;those contained in <code>~/&lt;app-directory&gt;/R</code> and / or <code>global.R</code>) – content from those files will be stored here so that it is made accessible to your test(s). Since we don’t have any support files for our rather small/somewhat simple app, you should only see the following:</span></p>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>~/testing-app/tests/testthat/setup-shinytest2.R</strong></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Load application support files into testing environment</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>shinytest2<span class="sc">::</span><span class="fu">load_app_env</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<div id="tabset-2-2">
-<p><span class="body-text-s">This test script contains your recorded test, and should automatically open when you finish recording and save your test. You can manually modify this test (e.g.&nbsp;add additional interactions and expectations), if you wish. Yours should look similar to this:</span></p>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>~/testing-app/tests/testthat/test-shinytest2.R</strong></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(shinytest2)</span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: sam-test"</span>, {</span>
-<span id="cb6-4"><a href="#cb6-4"></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"sam-test"</span>, <span class="at">height =</span> <span class="dv">509</span>, <span class="at">width =</span> <span class="dv">657</span>)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name =</span> <span class="st">"Sam"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greet"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb6-8"><a href="#cb6-8"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<div id="tabset-2-3">
-<p><span class="body-text-s"><strong>(located at <code>~/&lt;app-directory&gt;/tests/testthat/_snaps/shinytest2/*_.png</code>)</strong>; This is a screenshot of your app from when <code>app$expect_values()</code> was called – this file should be tracked using git so that you know how your app visually changes over time. My <code>.png</code> file looks like this:</span></p>
-<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part6/sam-test-001_.png" style="width:40.0%" alt="A screenshot from my app, with the text 'Sam' printed in the text input box beneath the prompt, 'What is your name?'. Below the text box is a button that says 'Greet'. Below that, the text, 'Hello Sam!' is printed."></p>
+<p><img data-src="images/part6/one-name-greeting.gif" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="teal-text"><strong>Steps:</strong></span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Run <code>shinytest2:record_test("testing-app")</code> in the Console</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> Type <code>Sam</code> into the text box &gt; click the Greet button &gt; click Expect Shiny Values</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Give the test a unique name &gt; click Save test and exit</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> The test recorder will quit, and your test will automatically execute (it should pass!)</span></p>
+</div>
+</div>
+<div class="center-text body-text-s">
+<p>Notice that your actions (e.g.&nbsp;typing text, clicking the button) are recorded as code in the right-hand panel – this is your test code, and it’ll be saved when you quit the recorder.</p>
+</div>
+<!-- --- -->
+<!-- What are assumptions? -->
+<!-- ```{r} -->
+<!-- ex_function <- function(a, b) { -->
+<!--   c <- a + b -->
+<!--   return(c) -->
+<!-- } -->
+<!-- ``` -->
+<!-- - inputs -- we want to make sure that inputs are consistent and follow the expected format -->
+<!--   - # of inputs  -->
+<!--   - order of inputs (if not using keyword args) -->
+<!--   - type of input (e.g. is `a` a string? a number? can it be anything?) -->
+<!--   - absence of inputs (e.g. are there default values) -->
+<!-- - logic  -->
+<!--   - does this handle the expected inputs (e.g. if i give it something that it should handle, will it do it as I expect) -->
+<!--   - does it handle unexpected inputs (e.g. return NULL, throw error message) -->
+<!-- - return (what does the function return?) -->
+<!--   - make sure that it returns the right data type (e.g. string, numeric) -->
+<!-- what different variations of my inputs impact my output? -->
+<!-- - you'll never think of all variations -->
+<!-- --- -->
+<!-- ##  {#assumptions data-menu-title="Write down assumptions"} -->
+<!-- [Write down assumptions]{.slide-title2} -->
+<!-- <hr> -->
+<!-- [**Example 1: Greeting**]{.body-text-m .teal-text} -->
+<!-- - input: does the user supply text values? -->
+<!-- - logic/output: does the app print, "Hello <input>!" -->
+<!-- - Expected output: user's input is prefixed with "Hello" and suffixed with "!". The text is then displayed -->
+<!-- - an assumption is that a user can input numbers, paragraphs, etc (anything that is valid as a text input) -->
+<!-- - when the greet button is clicked, it'll display what the user has input (even with successive inputs) -->
+<!-- [**Example 2: Upload & summarize data**]{.body-text-m .teal-text} -->
+<!-- - input:  -->
+<!--   - user supplies a csv file -->
+<!-- - output:  -->
+<!--   - if the csv column has expected column headers, it will: -->
+<!--     - rename columns -->
+<!--     - remove rows with missing values (NA) -->
+<!--     - average values in each column -->
+<!--     - return summary data frame -->
+<!--   - if the csv does not have the expected column headers, it will: -->
+<!--     - return a message that tells the user the file is not as expected -->
+<!--   - if the csv does not have any values, it will: -->
+<!--     - return a message that tells the user the file is not as expected -->
+<!--   - successive csv uploads shows the most recent data -->
+<!-- [**Example 3: Reactive plot**]{.body-text-m .teal-text} -->
+<!-- - input:  -->
+<!--   - shows the user what they can choose: the user can select `Adelie`, `Chinstrap`, and/or `Gentoo` -->
+<!--   - when user chooses something, does the right thing happen - when user deselects a species, it's removed from the plot -->
+<!--   - when a user selects a species, it's added to the plot  -->
+<!--   - when the user deselects all, a message prompts user to select at least one species -->
+<!--   - does the user see the correct default selection -- all species are selected by default -->
+<!-- - output:  -->
+<!--   - selected species will be plotted, deselected species will not be plotted -->
+<!--   - if not species are selected, a message will alert user to select species -->
+<!-- --- -->
+<!-- ##  {#testing-procedure data-menu-title="Testing procedure"} -->
+<!-- [Testing using `{shinytest2}`]{.slide-title} -->
+<!-- <hr> -->
+<!-- **Recording tests requires the following steps:** -->
+<!-- . . .  -->
+<!-- [[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` to launch the app recorder in a browser window]{.body-text-s} -->
+<!-- . . .  -->
+<!-- [[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation (e.g. an expected value when inputX is updated) on the state at various points]{.body-text-s} -->
+<!-- . . .  -->
+<!-- [[**(3)**]{.teal-text} Quit the recorder to save and execute your tests]{.body-text-s} -->
+<!-- . . .  -->
+<!-- <br> -->
+<!-- **To test *our* app specifically, we'll do the following:** -->
+<!-- [[**(1)**]{.teal-text} run `shinytest2::record_test("testing-app")` in the console to launch the recorder in a browser window]{.body-text-s} -->
+<!-- [[**(2)**]{.teal-text} interact with your app by first typing a name (e.g. Sam), then pressing the "Greet" button to display the output text]{.body-text-s} -->
+<!-- [[**(3)**]{.teal-text} click the **Expect Shiny values** button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)]{.body-text-s} -->
+<!-- [[**(4)**]{.teal-text} give your test a name in the recorder app sidebar, then click **Save test and exit** - this will save the recorded test and setup the testing infrastructure, if it doesn't exit already]{.body-text-s} -->
+<!-- --- -->
+<!-- ##  {#creating-test1-example data-menu-title="Creating our first test"} -->
+<!-- [Creating our first test]{.slide-title} -->
+<!-- <hr> -->
+<!-- Following the steps on the previous slide, creating your test should look similar to this: -->
+<!-- <br> -->
+<!-- ```{r} -->
+<!-- #| eval: true -->
+<!-- #| echo: false -->
+<!-- #| out-width: "100%" -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-alt: "A user begins recording a test by typing shinytest2::record_test('testing_app') in the RStudio console, which opens up the app in an iframe with the recorder in a pane to the right. The user types 'Sam' into the text box, clicks the 'Greet' button, then clicks 'Expect Shiny values' in the recorder. Finally, the user names and saves the test, which then runs automatically once the recorder is quit." -->
+<!-- knitr::include_graphics("images/part6/sam-test.gif") -->
+<!-- ``` -->
+<!-- <br> -->
+<!-- **Note:** Your test is automatically run as soon as you save and exit the recorder. See the results of your test in your console (it should pass!). -->
+</section>
+<section id="test-auto-executes" class="slide level2" data-menu-title="Tests auto execute">
+<h2></h2>
+<p><span class="slide-title2">Your test should automatically run (and pass!)</span></p>
+<hr>
+<p>After quitting the test recorder, the following will happen:</p>
+<ul>
+<li><span class="body-text-s">a test script will be saved in <code>&lt;your-app-subdirectory&gt;/tests/testthat/test-shinytest2.R</code></span></li>
+<li><span class="body-text-s">if you’re running in the RStudio IDE, <code>test-shinytest2.R</code> will automatically open in the editor</span></li>
+<li><span class="body-text-s"><code>shinytest2::test_app()</code> is run behind the scenes to execute the test script</span></li>
+</ul>
+<!-- [the test script will execute (`test_app()`, which is stored inside `tests/testthat.R`, is run behind the scenes)]{.body-text-s} -->
+<p>You should see the following in your RStudio Console:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="false"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>• Saving test runner<span class="sc">:</span> tests<span class="sc">/</span>testthat.R</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>• Saving test file<span class="sc">:</span> tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'shinytest2::load_app_env()'</span> to <span class="st">'tests/testthat/setup-shinytest2.R'</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>• Running recorded test<span class="sc">:</span> tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span> F W  S  OK <span class="sc">|</span> Context</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>   <span class="dv">2</span>      <span class="dv">1</span> <span class="sc">|</span> shinytest2 [<span class="fl">1.4</span>s]                                                         </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>───────────────────────────────────────────────────────────────────────────────────────────</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">7</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> one<span class="sc">-</span>name<span class="sc">-</span>greeting</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Adding new file snapshot<span class="sc">:</span> <span class="st">'tests/testthat/_snaps/one-name-greeting-001_.png'</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">7</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> one<span class="sc">-</span>name<span class="sc">-</span>greeting</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>Adding new file snapshot<span class="sc">:</span> <span class="st">'tests/testthat/_snaps/one-name-greeting-001.json'</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>───────────────────────────────────────────────────────────────────────────────────────────</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>══ Results ════════════════════════════════════════════════════════════════════════════════</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>Duration<span class="sc">:</span> <span class="fl">1.5</span> s</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">2</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">1</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="test-folder" class="slide level2" data-menu-title="Explore the tests/ folder">
+<h2></h2>
+<p><span class="slide-title">Understanding the contents of <code>tests/</code></span></p>
+<hr>
+<p>The first time you record a test, <code>{shinytest2}</code> generates number of directories / subdirectories, along with a bunch of files. The next few slides dives deeper into many of these.</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="false"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>.</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>├── testing-app/                                  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>│   └── global.R                     </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>│   └── ui.R                         </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>│   └── server.R                      </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>│   └── tests/                    # generated the first time you record and save a test    </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>│      └── testthat.R             # see note below</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>│      └── testthat/     </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>│         └── setup-shinytest2.R  # see note below</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>│         └── test-shinytest2.R   # see slide 15</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>│         └── snaps/               </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>│            └── shinytest2/      </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>│               └── *001.json     # see slide X</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>│               └── *001_.png     # see slide X </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><span class="body-text-s"><code>testthat.R</code>: includes the code, <code>shinytest2::test_app()</code>, which is executed when you click the <strong>Run Tests</strong> button in RStudio</span></li>
+<li><span class="body-text-s"><code>setup-shinytest2.R</code>: includes the code, <code>shinytest2::load_app_env()</code>, which loads any application support files (e.g.&nbsp;<code>global.R</code> and / or anything inside <code>R/</code>) into the testing environment</span></li>
+</ul>
+</section>
+<section id="test-shinytest2" class="slide level2" data-menu-title="The test file">
+<h2></h2>
+<p><span class="slide-title"><code>test-shinytest2.R</code> (test code)</span></p>
+<hr>
+<p><span class="body-text-s">All tests will be saved to <code>tests/testthat/test-shinytest2.R</code>. Yours should look similar to the code below (sans annotations). You may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you’ll see multiple <code>app$set_inputs()</code> statements, reflecting these actions:</span></p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>testing-app/tests/testthat/test-shinytest2.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(shinytest2)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># runs our test</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: one-name-greeting"</span>, {</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  </span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="co"># start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">838</span>, <span class="at">width =</span> <span class="dv">1298</span>)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  </span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="co"># set the textInput (with Id `name_input`) to the value `Sam`</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  </span>
+<span id="cb6-12"><a href="#cb6-12"></a>  <span class="co"># click the actionButton (with Id `greeting_input`)</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_input"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a>  </span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="co"># save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
+<span id="cb6-17"><a href="#cb6-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="center-text">
+<p><strong>You can think of each test as a recipe for <code>{shinytest2}</code> to follow to simulate user actions, and verify that the resulting outcomes are as expected.</strong></p>
+</div>
+<!-- ::: {.footer} -->
+<!-- You're able to manually edit this test code and / or write test code from scratch, if you wish. -->
+<!-- ::: -->
+</section>
+<section id="snaps" class="slide level2" data-menu-title="The _snaps/ folder">
+<h2></h2>
+<p><span class="slide-title">The <code>snaps/</code> folder</span></p>
+<hr>
+<p><span class="body-text-s">When <code>shinytest2::test_app()</code> runs your test code (<code>test-shinytest2.R</code>), it plays back the specified actions (e.g.&nbsp;setting the textInput to <code>Sam</code>, then clicking the Greet button), and records your application’s resulting state as a snapshot. Snapshots are saved to the <code>tests/testthat/shinytest2/_snaps/</code> folder. You should see two different snapshot files:</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="center-text body-text-s">
+<p><code>one-name-greeting-001_.png</code>, a debug screenshot of the app when <code>app$expect_values()</code> was called.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/part6/one-name-greeting.png" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-2-4">
-<p><span class="body-text-s">This is a <a href="https://www.json.org/json-en.html">JSON</a> representation of the state of the app when <code>app$expect_values()</code> was called – you’ll see the state of all input, output, and export values at the time of the snapshot (we don’t have any exports in our example app, but we do have a name input and a greeting output). This file should be tracked with git so that you have a record of your expected results. Your <code>.json</code> file should look something like this:</span></p>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>~/testing-app/tests/testthat/_snaps/shinytest2/*.json</strong></pre>
+</div><div class="column" style="width:50%;">
+<div class="center-text body-text-s">
+<p><code>one-name-greeting-001.json</code>, a <a href="https://www.json.org/json-en.html">JSON</a> representation of the state of the app when <code>app$expect_values()</code> was called</p>
 </div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">{</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="dt">"input"</span><span class="fu">:</span> <span class="fu">{</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>    <span class="dt">"greet"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
@@ -767,8 +958,41 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 </div>
 </div>
-</div>
-</div>
+<!-- ::: {.panel-tabset} -->
+<!-- ## `*_.png` -->
+<!-- [**(located at `~/<app-directory>/tests/testthat/_snaps/shinytest2/*_.png`)**; This is a screenshot of your app from when `app$expect_values()` was called -- this file should be tracked using git so that you know how your app visually changes over time. My `.png` file looks like this:]{.body-text-s} -->
+<!-- <br> -->
+<!-- ```{r} -->
+<!-- #| eval: true -->
+<!-- #| echo: false -->
+<!-- #| out-width: "40%" -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-alt: "A screenshot from my app, with the text 'Sam' printed in the text input box beneath the prompt, 'What is your name?'. Below the text box is a button that says 'Greet'. Below that, the text, 'Hello Sam!' is printed." -->
+<!-- knitr::include_graphics("images/part6/sam-test-001_.png") -->
+<!-- ``` -->
+<!-- ## `*.json` -->
+<!-- [This is a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called -- you'll see the state of all input, output, and export values at the time of the snapshot (we don't have any exports in our example app, but we do have a name input and a greeting output). This file should be tracked with git so that you have a record of your expected results. Your `.json` file should look something like this:]{.body-text-s} -->
+<!-- ```{json filename="~/testing-app/tests/testthat/_snaps/shinytest2/*.json"} -->
+<!-- #| eval: false -->
+<!-- #| echo: true -->
+<!-- { -->
+<!--   "input": { -->
+<!--     "greet": 1, -->
+<!--     "name": "Sam" -->
+<!--   }, -->
+<!--   "output": { -->
+<!--     "greeting": "Hello Sam!" -->
+<!--   }, -->
+<!--   "export": { -->
+<!--   } -->
+<!-- } -->
+<!-- ``` -->
+<!-- ::: -->
+<p>Future test runs are compared against snapshots to determine if your app is performing as your tests expects.</p>
+</section>
+<section class="slide level2">
+
+<p>Please also download <a href="https://drive.google.com/drive/folders/1fMpPHFgYQhfZH0dmbUtWbxSoHYfFgUZD?usp=sharing">these CSV files</a> and save them to your Desktop (we’ll use these later).</p>
 </section>
 <section id="testing-tips" class="slide level2" data-menu-title="Testing tips">
 <h2></h2>
@@ -804,7 +1028,7 @@ End part 6.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_32305872" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_b21812a0" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
