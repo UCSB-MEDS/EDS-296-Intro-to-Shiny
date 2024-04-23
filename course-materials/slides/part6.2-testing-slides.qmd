@@ -147,7 +147,7 @@ Different levels/types of tests:
 
 <hr>
 
-The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time.
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress).
 
 :::: {.columns}
 
@@ -230,7 +230,7 @@ ui <- fluidPage(
         textInput(inputId = "name_input",
                   label = "What is your name?"),
 
-        actionButton(inputId = "greeting_input",
+        actionButton(inputId = "greeting_button_input",
                      label = "Greet"),
 
       ), # END greeting sidebarPanel
@@ -260,7 +260,7 @@ server <- function(input, output) {
 
   output$greeting_output <- renderText({
 
-    req(input$greeting_input) # req(): textOutput doesn't appear until button is first pressed
+    req(input$greeting_button_input) # req(): textOutput doesn't appear until button is first pressed
     paste0("Hello ", isolate(input$name_input), "!") # isolate(): prevents textOutput from updating until button is pressed again
 
   }) 
@@ -306,19 +306,19 @@ I find it easiest to consider which **actions** can be taken, and what the **exp
 <br>
 
 ```{r}
-countdown::countdown(
-  minutes = 2,
-  # left = 0, right = 0,
-  # Fanfare when it's over
-  # play_sound = TRUE,
-  color_border              = "#FFFFFF",
-  color_text                = "#7aa81e",
-  color_running_background  = "#7aa81e",
-  color_running_text        = "#FFFFFF",
-  color_finished_background = "#ffa07a",
-  color_finished_text       = "#FFFFFF",
-  font_size = "2em",
-  )
+# countdown::countdown(
+#   minutes = 2,
+#   # left = 0, right = 0,
+#   # Fanfare when it's over
+#   # play_sound = TRUE,
+#   color_border              = "#FFFFFF",
+#   color_text                = "#7aa81e",
+#   color_running_background  = "#7aa81e",
+#   color_running_text        = "#FFFFFF",
+#   color_finished_background = "#ffa07a",
+#   color_finished_text       = "#FFFFFF",
+#   font_size = "2em",
+#   )
 ```
 
 . . . 
@@ -424,11 +424,11 @@ knitr::include_graphics("images/part6/one-name-greeting.gif")
 ::: {.column width="50%"}
 [**Steps:**]{.teal-text}
 
-[[**(1)**]{.teal-text} Run `shinytest2:record_test("testing-app")` in the Console]{.body-text-s}
+[[**(1)**]{.teal-text} Run `shinytest2::record_test("testing-app")` in the Console]{.body-text-s}
 
 [[**(2)**]{.teal-text} Type `Sam` into the text box > click the Greet button > click Expect Shiny Values]{.body-text-s}
 
-[[**(3)**]{.teal-text} Give the test a unique name > click Save test and exit]{.body-text-s}
+[[**(3)**]{.teal-text} Give the test a unique name (e.g. `one-name-greeting`) > click Save test and exit]{.body-text-s}
 
 [[**(4)**]{.teal-text} The test recorder will quit, and your test will automatically execute (it should pass!)]{.body-text-s}
 
@@ -670,8 +670,8 @@ test_that("{shinytest2} recording: one-name-greeting", {
   # set the textInput (with Id `name_input`) to the value `Sam`
   app$set_inputs(name_input = "Sam")
   
-  # click the actionButton (with Id `greeting_input`)
-  app$click("greeting_input")
+  # click the actionButton (with Id `greeting_button_input`)
+  app$click("greeting_button_input")
   
   # save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app
   app$expect_values()
@@ -753,7 +753,7 @@ We don't have any exported values in our app, and we won't be covering those her
 . . .
 
 - **The *debug* screenshot (`*_.png` file) can be used to visually inspect your app's state at the time of your test.**
-  - [The `*_.png` file differs from a `*.png` file (which we did not capture). `*.png` files are screenshots of the application from `app$expect_screenshot()` (i.e. by clicking *Expect screenshot* in the app recorder), which you can use to insure that the visual state of the application does not change. If subsequent screenshots differ (even by just a pixel!), your test will fail. This type of testing is quite brittle, and we won't be covering it further.]{.body-text-s}
+  - [The `*_.png` file differs from a `*.png` file (which we did not capture). `*.png` files are screenshots of the application from `app$expect_screenshot()` (i.e. by clicking *Expect screenshot* in the app recorder), which you can use to ensure that the visual state of the application does not change. If subsequent screenshots differ (even by just a pixel!), your test will fail. This type of testing is quite brittle, and we won't be covering it further.]{.body-text-s}
 
 . . .
 
@@ -769,7 +769,7 @@ We don't have any exported values in our app, and we won't be covering those her
 
 <hr>
 
-Rerun your test by clicking on the **Run Tests** button, which is visible when `test-shinytest2.R` is open. It should still pass (we haven't changed anything since our first test run)!
+Rerun your test by clicking on the **Run Tests** button, which is visible when `test-shinytest2.R` is open. They should all still pass (we haven't changed anything since our first test run)!
 
 ```{r}
 #| eval: true
@@ -787,11 +787,212 @@ knitr::include_graphics("images/part6/rerun-test.png")
 
 <hr>
 
+<br>
+<br>
+<br>
+
 | Action(s)                                                                                       | Expectation(s)                                                           |
 |-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | {{< fa square-check title="a checked box" >}} Type [some text value] in text box, click Greet button                                          | Greeting output is "Hello [some text value]!"                            |
 | {{< fa square title="an unchecked box" >}} Type [some text value] in text box, click Greet button, type [some other text value] in text box, click Greet button | Greeting output is "Hello [some other text value]!" |
 | {{< fa square title="an unchecked box" >}} Click Greet button                                                                              | Greeting output is "Hello !"                                             |
+
+```{r}
+countdown::countdown(
+  minutes = 3,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+
+---
+
+##  {#feature1-complete-tests data-menu-title="All feature 1 tests"}
+
+[`test-shinytest2.R` should now look like this:]{.slide-title2}
+
+<hr>
+
+[Or at least fairly close to this (maybe you chose slightly different names to test with):]{.body-text-s}
+
+```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+#| eval: false
+#| echo: true
+library(shinytest2)
+
+test_that("{shinytest2} recording: one-name-greeting", {
+  app <- AppDriver$new(name = "one-name-greeting", height = 1335, width = 1126)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values()
+})
+
+
+test_that("{shinytest2} recording: consecutive-name-greeting", {
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 837, width = 1294)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$set_inputs(name_input = "")
+  app$set_inputs(name_input = "Kat")
+  app$click("greeting_button_input")
+  app$expect_values()
+})
+
+
+test_that("{shinytest2} recording: no-name-greeting", {
+  app <- AppDriver$new(name = "no-name-greeting", height = 837, width = 1294)
+  app$click("greeting_button_input")
+  app$expect_values()
+})
+```
+
+[You can rerun all your tests at once by clicking the **Run Tests** button again (they should all pass!).]{.body-text-s}
+
+---
+
+##  {#improve-feature1 data-menu-title="Improving feature 1 functionality"}
+
+[Your boss requests an improvement on feature 1!]{.slide-title2}
+
+<hr>
+
+[Your boss is excited to see your progress, but would love to see an informative message pop up when a user clicks the Greet button without first typing in a name (currently, clicking the Greet button without typing a name will return "Hello !"... which is a bit odd). You make the following update to your app:]{.body-text-s}
+
+```{r filename="testing-app/server.R"}
+#| eval: false
+#| echo: true
+server <- function(input, output) {
+  
+  # Example 1 ------------------------------------------------------------------
+  # wait for user to click the Greet button before returning the message
+  observe({
+    
+    # if the user does not type anything, return the message, "Please type a name, then click the Greet button."
+    if (nchar(input$name_input) == 0) {
+      output$greeting_output <- renderText({
+        "Please type a name, then click the Greet button."
+      })
+      
+      # if the user does type a name, return the greeting, "Hello [name]!"
+    } else {
+      output$greeting_output <- renderText({
+        paste0("Hello ", isolate(input$name_input), "!")
+      })
+    }
+  }) |>
+    
+    # TODO: add description here
+    bindEvent(input$greeting_button_input)
+}
+```
+
+---
+
+##  {#no-name-greeting-breaks data-menu-title="Your test breaks!"}
+
+[Rerun your tests after making your update]{.slide-title}
+
+<hr>
+
+Our first two tests pass, but **the third one failed** {{< fa face-frown title="a frowning face" >}}. You'll see something like this to start:
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part6/failed-no-name-greeting.png")
+```
+
+Click on the **Output tab** for more information on why the test failed (see next slide).
+
+---
+
+##  {#output-tab data-menu-title="Output tab"}
+
+[The Output tab tells us what caused our test to fail]{.slide-title2}
+
+<hr>
+
+[There's a lot of helpful information here, but lines 6-7 tell us that our `no-name-greeting` test failed, while lines 17-27 here tell us exactly what changed:]{.body-text-s}
+
+<!-- - [**before** i.e. in our original test, clicking the Greet button resulted in an output that reads, "Hello !"]{.body-text-s} -->
+
+<!-- - [**after** i.e. in our most recent test rerun (after our updates to feature 1), clicking the Greet button resulted in an output that reads, "Please type a name before clicking the Greet button."]{.body-text-s} -->
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "6-7,17-27"
+==> Testing R file using 'testthat'
+
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]Loading required package: shiny
+[ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
+
+── Failure (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting ──
+Snapshot of `file` to 'shinytest2/no-name-greeting-001.json' has changed
+Run testthat::snapshot_review('shinytest2/') to review changes
+Backtrace:
+    ▆
+ 1. └─app$expect_values() at test-shinytest2.R:25:3
+ 2.   └─shinytest2:::app_expect_values(...)
+ 3.     └─shinytest2:::app__expect_snapshot_file(...)
+ 4.       ├─base::withCallingHandlers(...)
+ 5.       └─testthat::expect_snapshot_file(...)
+
+── Warning (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting ──
+Diff in snapshot file `shinytest2no-name-greeting-001.json`
+< before                                                                       
+> after                                                                        
+@@ 5,5 / 5,5 @@                                                                
+    },                                                                         
+    "output": {                                                                
+<     "greeting_output": "Hello !"                                             
+>     "greeting_output": "Please type a name before clicking the Greet button."
+    },                                                                         
+    "export": {                                                                
+[ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
+Warning messages:
+1: package ‘testthat’ was built under R version 4.3.1 
+2: package ‘shiny’ was built under R version 4.3.1 
+
+Test complete
+```
+
+---
+
+##  {#update-expectations data-menu-title="Update expected results"}
+
+[We'll want to update our expected results]{.slide-title}
+
+<hr>
+
+Our test correctly failed (the expected output was different)! But we'll want to update our test's expected output so that it reflects the changes we made to our app (i.e. that when a user clicks the Greet button without first typing a name is the text, "Please type a name before clicking the Greet button." is printed).
+
+To do so....
+
+TODO
+
+---
+
+Tests should all pass now!
+
+---
+
+Okay, you're boss has requested a new feature:
+
+- a file uploader that accepts a standardized csv file (predictable headings / data types) and cleans / averages values by column
+
+---
+
 
 
 ---
@@ -824,7 +1025,7 @@ Please also download [these CSV files](https://drive.google.com/drive/folders/1f
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">End part 6.2</p>
-<p class="caption-text">***Up next:** streamlinging code*</p>
+<p class="caption-text">***Up next:** streamlining code*</p>
 </div>
 
 ```{r}
