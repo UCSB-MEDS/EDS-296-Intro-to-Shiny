@@ -327,11 +327,11 @@ I find it easiest to consider which **actions** can be taken, and what the **exp
 
 [**For example:**]{.teal-text .body-text-l} 
 
-| Action(s)                                                                                       | Expectation(s)                                                           |
-|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Type [some text value] in text box > click Greet button                                          | Greeting output is "Hello [some text value]!"                            |
-| Type [some text value] in text box > click Greet button > type [some other text value] in text box > click Greet button | Greeting output is "Hello [some other text value]!" |
-| Click Greet button                                                                              | Greeting output is "Hello !"                                             |
+| Action(s)                                                                                                               | Expectation(s)                                                           |
+|-------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Type [some text value] in text box > click Greet button                                                                 | Greeting output is "Hello [some text value]!"                            |
+| Type [some text value] in text box > click Greet button > type [some other text value] in text box > click Greet button | Greeting output is "Hello [some text value]!", then updates to "Hello [some other text value]!" |
+| Click Greet button                                                                                                      | Greeting output is "Hello !"                                             |
 
 <br>
 
@@ -401,7 +401,7 @@ Over time, **your ability to identify both how users will interact with your app
 
 . . . 
 
-[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state, which will record all `input`, `output`, and `exported` values. 
+[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state, which will record `input`, `output`, and / or `exported` values. 
 
 <!-- (e.g. an expected value when inputX is updated) on the state at various points -->
 
@@ -630,7 +630,7 @@ Notice that your actions (e.g. typing text, clicking the button) are recorded as
 
 After quitting the test recorder, the following will happen: 
 
-- [a test script will be saved in `<your-app-subdirectory>/tests/testthat/test-shinytest2.R`]{.body-text-s}
+- [a test script will be saved in `testing-app/tests/testthat/test-shinytest2.R`]{.body-text-s}
 - [if you're running in the RStudio IDE, `test-shinytest2.R` will automatically open in the editor]{.body-text-s} 
 - [`shinytest2::test_app()` is run behind the scenes to execute the test script]{.body-text-s}
 
@@ -746,7 +746,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 ::: {.column width="50%"}
 ::: {.center-text .body-text-s}
-`one-name-greeting-001_.png`, a debug screenshot of the app when `app$expect_values()` was called:
+`one-name-greeting-001_.png`, a screenshot of the app when `app$expect_values()` was called:
 ```{r}
 #| eval: true
 #| echo: false
@@ -804,14 +804,16 @@ We don't have any exported values in our app, and we won't be covering those her
 
 . . .
 
-- **The *debug* screenshot (`*_.png` file) can be used to visually inspect your app's state at the time of your test.**
+- **The screenshot (`*_.png` file) can be used to visually inspect your app's state at the time of your test.**
   - [The `*_.png` file differs from a `*.png` file (which we did not capture). `*.png` files are screenshots of the application from `app$expect_screenshot()` (i.e. by clicking *Expect screenshot* in the app recorder), which you can use to ensure that the visual state of the application does not change. If subsequent screenshots differ (even by just a pixel!), your test will fail. This type of testing is quite brittle, and we won't be covering it further.]{.body-text-s}
 
 . . .
 
 ::: {.center-text .teal-text}
-**All of the above files should be tracked with `git` (ignore any `_.new.png` files).**
+**All of the above files should be tracked with `git`.**
 :::
+
+<!-- (ignore any `_.new.png` files) -->
 
 ---
 
@@ -846,7 +848,7 @@ knitr::include_graphics("images/part6/rerun-test.png")
 | Action(s)                                                                                       | Expectation(s)                                                           |
 |-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
 | {{< fa square-check title="a checked box" >}} Type [some text value] in text box > click Greet button                                          | Greeting output is "Hello [some text value]!"                            |
-| {{< fa square title="an unchecked box" >}} Type [some text value] in text box > click Greet button > type [some other text value] in text box > click Greet button | Greeting output is "Hello [some other text value]!" |
+| {{< fa square title="an unchecked box" >}} Type [some text value] in text box > click Greet button > type [some other text value] in text box > click Greet button | Greeting output is "Hello [some text value]!", then updates to "Hello [some other text value]!" |
 | {{< fa square title="an unchecked box" >}} Click Greet button                                                                              | Greeting output is "Hello !"                                             |
 
 ```{r}
@@ -873,7 +875,7 @@ countdown::countdown(
 
 <hr>
 
-[Or at least fairly close to this (maybe you chose slightly different names to test with):]{.body-text-s}
+[Or at least fairly close to this (maybe you chose different names to test with or had a different viewport size):]{.body-text-s}
 
 ```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
@@ -889,10 +891,10 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 
 test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 837, width = 1294)
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
-  app$set_inputs(name_input = "")
+  app$expect_values()
   app$set_inputs(name_input = "Kat")
   app$click("greeting_button_input")
   app$expect_values()
@@ -986,8 +988,8 @@ Click on the **Output tab** for more information on why the test failed (see nex
 #| code-line-numbers: "6-7,17-27"
 ==> Testing R file using 'testthat'
 
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ]Loading required package: shiny
-[ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
+Loading required package: shiny
+[ FAIL 1 | WARN 1 | SKIP 0 | PASS 3 ]
 
 ── Failure (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting ──
 Snapshot of `file` to 'shinytest2/no-name-greeting-001.json' has changed
@@ -1002,16 +1004,16 @@ Backtrace:
 
 ── Warning (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting ──
 Diff in snapshot file `shinytest2no-name-greeting-001.json`
-< before                                                                       
-> after                                                                        
-@@ 5,5 / 5,5 @@                                                                
-    },                                                                         
-    "output": {                                                                
-<     "greeting_output": "Hello !"                                             
->     "greeting_output": "Please type a name before clicking the Greet button."
-    },                                                                         
-    "export": {                                                                
-[ FAIL 1 | WARN 1 | SKIP 0 | PASS 2 ]
+< before                                                                   
+> after                                                                    
+@@ 5,5 / 5,5 @@                                                            
+    },                                                                     
+    "output": {                                                            
+<     "greeting_output": "Hello !"                                         
+>     "greeting_output": "Please type a name, then click the Greet button."
+    },                                                                     
+    "export": {                                                            
+[ FAIL 1 | WARN 1 | SKIP 0 | PASS 3 ]
 Warning messages:
 1: package ‘testthat’ was built under R version 4.3.1 
 2: package ‘shiny’ was built under R version 4.3.1 
@@ -1027,7 +1029,7 @@ Test complete
 
 <hr>
 
-[Our test correctly failed (the expected output was different)! But we'll want to update our test's expected output so that it reflects the changes we made to our app (i.e. that when a user clicks the Greet button without first typing a name is the text, "Please type a name before clicking the Greet button." is printed).]{.body-text-s}
+[**Our test correctly failed (the expected output was different)!** But we'll want to update our test's expected output so that it reflects the changes we made to our app (i.e. that when a user clicks the Greet button without first typing a name, the text "Please type a name before clicking the Greet button." is printed).]{.body-text-s}
 
 To do so....
 
@@ -1569,7 +1571,169 @@ Error: Test failures
 
 ---
 
+##  {#global-expectations-json1 data-menu-title="Global expectations (json, original)"}
 
+[Global expectations have changed]{.slide-title}
+
+<hr>
+
+**Let's use our `one-name-greeting` test as an example** to understand why our first three tests of feature 1 (greeting input) failed.
+
+<br>
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.center-text .body-text-s}
+`one-name-greeting-001.json`
+:::
+```{r}
+#| eval: false
+#| echo: true
+{
+  "input": {
+    "greeting_button_input": 1,
+    "name_input": "Sam"
+  },
+  "output": {
+    "greeting_output": "Hello Sam!"
+  },
+  "export": {
+
+  }
+}
+```
+:::
+
+::: {.column width="50%"}
+- [When we first wrote our `one-name-greeting` test, our app had two possible inputs (`greeting_button_input` & `name_input`) for which we set known values, and one expected output (`greeting_output`). These are the ***only*** inputs and outputs our test recognizes.]{.body-text-s}
+
+- [When the `one-name-greeting` test is run with our defined values (`Sam` & `1` button click), it expects the `greeting_output`, `Hello Sam!`, to be returned.]{.body-text-s}
+:::
+::::
+
+---
+
+##  {#global-expectations-json2 data-menu-title="Global expectations (json, new)"}
+
+[Global expectations have changed]{.slide-title}
+
+<hr>
+
+**Let's use our `one-name-greeting` test as an example** to understand why our first three tests of feature 1 (greeting input) failed.
+
+<br>
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.center-text .body-text-s}
+`one-name-greeting-001.new.json`
+:::
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "3,9"
+{
+  "input": {
+    "csv_input": null,
+    "greeting_button_input": 1,
+    "name_input": "Sam"
+  },
+  "output": {
+    "greeting_output": "Hello Sam!",
+    "summary_table_output": null
+  },
+  "export": {
+
+  }
+}
+```
+:::
+
+::: {.column width="50%"}
+- [Adding feature 2 (file uploader) means that there is now an additional possible input (`csv_input`) and output (`summary_table_output`).]{.body-text-s}
+
+- [Our original test does not define an input value or expected output value for `csv_input` and `summary_table_output`.]{.body-text-s}
+
+- [When our test is run on our updated app, it sees the new `csv_input` and `summary_table_output`, which are both empty (`NULL`).]{.body-text-s}
+:::
+::::
+
+<!-- . . .  -->
+
+<!-- [When we first wrote our `one-name-greeting` test, our app had two possible inputs (`greeting_button_input` & `name_input`) for which we set known values, and one expected output (`greeting_output`). Adding feature 2 (file uploader) means that there is now an additional possible input (`csv_input`) and output (`summary_table_output`). When the `one-name-greeting` test is run with our defined values (`Sam` & `1` button click), it expects the `greeting_output`, `Hello Sam!`, to be returned. *However* our original test does not define an input value or expected output value for `csv_input` and `summary_table_output`. As a result these values are set to `NULL`.]{.body-text-s} -->
+
+---
+
+##  {#global-expectations-png data-menu-title="Global expectations (png)"}
+
+[Global expectations have changed]{.slide-title}
+
+<hr>
+
+<br>
+
+Checking out the snapshot PNGs side-by-side also can be helpful:
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.center-text .body-text-s}
+`one-name-greeting-001_.png`
+:::
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/one-name-greeting-001_.png")
+```
+:::
+
+::: {.column width="50%"}
+::: {.center-text .body-text-s}
+`one-name-greeting-001_.new.png`
+:::
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/one-name-greeting-001_.new.png")
+```
+:::
+::::
+
+---
+
+##  {#targetted-expectations data-menu-title="Targetted expectations"}
+
+[We need to create tests with *targeted* value expectations]{.slide-title3}
+
+<hr>
+
+**By default, tests take snapshots of the *entire application***. Therefore, adding any new input(s) / output(s) will cause old tests to fail.
+
+. . . 
+
+<br>
+
+*Which means* we'll need to redo / modify our tests {{< fa face-grin-beam-sweat title="a grinning face with a bead of sweat dripping from the brow" >}}
+
+. . . 
+
+<br>
+
+*To start*, comment out all test code in `test-shinytest2.R` and click **Run Tests** -- you should see all your test snapshots disappear.
+
+. . .
+
+<br>
 
 ---
 

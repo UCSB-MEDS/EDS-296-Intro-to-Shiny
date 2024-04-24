@@ -645,8 +645,8 @@ From the <code>{shinytest2}</code> documentation:
 <p><span class="teal-text body-text-l"><strong>For example:</strong></span></p>
 <table>
 <colgroup>
-<col style="width: 56%">
-<col style="width: 43%">
+<col style="width: 62%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -661,7 +661,7 @@ From the <code>{shinytest2}</code> documentation:
 </tr>
 <tr class="even">
 <td>Type [some text value] in text box &gt; click Greet button &gt; type [some other text value] in text box &gt; click Greet button</td>
-<td>Greeting output is “Hello [some other text value]!”</td>
+<td>Greeting output is “Hello [some text value]!”, then updates to “Hello [some other text value]!”</td>
 </tr>
 <tr class="odd">
 <td>Click Greet button</td>
@@ -716,7 +716,7 @@ From the <code>{shinytest2}</code> documentation:
 <p><br></p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation of the app’s state, which will record all <code>input</code>, <code>output</code>, and <code>exported</code> values.</p>
+<p><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation of the app’s state, which will record <code>input</code>, <code>output</code>, and / or <code>exported</code> values.</p>
 <!-- (e.g. an expected value when inputX is updated) on the state at various points -->
 <p><br></p>
 </div>
@@ -867,7 +867,7 @@ From the <code>{shinytest2}</code> documentation:
 <hr>
 <p>After quitting the test recorder, the following will happen:</p>
 <ul>
-<li><span class="body-text-s">a test script will be saved in <code>&lt;your-app-subdirectory&gt;/tests/testthat/test-shinytest2.R</code></span></li>
+<li><span class="body-text-s">a test script will be saved in <code>testing-app/tests/testthat/test-shinytest2.R</code></span></li>
 <li><span class="body-text-s">if you’re running in the RStudio IDE, <code>test-shinytest2.R</code> will automatically open in the editor</span></li>
 <li><span class="body-text-s"><code>shinytest2::test_app()</code> is run behind the scenes to execute the test script</span></li>
 </ul>
@@ -961,7 +961,7 @@ From the <code>{shinytest2}</code> documentation:
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="center-text body-text-s">
-<p><code>one-name-greeting-001_.png</code>, a debug screenshot of the app when <code>app$expect_values()</code> was called:</p>
+<p><code>one-name-greeting-001_.png</code>, a screenshot of the app when <code>app$expect_values()</code> was called:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1016,7 +1016,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 <div class="fragment">
 <ul>
-<li><strong>The <em>debug</em> screenshot (<code>*_.png</code> file) can be used to visually inspect your app’s state at the time of your test.</strong>
+<li><strong>The screenshot (<code>*_.png</code> file) can be used to visually inspect your app’s state at the time of your test.</strong>
 <ul>
 <li><span class="body-text-s">The <code>*_.png</code> file differs from a <code>*.png</code> file (which we did not capture). <code>*.png</code> files are screenshots of the application from <code>app$expect_screenshot()</code> (i.e.&nbsp;by clicking <em>Expect screenshot</em> in the app recorder), which you can use to ensure that the visual state of the application does not change. If subsequent screenshots differ (even by just a pixel!), your test will fail. This type of testing is quite brittle, and we won’t be covering it further.</span></li>
 </ul></li>
@@ -1024,8 +1024,9 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 <div class="fragment">
 <div class="center-text teal-text">
-<p><strong>All of the above files should be tracked with <code>git</code> (ignore any <code>_.new.png</code> files).</strong></p>
+<p><strong>All of the above files should be tracked with <code>git</code>.</strong></p>
 </div>
+<!-- (ignore any `_.new.png` files) -->
 </div>
 </section>
 <section id="rerun-tests" class="slide level2" data-menu-title="Rerun the test">
@@ -1058,7 +1059,7 @@ From the <code>{shinytest2}</code> documentation:
 </tr>
 <tr class="even">
 <td><i class="fa-solid fa-square" title="an unchecked box" aria-label="square"></i> Type [some text value] in text box &gt; click Greet button &gt; type [some other text value] in text box &gt; click Greet button</td>
-<td>Greeting output is “Hello [some other text value]!”</td>
+<td>Greeting output is “Hello [some text value]!”, then updates to “Hello [some other text value]!”</td>
 </tr>
 <tr class="odd">
 <td><i class="fa-solid fa-square" title="an unchecked box" aria-label="square"></i> Click Greet button</td>
@@ -1068,7 +1069,7 @@ From the <code>{shinytest2}</code> documentation:
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d140d30d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_3f775530" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1079,7 +1080,7 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title2"><code>test-shinytest2.R</code> should now look like this:</span></p>
 <hr>
-<p><span class="body-text-s">Or at least fairly close to this (maybe you chose slightly different names to test with):</span></p>
+<p><span class="body-text-s">Or at least fairly close to this (maybe you chose different names to test with or had a different viewport size):</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1096,10 +1097,10 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb9-9"><a href="#cb9-9"></a></span>
 <span id="cb9-10"><a href="#cb9-10"></a></span>
 <span id="cb9-11"><a href="#cb9-11"></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: consecutive-name-greeting"</span>, {</span>
-<span id="cb9-12"><a href="#cb9-12"></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">837</span>, <span class="at">width =</span> <span class="dv">1294</span>)</span>
+<span id="cb9-12"><a href="#cb9-12"></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">961</span>, <span class="at">width =</span> <span class="dv">1322</span>)</span>
 <span id="cb9-13"><a href="#cb9-13"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
 <span id="cb9-14"><a href="#cb9-14"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
-<span id="cb9-15"><a href="#cb9-15"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">""</span>)</span>
+<span id="cb9-15"><a href="#cb9-15"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
 <span id="cb9-16"><a href="#cb9-16"></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Kat"</span>)</span>
 <span id="cb9-17"><a href="#cb9-17"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb9-18"><a href="#cb9-18"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
@@ -1171,8 +1172,8 @@ From the <code>{shinytest2}</code> documentation:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11" data-code-line-numbers="6-7,17-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="sc">==</span><span class="er">&gt;</span> Testing R file using <span class="st">'testthat'</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">0</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">0</span> ]Loading required package<span class="sc">:</span> shiny</span>
-<span id="cb11-4"><a href="#cb11-4"></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">2</span> ]</span>
+<span id="cb11-3"><a href="#cb11-3"></a>Loading required package<span class="sc">:</span> shiny</span>
+<span id="cb11-4"><a href="#cb11-4"></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span>
 <span id="cb11-5"><a href="#cb11-5"></a></span>
 <span id="cb11-6"><a href="#cb11-6"></a>── <span class="fu">Failure</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">25</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> no<span class="sc">-</span>name<span class="sc">-</span>greeting ──</span>
 <span id="cb11-7"><a href="#cb11-7"></a>Snapshot of <span class="st">`</span><span class="at">file</span><span class="st">`</span> to <span class="st">'shinytest2/no-name-greeting-001.json'</span> has changed</span>
@@ -1187,16 +1188,16 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb11-16"><a href="#cb11-16"></a></span>
 <span id="cb11-17"><a href="#cb11-17"></a>── <span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">25</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> no<span class="sc">-</span>name<span class="sc">-</span>greeting ──</span>
 <span id="cb11-18"><a href="#cb11-18"></a>Diff <span class="cf">in</span> snapshot file <span class="st">`</span><span class="at">shinytest2no-name-greeting-001.json</span><span class="st">`</span></span>
-<span id="cb11-19"><a href="#cb11-19"></a><span class="sc">&lt;</span> before                                                                       </span>
-<span id="cb11-20"><a href="#cb11-20"></a><span class="sc">&gt;</span> after                                                                        </span>
-<span id="cb11-21"><a href="#cb11-21"></a><span class="sc">@</span><span class="er">@</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">/</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">@</span><span class="er">@</span>                                                                </span>
-<span id="cb11-22"><a href="#cb11-22"></a>    <span class="er">}</span>,                                                                         </span>
-<span id="cb11-23"><a href="#cb11-23"></a>    <span class="st">"output"</span><span class="sc">:</span> {                                                                </span>
-<span id="cb11-24"><a href="#cb11-24"></a><span class="sc">&lt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello !"</span>                                             </span>
-<span id="cb11-25"><a href="#cb11-25"></a><span class="sc">&gt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Please type a name before clicking the Greet button."</span></span>
-<span id="cb11-26"><a href="#cb11-26"></a>    },                                                                         </span>
-<span id="cb11-27"><a href="#cb11-27"></a>    <span class="st">"export"</span><span class="sc">:</span> {                                                                </span>
-<span id="cb11-28"><a href="#cb11-28"></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">2</span> ]</span>
+<span id="cb11-19"><a href="#cb11-19"></a><span class="sc">&lt;</span> before                                                                   </span>
+<span id="cb11-20"><a href="#cb11-20"></a><span class="sc">&gt;</span> after                                                                    </span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="sc">@</span><span class="er">@</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">/</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">@</span><span class="er">@</span>                                                            </span>
+<span id="cb11-22"><a href="#cb11-22"></a>    <span class="er">}</span>,                                                                     </span>
+<span id="cb11-23"><a href="#cb11-23"></a>    <span class="st">"output"</span><span class="sc">:</span> {                                                            </span>
+<span id="cb11-24"><a href="#cb11-24"></a><span class="sc">&lt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello !"</span>                                         </span>
+<span id="cb11-25"><a href="#cb11-25"></a><span class="sc">&gt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Please type a name, then click the Greet button."</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a>    },                                                                     </span>
+<span id="cb11-27"><a href="#cb11-27"></a>    <span class="st">"export"</span><span class="sc">:</span> {                                                            </span>
+<span id="cb11-28"><a href="#cb11-28"></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span>
 <span id="cb11-29"><a href="#cb11-29"></a>Warning messages<span class="sc">:</span></span>
 <span id="cb11-30"><a href="#cb11-30"></a><span class="dv">1</span><span class="sc">:</span> package ‘testthat’ was built under R version <span class="dv">4</span>.<span class="fl">3.1</span> </span>
 <span id="cb11-31"><a href="#cb11-31"></a><span class="dv">2</span><span class="sc">:</span> package ‘shiny’ was built under R version <span class="dv">4</span>.<span class="fl">3.1</span> </span>
@@ -1208,7 +1209,7 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title">We’ll want to update our expected results</span></p>
 <hr>
-<p><span class="body-text-s">Our test correctly failed (the expected output was different)! But we’ll want to update our test’s expected output so that it reflects the changes we made to our app (i.e.&nbsp;that when a user clicks the Greet button without first typing a name is the text, “Please type a name before clicking the Greet button.” is printed).</span></p>
+<p><span class="body-text-s"><strong>Our test correctly failed (the expected output was different)!</strong> But we’ll want to update our test’s expected output so that it reflects the changes we made to our app (i.e.&nbsp;that when a user clicks the Greet button without first typing a name, the text “Please type a name before clicking the Greet button.” is printed).</span></p>
 <p>To do so….</p>
 <p>TODO</p>
 </section>
@@ -1416,7 +1417,7 @@ From the <code>{shinytest2}</code> documentation:
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_73adc7a6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_deca98ba" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1713,8 +1714,131 @@ From the <code>{shinytest2}</code> documentation:
 <p><strong>What do you notice about each of the failed tests (taking a look at the <code>*_new.png</code> files may help)?</strong></p>
 </div>
 </section>
-<section class="slide level2">
+<section id="global-expectations-json1" class="slide level2" data-menu-title="Global expectations (json, original)">
+<h2></h2>
+<p><span class="slide-title">Global expectations have changed</span></p>
+<hr>
+<p><strong>Let’s use our <code>one-name-greeting</code> test as an example</strong> to understand why our first three tests of feature 1 (greeting input) failed.</p>
+<p><br> <br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="center-text body-text-s">
+<p><code>one-name-greeting-001.json</code></p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>{</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="st">"input"</span><span class="sc">:</span> {</span>
+<span id="cb17-3"><a href="#cb17-3"></a>    <span class="st">"greeting_button_input"</span><span class="sc">:</span> <span class="dv">1</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="st">"name_input"</span><span class="sc">:</span> <span class="st">"Sam"</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  },</span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="st">"output"</span><span class="sc">:</span> {</span>
+<span id="cb17-7"><a href="#cb17-7"></a>    <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello Sam!"</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  },</span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="st">"export"</span><span class="sc">:</span> {</span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a>  }</span>
+<span id="cb17-12"><a href="#cb17-12"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="body-text-s">When we first wrote our <code>one-name-greeting</code> test, our app had two possible inputs (<code>greeting_button_input</code> &amp; <code>name_input</code>) for which we set known values, and one expected output (<code>greeting_output</code>). These are the <strong><em>only</em></strong> inputs and outputs our test recognizes.</span></p></li>
+<li><p><span class="body-text-s">When the <code>one-name-greeting</code> test is run with our defined values (<code>Sam</code> &amp; <code>1</code> button click), it expects the <code>greeting_output</code>, <code>Hello Sam!</code>, to be returned.</span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="global-expectations-json2" class="slide level2" data-menu-title="Global expectations (json, new)">
+<h2></h2>
+<p><span class="slide-title">Global expectations have changed</span></p>
+<hr>
+<p><strong>Let’s use our <code>one-name-greeting</code> test as an example</strong> to understand why our first three tests of feature 1 (greeting input) failed.</p>
+<p><br> <br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="center-text body-text-s">
+<p><code>one-name-greeting-001.new.json</code></p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="3,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>{</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="st">"input"</span><span class="sc">:</span> {</span>
+<span id="cb18-3"><a href="#cb18-3"></a>    <span class="st">"csv_input"</span><span class="sc">:</span> null,</span>
+<span id="cb18-4"><a href="#cb18-4"></a>    <span class="st">"greeting_button_input"</span><span class="sc">:</span> <span class="dv">1</span>,</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    <span class="st">"name_input"</span><span class="sc">:</span> <span class="st">"Sam"</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  },</span>
+<span id="cb18-7"><a href="#cb18-7"></a>  <span class="st">"output"</span><span class="sc">:</span> {</span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello Sam!"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9"></a>    <span class="st">"summary_table_output"</span><span class="sc">:</span> null</span>
+<span id="cb18-10"><a href="#cb18-10"></a>  },</span>
+<span id="cb18-11"><a href="#cb18-11"></a>  <span class="st">"export"</span><span class="sc">:</span> {</span>
+<span id="cb18-12"><a href="#cb18-12"></a></span>
+<span id="cb18-13"><a href="#cb18-13"></a>  }</span>
+<span id="cb18-14"><a href="#cb18-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="body-text-s">Adding feature 2 (file uploader) means that there is now an additional possible input (<code>csv_input</code>) and output (<code>summary_table_output</code>).</span></p></li>
+<li><p><span class="body-text-s">Our original test does not define an input value or expected output value for <code>csv_input</code> and <code>summary_table_output</code>.</span></p></li>
+<li><p><span class="body-text-s">When our test is run on our updated app, it sees the new <code>csv_input</code> and <code>summary_table_output</code>, which are both empty (<code>NULL</code>).</span></p></li>
+</ul>
+</div>
+</div>
+<!-- . . .  -->
 
+<!-- [When we first wrote our `one-name-greeting` test, our app had two possible inputs (`greeting_button_input` & `name_input`) for which we set known values, and one expected output (`greeting_output`). Adding feature 2 (file uploader) means that there is now an additional possible input (`csv_input`) and output (`summary_table_output`). When the `one-name-greeting` test is run with our defined values (`Sam` & `1` button click), it expects the `greeting_output`, `Hello Sam!`, to be returned. *However* our original test does not define an input value or expected output value for `csv_input` and `summary_table_output`. As a result these values are set to `NULL`.]{.body-text-s} -->
+</section>
+<section id="global-expectations-png" class="slide level2" data-menu-title="Global expectations (png)">
+<h2></h2>
+<p><span class="slide-title">Global expectations have changed</span></p>
+<hr>
+<p><br></p>
+<p>Checking out the snapshot PNGs side-by-side also can be helpful:</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="center-text body-text-s">
+<p><code>one-name-greeting-001_.png</code></p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/part6/one-name-greeting-001_.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="center-text body-text-s">
+<p><code>one-name-greeting-001_.new.png</code></p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/part6/one-name-greeting-001_.new.png" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="targetted-expectations" class="slide level2" data-menu-title="Targetted expectations">
+<h2></h2>
+<p><span class="slide-title3">We need to create tests with <em>targeted</em> value expectations</span></p>
+<hr>
+<p><strong>By default, tests take snapshots of the <em>entire application</em></strong>. Therefore, adding any new input(s) / output(s) will cause old tests to fail.</p>
+<div class="fragment">
+<p><br></p>
+<p><em>Which means</em> we’ll need to redo / modify our tests <i class="fa-solid fa-face-grin-beam-sweat" title="a grinning face with a bead of sweat dripping from the brow" aria-label="face-grin-beam-sweat"></i></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<p><em>To start</em>, comment out all test code in <code>test-shinytest2.R</code> and click <strong>Run Tests</strong> – you should see all your test snapshots disappear.</p>
+</div>
+<div class="fragment">
+<p><br></p>
+</div>
 </section>
 <section class="slide level2">
 
@@ -1741,7 +1865,7 @@ End part 6.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1810a1fd" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_72860380" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
