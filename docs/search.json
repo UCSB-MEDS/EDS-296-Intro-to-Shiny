@@ -1824,7 +1824,7 @@
     "href": "course-materials/slides/part6.2-testing-slides.html#LO-testing",
     "title": "EDS 430",
     "section": "",
-    "text": "Learning Objectives for Testing\n\n\nAfter this section, you should:\n\n\n understand some of the reasons why apps break and the benefit of having automated tests\n\n\n have a basic understanding of how to use the {shinytest2} package to create regression tests\n\n\n know how to rerun tests\n\n\n\nPackages introduced:\n\n\n\n {shinytest2}: provides tools for creating and running automated tests on Shiny applications"
+    "text": "Learning Objectives for Testing\n\n\nAfter this section, you should:\n\n\n understand some of the reasons why apps break and the benefit of having automated tests\n\n\n have a basic understanding of how to use the {shinytest2} package to create regression tests\n\n\n know how to rerun tests\n\n\n know how to update tests\n\n\n TBD\n\n\n\nPackages introduced:\n\n\n\n {shinytest2}: provides tools for creating and running automated tests on Shiny applications"
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#shiny-workflow",
@@ -1873,14 +1873,14 @@
     "href": "course-materials/slides/part6.2-testing-slides.html#assumptions-note",
     "title": "EDS 430",
     "section": "",
-    "text": "One more important note!\n\n\n\nAs much as you try, testing will never be exhaustive. You can only test for scenarios that you think of.\n\n\n\n\nThe goal is to put yourself in the shoes of a user, and test scenarios that you think your users will encounter. If you test those use-cases, you’ll cover the majority of expectations.\n\n\n\n\n\nAs users interact with your app, they’ll stumble upon and reveal use-cases / scenarios that you hadn’t tested for…and you can update your app / write tests accordingly.\n\n\n\n\n\nOver time, your ability to identify both how users will interact with your app and what to test will improve."
+    "text": "One more important note (actually, a few)\n\n\n\nAs much as you try, testing will never be exhaustive. You can only test for scenarios that you think of.\n\n\n\n\nThe goal is to put yourself in the shoes of a user, and test scenarios that you think your users will encounter. If you test those use-cases, you’ll cover the majority of expectations.\n\n\n\n\n\nAs users interact with your app, they’ll stumble upon and reveal use-cases / scenarios that you hadn’t tested for…and you can update your app / write tests accordingly.\n\n\n\n\n\nOver time, your ability to identify both how users will interact with your app and what to test will improve."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#testing-procedure",
     "href": "course-materials/slides/part6.2-testing-slides.html#testing-procedure",
     "title": "EDS 430",
     "section": "",
-    "text": "Test your assumptions using the {shinytest2} workflow\n\n\nGenerally speaking, that workflow looks something like this:\n\n\n(1) Run shinytest2::record_test(&lt;app-directory&gt;) in your Console to launch the app recorder in a browser window\n\n\n\n(2) Interact with your application and tell the recorder to make an expectation of the app’s state, which will record input, output, and / or exported values.\n\n\n\n\n(3) Give your test a unique name and quit the recorder to save and execute your tests\n\n\n\n\nWe’ll repeat this workflow to test each of our three assumptions listed on the previous slide."
+    "text": "Test your assumptions using the {shinytest2} workflow\n\n\nGenerally speaking, that workflow looks something like this:\n\n\n(1) Run shinytest2::record_test(&lt;app-directory&gt;) in your Console to launch the app recorder in a browser window\n\n\n\n(2) Interact with your application and tell the recorder to make an expectation of the app’s state, which will record input, output, and exported values.\n\n\n\n\n(3) Give your test a unique name and quit the recorder to save and execute your tests\n\n\n\n\nWe’ll repeat this workflow to test each of our three assumptions listed on the previous slide."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#chromote-timeout",
@@ -1978,7 +1978,21 @@
     "href": "course-materials/slides/part6.2-testing-slides.html#update-expectations",
     "title": "EDS 430",
     "section": "",
-    "text": "We’ll want to update our expected results\n\nOur test correctly failed (the expected output was different)! But we’ll want to update our test’s expected output so that it reflects the changes we made to our app (i.e. that when a user clicks the Greet button without first typing a name, the text “Please type a name before clicking the Greet button.” is printed).\nTo do so….\nTODO"
+    "text": "We’ll want to update our expected results\n\nOur test correctly failed (the expected output was different)! But we’ll want to update our test’s expected output so that it reflects the changes we made to our app (i.e. that when a user clicks the Greet button without first typing a name, the text “Please type a name before clicking the Greet button.” is printed).\n\n\nWe can use use testthat::snapshot_review(), which opens a Shiny app for visually comparing differences between snapshots and accepting (or rejecting) updates.\n\n\n\nSteps:\n\nInstall the {diffviewer} package\n\n\ninstall.packages(\"diffviewer\")\n\n\nRun the following in your Console to launch the widget:\n\n\ntestthat::snapshot_review(path = \"testing-app/tests/testthat/\")"
+  },
+  {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#snapshot-review",
+    "href": "course-materials/slides/part6.2-testing-slides.html#snapshot-review",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Explore and accept the updated test expectations\n\nThe app allows for a few different ways to view snapshot diffs. Click Accept for both the PNG and JSON files, then close the window:"
+  },
+  {
+    "objectID": "course-materials/slides/part6.2-testing-slides.html#updated-snapshots",
+    "href": "course-materials/slides/part6.2-testing-slides.html#updated-snapshots",
+    "title": "EDS 430",
+    "section": "",
+    "text": "Check out your updated snapshots\n\nCheck out no-name-greeting-001_.png and no-name-greeting-001.json, which should be updated to reflect the new test expectations."
   },
   {
     "objectID": "course-materials/slides/part6.2-testing-slides.html#feature2-code",

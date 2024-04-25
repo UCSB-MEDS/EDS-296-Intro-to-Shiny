@@ -54,6 +54,14 @@ editor_options:
 
 . . . 
 
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to update tests
+
+. . . 
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} TBD
+
+. . . 
+
 <p class="body-text-l teal-text topbr">Packages introduced:</p> 
 
 . . . 
@@ -108,15 +116,15 @@ It's almost inevitable that our app(s) will (at some point) break -- there are l
 
 . . . 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an upgraded R package(s) has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **an upgraded R package(s)** has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</p>
 
 . . . 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} you make changes to your app (e.g. add new features, refactor code)</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **you make changes to your app** (e.g. add new features, refactor code)</p>
 
 . . . 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an external data source stops working or returns data in a different format than that expected by your app</p>
+<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **an external data source stops working** or returns data in a different format than that expected by your app</p>
 
 . . .
 
@@ -345,7 +353,7 @@ Now we're ready to actually *test* these assumptions!
 
 ##  {#assumptions-note data-menu-title="A note on assumptions"}
 
-[One more important note!]{.slide-title}
+[One more important note (actually, a few)]{.slide-title}
 
 <hr>
 
@@ -401,7 +409,7 @@ Over time, **your ability to identify both how users will interact with your app
 
 . . . 
 
-[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state, which will record `input`, `output`, and / or `exported` values. 
+[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state, which will record `input`, `output`, and `exported` values. 
 
 <!-- (e.g. an expected value when inputX is updated) on the state at various points -->
 
@@ -1031,13 +1039,74 @@ Test complete
 
 [**Our test correctly failed (the expected output was different)!** But we'll want to update our test's expected output so that it reflects the changes we made to our app (i.e. that when a user clicks the Greet button without first typing a name, the text "Please type a name before clicking the Greet button." is printed).]{.body-text-s}
 
-To do so....
+. . .
 
-TODO
+<br>
+
+[We can use use `testthat::snapshot_review()`, which opens a Shiny app for visually comparing differences between snapshots and accepting (or rejecting) updates.]{.body-text-s}
+
+. . .
+
+<br>
+
+[**Steps:**]{.teal-text .body-text-m}
+
+1. Install the [`{diffviewer}` package](https://github.com/r-lib/diffviewer)
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+install.packages("diffviewer")
+```
+
+2. Run the following in your Console to launch the widget: 
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+testthat::snapshot_review(path = "testing-app/tests/testthat/")
+```
 
 ---
 
-Tests should all pass now!
+##  {#snapshot-review data-menu-title="snapshot_review()"}
+
+[Explore and accept the updated test expectations]{.slide-title2}
+
+<hr>
+
+The app allows for a few different ways to view snapshot diffs. Click Accept for both the PNG and JSON files, then close the window:
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "80%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/snapshot-review.gif")
+```
+
+---
+
+##  {#updated-snapshots data-menu-title="Updated snapshots"}
+
+[Check out your updated snapshots]{.slide-title2}
+
+<hr>
+
+Check out `no-name-greeting-001_.png` and `no-name-greeting-001.json`, which should be updated to reflect the new test expectations.
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "80%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/updated-snapshots.png")
+```
+
 
 ---
 
