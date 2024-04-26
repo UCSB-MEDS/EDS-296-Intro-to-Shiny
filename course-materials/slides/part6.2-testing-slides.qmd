@@ -208,7 +208,7 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 ::: {.panel-tabset}
 ## `global.R`
 
-```{r filename="testing-app/global.R"}
+```{r filename="~/testing-app/global.R"}
 #| eval: false
 #| echo: true
 # load libraries ----
@@ -217,7 +217,7 @@ library(shiny)
 
 ## `ui.R`
 
-```{r filename="testing-app/ui.R"}
+```{r filename="~/testing-app/ui.R"}
 #| eval: false
 #| echo: true
 ui <- fluidPage(
@@ -259,7 +259,7 @@ ui <- fluidPage(
 
 ## `server.R`
 
-```{r filename="testing-app/server.R"}
+```{r filename="~/testing-app/server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {
@@ -575,7 +575,7 @@ After creating your first test, your repo structure should look something like t
 
 <br>
 
-```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
 library(shinytest2)
@@ -744,7 +744,7 @@ countdown::countdown(
 
 [Or at least fairly close to this (maybe you chose different names to test with or had a different viewport size):]{.body-text-s}
 
-```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
 library(shinytest2)
@@ -789,7 +789,7 @@ You can rerun all your tests at once by clicking the **Run Tests** button again 
 
 [Your boss is excited to see your progress, but would love to see an informative message pop up when a user clicks the Greet button without first typing in a name (currently, clicking the Greet button without typing a name will return "Hello !"... which is a bit odd). You make the following update to your app:]{.body-text-s}
 
-```{r filename="testing-app/server.R"}
+```{r filename="~/testing-app/server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {
@@ -984,7 +984,7 @@ knitr::include_graphics("images/part6/updated-snapshots.png")
 ::: {.panel-tabset}
 ## `global.R`
 
-```{r filename="testing-app/global.R"}
+```{r filename="~/testing-app/global.R"}
 #| eval: false
 #| echo: true
 # load libraries ----
@@ -994,7 +994,7 @@ library(tidyverse)
 
 ## `ui.R`
 
-```{r filename="testing-app/ui.R"}
+```{r filename="~/testing-app/ui.R"}
 #| eval: false
 #| echo: true
 ui <- fluidPage(
@@ -1072,7 +1072,7 @@ ui <- fluidPage(
 
 ## `server.R`
 
-```{r filename="testing-app/server.R"}
+```{r filename="~/testing-app/server.R"}
 #| eval: false
 #| echo: true
 server <- function(input, output) {
@@ -1684,7 +1684,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 <hr>
 
-```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "7,15,18,25,32"
@@ -1831,7 +1831,7 @@ knitr::include_graphics("images/part6/command-click.gif")
 
 [When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):]{.body-text-s}
 
-```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "29-71"
@@ -2229,7 +2229,7 @@ countdown::countdown(
 
 <hr>
 
-When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):
+Once complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):
 
 ```{r}
 #| eval: false
@@ -2338,6 +2338,300 @@ test_that("{shinytest2} recording: consecutive-spp-selections", {
   app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
 })
 ```
+
+---
+
+##  {#refactor-code data-menu-title="refactor-code"}
+
+[What if we decide to refactor our code?]{.slide-title}
+
+<hr>
+
+[Let's say we want to extract our `pickerInput` code from our UI and turn it into a function. We make the following updates to our code:]{.body-text-s}
+
+::: {.panel-tabset}
+## `global.R`
+
+[(File is unchanged)]{.body-text-s}
+
+```{r filename="~/testing-app/global.R"}
+#| eval: false
+#| echo: true
+# load libraries ----
+library(shiny)
+library(tidyverse)
+library(shinyWidgets)
+library(palmerpenguins)
+```
+
+## `ui.R`
+
+```{r filename="~/testing-app/ui.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "86-87"
+ui <- fluidPage(
+  
+  # Feature 1 ------------------------------------------------------------------
+  
+  h3("Feature 1"),
+  
+  # fluidRow (Feature 1: greeting) ----
+  fluidRow(
+    
+    # greeting sidebarLayout ----
+    sidebarLayout(
+      
+      # greeting sidebarPanel ----
+      sidebarPanel(
+        
+        textInput(inputId = "name_input",
+                  label = "What is your name?"),
+        
+        actionButton(inputId = "greeting_button_input",
+                     label = "Greet"),
+        
+      ), # END greeting sidebarPanel
+      
+      # greeting mainPanel ----
+      mainPanel(
+        
+        textOutput(outputId = "greeting_output"),
+        
+      ) # END greeting mainPanel
+      
+    ) # END greeting sidebarLayout
+    
+  ), # END fluidRow (Feature 1: greeting)
+  
+  tags$hr(),
+  
+  # Feature 2 ------------------------------------------------------------------
+  
+  h3("Feature 2"),
+  
+  # fluidRow (Feature 2: file upload) -----
+  fluidRow(
+    
+    # file upload sidebarLayout ----
+    sidebarLayout(
+      
+      # file upload sidebarPanel ----
+      sidebarPanel(
+        
+        # upload fileInput -----
+        fileInput(inputId = "csv_input",
+                  label = "Upload your CSV file:",
+                  multiple = FALSE,
+                  accept = c(".csv"),
+                  buttonLabel = "Browse",
+                  placeholder = "No file selected"), # END upload fileInput
+        
+      ), # END file upload sidebarPanel
+      
+      # fileInput mainPanel ----
+      mainPanel(
+        
+        tableOutput(outputId = "summary_table_output")
+        
+      ) # END file upload mainPanel
+      
+    ) # END file upload sidebarLayout
+    
+  ), # END fluidRow (Feature 2: file upload)
+  
+  tags$hr(),
+  
+  # Feature 3 ------------------------------------------------------------------
+  
+  h3("Feature 3"),
+  
+  # fluidRow (Feature 3: plot) -----
+  fluidRow(
+    
+    # plot sidebarLayout ----
+    sidebarLayout(
+      
+      # plot sidebarPanel ----
+      sidebarPanel(
+        
+        # penguin spp pickerInput -----
+        penguinSpp_pickerInput(inputId = "penguinSpp_scatterplot_input")
+
+      ), # END plot sidebarPanel
+      
+      # plot mainPanel ----
+      mainPanel(
+        
+        plotOutput(outputId = "scatterplot_output")
+        
+      ) # END plot mainPanel
+      
+    ) # END plot sidebarLayout
+    
+  ) # END fluidRow (Feature 3: plot)
+  
+) # END fluidPage 
+```
+
+## `server.R`
+
+[(File is unchanged)]{.body-text-s}
+
+```{r filename="~/testing-app/server.R"}
+#| eval: false
+#| echo: true
+server <- function(input, output) {
+  
+  # Feature 1 ------------------------------------------------------------------
+  
+  # wait for user to click the Greet button before returning the message ----
+  observe({
+    
+    # if the user does not type anything, return the message, "Please type a name, then click the Greet button." ----
+    if (nchar(input$name_input) == 0) {
+      output$greeting_output <- renderText({
+        "Please type a name, then click the Greet button."
+      })
+      
+      # if the user does type a name, return the greeting, "Hello [name]!" ----
+    } else {
+      output$greeting_output <- renderText({
+        paste0("Hello ", isolate(input$name_input), "!")
+      })
+    }
+  }) |>
+    
+    # TODO: add description here ----
+    bindEvent(input$greeting_button_input)
+  
+  # Feature 2 ------------------------------------------------------------------
+  
+  # file upload ----
+  output$summary_table_output <- renderTable({
+    
+    # NOTE: `input$csv_input` will be NULL initially
+    # after user selects / uploads a file, it will be a df with 'name', 'size', 'type', 'datapath' cols
+    # 'datapath' col will contain the local filenames where data can be found
+    # see: https://shiny.posit.co/r/reference/shiny/1.4.0/fileinput
+    
+    # save input value to object named `inputFile` ----
+    inputFile <- input$csv_input
+    
+    # if a file has not been uploaded yet, don't return / print anything ----
+    if(is.null(inputFile))
+      return(NULL)
+    
+    # read in file using it's datapath ----
+    df_raw <- read_csv(inputFile$datapath)
+    
+    # validate that the uploaded CSV has the expected column names ----
+    required_cols <- c("temp_c", "precip_cm", "wind_kmhr", "pressure_inhg")
+    column_names <- colnames(df_raw)
+    validate(
+      need(all(required_cols %in% column_names), "Your CSV does not have the expected column headers.")
+    )
+    
+    # return summarized data in a table ----
+    df_summary <- df_raw |>
+      summarize(
+        avg_temp = mean(temp_c),
+        avg_precip = mean(precip_cm),
+        avg_wind = mean(wind_kmhr),
+        avg_pressure = mean(pressure_inhg),
+        tot_num_obs = length(temp_c)
+      ) |>
+      rename("Mean Temperature (C)" = "avg_temp",
+             "Mean Precipitation (cm)" = "avg_precip",
+             "Mean Wind Speed (km/hr)" = "avg_wind",
+             "Mean Pressure (inHg)" = "avg_pressure",
+             "Total Number of Observations" = "tot_num_obs")
+    return(df_summary)
+    
+  })
+  
+  # Feature 3 ------------------------------------------------------------------
+  
+  # filter penguin spp (scatterplot) ----
+  filtered_spp_scatterplot_df <- reactive({
+    
+    validate(
+      need(length(input$penguinSpp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
+    
+    penguins |>
+      filter(species %in% input$penguinSpp_scatterplot_input)
+    
+  })
+  
+  # render scatterplot ----
+  output$scatterplot_output <- renderPlot({
+    
+    ggplot(na.omit(filtered_spp_scatterplot_df()),
+           aes(x = bill_length_mm, y = bill_depth_mm,
+               color = species, shape = species)) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+      scale_color_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
+      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
+           color = "Penguin species", shape = "Penguin species") +
+      theme(legend.position = "bottom")
+    
+  })
+  
+} # END server
+```
+
+## `penguinSpp_pickerInput.R`
+
+[(Newly added file; be sure to place it inside the new `testing-app/R/` subdirectory)]{.body-text-s}
+
+```{r filename="~/testing-app/R/penguinSpp_pickerInput.R"}
+#| eval: false
+#| echo: true
+penguinSpp_pickerInput <- function(inputId) {
+  
+  pickerInput(inputId = inputId, label = "Select species:",
+              choices = c("Adelie", "Chinstrap", "Gentoo"),
+              selected = c("Adelie", "Chinstrap", "Gentoo"),
+              options = pickerOptions(actionsBox = TRUE),
+              multiple = TRUE)
+  
+}
+```
+
+::: 
+
+---
+
+##  {#test-refactored-code data-menu-title="Test the refactored code"}
+
+[Now, run your tests!]{.slide-title}
+
+<hr>
+
+<br>
+
+Rather than running your app and manually checking to see if your `pickerInput` still works in the same way, you can instead run your tests, which will automatically check for you!
+
+. . .
+
+<br>
+
+Open `test-shinytest2.R`, click **Run Tests**, and watch all of your tests pass (or at least, they should!):
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 16 ]
+```
+
+. . .
+
+<br>
+
+Automated tests allow you to confidently refactor code / make sweeping changes while being able to verify that the expected functionality remains the same. 
 
 ---
 
