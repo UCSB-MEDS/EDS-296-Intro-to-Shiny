@@ -301,17 +301,19 @@ Let's say that you are satisfied with your work (yay!) and are now ready to writ
 
 ---
 
-##  {#ft1-assumptions data-menu-title="Feature 1 assumptions"}
+##  {#ft1-assertions data-menu-title="Feature 1 assertions"}
 
-[Write down your assumptions]{.slide-title}
+[Write down your assertions]{.slide-title}
 
 <hr>
 
-Before we dive into writing any tests, it's super helpful to inspect your app and, *importantly* jot down any assumptions it makes of both the inputs and outputs.
+[Before we dive into writing any tests, it's super helpful to inspect your app and, *importantly* jot down (in your own words) any **assertions**. [Test assertions](https://en.wikipedia.org/wiki/Test_assertion) are expressions that contain testable logic to evaluate whether an actual result / behavior is as expected.]{.body-text-s}
 
 <br>
 
-I find it easiest to consider which **actions** can be taken, and what the **expected outputs** (aka assertions) in the app's final state should be. 
+. . . 
+
+I find it helpful to frame assertions as: (1) what **actions** can be taken? and (2) what are the **expected outputs / behaviors** that result from those actions?
 
 <br>
 
@@ -331,8 +333,6 @@ I find it easiest to consider which **actions** can be taken, and what the **exp
 #   )
 ```
 
-. . . 
-
 [**For example:**]{.teal-text .body-text-l} 
 
 | Action(s)                                                                                                               | Expectation(s)                                                           |
@@ -341,17 +341,9 @@ I find it easiest to consider which **actions** can be taken, and what the **exp
 | Type [some text value] in text box > click Greet button > type [some other text value] in text box > click Greet button | Greeting output is "Hello [some text value]!", then updates to "Hello [some other text value]!" |
 | Click Greet button                                                                                                      | Greeting output is "Hello !"                                             |
 
-<br>
-
-. . . 
-
-::: {.center-text .body-text-m}
-Now we're ready to actually *test* these assumptions!
-:::
-
 ---
 
-##  {#assumptions-note data-menu-title="A note on assumptions"}
+##  {#assertions-note data-menu-title="A note on assertions"}
 
 [One more important note (actually, a few)]{.slide-title}
 
@@ -391,7 +383,7 @@ Over time, **your ability to identify both how users will interact with your app
 
 ##  {#testing-procedure data-menu-title="Testing procedure"}
 
-[Test your assumptions using the `{shinytest2}` workflow]{.slide-title2}
+[Turn written assertions into actual tests using the `{shinytest2}` workflow]{.slide-title3}
 
 <hr>
 
@@ -411,8 +403,6 @@ Over time, **your ability to identify both how users will interact with your app
 
 [**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state, which will record `input`, `output`, and `exported` values. 
 
-<!-- (e.g. an expected value when inputX is updated) on the state at various points -->
-
 <br>
 
 . . . 
@@ -424,7 +414,7 @@ Over time, **your ability to identify both how users will interact with your app
 . . . 
 
 ::: {.center-text .body-text-m}
-We'll repeat this workflow to test each of our three assumptions listed on the previous slide.
+We'll repeat this workflow to write tests for each of our three assertions.
 :::
 
 ---
@@ -459,7 +449,7 @@ It's a pretty annoying error, which seems to be an [ongoing issue](https://githu
 
 ##  {#ft1-test1 data-menu-title="Feature 1, test 1"}
 
-[Let's test our first assumption . . .]{.slide-title}
+[Let's test our first assertion . . .]{.slide-title}
 
 <hr>
 
@@ -496,137 +486,6 @@ knitr::include_graphics("images/part6/one-name-greeting.gif")
 ::: {.center-text .body-text-s}
 Notice that your actions (e.g. typing text, clicking the button) are recorded as code in the right-hand panel -- this is your test code, and it'll be saved when you quit the recorder.
 :::
-
-<!-- --- -->
-
-<!-- What are assumptions? -->
-
-<!-- ```{r} -->
-<!-- ex_function <- function(a, b) { -->
-<!--   c <- a + b -->
-<!--   return(c) -->
-<!-- } -->
-<!-- ``` -->
-
-<!-- - inputs -- we want to make sure that inputs are consistent and follow the expected format -->
-<!--   - # of inputs  -->
-<!--   - order of inputs (if not using keyword args) -->
-<!--   - type of input (e.g. is `a` a string? a number? can it be anything?) -->
-<!--   - absence of inputs (e.g. are there default values) -->
-<!-- - logic  -->
-<!--   - does this handle the expected inputs (e.g. if i give it something that it should handle, will it do it as I expect) -->
-<!--   - does it handle unexpected inputs (e.g. return NULL, throw error message) -->
-<!-- - return (what does the function return?) -->
-<!--   - make sure that it returns the right data type (e.g. string, numeric) -->
-
-<!-- what different variations of my inputs impact my output? -->
-<!-- - you'll never think of all variations -->
-
-<!-- --- -->
-
-<!-- ##  {#assumptions data-menu-title="Write down assumptions"} -->
-
-<!-- [Write down assumptions]{.slide-title2} -->
-
-<!-- <hr> -->
-
-<!-- [**Example 1: Greeting**]{.body-text-m .teal-text} -->
-
-<!-- - input: does the user supply text values? -->
-<!-- - logic/output: does the app print, "Hello <input>!" -->
-
-<!-- - Expected output: user's input is prefixed with "Hello" and suffixed with "!". The text is then displayed -->
-<!-- - an assumption is that a user can input numbers, paragraphs, etc (anything that is valid as a text input) -->
-<!-- - when the greet button is clicked, it'll display what the user has input (even with successive inputs) -->
-
-<!-- [**Example 2: Upload & summarize data**]{.body-text-m .teal-text} -->
-
-<!-- - input:  -->
-<!--   - user supplies a csv file -->
-<!-- - output:  -->
-<!--   - if the csv column has expected column headers, it will: -->
-<!--     - rename columns -->
-<!--     - remove rows with missing values (NA) -->
-<!--     - average values in each column -->
-<!--     - return summary data frame -->
-<!--   - if the csv does not have the expected column headers, it will: -->
-<!--     - return a message that tells the user the file is not as expected -->
-<!--   - if the csv does not have any values, it will: -->
-<!--     - return a message that tells the user the file is not as expected -->
-<!--   - successive csv uploads shows the most recent data -->
-
-<!-- [**Example 3: Reactive plot**]{.body-text-m .teal-text} -->
-
-<!-- - input:  -->
-<!--   - shows the user what they can choose: the user can select `Adelie`, `Chinstrap`, and/or `Gentoo` -->
-<!--   - when user chooses something, does the right thing happen - when user deselects a species, it's removed from the plot -->
-<!--   - when a user selects a species, it's added to the plot  -->
-<!--   - when the user deselects all, a message prompts user to select at least one species -->
-<!--   - does the user see the correct default selection -- all species are selected by default -->
-<!-- - output:  -->
-<!--   - selected species will be plotted, deselected species will not be plotted -->
-<!--   - if not species are selected, a message will alert user to select species -->
-
-<!-- --- -->
-
-<!-- ##  {#testing-procedure data-menu-title="Testing procedure"} -->
-
-<!-- [Testing using `{shinytest2}`]{.slide-title} -->
-
-<!-- <hr> -->
-
-<!-- **Recording tests requires the following steps:** -->
-
-<!-- . . .  -->
-
-<!-- [[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` to launch the app recorder in a browser window]{.body-text-s} -->
-
-<!-- . . .  -->
-
-<!-- [[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation (e.g. an expected value when inputX is updated) on the state at various points]{.body-text-s} -->
-
-<!-- . . .  -->
-
-<!-- [[**(3)**]{.teal-text} Quit the recorder to save and execute your tests]{.body-text-s} -->
-
-<!-- . . .  -->
-
-<!-- <br> -->
-
-<!-- **To test *our* app specifically, we'll do the following:** -->
-
-<!-- [[**(1)**]{.teal-text} run `shinytest2::record_test("testing-app")` in the console to launch the recorder in a browser window]{.body-text-s} -->
-
-<!-- [[**(2)**]{.teal-text} interact with your app by first typing a name (e.g. Sam), then pressing the "Greet" button to display the output text]{.body-text-s} -->
-
-<!-- [[**(3)**]{.teal-text} click the **Expect Shiny values** button in the recorder app sidebar to set an expectation (this will record inputs, outputs, and exported values)]{.body-text-s} -->
-
-<!-- [[**(4)**]{.teal-text} give your test a name in the recorder app sidebar, then click **Save test and exit** - this will save the recorded test and setup the testing infrastructure, if it doesn't exit already]{.body-text-s} -->
-
-<!-- --- -->
-
-<!-- ##  {#creating-test1-example data-menu-title="Creating our first test"} -->
-
-<!-- [Creating our first test]{.slide-title} -->
-
-<!-- <hr> -->
-
-<!-- Following the steps on the previous slide, creating your test should look similar to this: -->
-
-<!-- <br> -->
-
-<!-- ```{r} -->
-<!-- #| eval: true -->
-<!-- #| echo: false -->
-<!-- #| out-width: "100%" -->
-<!-- #| fig-align: "center" -->
-<!-- #| fig-alt: "A user begins recording a test by typing shinytest2::record_test('testing_app') in the RStudio console, which opens up the app in an iframe with the recorder in a pane to the right. The user types 'Sam' into the text box, clicks the 'Greet' button, then clicks 'Expect Shiny values' in the recorder. Finally, the user names and saves the test, which then runs automatically once the recorder is quit." -->
-<!-- knitr::include_graphics("images/part6/sam-test.gif") -->
-<!-- ``` -->
-
-<!-- <br> -->
-
-<!-- **Note:** Your test is automatically run as soon as you save and exit the recorder. See the results of your test in your console (it should pass!). -->
 
 ---
 
@@ -843,9 +702,9 @@ knitr::include_graphics("images/part6/rerun-test.png")
 
 ---
 
-##  {#test-other-assumptions data-menu-title="Test remaining assumptions"}
+##  {#test-other-assertions data-menu-title="Test remaining assertions"}
 
-[Test our remaining assumptions]{.slide-title}
+[Test our remaining assertions]{.slide-title}
 
 <hr>
 
@@ -1043,7 +902,7 @@ Test complete
 
 <br>
 
-[We can use use `testthat::snapshot_review()`, which opens a Shiny app for visually comparing differences between snapshots and accepting (or rejecting) updates.]{.body-text-s}
+[We can use use `testthat::snapshot_review()`, which opens a Shiny app for visually comparing differences (aka *diffs*) between snapshots and accepting (or rejecting) updates.]{.body-text-s}
 
 . . .
 
@@ -1060,7 +919,7 @@ Test complete
 install.packages("diffviewer")
 ```
 
-2. Run the following in your Console to launch the widget: 
+2. Run the following in your Console to launch the app: 
 
 ```{r}
 #| eval: false
@@ -1068,6 +927,10 @@ install.packages("diffviewer")
 #| code-line-numbers: false
 testthat::snapshot_review(path = "testing-app/tests/testthat/")
 ```
+
+::: {.notes}
+<https://github.com/r-lib/testthat/blob/f060ccec365e1343ae926c53c215a423b295d7a8/R/snapshot-manage.R#L4>
+:::
 
 ---
 
@@ -1097,7 +960,7 @@ knitr::include_graphics("images/part6/snapshot-review.gif")
 
 <hr>
 
-Check out `no-name-greeting-001_.png` and `no-name-greeting-001.json`, which should be updated to reflect the new test expectations.
+Check out `no-name-greeting-001_.png` and `no-name-greeting-001.json` snapshots, which should be updated to reflect the new test expectations.
 
 ```{r}
 #| eval: true
@@ -1234,35 +1097,34 @@ server <- function(input, output) {
     
     # TODO: add description here
     bindEvent(input$greeting_button_input)
-}
   
   # Feature 2 ------------------------------------------------------------------
-
+  
   # file upload ----
   output$summary_table_output <- renderTable({
-
+    
     # NOTE: `input$csv_input` will be NULL initially
     # after user selects / uploads a file, it will be a df with 'name', 'size', 'type', 'datapath' cols
     # 'datapath' col will contain the local filenames where data can be found
     # see: https://shiny.posit.co/r/reference/shiny/1.4.0/fileinput
-
+    
     # save input value to object named `inputFile` ----
     inputFile <- input$csv_input
-
+    
     # if a file has not been uploaded yet, don't return / print anything ----
     if(is.null(inputFile))
       return(NULL)
-
+    
     # read in file using it's datapath ----
     df_raw <- read_csv(inputFile$datapath)
-
+    
     # validate that the uploaded CSV has the expected column names ----
     required_cols <- c("temp_c", "precip_cm", "wind_kmhr", "pressure_inhg")
     column_names <- colnames(df_raw)
     validate(
       need(all(required_cols %in% column_names), "Your CSV does not have the expected column headers.")
     )
-
+    
     # return summarized data in a table ----
     df_summary <- df_raw |>
       summarize(
@@ -1278,7 +1140,7 @@ server <- function(input, output) {
              "Mean Pressure (inHg)" = "avg_pressure",
              "Total Number of Observations" = "tot_num_obs")
     return(df_summary)
-
+    
   })
   
 } # END server
@@ -1294,7 +1156,7 @@ server <- function(input, output) {
 
 <hr>
 
-You can practice uploading [this csv file, `real-sample-data.csv`](https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link), which is representative data that your team will want processed.
+You can practice uploading [this csv file, `real-sample-data.csv`](https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link), which is representative of the data that your team will want processed.
 
 ```{r}
 #| eval: true
@@ -1312,9 +1174,9 @@ Your boss gives you the green light to start writing tests.
 
 ---
 
-##  {#ft2-assumptions data-menu-title="Feature 2 assumptions"}
+##  {#ft2-assertions data-menu-title="Feature 2 assertions"}
 
-[Begin by jotting down any assumptions you can think of]{.slide-title3}
+[Begin by jotting down any assertions you can think of]{.slide-title3}
 
 <hr>
 
@@ -1340,12 +1202,12 @@ countdown::countdown(
 
 | Action(s)                                                                                                                                              | Expectation(s)                                                                                     |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Click Browse > Select CSV file with correct column headers and data                                                                                    | A table with renamed / averaged columns is returned                                                |
+| Click Browse > Select CSV file with correct column headers and data                                                                                    | The data set is returned as a table with renamed / averaged columns                                |
 | Click Browse > Select CSV with incorrect column headers                                                                                                | An error message, "Your CSV does not have the expected column headers" is returned                 |
 | Click Browse > Select empty CSV (no column headers or data)                                                                                            | An error message, "Your CSV does not have the expected column headers" is returned                 |
-| Click Browse > Select CSV file with only column headers and no data                                                                                    | A table with renamed columns and NA values is returned                                             |
+| Click Browse > Select CSV file with only column headers and no data                                                                                    | The data set is returned as a table with renamed columns and NA values                             |
 | Click Browse > Select CSV file with only data and no column headers                                                                                    | An error message, "Your CSV does not have the expected column headers" is returned                 |
-| Click Browse > Select CSV file with correct column headers and data > Click Browse again > Select a different CSV with correct column headers and data | The second (most recent) uploaded data is the final returned table with renamed / averaged columns |
+| Click Browse > Select CSV file with correct column headers and data > Click Browse again > Select a different CSV with correct column headers and data | The first data set is returned as a table with renamed / averaged columns is returned, then the second data set is returned as a table with renamed / averaged columns |
 
 ---
 
@@ -1370,7 +1232,7 @@ The test data do not necessarily need to be "real" (i.e. real measurements colle
 <br>
 
 ::: {.center-text .body-text-m}
-**Download these test data [CSV files](https://drive.google.com/drive/folders/14VIirofAz04KwTyHqQ_8pbOK95IqUQ1H?usp=drive_link)**, which we'll use to create our tests.
+**Download these test data [CSV files](https://drive.google.com/drive/folders/14VIirofAz04KwTyHqQ_8pbOK95IqUQ1H?usp=drive_link)**, which we'll use to create our tests (you can save them to your Desktop for now).
 :::
 
 ---
@@ -1401,7 +1263,7 @@ which indicates the file name, but not the file path. `{shinytest2}` will look f
 <br>
 
 ::: {.center-text .body-text-m}
-**Copy all of our test files into `tests/testthat/` now.**
+**Make *copies* of all of the test files into `tests/testthat/`.**
 :::
 
 ---
@@ -1414,13 +1276,13 @@ which indicates the file name, but not the file path. `{shinytest2}` will look f
 
 <br>
 
-[**Repeat the steps from earlier:**]{.teal-text}
+[**Repeat the steps from earlier:**]{.body-text-m .teal-text}
 
 [[**(1)**]{.teal-text} Run `shinytest2::record_test("testing-app")` in the Console]{.body-text-s}
 
 [[**(2)**]{.teal-text} Click Browse > select `cols-and-data1.csv` from wherever you have it saved (mine is on my Desktop) > click Expect Shiny Values]{.body-text-s}
 
-[[**(3)**]{.teal-text} Give the test a unique name (e.g. `cols-and-data`) > click Save test and exit]{.body-text-s}
+[[**(3)**]{.teal-text} Give the test a unique name (e.g. `upload-cols-and-data`) > click Save test and exit]{.body-text-s}
 
 [[**(4)**]{.teal-text} The test recorder will quit, and your test will automatically execute]{.body-text-s}
 
@@ -1451,7 +1313,7 @@ Your console should look similar to this:
 ```{r}
 #| eval: false
 #| echo: true
-Listening on http://127.0.0.1:6451
+Listening on http://127.0.0.1:6179
 {shiny} R stderr ----------- Loading required package: shiny
 {shiny} R stderr ----------- Warning: package ‘shiny’ was built under R version 4.3.1
 {shiny} R stderr ----------- Running application in test mode.
@@ -1459,7 +1321,7 @@ Listening on http://127.0.0.1:6451
 {shiny} R stderr ----------- Warning: package ‘dplyr’ was built under R version 4.3.1
 {shiny} R stderr ----------- Warning: package ‘stringr’ was built under R version 4.3.1
 {shiny} R stderr ----------- 
-{shiny} R stderr ----------- Listening on http://127.0.0.1:5328
+{shiny} R stderr ----------- Listening on http://127.0.0.1:4693
 {shiny} R stdout ----------- ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 {shiny} R stdout ----------- ✔ dplyr     1.1.4     ✔ readr     2.1.4
 {shiny} R stdout ----------- ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -1481,28 +1343,23 @@ Listening on http://127.0.0.1:6451
 • Modify '/Users/samanthacsik/git/EDS-430/testing-shiny-apps/testing-app/tests/testthat/test-shinytest2.R'
 • Running recorded test: tests/testthat/test-shinytest2.R
 Loading required package: testthat
-
-Attaching package: ‘testthat’
-
-The following object is masked from ‘package:dplyr’:
-
-    matches
-
-The following object is masked from ‘package:purrr’:
-
-    is_null
-
-The following objects are masked from ‘package:readr’:
-
-    edition_get, local_edition
-
-The following object is masked from ‘package:tidyr’:
-
-    matches
-
+── Attaching core tidyverse packages ─────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ───────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ readr::edition_get()   masks testthat::edition_get()
+✖ dplyr::filter()        masks stats::filter()
+✖ purrr::is_null()       masks testthat::is_null()
+✖ dplyr::lag()           masks stats::lag()
+✖ readr::local_edition() masks testthat::local_edition()
+✖ dplyr::matches()       masks tidyr::matches(), testthat::matches()
+ℹ Use the conflicted package to force all conflicts to become errors
 ✔ | F W  S  OK | Context
-✖ | 3 5      1 | shinytest2 [7.3s]                                                                
-──────────────────────────────────────────────────────────────────────────────────────────────────
+✖ | 4 6      1 | shinytest2 [7.4s]                                                                                             
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Failure (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
 Snapshot of `file` to 'shinytest2/one-name-greeting-001.json' has changed
 Run testthat::snapshot_review('shinytest2/') to review changes
@@ -1530,8 +1387,35 @@ Diff in snapshot file `shinytest2one-name-greeting-001.json`
     },                                      },                                
     "export": {                             "export": {                       
 
-Failure (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
+Failure (test-shinytest2.R:15:3): {shinytest2} recording: consecutive-name-greeting
 Snapshot of `file` to 'shinytest2/consecutive-name-greeting-001.json' has changed
+Run testthat::snapshot_review('shinytest2/') to review changes
+Backtrace:
+    ▆
+ 1. └─app$expect_values() at test-shinytest2.R:15:3
+ 2.   └─shinytest2:::app_expect_values(...)
+ 3.     └─shinytest2:::app__expect_snapshot_file(...)
+ 4.       ├─base::withCallingHandlers(...)
+ 5.       └─testthat::expect_snapshot_file(...)
+
+Warning (test-shinytest2.R:15:3): {shinytest2} recording: consecutive-name-greeting
+Diff in snapshot file `shinytest2consecutive-name-greeting-001.json`
+< before                                > after                               
+@@ 1,9 @@                               @@ 1,11 @@                            
+  {                                       {                                   
+    "input": {                              "input": {                        
+~                                       >     "csv_input": null,              
+      "greeting_button_input": 1,             "greeting_button_input": 1,     
+      "name_input": "Sam"                     "name_input": "Sam"             
+    },                                      },                                
+    "output": {                             "output": {                       
+<     "greeting_output": "Hello Sam!"   >     "greeting_output": "Hello Sam!",
+~                                       >     "summary_table_output": null    
+    },                                      },                                
+    "export": {                             "export": {                       
+
+Failure (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
+Snapshot of `file` to 'shinytest2/consecutive-name-greeting-002.json' has changed
 Run testthat::snapshot_review('shinytest2/') to review changes
 Backtrace:
     ▆
@@ -1542,7 +1426,7 @@ Backtrace:
  5.       └─testthat::expect_snapshot_file(...)
 
 Warning (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
-Diff in snapshot file `shinytest2consecutive-name-greeting-001.json`
+Diff in snapshot file `shinytest2consecutive-name-greeting-002.json`
 < before                                > after                               
 @@ 1,9 @@                               @@ 1,11 @@                            
   {                                       {                                   
@@ -1570,33 +1454,33 @@ Backtrace:
 
 Warning (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting
 Diff in snapshot file `shinytest2no-name-greeting-001.json`
-< before                                                                        
-> after                                                                         
-@@ 1,9 / 1,11 @@                                                                
-  {                                                                             
-    "input": {                                                                  
->     "csv_input": null,                                                        
-      "greeting_button_input": 1,                                               
-      "name_input": ""                                                          
-    },                                                                          
-    "output": {                                                                 
-<     "greeting_output": "Hello !"                                              
->     "greeting_output": "Please type a name before clicking the Greet button.",
->     "summary_table_output": null                                              
-    },                                                                          
-    "export": {                                                                 
+< before                                                                    
+> after                                                                     
+@@ 1,9 / 1,11 @@                                                            
+  {                                                                         
+    "input": {                                                              
+>     "csv_input": null,                                                    
+      "greeting_button_input": 1,                                           
+      "name_input": ""                                                      
+    },                                                                      
+    "output": {                                                             
+<     "greeting_output": "Please type a name, then click the Greet button." 
+>     "greeting_output": "Please type a name, then click the Greet button.",
+>     "summary_table_output": null                                          
+    },                                                                      
+    "export": {                                                             
 
-Warning (test-shinytest2.R:32:3): {shinytest2} recording: cols-and-data
-Adding new file snapshot: 'tests/testthat/_snaps/cols-and-data-001_.png'
+Warning (test-shinytest2.R:32:3): {shinytest2} recording: upload-cols-and-data
+Adding new file snapshot: 'tests/testthat/_snaps/upload-cols-and-data-001_.png'
 
-Warning (test-shinytest2.R:32:3): {shinytest2} recording: cols-and-data
-Adding new file snapshot: 'tests/testthat/_snaps/cols-and-data-001.json'
-──────────────────────────────────────────────────────────────────────────────────────────────────
+Warning (test-shinytest2.R:32:3): {shinytest2} recording: upload-cols-and-data
+Adding new file snapshot: 'tests/testthat/_snaps/upload-cols-and-data-001.json'
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-══ Results ═══════════════════════════════════════════════════════════════════════════════════════
-Duration: 7.6 s
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Duration: 7.9 s
 
-── Failed tests ──────────────────────────────────────────────────────────────────────────────────
+── Failed tests ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Failure (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
 Snapshot of `file` to 'shinytest2/one-name-greeting-001.json' has changed
 Run testthat::snapshot_review('shinytest2/') to review changes
@@ -1608,8 +1492,19 @@ Backtrace:
  4.       ├─base::withCallingHandlers(...)
  5.       └─testthat::expect_snapshot_file(...)
 
-Failure (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
+Failure (test-shinytest2.R:15:3): {shinytest2} recording: consecutive-name-greeting
 Snapshot of `file` to 'shinytest2/consecutive-name-greeting-001.json' has changed
+Run testthat::snapshot_review('shinytest2/') to review changes
+Backtrace:
+    ▆
+ 1. └─app$expect_values() at test-shinytest2.R:15:3
+ 2.   └─shinytest2:::app_expect_values(...)
+ 3.     └─shinytest2:::app__expect_snapshot_file(...)
+ 4.       ├─base::withCallingHandlers(...)
+ 5.       └─testthat::expect_snapshot_file(...)
+
+Failure (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
+Snapshot of `file` to 'shinytest2/consecutive-name-greeting-002.json' has changed
 Run testthat::snapshot_review('shinytest2/') to review changes
 Backtrace:
     ▆
@@ -1630,179 +1525,819 @@ Backtrace:
  4.       ├─base::withCallingHandlers(...)
  5.       └─testthat::expect_snapshot_file(...)
 
-[ FAIL 3 | WARN 5 | SKIP 0 | PASS 1 ]
+[ FAIL 4 | WARN 6 | SKIP 0 | PASS 1 ]
 Error: Test failures
+In addition: Warning messages:
+1: package ‘testthat’ was built under R version 4.3.1 
+2: package ‘ggplot2’ was built under R version 4.3.1 
+3: package ‘dplyr’ was built under R version 4.3.1 
+4: package ‘stringr’ was built under R version 4.3.1 
 ```
-
-::: {.center-text .body-text-s}
-**What do you notice about each of the failed tests (taking a look at the `*_new.png` files may help)?**
-:::
 
 ---
 
-##  {#global-expectations-json1 data-menu-title="Global expectations (json, original)"}
+##  {#why-fail data-menu-title="Why did old tests fail?"}
 
-[Global expectations have changed]{.slide-title}
+[Why did the old tests fail?]{.slide-title}
 
 <hr>
 
-**Let's use our `one-name-greeting` test as an example** to understand why our first three tests of feature 1 (greeting input) failed.
-
 <br>
+
+::: {.center-text .body-text-m}
+*What do you notice about each of the failed tests?*
+:::
+
 <br>
 
 :::: {.columns}
-
 ::: {.column width="50%"}
-::: {.center-text .body-text-s}
-`one-name-greeting-001.json`
-:::
+For an easier time comparing diffs for each snapshot, open the snapshot reviewer (run in the Console): 
+
+<br>
+
 ```{r}
 #| eval: false
 #| echo: true
-{
-  "input": {
-    "greeting_button_input": 1,
-    "name_input": "Sam"
-  },
-  "output": {
-    "greeting_output": "Hello Sam!"
-  },
-  "export": {
-
-  }
-}
+#| code-line-numbers: false
+testthat::snapshot_review(path = "testing-app/tests/testthat/")
 ```
-:::
-
-::: {.column width="50%"}
-- [When we first wrote our `one-name-greeting` test, our app had two possible inputs (`greeting_button_input` & `name_input`) for which we set known values, and one expected output (`greeting_output`). These are the ***only*** inputs and outputs our test recognizes.]{.body-text-s}
-
-- [When the `one-name-greeting` test is run with our defined values (`Sam` & `1` button click), it expects the `greeting_output`, `Hello Sam!`, to be returned.]{.body-text-s}
-:::
-::::
-
----
-
-##  {#global-expectations-json2 data-menu-title="Global expectations (json, new)"}
-
-[Global expectations have changed]{.slide-title}
-
-<hr>
-
-**Let's use our `one-name-greeting` test as an example** to understand why our first three tests of feature 1 (greeting input) failed.
-
-<br>
-<br>
-
-:::: {.columns}
-
-::: {.column width="50%"}
-::: {.center-text .body-text-s}
-`one-name-greeting-001.new.json`
-:::
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "3,9"
-{
-  "input": {
-    "csv_input": null,
-    "greeting_button_input": 1,
-    "name_input": "Sam"
-  },
-  "output": {
-    "greeting_output": "Hello Sam!",
-    "summary_table_output": null
-  },
-  "export": {
-
-  }
-}
-```
-:::
-
-::: {.column width="50%"}
-- [Adding feature 2 (file uploader) means that there is now an additional possible input (`csv_input`) and output (`summary_table_output`).]{.body-text-s}
-
-- [Our original test does not define an input value or expected output value for `csv_input` and `summary_table_output`.]{.body-text-s}
-
-- [When our test is run on our updated app, it sees the new `csv_input` and `summary_table_output`, which are both empty (`NULL`).]{.body-text-s}
-:::
-::::
-
-<!-- . . .  -->
-
-<!-- [When we first wrote our `one-name-greeting` test, our app had two possible inputs (`greeting_button_input` & `name_input`) for which we set known values, and one expected output (`greeting_output`). Adding feature 2 (file uploader) means that there is now an additional possible input (`csv_input`) and output (`summary_table_output`). When the `one-name-greeting` test is run with our defined values (`Sam` & `1` button click), it expects the `greeting_output`, `Hello Sam!`, to be returned. *However* our original test does not define an input value or expected output value for `csv_input` and `summary_table_output`. As a result these values are set to `NULL`.]{.body-text-s} -->
-
----
-
-##  {#global-expectations-png data-menu-title="Global expectations (png)"}
-
-[Global expectations have changed]{.slide-title}
-
-<hr>
 
 <br>
 
-Checking out the snapshot PNGs side-by-side also can be helpful:
-
-<br>
-
-:::: {.columns}
+::: {.body-text-s}
+Use the drop down to switch between snapshots. Don't Accept any updates just yet.
+:::
+:::
 
 ::: {.column width="50%"}
-::: {.center-text .body-text-s}
-`one-name-greeting-001_.png`
-:::
 ```{r}
 #| eval: true
 #| echo: false
-#| out-width: "100%"
 #| fig-align: "center"
-knitr::include_graphics("images/part6/one-name-greeting-001_.png")
-```
-:::
-
-::: {.column width="50%"}
-::: {.center-text .body-text-s}
-`one-name-greeting-001_.new.png`
-:::
-```{r}
-#| eval: true
-#| echo: false
 #| out-width: "100%"
-#| fig-align: "center"
-knitr::include_graphics("images/part6/one-name-greeting-001_.new.png")
+knitr::include_graphics("images/part6/snapshot-review-dropdown.png")
 ```
 :::
 ::::
 
 ---
 
-##  {#targetted-expectations data-menu-title="Targetted expectations"}
 
-[We need to create tests with *targeted* value expectations]{.slide-title3}
+##  {#scope-too-large1 data-menu-title="Scope too large 1"}
+
+[The scope of our assertions was too large]{.slide-title}
 
 <hr>
 
-**By default, tests take snapshots of the *entire application***. Therefore, adding any new input(s) / output(s) will cause old tests to fail.
-
-. . . 
-
-<br>
-
-*Which means* we'll need to redo / modify our tests {{< fa face-grin-beam-sweat title="a grinning face with a bead of sweat dripping from the brow" >}}
-
-. . . 
-
-<br>
-
-*To start*, comment out all test code in `test-shinytest2.R` and click **Run Tests** -- you should see all your test snapshots disappear.
+**The scope of our test assertions was too large to isolate the behavior that we were looking to test.**
 
 . . .
 
+[Let's look at our `one-name-greeting-001_.png` snapshot as an example to better understand why our first four tests of feature 1 (greeting) failed:]{.body-text-s}
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/old.png")
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/new.png")
+```
+:::
+::::
+
+---
+
+##  {#scope-too-large2 data-menu-title="Scope too large 2"}
+
+[The scope of our assertions was too large]{.slide-title}
+
+<hr>
+
 <br>
+
+::: {.center-text}
+**Our test failed, despite the consistent (expected) behavior of our test subject** (in other words, our test failed, even though the expected output, "Hello Sam!" stayed the same.)
+:::
+
+. . . 
+
+<!-- <br> -->
+
+<!-- ::: {.center-text} -->
+<!-- Therefore, our test failed due to changes outside of the test subject's (i.e. greeting's) behavior. -->
+<!-- ::: -->
+
+<!-- . . .  -->
+
+<br>
+
+::: {.center-text}
+Because our test failed due to changes outside of the test subject's (i.e. greeting's) behavior, **we need to modify our tests so that they capture a *targeted value expectation*, rather than the state of our entire application**. For example:
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "5"
+test_that("{shinytest2} recording: one-name-greeting", {
+  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values()
+})
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "5"
+test_that("{shinytest2} recording: one-name-greeting", {
+  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+```
+:::
+::::
+
+---
+
+##  {#targeted-expectations data-menu-title="Targetted expectations"}
+
+[Update tests so that they make *targeted* value expectations]{.slide-title3}
+
+<hr>
+
+```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "7,15,18,25,32"
+library(shinytest2)
+
+test_that("{shinytest2} recording: one-name-greeting", {
+  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: consecutive-name-greeting", {
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+  app$set_inputs(name_input = "Kat")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: no-name-greeting", {
+  app <- AppDriver$new(name = "no-name-greeting", height = 838, width = 1299)
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: upload-cols-and-data", {
+  app <- AppDriver$new(name = "upload-cols-and-data", height = 734, width = 1119)
+  app$upload_file(csv_input = "cols-and-data1.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+```
+
+---
+
+##  {#updated-tests-fail data-menu-title="Updated test fail"}
+
+[Our updated tests all failed]{.slide-title}
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+After updating your tests, click **Run Tests**. They all should fail. You can check out the Tests > Output tab to explore the diffs, or launch the snapshot reviewer:
+
+<br>
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: false
+testthat::snapshot_review(path = "testing-app/tests/testthat/")
+```
+
+<br>
+
+
+::: {.center-text .body-text-m}
+What do you notice about the diffs?
+:::
+
+---
+
+##  {#specified-output data-menu-title="Specified output"}
+
+[Targeted value expectations snapshot a specified `output`(s) . . .]{.slide-title3}
+
+<hr>
+
+...as opposed to the default, which is to snapshot the entire application. **This is what we want!**
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part6/targeted-value-expectations.gif")
+```
+
+::: {.center-text}
+**Accept all new snapshots** -- all tests should now pass when you rerun your test file.
+:::
+
+---
+
+##  {#control-click data-menu-title="Control/command click targets"}
+
+[Make a targeted value expectation using the test recorder]{.slide-title3}
+
+<hr>
+
+[Let's write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our [original table](#ft2-assertions)):]{.body-text-s}
+
+- [**Action(s):** Click Browse > Select CSV file with incorrect column headers]{.body-text-s}
+- [**Expectation:** An error message, "Your CSV does not have the expected column headers" is returned]{.body-text-s}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part6/command-click.gif")
+```
+:::
+
+::: {.column width="50%"}
+[**Steps:**]{.teal-text}
+
+[[**(1)**]{.teal-text} Run `shinytest2::record_test("testing-app")` in the Console]{.body-text-s}
+
+[[**(2**]{.teal-text} Click Browse, select `incorrect-cols.csv` from your Desktop (or wherever you have it saved)]{.body-text-s}
+
+[[**(3)**]{.teal-text} Hold down the Command/Control button on your keyboard, then click on the **output** -- for us, that's the error message that is rendered in place of `summary_table_output`]{.body-text-s}
+
+[[**(4)**]{.teal-text} Give the test a unique name (e.g. `upload-incorrect-cols`) > click Save test and exit (tests should automatically execute and pass!)]{.body-text-s}
+
+<!-- [[**(5)**]{.teal-text} The test recorder will quick, and your test will automatically execute (it should pass!)]{.body-text-s} -->
+:::
+::::
+
+---
+
+##  {#write-all-ft2-tests data-menu-title="Write remaining feature 2 tests"}
+
+[Write tests for the remaining feature 2 assertions]{.slide-title3}
+
+<hr>
+
+[When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):]{.body-text-s}
+
+```{r filename="testing-app/tests/testthat/test-shinytest2.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "29-71"
+library(shinytest2)
+
+test_that("{shinytest2} recording: one-name-greeting", {
+  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: consecutive-name-greeting", {
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+  app$set_inputs(name_input = "Kat")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: no-name-greeting", {
+  app <- AppDriver$new(name = "no-name-greeting", height = 838, width = 1299)
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: upload-cols-and-data", {
+  app <- AppDriver$new(name = "upload-cols-and-data", height = 734, width = 1119)
+  app$upload_file(csv_input = "cols-and-data1.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-incorrect-cols", {
+  app <- AppDriver$new(name = "upload-incorrect-cols", height = 754, width = 1139)
+  app$upload_file(csv_input = "incorrect-cols.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-empty", {
+  app <- AppDriver$new(name = "upload-empty", height = 734, width = 1119)
+  app$upload_file(csv_input = "empty.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-only-cols", {
+  app <- AppDriver$new(name = "upload-only-cols", height = 1048, width = 1441)
+  app$upload_file(csv_input = "only-cols.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-only-data", {
+  app <- AppDriver$new(name = "upload-only-data", height = 1048, width = 1441)
+  app$upload_file(csv_input = "only-data.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-consecutive-correct-files", {
+  app <- AppDriver$new(name = "upload-consecutive-correct-files", height = 1048, 
+      width = 1441)
+  app$upload_file(csv_input = "cols-and-data1.csv")
+  app$expect_values(output = "summary_table_output")
+  app$upload_file(csv_input = "cols-and-data2.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+```
+
+---
+
+##  {#feature3-code data-menu-title="Feature 3 code"}
+
+[Your boss requests one final feature]{.slide-title}
+
+<hr>
+
+[You're tasked with creating a scatterplot of penguin bill depths by bill lengths, with a pickerInput that allows users to filter the data by species:]{.body-text-s}
+
+::: {.panel-tabset}
+## `global.R`
+```{r}
+#| eval: false
+#| echo: true
+# load libraries ----
+library(shiny)
+library(tidyverse)
+library(shinyWidgets)
+library(palmerpenguins)
+```
+
+## `ui.R`
+```{r}
+#| eval: false
+#| echo: true
+ui <- fluidPage(
+  
+  # Feature 1 ------------------------------------------------------------------
+  
+  h3("Feature 1"),
+  
+  # fluidRow (Feature 1: greeting) ----
+  fluidRow(
+    
+    # greeting sidebarLayout ----
+    sidebarLayout(
+      
+      # greeting sidebarPanel ----
+      sidebarPanel(
+        
+        textInput(inputId = "name_input",
+                  label = "What is your name?"),
+        
+        actionButton(inputId = "greeting_button_input",
+                     label = "Greet"),
+        
+      ), # END greeting sidebarPanel
+      
+      # greeting mainPanel ----
+      mainPanel(
+        
+        textOutput(outputId = "greeting_output"),
+        
+      ) # END greeting mainPanel
+      
+    ) # END greeting sidebarLayout
+    
+  ), # END fluidRow (Feature 1: greeting)
+  
+  tags$hr(),
+  
+  # Feature 2 ------------------------------------------------------------------
+  
+  h3("Feature 2"),
+  
+  # fluidRow (Feature 2: file upload) -----
+  fluidRow(
+    
+    # file upload sidebarLayout ----
+    sidebarLayout(
+      
+      # file upload sidebarPanel ----
+      sidebarPanel(
+        
+        # upload fileInput -----
+        fileInput(inputId = "csv_input",
+                  label = "Upload your CSV file:",
+                  multiple = FALSE,
+                  accept = c(".csv"),
+                  buttonLabel = "Browse",
+                  placeholder = "No file selected"), # END upload fileInput
+        
+      ), # END file upload sidebarPanel
+      
+      # fileInput mainPanel ----
+      mainPanel(
+        
+        tableOutput(outputId = "summary_table_output")
+        
+      ) # END file upload mainPanel
+      
+    ) # END file upload sidebarLayout
+    
+  ), # END fluidRow (Feature 2: file upload)
+  
+  tags$hr(),
+  
+  # Feature 3 ------------------------------------------------------------------
+  
+  h3("Feature 3"),
+  
+  # fluidRow (Feature 3: plot) -----
+  fluidRow(
+    
+    # plot sidebarLayout ----
+    sidebarLayout(
+      
+      # plot sidebarPanel ----
+      sidebarPanel(
+        
+        # penguin spp pickerInput -----
+        pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select species:",
+                    choices = c("Adelie", "Chinstrap", "Gentoo"),
+                    selected = c("Adelie", "Chinstrap", "Gentoo"),
+                    options = pickerOptions(actionsBox = TRUE),
+                    multiple = TRUE), # END penguin spp pickerInput
+        
+      ), # END plot sidebarPanel
+      
+      # plot mainPanel ----
+      mainPanel(
+        
+        plotOutput(outputId = "scatterplot_output")
+        
+      ) # END plot mainPanel
+      
+    ) # END plot sidebarLayout
+    
+  ) # END fluidRow (Feature 3: plot)
+  
+) # END fluidPage 
+```
+
+## `server.R`
+```{r}
+#| eval: false
+#| echo: true
+server <- function(input, output) {
+  
+  # Feature 1 ------------------------------------------------------------------
+  
+  # wait for user to click the Greet button before returning the message ----
+  observe({
+    
+    # if the user does not type anything, return the message, "Please type a name, then click the Greet button." ----
+    if (nchar(input$name_input) == 0) {
+      output$greeting_output <- renderText({
+        "Please type a name, then click the Greet button."
+      })
+      
+      # if the user does type a name, return the greeting, "Hello [name]!" ----
+    } else {
+      output$greeting_output <- renderText({
+        paste0("Hello ", isolate(input$name_input), "!")
+      })
+    }
+  }) |>
+    
+    # TODO: add description here ----
+    bindEvent(input$greeting_button_input)
+  
+  # Feature 2 ------------------------------------------------------------------
+  
+  # file upload ----
+  output$summary_table_output <- renderTable({
+    
+    # NOTE: `input$csv_input` will be NULL initially
+    # after user selects / uploads a file, it will be a df with 'name', 'size', 'type', 'datapath' cols
+    # 'datapath' col will contain the local filenames where data can be found
+    # see: https://shiny.posit.co/r/reference/shiny/1.4.0/fileinput
+    
+    # save input value to object named `inputFile` ----
+    inputFile <- input$csv_input
+    
+    # if a file has not been uploaded yet, don't return / print anything ----
+    if(is.null(inputFile))
+      return(NULL)
+    
+    # read in file using it's datapath ----
+    df_raw <- read_csv(inputFile$datapath)
+    
+    # validate that the uploaded CSV has the expected column names ----
+    required_cols <- c("temp_c", "precip_cm", "wind_kmhr", "pressure_inhg")
+    column_names <- colnames(df_raw)
+    validate(
+      need(all(required_cols %in% column_names), "Your CSV does not have the expected column headers.")
+    )
+    
+    # return summarized data in a table ----
+    df_summary <- df_raw |>
+      summarize(
+        avg_temp = mean(temp_c),
+        avg_precip = mean(precip_cm),
+        avg_wind = mean(wind_kmhr),
+        avg_pressure = mean(pressure_inhg),
+        tot_num_obs = length(temp_c)
+      ) |>
+      rename("Mean Temperature (C)" = "avg_temp",
+             "Mean Precipitation (cm)" = "avg_precip",
+             "Mean Wind Speed (km/hr)" = "avg_wind",
+             "Mean Pressure (inHg)" = "avg_pressure",
+             "Total Number of Observations" = "tot_num_obs")
+    return(df_summary)
+    
+  })
+  
+  # Feature 3 ------------------------------------------------------------------
+  
+  # filter penguin spp (scatterplot) ----
+  filtered_spp_scatterplot_df <- reactive({
+    
+    validate(
+      need(length(input$penguinSpp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
+    
+    penguins |>
+      filter(species %in% input$penguinSpp_scatterplot_input)
+    
+  })
+  
+  # render scatterplot ----
+  output$scatterplot_output <- renderPlot({
+    
+    ggplot(na.omit(filtered_spp_scatterplot_df()),
+           aes(x = bill_length_mm, y = bill_depth_mm,
+               color = species, shape = species)) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+      scale_color_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
+      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
+           color = "Penguin species", shape = "Penguin species") +
+      theme(legend.position = "bottom")
+    
+  })
+  
+} # END server
+```
+:::
+
+--- 
+
+##  {#run-ft3-app data-menu-title="Run the app"}
+
+[Run your app & try out the latest feature]{.slide-title}
+
+<hr>
+
+Try out the pickerInput and identify different actions / scenarios that a user may encounter which you'd like to write tests for.
+
+<br>
+
+```{r}
+#| eval: true
+#| echo: false
+#| fig-align: "center"
+#| out-width: "100%"
+knitr::include_graphics("images/part6/ft3-plot.gif")
+```
+
+---
+
+##  {#feature3-assertions data-menu-title="Feature 3 assertions"}
+
+[We'll write tests for the following assertions]{.slide-title}
+
+<hr>
+
+| Action(s)                                             | Expectation(s)                                                                                                                                                                                               |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Select all 3 species (no action / default state)      | A scatterplot with all three species' data is rendered                                                                                                                                                       |
+| Deselect Adelie                                       | A scatterplot with just Gentoo & Chinstrap data is rendered                                                                                                                                                  |
+| Click Deselect All > Select Gentoo > Click Select All | An error message, "Please select at least one penguin species to visualize data for." is returned > A scatterplot with just Gentoo data is rendered > A scatterplot with all three species' data is rendered |
+
+<br>
+
+::: {.center-text .body-text-m}
+Give it a try on your own, and remember to make *targeted value expectations*!
+:::
+
+::: {.center-text}
+*NOTE: You'll likely encounter this popup each time you click on the `pickerInput` -- click **Record**:*
+:::
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "30%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/input-binding.png")
+```
+
+::: {.footer}
+Read more about [input bindings](https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings) in the `{shinytest2}` documentation.
+:::
+
+```{r}
+countdown::countdown(
+  minutes = 3,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+
+---
+
+##  {#feature3-tests data-menu-title="Feature 3 tests"}
+
+[Write your tests for feature 3]{.slide-title}
+
+<hr>
+
+When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):
+
+```{r}
+#| eval: false
+#| echo: true
+library(shinytest2)
+
+test_that("{shinytest2} recording: one-name-greeting", {
+  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: consecutive-name-greeting", {
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
+  app$set_inputs(name_input = "Sam")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+  app$set_inputs(name_input = "Kat")
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: no-name-greeting", {
+  app <- AppDriver$new(name = "no-name-greeting", height = 838, width = 1299)
+  app$click("greeting_button_input")
+  app$expect_values(output = "greeting_output")
+})
+
+
+test_that("{shinytest2} recording: upload-cols-and-data", {
+  app <- AppDriver$new(name = "upload-cols-and-data", height = 734, width = 1119)
+  app$upload_file(csv_input = "cols-and-data1.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-incorrect-cols", {
+  app <- AppDriver$new(name = "upload-incorrect-cols", height = 754, width = 1139)
+  app$upload_file(csv_input = "incorrect-cols.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-empty", {
+  app <- AppDriver$new(name = "upload-empty", height = 734, width = 1119)
+  app$upload_file(csv_input = "empty.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-only-cols", {
+  app <- AppDriver$new(name = "upload-only-cols", height = 1048, width = 1441)
+  app$upload_file(csv_input = "only-cols.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-only-data", {
+  app <- AppDriver$new(name = "upload-only-data", height = 1048, width = 1441)
+  app$upload_file(csv_input = "only-data.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: upload-consecutive-correct-files", {
+  app <- AppDriver$new(name = "upload-consecutive-correct-files", height = 1048, 
+      width = 1441)
+  app$upload_file(csv_input = "cols-and-data1.csv")
+  app$expect_values(output = "summary_table_output")
+  app$upload_file(csv_input = "cols-and-data2.csv")
+  app$expect_values(output = "summary_table_output")
+})
+
+
+test_that("{shinytest2} recording: select-three-spp", {
+  app <- AppDriver$new(name = "select-three-spp", height = 1048, width = 1441)
+  app$expect_values(output = "scatterplot_output")
+})
+
+
+test_that("{shinytest2} recording: deselect-adelie", {
+  app <- AppDriver$new(name = "deselect-adelie", height = 1048, width = 1441)
+  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguinSpp_scatterplot_input = c("Chinstrap", "Gentoo"))
+  app$expect_values(output = "scatterplot_output")
+  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+})
+
+
+test_that("{shinytest2} recording: consecutive-spp-selections", {
+  app <- AppDriver$new(name = "consecutive-spp-selections", height = 1048, width = 1441)
+  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguinSpp_scatterplot_input = character(0))
+  app$expect_values(output = "scatterplot_output")
+  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguinSpp_scatterplot_input = "Gentoo")
+  app$expect_values(output = "scatterplot_output")
+  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguinSpp_scatterplot_input = c("Adelie", "Chinstrap", "Gentoo"))
+  app$expect_values(output = "scatterplot_output")
+  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+})
+```
 
 ---
 
