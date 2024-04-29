@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 6.1]{.custom-title}
+[EDS 430: Part 7.1]{.custom-title}
 
 [*Debugging*]{.custom-subtitle}
 
@@ -1001,7 +1001,7 @@ server <- function(input, output){
 ##  {#end data-menu-title="~~~ END ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 6.1</p>
+<p class="custom-subtitle bottombr">End part 7.1</p>
 <p class="caption-text">***Up next:** testing*</p>
 </div>
 

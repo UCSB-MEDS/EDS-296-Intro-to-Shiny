@@ -120,12 +120,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">part 5 (user-centered design)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./course-materials/part6-debugging-testing.html" rel="" target="">
- <span class="dropdown-text">part 6 (debugging &amp; testing)</span></a>
+    <a class="dropdown-item" href="./course-materials/part6-streamlining-code.html" rel="" target="">
+ <span class="dropdown-text">part 6 (streamlining code)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./course-materials/part7-streamlining-code.html" rel="" target="">
- <span class="dropdown-text">part 7 (streamlining code)</span></a>
+    <a class="dropdown-item" href="./course-materials/part7-debugging-testing.html" rel="" target="">
+ <span class="dropdown-text">part 7 (debugging &amp; testing)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./course-materials/part8-wrap-up.html" rel="" target="">
@@ -246,21 +246,18 @@ ul.task-list li input[type="checkbox"] {
 <li><strong><a href="https://www.youtube.com/watch?v=DMgAW4m5aTI">{shinytest2}: Unit testing for Shiny applications</a></strong>, rstudio::conf(2022) talk by <a href="http://schloerke.com/">Barret Schloerke</a></li>
 <li><strong><a href="https://www.youtube.com/watch?v=EOVPBN5o8F8">{shinytest2} Testing Shiny with {testthat}</a></strong>, 2022 Appsilon Shiny Conference talk by <a href="http://schloerke.com/">Barret Schloerke</a> (<a href="https://github.com/schloerke/presentation-2022-04-27-appsilon-shinytest2">GitHub repo</a>)</li>
 <li><strong><a href="https://shiny.rstudio.com/articles/testing-overview.html">Shiny testing overview</a></strong>, by <a href="https://github.com/wch">Winston Chang</a> – this article discussed the <code>shinytest2</code> predecessor, <code>shinytest</code> (which is now entering maintenance mode), but provides some helpful context and is worth a read</li>
+<li><strong><a href="https://www.youtube.com/watch?v=KDNohZ3ySr4">A Robust Framework for Automated Shiny App Testing</a></strong>, an rstudio::conf(2022) talk by <a href="https://www.sydeaka.com/">Sydaeka Watson</a> – a really cool case study / overview of a (slightly more complex) framework for automated Shiny app testing</li>
+<li><strong><a href="https://indrajeetpatil.github.io/intro-to-snapshot-testing/#/introduction-to-snapshot-testing-in-r">Introduction to Snapshot Testing in R</a></strong>, by <a href="https://github.com/IndrajeetPatil">Indrajeet Patil</a> – a broader presentation on what is snapshot testing, why it’s necessary, and its implementation in R in <code>{testthat}</code> package and extensions</li>
 </ul>
 </section>
 <section id="modules" class="level3">
 <h3 class="anchored" data-anchor-id="modules">Modules</h3>
 <ul>
-<li><strong><a href="https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806">Modularizing Shiny App Code</a> &amp; <a href="https://github.com/rstudio/ShinyDeveloperConference/tree/master/Modules/Demo">associated materials</a></strong>, by <a href="https://github.com/garrettgman">Garrett Grolemund</a> &amp; <a href="https://github.com/jcheng5">Joe Cheng</a> at the 2016 Shiny Developer’s Conference – <strong>NOTE:</strong> This 2016 talk is an <em>excellent</em> introduction to modules and is definitely worth a watch, especially because we just explored the exact example demoed by G. Grolemund. Please note, however, that Shiny modules were overhauled in 2020 with the introduction of <code>moduleServer()</code>. Content covered in our <a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part7.2-modules-slides.html#/title-slide">modules slides</a> has been updated to reflect those changes and therefore differs slightly from what’s taught in this video.
-<p></p></li>
-<li><strong><a href="https://mastering-shiny.org/scaling-modules.html#scaling-modules">Mastering Shiny, Ch. 19 - Shiny Modules</a></strong>, by <a href="https://github.com/hadley">Hadley Wickham</a>
-<p></p></li>
-<li><strong><a href="https://shiny.rstudio.com/articles/modules.html">Modularizing Shiny app code</a></strong>, by <a href="https://github.com/wch">Winston Chang</a>
-<p></p></li>
-<li><strong><a href="https://www.youtube.com/watch?v=ylLLVo2VL50">Effective use of Shiny modules in application development</a></strong>, studio::conf(2019) talk by <a href="https://r-podcast.org/host/enantz/">Eric Nantz</a>
-<p></p></li>
-<li><strong><a href="https://emilyriederer.netlify.app/post/shiny-modules/">A beginners guide to Shiny modules</a></strong>, by <a href="https://emilyriederer.netlify.app/about/">Emily Riederer</a>
-<p></p></li>
+<li><strong><a href="https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806">Modularizing Shiny App Code</a> &amp; <a href="https://github.com/rstudio/ShinyDeveloperConference/tree/master/Modules/Demo">associated materials</a></strong>, by <a href="https://github.com/garrettgman">Garrett Grolemund</a> &amp; <a href="https://github.com/jcheng5">Joe Cheng</a> at the 2016 Shiny Developer’s Conference – <strong>NOTE:</strong> This 2016 talk is an <em>excellent</em> introduction to modules and is definitely worth a watch, especially because we just explored the exact example demoed by G. Grolemund. Please note, however, that Shiny modules were overhauled in 2020 with the introduction of <code>moduleServer()</code>. Content covered in our <a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part7.2-modules-slides.html#/title-slide">modules slides</a> has been updated to reflect those changes and therefore differs slightly from what’s taught in this video.</li>
+<li><strong><a href="https://mastering-shiny.org/scaling-modules.html#scaling-modules">Mastering Shiny, Ch. 19 - Shiny Modules</a></strong>, by <a href="https://github.com/hadley">Hadley Wickham</a></li>
+<li><strong><a href="https://shiny.rstudio.com/articles/modules.html">Modularizing Shiny app code</a></strong>, by <a href="https://github.com/wch">Winston Chang</a></li>
+<li><strong><a href="https://www.youtube.com/watch?v=ylLLVo2VL50">Effective use of Shiny modules in application development</a></strong>, studio::conf(2019) talk by <a href="https://r-podcast.org/host/enantz/">Eric Nantz</a></li>
+<li><strong><a href="https://emilyriederer.netlify.app/post/shiny-modules/">A beginners guide to Shiny modules</a></strong>, by <a href="https://emilyriederer.netlify.app/about/">Emily Riederer</a></li>
 </ul>
 </section>
 <section id="misc.-shiny-tools" class="level3">

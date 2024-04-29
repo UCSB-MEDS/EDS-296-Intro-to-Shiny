@@ -25,10 +25,10 @@ website:
             href: course-materials/part4-styling-apps.qmd
           - text: part 5 (user-centered design)
             href: course-materials/part5-improving-ux-ui.qmd
-          - text: part 6 (debugging & testing)
-            href: course-materials/part6-debugging-testing.qmd
-          - text: part 7 (streamlining code)
-            href: course-materials/part7-streamlining-code.qmd
+          - text: part 6 (streamlining code)
+            href: course-materials/part6-streamlining-code.qmd
+          - text: part 7 (debugging & testing)
+            href: course-materials/part7-debugging-testing.qmd
           - text: part 8 (wrap up)
             href: course-materials/part8-wrap-up.qmd
       - text: resources

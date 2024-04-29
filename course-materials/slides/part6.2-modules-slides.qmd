@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 7.2]{.custom-title}
+[EDS 430: Part 6.2]{.custom-title}
 
 [*Modules*]{.custom-subtitle}
 
@@ -914,7 +914,7 @@ Continue your learning journey's with suggested readings and videos on the **[re
 ##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 7.2</p>
+<p class="custom-subtitle bottombr">End part 6.2</p>
 <p class="caption-text">***Up next:** wrap up*</p>
 </div>
 
