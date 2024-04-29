@@ -13,9 +13,9 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 6.2]{.custom-title}
+[EDS 430: Part 7.2]{.custom-title}
 
-[*Testing*]{.custom-subtitle}
+[*Unit Testing*]{.custom-subtitle}
 
 <hr class="hr-teal">
 
@@ -23,16 +23,16 @@ editor_options:
 
 ---
 
-##  {#testing data-menu-title="~~~ Testing ~~~" background="#047C90"}
+##  {#testing data-menu-title="~~~ Unit Testing ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">{{< fa file-code title="a file with the code symbol, </>, on it" >}} Testing</p>
+<p class="custom-subtitle bottombr">{{< fa file-code title="a file with the code symbol, </>, on it" >}} Unit Testing</p>
 <p class="caption-text">*Creating automated tests for your apps can save time and effort, ensuring that they continue working as expected.*</p>
 </div>
 
 ---
 
-##  {#LO-testing data-menu-title="Learning Objectives - Testing"}
+##  {#LO-testing data-menu-title="Learning Objectives - Unit Testing"}
 
 [{{< fa book-open title="an open book" >}} Learning Objectives for Testing]{.slide-title}
 
@@ -46,15 +46,11 @@ editor_options:
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to create regression tests
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write unit (regression) tests
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun tests
-
-. . . 
-
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to update tests
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun and update test as necessary
 
 . . . 
 
@@ -70,15 +66,69 @@ editor_options:
 
 ---
 
+##  {#what-is-testing data-menu-title="What is testing?"}
+
+[What exactly does "testing" mean?]{.slide-title}
+
+<hr>
+
+Generally speaking, testing refers to **the act of evaluating / verifying if a software product or application does what we expect it to do**. 
+
+<br>
+
+. . .
+
+There are lots of different *types* of testing. To name just a few:
+
+- [**Unit testing**, where isolated source code is tested to validate expected behavior]{.body-text-s}
+- [**Integration testing**, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)]{.body-text-s}
+- [**Performance testing** (which includes things like **load testing**, **stress testing**, etc.), where software is tested for its responsiveness and stability under a particular workload]{.body-text-s}
+
+<br>
+
+. . .
+
+Test can be:
+
+- [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
+- [**Automated**, where a person sets up frameworks and creates test scripts that automate the user actions required for testing a website or app]{.body-text-s}
+
+---
+
+##  {#automated-unit-testing data-menu-title="Automated unit testing"}
+
+[Here, we'll focus on automated unit testing]{.slide-title}
+
+<hr>
+
+Generally speaking, testing refers to **the act of evaluating / verifying if a software product or application does what we expect it to do**. 
+
+<br>
+
+There are lots of different *types* of testing. To name just a few:
+
+- [**Unit testing**, where isolated source code is tested to validate expected behavior]{.body-text-s .teal-text}
+- [**Integration testing**, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)]{.body-text-s}
+- [**Performance testing** (which includes things like **load testing**, **stress testing**, etc.), where software is tested for its responsiveness and stability under a particular workload]{.body-text-s}
+
+<br>
+
+Test can be:
+
+- [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
+- [**Automated**, where a person set up frameworks and create test scripts that automate user actions required for testing a website or app]{.body-text-s .teal-text}
+ 
+---
+
 ##  {#shiny-workflow data-menu-title="Shiny workflow"}
 
-[This workflow should look a bit familiar . . .]{.slide-title2}
+[This workflow should look a bit familiar . . .]{.slide-title}
 
 <hr>
 
 1. Add / adjust some reactivity
 2. Click "Run App"
-3. Manually experiment with (i.e. informally test) the new feature to see if it works 
+3. Manually experiment with the new feature to see if it works 
 5. Rinse & repeat
 
 <br>
@@ -130,22 +180,13 @@ It's almost inevitable that our app(s) will (at some point) break -- there are l
 
 <br>
 
-Manually testing Shiny apps is takes a lot of time and effort, is often inconsistent, and doesn't scale well (e.g. for larger apps, many apps, or for larger teams of collaborators).
+**Manually testing** Shiny apps is takes a lot of **time** and **effort**, is often **inconsistent**, and **doesn't scale** well (e.g. for larger apps, many apps, or for larger teams of collaborators).
 
 . . . 
 
 <br>
 
 **It can save a lot of time and headache (for you *and* your collaborators) to have an automated system that checks if your app is working as expected.**
-
----
-
-Different levels/types of tests:
-
-- **Unit tests** test individual functions, components, modules of your app (e.g. can your app handle the expected data? does your user see what you expect them to see?)
-- **Integration tests** test how your app works with external systems (e.g. APIs) 
-
-<https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing>
 
 ---
 
@@ -553,11 +594,11 @@ After creating your first test, your repo structure should look something like t
 │      └── testthat.R             # see note below
 │      └── testthat/     
 │         └── setup-shinytest2.R  # see note below
-│         └── test-shinytest2.R   # see slide 15
+│         └── test-shinytest2.R   # see slide 18
 │         └── snaps/               
 │            └── shinytest2/      
-│               └── *001.json     # see slide X
-│               └── *001_.png     # see slide X 
+│               └── *001.json     # see slide 19
+│               └── *001_.png     # see slide 19 
 ```
 
 - [`testthat.R`: includes the code, `shinytest2::test_app()`, which is executed when you click the **Run Tests** button in RStudio]{.body-text-s}
@@ -605,7 +646,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 <hr>
 
-[When `shinytest2::test_app()` runs your test code (`test-shinytest2.R`), it plays back the specified actions (e.g. setting the textInput to `Sam`, then clicking the Greet button), and records your application's resulting state as a snapshot. Snapshots are saved to the `tests/testthat/shinytest2/_snaps/` folder. You should see two different snapshot files:]{.body-text-s}
+[When `shinytest2::test_app()` runs your test code, it plays back the specified actions (e.g. setting the textInput to `Sam`, then clicking the Greet button), and records your application's resulting state as a snapshot. Snapshots are saved to the `tests/testthat/shinytest2/_snaps/` folder. You should see two different snapshot files:]{.body-text-s}
 
 <br>
 
@@ -795,16 +836,17 @@ You can rerun all your tests at once by clicking the **Run Tests** button again 
 server <- function(input, output) {
   
   # Feature 1 ------------------------------------------------------------------
-  # wait for user to click the Greet button before returning the message
+  
+  # observe() automatically re-executes when dependencies change (i.e. when `name_input` is updated), but does not return a result ----
   observe({
     
-    # if the user does not type anything, return the message, "Please type a name, then click the Greet button."
+    # if the user does not type anything before clicking the button, return the message, "Please type a name, then click the Greet button." ----
     if (nchar(input$name_input) == 0) {
       output$greeting_output <- renderText({
         "Please type a name, then click the Greet button."
       })
       
-      # if the user does type a name, return the greeting, "Hello [name]!"
+      # if the user does type a name before clicking the button, return the greeting, "Hello [name]!" ----
     } else {
       output$greeting_output <- renderText({
         paste0("Hello ", isolate(input$name_input), "!")
@@ -812,7 +854,7 @@ server <- function(input, output) {
     }
   }) |>
     
-    # TODO: add description here
+    # Execute the above observer once the button is pressed ----
     bindEvent(input$greeting_button_input)
 }
 ```
@@ -997,6 +1039,7 @@ library(tidyverse)
 ```{r filename="~/testing-app/ui.R"}
 #| eval: false
 #| echo: true
+#| code-line-numbers: "37-69"
 ui <- fluidPage(
 
   # Feature 1 ------------------------------------------------------------------
@@ -1075,19 +1118,21 @@ ui <- fluidPage(
 ```{r filename="~/testing-app/server.R"}
 #| eval: false
 #| echo: true
+#| code-line-numbers: "25-68"
 server <- function(input, output) {
   
   # Feature 1 ------------------------------------------------------------------
-  # wait for user to click the Greet button before returning the message
+  
+  # observe() automatically re-executes when dependencies change (i.e. when `name_input` is updated), but does not return a result ----
   observe({
     
-    # if the user does not type anything, return the message, "Please type a name, then click the Greet button."
+    # if the user does not type anything before clicking the button, return the message, "Please type a name, then click the Greet button." ----
     if (nchar(input$name_input) == 0) {
       output$greeting_output <- renderText({
         "Please type a name, then click the Greet button."
       })
       
-      # if the user does type a name, return the greeting, "Hello [name]!"
+      # if the user does type a name before clicking the button, return the greeting, "Hello [name]!" ----
     } else {
       output$greeting_output <- renderText({
         paste0("Hello ", isolate(input$name_input), "!")
@@ -1095,7 +1140,7 @@ server <- function(input, output) {
     }
   }) |>
     
-    # TODO: add description here
+    # Execute the above observer once the button is pressed ----
     bindEvent(input$greeting_button_input)
   
   # Feature 2 ------------------------------------------------------------------
@@ -1924,6 +1969,7 @@ test_that("{shinytest2} recording: upload-consecutive-correct-files", {
 ```{r}
 #| eval: false
 #| echo: true
+#| code-line-numbers: "4-5"
 # load libraries ----
 library(shiny)
 library(tidyverse)
@@ -1935,6 +1981,7 @@ library(palmerpenguins)
 ```{r}
 #| eval: false
 #| echo: true
+#| code-line-numbers: "73-104"
 ui <- fluidPage(
   
   # Feature 1 ------------------------------------------------------------------
@@ -2047,20 +2094,21 @@ ui <- fluidPage(
 ```{r}
 #| eval: false
 #| echo: true
+#| code-line-numbers: "70-97"
 server <- function(input, output) {
   
   # Feature 1 ------------------------------------------------------------------
   
-  # wait for user to click the Greet button before returning the message ----
+  # observe() automatically re-executes when dependencies change (i.e. when `name_input` is updated), but does not return a result ----
   observe({
     
-    # if the user does not type anything, return the message, "Please type a name, then click the Greet button." ----
+    # if the user does not type anything before clicking the button, return the message, "Please type a name, then click the Greet button." ----
     if (nchar(input$name_input) == 0) {
       output$greeting_output <- renderText({
         "Please type a name, then click the Greet button."
       })
       
-      # if the user does type a name, return the greeting, "Hello [name]!" ----
+      # if the user does type a name before clicking the button, return the greeting, "Hello [name]!" ----
     } else {
       output$greeting_output <- renderText({
         paste0("Hello ", isolate(input$name_input), "!")
@@ -2068,7 +2116,7 @@ server <- function(input, output) {
     }
   }) |>
     
-    # TODO: add description here ----
+    # Execute the above observer once the button is pressed ----
     bindEvent(input$greeting_button_input)
   
   # Feature 2 ------------------------------------------------------------------
@@ -2485,16 +2533,16 @@ server <- function(input, output) {
   
   # Feature 1 ------------------------------------------------------------------
   
-  # wait for user to click the Greet button before returning the message ----
+  # observe() automatically re-executes when dependencies change (i.e. when `name_input` is updated), but does not return a result ----
   observe({
     
-    # if the user does not type anything, return the message, "Please type a name, then click the Greet button." ----
+    # if the user does not type anything before clicking the button, return the message, "Please type a name, then click the Greet button." ----
     if (nchar(input$name_input) == 0) {
       output$greeting_output <- renderText({
         "Please type a name, then click the Greet button."
       })
       
-      # if the user does type a name, return the greeting, "Hello [name]!" ----
+      # if the user does type a name before clicking the button, return the greeting, "Hello [name]!" ----
     } else {
       output$greeting_output <- renderText({
         paste0("Hello ", isolate(input$name_input), "!")
@@ -2502,7 +2550,7 @@ server <- function(input, output) {
     }
   }) |>
     
-    # TODO: add description here ----
+    # Execute the above observer once the button is pressed ----
     bindEvent(input$greeting_button_input)
   
   # Feature 2 ------------------------------------------------------------------
@@ -2635,30 +2683,71 @@ Automated tests allow you to confidently refactor code / make sweeping changes w
 
 ---
 
-<!-- ##  {#testing-tips data-menu-title="Testing tips"} -->
+##  {#scoping-assertions data-menu-title="When to broaden scope?"}
 
-<!-- [Tips for testing]{.slide-title} -->
+[When do we *not* want to use targeted value expectations?]{.slide-title3}
 
-<!-- <hr> -->
+<hr>
 
-<!-- <p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Record subsequent tests following the same workflow, giving each a unique name. Run `test_app("path/to/app")` to run all test scripts in your app's `tests/testhat/` directory.</p> -->
+<br>
 
-<!-- <p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Use `record_test()` fairly often** -- Barret Schloerke argues that you should make a test recording for each feature of your app (many little recordings are encouraged!)</p> -->
+What if we want to capture our entire (completed) Shiny app in it's default state, i.e. what users should see when they first visit the app? 
 
-<!-- <p class="body-text topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update the `DT` package, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `DT`.</p> -->
+<br>
 
-<!-- . . . -->
+. . .
 
-<!-- <br> -->
+**Make a non-targeted expectation of your app's state!** Start the app recorder, then click *Expect Shiny values* to capture the default state of your app. 
 
-<!-- <center><p class="body-text-l teal-text">This is only a brief intro to `shinytest2`! Dig into the [documentation](https://rstudio.github.io/shinytest2/index.html) to learn more.</p></center> -->
+<br>
+
+. . .
+
+Your test should look something like this:
+
+```{r}
+#| eval: false
+#| echo: true
+test_that("{shinytest2} recording: default-app-state", {
+  app <- AppDriver$new(name = "default-app-state", height = 754, width = 1137)
+  app$expect_values()
+})
+```
+
+<br>
+
+. . .
+
+Should our app's default state change (e.g. if we add a new feature, we update exisiting code so that the default values are different, etc.), our test would break.
+
+---
+
+##  {#testing-tips data-menu-title="Testing tips"}
+
+[Tips for testing]{.slide-title}
+
+<hr>
+
+<br>
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Use `record_test()` fairly often** -- make a test recording for each feature of your app (many little recordings are encouraged!)
+
+<br>
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`.
+
+. . .
+
+<br>
+
+<center><p class="body-text-l teal-text">This is only a brief intro to `{shinytest2}`! Dig into the [documentation](https://rstudio.github.io/shinytest2/index.html) to learn more.</p></center>
 
 ---
 
 ##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 6.2</p>
+<p class="custom-subtitle bottombr">End part 7.2</p>
 <p class="caption-text">***Up next:** streamlining code*</p>
 </div>
 

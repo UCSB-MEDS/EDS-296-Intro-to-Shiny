@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 7.1]{.custom-title}
+[EDS 430: Part 6.1]{.custom-title}
 
 [*Functions*]{.custom-subtitle}
 
@@ -887,7 +887,7 @@ build_penguin_histogram <- function(input) {
 ##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">End part 7.1</p>
+<p class="custom-subtitle bottombr">End part 6.1</p>
 <p class="caption-text">***Up next:** modules*</p>
 </div>
 

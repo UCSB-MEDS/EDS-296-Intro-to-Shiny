@@ -1,6 +1,6 @@
 ---
 title: "Streamlining code"
-subtitle: "Part 7"
+subtitle: "Part 6"
 title-block-banner: true
 toc: true
 ---
@@ -34,7 +34,7 @@ library(gapminder)
 
 ## Lecture Materials
 
-Part 7 is broken down into two lessons:
+Part 6 is broken down into two lessons:
 
 ::: {.grid}
 
@@ -42,7 +42,7 @@ Part 7 is broken down into two lessons:
 ::: {.center-text}
 [**Functions**]{.teal-text .body-text-m}
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 7.1 slides](slides/part7.1-functions-slides.qmd){.btn role="button" target="_blank"} 
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 6.1 slides](slides/part7.1-functions-slides.qmd){.btn role="button" target="_blank"} 
 :::
 :::
 
@@ -50,7 +50,7 @@ Part 7 is broken down into two lessons:
 ::: {.center-text}
 [**Modules**]{.teal-text .body-text-m}
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 7.2 slides](slides/part7.2-modules-slides.qmd){.btn role="button" target="_blank"} 
+[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 6.2 slides](slides/part7.2-modules-slides.qmd){.btn role="button" target="_blank"} 
 :::
 :::
 
