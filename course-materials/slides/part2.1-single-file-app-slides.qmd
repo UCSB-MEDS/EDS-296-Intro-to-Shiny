@@ -19,7 +19,7 @@ editor_options:
 
 <hr class="hr-teal">
 
-[Week 1 | January 26^th^, 2024]{.custom-subtitle3}
+<!-- [Week 1 | January 26^th^, 2024]{.custom-subtitle3} -->
 
 ---
 

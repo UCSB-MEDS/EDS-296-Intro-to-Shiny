@@ -19,7 +19,7 @@ editor_options:
 
 <hr class="hr-teal">
 
-[Week 2 | February 2^nd^, 2024]{.custom-subtitle3}
+<!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
 
 ---
 
@@ -46,15 +46,11 @@ editor_options:
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write unit (regression) tests
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit (regression) tests
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun and update test as necessary
-
-. . . 
-
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} TBD
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun and update tests as necessary
 
 . . . 
 
@@ -91,7 +87,7 @@ There are lots of different *types* of testing. To name just a few:
 Test can be:
 
 - [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
-- [**Automated**, where a person sets up frameworks and creates test scripts that automate the user actions required for testing a website or app]{.body-text-s}
+- [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behaviorwh]{.body-text-s}
 
 ---
 
@@ -196,7 +192,9 @@ It's almost inevitable that our app(s) will (at some point) break -- there are l
 
 <hr>
 
-The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress).
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app's code.
+
+<!-- This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress). -->
 
 :::: {.columns}
 
@@ -222,7 +220,11 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 ::::
 
-[With `{shinytest2}`, we can interact with our app via the "app recorder" and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.]{.body-text-s}
+. . .
+
+::: {.center-text .body-text-s}
+*With `{shinytest2}`, we can interact with our app via the "app recorder" and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.*
+:::
 
 ::: {.footer}
 `{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/) to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/) -- by default, it uses Google Chrome, so make sure you have that installed on your OS! 
@@ -348,7 +350,7 @@ Let's say that you are satisfied with your work (yay!) and are now ready to writ
 
 <hr>
 
-[Before we dive into writing any tests, it's super helpful to inspect your app and, *importantly* jot down (in your own words) any **assertions**. [Test assertions](https://en.wikipedia.org/wiki/Test_assertion) are expressions that contain testable logic to evaluate whether an actual result / behavior is as expected.]{.body-text-s}
+Before we dive into writing any tests, it's super helpful to inspect your app and *importantly*, **jot down (in your own words) the expected behaviors of your application**. These will form the basis of the assertions made in your test.
 
 <br>
 
@@ -357,6 +359,8 @@ Let's say that you are satisfied with your work (yay!) and are now ready to writ
 I find it helpful to frame assertions as: (1) what **actions** can be taken? and (2) what are the **expected outputs / behaviors** that result from those actions?
 
 <br>
+
+. . . 
 
 ```{r}
 # countdown::countdown(
@@ -424,7 +428,7 @@ Over time, **your ability to identify both how users will interact with your app
 
 ##  {#testing-procedure data-menu-title="Testing procedure"}
 
-[Turn written assertions into actual tests using the `{shinytest2}` workflow]{.slide-title3}
+[Turn "plain language" assertions into actual tests using the `{shinytest2}` workflow]{.slide-title3}
 
 <hr>
 
@@ -633,7 +637,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
   # click the actionButton (with Id `greeting_button_input`)
   app$click("greeting_button_input")
   
-  # save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app
+  # save the expected input, output, and export values to a JSON snapshot and generates a screenshot of the app
   app$expect_values()
 })
 ```
@@ -1673,23 +1677,23 @@ knitr::include_graphics("images/part6/new.png")
 <br>
 
 ::: {.center-text}
-**Our test failed, despite the consistent (expected) behavior of our test subject** (in other words, our test failed, even though the expected output, "Hello Sam!" stayed the same.)
+**Our test failed, despite the behavior of our test subject *not* changing** (in other words, our test failed, even though the expected output, "Hello Sam!" stayed the same.)
 :::
 
 . . . 
 
-<!-- <br> -->
-
-<!-- ::: {.center-text} -->
-<!-- Therefore, our test failed due to changes outside of the test subject's (i.e. greeting's) behavior. -->
-<!-- ::: -->
-
-<!-- . . .  -->
-
 <br>
 
 ::: {.center-text}
-Because our test failed due to changes outside of the test subject's (i.e. greeting's) behavior, **we need to modify our tests so that they capture a *targeted value expectation*, rather than the state of our entire application**. For example:
+A good test is able to isolate the behavior of it's subject so that you can trust the result of the test. In this case, our tests failed when they shouldn't have...
+:::
+
+<br>
+
+. . . 
+
+::: {.center-text}
+Therefore, **we need to modify our tests so that they capture a *targeted value expectation*, rather than the state of our entire application**. For example:
 :::
 
 :::: {.columns}
@@ -2731,6 +2735,15 @@ Should our app's default state change (e.g. if we add a new feature, we update e
 <br>
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Use `record_test()` fairly often** -- make a test recording for each feature of your app (many little recordings are encouraged!)
+
+. . . 
+
+<br>
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Think of both the most common *and* uncommon pathways that your user may take when interacting with your app.**
+E.g. your user types in a name, then deletes everything, then clicks the "Greet" button...would you app handle that use case?
+
+. . .
 
 <br>
 

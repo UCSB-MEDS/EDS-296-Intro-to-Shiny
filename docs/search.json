@@ -81,7 +81,7 @@
     "href": "course-materials/slides/part2.1-single-file-app-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 2.1\nBuilding a single-file app\n\nWeek 1 | January 26th, 2024"
+    "text": "EDS 430: Part 2.1\nBuilding a single-file app"
   },
   {
     "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#build-app1",
@@ -305,7 +305,7 @@
     "href": "course-materials/slides/part2.2-two-file-app-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 2.2\nBuilding a two-file app\n\nWeek 1 | January 26th, 2024"
+    "text": "EDS 430: Part 2.2\nBuilding a two-file app"
   },
   {
     "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#build-app2",
@@ -641,7 +641,7 @@
     "href": "course-materials/slides/part6.2-modules-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 6.2\nModules\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 6.2\nModules"
   },
   {
     "objectID": "course-materials/slides/part6.2-modules-slides.html#modules",
@@ -767,7 +767,7 @@
     "href": "course-materials/slides/part2.3-deploy-improve-ux-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 2.3\nDeploying apps + improving UX\n\nWeek 1 | January 26th, 2024"
+    "text": "EDS 430: Part 2.3\nDeploying apps + improving UX"
   },
   {
     "objectID": "course-materials/slides/part2.3-deploy-improve-ux-slides.html#deploying-apps",
@@ -935,7 +935,7 @@
     "href": "course-materials/slides/part6.1-functions-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 6.1\nFunctions\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 6.1\nFunctions"
   },
   {
     "objectID": "course-materials/slides/part6.1-functions-slides.html#functions",
@@ -1145,7 +1145,7 @@
     "href": "course-materials/slides/part5-ux-ui-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 5\nUser-centered design\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 5\nUser-centered design"
   },
   {
     "objectID": "course-materials/slides/part5-ux-ui-slides.html#UX-UI",
@@ -1243,7 +1243,7 @@
     "href": "course-materials/slides/part4.2-css-sass-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 4.2\nStyling apps with CSS & Sass\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 4.2\nStyling apps with CSS & Sass"
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#themeing-css-sass",
@@ -1369,7 +1369,7 @@
     "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 4.1\nTheming and styling apps with {bslib} & {fresh}\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 4.1\nTheming and styling apps with {bslib} & {fresh}"
   },
   {
     "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#themeing-pkgs",
@@ -1600,7 +1600,7 @@
     "href": "course-materials/slides/part3-shiny-dashboard-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 3\nBuilding Shiny dashboards\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 3\nBuilding Shiny dashboards"
   },
   {
     "objectID": "course-materials/slides/part3-shiny-dashboard-slides.html#building-dashboards",
@@ -1845,7 +1845,7 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 8\nWrap up\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 8\nWrap up"
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#do-you-need-shiny",
@@ -2069,7 +2069,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 7.2\nUnit Testing\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 7.2\nUnit Testing"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#testing",
@@ -2083,14 +2083,14 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#LO-testing",
     "title": "EDS 430",
     "section": "",
-    "text": "Learning Objectives for Testing\n\n\nAfter this section, you should:\n\n\n understand some of the reasons why apps break and the benefit of having automated tests\n\n\n have a basic understanding of how to use the {shinytest2} package to write unit (regression) tests\n\n\n know how to rerun and update test as necessary\n\n\n TBD\n\n\n\nPackages introduced:\n\n\n\n {shinytest2}: provides tools for creating and running automated tests on Shiny applications"
+    "text": "Learning Objectives for Testing\n\n\nAfter this section, you should:\n\n\n understand some of the reasons why apps break and the benefit of having automated tests\n\n\n have a basic understanding of how to use the {shinytest2} package to write appropriately scoped unit (regression) tests\n\n\n know how to rerun and update tests as necessary\n\n\n\nPackages introduced:\n\n\n\n {shinytest2}: provides tools for creating and running automated tests on Shiny applications"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#what-is-testing",
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#what-is-testing",
     "title": "EDS 430",
     "section": "",
-    "text": "What exactly does “testing” mean?\n\nGenerally speaking, testing refers to the act of evaluating / verifying if a software product or application does what we expect it to do.\n\n\nThere are lots of different types of testing. To name just a few:\n\nUnit testing, where isolated source code is tested to validate expected behavior\nIntegration testing, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)\nPerformance testing (which includes things like load testing, stress testing, etc.), where software is tested for its responsiveness and stability under a particular workload\n\n\n\n\nTest can be:\n\nPerformed manually, where a person interacts with different app features to identify bugs, errors, anomalies, etc.\nAutomated, where a person sets up frameworks and creates test scripts that automate the user actions required for testing a website or app"
+    "text": "What exactly does “testing” mean?\n\nGenerally speaking, testing refers to the act of evaluating / verifying if a software product or application does what we expect it to do.\n\n\nThere are lots of different types of testing. To name just a few:\n\nUnit testing, where isolated source code is tested to validate expected behavior\nIntegration testing, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)\nPerformance testing (which includes things like load testing, stress testing, etc.), where software is tested for its responsiveness and stability under a particular workload\n\n\n\n\nTest can be:\n\nPerformed manually, where a person interacts with different app features to identify bugs, errors, anomalies, etc.\nAutomated, where a person uses test scripts and programs to automate user interactions and validate assumed behaviorwh"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#automated-unit-testing",
@@ -2118,7 +2118,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#shinytest2",
     "title": "EDS 430",
     "section": "",
-    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package provides useful tools for unit testing Shiny apps. This process is also known as regression testing, since we’ll be testing existing app behavior for consistency over time (we don’t want app behavior to regress).\n\n\n\n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith {shinytest2}, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.\n\n{shinytest2} uses {chromote} to render your app in a headless Chromium browser – by default, it uses Google Chrome, so make sure you have that installed on your OS!"
+    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package provides useful tools for unit testing Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code.\n\n\n\n\n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith {shinytest2}, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.\n\n\n{shinytest2} uses {chromote} to render your app in a headless Chromium browser – by default, it uses Google Chrome, so make sure you have that installed on your OS!"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#setting-stage",
@@ -2139,7 +2139,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#ft1-assertions",
     "title": "EDS 430",
     "section": "",
-    "text": "Write down your assertions\n\nBefore we dive into writing any tests, it’s super helpful to inspect your app and, importantly jot down (in your own words) any assertions. Test assertions are expressions that contain testable logic to evaluate whether an actual result / behavior is as expected.\n\n\nI find it helpful to frame assertions as: (1) what actions can be taken? and (2) what are the expected outputs / behaviors that result from those actions?\n\nFor example:\n\n\n\n\n\n\n\nAction(s)\nExpectation(s)\n\n\n\n\nType [some text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”\n\n\nType [some text value] in text box &gt; click Greet button &gt; type [some other text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”, then updates to “Hello [some other text value]!”\n\n\nClick Greet button\nGreeting output is “Hello !”"
+    "text": "Write down your assertions\n\nBefore we dive into writing any tests, it’s super helpful to inspect your app and importantly, jot down (in your own words) the expected behaviors of your application. These will form the basis of the assertions made in your test.\n\n\nI find it helpful to frame assertions as: (1) what actions can be taken? and (2) what are the expected outputs / behaviors that result from those actions?\n\n\n\nFor example:\n\n\n\n\n\n\n\nAction(s)\nExpectation(s)\n\n\n\n\nType [some text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”\n\n\nType [some text value] in text box &gt; click Greet button &gt; type [some other text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”, then updates to “Hello [some other text value]!”\n\n\nClick Greet button\nGreeting output is “Hello !”"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#assertions-note",
@@ -2153,7 +2153,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#testing-procedure",
     "title": "EDS 430",
     "section": "",
-    "text": "Turn written assertions into actual tests using the {shinytest2} workflow\n\n\nGenerally speaking, that workflow looks something like this:\n\n\n(1) Run shinytest2::record_test(&lt;app-directory&gt;) in your Console to launch the app recorder in a browser window\n\n\n\n(2) Interact with your application and tell the recorder to make an expectation of the app’s state, which will record input, output, and exported values.\n\n\n\n(3) Give your test a unique name and quit the recorder to save and execute your tests\n\n\n\n\nWe’ll repeat this workflow to write tests for each of our three assertions."
+    "text": "Turn “plain language” assertions into actual tests using the {shinytest2} workflow\n\n\nGenerally speaking, that workflow looks something like this:\n\n\n(1) Run shinytest2::record_test(&lt;app-directory&gt;) in your Console to launch the app recorder in a browser window\n\n\n\n(2) Interact with your application and tell the recorder to make an expectation of the app’s state, which will record input, output, and exported values.\n\n\n\n(3) Give your test a unique name and quit the recorder to save and execute your tests\n\n\n\n\nWe’ll repeat this workflow to write tests for each of our three assertions."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#chromote-timeout",
@@ -2188,7 +2188,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#test-shinytest2",
     "title": "EDS 430",
     "section": "",
-    "text": "test-shinytest2.R (test code)\n\nAll tests will be saved to tests/testthat/test-shinytest2.R. Yours should look similar to the code below (sans annotations). You may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you’ll see multiple app$set_inputs() statements, reflecting these actions:\n\n\n\n\n~/testing-app/tests/testthat/test-shinytest2.R\n\nlibrary(shinytest2)\n\n# runs our test\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  \n  # start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 838, width = 1298)\n  \n  # set the textInput (with Id `name_input`) to the value `Sam`\n  app$set_inputs(name_input = \"Sam\")\n  \n  # click the actionButton (with Id `greeting_button_input`)\n  app$click(\"greeting_button_input\")\n  \n  # save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app\n  app$expect_values()\n})"
+    "text": "test-shinytest2.R (test code)\n\nAll tests will be saved to tests/testthat/test-shinytest2.R. Yours should look similar to the code below (sans annotations). You may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you’ll see multiple app$set_inputs() statements, reflecting these actions:\n\n\n\n\n~/testing-app/tests/testthat/test-shinytest2.R\n\nlibrary(shinytest2)\n\n# runs our test\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  \n  # start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 838, width = 1298)\n  \n  # set the textInput (with Id `name_input`) to the value `Sam`\n  app$set_inputs(name_input = \"Sam\")\n  \n  # click the actionButton (with Id `greeting_button_input`)\n  app$click(\"greeting_button_input\")\n  \n  # save the expected input, output, and export values to a JSON snapshot and generates a screenshot of the app\n  app$expect_values()\n})"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#snaps",
@@ -2335,7 +2335,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#scope-too-large2",
     "title": "EDS 430",
     "section": "",
-    "text": "The scope of our assertions was too large\n\n\n\nOur test failed, despite the consistent (expected) behavior of our test subject (in other words, our test failed, even though the expected output, “Hello Sam!” stayed the same.)\n\n\n\n\n\n\n\n\n\nBecause our test failed due to changes outside of the test subject’s (i.e. greeting’s) behavior, we need to modify our tests so that they capture a targeted value expectation, rather than the state of our entire application. For example:\n\n\n\n\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 815, width = 1276)\n  app$set_inputs(name_input = \"Sam\")\n  app$click(\"greeting_button_input\")\n  app$expect_values()\n})\n\n\n\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 815, width = 1276)\n  app$set_inputs(name_input = \"Sam\")\n  app$click(\"greeting_button_input\")\n  app$expect_values(output = \"greeting_output\")\n})"
+    "text": "The scope of our assertions was too large\n\n\n\nOur test failed, despite the behavior of our test subject not changing (in other words, our test failed, even though the expected output, “Hello Sam!” stayed the same.)\n\n\n\n\nA good test is able to isolate the behavior of it’s subject so that you can trust the result of the test. In this case, our tests failed when they shouldn’t have…\n\n\n\n\n\nTherefore, we need to modify our tests so that they capture a targeted value expectation, rather than the state of our entire application. For example:\n\n\n\n\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 815, width = 1276)\n  app$set_inputs(name_input = \"Sam\")\n  app$click(\"greeting_button_input\")\n  app$expect_values()\n})\n\n\n\ntest_that(\"{shinytest2} recording: one-name-greeting\", {\n  app &lt;- AppDriver$new(name = \"one-name-greeting\", height = 815, width = 1276)\n  app$set_inputs(name_input = \"Sam\")\n  app$click(\"greeting_button_input\")\n  app$expect_values(output = \"greeting_output\")\n})"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#targeted-expectations",
@@ -2426,7 +2426,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#testing-tips",
     "title": "EDS 430",
     "section": "",
-    "text": "Tips for testing\n\n\n Use record_test() fairly often – make a test recording for each feature of your app (many little recordings are encouraged!)\n\n Limit testing to objects under your control. For example, let’s say you have a reactive data frame that you then send to a DT::datatable – if package maintainers update {DT}, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to {DT}.\n\n\n\n\nThis is only a brief intro to {shinytest2}! Dig into the documentation to learn more."
+    "text": "Tips for testing\n\n\n Use record_test() fairly often – make a test recording for each feature of your app (many little recordings are encouraged!)\n\n\n Think of both the most common and uncommon pathways that your user may take when interacting with your app. E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?\n\n\n\n Limit testing to objects under your control. For example, let’s say you have a reactive data frame that you then send to a DT::datatable – if package maintainers update {DT}, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to {DT}.\n\n\n\n\n\nThis is only a brief intro to {shinytest2}! Dig into the documentation to learn more."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#end",
@@ -2685,7 +2685,7 @@
     "href": "course-materials/slides/part1.1-shiny-overview-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 1.1\nWhat is Shiny?\n\nWeek 1 | January 26th, 2024"
+    "text": "EDS 430: Part 1.1\nWhat is Shiny?"
   },
   {
     "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#what-is-shiny",
@@ -2769,7 +2769,7 @@
     "href": "course-materials/slides/part7.1-debugging-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 7.1\nDebugging\n\nWeek 2 | February 2nd, 2024"
+    "text": "EDS 430: Part 7.1\nDebugging"
   },
   {
     "objectID": "course-materials/slides/part7.1-debugging-slides.html#debugging",
@@ -2916,7 +2916,7 @@
     "href": "course-materials/slides/part1.2-setup-app-slides.html#title-slide",
     "title": "EDS 430",
     "section": "",
-    "text": "EDS 430: Part 1.2\nSetting up a Shiny app\n\nWeek 1 | January 26th, 2024"
+    "text": "EDS 430: Part 1.2\nSetting up a Shiny app"
   },
   {
     "objectID": "course-materials/slides/part1.2-setup-app-slides.html#setup",

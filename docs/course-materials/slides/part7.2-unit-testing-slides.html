@@ -400,7 +400,7 @@
 <p><span class="custom-title">EDS 430: Part 7.2</span></p>
 <p><span class="custom-subtitle"><em>Unit Testing</em></span></p>
 <hr class="hr-teal">
-<p><span class="custom-subtitle3">Week 2 | February 2<sup>nd</sup>, 2024</span></p>
+<!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
 </section>
 <section id="testing" class="slide level2" data-menu-title="~~~ Unit Testing ~~~" data-background="#047C90">
 <h2></h2>
@@ -424,13 +424,10 @@ After this section, you should:
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand some of the reasons why apps break and the benefit of having automated tests</p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a basic understanding of how to use the <code>{shinytest2}</code> package to write unit (regression) tests</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a basic understanding of how to use the <code>{shinytest2}</code> package to write appropriately scoped unit (regression) tests</p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to rerun and update test as necessary</p>
-</div>
-<div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> TBD</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to rerun and update tests as necessary</p>
 </div>
 <div class="fragment">
 <p class="body-text-l teal-text topbr">
@@ -460,7 +457,7 @@ Packages introduced:
 <p>Test can be:</p>
 <ul>
 <li><span class="body-text-s"><strong>Performed manually</strong>, where a person interacts with different app features to identify bugs, errors, anomalies, etc.</span></li>
-<li><span class="body-text-s"><strong>Automated</strong>, where a person sets up frameworks and creates test scripts that automate the user actions required for testing a website or app</span></li>
+<li><span class="body-text-s"><strong>Automated</strong>, where a person uses test scripts and programs to automate user interactions and validate assumed behaviorwh</span></li>
 </ul>
 </div>
 </section>
@@ -542,7 +539,8 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Enter the <code>{shinytest2}</code> package</span></p>
 <hr>
-<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. This process is also known as <a href="https://en.wikipedia.org/wiki/Regression_testing"><strong>regression testing</strong></a>, since we’ll be testing existing app behavior for consistency over time (we don’t want app behavior to regress).</p>
+<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code.</p>
+<!-- This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress). -->
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br></p>
@@ -564,9 +562,13 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 </div>
 </div>
-<p><span class="body-text-s">With <code>{shinytest2}</code>, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.</span></p>
+<div class="fragment">
+<div class="center-text body-text-s">
+<p><em>With <code>{shinytest2}</code>, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.</em></p>
+</div>
 <div class="footer">
 <p><code>{shinytest2}</code> uses <a href="https://rstudio.github.io/chromote/"><code>{chromote}</code></a> to render your app in a headless <a href="https://www.chromium.org/chromium-projects/">Chromium browser</a> – by default, it uses Google Chrome, so make sure you have that installed on your OS!</p>
+</div>
 </div>
 </section>
 <section id="setting-stage" class="slide level2" data-menu-title="Setting the stage">
@@ -673,11 +675,13 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title">Write down your assertions</span></p>
 <hr>
-<p><span class="body-text-s">Before we dive into writing any tests, it’s super helpful to inspect your app and, <em>importantly</em> jot down (in your own words) any <strong>assertions</strong>. <a href="https://en.wikipedia.org/wiki/Test_assertion">Test assertions</a> are expressions that contain testable logic to evaluate whether an actual result / behavior is as expected.</span></p>
+<p>Before we dive into writing any tests, it’s super helpful to inspect your app and <em>importantly</em>, <strong>jot down (in your own words) the expected behaviors of your application</strong>. These will form the basis of the assertions made in your test.</p>
 <p><br></p>
 <div class="fragment">
 <p>I find it helpful to frame assertions as: (1) what <strong>actions</strong> can be taken? and (2) what are the <strong>expected outputs / behaviors</strong> that result from those actions?</p>
 <p><br></p>
+</div>
+<div class="fragment">
 <p><span class="teal-text body-text-l"><strong>For example:</strong></span></p>
 <table>
 <colgroup>
@@ -736,7 +740,7 @@ From the <code>{shinytest2}</code> documentation:
 </section>
 <section id="testing-procedure" class="slide level2" data-menu-title="Testing procedure">
 <h2></h2>
-<p><span class="slide-title3">Turn written assertions into actual tests using the <code>{shinytest2}</code> workflow</span></p>
+<p><span class="slide-title3">Turn “plain language” assertions into actual tests using the <code>{shinytest2}</code> workflow</span></p>
 <hr>
 <p><br></p>
 <p><span class="teal-text"><strong>Generally speaking, that workflow looks something like this:</strong></span></p>
@@ -887,7 +891,7 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb7-12"><a href="#cb7-12"></a>  <span class="co"># click the actionButton (with Id `greeting_button_input`)</span></span>
 <span id="cb7-13"><a href="#cb7-13"></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb7-14"><a href="#cb7-14"></a>  </span>
-<span id="cb7-15"><a href="#cb7-15"></a>  <span class="co"># save the expected input, output, and export values to a JSON snapshot and generates a debug screenshot of the app</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="co"># save the expected input, output, and export values to a JSON snapshot and generates a screenshot of the app</span></span>
 <span id="cb7-16"><a href="#cb7-16"></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
 <span id="cb7-17"><a href="#cb7-17"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1010,7 +1014,7 @@ From the <code>{shinytest2}</code> documentation:
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2dce221c" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_1a762bfc" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1401,7 +1405,7 @@ From the <code>{shinytest2}</code> documentation:
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c27afd45" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_b4442956" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1804,17 +1808,18 @@ From the <code>{shinytest2}</code> documentation:
 <hr>
 <p><br></p>
 <div class="center-text">
-<p><strong>Our test failed, despite the consistent (expected) behavior of our test subject</strong> (in other words, our test failed, even though the expected output, “Hello Sam!” stayed the same.)</p>
+<p><strong>Our test failed, despite the behavior of our test subject <em>not</em> changing</strong> (in other words, our test failed, even though the expected output, “Hello Sam!” stayed the same.)</p>
 </div>
 <div class="fragment">
-<!-- <br> -->
-<!-- ::: {.center-text} -->
-<!-- Therefore, our test failed due to changes outside of the test subject's (i.e. greeting's) behavior. -->
-<!-- ::: -->
-<!-- . . .  -->
 <p><br></p>
 <div class="center-text">
-<p>Because our test failed due to changes outside of the test subject’s (i.e.&nbsp;greeting’s) behavior, <strong>we need to modify our tests so that they capture a <em>targeted value expectation</em>, rather than the state of our entire application</strong>. For example:</p>
+<p>A good test is able to isolate the behavior of it’s subject so that you can trust the result of the test. In this case, our tests failed when they shouldn’t have…</p>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<div class="center-text">
+<p>Therefore, <strong>we need to modify our tests so that they capture a <em>targeted value expectation</em>, rather than the state of our entire application</strong>. For example:</p>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -2309,7 +2314,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b6004d06" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_e0d3a5ba" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2741,8 +2746,14 @@ From the <code>{shinytest2}</code> documentation:
 <hr>
 <p><br></p>
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Use <code>record_test()</code> fairly often</strong> – make a test recording for each feature of your app (many little recordings are encouraged!)</p>
+<div class="fragment">
+<p><br></p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Think of both the most common <em>and</em> uncommon pathways that your user may take when interacting with your app.</strong> E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?</p>
+</div>
+<div class="fragment">
 <p><br></p>
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Limit testing to objects under your control.</strong> For example, let’s say you have a reactive data frame that you then send to a <code>DT::datatable</code> – if package maintainers update <code>{DT}</code>, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to <code>{DT}</code>.</p>
+</div>
 <div class="fragment">
 <p><br></p>
 <center>
@@ -2764,7 +2775,7 @@ End part 7.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5452dd99" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_4b054754" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
