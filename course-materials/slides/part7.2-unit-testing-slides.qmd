@@ -34,7 +34,7 @@ editor_options:
 
 ##  {#LO-testing data-menu-title="Learning Objectives - Unit Testing"}
 
-[{{< fa book-open title="an open book" >}} Learning Objectives for Testing]{.slide-title}
+[{{< fa book-open title="an open book" >}} Learning Objectives]{.slide-title}
 
 <hr>
 
@@ -46,7 +46,7 @@ editor_options:
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit (regression) tests
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit tests
 
 . . . 
 
@@ -87,7 +87,7 @@ There are lots of different *types* of testing. To name just a few:
 Test can be:
 
 - [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
-- [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behaviorwh]{.body-text-s}
+- [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s}
 
 ---
 
@@ -112,7 +112,7 @@ There are lots of different *types* of testing. To name just a few:
 Test can be:
 
 - [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
-- [**Automated**, where a person set up frameworks and create test scripts that automate user actions required for testing a website or app]{.body-text-s .teal-text}
+- [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s .teal-text}
  
 ---
 
@@ -158,7 +158,7 @@ Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`:
 
 <hr>
 
-It's almost inevitable that our app(s) will (at some point) break -- there are lots of reasons why this happens, but to name a few:
+**It's almost inevitable that our app(s) will (at some point) break** -- there are lots of reasons why this happens, but to name a few:
 
 . . . 
 
@@ -182,7 +182,9 @@ It's almost inevitable that our app(s) will (at some point) break -- there are l
 
 <br>
 
-**It can save a lot of time and headache (for you *and* your collaborators) to have an automated system that checks if your app is working as expected.**
+::: {.center-text .body-text-m}
+It can save a lot of time and headache to have an automated system that checks if your app is working as expected.
+:::
 
 ---
 
@@ -194,12 +196,11 @@ It's almost inevitable that our app(s) will (at some point) break -- there are l
 
 The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to [**ensure that desired app behavior remains consistent, even after changes to the app's code**]{.teal-text} (the documentation refers to this type of unit testing as *regression testing* -- we'll use these tests to verify that app behavior *does not regress*).
 
-<!-- This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress). -->
-
 :::: {.columns}
 
 ::: {.column width="50%"}
 
+<br>
 <br>
 
 <p class="body-text">From the `{shinytest2}` documentation:</p>
@@ -208,6 +209,9 @@ The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shiny
 :::
 
 ::: {.column width="50%"}
+
+<br>
+
 ```{r}
 #| eval: true
 #| echo: false
@@ -220,14 +224,14 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 ::::
 
-. . .
+<!-- . . . -->
 
-::: {.center-text .body-text-s}
-*With `{shinytest2}`, we can interact with our app via the "app recorder" and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.*
-:::
+<!-- ::: {.center-text .body-text-s} -->
+<!-- *With `{shinytest2}`, we can interact with our app via the "app recorder" and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.* -->
+<!-- ::: -->
 
 ::: {.footer}
-`{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/) to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/) -- by default, it uses Google Chrome, so make sure you have that installed on your OS! 
+`{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/) to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/) -- by default, it uses Google Chrome, so make sure you have that installed on your OS
 :::
 
 ---
@@ -446,7 +450,7 @@ Over time, **your ability to identify both how users will interact with your app
 
 . . . 
 
-[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state, which will record `input`, `output`, and `exported` values. 
+[**(2)**]{.teal-text} Interact with your application and tell the recorder to make an expectation of the app's state 
 
 <br>
 
@@ -1634,7 +1638,6 @@ knitr::include_graphics("images/part6/snapshot-review-dropdown.png")
 
 ---
 
-
 ##  {#scope-too-large1 data-menu-title="Scope too large 1"}
 
 [The scope of our assertions was too large]{.slide-title}
@@ -1671,6 +1674,26 @@ knitr::include_graphics("images/part6/new.png")
 ---
 
 ##  {#scope-too-large2 data-menu-title="Scope too large 2"}
+
+[The scope of our assertions was too large]{.slide-title}
+
+<hr>
+
+**The scope of our test assertions was too large to isolate the behavior that we were looking to test.**
+
+[Our `one-name-greeting-001.json` file provides an alternative view.]{.body-text-s}
+
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/one-name-greeting-json-failed.png")
+```
+
+---
+
+##  {#scope-too-large3 data-menu-title="Scope too large 3"}
 
 [The scope of our assertions was too large]{.slide-title}
 
@@ -2279,7 +2302,7 @@ countdown::countdown(
 
 ##  {#feature3-tests data-menu-title="Feature 3 tests"}
 
-[Write your tests for feature 3]{.slide-title}
+[Written tests for feature 3]{.slide-title}
 
 <hr>
 
@@ -2730,7 +2753,7 @@ Should our app's default state change (e.g. if we add a new feature, we update e
 
 ##  {#testing-tips data-menu-title="Testing tips"}
 
-[Tips for testing]{.slide-title}
+[A couple final tips for testing]{.slide-title}
 
 <hr>
 
@@ -2738,20 +2761,20 @@ Should our app's default state change (e.g. if we add a new feature, we update e
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Use `record_test()` fairly often** -- make a test recording for each feature of your app (many little recordings are encouraged!)
 
-. . . 
+<!-- . . .  -->
 
 <br>
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Think of both the most common *and* uncommon pathways that your user may take when interacting with your app.**
 E.g. your user types in a name, then deletes everything, then clicks the "Greet" button...would you app handle that use case?
 
-. . .
+<!-- . . . -->
 
-<br>
+<!-- <br> -->
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`.
+<!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`. -->
 
-. . .
+<!-- . . . -->
 
 <br>
 

@@ -415,7 +415,7 @@
 </section>
 <section id="LO-testing" class="slide level2" data-menu-title="Learning Objectives - Unit Testing">
 <h2></h2>
-<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives for Testing</span></p>
+<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives</span></p>
 <hr>
 <p class="body-text-l teal-text bottombr">
 After this section, you should:
@@ -424,7 +424,7 @@ After this section, you should:
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand some of the reasons why apps break and the benefit of having automated tests</p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a basic understanding of how to use the <code>{shinytest2}</code> package to write appropriately scoped unit (regression) tests</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> have a basic understanding of how to use the <code>{shinytest2}</code> package to write appropriately scoped unit tests</p>
 </div>
 <div class="fragment">
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to rerun and update tests as necessary</p>
@@ -457,7 +457,7 @@ Packages introduced:
 <p>Test can be:</p>
 <ul>
 <li><span class="body-text-s"><strong>Performed manually</strong>, where a person interacts with different app features to identify bugs, errors, anomalies, etc.</span></li>
-<li><span class="body-text-s"><strong>Automated</strong>, where a person uses test scripts and programs to automate user interactions and validate assumed behaviorwh</span></li>
+<li><span class="body-text-s"><strong>Automated</strong>, where a person uses test scripts and programs to automate user interactions and validate assumed behavior</span></li>
 </ul>
 </div>
 </section>
@@ -477,7 +477,7 @@ Packages introduced:
 <p>Test can be:</p>
 <ul>
 <li><span class="body-text-s"><strong>Performed manually</strong>, where a person interacts with different app features to identify bugs, errors, anomalies, etc.</span></li>
-<li><span class="body-text-s teal-text"><strong>Automated</strong>, where a person set up frameworks and create test scripts that automate user actions required for testing a website or app</span></li>
+<li><span class="body-text-s teal-text"><strong>Automated</strong>, where a person uses test scripts and programs to automate user interactions and validate assumed behavior</span></li>
 </ul>
 </section>
 <section id="shiny-workflow" class="slide level2" data-menu-title="Shiny workflow">
@@ -510,7 +510,7 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Why test our Shiny apps?</span></p>
 <hr>
-<p>It’s almost inevitable that our app(s) will (at some point) break – there are lots of reasons why this happens, but to name a few:</p>
+<p><strong>It’s almost inevitable that our app(s) will (at some point) break</strong> – there are lots of reasons why this happens, but to name a few:</p>
 <div class="fragment">
 <p class="body-text-s topbr">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>an upgraded R package(s)</strong> has a different behavior (this includes <code>{shiny}</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators
@@ -532,7 +532,9 @@ Packages introduced:
 </div>
 <div class="fragment">
 <p><br></p>
-<p><strong>It can save a lot of time and headache (for you <em>and</em> your collaborators) to have an automated system that checks if your app is working as expected.</strong></p>
+<div class="center-text body-text-m">
+<p>It can save a lot of time and headache to have an automated system that checks if your app is working as expected.</p>
+</div>
 </div>
 </section>
 <section id="shinytest2" class="slide level2" data-menu-title="{shinytest2}">
@@ -540,10 +542,9 @@ Packages introduced:
 <p><span class="slide-title">Enter the <code>{shinytest2}</code> package</span></p>
 <hr>
 <p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. We’ll use these unit tests to <span class="teal-text"><strong>ensure that desired app behavior remains consistent, even after changes to the app’s code</strong></span> (the documentation refers to this type of unit testing as <em>regression testing</em> – we’ll use these tests to verify that app behavior <em>does not regress</em>).</p>
-<!-- This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress). -->
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><br></p>
+<p><br> <br></p>
 <p class="body-text">
 From the <code>{shinytest2}</code> documentation:
 </p>
@@ -551,6 +552,7 @@ From the <code>{shinytest2}</code> documentation:
 “<em><code>{shinytest2}</code> uses <code>{testthat}</code>’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.</em>”
 </p>
 </div><div class="column" style="width:50%;">
+<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -562,13 +564,12 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 </div>
 </div>
-<div class="fragment">
-<div class="center-text body-text-s">
-<p><em>With <code>{shinytest2}</code>, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.</em></p>
-</div>
+<!-- . . . -->
+<!-- ::: {.center-text .body-text-s} -->
+<!-- *With `{shinytest2}`, we can interact with our app via the "app recorder" and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.* -->
+<!-- ::: -->
 <div class="footer">
-<p><code>{shinytest2}</code> uses <a href="https://rstudio.github.io/chromote/"><code>{chromote}</code></a> to render your app in a headless <a href="https://www.chromium.org/chromium-projects/">Chromium browser</a> – by default, it uses Google Chrome, so make sure you have that installed on your OS!</p>
-</div>
+<p><code>{shinytest2}</code> uses <a href="https://rstudio.github.io/chromote/"><code>{chromote}</code></a> to render your app in a headless <a href="https://www.chromium.org/chromium-projects/">Chromium browser</a> – by default, it uses Google Chrome, so make sure you have that installed on your OS</p>
 </div>
 </section>
 <section id="setting-stage" class="slide level2" data-menu-title="Setting the stage">
@@ -750,7 +751,7 @@ From the <code>{shinytest2}</code> documentation:
 <p><br></p>
 </div>
 <div class="fragment">
-<p><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation of the app’s state, which will record <code>input</code>, <code>output</code>, and <code>exported</code> values.</p>
+<p><span class="teal-text"><strong>(2)</strong></span> Interact with your application and tell the recorder to make an expectation of the app’s state</p>
 <p><br></p>
 </div>
 <div class="fragment">
@@ -1014,7 +1015,7 @@ From the <code>{shinytest2}</code> documentation:
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c6e2c439" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_20044a29" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1415,7 +1416,7 @@ From the <code>{shinytest2}</code> documentation:
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2a7e8365" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_700dd3c8" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1813,6 +1814,14 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 </section>
 <section id="scope-too-large2" class="slide level2" data-menu-title="Scope too large 2">
+<h2></h2>
+<p><span class="slide-title">The scope of our assertions was too large</span></p>
+<hr>
+<p><strong>The scope of our test assertions was too large to isolate the behavior that we were looking to test.</strong></p>
+<p><span class="body-text-s">Our <code>one-name-greeting-001.json</code> file provides an alternative view.</span></p>
+
+<img data-src="images/part6/one-name-greeting-json-failed.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="scope-too-large3" class="slide level2" data-menu-title="Scope too large 3">
 <h2></h2>
 <p><span class="slide-title">The scope of our assertions was too large</span></p>
 <hr>
@@ -2324,7 +2333,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_30b5389c" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_3f63fe6b" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2333,7 +2342,7 @@ From the <code>{shinytest2}</code> documentation:
 </section>
 <section id="feature3-tests" class="slide level2" data-menu-title="Feature 3 tests">
 <h2></h2>
-<p><span class="slide-title">Write your tests for feature 3</span></p>
+<p><span class="slide-title">Written tests for feature 3</span></p>
 <hr>
 <p>Once complete, your updated <code>test-shinytest2.R</code> file should look similar to this (and all tests should pass!):</p>
 <div class="cell">
@@ -2752,26 +2761,24 @@ From the <code>{shinytest2}</code> documentation:
 </section>
 <section id="testing-tips" class="slide level2" data-menu-title="Testing tips">
 <h2></h2>
-<p><span class="slide-title">Tips for testing</span></p>
+<p><span class="slide-title">A couple final tips for testing</span></p>
 <hr>
 <p><br></p>
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Use <code>record_test()</code> fairly often</strong> – make a test recording for each feature of your app (many little recordings are encouraged!)</p>
-<div class="fragment">
+<!-- . . .  -->
 <p><br></p>
 <p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Think of both the most common <em>and</em> uncommon pathways that your user may take when interacting with your app.</strong> E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?</p>
-</div>
-<div class="fragment">
-<p><br></p>
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Limit testing to objects under your control.</strong> For example, let’s say you have a reactive data frame that you then send to a <code>DT::datatable</code> – if package maintainers update <code>{DT}</code>, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to <code>{DT}</code>.</p>
-</div>
-<div class="fragment">
+<!-- . . . -->
+<!-- <br> -->
+
+<!-- []{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`. -->
+<!-- . . . -->
 <p><br></p>
 <center>
 <p class="body-text-l teal-text">
 This is only a brief intro to <code>{shinytest2}</code>! Dig into the <a href="https://rstudio.github.io/shinytest2/index.html">documentation</a> to learn more.
 </p>
 </center>
-</div>
 </section>
 <section id="end" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
 <h2></h2>
@@ -2785,7 +2792,7 @@ End part 7.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_06d155b7" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_c1c8179b" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
