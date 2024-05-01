@@ -192,7 +192,7 @@ It's almost inevitable that our app(s) will (at some point) break -- there are l
 
 <hr>
 
-The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app's code.
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to [**ensure that desired app behavior remains consistent, even after changes to the app's code**]{.teal-text} (the documentation refers to this type of unit testing as *regression testing* -- we'll use these tests to verify that app behavior *does not regress*).
 
 <!-- This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress). -->
 
@@ -350,13 +350,13 @@ Let's say that you are satisfied with your work (yay!) and are now ready to writ
 
 <hr>
 
-Before we dive into writing any tests, it's super helpful to inspect your app and *importantly*, **jot down (in your own words) the expected behaviors of your application**. These will form the basis of the assertions made in your test.
+Before we dive into writing any tests, it's super helpful to inspect your app and *importantly*, **jot down (in your own words) the expected behaviors of your application**. These will form the basis of the [assertions](https://en.wikipedia.org/wiki/Test_assertion) made in your tests.
 
 <br>
 
 . . . 
 
-I find it helpful to frame assertions as: (1) what **actions** can be taken? and (2) what are the **expected outputs / behaviors** that result from those actions?
+I find it helpful to make a table that outlines both (a) what **actions** can be taken by a user? and (b) what are the **expected outputs / behaviors** that result from those actions?
 
 <br>
 
@@ -871,13 +871,15 @@ server <- function(input, output) {
 
 <hr>
 
+. . .
+
 Our first two tests pass, but **the third one failed** {{< fa face-frown title="a frowning face" >}}. You'll see something like this to start:
 
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "100%"
+#| out-width: "70%"
 knitr::include_graphics("images/part6/failed-no-name-greeting.png")
 ```
 

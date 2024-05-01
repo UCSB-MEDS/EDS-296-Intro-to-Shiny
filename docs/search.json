@@ -2118,7 +2118,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#shinytest2",
     "title": "EDS 430",
     "section": "",
-    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package provides useful tools for unit testing Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code.\n\n\n\n\n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith {shinytest2}, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.\n\n\n{shinytest2} uses {chromote} to render your app in a headless Chromium browser – by default, it uses Google Chrome, so make sure you have that installed on your OS!"
+    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package provides useful tools for unit testing Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code (the documentation refers to this type of unit testing as regression testing – we’ll use these tests to verify that app behavior does not regress).\n\n\n\n\n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith {shinytest2}, we can interact with our app via the “app recorder” and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.\n\n\n{shinytest2} uses {chromote} to render your app in a headless Chromium browser – by default, it uses Google Chrome, so make sure you have that installed on your OS!"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#setting-stage",
@@ -2139,7 +2139,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#ft1-assertions",
     "title": "EDS 430",
     "section": "",
-    "text": "Write down your assertions\n\nBefore we dive into writing any tests, it’s super helpful to inspect your app and importantly, jot down (in your own words) the expected behaviors of your application. These will form the basis of the assertions made in your test.\n\n\nI find it helpful to frame assertions as: (1) what actions can be taken? and (2) what are the expected outputs / behaviors that result from those actions?\n\n\n\nFor example:\n\n\n\n\n\n\n\nAction(s)\nExpectation(s)\n\n\n\n\nType [some text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”\n\n\nType [some text value] in text box &gt; click Greet button &gt; type [some other text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”, then updates to “Hello [some other text value]!”\n\n\nClick Greet button\nGreeting output is “Hello !”"
+    "text": "Write down your assertions\n\nBefore we dive into writing any tests, it’s super helpful to inspect your app and importantly, jot down (in your own words) the expected behaviors of your application. These will form the basis of the assertions made in your tests.\n\n\nI find it helpful to make a table that outlines both (a) what actions can be taken by a user? and (b) what are the expected outputs / behaviors that result from those actions?\n\n\n\nFor example:\n\n\n\n\n\n\n\nAction(s)\nExpectation(s)\n\n\n\n\nType [some text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”\n\n\nType [some text value] in text box &gt; click Greet button &gt; type [some other text value] in text box &gt; click Greet button\nGreeting output is “Hello [some text value]!”, then updates to “Hello [some other text value]!”\n\n\nClick Greet button\nGreeting output is “Hello !”"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#assertions-note",
@@ -2237,7 +2237,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#no-name-greeting-breaks",
     "title": "EDS 430",
     "section": "",
-    "text": "Rerun your tests after making your update\n\nOur first two tests pass, but the third one failed . You’ll see something like this to start:\n\n\nClick on the Output tab for more information on why the test failed (see next slide)."
+    "text": "Rerun your tests after making your update\n\n\nOur first two tests pass, but the third one failed . You’ll see something like this to start:\n\n\n\n\n\n\n\n\n\n\nClick on the Output tab for more information on why the test failed (see next slide)."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#output-tab",

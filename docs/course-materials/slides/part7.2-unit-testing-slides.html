@@ -539,7 +539,7 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Enter the <code>{shinytest2}</code> package</span></p>
 <hr>
-<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code.</p>
+<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. We’ll use these unit tests to <span class="teal-text"><strong>ensure that desired app behavior remains consistent, even after changes to the app’s code</strong></span> (the documentation refers to this type of unit testing as <em>regression testing</em> – we’ll use these tests to verify that app behavior <em>does not regress</em>).</p>
 <!-- This process is also known as [**regression testing**](https://en.wikipedia.org/wiki/Regression_testing), since we'll be testing existing app behavior for consistency over time (we don't want app behavior to regress). -->
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -675,10 +675,10 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title">Write down your assertions</span></p>
 <hr>
-<p>Before we dive into writing any tests, it’s super helpful to inspect your app and <em>importantly</em>, <strong>jot down (in your own words) the expected behaviors of your application</strong>. These will form the basis of the assertions made in your test.</p>
+<p>Before we dive into writing any tests, it’s super helpful to inspect your app and <em>importantly</em>, <strong>jot down (in your own words) the expected behaviors of your application</strong>. These will form the basis of the <a href="https://en.wikipedia.org/wiki/Test_assertion">assertions</a> made in your tests.</p>
 <p><br></p>
 <div class="fragment">
-<p>I find it helpful to frame assertions as: (1) what <strong>actions</strong> can be taken? and (2) what are the <strong>expected outputs / behaviors</strong> that result from those actions?</p>
+<p>I find it helpful to make a table that outlines both (a) what <strong>actions</strong> can be taken by a user? and (b) what are the <strong>expected outputs / behaviors</strong> that result from those actions?</p>
 <p><br></p>
 </div>
 <div class="fragment">
@@ -1014,7 +1014,7 @@ From the <code>{shinytest2}</code> documentation:
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1a762bfc" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_c6e2c439" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1104,10 +1104,20 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title">Rerun your tests after making your update</span></p>
 <hr>
+<div class="fragment">
 <p>Our first two tests pass, but <strong>the third one failed</strong> <i class="fa-solid fa-face-frown" title="a frowning face" aria-label="face-frown"></i>. You’ll see something like this to start:</p>
-
-<img data-src="images/part6/failed-no-name-greeting.png" style="width:100.0%" class="r-stretch quarto-figure-center"><div class="center-text">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/part6/failed-no-name-greeting.png" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="center-text">
 <p>Click on the <strong>Output tab</strong> for more information on why the test failed (see next slide).</p>
+</div>
 </div>
 </section>
 <section id="output-tab" class="slide level2" data-menu-title="Output tab">
@@ -1405,7 +1415,7 @@ From the <code>{shinytest2}</code> documentation:
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b4442956" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_2a7e8365" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2314,7 +2324,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e0d3a5ba" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_30b5389c" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2775,7 +2785,7 @@ End part 7.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4b054754" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_06d155b7" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
