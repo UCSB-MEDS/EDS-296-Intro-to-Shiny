@@ -39,6 +39,6 @@ install.packages(pkgs = c( "tidyverse", "shiny", "shinydashboard", "shinyWidgets
 
 ## Reference code
 
-We'll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app). 
+We'll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on [GitHub](https://github.com/samanthacsik/EDS-296-shiny-apps). 
 
 We'll be creating our own GitHub repositories to house our apps, so *you do not need to fork this repo* (unless you want to, of course).

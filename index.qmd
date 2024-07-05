@@ -1,7 +1,7 @@
 ---
 title: "Intro to Shiny - Building reactive apps and dashboards"
 subtitle: "Master of Environmental Data Science (MEDS)"
-description: "Winter 2024"
+description: "Winter 2025"
 ---
 
 ```{r}
@@ -15,7 +15,7 @@ knitr::include_graphics("images/shiny-hex.png")
 
 ## Course Description
 
-This website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, [EDS 430 - Intro to Shiny](https://bren.ucsb.edu/courses/eds-430), offered through the [Bren School of Environmental Science & Management](https://bren.ucsb.edu/), in partnership with the [National Center for Ecological Analysis & Synthesis](https://www.nceas.ucsb.edu/).
+This website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, [EDS 296-1W - Intro to Shiny](https://bren.ucsb.edu/courses/eds-296-1w), offered through the [Bren School of Environmental Science & Management](https://bren.ucsb.edu/), in partnership with the [National Center for Ecological Analysis & Synthesis](https://www.nceas.ucsb.edu/).
 
 In this workshop, students will learn how to build and deploy Shiny applications. The [`{shiny}` package](https://shiny.posit.co/) provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, [shinyapps.io](https://www.shinyapps.io/).
 
@@ -34,7 +34,7 @@ In this workshop, students will learn how to build and deploy Shiny applications
 #| eval: true 
 #| echo: false
 #| fig-align: "center"
-#| out-width: "30%" 
+#| out-width: "25%" 
 knitr::include_graphics("images/sam.png")
 ```
 

@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "EDS 430"
+  title: "EDS 296-1W"
   navbar:
     right:
       - text: home
@@ -41,14 +41,14 @@ website:
       - icon: github
         menu:
           - text: Source Code
-            url:  https://github.com/UCSB-MEDS/EDS-430-Intro-to-Shiny
+            url:  https://github.com/UCSB-MEDS/EDS-296-Intro-to-Shiny
             target: _blank
           - text: Report a Bug
-            url:  https://github.com/UCSB-MEDS/EDS-430-Intro-to-Shiny/issues
+            url:  https://github.com/UCSB-MEDS/EDS-296-Intro-to-Shiny/issues
             target: _blank
   page-footer:
     background: dark
-    right: This website is built with [{{< fa brands github title="the github octocat logo" >}}](https://github.com/UCSB-MEDS/EDS-430-Intro-to-Shiny), [{{< fa brands r-project title="R Project" >}}](https://www.r-project.org/about.html) and [Quarto](https://quarto.org/)
+    right: This website is built with [{{< fa brands github title="the github octocat logo" >}}](https://github.com/UCSB-MEDS/EDS-296-Intro-to-Shiny), [{{< fa brands r-project title="R Project" >}}](https://www.r-project.org/about.html) and [Quarto](https://quarto.org/)
     # center: |
     #   <img src="images/bren-logo.png" alt="The Bren School of Environmental Science & Management logo" width="250"/>
     left: This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
