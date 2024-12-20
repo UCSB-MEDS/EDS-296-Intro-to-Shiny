@@ -18,7 +18,7 @@ knitr::include_graphics("images/basic-shiny-app.png")
 A *very* basic illustration of a Shiny app
 :::
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 We'll be loading the following R packages: 
 
@@ -29,31 +29,37 @@ We'll be loading the following R packages:
 library(shiny)
 ```
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 *No data downloads required for this section*
 
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
-Part 1 is broken down into two lessons:
+<!-- Part 1 is broken down into two lessons: -->
 
-::: {.grid}
+| {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
+|------------------------------------------------------------------------------------------|
+| [Lecture 1.1: What is Shiny?](slides/part1.1-shiny-overview-slides.qmd){target="_blank"}  | 
+| [Lecture 1.2: Setting up your app](slides/part1.2-setup-app-slides.qmd){target="_blank"}  | 
+: {.hover .bordered tbl-colwidths="[50,25,25]"}
 
-::: {.g-col-12 .g-col-md-6}
-::: {.center-text}
-[**What is Shiny?**]{.teal-text .body-text-m}
+<!-- ::: {.grid} -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 1.1 slides](slides/part1.1-shiny-overview-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- ::: {.g-col-12 .g-col-md-6} -->
+<!-- ::: {.center-text} -->
+<!-- [**What is Shiny?**]{.teal-text .body-text-m} -->
 
-::: {.g-col-12 .g-col-md-6}
-::: {.center-text}
-[**Setting up your app**]{.teal-text .body-text-m}
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 1.1 slides](slides/part1.1-shiny-overview-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 1.2 slides](slides/part1.2-setup-app-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- ::: {.g-col-12 .g-col-md-6} -->
+<!-- ::: {.center-text} -->
+<!-- [**Setting up your app**]{.teal-text .body-text-m} -->
 
-:::
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 1.2 slides](slides/part1.2-setup-app-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- ::: -->
 

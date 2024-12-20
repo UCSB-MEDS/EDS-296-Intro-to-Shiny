@@ -18,15 +18,15 @@ knitr::include_graphics("images/univ-access.png")
 Thy symbol for universal web accessibility. Image Source: [Designed to Inspire](https://www.designedtoinspire.com/blog/142365-searching-for-an-accessibility-symbol/)
 :::
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 *No coding required in this section!*
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 *No data downloads required for this section*
 
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
 Part 5 is contained in one lesson:
 

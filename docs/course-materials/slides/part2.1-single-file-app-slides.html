@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>EDS 296-1W – part2.1-single-file-app-slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -497,13 +498,12 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/reactive-app-v1.gif" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating."></p>
+<p><img data-src="images/part2/reactive-app-v1.gif" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating."></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="adding-text-plain" class="slide level2" data-menu-title="Adding text (plain)">
 <h2></h2>
@@ -516,16 +516,16 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># user interface ----</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-3"><a href="#cb1-3"></a>  </span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="co"># app title ----</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="st">"My App Title"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  </span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="co"># app subtitle ----</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="st">"Exploring Antarctic Penguin Data"</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>  </span>
-<span id="cb1-10"><a href="#cb1-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb1-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb1-3"><a></a>  </span>
+<span id="cb1-4"><a></a>  <span class="co"># app title ----</span></span>
+<span id="cb1-5"><a></a>  <span class="st">"My App Title"</span>,</span>
+<span id="cb1-6"><a></a>  </span>
+<span id="cb1-7"><a></a>  <span class="co"># app subtitle ----</span></span>
+<span id="cb1-8"><a></a>  <span class="st">"Exploring Antarctic Penguin Data"</span></span>
+<span id="cb1-9"><a></a>  </span>
+<span id="cb1-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -540,16 +540,16 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># user interface ----</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  </span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="co"># app title ----</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"My App Title"</span>), <span class="co"># alternatively, you can use the `h1()` wrapper function</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  </span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="co"># app subtitle ----</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">h4</span>(<span class="fu">strong</span>(<span class="st">"Exploring Antarctic Penguin Data"</span>)) <span class="co"># alternatively, `tags$h4(tags$strong("text"))`</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>  </span>
-<span id="cb2-10"><a href="#cb2-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb2-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-3"><a></a>  </span>
+<span id="cb2-4"><a></a>  <span class="co"># app title ----</span></span>
+<span id="cb2-5"><a></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"My App Title"</span>), <span class="co"># alternatively, you can use the `h1()` wrapper function</span></span>
+<span id="cb2-6"><a></a>  </span>
+<span id="cb2-7"><a></a>  <span class="co"># app subtitle ----</span></span>
+<span id="cb2-8"><a></a>  <span class="fu">h4</span>(<span class="fu">strong</span>(<span class="st">"Exploring Antarctic Penguin Data"</span>)) <span class="co"># alternatively, `tags$h4(tags$strong("text"))`</span></span>
+<span id="cb2-9"><a></a>  </span>
+<span id="cb2-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -561,7 +561,7 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <p><span class="body-text-s"><strong><span class="teal-text">Inputs</span></strong> (or widgets) are the things that users can interact with (e.g.&nbsp;toggle, slide) and provide values to your app.</span></p>
 <p><span class="body-text-s"><strong><span class="teal-text">Outputs</span></strong> are the R objects that your user sees (e.g.&nbsp;tables, plots). Outputs respond when a user interacts with / changes an input value.</span></p>
 
-<img data-src="images/part2/input-output-app.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/input-output-app.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="input-output-fxns" class="slide level2" data-menu-title="Input &amp; Output functions">
 <h2></h2>
 <p><span class="slide-title">Examples of input &amp; output functions</span></p>
@@ -590,8 +590,7 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>tableOutput()</code> (inserts a table)</span></p>
 <p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>textOutput()</code> (inserts text)</span></p>
 <p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> See a <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/">full list</a> of <code>shiny</code> output functions</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="reactive-plot-app1" class="slide level2" data-menu-title="Adding reactive plot (app #1)">
 <h2></h2>
@@ -622,13 +621,12 @@ Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;peng
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/reactive-app-v1.gif" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating."></p>
+<p><img data-src="images/part2/reactive-app-v1.gif" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating."></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="input-syntax" class="slide level2" data-menu-title="Input Syntax">
 <h2></h2>
@@ -650,9 +648,9 @@ Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;peng
 </p>
 <p><span class="teal-text"><strong>A couple examples:</strong></span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>), ...)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">selectInput</span>(<span class="at">inputId =</span> <span class="st">"island_input"</span>, <span class="at">label =</span> <span class="st">"Choose and island:"</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>), ...)</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="fu">selectInput</span>(<span class="at">inputId =</span> <span class="st">"island_input"</span>, <span class="at">label =</span> <span class="st">"Choose and island:"</span>, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="footer">
@@ -672,15 +670,15 @@ First let’s add a <code>sliderInput()</code> that will allow users to select a
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="6-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># user interface ----</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  </span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  </span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="co"># body mass slider input ----</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>))</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="6-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb4-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-3"><a></a>  </span>
+<span id="cb4-4"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb4-5"><a></a>  </span>
+<span id="cb4-6"><a></a>  <span class="co"># body mass slider input ----</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
+<span id="cb4-8"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>))</span>
+<span id="cb4-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -691,7 +689,7 @@ When you run your app, you should see something similar to the image below. It�
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/3000-4000.png" style="width:40.0%" alt="A basic Shiny app, with a title that says 'My App Title', a subtitle that says, 'Exploring Palmer Penguins and Antarctic Temperatures, and a slider input with a label that says 'Select a range of body masses (g)'. The slider bar has a minimum value of 2,700 and a maximum value of 6,300, and the moveable slider selectors currently range from 3,000 to 4,000."></p>
+<p><img data-src="images/part2/3000-4000.png" class="quarto-figure quarto-figure-center" style="width:40.0%" alt="A basic Shiny app, with a title that says 'My App Title', a subtitle that says, 'Exploring Palmer Penguins and Antarctic Temperatures, and a slider input with a label that says 'Select a range of body masses (g)'. The slider bar has a minimum value of 2,700 and a maximum value of 6,300, and the moveable slider selectors currently range from 3,000 to 4,000."></p>
 </figure>
 </div>
 </div>
@@ -713,9 +711,9 @@ Similar to input functions, <strong>all output functions take the same first arg
 <strong>A couple examples:</strong>
 </p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_data_output"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_data_output"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="add-output" class="slide level2" data-menu-title="Add Output">
@@ -730,19 +728,19 @@ Let’s now add a <code>plotOutput()</code>, which will be updated based on the 
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># user interface ----</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb6-3"><a href="#cb6-3"></a>  </span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  </span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="co"># body mass slider input ----</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb6-9"><a href="#cb6-9"></a>  </span>
-<span id="cb6-10"><a href="#cb6-10"></a>  <span class="co"># body mass plot ouput ----</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12"></a>  </span>
-<span id="cb6-13"><a href="#cb6-13"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb6-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb6-3"><a></a>  </span>
+<span id="cb6-4"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb6-5"><a></a>  </span>
+<span id="cb6-6"><a></a>  <span class="co"># body mass slider input ----</span></span>
+<span id="cb6-7"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
+<span id="cb6-8"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb6-9"><a></a>  </span>
+<span id="cb6-10"><a></a>  <span class="co"># body mass plot ouput ----</span></span>
+<span id="cb6-11"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
+<span id="cb6-12"><a></a>  </span>
+<span id="cb6-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -753,7 +751,7 @@ Let’s now add a <code>plotOutput()</code>, which will be updated based on the 
 <p>Okay, it looks like nothing changed?? <strong>Remember, <code>*Output()</code> functions create placeholders, but we have not yet written the server instructions on how to fill and update those placeholders.</strong> We can inspect the HTML and see that there is, in fact, a placeholder area awaiting our eventual output, which will be a plot named “<em>bodyMass_scatterplot_output</em>”:</p>
 <p><br></p>
 
-<img data-src="images/part2/output-placeholder.png" style="width:100.0%" alt="A Google Chrome browser window with our Shiny app open on the left-hand side and the underlying HTML document open on the right. The app looks the same as before, except hovering over the HTML associated with our new plotOutput highlights a blue square region beneath the sliderInput. This highlighted region is the placeholder where our plot will eventually be rendered." class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/output-placeholder.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A Google Chrome browser window with our Shiny app open on the left-hand side and the underlying HTML document open on the right. The app looks the same as before, except hovering over the HTML associated with our new plotOutput highlights a blue square region beneath the sliderInput. This highlighted region is the placeholder where our plot will eventually be rendered."></section>
 <section id="rendering-outputs" class="slide level2" data-menu-title="Rendering outputs">
 <h2></h2>
 <p><span class="slide-title">Render outputs with <code>render*()</code> functions</span></p>
@@ -766,7 +764,7 @@ Each <code>*Output()</code> function in the UI is coupled with a <code>render*()
 Examples of <code>*Output()</code> functions and their corresponding <code>render*()</code> functions:
 </p>
 <p><br></p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th>Output function</th>
@@ -836,30 +834,30 @@ The <strong>server function</strong> is defined with two arguments, <code>input<
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="21-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># user interface ----</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb7-6"><a href="#cb7-6"></a>  </span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  </span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="co"># body mass slider ----</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb7-12"><a href="#cb7-12"></a>  </span>
-<span id="cb7-13"><a href="#cb7-13"></a>  <span class="co"># body mass plot output ----</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>) </span>
-<span id="cb7-15"><a href="#cb7-15"></a>  </span>
-<span id="cb7-16"><a href="#cb7-16"></a>)</span>
-<span id="cb7-17"><a href="#cb7-17"></a></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="co"># server instructions ----</span></span>
-<span id="cb7-19"><a href="#cb7-19"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb7-20"><a href="#cb7-20"></a>  </span>
-<span id="cb7-21"><a href="#cb7-21"></a>  <span class="co"># render penguin scatter plot ----</span></span>
-<span id="cb7-22"><a href="#cb7-22"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="co"># code to generate plot here</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a>  </span>
-<span id="cb7-24"><a href="#cb7-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="21-22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb7-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb7-5"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb7-6"><a></a>  </span>
+<span id="cb7-7"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb7-8"><a></a>  </span>
+<span id="cb7-9"><a></a>  <span class="co"># body mass slider ----</span></span>
+<span id="cb7-10"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
+<span id="cb7-11"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb7-12"><a></a>  </span>
+<span id="cb7-13"><a></a>  <span class="co"># body mass plot output ----</span></span>
+<span id="cb7-14"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>) </span>
+<span id="cb7-15"><a></a>  </span>
+<span id="cb7-16"><a></a>)</span>
+<span id="cb7-17"><a></a></span>
+<span id="cb7-18"><a></a><span class="co"># server instructions ----</span></span>
+<span id="cb7-19"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb7-20"><a></a>  </span>
+<span id="cb7-21"><a></a>  <span class="co"># render penguin scatter plot ----</span></span>
+<span id="cb7-22"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="co"># code to generate plot here</span></span>
+<span id="cb7-23"><a></a>  </span>
+<span id="cb7-24"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:35%;">
@@ -867,8 +865,7 @@ The <strong>server function</strong> is defined with two arguments, <code>input<
 <p><span class="body-text-s">In our <strong>UI</strong>, we created a placeholder for our plot using the <code>plotOutput()</code> function and gave it the Id <code>"bodyMass_scatterplot_output"</code>.</span></p>
 <p><span class="body-text-s">In our <strong>server</strong>, we will save our plot to the output argument by its <code>outputId</code>.</span></p>
 <p><span class="body-text-s teal-text"><strong>Note: In the <em>UI</em>, our <code>outputId</code> is quoted (<code>"bodyMass_scatterplot_output"</code>), but not in the <em>server</em> (<code>bodyMass_scatterplot_output</code>).</strong></span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="rule2.1" class="slide level2" data-menu-title="Rule #2a">
 <h2></h2>
@@ -882,33 +879,33 @@ Use the appropriate <code>render*()</code> function to make your output reactive
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="22-26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># user interface ----</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb8-6"><a href="#cb8-6"></a>  </span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>  </span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="co"># body mass slider ----</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb8-12"><a href="#cb8-12"></a>  </span>
-<span id="cb8-13"><a href="#cb8-13"></a>  <span class="co"># body mass plot output ----</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>) </span>
-<span id="cb8-15"><a href="#cb8-15"></a>  </span>
-<span id="cb8-16"><a href="#cb8-16"></a>)</span>
-<span id="cb8-17"><a href="#cb8-17"></a></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co"># server instructions ----</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb8-20"><a href="#cb8-20"></a>  </span>
-<span id="cb8-21"><a href="#cb8-21"></a>  <span class="co"># render penguin scatter plot ----</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb8-23"><a href="#cb8-23"></a>    </span>
-<span id="cb8-24"><a href="#cb8-24"></a>     <span class="co"># code to generate plot here</span></span>
-<span id="cb8-25"><a href="#cb8-25"></a>    </span>
-<span id="cb8-26"><a href="#cb8-26"></a>  }) </span>
-<span id="cb8-27"><a href="#cb8-27"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="22-26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb8-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb8-5"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb8-6"><a></a>  </span>
+<span id="cb8-7"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb8-8"><a></a>  </span>
+<span id="cb8-9"><a></a>  <span class="co"># body mass slider ----</span></span>
+<span id="cb8-10"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
+<span id="cb8-11"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb8-12"><a></a>  </span>
+<span id="cb8-13"><a></a>  <span class="co"># body mass plot output ----</span></span>
+<span id="cb8-14"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>) </span>
+<span id="cb8-15"><a></a>  </span>
+<span id="cb8-16"><a></a>)</span>
+<span id="cb8-17"><a></a></span>
+<span id="cb8-18"><a></a><span class="co"># server instructions ----</span></span>
+<span id="cb8-19"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb8-20"><a></a>  </span>
+<span id="cb8-21"><a></a>  <span class="co"># render penguin scatter plot ----</span></span>
+<span id="cb8-22"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb8-23"><a></a>    </span>
+<span id="cb8-24"><a></a>     <span class="co"># code to generate plot here</span></span>
+<span id="cb8-25"><a></a>    </span>
+<span id="cb8-26"><a></a>  }) </span>
+<span id="cb8-27"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -928,22 +925,22 @@ I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a
 <div class="code-with-filename-file">
 <pre><strong>~/scratch/practice-script-app1.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-4"><a href="#cb9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># create scatterplot ----</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins), </span>
-<span id="cb9-7"><a href="#cb9-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, </span>
-<span id="cb9-8"><a href="#cb9-8"></a>           <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"darkorange"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
-<span id="cb9-13"><a href="#cb9-13"></a>       <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
-<span id="cb9-16"><a href="#cb9-16"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb9-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb9-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a><span class="co"># create scatterplot ----</span></span>
+<span id="cb9-6"><a></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins), </span>
+<span id="cb9-7"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, </span>
+<span id="cb9-8"><a></a>           <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb9-9"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"darkorange"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb9-11"><a></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb9-12"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
+<span id="cb9-13"><a></a>       <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb9-14"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-15"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
+<span id="cb9-16"><a></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -952,7 +949,7 @@ I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="part2.1-single-file-app-slides_files/figure-revealjs/unnamed-chunk-15-1.png" style="width:80.0%" alt="A scatterplot with Flipper length (mm) on the x-axis and Bill length (mm) on the y-axis. Data points are colored by penguins species: Adelie in orange circles, Chinstrap in purple triangles, and Gentoo in green squares."></p>
+<p><img data-src="part2.1-single-file-app-slides_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="A scatterplot with Flipper length (mm) on the x-axis and Bill length (mm) on the y-axis. Data points are colored by penguins species: Adelie in orange circles, Chinstrap in purple triangles, and Gentoo in green squares."></p>
 </figure>
 </div>
 </div>
@@ -973,42 +970,42 @@ Copy your code over to your app, placing it inside the <code>{}</code> (and make
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="3-4,25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb10-5"><a href="#cb10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># user interface ----</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb10-8"><a href="#cb10-8"></a>  </span>
-<span id="cb10-9"><a href="#cb10-9"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>  </span>
-<span id="cb10-11"><a href="#cb10-11"></a>  <span class="co"># body mass slider ----</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb10-14"><a href="#cb10-14"></a>  </span>
-<span id="cb10-15"><a href="#cb10-15"></a>  <span class="co"># body mass plot output ----</span></span>
-<span id="cb10-16"><a href="#cb10-16"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb10-17"><a href="#cb10-17"></a>  </span>
-<span id="cb10-18"><a href="#cb10-18"></a>)</span>
-<span id="cb10-19"><a href="#cb10-19"></a></span>
-<span id="cb10-20"><a href="#cb10-20"></a><span class="co"># server instructions ----</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb10-22"><a href="#cb10-22"></a>  </span>
-<span id="cb10-23"><a href="#cb10-23"></a>  <span class="co"># render penguin scatter plot ----</span></span>
-<span id="cb10-24"><a href="#cb10-24"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ </span>
-<span id="cb10-25"><a href="#cb10-25"></a>      <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins),</span>
-<span id="cb10-26"><a href="#cb10-26"></a>             <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
-<span id="cb10-27"><a href="#cb10-27"></a>                 <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span> </span>
-<span id="cb10-28"><a href="#cb10-28"></a>        <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-29"><a href="#cb10-29"></a>        <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb10-30"><a href="#cb10-30"></a>        <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb10-31"><a href="#cb10-31"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
-<span id="cb10-32"><a href="#cb10-32"></a>             <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span> </span>
-<span id="cb10-33"><a href="#cb10-33"></a>        <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb10-34"><a href="#cb10-34"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>), </span>
-<span id="cb10-35"><a href="#cb10-35"></a>              <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>)) </span>
-<span id="cb10-36"><a href="#cb10-36"></a>  }) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="3-4,25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb10-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb10-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb10-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb10-7"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb10-8"><a></a>  </span>
+<span id="cb10-9"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb10-10"><a></a>  </span>
+<span id="cb10-11"><a></a>  <span class="co"># body mass slider ----</span></span>
+<span id="cb10-12"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>,</span>
+<span id="cb10-13"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb10-14"><a></a>  </span>
+<span id="cb10-15"><a></a>  <span class="co"># body mass plot output ----</span></span>
+<span id="cb10-16"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
+<span id="cb10-17"><a></a>  </span>
+<span id="cb10-18"><a></a>)</span>
+<span id="cb10-19"><a></a></span>
+<span id="cb10-20"><a></a><span class="co"># server instructions ----</span></span>
+<span id="cb10-21"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb10-22"><a></a>  </span>
+<span id="cb10-23"><a></a>  <span class="co"># render penguin scatter plot ----</span></span>
+<span id="cb10-24"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ </span>
+<span id="cb10-25"><a></a>      <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins),</span>
+<span id="cb10-26"><a></a>             <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb10-27"><a></a>                 <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span> </span>
+<span id="cb10-28"><a></a>        <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-29"><a></a>        <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb10-30"><a></a>        <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb10-31"><a></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
+<span id="cb10-32"><a></a>             <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span> </span>
+<span id="cb10-33"><a></a>        <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb10-34"><a></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>), </span>
+<span id="cb10-35"><a></a>              <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>)) </span>
+<span id="cb10-36"><a></a>  }) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1020,7 +1017,7 @@ Copy your code over to your app, placing it inside the <code>{}</code> (and make
 <strong>We have a plot (yay!), but it isn’t reactive.</strong> We have not yet told the server how to update the plot based on user inputs via the <code>sliderInput()</code> in the UI. Let’s do that next…
 </p>
 
-<img data-src="images/part2/nonreactive-app.gif" style="width:100.0%" alt="A user changes the sliderInput meant associated with the penguin data scatterplot, but the plot does not update (i.e. it is not yet reactive)." class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/nonreactive-app.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A user changes the sliderInput meant associated with the penguin data scatterplot, but the plot does not update (i.e. it is not yet reactive)."></section>
 <section id="practice-filtering" class="slide level2" data-menu-title="Practice filtering data">
 <h2></h2>
 <p><span class="slide-title2">Practice filtering data in our separate script</span></p>
@@ -1034,13 +1031,13 @@ First, create a new data frame where we filter the <code>body_mass_g</code> colu
 <div class="code-with-filename-file">
 <pre><strong>~/scratch/practice-script-app1.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co"># filter penguins df for observations where body_mass_g &gt;= 3000 &amp; &lt;= 4000 ----</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3000</span><span class="sc">:</span><span class="dv">4000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb11-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb11-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a><span class="co"># filter penguins df for observations where body_mass_g &gt;= 3000 &amp; &lt;= 4000 ----</span></span>
+<span id="cb11-6"><a></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb11-7"><a></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3000</span><span class="sc">:</span><span class="dv">4000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1055,18 +1052,18 @@ Then, plot the new filtered data frame:
 <div class="code-with-filename-file">
 <pre><strong>~/scratch/practice-script-app1.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># plot new, filtered data ----</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(body_mass_df), <span class="co"># plot 'body_mass_df' rather than 'penguins' df</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, </span>
-<span id="cb12-4"><a href="#cb12-4"></a>           <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
-<span id="cb12-9"><a href="#cb12-9"></a>       <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
-<span id="cb12-12"><a href="#cb12-12"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># plot new, filtered data ----</span></span>
+<span id="cb12-2"><a></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(body_mass_df), <span class="co"># plot 'body_mass_df' rather than 'penguins' df</span></span>
+<span id="cb12-3"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm, </span>
+<span id="cb12-4"><a></a>           <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb12-7"><a></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb12-8"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>, </span>
+<span id="cb12-9"><a></a>       <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-11"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
+<span id="cb12-12"><a></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:5%;">
@@ -1076,13 +1073,12 @@ Then, plot the new filtered data frame:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/filtered-penguin-plot.png" style="width:100.0%" alt="A scatterplot of penguin Bill length (mm) vs. Flipper length (mm) for Adelie (orange circles), Chinstrap (purple triangles), and Gentoo (green squares) penguins. For all species, bill length tends to increase with flipper length."></p>
+<p><img data-src="images/part2/filtered-penguin-plot.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A scatterplot of penguin Bill length (mm) vs. Flipper length (mm) for Adelie (orange circles), Chinstrap (purple triangles), and Gentoo (green squares) penguins. For all species, bill length tends to increase with flipper length."></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="what-needs-updating" class="slide level2" data-menu-title="What needs to be reactive?">
@@ -1095,8 +1091,8 @@ Then, plot the new filtered data frame:
 <div class="code-with-filename-file">
 <pre><strong>~/scratch/practice-script-app1.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3000</span><span class="sc">:</span><span class="dv">4000</span>)) <span class="co"># 3000:4000 needs to be update-able (or in other words, reactive)!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3000</span><span class="sc">:</span><span class="dv">4000</span>)) <span class="co"># 3000:4000 needs to be update-able (or in other words, reactive)!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1108,34 +1104,33 @@ Then, plot the new filtered data frame:
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2857</span><span class="sc">:</span><span class="dv">5903</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2857</span><span class="sc">:</span><span class="dv">5903</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/2857-5903.png" style="width:100.0%" alt="Our Shiny app with just a title, subtitle, and slider input, where the input values are at a minimum of 2,857 and a maximum of 5,903."></p>
+<p><img data-src="images/part2/2857-5903.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Our Shiny app with just a title, subtitle, and slider input, where the input values are at a minimum of 2,857 and a maximum of 5,903."></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3725</span><span class="sc">:</span><span class="dv">5191</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>body_mass_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a></a>  <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3725</span><span class="sc">:</span><span class="dv">5191</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/3725-5191.png" style="width:100.0%" alt="Our Shiny app with just a title, subtitle, and slider input, where the input values are at a minimum of 3,725 and a maximum of 5,191."></p>
+<p><img data-src="images/part2/3725-5191.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Our Shiny app with just a title, subtitle, and slider input, where the input values are at a minimum of 3,725 and a maximum of 5,191."></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </div>
 </section>
 <section id="rule3.1" class="slide level2" data-menu-title="Rule #3a">
@@ -1150,31 +1145,31 @@ Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> a
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># load packages (omitted for brevity) ----</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># user interface ----</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb16-5"><a href="#cb16-5"></a>  </span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  </span>
-<span id="cb16-8"><a href="#cb16-8"></a>  <span class="co"># body mass slider ----</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, </span>
-<span id="cb16-10"><a href="#cb16-10"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb16-11"><a href="#cb16-11"></a>  </span>
-<span id="cb16-12"><a href="#cb16-12"></a>  <span class="co"># body mass plot output ----</span></span>
-<span id="cb16-13"><a href="#cb16-13"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb16-14"><a href="#cb16-14"></a>  </span>
-<span id="cb16-15"><a href="#cb16-15"></a>)</span>
-<span id="cb16-16"><a href="#cb16-16"></a></span>
-<span id="cb16-17"><a href="#cb16-17"></a><span class="co"># server instructions ----</span></span>
-<span id="cb16-18"><a href="#cb16-18"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb16-19"><a href="#cb16-19"></a>      </span>
-<span id="cb16-20"><a href="#cb16-20"></a>  <span class="co"># render the scatter plot ----</span></span>
-<span id="cb16-21"><a href="#cb16-21"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ </span>
-<span id="cb16-22"><a href="#cb16-22"></a>      <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins, <span class="fu">aes</span>(...)) <span class="sc">+</span> <span class="co"># etc. (omitted for brevity)</span></span>
-<span id="cb16-23"><a href="#cb16-23"></a>  <span class="er">}</span>) </span>
-<span id="cb16-24"><a href="#cb16-24"></a>    </span>
-<span id="cb16-25"><a href="#cb16-25"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># load packages (omitted for brevity) ----</span></span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb16-4"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb16-5"><a></a>  </span>
+<span id="cb16-6"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb16-7"><a></a>  </span>
+<span id="cb16-8"><a></a>  <span class="co"># body mass slider ----</span></span>
+<span id="cb16-9"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, </span>
+<span id="cb16-10"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb16-11"><a></a>  </span>
+<span id="cb16-12"><a></a>  <span class="co"># body mass plot output ----</span></span>
+<span id="cb16-13"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
+<span id="cb16-14"><a></a>  </span>
+<span id="cb16-15"><a></a>)</span>
+<span id="cb16-16"><a></a></span>
+<span id="cb16-17"><a></a><span class="co"># server instructions ----</span></span>
+<span id="cb16-18"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb16-19"><a></a>      </span>
+<span id="cb16-20"><a></a>  <span class="co"># render the scatter plot ----</span></span>
+<span id="cb16-21"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ </span>
+<span id="cb16-22"><a></a>      <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins, <span class="fu">aes</span>(...)) <span class="sc">+</span> <span class="co"># etc. (omitted for brevity)</span></span>
+<span id="cb16-23"><a></a>  <span class="er">}</span>) </span>
+<span id="cb16-24"><a></a>    </span>
+<span id="cb16-25"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1189,38 +1184,38 @@ Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> a
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="20-24|28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># load packages (omitted for brevity) ----</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># user interface ----</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb17-5"><a href="#cb17-5"></a>  </span>
-<span id="cb17-6"><a href="#cb17-6"></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a>  </span>
-<span id="cb17-8"><a href="#cb17-8"></a>  <span class="co"># body mass slider ----</span></span>
-<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, </span>
-<span id="cb17-10"><a href="#cb17-10"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb17-11"><a href="#cb17-11"></a>  </span>
-<span id="cb17-12"><a href="#cb17-12"></a>  <span class="co"># body mass plot output ----</span></span>
-<span id="cb17-13"><a href="#cb17-13"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb17-14"><a href="#cb17-14"></a>  </span>
-<span id="cb17-15"><a href="#cb17-15"></a>)</span>
-<span id="cb17-16"><a href="#cb17-16"></a></span>
-<span id="cb17-17"><a href="#cb17-17"></a><span class="co"># server instructions ----</span></span>
-<span id="cb17-18"><a href="#cb17-18"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb17-19"><a href="#cb17-19"></a>  </span>
-<span id="cb17-20"><a href="#cb17-20"></a>  <span class="co"># filter body masses ----</span></span>
-<span id="cb17-21"><a href="#cb17-21"></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({ </span>
-<span id="cb17-22"><a href="#cb17-22"></a>    penguins <span class="sc">|&gt;</span> </span>
-<span id="cb17-23"><a href="#cb17-23"></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>])) </span>
-<span id="cb17-24"><a href="#cb17-24"></a>  })</span>
-<span id="cb17-25"><a href="#cb17-25"></a>      </span>
-<span id="cb17-26"><a href="#cb17-26"></a>  <span class="co"># render the scatter plot ----</span></span>
-<span id="cb17-27"><a href="#cb17-27"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ </span>
-<span id="cb17-28"><a href="#cb17-28"></a>      <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>(), <span class="fu">aes</span>(...)) <span class="sc">+</span> </span>
-<span id="cb17-29"><a href="#cb17-29"></a>        <span class="co"># etc. (omitted for brevity)</span></span>
-<span id="cb17-30"><a href="#cb17-30"></a>  <span class="er">}</span>) </span>
-<span id="cb17-31"><a href="#cb17-31"></a>    </span>
-<span id="cb17-32"><a href="#cb17-32"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="20-24|28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># load packages (omitted for brevity) ----</span></span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb17-4"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb17-5"><a></a>  </span>
+<span id="cb17-6"><a></a>  <span class="co"># ~ previous code omitted for brevity ~</span></span>
+<span id="cb17-7"><a></a>  </span>
+<span id="cb17-8"><a></a>  <span class="co"># body mass slider ----</span></span>
+<span id="cb17-9"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, </span>
+<span id="cb17-10"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb17-11"><a></a>  </span>
+<span id="cb17-12"><a></a>  <span class="co"># body mass plot output ----</span></span>
+<span id="cb17-13"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
+<span id="cb17-14"><a></a>  </span>
+<span id="cb17-15"><a></a>)</span>
+<span id="cb17-16"><a></a></span>
+<span id="cb17-17"><a></a><span class="co"># server instructions ----</span></span>
+<span id="cb17-18"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb17-19"><a></a>  </span>
+<span id="cb17-20"><a></a>  <span class="co"># filter body masses ----</span></span>
+<span id="cb17-21"><a></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({ </span>
+<span id="cb17-22"><a></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb17-23"><a></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>])) </span>
+<span id="cb17-24"><a></a>  })</span>
+<span id="cb17-25"><a></a>      </span>
+<span id="cb17-26"><a></a>  <span class="co"># render the scatter plot ----</span></span>
+<span id="cb17-27"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ </span>
+<span id="cb17-28"><a></a>      <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>(), <span class="fu">aes</span>(...)) <span class="sc">+</span> </span>
+<span id="cb17-29"><a></a>        <span class="co"># etc. (omitted for brevity)</span></span>
+<span id="cb17-30"><a></a>  <span class="er">}</span>) </span>
+<span id="cb17-31"><a></a>    </span>
+<span id="cb17-32"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1230,8 +1225,7 @@ Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> a
 <p class="important-text-bg">
 <strong>Importantly</strong>, we need to use <code>reactive()</code> to create reactive data frames that update with user inputs. When you call your reactive data frame in your ggplot, <strong>the data frame name must be followed by <code>()</code></strong>.
 </p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="run-that-app" class="slide level2" data-menu-title="Run that app!">
 <h2></h2>
@@ -1241,7 +1235,7 @@ Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> a
 You should now have a reactive Shiny app! <em>Note that reactivity automatically occurs whenever you use an <strong>input value</strong> to <strong>render</strong> an <strong>output object</strong>.</em>
 </p>
 
-<img data-src="images/part2/reactive-app-v1.gif" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating." class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/reactive-app-v1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating."></section>
 <section id="recapp-app1" class="slide level2" data-menu-title="Recap: app #1">
 <h2></h2>
 <p><span class="slide-title3">Recap: We created our first <em>reactive</em> Shiny app following these steps:</span></p>
@@ -1303,13 +1297,12 @@ In the end, your app should look something like the example to the right.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/DT.gif" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating the newly added DT::datatable. The user is able to select which years (2007, 2008, 2009) to display data for by clicking on one more more checkboxes."></p>
+<p><img data-src="images/part2/DT.gif" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating the newly added DT::datatable. The user is able to select which years (2007, 2008, 2009) to display data for by clicking on one more more checkboxes."></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="center-text body-text-l teal-text">
 <p>See next slide for some tips on getting started!</p>
 </div>
@@ -1365,83 +1358,83 @@ Press the right arrow key to advance through the newly added lines of code.
 <div class="code-with-filename-file">
 <pre><strong>~/one-file-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="5|23-29|59-72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="fu">library</span>(DT)</span>
-<span id="cb18-6"><a href="#cb18-6"></a></span>
-<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># user interface ----</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb18-9"><a href="#cb18-9"></a>  </span>
-<span id="cb18-10"><a href="#cb18-10"></a>  <span class="co"># app title ----</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"My App Title"</span>),</span>
-<span id="cb18-12"><a href="#cb18-12"></a>  </span>
-<span id="cb18-13"><a href="#cb18-13"></a>  <span class="co"># app subtitle ----</span></span>
-<span id="cb18-14"><a href="#cb18-14"></a>  <span class="fu">h4</span>(<span class="fu">strong</span>(<span class="st">"Exploring Antarctic Penguin Data"</span>)),</span>
-<span id="cb18-15"><a href="#cb18-15"></a>  </span>
-<span id="cb18-16"><a href="#cb18-16"></a>  <span class="co"># body mass slider input ----</span></span>
-<span id="cb18-17"><a href="#cb18-17"></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g)"</span>,</span>
-<span id="cb18-18"><a href="#cb18-18"></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb18-19"><a href="#cb18-19"></a></span>
-<span id="cb18-20"><a href="#cb18-20"></a>  <span class="co"># body mass plot output ----</span></span>
-<span id="cb18-21"><a href="#cb18-21"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>),</span>
-<span id="cb18-22"><a href="#cb18-22"></a>  </span>
-<span id="cb18-23"><a href="#cb18-23"></a>  <span class="co"># year input ----</span></span>
-<span id="cb18-24"><a href="#cb18-24"></a>  <span class="fu">checkboxGroupInput</span>(<span class="at">inputId =</span> <span class="st">"year_input"</span>, <span class="at">label =</span> <span class="st">"Select year(s):"</span>,</span>
-<span id="cb18-25"><a href="#cb18-25"></a>                     <span class="at">choices =</span> <span class="fu">c</span>(<span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2009</span>), <span class="co"># or `unique(penguins$year)` | </span><span class="al">NOTE</span><span class="co">: update checkbox display name by using "New name" = "observation name" (e.g "The year 2007" = 2007)</span></span>
-<span id="cb18-26"><a href="#cb18-26"></a>                     <span class="at">selected =</span> <span class="fu">c</span>(<span class="dv">2007</span>, <span class="dv">2008</span>)),</span>
-<span id="cb18-27"><a href="#cb18-27"></a>  </span>
-<span id="cb18-28"><a href="#cb18-28"></a>  <span class="co"># DT output ----</span></span>
-<span id="cb18-29"><a href="#cb18-29"></a>  DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_DT_output"</span>)</span>
-<span id="cb18-30"><a href="#cb18-30"></a>  </span>
-<span id="cb18-31"><a href="#cb18-31"></a>)</span>
-<span id="cb18-32"><a href="#cb18-32"></a></span>
-<span id="cb18-33"><a href="#cb18-33"></a><span class="co"># server instructions ----</span></span>
-<span id="cb18-34"><a href="#cb18-34"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb18-35"><a href="#cb18-35"></a>  </span>
-<span id="cb18-36"><a href="#cb18-36"></a>  <span class="co"># filter body masses ----</span></span>
-<span id="cb18-37"><a href="#cb18-37"></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb18-38"><a href="#cb18-38"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb18-39"><a href="#cb18-39"></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>]) <span class="co"># return observations where body_mass_g is "in" the set of options provided by the user in the sliderInput</span></span>
-<span id="cb18-40"><a href="#cb18-40"></a>  })</span>
-<span id="cb18-41"><a href="#cb18-41"></a></span>
-<span id="cb18-42"><a href="#cb18-42"></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb18-43"><a href="#cb18-43"></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb18-44"><a href="#cb18-44"></a></span>
-<span id="cb18-45"><a href="#cb18-45"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
-<span id="cb18-46"><a href="#cb18-46"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
-<span id="cb18-47"><a href="#cb18-47"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb18-48"><a href="#cb18-48"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb18-49"><a href="#cb18-49"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"darkorange"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
-<span id="cb18-50"><a href="#cb18-50"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb18-51"><a href="#cb18-51"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb18-52"><a href="#cb18-52"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb18-53"><a href="#cb18-53"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb18-54"><a href="#cb18-54"></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
-<span id="cb18-55"><a href="#cb18-55"></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
-<span id="cb18-56"><a href="#cb18-56"></a>    </span>
-<span id="cb18-57"><a href="#cb18-57"></a>  })</span>
-<span id="cb18-58"><a href="#cb18-58"></a>  </span>
-<span id="cb18-59"><a href="#cb18-59"></a>  <span class="co"># filter for years ----</span></span>
-<span id="cb18-60"><a href="#cb18-60"></a>  years_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb18-61"><a href="#cb18-61"></a>    penguins <span class="sc">|&gt;</span> </span>
-<span id="cb18-62"><a href="#cb18-62"></a>      <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>year_input)) <span class="co"># return observations where year is "in" the set of options provided by the user via the checkboxGroupInput</span></span>
-<span id="cb18-63"><a href="#cb18-63"></a>  })</span>
-<span id="cb18-64"><a href="#cb18-64"></a>  </span>
-<span id="cb18-65"><a href="#cb18-65"></a>  <span class="co"># render the DT::datatable ----</span></span>
-<span id="cb18-66"><a href="#cb18-66"></a>  output<span class="sc">$</span>penguin_DT_output <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
-<span id="cb18-67"><a href="#cb18-67"></a>    </span>
-<span id="cb18-68"><a href="#cb18-68"></a>    DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="fu">years_df</span>(),</span>
-<span id="cb18-69"><a href="#cb18-69"></a>                  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pagelength =</span> <span class="dv">10</span>),</span>
-<span id="cb18-70"><a href="#cb18-70"></a>                  <span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb18-71"><a href="#cb18-71"></a>    </span>
-<span id="cb18-72"><a href="#cb18-72"></a>  })</span>
-<span id="cb18-73"><a href="#cb18-73"></a>  </span>
-<span id="cb18-74"><a href="#cb18-74"></a>}</span>
-<span id="cb18-75"><a href="#cb18-75"></a></span>
-<span id="cb18-76"><a href="#cb18-76"></a><span class="co"># combine UI &amp; server into an app ----</span></span>
-<span id="cb18-77"><a href="#cb18-77"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="5|23-29|59-72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb18-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb18-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb18-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-5"><a></a><span class="fu">library</span>(DT)</span>
+<span id="cb18-6"><a></a></span>
+<span id="cb18-7"><a></a><span class="co"># user interface ----</span></span>
+<span id="cb18-8"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb18-9"><a></a>  </span>
+<span id="cb18-10"><a></a>  <span class="co"># app title ----</span></span>
+<span id="cb18-11"><a></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"My App Title"</span>),</span>
+<span id="cb18-12"><a></a>  </span>
+<span id="cb18-13"><a></a>  <span class="co"># app subtitle ----</span></span>
+<span id="cb18-14"><a></a>  <span class="fu">h4</span>(<span class="fu">strong</span>(<span class="st">"Exploring Antarctic Penguin Data"</span>)),</span>
+<span id="cb18-15"><a></a>  </span>
+<span id="cb18-16"><a></a>  <span class="co"># body mass slider input ----</span></span>
+<span id="cb18-17"><a></a>  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g)"</span>,</span>
+<span id="cb18-18"><a></a>              <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb18-19"><a></a></span>
+<span id="cb18-20"><a></a>  <span class="co"># body mass plot output ----</span></span>
+<span id="cb18-21"><a></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>),</span>
+<span id="cb18-22"><a></a>  </span>
+<span id="cb18-23"><a></a>  <span class="co"># year input ----</span></span>
+<span id="cb18-24"><a></a>  <span class="fu">checkboxGroupInput</span>(<span class="at">inputId =</span> <span class="st">"year_input"</span>, <span class="at">label =</span> <span class="st">"Select year(s):"</span>,</span>
+<span id="cb18-25"><a></a>                     <span class="at">choices =</span> <span class="fu">c</span>(<span class="dv">2007</span>, <span class="dv">2008</span>, <span class="dv">2009</span>), <span class="co"># or `unique(penguins$year)` | </span><span class="al">NOTE</span><span class="co">: update checkbox display name by using "New name" = "observation name" (e.g "The year 2007" = 2007)</span></span>
+<span id="cb18-26"><a></a>                     <span class="at">selected =</span> <span class="fu">c</span>(<span class="dv">2007</span>, <span class="dv">2008</span>)),</span>
+<span id="cb18-27"><a></a>  </span>
+<span id="cb18-28"><a></a>  <span class="co"># DT output ----</span></span>
+<span id="cb18-29"><a></a>  DT<span class="sc">::</span><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_DT_output"</span>)</span>
+<span id="cb18-30"><a></a>  </span>
+<span id="cb18-31"><a></a>)</span>
+<span id="cb18-32"><a></a></span>
+<span id="cb18-33"><a></a><span class="co"># server instructions ----</span></span>
+<span id="cb18-34"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb18-35"><a></a>  </span>
+<span id="cb18-36"><a></a>  <span class="co"># filter body masses ----</span></span>
+<span id="cb18-37"><a></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb18-38"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb18-39"><a></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>]) <span class="co"># return observations where body_mass_g is "in" the set of options provided by the user in the sliderInput</span></span>
+<span id="cb18-40"><a></a>  })</span>
+<span id="cb18-41"><a></a></span>
+<span id="cb18-42"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb18-43"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb18-44"><a></a></span>
+<span id="cb18-45"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
+<span id="cb18-46"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb18-47"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb18-48"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-49"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"darkorange"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb18-50"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb18-51"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb18-52"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb18-53"><a></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-54"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
+<span id="cb18-55"><a></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
+<span id="cb18-56"><a></a>    </span>
+<span id="cb18-57"><a></a>  })</span>
+<span id="cb18-58"><a></a>  </span>
+<span id="cb18-59"><a></a>  <span class="co"># filter for years ----</span></span>
+<span id="cb18-60"><a></a>  years_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb18-61"><a></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb18-62"><a></a>      <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>year_input)) <span class="co"># return observations where year is "in" the set of options provided by the user via the checkboxGroupInput</span></span>
+<span id="cb18-63"><a></a>  })</span>
+<span id="cb18-64"><a></a>  </span>
+<span id="cb18-65"><a></a>  <span class="co"># render the DT::datatable ----</span></span>
+<span id="cb18-66"><a></a>  output<span class="sc">$</span>penguin_DT_output <span class="ot">&lt;-</span> DT<span class="sc">::</span><span class="fu">renderDataTable</span>({</span>
+<span id="cb18-67"><a></a>    </span>
+<span id="cb18-68"><a></a>    DT<span class="sc">::</span><span class="fu">datatable</span>(<span class="fu">years_df</span>(),</span>
+<span id="cb18-69"><a></a>                  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pagelength =</span> <span class="dv">10</span>),</span>
+<span id="cb18-70"><a></a>                  <span class="at">rownames =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-71"><a></a>    </span>
+<span id="cb18-72"><a></a>  })</span>
+<span id="cb18-73"><a></a>  </span>
+<span id="cb18-74"><a></a>}</span>
+<span id="cb18-75"><a></a></span>
+<span id="cb18-76"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
+<span id="cb18-77"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1474,13 +1467,12 @@ Press the right arrow key to advance through the newly added lines of code.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/oops.gif" style="width:100.0%" alt="A gif of Britney Spears in her iconic red spandex outfit singing 'Oops I did it again.'"></p>
+<p><img data-src="images/part2/oops.gif" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A gif of Britney Spears in her iconic red spandex outfit singing 'Oops I did it again.'"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="end-section" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
 <h2></h2>
@@ -1494,15 +1486,17 @@ End part 2.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_68636393" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_5d7f3510" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -1532,7 +1526,6 @@ End part 2.1
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1788,18 +1781,7 @@ End part 2.1
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1831,11 +1813,50 @@ End part 2.1
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1845,8 +1866,17 @@ End part 2.1
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1860,7 +1890,11 @@ End part 2.1
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>EDS 296-1W – part2.3a</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -159,7 +159,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -332,7 +333,7 @@
 <h2></h2>
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">
-<i class="fa-solid fa-upload" title="a symbol for uploading files – a server with an upward facing arrow that originates at the server" aria-label="upload"></i> Deploying apps with <a href="https://www.shinyapps.io/">shinyapps.io</a>
+<i class="fa-solid fa-upload" title="a symbol for uploading files -- a server with an upward facing arrow that originates at the server" aria-label="upload"></i> Deploying apps with <a href="https://www.shinyapps.io/">shinyapps.io</a>
 </p>
 <p class="caption-text">
 <em>Sharing your Shiny app with others isn’t so easy when it just lives on your computer (and your R session has to act as the server that powers it). We’ll now learn how to host your app using <a href="https://www.shinyapps.io/">shinyapps.io</a>, a free service for sharing your Shiny apps online.</em>
@@ -347,7 +348,7 @@
 Go to <a href="https://www.shinyapps.io/">shinyapps.io</a> and login or create an account (if you don’t already have one) – <strong>I recommend creating your account and logging in using GitHub</strong>. To use <a href="https://www.shinyapps.io/">shinyapps.io</a>, you first need to link your account with RStudio on your computer. Follow the instructions on <a href="https://www.shinyapps.io/">shinyapps.io</a> when you first create your account to install the <a href="https://github.com/rstudio/rsconnect"><code>{rsconnect}</code> package</a> and authorize your account:
 </p>
 
-<img data-src="images/part2/shinyapps_setup.png" style="width:80.0%" alt="shinyapps.io displays setup instructions: (1) INSTALL RSCONNECT: The `rsconnect` package can be installed directly from CRAN. To make sure you have the latest version run following code in your R console: `install.packages('rsconnect')`. (2) AUTHORIZE ACCOUNT: The `rsconnect` package must be authorized to your account using a token and secret. To do this, click the copy button below and we'll copy the whole command you need to your clipboard. Just paste it into your console to authorize your account. Once you've entered the command successfully in R, that computer is now authorized to deploy applications to your shinyapps.io account. (3) DEPLOY: Once the `rsconnect` package has been configured, you're ready to deploy your first application. If you haven't written any applications yet, you can also checkout the Getting Started Guide for instruction son how to deploy our demo application. Run the following code in your R console: `library(rsconnect)`, then `rsconnect::deployApp('path/to/your/app')`." class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/shinyapps_setup.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="shinyapps.io displays setup instructions: (1) INSTALL RSCONNECT: The `rsconnect` package can be installed directly from CRAN. To make sure you have the latest version run following code in your R console: `install.packages('rsconnect')`. (2) AUTHORIZE ACCOUNT: The `rsconnect` package must be authorized to your account using a token and secret. To do this, click the copy button below and we'll copy the whole command you need to your clipboard. Just paste it into your console to authorize your account. Once you've entered the command successfully in R, that computer is now authorized to deploy applications to your shinyapps.io account. (3) DEPLOY: Once the `rsconnect` package has been configured, you're ready to deploy your first application. If you haven't written any applications yet, you can also checkout the Getting Started Guide for instruction son how to deploy our demo application. Run the following code in your R console: `library(rsconnect)`, then `rsconnect::deployApp('path/to/your/app')`."></section>
 <section id="deploy-app" class="slide level2" data-menu-title="~~~ Deploy your app ~~~">
 <h2></h2>
 <p><span class="slide-title">Deploy your app to shinyapps.io</span></p>
@@ -359,7 +360,7 @@ Once your account has been authorized, run <code>rsconnect::deployApp("&lt;app_d
 Once deployed, a browser will open to your application. The URL will take the form: <span class="teal-text"><strong>https://username.shinyapps.io/your_app_directory_name</strong></span>. You should also now see an <code>/rsconnect</code> folder within your app’s directory – this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e.&nbsp;the name, title, server address, account, URL, and time). <strong>This <code>/rsconnect</code> folder should be added and committed into version control (i.e.&nbsp;push it to GitHub!)</strong> so that future re-deployments target the same endpoint (i.e.&nbsp;your app’s URL).
 </p>
 
-<img data-src="images/part2/deployed_v1.gif" style="width:80.0%" alt="Our shiny app, now hosted at the URL https://samanthacsik.shinyapps.io/two-file-app which functions the same as when it was hosted locally." class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/deployed_v1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="Our shiny app, now hosted at the URL https://samanthacsik.shinyapps.io/two-file-app which functions the same as when it was hosted locally."></section>
 <section id="shinyapps-dashboard" class="slide level2" data-menu-title="shinyapps.io dashboard">
 <h2></h2>
 <p><span class="slide-title">The shinyapps.io dashboard</span></p>
@@ -368,7 +369,7 @@ Once deployed, a browser will open to your application. The URL will take the fo
 Your <a href="https://www.shinyapps.io/">shinyapps.io</a> dashboard provides tons of information about your application metrics, instance (the virtualized server that your app is hosted on) and worker (a special type of R process that an Application Instance runs to service requests to an application) settings, plan management, and more. The free plan (the plan we’re using here today) allows you to deploy <strong>five</strong> Shiny apps. You are able to archive and / or delete once-deployed apps to make space for new ones.
 </p>
 
-<img data-src="images/part2/shinapps_dashboard.png" style="width:80.0%" alt="The shinyapps.io dashboard displaying information about our two-file-app, now hosted at https://samanthacsik.shinyapps.io/two-file-app/. You can select different menu items from the navbar at the top of the page, including Overview, Metrics, URLs, Settings, Users, Logs, Restart, Archive, and Trash." class="r-stretch quarto-figure-center"><div class="footer">
+<img data-src="images/part2/shinapps_dashboard.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="The shinyapps.io dashboard displaying information about our two-file-app, now hosted at https://samanthacsik.shinyapps.io/two-file-app/. You can select different menu items from the navbar at the top of the page, including Overview, Metrics, URLs, Settings, Users, Logs, Restart, Archive, and Trash."><div class="footer">
 <p>Check out the <a href="https://docs.posit.co/shinyapps.io/index.html">shinyapps.io user guide</a> for more information on hosting your apps on <a href="https://www.shinyapps.io/">shinyapps.io</a>.</p>
 </div>
 </section>
@@ -430,14 +431,14 @@ If you and / or your client wish to continue using your app after this time, we 
 <hr>
 <p><span class="body-text-s">I was recently walking through these workshop materials and following my own instructions for building App #2 (<code>two-file-app</code>). While the app seemed to working just fine locally, the deployment wasn’t so happy. . . rather than seeing a trout scatterplot and penguin histogram, a red error message which read, <strong>Error: An error has occurred. Check your logs or contact the app author for clarification</strong>, appeared instead:</span></p>
 
-<img data-src="images/part2/deploy-error.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/deploy-error.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="check-log" class="slide level2" data-menu-title="Check the log!">
 <h2></h2>
 <p><span class="slide-title">Check the deployment log!</span></p>
 <hr>
 <p><span class="body-text-s">Heed the error message! After heading over to <a href="https://www.shinyapps.io/">shinyapps.io</a> deployment log, we (pretty quickly) see the source of the error: <code>Warning: Error in myCustomTheme: could not find function "myCustomTheme"</code></span>:</p>
 
-<img data-src="images/part2/deploy-log.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/part2/deploy-log.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="missing-theme" class="slide level2" data-menu-title="Check the code">
 <h2></h2>
 <p><span class="slide-title2">Sure enough. . . <code>myCustomTheme()</code> is missing</span></p>
@@ -445,8 +446,10 @@ If you and / or your client wish to continue using your app after this time, we 
 <p><span class="body-text-s">While I’m not sure exactly how <code>myCustomTheme()</code> disappeared from <code>global.R</code> – it’s possible I accidentally deleted it, but had it stored in my global environment so that my app still ran fine locally – adding it back in, then redeploying lead to a fully functioning, deployed application:</span></p>
 
 
-<img data-src="images/part2/deploy-rstudio.png" style="width:100.0%" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+<img data-src="images/part2/deploy-rstudio.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -476,7 +479,6 @@ If you and / or your client wish to continue using your app after this time, we 
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -732,18 +734,7 @@ If you and / or your client wish to continue using your app after this time, we 
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -775,11 +766,50 @@ If you and / or your client wish to continue using your app after this time, we 
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -789,8 +819,17 @@ If you and / or your client wish to continue using your app after this time, we 
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -804,7 +843,11 @@ If you and / or your client wish to continue using your app after this time, we 
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

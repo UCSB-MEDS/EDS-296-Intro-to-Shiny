@@ -18,15 +18,15 @@ knitr::include_graphics("images/oprah-dashboard.png")
 But do you *really* need a dashboard? Image source: [X (formally Twitter)](https://twitter.com/pokateo_/status/1651968490863984640)
 :::
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 *No coding required in this section!*
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 *No data downloads required for this section*
 
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
 Part 8 is contained in one lesson:
 

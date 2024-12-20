@@ -14,7 +14,7 @@ toc: true
 knitr::include_graphics("images/styling-apps.png")
 ```
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 We'll be using the following R packages: 
 
@@ -30,7 +30,7 @@ library(fresh)
 library(sass)
 ```
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 ```{r}
 #| eval: false
@@ -40,8 +40,7 @@ library(palmerpenguins)
 library(lterdatasampler)
 ```
 
-
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
 Part 4 is broken down into two lessons:
 

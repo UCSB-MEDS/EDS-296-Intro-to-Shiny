@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>EDS 296-1W – part2.2c</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -409,7 +410,7 @@ It’s usually valuable (and important) to provide some background information /
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/landing-text.png" style="width:100.0%" alt="The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."></p>
+<p><img data-src="images/part2/landing-text.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."></p>
 </figure>
 </div>
 </div>
@@ -428,8 +429,7 @@ It’s usually valuable (and important) to provide some background information /
 <p class="body-text-s">
 <span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> who maintains the app, where the code lives, how to submit issues / suggestions
 </p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="unruly-text" class="slide level2" data-menu-title="Unruly text in the UI">
 <h2></h2>
@@ -443,113 +443,113 @@ For example, I’ve added and formatted my landing page’s text directly in the
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="8-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  </span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="co"># (Page 1) intro tabPanel ----</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"About this App"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>           </span>
-<span id="cb1-8"><a href="#cb1-8"></a>           <span class="fu">fluidRow</span>(</span>
-<span id="cb1-9"><a href="#cb1-9"></a>             <span class="fu">column</span>(<span class="dv">1</span>),</span>
-<span id="cb1-10"><a href="#cb1-10"></a>             <span class="fu">column</span>(<span class="dv">10</span>,</span>
-<span id="cb1-11"><a href="#cb1-11"></a>                    tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Welcome to the LTER Animal Data Explorer!"</span>),</span>
-<span id="cb1-12"><a href="#cb1-12"></a>                    tags<span class="sc">$</span><span class="fu">br</span>(),</span>
-<span id="cb1-13"><a href="#cb1-13"></a>                    tags<span class="sc">$</span><span class="fu">h4</span>(<span class="st">"Why did we build this app?"</span>),</span>
-<span id="cb1-14"><a href="#cb1-14"></a>                    tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://lternet.edu/"</span>, <span class="st">"Long Term Ecological Research (LTER)"</span>), <span class="st">"sites...but primarily, it was built as a teaching tool for"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://bren.ucsb.edu/courses/eds-430"</span>, <span class="st">"EDS 430 (Intro to Shiny)"</span>), <span class="st">"-- this workshop, taught through the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://ucsb-meds.github.io/"</span>, <span class="st">"Master of Environmental Data Science (MEDS) program"</span>), <span class="st">"at the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://bren.ucsb.edu/"</span>, <span class="st">"Bren School of Environmental Science and Management"</span>), <span class="st">"is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development."</span>),</span>
-<span id="cb1-15"><a href="#cb1-15"></a>                    tags<span class="sc">$</span><span class="fu">br</span>(),</span>
-<span id="cb1-16"><a href="#cb1-16"></a>                    tags<span class="sc">$</span><span class="fu">h4</span>(<span class="st">"Where's the data?"</span>),</span>
-<span id="cb1-17"><a href="#cb1-17"></a>                    tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"Check out the"</span>, tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Explore the Data"</span>), <span class="st">"page to find interactive data visualizations looking at Cutthroat trout of the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://andrewsforest.oregonstate.edu/"</span>, <span class="st">"Andrews Forest LTER"</span>), <span class="st">"and Adélie, Gentoo &amp; Chinstrap penguins of the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://pallter.marine.rutgers.edu/"</span>, <span class="st">"Palmer Station LTER."</span>))</span>
-<span id="cb1-18"><a href="#cb1-18"></a>             ),</span>
-<span id="cb1-19"><a href="#cb1-19"></a>             <span class="fu">column</span>(<span class="dv">1</span>)</span>
-<span id="cb1-20"><a href="#cb1-20"></a>           ), <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>           </span>
-<span id="cb1-22"><a href="#cb1-22"></a>           <span class="fu">hr</span>(),</span>
-<span id="cb1-23"><a href="#cb1-23"></a>           </span>
-<span id="cb1-24"><a href="#cb1-24"></a>           <span class="fu">em</span>(<span class="st">"This app is maintained by"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://samanthacsik.github.io/"</span>, <span class="st">"Samantha Csik"</span>), <span class="st">"and is updated as needed for teaching purposes. Please report any issues"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://github.com/samanthacsik/EDS430-shiny-app/issues"</span>, <span class="st">"here."</span>), <span class="st">"Source code can be found on"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://github.com/samanthacsik/EDS430-shiny-app"</span>, <span class="st">"GitHub."</span>))</span>
-<span id="cb1-25"><a href="#cb1-25"></a>           </span>
-<span id="cb1-26"><a href="#cb1-26"></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> (Page 1) intro tabPanel</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>  </span>
-<span id="cb1-28"><a href="#cb1-28"></a>  <span class="co"># (Page 2) data viz tabPanel ----</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Explore the Data"</span>,</span>
-<span id="cb1-30"><a href="#cb1-30"></a>           </span>
-<span id="cb1-31"><a href="#cb1-31"></a>           <span class="co"># tabsetPanel to contain tabs for data viz ----</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a>           <span class="fu">tabsetPanel</span>(</span>
-<span id="cb1-33"><a href="#cb1-33"></a>             </span>
-<span id="cb1-34"><a href="#cb1-34"></a>             <span class="co"># trout tabPanel ----</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Trout"</span>,</span>
-<span id="cb1-36"><a href="#cb1-36"></a>                      </span>
-<span id="cb1-37"><a href="#cb1-37"></a>                      <span class="co"># trout plot sidebarLayout ----</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a>                      <span class="fu">sidebarLayout</span>(</span>
-<span id="cb1-39"><a href="#cb1-39"></a>                        </span>
-<span id="cb1-40"><a href="#cb1-40"></a>                        <span class="co"># trout plot sidebarPanel ----</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a>                        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb1-42"><a href="#cb1-42"></a>                          </span>
-<span id="cb1-43"><a href="#cb1-43"></a>                          <span class="co"># channel type pickerInput ----</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"channel_type_input"</span>, <span class="at">label =</span> <span class="st">"Select channel type(s):"</span>,</span>
-<span id="cb1-45"><a href="#cb1-45"></a>                                      <span class="at">choices =</span> <span class="fu">unique</span>(clean_trout<span class="sc">$</span>channel_type),</span>
-<span id="cb1-46"><a href="#cb1-46"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-47"><a href="#cb1-47"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"cascade"</span>, <span class="st">"pool"</span>),</span>
-<span id="cb1-48"><a href="#cb1-48"></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> channel type pickerInput</span></span>
-<span id="cb1-49"><a href="#cb1-49"></a>                          </span>
-<span id="cb1-50"><a href="#cb1-50"></a>                          <span class="co"># # section checkboxGroupInput ----</span></span>
-<span id="cb1-51"><a href="#cb1-51"></a>                          <span class="fu">checkboxGroupButtons</span>(<span class="at">inputId =</span> <span class="st">"section_input"</span>, <span class="at">label =</span> <span class="st">"Select a sampling section:"</span>,</span>
-<span id="cb1-52"><a href="#cb1-52"></a>                                               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
-<span id="cb1-53"><a href="#cb1-53"></a>                                               <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
-<span id="cb1-54"><a href="#cb1-54"></a>                                               <span class="at">individual =</span> <span class="cn">FALSE</span>, <span class="at">justified =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="st">"sm"</span>,</span>
-<span id="cb1-55"><a href="#cb1-55"></a>                                               <span class="at">checkIcon =</span> <span class="fu">list</span>(<span class="at">yes =</span> <span class="fu">icon</span>(<span class="st">"ok"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>), <span class="at">no =</span> <span class="fu">icon</span>(<span class="st">"remove"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>))), <span class="co"># </span><span class="re">END</span><span class="co"> section checkboxGroupInput</span></span>
-<span id="cb1-56"><a href="#cb1-56"></a>                          </span>
-<span id="cb1-57"><a href="#cb1-57"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarPanel</span></span>
-<span id="cb1-58"><a href="#cb1-58"></a>                        </span>
-<span id="cb1-59"><a href="#cb1-59"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
-<span id="cb1-60"><a href="#cb1-60"></a>                        <span class="fu">mainPanel</span>(</span>
-<span id="cb1-61"><a href="#cb1-61"></a>                          </span>
-<span id="cb1-62"><a href="#cb1-62"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
-<span id="cb1-63"><a href="#cb1-63"></a>                          </span>
-<span id="cb1-64"><a href="#cb1-64"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
-<span id="cb1-65"><a href="#cb1-65"></a>                        </span>
-<span id="cb1-66"><a href="#cb1-66"></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarLayout</span></span>
-<span id="cb1-67"><a href="#cb1-67"></a>                      </span>
-<span id="cb1-68"><a href="#cb1-68"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> trout tabPanel </span></span>
-<span id="cb1-69"><a href="#cb1-69"></a>             </span>
-<span id="cb1-70"><a href="#cb1-70"></a>             <span class="co"># penguin tabPanel ----</span></span>
-<span id="cb1-71"><a href="#cb1-71"></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Penguins"</span>,</span>
-<span id="cb1-72"><a href="#cb1-72"></a>                      </span>
-<span id="cb1-73"><a href="#cb1-73"></a>                      <span class="co"># penguin plot sidebarLayout ----</span></span>
-<span id="cb1-74"><a href="#cb1-74"></a>                      <span class="fu">sidebarLayout</span>(</span>
-<span id="cb1-75"><a href="#cb1-75"></a>                        </span>
-<span id="cb1-76"><a href="#cb1-76"></a>                        <span class="co"># penguin plot sidebarPanel ----</span></span>
-<span id="cb1-77"><a href="#cb1-77"></a>                        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb1-78"><a href="#cb1-78"></a>                          </span>
-<span id="cb1-79"><a href="#cb1-79"></a>                          <span class="co"># island pickerInput ----</span></span>
-<span id="cb1-80"><a href="#cb1-80"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
-<span id="cb1-81"><a href="#cb1-81"></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb1-82"><a href="#cb1-82"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-83"><a href="#cb1-83"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb1-84"><a href="#cb1-84"></a>                                      <span class="at">multiple =</span> T), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
-<span id="cb1-85"><a href="#cb1-85"></a>                          </span>
-<span id="cb1-86"><a href="#cb1-86"></a>                          <span class="co"># bin number sliderInput ----</span></span>
-<span id="cb1-87"><a href="#cb1-87"></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
-<span id="cb1-88"><a href="#cb1-88"></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
-<span id="cb1-89"><a href="#cb1-89"></a>                          </span>
-<span id="cb1-90"><a href="#cb1-90"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
-<span id="cb1-91"><a href="#cb1-91"></a>                        </span>
-<span id="cb1-92"><a href="#cb1-92"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
-<span id="cb1-93"><a href="#cb1-93"></a>                        <span class="fu">mainPanel</span>(</span>
-<span id="cb1-94"><a href="#cb1-94"></a>                          </span>
-<span id="cb1-95"><a href="#cb1-95"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>) </span>
-<span id="cb1-96"><a href="#cb1-96"></a>                          </span>
-<span id="cb1-97"><a href="#cb1-97"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
-<span id="cb1-98"><a href="#cb1-98"></a>                        </span>
-<span id="cb1-99"><a href="#cb1-99"></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarLayout</span></span>
-<span id="cb1-100"><a href="#cb1-100"></a>                      </span>
-<span id="cb1-101"><a href="#cb1-101"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin tabPanel</span></span>
-<span id="cb1-102"><a href="#cb1-102"></a>             </span>
-<span id="cb1-103"><a href="#cb1-103"></a>           ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb1-104"><a href="#cb1-104"></a>           </span>
-<span id="cb1-105"><a href="#cb1-105"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> (Page 2) data viz tabPanel</span></span>
-<span id="cb1-106"><a href="#cb1-106"></a>  </span>
-<span id="cb1-107"><a href="#cb1-107"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="8-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
+<span id="cb1-2"><a></a>  </span>
+<span id="cb1-3"><a></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
+<span id="cb1-4"><a></a>  </span>
+<span id="cb1-5"><a></a>  <span class="co"># (Page 1) intro tabPanel ----</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"About this App"</span>,</span>
+<span id="cb1-7"><a></a>           </span>
+<span id="cb1-8"><a></a>           <span class="fu">fluidRow</span>(</span>
+<span id="cb1-9"><a></a>             <span class="fu">column</span>(<span class="dv">1</span>),</span>
+<span id="cb1-10"><a></a>             <span class="fu">column</span>(<span class="dv">10</span>,</span>
+<span id="cb1-11"><a></a>                    tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Welcome to the LTER Animal Data Explorer!"</span>),</span>
+<span id="cb1-12"><a></a>                    tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb1-13"><a></a>                    tags<span class="sc">$</span><span class="fu">h4</span>(<span class="st">"Why did we build this app?"</span>),</span>
+<span id="cb1-14"><a></a>                    tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://lternet.edu/"</span>, <span class="st">"Long Term Ecological Research (LTER)"</span>), <span class="st">"sites...but primarily, it was built as a teaching tool for"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://bren.ucsb.edu/courses/eds-430"</span>, <span class="st">"EDS 430 (Intro to Shiny)"</span>), <span class="st">"-- this workshop, taught through the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://ucsb-meds.github.io/"</span>, <span class="st">"Master of Environmental Data Science (MEDS) program"</span>), <span class="st">"at the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://bren.ucsb.edu/"</span>, <span class="st">"Bren School of Environmental Science and Management"</span>), <span class="st">"is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development."</span>),</span>
+<span id="cb1-15"><a></a>                    tags<span class="sc">$</span><span class="fu">br</span>(),</span>
+<span id="cb1-16"><a></a>                    tags<span class="sc">$</span><span class="fu">h4</span>(<span class="st">"Where's the data?"</span>),</span>
+<span id="cb1-17"><a></a>                    tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"Check out the"</span>, tags<span class="sc">$</span><span class="fu">strong</span>(<span class="st">"Explore the Data"</span>), <span class="st">"page to find interactive data visualizations looking at Cutthroat trout of the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://andrewsforest.oregonstate.edu/"</span>, <span class="st">"Andrews Forest LTER"</span>), <span class="st">"and Adélie, Gentoo &amp; Chinstrap penguins of the"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://pallter.marine.rutgers.edu/"</span>, <span class="st">"Palmer Station LTER."</span>))</span>
+<span id="cb1-18"><a></a>             ),</span>
+<span id="cb1-19"><a></a>             <span class="fu">column</span>(<span class="dv">1</span>)</span>
+<span id="cb1-20"><a></a>           ), <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow</span></span>
+<span id="cb1-21"><a></a>           </span>
+<span id="cb1-22"><a></a>           <span class="fu">hr</span>(),</span>
+<span id="cb1-23"><a></a>           </span>
+<span id="cb1-24"><a></a>           <span class="fu">em</span>(<span class="st">"This app is maintained by"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://samanthacsik.github.io/"</span>, <span class="st">"Samantha Csik"</span>), <span class="st">"and is updated as needed for teaching purposes. Please report any issues"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://github.com/samanthacsik/EDS430-shiny-app/issues"</span>, <span class="st">"here."</span>), <span class="st">"Source code can be found on"</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="at">href =</span> <span class="st">"https://github.com/samanthacsik/EDS430-shiny-app"</span>, <span class="st">"GitHub."</span>))</span>
+<span id="cb1-25"><a></a>           </span>
+<span id="cb1-26"><a></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> (Page 1) intro tabPanel</span></span>
+<span id="cb1-27"><a></a>  </span>
+<span id="cb1-28"><a></a>  <span class="co"># (Page 2) data viz tabPanel ----</span></span>
+<span id="cb1-29"><a></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Explore the Data"</span>,</span>
+<span id="cb1-30"><a></a>           </span>
+<span id="cb1-31"><a></a>           <span class="co"># tabsetPanel to contain tabs for data viz ----</span></span>
+<span id="cb1-32"><a></a>           <span class="fu">tabsetPanel</span>(</span>
+<span id="cb1-33"><a></a>             </span>
+<span id="cb1-34"><a></a>             <span class="co"># trout tabPanel ----</span></span>
+<span id="cb1-35"><a></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Trout"</span>,</span>
+<span id="cb1-36"><a></a>                      </span>
+<span id="cb1-37"><a></a>                      <span class="co"># trout plot sidebarLayout ----</span></span>
+<span id="cb1-38"><a></a>                      <span class="fu">sidebarLayout</span>(</span>
+<span id="cb1-39"><a></a>                        </span>
+<span id="cb1-40"><a></a>                        <span class="co"># trout plot sidebarPanel ----</span></span>
+<span id="cb1-41"><a></a>                        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb1-42"><a></a>                          </span>
+<span id="cb1-43"><a></a>                          <span class="co"># channel type pickerInput ----</span></span>
+<span id="cb1-44"><a></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"channel_type_input"</span>, <span class="at">label =</span> <span class="st">"Select channel type(s):"</span>,</span>
+<span id="cb1-45"><a></a>                                      <span class="at">choices =</span> <span class="fu">unique</span>(clean_trout<span class="sc">$</span>channel_type),</span>
+<span id="cb1-46"><a></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-47"><a></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"cascade"</span>, <span class="st">"pool"</span>),</span>
+<span id="cb1-48"><a></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> channel type pickerInput</span></span>
+<span id="cb1-49"><a></a>                          </span>
+<span id="cb1-50"><a></a>                          <span class="co"># # section checkboxGroupInput ----</span></span>
+<span id="cb1-51"><a></a>                          <span class="fu">checkboxGroupButtons</span>(<span class="at">inputId =</span> <span class="st">"section_input"</span>, <span class="at">label =</span> <span class="st">"Select a sampling section:"</span>,</span>
+<span id="cb1-52"><a></a>                                               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
+<span id="cb1-53"><a></a>                                               <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
+<span id="cb1-54"><a></a>                                               <span class="at">individual =</span> <span class="cn">FALSE</span>, <span class="at">justified =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="st">"sm"</span>,</span>
+<span id="cb1-55"><a></a>                                               <span class="at">checkIcon =</span> <span class="fu">list</span>(<span class="at">yes =</span> <span class="fu">icon</span>(<span class="st">"ok"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>), <span class="at">no =</span> <span class="fu">icon</span>(<span class="st">"remove"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>))), <span class="co"># </span><span class="re">END</span><span class="co"> section checkboxGroupInput</span></span>
+<span id="cb1-56"><a></a>                          </span>
+<span id="cb1-57"><a></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarPanel</span></span>
+<span id="cb1-58"><a></a>                        </span>
+<span id="cb1-59"><a></a>                        <span class="co"># trout plot mainPanel ----</span></span>
+<span id="cb1-60"><a></a>                        <span class="fu">mainPanel</span>(</span>
+<span id="cb1-61"><a></a>                          </span>
+<span id="cb1-62"><a></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
+<span id="cb1-63"><a></a>                          </span>
+<span id="cb1-64"><a></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
+<span id="cb1-65"><a></a>                        </span>
+<span id="cb1-66"><a></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarLayout</span></span>
+<span id="cb1-67"><a></a>                      </span>
+<span id="cb1-68"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> trout tabPanel </span></span>
+<span id="cb1-69"><a></a>             </span>
+<span id="cb1-70"><a></a>             <span class="co"># penguin tabPanel ----</span></span>
+<span id="cb1-71"><a></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Penguins"</span>,</span>
+<span id="cb1-72"><a></a>                      </span>
+<span id="cb1-73"><a></a>                      <span class="co"># penguin plot sidebarLayout ----</span></span>
+<span id="cb1-74"><a></a>                      <span class="fu">sidebarLayout</span>(</span>
+<span id="cb1-75"><a></a>                        </span>
+<span id="cb1-76"><a></a>                        <span class="co"># penguin plot sidebarPanel ----</span></span>
+<span id="cb1-77"><a></a>                        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb1-78"><a></a>                          </span>
+<span id="cb1-79"><a></a>                          <span class="co"># island pickerInput ----</span></span>
+<span id="cb1-80"><a></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
+<span id="cb1-81"><a></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb1-82"><a></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-83"><a></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb1-84"><a></a>                                      <span class="at">multiple =</span> T), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
+<span id="cb1-85"><a></a>                          </span>
+<span id="cb1-86"><a></a>                          <span class="co"># bin number sliderInput ----</span></span>
+<span id="cb1-87"><a></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
+<span id="cb1-88"><a></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
+<span id="cb1-89"><a></a>                          </span>
+<span id="cb1-90"><a></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
+<span id="cb1-91"><a></a>                        </span>
+<span id="cb1-92"><a></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
+<span id="cb1-93"><a></a>                        <span class="fu">mainPanel</span>(</span>
+<span id="cb1-94"><a></a>                          </span>
+<span id="cb1-95"><a></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>) </span>
+<span id="cb1-96"><a></a>                          </span>
+<span id="cb1-97"><a></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
+<span id="cb1-98"><a></a>                        </span>
+<span id="cb1-99"><a></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarLayout</span></span>
+<span id="cb1-100"><a></a>                      </span>
+<span id="cb1-101"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin tabPanel</span></span>
+<span id="cb1-102"><a></a>             </span>
+<span id="cb1-103"><a></a>           ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb1-104"><a></a>           </span>
+<span id="cb1-105"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> (Page 2) data viz tabPanel</span></span>
+<span id="cb1-106"><a></a>  </span>
+<span id="cb1-107"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -572,110 +572,110 @@ Below shows how we can use this approach to simplify our UI:
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="8-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  </span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="co"># (Page 1) intro tabPanel ----</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"About this App"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7"></a>           </span>
-<span id="cb2-8"><a href="#cb2-8"></a>           <span class="co"># intro text fluidRow ----</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>           <span class="fu">fluidRow</span>(</span>
-<span id="cb2-10"><a href="#cb2-10"></a>             </span>
-<span id="cb2-11"><a href="#cb2-11"></a>             <span class="co"># use columns to create white space on sides</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>             <span class="fu">column</span>(<span class="dv">1</span>),</span>
-<span id="cb2-13"><a href="#cb2-13"></a>             <span class="fu">column</span>(<span class="dv">10</span>, <span class="fu">includeMarkdown</span>(<span class="st">"text/about.md"</span>)),</span>
-<span id="cb2-14"><a href="#cb2-14"></a>             <span class="fu">column</span>(<span class="dv">1</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>             </span>
-<span id="cb2-16"><a href="#cb2-16"></a>           ), <span class="co"># </span><span class="re">END</span><span class="co"> intro text fluidRow</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>           </span>
-<span id="cb2-18"><a href="#cb2-18"></a>           <span class="fu">hr</span>(), <span class="co"># creates light gray horizontal line</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a>           </span>
-<span id="cb2-20"><a href="#cb2-20"></a>           <span class="co"># footer text ----</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a>           <span class="fu">includeMarkdown</span>(<span class="st">"text/footer.md"</span>)</span>
-<span id="cb2-22"><a href="#cb2-22"></a>           </span>
-<span id="cb2-23"><a href="#cb2-23"></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> (Page 1) intro tabPanel</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>  </span>
-<span id="cb2-25"><a href="#cb2-25"></a>  <span class="co"># (Page 2) data viz tabPanel ----</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Explore the Data"</span>,</span>
-<span id="cb2-27"><a href="#cb2-27"></a>           </span>
-<span id="cb2-28"><a href="#cb2-28"></a>           <span class="co"># tabsetPanel to contain tabs for data viz ----</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>           <span class="fu">tabsetPanel</span>(</span>
-<span id="cb2-30"><a href="#cb2-30"></a>             </span>
-<span id="cb2-31"><a href="#cb2-31"></a>             <span class="co"># trout tabPanel ----</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Trout"</span>,</span>
-<span id="cb2-33"><a href="#cb2-33"></a>                      </span>
-<span id="cb2-34"><a href="#cb2-34"></a>                      <span class="co"># trout plot sidebarLayout ----</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>                      <span class="fu">sidebarLayout</span>(</span>
-<span id="cb2-36"><a href="#cb2-36"></a>                        </span>
-<span id="cb2-37"><a href="#cb2-37"></a>                        <span class="co"># trout plot sidebarPanel ----</span></span>
-<span id="cb2-38"><a href="#cb2-38"></a>                        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb2-39"><a href="#cb2-39"></a>                          </span>
-<span id="cb2-40"><a href="#cb2-40"></a>                          <span class="co"># channel type pickerInput ----</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"channel_type_input"</span>, <span class="at">label =</span> <span class="st">"Select channel type(s):"</span>,</span>
-<span id="cb2-42"><a href="#cb2-42"></a>                                      <span class="at">choices =</span> <span class="fu">unique</span>(clean_trout<span class="sc">$</span>channel_type),</span>
-<span id="cb2-43"><a href="#cb2-43"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"cascade"</span>, <span class="st">"pool"</span>),</span>
-<span id="cb2-44"><a href="#cb2-44"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-45"><a href="#cb2-45"></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> channel type pickerInput</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a>                          </span>
-<span id="cb2-47"><a href="#cb2-47"></a>                          <span class="co"># # section checkboxGroupInput ----</span></span>
-<span id="cb2-48"><a href="#cb2-48"></a>                          <span class="fu">checkboxGroupButtons</span>(<span class="at">inputId =</span> <span class="st">"section_input"</span>, <span class="at">label =</span> <span class="st">"Select a sampling section:"</span>,</span>
-<span id="cb2-49"><a href="#cb2-49"></a>                                               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
-<span id="cb2-50"><a href="#cb2-50"></a>                                               <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
-<span id="cb2-51"><a href="#cb2-51"></a>                                               <span class="at">individual =</span> <span class="cn">FALSE</span>, <span class="at">justified =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="st">"sm"</span>,</span>
-<span id="cb2-52"><a href="#cb2-52"></a>                                               <span class="at">checkIcon =</span> <span class="fu">list</span>(<span class="at">yes =</span> <span class="fu">icon</span>(<span class="st">"ok"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>), <span class="at">no =</span> <span class="fu">icon</span>(<span class="st">"remove"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>))), <span class="co"># </span><span class="re">END</span><span class="co"> section checkboxGroupInput</span></span>
-<span id="cb2-53"><a href="#cb2-53"></a>                          </span>
-<span id="cb2-54"><a href="#cb2-54"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarPanel</span></span>
-<span id="cb2-55"><a href="#cb2-55"></a>                        </span>
-<span id="cb2-56"><a href="#cb2-56"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
-<span id="cb2-57"><a href="#cb2-57"></a>                        <span class="fu">mainPanel</span>(</span>
-<span id="cb2-58"><a href="#cb2-58"></a>                          </span>
-<span id="cb2-59"><a href="#cb2-59"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
-<span id="cb2-60"><a href="#cb2-60"></a>                          </span>
-<span id="cb2-61"><a href="#cb2-61"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
-<span id="cb2-62"><a href="#cb2-62"></a>                        </span>
-<span id="cb2-63"><a href="#cb2-63"></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarLayout</span></span>
-<span id="cb2-64"><a href="#cb2-64"></a>                      </span>
-<span id="cb2-65"><a href="#cb2-65"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> trout tabPanel</span></span>
-<span id="cb2-66"><a href="#cb2-66"></a>             </span>
-<span id="cb2-67"><a href="#cb2-67"></a>             <span class="co"># penguin tabPanel ----</span></span>
-<span id="cb2-68"><a href="#cb2-68"></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Penguins"</span>,</span>
-<span id="cb2-69"><a href="#cb2-69"></a>                      </span>
-<span id="cb2-70"><a href="#cb2-70"></a>                      <span class="co"># penguin plot sidebarLayout ----</span></span>
-<span id="cb2-71"><a href="#cb2-71"></a>                      <span class="fu">sidebarLayout</span>(</span>
-<span id="cb2-72"><a href="#cb2-72"></a>                        </span>
-<span id="cb2-73"><a href="#cb2-73"></a>                        <span class="co"># penguin plot sidebarPanel ----</span></span>
-<span id="cb2-74"><a href="#cb2-74"></a>                        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb2-75"><a href="#cb2-75"></a>                          </span>
-<span id="cb2-76"><a href="#cb2-76"></a>                          <span class="co"># island pickerInput ----</span></span>
-<span id="cb2-77"><a href="#cb2-77"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
-<span id="cb2-78"><a href="#cb2-78"></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb2-79"><a href="#cb2-79"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb2-80"><a href="#cb2-80"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-81"><a href="#cb2-81"></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
-<span id="cb2-82"><a href="#cb2-82"></a>                          </span>
-<span id="cb2-83"><a href="#cb2-83"></a>                          <span class="co"># bin number sliderInput ----</span></span>
-<span id="cb2-84"><a href="#cb2-84"></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
-<span id="cb2-85"><a href="#cb2-85"></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
-<span id="cb2-86"><a href="#cb2-86"></a>                          </span>
-<span id="cb2-87"><a href="#cb2-87"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
-<span id="cb2-88"><a href="#cb2-88"></a>                        </span>
-<span id="cb2-89"><a href="#cb2-89"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
-<span id="cb2-90"><a href="#cb2-90"></a>                        <span class="fu">mainPanel</span>(</span>
-<span id="cb2-91"><a href="#cb2-91"></a>                          </span>
-<span id="cb2-92"><a href="#cb2-92"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>)</span>
-<span id="cb2-93"><a href="#cb2-93"></a>                          </span>
-<span id="cb2-94"><a href="#cb2-94"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
-<span id="cb2-95"><a href="#cb2-95"></a>                        </span>
-<span id="cb2-96"><a href="#cb2-96"></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarLayout</span></span>
-<span id="cb2-97"><a href="#cb2-97"></a>                      </span>
-<span id="cb2-98"><a href="#cb2-98"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin tabPanel</span></span>
-<span id="cb2-99"><a href="#cb2-99"></a>             </span>
-<span id="cb2-100"><a href="#cb2-100"></a>           ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb2-101"><a href="#cb2-101"></a>           </span>
-<span id="cb2-102"><a href="#cb2-102"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> (Page 2) data viz tabPanel</span></span>
-<span id="cb2-103"><a href="#cb2-103"></a>  </span>
-<span id="cb2-104"><a href="#cb2-104"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="8-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
+<span id="cb2-2"><a></a>  </span>
+<span id="cb2-3"><a></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
+<span id="cb2-4"><a></a>  </span>
+<span id="cb2-5"><a></a>  <span class="co"># (Page 1) intro tabPanel ----</span></span>
+<span id="cb2-6"><a></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"About this App"</span>,</span>
+<span id="cb2-7"><a></a>           </span>
+<span id="cb2-8"><a></a>           <span class="co"># intro text fluidRow ----</span></span>
+<span id="cb2-9"><a></a>           <span class="fu">fluidRow</span>(</span>
+<span id="cb2-10"><a></a>             </span>
+<span id="cb2-11"><a></a>             <span class="co"># use columns to create white space on sides</span></span>
+<span id="cb2-12"><a></a>             <span class="fu">column</span>(<span class="dv">1</span>),</span>
+<span id="cb2-13"><a></a>             <span class="fu">column</span>(<span class="dv">10</span>, <span class="fu">includeMarkdown</span>(<span class="st">"text/about.md"</span>)),</span>
+<span id="cb2-14"><a></a>             <span class="fu">column</span>(<span class="dv">1</span>)</span>
+<span id="cb2-15"><a></a>             </span>
+<span id="cb2-16"><a></a>           ), <span class="co"># </span><span class="re">END</span><span class="co"> intro text fluidRow</span></span>
+<span id="cb2-17"><a></a>           </span>
+<span id="cb2-18"><a></a>           <span class="fu">hr</span>(), <span class="co"># creates light gray horizontal line</span></span>
+<span id="cb2-19"><a></a>           </span>
+<span id="cb2-20"><a></a>           <span class="co"># footer text ----</span></span>
+<span id="cb2-21"><a></a>           <span class="fu">includeMarkdown</span>(<span class="st">"text/footer.md"</span>)</span>
+<span id="cb2-22"><a></a>           </span>
+<span id="cb2-23"><a></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> (Page 1) intro tabPanel</span></span>
+<span id="cb2-24"><a></a>  </span>
+<span id="cb2-25"><a></a>  <span class="co"># (Page 2) data viz tabPanel ----</span></span>
+<span id="cb2-26"><a></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Explore the Data"</span>,</span>
+<span id="cb2-27"><a></a>           </span>
+<span id="cb2-28"><a></a>           <span class="co"># tabsetPanel to contain tabs for data viz ----</span></span>
+<span id="cb2-29"><a></a>           <span class="fu">tabsetPanel</span>(</span>
+<span id="cb2-30"><a></a>             </span>
+<span id="cb2-31"><a></a>             <span class="co"># trout tabPanel ----</span></span>
+<span id="cb2-32"><a></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Trout"</span>,</span>
+<span id="cb2-33"><a></a>                      </span>
+<span id="cb2-34"><a></a>                      <span class="co"># trout plot sidebarLayout ----</span></span>
+<span id="cb2-35"><a></a>                      <span class="fu">sidebarLayout</span>(</span>
+<span id="cb2-36"><a></a>                        </span>
+<span id="cb2-37"><a></a>                        <span class="co"># trout plot sidebarPanel ----</span></span>
+<span id="cb2-38"><a></a>                        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb2-39"><a></a>                          </span>
+<span id="cb2-40"><a></a>                          <span class="co"># channel type pickerInput ----</span></span>
+<span id="cb2-41"><a></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"channel_type_input"</span>, <span class="at">label =</span> <span class="st">"Select channel type(s):"</span>,</span>
+<span id="cb2-42"><a></a>                                      <span class="at">choices =</span> <span class="fu">unique</span>(clean_trout<span class="sc">$</span>channel_type),</span>
+<span id="cb2-43"><a></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"cascade"</span>, <span class="st">"pool"</span>),</span>
+<span id="cb2-44"><a></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-45"><a></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> channel type pickerInput</span></span>
+<span id="cb2-46"><a></a>                          </span>
+<span id="cb2-47"><a></a>                          <span class="co"># # section checkboxGroupInput ----</span></span>
+<span id="cb2-48"><a></a>                          <span class="fu">checkboxGroupButtons</span>(<span class="at">inputId =</span> <span class="st">"section_input"</span>, <span class="at">label =</span> <span class="st">"Select a sampling section:"</span>,</span>
+<span id="cb2-49"><a></a>                                               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
+<span id="cb2-50"><a></a>                                               <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
+<span id="cb2-51"><a></a>                                               <span class="at">individual =</span> <span class="cn">FALSE</span>, <span class="at">justified =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="st">"sm"</span>,</span>
+<span id="cb2-52"><a></a>                                               <span class="at">checkIcon =</span> <span class="fu">list</span>(<span class="at">yes =</span> <span class="fu">icon</span>(<span class="st">"ok"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>), <span class="at">no =</span> <span class="fu">icon</span>(<span class="st">"remove"</span>, <span class="at">lib =</span> <span class="st">"glyphicon"</span>))), <span class="co"># </span><span class="re">END</span><span class="co"> section checkboxGroupInput</span></span>
+<span id="cb2-53"><a></a>                          </span>
+<span id="cb2-54"><a></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarPanel</span></span>
+<span id="cb2-55"><a></a>                        </span>
+<span id="cb2-56"><a></a>                        <span class="co"># trout plot mainPanel ----</span></span>
+<span id="cb2-57"><a></a>                        <span class="fu">mainPanel</span>(</span>
+<span id="cb2-58"><a></a>                          </span>
+<span id="cb2-59"><a></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
+<span id="cb2-60"><a></a>                          </span>
+<span id="cb2-61"><a></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
+<span id="cb2-62"><a></a>                        </span>
+<span id="cb2-63"><a></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarLayout</span></span>
+<span id="cb2-64"><a></a>                      </span>
+<span id="cb2-65"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> trout tabPanel</span></span>
+<span id="cb2-66"><a></a>             </span>
+<span id="cb2-67"><a></a>             <span class="co"># penguin tabPanel ----</span></span>
+<span id="cb2-68"><a></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Penguins"</span>,</span>
+<span id="cb2-69"><a></a>                      </span>
+<span id="cb2-70"><a></a>                      <span class="co"># penguin plot sidebarLayout ----</span></span>
+<span id="cb2-71"><a></a>                      <span class="fu">sidebarLayout</span>(</span>
+<span id="cb2-72"><a></a>                        </span>
+<span id="cb2-73"><a></a>                        <span class="co"># penguin plot sidebarPanel ----</span></span>
+<span id="cb2-74"><a></a>                        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb2-75"><a></a>                          </span>
+<span id="cb2-76"><a></a>                          <span class="co"># island pickerInput ----</span></span>
+<span id="cb2-77"><a></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island:"</span>,</span>
+<span id="cb2-78"><a></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb2-79"><a></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb2-80"><a></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-81"><a></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
+<span id="cb2-82"><a></a>                          </span>
+<span id="cb2-83"><a></a>                          <span class="co"># bin number sliderInput ----</span></span>
+<span id="cb2-84"><a></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
+<span id="cb2-85"><a></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
+<span id="cb2-86"><a></a>                          </span>
+<span id="cb2-87"><a></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
+<span id="cb2-88"><a></a>                        </span>
+<span id="cb2-89"><a></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
+<span id="cb2-90"><a></a>                        <span class="fu">mainPanel</span>(</span>
+<span id="cb2-91"><a></a>                          </span>
+<span id="cb2-92"><a></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>)</span>
+<span id="cb2-93"><a></a>                          </span>
+<span id="cb2-94"><a></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
+<span id="cb2-95"><a></a>                        </span>
+<span id="cb2-96"><a></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarLayout</span></span>
+<span id="cb2-97"><a></a>                      </span>
+<span id="cb2-98"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin tabPanel</span></span>
+<span id="cb2-99"><a></a>             </span>
+<span id="cb2-100"><a></a>           ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb2-101"><a></a>           </span>
+<span id="cb2-102"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> (Page 2) data viz tabPanel</span></span>
+<span id="cb2-103"><a></a>  </span>
+<span id="cb2-104"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -685,19 +685,19 @@ Below shows how we can use this approach to simplify our UI:
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/text/about.md</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">#### Why did we build this app?</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's <span class="co">[</span><span class="ot">Long Term Ecological Research (LTER)</span><span class="co">](https://lternet.edu/)</span> sites...but primarily, it was built as a teaching tool for <span class="co">[</span><span class="ot">EDS 430 (Intro to Shiny)</span><span class="co">](https://bren.ucsb.edu/courses/eds-430)</span> -- this workshop, taught through the <span class="co">[</span><span class="ot">Master of Environmental Data Science (MEDS) program</span><span class="co">](https://ucsb-meds.github.io/)</span> at the <span class="co">[</span><span class="ot">Bren School of Environmental Science and Management</span><span class="co">](https://bren.ucsb.edu/)</span>, is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.</span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="fu">#### Where's the data? </span></span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a>Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the <span class="co">[</span><span class="ot">Andrews Forest LTER</span><span class="co">](https://andrewsforest.oregonstate.edu/)</span> and Adelie, Gentoo &amp; Chinstrap penguins of the <span class="co">[</span><span class="ot">Palmer Station LTER</span><span class="co">](https://pallter.marine.rutgers.edu/)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>&lt;br&gt;</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a><span class="fu">#### Why did we build this app?</span></span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's <span class="co">[</span><span class="ot">Long Term Ecological Research (LTER)</span><span class="co">](https://lternet.edu/)</span> sites...but primarily, it was built as a teaching tool for <span class="co">[</span><span class="ot">EDS 430 (Intro to Shiny)</span><span class="co">](https://bren.ucsb.edu/courses/eds-430)</span> -- this workshop, taught through the <span class="co">[</span><span class="ot">Master of Environmental Data Science (MEDS) program</span><span class="co">](https://ucsb-meds.github.io/)</span> at the <span class="co">[</span><span class="ot">Bren School of Environmental Science and Management</span><span class="co">](https://bren.ucsb.edu/)</span>, is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>&lt;br&gt;</span>
+<span id="cb3-10"><a></a></span>
+<span id="cb3-11"><a></a><span class="fu">#### Where's the data? </span></span>
+<span id="cb3-12"><a></a></span>
+<span id="cb3-13"><a></a>Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the <span class="co">[</span><span class="ot">Andrews Forest LTER</span><span class="co">](https://andrewsforest.oregonstate.edu/)</span> and Adelie, Gentoo &amp; Chinstrap penguins of the <span class="co">[</span><span class="ot">Palmer Station LTER</span><span class="co">](https://pallter.marine.rutgers.edu/)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -707,7 +707,7 @@ Below shows how we can use this approach to simplify our UI:
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/text/footer/md</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -719,7 +719,7 @@ Below shows how we can use this approach to simplify our UI:
 <p><span class="slide-title3">Run your app one more time to admire your beautiful creation!</span></p>
 <hr>
 
-<img data-src="images/part2/app2_v1.gif" style="width:80.0%" alt="An app titled 'LTER Animal Data Explorer'. The user starts on the 'About this App' page, which includes a couple paragraphs of intro text. The user then clicks on the 'Explore the Data' page which has two tabs: Trout and Penguins. On the Trout tab, we see a scatterplot with Trout Length (mm) on the x-axis and Trout Weight (g) on the y-axis. The user first filters data by Channel Type using a drop down list selector widget, then by Forest Section using two buttons that toggle on data from clear cut vs. old growth forest. In the Penguin tab, we see a histogram displaying Flipper Lengths (mm) of three penguin species. The user uses a drop down list selector widget to filter data by Island, then uses a slider widget to adjust the number of histogram bins." class="r-stretch quarto-figure-center"><p class="body-text-s">
+<img data-src="images/part2/app2_v1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="An app titled 'LTER Animal Data Explorer'. The user starts on the 'About this App' page, which includes a couple paragraphs of intro text. The user then clicks on the 'Explore the Data' page which has two tabs: Trout and Penguins. On the Trout tab, we see a scatterplot with Trout Length (mm) on the x-axis and Trout Weight (g) on the y-axis. The user first filters data by Channel Type using a drop down list selector widget, then by Forest Section using two buttons that toggle on data from clear cut vs. old growth forest. In the Penguin tab, we see a histogram displaying Flipper Lengths (mm) of three penguin species. The user uses a drop down list selector widget to filter data by Island, then uses a slider widget to adjust the number of histogram bins."><p class="body-text-s">
 Again, we have some UX/UI quirks to fix (most notably, blank plots when all widget options are deselected), which we’ll handle soon. But for now, we have a functioning app that we can practice deploying for the first time!
 </p>
 </section>
@@ -736,45 +736,45 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># LOAD LIBRARIES ----</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(lterdatasampler)</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">library</span>(shinyWidgets)</span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="fu">library</span>(markdown)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># GGPLOT THEME ----</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>myCustomTheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb5-11"><a href="#cb5-11"></a>  </span>
-<span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb5-14"><a href="#cb5-14"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb5-15"><a href="#cb5-15"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb5-16"><a href="#cb5-16"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
-<span id="cb5-17"><a href="#cb5-17"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb5-18"><a href="#cb5-18"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span>
-<span id="cb5-19"><a href="#cb5-19"></a>  </span>
-<span id="cb5-20"><a href="#cb5-20"></a>}</span>
-<span id="cb5-21"><a href="#cb5-21"></a></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="co"># DATA WRANGLING ----</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a>clean_trout <span class="ot">&lt;-</span> and_vertebrates <span class="sc">|&gt;</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Cutthroat trout"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a>  <span class="fu">select</span>(sampledate, section, species, <span class="at">length_mm =</span> length_1_mm, weight_g, <span class="at">channel_type =</span> unittype) <span class="sc">|&gt;</span> </span>
-<span id="cb5-26"><a href="#cb5-26"></a>  <span class="fu">mutate</span>(<span class="at">channel_type =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-27"><a href="#cb5-27"></a>    channel_type <span class="sc">==</span> <span class="st">"C"</span> <span class="sc">~</span> <span class="st">"cascade"</span>,</span>
-<span id="cb5-28"><a href="#cb5-28"></a>    channel_type <span class="sc">==</span> <span class="st">"I"</span> <span class="sc">~</span> <span class="st">"riffle"</span>,</span>
-<span id="cb5-29"><a href="#cb5-29"></a>    channel_type <span class="sc">==</span><span class="st">"IP"</span> <span class="sc">~</span> <span class="st">"isolated pool"</span>,</span>
-<span id="cb5-30"><a href="#cb5-30"></a>    channel_type <span class="sc">==</span><span class="st">"P"</span> <span class="sc">~</span> <span class="st">"pool"</span>,</span>
-<span id="cb5-31"><a href="#cb5-31"></a>    channel_type <span class="sc">==</span><span class="st">"R"</span> <span class="sc">~</span> <span class="st">"rapid"</span>,</span>
-<span id="cb5-32"><a href="#cb5-32"></a>    channel_type <span class="sc">==</span><span class="st">"S"</span> <span class="sc">~</span> <span class="st">"step (small falls)"</span>,</span>
-<span id="cb5-33"><a href="#cb5-33"></a>    channel_type <span class="sc">==</span><span class="st">"SC"</span> <span class="sc">~</span> <span class="st">"side channel"</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb5-35"><a href="#cb5-35"></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-36"><a href="#cb5-36"></a>    section <span class="sc">==</span> <span class="st">"CC"</span> <span class="sc">~</span> <span class="st">"clear cut forest"</span>,</span>
-<span id="cb5-37"><a href="#cb5-37"></a>    section <span class="sc">==</span> <span class="st">"OG"</span> <span class="sc">~</span> <span class="st">"old growth forest"</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb5-39"><a href="#cb5-39"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># LOAD LIBRARIES ----</span></span>
+<span id="cb5-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb5-3"><a></a><span class="fu">library</span>(lterdatasampler)</span>
+<span id="cb5-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb5-5"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-6"><a></a><span class="fu">library</span>(shinyWidgets)</span>
+<span id="cb5-7"><a></a><span class="fu">library</span>(markdown)</span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a><span class="co"># GGPLOT THEME ----</span></span>
+<span id="cb5-10"><a></a>myCustomTheme <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-11"><a></a>  </span>
+<span id="cb5-12"><a></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb5-13"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb5-14"><a></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb5-15"><a></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb5-16"><a></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">13</span>),</span>
+<span id="cb5-17"><a></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb5-18"><a></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>))</span>
+<span id="cb5-19"><a></a>  </span>
+<span id="cb5-20"><a></a>}</span>
+<span id="cb5-21"><a></a></span>
+<span id="cb5-22"><a></a><span class="co"># DATA WRANGLING ----</span></span>
+<span id="cb5-23"><a></a>clean_trout <span class="ot">&lt;-</span> and_vertebrates <span class="sc">|&gt;</span></span>
+<span id="cb5-24"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Cutthroat trout"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-25"><a></a>  <span class="fu">select</span>(sampledate, section, species, <span class="at">length_mm =</span> length_1_mm, weight_g, <span class="at">channel_type =</span> unittype) <span class="sc">|&gt;</span> </span>
+<span id="cb5-26"><a></a>  <span class="fu">mutate</span>(<span class="at">channel_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-27"><a></a>    channel_type <span class="sc">==</span> <span class="st">"C"</span> <span class="sc">~</span> <span class="st">"cascade"</span>,</span>
+<span id="cb5-28"><a></a>    channel_type <span class="sc">==</span> <span class="st">"I"</span> <span class="sc">~</span> <span class="st">"riffle"</span>,</span>
+<span id="cb5-29"><a></a>    channel_type <span class="sc">==</span><span class="st">"IP"</span> <span class="sc">~</span> <span class="st">"isolated pool"</span>,</span>
+<span id="cb5-30"><a></a>    channel_type <span class="sc">==</span><span class="st">"P"</span> <span class="sc">~</span> <span class="st">"pool"</span>,</span>
+<span id="cb5-31"><a></a>    channel_type <span class="sc">==</span><span class="st">"R"</span> <span class="sc">~</span> <span class="st">"rapid"</span>,</span>
+<span id="cb5-32"><a></a>    channel_type <span class="sc">==</span><span class="st">"S"</span> <span class="sc">~</span> <span class="st">"step (small falls)"</span>,</span>
+<span id="cb5-33"><a></a>    channel_type <span class="sc">==</span><span class="st">"SC"</span> <span class="sc">~</span> <span class="st">"side channel"</span></span>
+<span id="cb5-34"><a></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb5-35"><a></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-36"><a></a>    section <span class="sc">==</span> <span class="st">"CC"</span> <span class="sc">~</span> <span class="st">"clear cut forest"</span>,</span>
+<span id="cb5-37"><a></a>    section <span class="sc">==</span> <span class="st">"OG"</span> <span class="sc">~</span> <span class="st">"old growth forest"</span></span>
+<span id="cb5-38"><a></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb5-39"><a></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -784,111 +784,111 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  </span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4"></a>  </span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="co"># (Page 1) intro tabPanel ----</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"About this App"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7"></a>           </span>
-<span id="cb6-8"><a href="#cb6-8"></a>           <span class="co"># intro text fluidRow ----</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>           <span class="fu">fluidRow</span>(</span>
-<span id="cb6-10"><a href="#cb6-10"></a>             </span>
-<span id="cb6-11"><a href="#cb6-11"></a>             <span class="co"># use columns to create white space on sides</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>             <span class="fu">column</span>(<span class="dv">1</span>),</span>
-<span id="cb6-13"><a href="#cb6-13"></a>             <span class="fu">column</span>(<span class="dv">10</span>, <span class="fu">includeMarkdown</span>(<span class="st">"text/about.md"</span>)),</span>
-<span id="cb6-14"><a href="#cb6-14"></a>             <span class="fu">column</span>(<span class="dv">1</span>)</span>
-<span id="cb6-15"><a href="#cb6-15"></a>             </span>
-<span id="cb6-16"><a href="#cb6-16"></a>           ), <span class="co"># </span><span class="re">END</span><span class="co"> intro text fluidRow</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a>           </span>
-<span id="cb6-18"><a href="#cb6-18"></a>           <span class="fu">hr</span>(), <span class="co"># creates light gray horizontal line</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a>           </span>
-<span id="cb6-20"><a href="#cb6-20"></a>           <span class="co"># footer text ----</span></span>
-<span id="cb6-21"><a href="#cb6-21"></a>           <span class="fu">includeMarkdown</span>(<span class="st">"text/footer.md"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22"></a>           </span>
-<span id="cb6-23"><a href="#cb6-23"></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> (Page 1) intro tabPanel</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a>  </span>
-<span id="cb6-25"><a href="#cb6-25"></a>  <span class="co"># (Page 2) data viz tabPanel ----</span></span>
-<span id="cb6-26"><a href="#cb6-26"></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Explore the Data"</span>,</span>
-<span id="cb6-27"><a href="#cb6-27"></a>           </span>
-<span id="cb6-28"><a href="#cb6-28"></a>           <span class="co"># tabsetPanel to contain tabs for data viz ----</span></span>
-<span id="cb6-29"><a href="#cb6-29"></a>           <span class="fu">tabsetPanel</span>(</span>
-<span id="cb6-30"><a href="#cb6-30"></a>             </span>
-<span id="cb6-31"><a href="#cb6-31"></a>             <span class="co"># trout tabPanel ----</span></span>
-<span id="cb6-32"><a href="#cb6-32"></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Trout"</span>,</span>
-<span id="cb6-33"><a href="#cb6-33"></a>                      </span>
-<span id="cb6-34"><a href="#cb6-34"></a>                      <span class="co"># trout plot sidebarLayout ----</span></span>
-<span id="cb6-35"><a href="#cb6-35"></a>                      <span class="fu">sidebarLayout</span>(</span>
-<span id="cb6-36"><a href="#cb6-36"></a>                        </span>
-<span id="cb6-37"><a href="#cb6-37"></a>                        <span class="co"># trout plot sidebarPanel ----</span></span>
-<span id="cb6-38"><a href="#cb6-38"></a>                        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb6-39"><a href="#cb6-39"></a>                          </span>
-<span id="cb6-40"><a href="#cb6-40"></a>                          <span class="co"># channel type pickerInput ----</span></span>
-<span id="cb6-41"><a href="#cb6-41"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"channel_type_input"</span>, <span class="at">label =</span> <span class="st">"Select channel type(s):"</span>,</span>
-<span id="cb6-42"><a href="#cb6-42"></a>                                      <span class="at">choices =</span> <span class="fu">unique</span>(clean_trout<span class="sc">$</span>channel_type), <span class="co"># alternatively, include vector of options</span></span>
-<span id="cb6-43"><a href="#cb6-43"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"cascade"</span>, <span class="st">"pool"</span>),</span>
-<span id="cb6-44"><a href="#cb6-44"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-45"><a href="#cb6-45"></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> channel type pickerInput</span></span>
-<span id="cb6-46"><a href="#cb6-46"></a>                          </span>
-<span id="cb6-47"><a href="#cb6-47"></a>                          <span class="co"># # section checkboxGroupInput ----</span></span>
-<span id="cb6-48"><a href="#cb6-48"></a>                          <span class="fu">checkboxGroupButtons</span>(<span class="at">inputId =</span> <span class="st">"section_input"</span>, <span class="at">label =</span> <span class="st">"Select a sampling section(s):"</span>,</span>
-<span id="cb6-49"><a href="#cb6-49"></a>                                               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
-<span id="cb6-50"><a href="#cb6-50"></a>                                               <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
-<span id="cb6-51"><a href="#cb6-51"></a>                                               <span class="at">individual =</span> <span class="cn">FALSE</span>, <span class="at">justified =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="st">"sm"</span>,</span>
-<span id="cb6-52"><a href="#cb6-52"></a>                                               <span class="at">checkIcon =</span> <span class="fu">list</span>(<span class="at">yes =</span> <span class="fu">icon</span>(<span class="st">"check"</span>, <span class="at">lib =</span> <span class="st">"font-awesome"</span>), </span>
-<span id="cb6-53"><a href="#cb6-53"></a>                                                                <span class="at">no =</span> <span class="fu">icon</span>(<span class="st">"xmark"</span>, <span class="at">lib =</span> <span class="st">"font-awesome"</span>))), <span class="co"># </span><span class="re">END</span><span class="co"> section checkboxGroupInput</span></span>
-<span id="cb6-54"><a href="#cb6-54"></a>                          </span>
-<span id="cb6-55"><a href="#cb6-55"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarPanel</span></span>
-<span id="cb6-56"><a href="#cb6-56"></a>                        </span>
-<span id="cb6-57"><a href="#cb6-57"></a>                        <span class="co"># trout plot mainPanel ----</span></span>
-<span id="cb6-58"><a href="#cb6-58"></a>                        <span class="fu">mainPanel</span>(</span>
-<span id="cb6-59"><a href="#cb6-59"></a>                          </span>
-<span id="cb6-60"><a href="#cb6-60"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
-<span id="cb6-61"><a href="#cb6-61"></a>                          </span>
-<span id="cb6-62"><a href="#cb6-62"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
-<span id="cb6-63"><a href="#cb6-63"></a>                        </span>
-<span id="cb6-64"><a href="#cb6-64"></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarLayout</span></span>
-<span id="cb6-65"><a href="#cb6-65"></a>                      </span>
-<span id="cb6-66"><a href="#cb6-66"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> trout tabPanel </span></span>
-<span id="cb6-67"><a href="#cb6-67"></a>             </span>
-<span id="cb6-68"><a href="#cb6-68"></a>             <span class="co"># penguin tabPanel ----</span></span>
-<span id="cb6-69"><a href="#cb6-69"></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Penguins"</span>,</span>
-<span id="cb6-70"><a href="#cb6-70"></a>                      </span>
-<span id="cb6-71"><a href="#cb6-71"></a>                      <span class="co"># penguin plot sidebarLayout ----</span></span>
-<span id="cb6-72"><a href="#cb6-72"></a>                      <span class="fu">sidebarLayout</span>(</span>
-<span id="cb6-73"><a href="#cb6-73"></a>                        </span>
-<span id="cb6-74"><a href="#cb6-74"></a>                        <span class="co"># penguin plot sidebarPanel ----</span></span>
-<span id="cb6-75"><a href="#cb6-75"></a>                        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb6-76"><a href="#cb6-76"></a>                          </span>
-<span id="cb6-77"><a href="#cb6-77"></a>                          <span class="co"># island pickerInput ----</span></span>
-<span id="cb6-78"><a href="#cb6-78"></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island(s):"</span>,</span>
-<span id="cb6-79"><a href="#cb6-79"></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb6-80"><a href="#cb6-80"></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
-<span id="cb6-81"><a href="#cb6-81"></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-82"><a href="#cb6-82"></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
-<span id="cb6-83"><a href="#cb6-83"></a>                          </span>
-<span id="cb6-84"><a href="#cb6-84"></a>                          <span class="co"># bin number sliderInput ----</span></span>
-<span id="cb6-85"><a href="#cb6-85"></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
-<span id="cb6-86"><a href="#cb6-86"></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
-<span id="cb6-87"><a href="#cb6-87"></a>                          </span>
-<span id="cb6-88"><a href="#cb6-88"></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
-<span id="cb6-89"><a href="#cb6-89"></a>                        </span>
-<span id="cb6-90"><a href="#cb6-90"></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
-<span id="cb6-91"><a href="#cb6-91"></a>                        <span class="fu">mainPanel</span>(</span>
-<span id="cb6-92"><a href="#cb6-92"></a>                          </span>
-<span id="cb6-93"><a href="#cb6-93"></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>) </span>
-<span id="cb6-94"><a href="#cb6-94"></a>                          </span>
-<span id="cb6-95"><a href="#cb6-95"></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
-<span id="cb6-96"><a href="#cb6-96"></a>                        </span>
-<span id="cb6-97"><a href="#cb6-97"></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarLayout</span></span>
-<span id="cb6-98"><a href="#cb6-98"></a>                      </span>
-<span id="cb6-99"><a href="#cb6-99"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin tabPanel</span></span>
-<span id="cb6-100"><a href="#cb6-100"></a>             </span>
-<span id="cb6-101"><a href="#cb6-101"></a>           ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb6-102"><a href="#cb6-102"></a>           </span>
-<span id="cb6-103"><a href="#cb6-103"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> (Page 2) data viz tabPanel</span></span>
-<span id="cb6-104"><a href="#cb6-104"></a>  </span>
-<span id="cb6-105"><a href="#cb6-105"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
+<span id="cb6-2"><a></a>  </span>
+<span id="cb6-3"><a></a>  <span class="at">title =</span> <span class="st">"LTER Animal Data Explorer"</span>,</span>
+<span id="cb6-4"><a></a>  </span>
+<span id="cb6-5"><a></a>  <span class="co"># (Page 1) intro tabPanel ----</span></span>
+<span id="cb6-6"><a></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"About this App"</span>,</span>
+<span id="cb6-7"><a></a>           </span>
+<span id="cb6-8"><a></a>           <span class="co"># intro text fluidRow ----</span></span>
+<span id="cb6-9"><a></a>           <span class="fu">fluidRow</span>(</span>
+<span id="cb6-10"><a></a>             </span>
+<span id="cb6-11"><a></a>             <span class="co"># use columns to create white space on sides</span></span>
+<span id="cb6-12"><a></a>             <span class="fu">column</span>(<span class="dv">1</span>),</span>
+<span id="cb6-13"><a></a>             <span class="fu">column</span>(<span class="dv">10</span>, <span class="fu">includeMarkdown</span>(<span class="st">"text/about.md"</span>)),</span>
+<span id="cb6-14"><a></a>             <span class="fu">column</span>(<span class="dv">1</span>)</span>
+<span id="cb6-15"><a></a>             </span>
+<span id="cb6-16"><a></a>           ), <span class="co"># </span><span class="re">END</span><span class="co"> intro text fluidRow</span></span>
+<span id="cb6-17"><a></a>           </span>
+<span id="cb6-18"><a></a>           <span class="fu">hr</span>(), <span class="co"># creates light gray horizontal line</span></span>
+<span id="cb6-19"><a></a>           </span>
+<span id="cb6-20"><a></a>           <span class="co"># footer text ----</span></span>
+<span id="cb6-21"><a></a>           <span class="fu">includeMarkdown</span>(<span class="st">"text/footer.md"</span>)</span>
+<span id="cb6-22"><a></a>           </span>
+<span id="cb6-23"><a></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> (Page 1) intro tabPanel</span></span>
+<span id="cb6-24"><a></a>  </span>
+<span id="cb6-25"><a></a>  <span class="co"># (Page 2) data viz tabPanel ----</span></span>
+<span id="cb6-26"><a></a>  <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Explore the Data"</span>,</span>
+<span id="cb6-27"><a></a>           </span>
+<span id="cb6-28"><a></a>           <span class="co"># tabsetPanel to contain tabs for data viz ----</span></span>
+<span id="cb6-29"><a></a>           <span class="fu">tabsetPanel</span>(</span>
+<span id="cb6-30"><a></a>             </span>
+<span id="cb6-31"><a></a>             <span class="co"># trout tabPanel ----</span></span>
+<span id="cb6-32"><a></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Trout"</span>,</span>
+<span id="cb6-33"><a></a>                      </span>
+<span id="cb6-34"><a></a>                      <span class="co"># trout plot sidebarLayout ----</span></span>
+<span id="cb6-35"><a></a>                      <span class="fu">sidebarLayout</span>(</span>
+<span id="cb6-36"><a></a>                        </span>
+<span id="cb6-37"><a></a>                        <span class="co"># trout plot sidebarPanel ----</span></span>
+<span id="cb6-38"><a></a>                        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb6-39"><a></a>                          </span>
+<span id="cb6-40"><a></a>                          <span class="co"># channel type pickerInput ----</span></span>
+<span id="cb6-41"><a></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"channel_type_input"</span>, <span class="at">label =</span> <span class="st">"Select channel type(s):"</span>,</span>
+<span id="cb6-42"><a></a>                                      <span class="at">choices =</span> <span class="fu">unique</span>(clean_trout<span class="sc">$</span>channel_type), <span class="co"># alternatively, include vector of options</span></span>
+<span id="cb6-43"><a></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"cascade"</span>, <span class="st">"pool"</span>),</span>
+<span id="cb6-44"><a></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-45"><a></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> channel type pickerInput</span></span>
+<span id="cb6-46"><a></a>                          </span>
+<span id="cb6-47"><a></a>                          <span class="co"># # section checkboxGroupInput ----</span></span>
+<span id="cb6-48"><a></a>                          <span class="fu">checkboxGroupButtons</span>(<span class="at">inputId =</span> <span class="st">"section_input"</span>, <span class="at">label =</span> <span class="st">"Select a sampling section(s):"</span>,</span>
+<span id="cb6-49"><a></a>                                               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
+<span id="cb6-50"><a></a>                                               <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"clear cut forest"</span>, <span class="st">"old growth forest"</span>),</span>
+<span id="cb6-51"><a></a>                                               <span class="at">individual =</span> <span class="cn">FALSE</span>, <span class="at">justified =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="st">"sm"</span>,</span>
+<span id="cb6-52"><a></a>                                               <span class="at">checkIcon =</span> <span class="fu">list</span>(<span class="at">yes =</span> <span class="fu">icon</span>(<span class="st">"check"</span>, <span class="at">lib =</span> <span class="st">"font-awesome"</span>), </span>
+<span id="cb6-53"><a></a>                                                                <span class="at">no =</span> <span class="fu">icon</span>(<span class="st">"xmark"</span>, <span class="at">lib =</span> <span class="st">"font-awesome"</span>))), <span class="co"># </span><span class="re">END</span><span class="co"> section checkboxGroupInput</span></span>
+<span id="cb6-54"><a></a>                          </span>
+<span id="cb6-55"><a></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarPanel</span></span>
+<span id="cb6-56"><a></a>                        </span>
+<span id="cb6-57"><a></a>                        <span class="co"># trout plot mainPanel ----</span></span>
+<span id="cb6-58"><a></a>                        <span class="fu">mainPanel</span>(</span>
+<span id="cb6-59"><a></a>                          </span>
+<span id="cb6-60"><a></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"trout_scatterplot_output"</span>) </span>
+<span id="cb6-61"><a></a>                          </span>
+<span id="cb6-62"><a></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot mainPanel</span></span>
+<span id="cb6-63"><a></a>                        </span>
+<span id="cb6-64"><a></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> trout plot sidebarLayout</span></span>
+<span id="cb6-65"><a></a>                      </span>
+<span id="cb6-66"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> trout tabPanel </span></span>
+<span id="cb6-67"><a></a>             </span>
+<span id="cb6-68"><a></a>             <span class="co"># penguin tabPanel ----</span></span>
+<span id="cb6-69"><a></a>             <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Penguins"</span>,</span>
+<span id="cb6-70"><a></a>                      </span>
+<span id="cb6-71"><a></a>                      <span class="co"># penguin plot sidebarLayout ----</span></span>
+<span id="cb6-72"><a></a>                      <span class="fu">sidebarLayout</span>(</span>
+<span id="cb6-73"><a></a>                        </span>
+<span id="cb6-74"><a></a>                        <span class="co"># penguin plot sidebarPanel ----</span></span>
+<span id="cb6-75"><a></a>                        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb6-76"><a></a>                          </span>
+<span id="cb6-77"><a></a>                          <span class="co"># island pickerInput ----</span></span>
+<span id="cb6-78"><a></a>                          <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_island_input"</span>, <span class="at">label =</span> <span class="st">"Select an island(s):"</span>,</span>
+<span id="cb6-79"><a></a>                                      <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb6-80"><a></a>                                      <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Torgersen"</span>, <span class="st">"Dream"</span>, <span class="st">"Biscoe"</span>),</span>
+<span id="cb6-81"><a></a>                                      <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-82"><a></a>                                      <span class="at">multiple =</span> <span class="cn">TRUE</span>), <span class="co"># </span><span class="re">END</span><span class="co"> island pickerInput</span></span>
+<span id="cb6-83"><a></a>                          </span>
+<span id="cb6-84"><a></a>                          <span class="co"># bin number sliderInput ----</span></span>
+<span id="cb6-85"><a></a>                          <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"bin_num_input"</span>, <span class="at">label =</span> <span class="st">"Select number of bins:"</span>,</span>
+<span id="cb6-86"><a></a>                                      <span class="at">value =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="dv">1</span>), <span class="co"># </span><span class="re">END</span><span class="co"> bin number sliderInput</span></span>
+<span id="cb6-87"><a></a>                          </span>
+<span id="cb6-88"><a></a>                        ), <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarPanel</span></span>
+<span id="cb6-89"><a></a>                        </span>
+<span id="cb6-90"><a></a>                        <span class="co"># penguin plot mainPanel ----</span></span>
+<span id="cb6-91"><a></a>                        <span class="fu">mainPanel</span>(</span>
+<span id="cb6-92"><a></a>                          </span>
+<span id="cb6-93"><a></a>                          <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"flipperLength_histogram_output"</span>) </span>
+<span id="cb6-94"><a></a>                          </span>
+<span id="cb6-95"><a></a>                        ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot mainPanel</span></span>
+<span id="cb6-96"><a></a>                        </span>
+<span id="cb6-97"><a></a>                      ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin plot sidebarLayout</span></span>
+<span id="cb6-98"><a></a>                      </span>
+<span id="cb6-99"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> penguin tabPanel</span></span>
+<span id="cb6-100"><a></a>             </span>
+<span id="cb6-101"><a></a>           ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb6-102"><a></a>           </span>
+<span id="cb6-103"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> (Page 2) data viz tabPanel</span></span>
+<span id="cb6-104"><a></a>  </span>
+<span id="cb6-105"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -898,54 +898,54 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="co"># filter for channel types ----</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  trout_filtered_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a>      clean_trout <span class="sc">|&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>        <span class="fu">filter</span>(channel_type <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>channel_type_input)) <span class="sc">|&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>        <span class="fu">filter</span>(section <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>section_input))</span>
-<span id="cb7-9"><a href="#cb7-9"></a>        </span>
-<span id="cb7-10"><a href="#cb7-10"></a>    })</span>
-<span id="cb7-11"><a href="#cb7-11"></a></span>
-<span id="cb7-12"><a href="#cb7-12"></a>  <span class="co"># trout scatterplot ----</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>  output<span class="sc">$</span>trout_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb7-14"><a href="#cb7-14"></a></span>
-<span id="cb7-15"><a href="#cb7-15"></a>    <span class="fu">ggplot</span>(<span class="fu">trout_filtered_df</span>(), <span class="fu">aes</span>(<span class="at">x =</span> length_mm, <span class="at">y =</span> weight_g, <span class="at">color =</span> channel_type, <span class="at">shape =</span> channel_type)) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a>      <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"cascade"</span> <span class="ot">=</span> <span class="st">"#2E2585"</span>, <span class="st">"riffle"</span> <span class="ot">=</span> <span class="st">"#337538"</span>, <span class="st">"isolated pool"</span> <span class="ot">=</span> <span class="st">"#DCCD7D"</span>,</span>
-<span id="cb7-18"><a href="#cb7-18"></a>                                    <span class="st">"pool"</span> <span class="ot">=</span> <span class="st">"#5DA899"</span>, <span class="st">"rapid"</span> <span class="ot">=</span> <span class="st">"#C16A77"</span>, <span class="st">"step (small falls)"</span> <span class="ot">=</span> <span class="st">"#9F4A96"</span>,</span>
-<span id="cb7-19"><a href="#cb7-19"></a>                                    <span class="st">"side channel"</span> <span class="ot">=</span> <span class="st">"#94CBEC"</span>)) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"cascade"</span> <span class="ot">=</span> <span class="dv">15</span>, <span class="st">"riffle"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"isolated pool"</span> <span class="ot">=</span> <span class="dv">19</span>,</span>
-<span id="cb7-21"><a href="#cb7-21"></a>                                    <span class="st">"pool"</span> <span class="ot">=</span> <span class="dv">18</span>, <span class="st">"rapid"</span> <span class="ot">=</span> <span class="dv">8</span>, <span class="st">"step (small falls)"</span> <span class="ot">=</span> <span class="dv">23</span>,</span>
-<span id="cb7-22"><a href="#cb7-22"></a>                                    <span class="st">"side channel"</span> <span class="ot">=</span> <span class="dv">25</span>)) <span class="sc">+</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trout Length (mm)"</span>, <span class="at">y =</span> <span class="st">"Trout Weight (g)"</span>, <span class="at">color =</span> <span class="st">"Channel Type"</span>, <span class="at">shape =</span> <span class="st">"Channel Type"</span>) <span class="sc">+</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a>      <span class="fu">myCustomTheme</span>()</span>
-<span id="cb7-25"><a href="#cb7-25"></a></span>
-<span id="cb7-26"><a href="#cb7-26"></a>  })</span>
-<span id="cb7-27"><a href="#cb7-27"></a>  </span>
-<span id="cb7-28"><a href="#cb7-28"></a>  <span class="co"># filter for island ----</span></span>
-<span id="cb7-29"><a href="#cb7-29"></a>  island_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb7-30"><a href="#cb7-30"></a></span>
-<span id="cb7-31"><a href="#cb7-31"></a>    penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-32"><a href="#cb7-32"></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island_input)</span>
-<span id="cb7-33"><a href="#cb7-33"></a></span>
-<span id="cb7-34"><a href="#cb7-34"></a>  })</span>
-<span id="cb7-35"><a href="#cb7-35"></a></span>
-<span id="cb7-36"><a href="#cb7-36"></a>  <span class="co"># render the flipper length histogram ----</span></span>
-<span id="cb7-37"><a href="#cb7-37"></a>  output<span class="sc">$</span>flipperLength_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb7-38"><a href="#cb7-38"></a></span>
-<span id="cb7-39"><a href="#cb7-39"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">island_df</span>()), <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb7-40"><a href="#cb7-40"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> input<span class="sc">$</span>bin_num_input) <span class="sc">+</span></span>
-<span id="cb7-41"><a href="#cb7-41"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb7-42"><a href="#cb7-42"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb7-43"><a href="#cb7-43"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb7-44"><a href="#cb7-44"></a>      <span class="fu">myCustomTheme</span>()</span>
-<span id="cb7-45"><a href="#cb7-45"></a>    </span>
-<span id="cb7-46"><a href="#cb7-46"></a>  })</span>
-<span id="cb7-47"><a href="#cb7-47"></a>  </span>
-<span id="cb7-48"><a href="#cb7-48"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb7-2"><a></a>  </span>
+<span id="cb7-3"><a></a>  <span class="co"># filter for channel types ----</span></span>
+<span id="cb7-4"><a></a>  trout_filtered_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>      clean_trout <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a></a>        <span class="fu">filter</span>(channel_type <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>channel_type_input)) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a></a>        <span class="fu">filter</span>(section <span class="sc">%in%</span> <span class="fu">c</span>(input<span class="sc">$</span>section_input))</span>
+<span id="cb7-9"><a></a>        </span>
+<span id="cb7-10"><a></a>    })</span>
+<span id="cb7-11"><a></a></span>
+<span id="cb7-12"><a></a>  <span class="co"># trout scatterplot ----</span></span>
+<span id="cb7-13"><a></a>  output<span class="sc">$</span>trout_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb7-14"><a></a></span>
+<span id="cb7-15"><a></a>    <span class="fu">ggplot</span>(<span class="fu">trout_filtered_df</span>(), <span class="fu">aes</span>(<span class="at">x =</span> length_mm, <span class="at">y =</span> weight_g, <span class="at">color =</span> channel_type, <span class="at">shape =</span> channel_type)) <span class="sc">+</span></span>
+<span id="cb7-16"><a></a>      <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb7-17"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"cascade"</span> <span class="ot">=</span> <span class="st">"#2E2585"</span>, <span class="st">"riffle"</span> <span class="ot">=</span> <span class="st">"#337538"</span>, <span class="st">"isolated pool"</span> <span class="ot">=</span> <span class="st">"#DCCD7D"</span>,</span>
+<span id="cb7-18"><a></a>                                    <span class="st">"pool"</span> <span class="ot">=</span> <span class="st">"#5DA899"</span>, <span class="st">"rapid"</span> <span class="ot">=</span> <span class="st">"#C16A77"</span>, <span class="st">"step (small falls)"</span> <span class="ot">=</span> <span class="st">"#9F4A96"</span>,</span>
+<span id="cb7-19"><a></a>                                    <span class="st">"side channel"</span> <span class="ot">=</span> <span class="st">"#94CBEC"</span>)) <span class="sc">+</span></span>
+<span id="cb7-20"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"cascade"</span> <span class="ot">=</span> <span class="dv">15</span>, <span class="st">"riffle"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"isolated pool"</span> <span class="ot">=</span> <span class="dv">19</span>,</span>
+<span id="cb7-21"><a></a>                                    <span class="st">"pool"</span> <span class="ot">=</span> <span class="dv">18</span>, <span class="st">"rapid"</span> <span class="ot">=</span> <span class="dv">8</span>, <span class="st">"step (small falls)"</span> <span class="ot">=</span> <span class="dv">23</span>,</span>
+<span id="cb7-22"><a></a>                                    <span class="st">"side channel"</span> <span class="ot">=</span> <span class="dv">25</span>)) <span class="sc">+</span></span>
+<span id="cb7-23"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trout Length (mm)"</span>, <span class="at">y =</span> <span class="st">"Trout Weight (g)"</span>, <span class="at">color =</span> <span class="st">"Channel Type"</span>, <span class="at">shape =</span> <span class="st">"Channel Type"</span>) <span class="sc">+</span></span>
+<span id="cb7-24"><a></a>      <span class="fu">myCustomTheme</span>()</span>
+<span id="cb7-25"><a></a></span>
+<span id="cb7-26"><a></a>  })</span>
+<span id="cb7-27"><a></a>  </span>
+<span id="cb7-28"><a></a>  <span class="co"># filter for island ----</span></span>
+<span id="cb7-29"><a></a>  island_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb7-30"><a></a></span>
+<span id="cb7-31"><a></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-32"><a></a>      <span class="fu">filter</span>(island <span class="sc">%in%</span> input<span class="sc">$</span>penguin_island_input)</span>
+<span id="cb7-33"><a></a></span>
+<span id="cb7-34"><a></a>  })</span>
+<span id="cb7-35"><a></a></span>
+<span id="cb7-36"><a></a>  <span class="co"># render the flipper length histogram ----</span></span>
+<span id="cb7-37"><a></a>  output<span class="sc">$</span>flipperLength_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb7-38"><a></a></span>
+<span id="cb7-39"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">island_df</span>()), <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb7-40"><a></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> input<span class="sc">$</span>bin_num_input) <span class="sc">+</span></span>
+<span id="cb7-41"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb7-42"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb7-43"><a></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb7-44"><a></a>      <span class="fu">myCustomTheme</span>()</span>
+<span id="cb7-45"><a></a>    </span>
+<span id="cb7-46"><a></a>  })</span>
+<span id="cb7-47"><a></a>  </span>
+<span id="cb7-48"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -955,19 +955,19 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/text/about.md</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">#### Why did we build this app?</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a>This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's <span class="co">[</span><span class="ot">Long Term Ecological Research (LTER)</span><span class="co">](https://lternet.edu/)</span> sites...but primarily, it was built as a teaching tool for <span class="co">[</span><span class="ot">EDS 430 (Intro to Shiny)</span><span class="co">](https://bren.ucsb.edu/courses/eds-430)</span> -- this workshop, taught through the <span class="co">[</span><span class="ot">Master of Environmental Data Science (MEDS) program</span><span class="co">](https://ucsb-meds.github.io/)</span> at the <span class="co">[</span><span class="ot">Bren School of Environmental Science and Management</span><span class="co">](https://bren.ucsb.edu/)</span>, is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.</span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="fu">#### Where's the data? </span></span>
-<span id="cb8-12"><a href="#cb8-12"></a></span>
-<span id="cb8-13"><a href="#cb8-13"></a>Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the <span class="co">[</span><span class="ot">Andrews Forest LTER</span><span class="co">](https://andrewsforest.oregonstate.edu/)</span> and Adelie, Gentoo &amp; Chinstrap penguins of the <span class="co">[</span><span class="ot">Palmer Station LTER</span><span class="co">](https://pallter.marine.rutgers.edu/)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a></a><span class="fu">## Welcome to the LTER Animal Data Explorer!</span></span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>&lt;br&gt;</span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a><span class="fu">#### Why did we build this app?</span></span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a>This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's <span class="co">[</span><span class="ot">Long Term Ecological Research (LTER)</span><span class="co">](https://lternet.edu/)</span> sites...but primarily, it was built as a teaching tool for <span class="co">[</span><span class="ot">EDS 430 (Intro to Shiny)</span><span class="co">](https://bren.ucsb.edu/courses/eds-430)</span> -- this workshop, taught through the <span class="co">[</span><span class="ot">Master of Environmental Data Science (MEDS) program</span><span class="co">](https://ucsb-meds.github.io/)</span> at the <span class="co">[</span><span class="ot">Bren School of Environmental Science and Management</span><span class="co">](https://bren.ucsb.edu/)</span>, is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.</span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a>&lt;br&gt;</span>
+<span id="cb8-10"><a></a></span>
+<span id="cb8-11"><a></a><span class="fu">#### Where's the data? </span></span>
+<span id="cb8-12"><a></a></span>
+<span id="cb8-13"><a></a>Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the <span class="co">[</span><span class="ot">Andrews Forest LTER</span><span class="co">](https://andrewsforest.oregonstate.edu/)</span> and Adelie, Gentoo &amp; Chinstrap penguins of the <span class="co">[</span><span class="ot">Palmer Station LTER</span><span class="co">](https://pallter.marine.rutgers.edu/)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -977,7 +977,7 @@ Again, we have some UX/UI quirks to fix (most notably, blank plots when all widg
 <div class="code-with-filename-file">
 <pre><strong>~/two-file-app/text/footer.md</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a></a>*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -996,15 +996,17 @@ End part 2.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1607e453" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_020e2437" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -1034,7 +1036,6 @@ End part 2.2
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1290,18 +1291,7 @@ End part 2.2
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1333,11 +1323,50 @@ End part 2.2
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1347,8 +1376,17 @@ End part 2.2
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1362,7 +1400,11 @@ End part 2.2
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

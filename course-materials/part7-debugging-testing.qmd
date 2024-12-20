@@ -18,7 +18,7 @@ knitr::include_graphics("images/testing-vs-debugging-cropped.png")
 Image Source: [QA.world](https://qa.world/testing-vs-debugging/)
 :::
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 We'll be using the following R packages: 
 
@@ -32,7 +32,7 @@ library(reactlog)
 library(shinytest2)
 ```
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 ```{r}
 #| eval: false
@@ -41,7 +41,7 @@ library(shinytest2)
 library(palmerpenguins)
 ```
 
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
 Part 7 is broken down into two lessons:
 

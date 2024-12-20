@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.56">
 
   <title>EDS 296-1W – part6.1-functions-slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -495,7 +496,7 @@ Add the following files (+ code) to a new subdirectory called <code>~/functions-
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part7/functions_demo_app.gif" style="width:55.0%" alt="A shiny app with two tabs. The first tab contains a pickerInput that allows the user to select which penguin species they want to visualize data for, along with a scatterplot. The second tab also contains a pickerInput with the exact same penguin species options, along with a histogram."></p>
+<p><img data-src="images/part7/functions_demo_app.gif" class="quarto-figure quarto-figure-center" style="width:55.0%" alt="A shiny app with two tabs. The first tab contains a pickerInput that allows the user to select which penguin species they want to visualize data for, along with a scatterplot. The second tab also contains a pickerInput with the exact same penguin species options, along with a histogram."></p>
 </figure>
 </div>
 </div>
@@ -507,11 +508,11 @@ Add the following files (+ code) to a new subdirectory called <code>~/functions-
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(shinyWidgets)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(shinyWidgets)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -521,47 +522,47 @@ Add the following files (+ code) to a new subdirectory called <code>~/functions-
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  </span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="co"># tabsetPanel ----</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    </span>
-<span id="cb2-8"><a href="#cb2-8"></a>    <span class="co"># scatterplot tab ----</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10"></a>             </span>
-<span id="cb2-11"><a href="#cb2-11"></a>             <span class="co"># species (scatterplot) pickerInput ----</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb2-13"><a href="#cb2-13"></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb2-14"><a href="#cb2-14"></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb2-15"><a href="#cb2-15"></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-16"><a href="#cb2-16"></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-17"><a href="#cb2-17"></a>             </span>
-<span id="cb2-18"><a href="#cb2-18"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
-<span id="cb2-20"><a href="#cb2-20"></a>             </span>
-<span id="cb2-21"><a href="#cb2-21"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a>    </span>
-<span id="cb2-23"><a href="#cb2-23"></a>    </span>
-<span id="cb2-24"><a href="#cb2-24"></a>    <span class="co"># histogram tab ----</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
-<span id="cb2-26"><a href="#cb2-26"></a>             </span>
-<span id="cb2-27"><a href="#cb2-27"></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb2-29"><a href="#cb2-29"></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb2-30"><a href="#cb2-30"></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb2-31"><a href="#cb2-31"></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-32"><a href="#cb2-32"></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-33"><a href="#cb2-33"></a>             </span>
-<span id="cb2-34"><a href="#cb2-34"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
-<span id="cb2-36"><a href="#cb2-36"></a>             </span>
-<span id="cb2-37"><a href="#cb2-37"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
-<span id="cb2-38"><a href="#cb2-38"></a>    </span>
-<span id="cb2-39"><a href="#cb2-39"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a>  </span>
-<span id="cb2-41"><a href="#cb2-41"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-2"><a></a>  </span>
+<span id="cb2-3"><a></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
+<span id="cb2-4"><a></a>  </span>
+<span id="cb2-5"><a></a>  <span class="co"># tabsetPanel ----</span></span>
+<span id="cb2-6"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb2-7"><a></a>    </span>
+<span id="cb2-8"><a></a>    <span class="co"># scatterplot tab ----</span></span>
+<span id="cb2-9"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
+<span id="cb2-10"><a></a>             </span>
+<span id="cb2-11"><a></a>             <span class="co"># species (scatterplot) pickerInput ----</span></span>
+<span id="cb2-12"><a></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb2-13"><a></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb2-14"><a></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb2-15"><a></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-16"><a></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-17"><a></a>             </span>
+<span id="cb2-18"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb2-19"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
+<span id="cb2-20"><a></a>             </span>
+<span id="cb2-21"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
+<span id="cb2-22"><a></a>    </span>
+<span id="cb2-23"><a></a>    </span>
+<span id="cb2-24"><a></a>    <span class="co"># histogram tab ----</span></span>
+<span id="cb2-25"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
+<span id="cb2-26"><a></a>             </span>
+<span id="cb2-27"><a></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
+<span id="cb2-28"><a></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb2-29"><a></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb2-30"><a></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb2-31"><a></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-32"><a></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-33"><a></a>             </span>
+<span id="cb2-34"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb2-35"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
+<span id="cb2-36"><a></a>             </span>
+<span id="cb2-37"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
+<span id="cb2-38"><a></a>    </span>
+<span id="cb2-39"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb2-40"><a></a>  </span>
+<span id="cb2-41"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -571,55 +572,55 @@ Add the following files (+ code) to a new subdirectory called <code>~/functions-
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  </span>
-<span id="cb3-3"><a href="#cb3-3"></a>  </span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a>  })</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a>  </span>
-<span id="cb3-13"><a href="#cb3-13"></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    </span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
-<span id="cb3-17"><a href="#cb3-17"></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
-<span id="cb3-18"><a href="#cb3-18"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb3-21"><a href="#cb3-21"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb3-23"><a href="#cb3-23"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb3-24"><a href="#cb3-24"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb3-25"><a href="#cb3-25"></a>    </span>
-<span id="cb3-26"><a href="#cb3-26"></a>  })</span>
-<span id="cb3-27"><a href="#cb3-27"></a>  </span>
-<span id="cb3-28"><a href="#cb3-28"></a>  </span>
-<span id="cb3-29"><a href="#cb3-29"></a>  <span class="co"># filter penguin species (histogram) ----</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb3-31"><a href="#cb3-31"></a>    </span>
-<span id="cb3-32"><a href="#cb3-32"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
-<span id="cb3-34"><a href="#cb3-34"></a>    </span>
-<span id="cb3-35"><a href="#cb3-35"></a>  })</span>
-<span id="cb3-36"><a href="#cb3-36"></a>  </span>
-<span id="cb3-37"><a href="#cb3-37"></a>  <span class="co"># render the histogram output ----</span></span>
-<span id="cb3-38"><a href="#cb3-38"></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb3-39"><a href="#cb3-39"></a>    </span>
-<span id="cb3-40"><a href="#cb3-40"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()),</span>
-<span id="cb3-41"><a href="#cb3-41"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb3-42"><a href="#cb3-42"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb3-43"><a href="#cb3-43"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb3-44"><a href="#cb3-44"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb3-45"><a href="#cb3-45"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46"></a>    </span>
-<span id="cb3-47"><a href="#cb3-47"></a>  })</span>
-<span id="cb3-48"><a href="#cb3-48"></a>  </span>
-<span id="cb3-49"><a href="#cb3-49"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb3-2"><a></a>  </span>
+<span id="cb3-3"><a></a>  </span>
+<span id="cb3-4"><a></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
+<span id="cb3-5"><a></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>  })</span>
+<span id="cb3-11"><a></a></span>
+<span id="cb3-12"><a></a>  </span>
+<span id="cb3-13"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb3-14"><a></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb3-15"><a></a>    </span>
+<span id="cb3-16"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
+<span id="cb3-17"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
+<span id="cb3-18"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb3-19"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-20"><a></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb3-21"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb3-22"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb3-23"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb3-24"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb3-25"><a></a>    </span>
+<span id="cb3-26"><a></a>  })</span>
+<span id="cb3-27"><a></a>  </span>
+<span id="cb3-28"><a></a>  </span>
+<span id="cb3-29"><a></a>  <span class="co"># filter penguin species (histogram) ----</span></span>
+<span id="cb3-30"><a></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb3-31"><a></a>    </span>
+<span id="cb3-32"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb3-33"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
+<span id="cb3-34"><a></a>    </span>
+<span id="cb3-35"><a></a>  })</span>
+<span id="cb3-36"><a></a>  </span>
+<span id="cb3-37"><a></a>  <span class="co"># render the histogram output ----</span></span>
+<span id="cb3-38"><a></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb3-39"><a></a>    </span>
+<span id="cb3-40"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()),</span>
+<span id="cb3-41"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb3-42"><a></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb3-43"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb3-44"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb3-45"><a></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb3-46"><a></a>    </span>
+<span id="cb3-47"><a></a>  })</span>
+<span id="cb3-48"><a></a>  </span>
+<span id="cb3-49"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -637,47 +638,47 @@ Add the following files (+ code) to a new subdirectory called <code>~/functions-
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="11-16|27-32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  </span>
-<span id="cb4-3"><a href="#cb4-3"></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  </span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="co"># tabsetPanel ----</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb4-7"><a href="#cb4-7"></a>    </span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="co"># scatterplot tab ----</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>             </span>
-<span id="cb4-11"><a href="#cb4-11"></a>             <span class="co"># species (scatterplot) pickerInput ----</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13"></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb4-14"><a href="#cb4-14"></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb4-15"><a href="#cb4-15"></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-16"><a href="#cb4-16"></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-17"><a href="#cb4-17"></a>             </span>
-<span id="cb4-18"><a href="#cb4-18"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
-<span id="cb4-20"><a href="#cb4-20"></a>             </span>
-<span id="cb4-21"><a href="#cb4-21"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a>    </span>
-<span id="cb4-23"><a href="#cb4-23"></a>    </span>
-<span id="cb4-24"><a href="#cb4-24"></a>    <span class="co"># histogram tab ----</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
-<span id="cb4-26"><a href="#cb4-26"></a>             </span>
-<span id="cb4-27"><a href="#cb4-27"></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb4-29"><a href="#cb4-29"></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb4-30"><a href="#cb4-30"></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb4-31"><a href="#cb4-31"></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-32"><a href="#cb4-32"></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-33"><a href="#cb4-33"></a>             </span>
-<span id="cb4-34"><a href="#cb4-34"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb4-35"><a href="#cb4-35"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
-<span id="cb4-36"><a href="#cb4-36"></a>             </span>
-<span id="cb4-37"><a href="#cb4-37"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
-<span id="cb4-38"><a href="#cb4-38"></a>    </span>
-<span id="cb4-39"><a href="#cb4-39"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb4-40"><a href="#cb4-40"></a>  </span>
-<span id="cb4-41"><a href="#cb4-41"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="11-16|27-32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb4-2"><a></a>  </span>
+<span id="cb4-3"><a></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
+<span id="cb4-4"><a></a>  </span>
+<span id="cb4-5"><a></a>  <span class="co"># tabsetPanel ----</span></span>
+<span id="cb4-6"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb4-7"><a></a>    </span>
+<span id="cb4-8"><a></a>    <span class="co"># scatterplot tab ----</span></span>
+<span id="cb4-9"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
+<span id="cb4-10"><a></a>             </span>
+<span id="cb4-11"><a></a>             <span class="co"># species (scatterplot) pickerInput ----</span></span>
+<span id="cb4-12"><a></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb4-13"><a></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb4-14"><a></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb4-15"><a></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-16"><a></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-17"><a></a>             </span>
+<span id="cb4-18"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb4-19"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
+<span id="cb4-20"><a></a>             </span>
+<span id="cb4-21"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
+<span id="cb4-22"><a></a>    </span>
+<span id="cb4-23"><a></a>    </span>
+<span id="cb4-24"><a></a>    <span class="co"># histogram tab ----</span></span>
+<span id="cb4-25"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
+<span id="cb4-26"><a></a>             </span>
+<span id="cb4-27"><a></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
+<span id="cb4-28"><a></a>             <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb4-29"><a></a>                         <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb4-30"><a></a>                         <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb4-31"><a></a>                         <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-32"><a></a>                         <span class="at">multiple =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-33"><a></a>             </span>
+<span id="cb4-34"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb4-35"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
+<span id="cb4-36"><a></a>             </span>
+<span id="cb4-37"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
+<span id="cb4-38"><a></a>    </span>
+<span id="cb4-39"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb4-40"><a></a>  </span>
+<span id="cb4-41"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -689,19 +690,19 @@ Add the following files (+ code) to a new subdirectory called <code>~/functions-
 <p>This app includes two <code>pickerInputs</code>, both of which allow users to select which penguin species to display data for. The only difference between both <code>pickerInput</code>s is the <code>inputId</code>.</p>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="2,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Scatterplot pickerInput for selecting penguin species:</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>            <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb5-4"><a href="#cb5-4"></a>            <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb5-5"><a href="#cb5-5"></a>            <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb5-6"><a href="#cb5-6"></a>            <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co"># Histogram pickerInput for selecting penguin species:</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb5-10"><a href="#cb5-10"></a>            <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb5-11"><a href="#cb5-11"></a>            <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb5-12"><a href="#cb5-12"></a>            <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb5-13"><a href="#cb5-13"></a>            <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="2,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Scatterplot pickerInput for selecting penguin species:</span></span>
+<span id="cb5-2"><a></a><span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb5-3"><a></a>            <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb5-4"><a></a>            <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb5-5"><a></a>            <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-6"><a></a>            <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co"># Histogram pickerInput for selecting penguin species:</span></span>
+<span id="cb5-9"><a></a><span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb5-10"><a></a>            <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb5-11"><a></a>            <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb5-12"><a></a>            <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb5-13"><a></a>            <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="fragment">
@@ -732,13 +733,13 @@ Once written, <code>source()</code> your function script into <code>global.R</co
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/penguinSpp-pickerInput.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>penguinSpp_pickerInput <span class="ot">&lt;-</span> <span class="cf">function</span>(inputId) {</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">pickerInput</span>(<span class="at">inputId =</span> inputId, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb6-4"><a href="#cb6-4"></a>              <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb6-5"><a href="#cb6-5"></a>              <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-6"><a href="#cb6-6"></a>              <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguinSpp_pickerInput <span class="ot">&lt;-</span> <span class="cf">function</span>(inputId) {</span>
+<span id="cb6-2"><a></a>  <span class="fu">pickerInput</span>(<span class="at">inputId =</span> inputId, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb6-3"><a></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb6-4"><a></a>              <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb6-5"><a></a>              <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-6"><a></a>              <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -748,14 +749,14 @@ Once written, <code>source()</code> your function script into <code>global.R</co
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">library</span>(shinyWidgets)</span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co"># IMPORT FUNCTIONS (ONLY IF NECESSARY) ----</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="fu">source</span>(<span class="st">"R/penguinSpp-pickerInput.R"</span>) <span class="co"># will source automatically with Shiny v1.5.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb7-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb7-3"><a></a><span class="fu">library</span>(shinyWidgets)</span>
+<span id="cb7-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb7-5"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-6"><a></a></span>
+<span id="cb7-7"><a></a><span class="co"># IMPORT FUNCTIONS (ONLY IF NECESSARY) ----</span></span>
+<span id="cb7-8"><a></a><span class="fu">source</span>(<span class="st">"R/penguinSpp-pickerInput.R"</span>) <span class="co"># will source automatically with Shiny v1.5.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -774,39 +775,39 @@ Finally, replace your original UI code for building both <code>pickerInput</code
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="11-12|23-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
-<span id="cb8-4"><a href="#cb8-4"></a>  </span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="co"># tabsetPanel ----</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb8-7"><a href="#cb8-7"></a>    </span>
-<span id="cb8-8"><a href="#cb8-8"></a>    <span class="co"># scatterplot tab ----</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10"></a>             </span>
-<span id="cb8-11"><a href="#cb8-11"></a>             <span class="co"># species (scatterplot) pickerInput ---- </span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>),</span>
-<span id="cb8-13"><a href="#cb8-13"></a>             </span>
-<span id="cb8-14"><a href="#cb8-14"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
-<span id="cb8-16"><a href="#cb8-16"></a>             </span>
-<span id="cb8-17"><a href="#cb8-17"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a>    </span>
-<span id="cb8-19"><a href="#cb8-19"></a>    </span>
-<span id="cb8-20"><a href="#cb8-20"></a>    <span class="co"># histogram tab ----</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
-<span id="cb8-22"><a href="#cb8-22"></a>             </span>
-<span id="cb8-23"><a href="#cb8-23"></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>),</span>
-<span id="cb8-25"><a href="#cb8-25"></a>             </span>
-<span id="cb8-26"><a href="#cb8-26"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
-<span id="cb8-28"><a href="#cb8-28"></a>             </span>
-<span id="cb8-29"><a href="#cb8-29"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a>    </span>
-<span id="cb8-31"><a href="#cb8-31"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a>  </span>
-<span id="cb8-33"><a href="#cb8-33"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="11-12|23-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb8-2"><a></a>  </span>
+<span id="cb8-3"><a></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
+<span id="cb8-4"><a></a>  </span>
+<span id="cb8-5"><a></a>  <span class="co"># tabsetPanel ----</span></span>
+<span id="cb8-6"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb8-7"><a></a>    </span>
+<span id="cb8-8"><a></a>    <span class="co"># scatterplot tab ----</span></span>
+<span id="cb8-9"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
+<span id="cb8-10"><a></a>             </span>
+<span id="cb8-11"><a></a>             <span class="co"># species (scatterplot) pickerInput ---- </span></span>
+<span id="cb8-12"><a></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>),</span>
+<span id="cb8-13"><a></a>             </span>
+<span id="cb8-14"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb8-15"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
+<span id="cb8-16"><a></a>             </span>
+<span id="cb8-17"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
+<span id="cb8-18"><a></a>    </span>
+<span id="cb8-19"><a></a>    </span>
+<span id="cb8-20"><a></a>    <span class="co"># histogram tab ----</span></span>
+<span id="cb8-21"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
+<span id="cb8-22"><a></a>             </span>
+<span id="cb8-23"><a></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
+<span id="cb8-24"><a></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>),</span>
+<span id="cb8-25"><a></a>             </span>
+<span id="cb8-26"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb8-27"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
+<span id="cb8-28"><a></a>             </span>
+<span id="cb8-29"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
+<span id="cb8-30"><a></a>    </span>
+<span id="cb8-31"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb8-32"><a></a>  </span>
+<span id="cb8-33"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -832,55 +833,55 @@ Next, let’s see where we can streamline our server code using functions. We ha
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="4-26|29-47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  </span>
-<span id="cb9-3"><a href="#cb9-3"></a>  </span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
-<span id="cb9-9"><a href="#cb9-9"></a></span>
-<span id="cb9-10"><a href="#cb9-10"></a>  })</span>
-<span id="cb9-11"><a href="#cb9-11"></a></span>
-<span id="cb9-12"><a href="#cb9-12"></a>  </span>
-<span id="cb9-13"><a href="#cb9-13"></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb9-15"><a href="#cb9-15"></a>    </span>
-<span id="cb9-16"><a href="#cb9-16"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
-<span id="cb9-17"><a href="#cb9-17"></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
-<span id="cb9-18"><a href="#cb9-18"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb9-19"><a href="#cb9-19"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-20"><a href="#cb9-20"></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb9-21"><a href="#cb9-21"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb9-22"><a href="#cb9-22"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb9-23"><a href="#cb9-23"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb9-24"><a href="#cb9-24"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb9-25"><a href="#cb9-25"></a>    </span>
-<span id="cb9-26"><a href="#cb9-26"></a>  })</span>
-<span id="cb9-27"><a href="#cb9-27"></a>  </span>
-<span id="cb9-28"><a href="#cb9-28"></a>  </span>
-<span id="cb9-29"><a href="#cb9-29"></a>  <span class="co"># filter penguin species (histogram) ----</span></span>
-<span id="cb9-30"><a href="#cb9-30"></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb9-31"><a href="#cb9-31"></a>    </span>
-<span id="cb9-32"><a href="#cb9-32"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb9-33"><a href="#cb9-33"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
-<span id="cb9-34"><a href="#cb9-34"></a>    </span>
-<span id="cb9-35"><a href="#cb9-35"></a>  })</span>
-<span id="cb9-36"><a href="#cb9-36"></a>  </span>
-<span id="cb9-37"><a href="#cb9-37"></a>  <span class="co"># render the histogram output ----</span></span>
-<span id="cb9-38"><a href="#cb9-38"></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb9-39"><a href="#cb9-39"></a>    </span>
-<span id="cb9-40"><a href="#cb9-40"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()),</span>
-<span id="cb9-41"><a href="#cb9-41"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb9-42"><a href="#cb9-42"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb9-43"><a href="#cb9-43"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb9-44"><a href="#cb9-44"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb9-45"><a href="#cb9-45"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb9-46"><a href="#cb9-46"></a>    </span>
-<span id="cb9-47"><a href="#cb9-47"></a>  })</span>
-<span id="cb9-48"><a href="#cb9-48"></a>  </span>
-<span id="cb9-49"><a href="#cb9-49"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="4-26|29-47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb9-2"><a></a>  </span>
+<span id="cb9-3"><a></a>  </span>
+<span id="cb9-4"><a></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
+<span id="cb9-5"><a></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb9-6"><a></a></span>
+<span id="cb9-7"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
+<span id="cb9-9"><a></a></span>
+<span id="cb9-10"><a></a>  })</span>
+<span id="cb9-11"><a></a></span>
+<span id="cb9-12"><a></a>  </span>
+<span id="cb9-13"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb9-14"><a></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb9-15"><a></a>    </span>
+<span id="cb9-16"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
+<span id="cb9-17"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
+<span id="cb9-18"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb9-19"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-20"><a></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb9-21"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb9-22"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb9-23"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb9-24"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb9-25"><a></a>    </span>
+<span id="cb9-26"><a></a>  })</span>
+<span id="cb9-27"><a></a>  </span>
+<span id="cb9-28"><a></a>  </span>
+<span id="cb9-29"><a></a>  <span class="co"># filter penguin species (histogram) ----</span></span>
+<span id="cb9-30"><a></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb9-31"><a></a>    </span>
+<span id="cb9-32"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb9-33"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
+<span id="cb9-34"><a></a>    </span>
+<span id="cb9-35"><a></a>  })</span>
+<span id="cb9-36"><a></a>  </span>
+<span id="cb9-37"><a></a>  <span class="co"># render the histogram output ----</span></span>
+<span id="cb9-38"><a></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb9-39"><a></a>    </span>
+<span id="cb9-40"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()),</span>
+<span id="cb9-41"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb9-42"><a></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb9-43"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb9-44"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb9-45"><a></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb9-46"><a></a>    </span>
+<span id="cb9-47"><a></a>  })</span>
+<span id="cb9-48"><a></a>  </span>
+<span id="cb9-49"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -894,33 +895,33 @@ Next, let’s see where we can streamline our server code using functions. We ha
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/build-penguin-scatterplot.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>build_penguin_scatterplot <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
-<span id="cb10-2"><a href="#cb10-2"></a>  </span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb10-5"><a href="#cb10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
-<span id="cb10-8"><a href="#cb10-8"></a></span>
-<span id="cb10-9"><a href="#cb10-9"></a>  })</span>
-<span id="cb10-10"><a href="#cb10-10"></a></span>
-<span id="cb10-11"><a href="#cb10-11"></a>  </span>
-<span id="cb10-12"><a href="#cb10-12"></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a>  <span class="fu">renderPlot</span>({</span>
-<span id="cb10-14"><a href="#cb10-14"></a>    </span>
-<span id="cb10-15"><a href="#cb10-15"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
-<span id="cb10-16"><a href="#cb10-16"></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
-<span id="cb10-17"><a href="#cb10-17"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb10-18"><a href="#cb10-18"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-19"><a href="#cb10-19"></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb10-20"><a href="#cb10-20"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb10-22"><a href="#cb10-22"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb10-23"><a href="#cb10-23"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb10-24"><a href="#cb10-24"></a>    </span>
-<span id="cb10-25"><a href="#cb10-25"></a>  })</span>
-<span id="cb10-26"><a href="#cb10-26"></a>  </span>
-<span id="cb10-27"><a href="#cb10-27"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>build_penguin_scatterplot <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb10-2"><a></a>  </span>
+<span id="cb10-3"><a></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
+<span id="cb10-4"><a></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb10-7"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a>  })</span>
+<span id="cb10-10"><a></a></span>
+<span id="cb10-11"><a></a>  </span>
+<span id="cb10-12"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb10-13"><a></a>  <span class="fu">renderPlot</span>({</span>
+<span id="cb10-14"><a></a>    </span>
+<span id="cb10-15"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
+<span id="cb10-16"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
+<span id="cb10-17"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb10-18"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-19"><a></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb10-20"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb10-21"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb10-22"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb10-23"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb10-24"><a></a>    </span>
+<span id="cb10-25"><a></a>  })</span>
+<span id="cb10-26"><a></a>  </span>
+<span id="cb10-27"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -935,11 +936,11 @@ Next, let’s see where we can streamline our server code using functions. We ha
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/build-penguin-scatterplot.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>build_penguin_scatterplot <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  </span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="co"># ~ body of function omitted for brevity ~</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  </span>
-<span id="cb11-5"><a href="#cb11-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>build_penguin_scatterplot <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb11-2"><a></a>  </span>
+<span id="cb11-3"><a></a>  <span class="co"># ~ body of function omitted for brevity ~</span></span>
+<span id="cb11-4"><a></a>  </span>
+<span id="cb11-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p><br></p>
@@ -958,34 +959,34 @@ Next, let’s see where we can streamline our server code using functions. We ha
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  </span>
-<span id="cb12-3"><a href="#cb12-3"></a>  </span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="co"># filter data &amp; create penguin scatterplot ----</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_scatterplot</span>(input)</span>
-<span id="cb12-6"><a href="#cb12-6"></a>  </span>
-<span id="cb12-7"><a href="#cb12-7"></a>  </span>
-<span id="cb12-8"><a href="#cb12-8"></a>  <span class="co"># filter penguin species (histogram) ----</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb12-10"><a href="#cb12-10"></a>    </span>
-<span id="cb12-11"><a href="#cb12-11"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
-<span id="cb12-13"><a href="#cb12-13"></a>    </span>
-<span id="cb12-14"><a href="#cb12-14"></a>  })</span>
-<span id="cb12-15"><a href="#cb12-15"></a>  </span>
-<span id="cb12-16"><a href="#cb12-16"></a>  <span class="co"># render the histogram output ----</span></span>
-<span id="cb12-17"><a href="#cb12-17"></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb12-18"><a href="#cb12-18"></a>    </span>
-<span id="cb12-19"><a href="#cb12-19"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()),</span>
-<span id="cb12-20"><a href="#cb12-20"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb12-21"><a href="#cb12-21"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb12-22"><a href="#cb12-22"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb12-23"><a href="#cb12-23"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb12-24"><a href="#cb12-24"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb12-25"><a href="#cb12-25"></a>    </span>
-<span id="cb12-26"><a href="#cb12-26"></a>  })</span>
-<span id="cb12-27"><a href="#cb12-27"></a>  </span>
-<span id="cb12-28"><a href="#cb12-28"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb12-2"><a></a>  </span>
+<span id="cb12-3"><a></a>  </span>
+<span id="cb12-4"><a></a>  <span class="co"># filter data &amp; create penguin scatterplot ----</span></span>
+<span id="cb12-5"><a></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_scatterplot</span>(input)</span>
+<span id="cb12-6"><a></a>  </span>
+<span id="cb12-7"><a></a>  </span>
+<span id="cb12-8"><a></a>  <span class="co"># filter penguin species (histogram) ----</span></span>
+<span id="cb12-9"><a></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb12-10"><a></a>    </span>
+<span id="cb12-11"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
+<span id="cb12-13"><a></a>    </span>
+<span id="cb12-14"><a></a>  })</span>
+<span id="cb12-15"><a></a>  </span>
+<span id="cb12-16"><a></a>  <span class="co"># render the histogram output ----</span></span>
+<span id="cb12-17"><a></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb12-18"><a></a>    </span>
+<span id="cb12-19"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()),</span>
+<span id="cb12-20"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb12-21"><a></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb12-22"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb12-23"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb12-24"><a></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb12-25"><a></a>    </span>
+<span id="cb12-26"><a></a>  })</span>
+<span id="cb12-27"><a></a>  </span>
+<span id="cb12-28"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1005,29 +1006,29 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/build-penguin-histogram.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>build_penguin_histogram <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
-<span id="cb13-2"><a href="#cb13-2"></a>  </span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="co"># filter penguin spp ----</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb13-5"><a href="#cb13-5"></a>    </span>
-<span id="cb13-6"><a href="#cb13-6"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
-<span id="cb13-8"><a href="#cb13-8"></a>    </span>
-<span id="cb13-9"><a href="#cb13-9"></a>  })</span>
-<span id="cb13-10"><a href="#cb13-10"></a>  </span>
-<span id="cb13-11"><a href="#cb13-11"></a>  <span class="co"># render histogram ----</span></span>
-<span id="cb13-12"><a href="#cb13-12"></a>  <span class="fu">renderPlot</span>({</span>
-<span id="cb13-13"><a href="#cb13-13"></a>   </span>
-<span id="cb13-14"><a href="#cb13-14"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()), </span>
-<span id="cb13-15"><a href="#cb13-15"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb13-17"><a href="#cb13-17"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb13-18"><a href="#cb13-18"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb13-19"><a href="#cb13-19"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20"></a>    </span>
-<span id="cb13-21"><a href="#cb13-21"></a>  })</span>
-<span id="cb13-22"><a href="#cb13-22"></a>  </span>
-<span id="cb13-23"><a href="#cb13-23"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>build_penguin_histogram <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb13-2"><a></a>  </span>
+<span id="cb13-3"><a></a>  <span class="co"># filter penguin spp ----</span></span>
+<span id="cb13-4"><a></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb13-5"><a></a>    </span>
+<span id="cb13-6"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
+<span id="cb13-8"><a></a>    </span>
+<span id="cb13-9"><a></a>  })</span>
+<span id="cb13-10"><a></a>  </span>
+<span id="cb13-11"><a></a>  <span class="co"># render histogram ----</span></span>
+<span id="cb13-12"><a></a>  <span class="fu">renderPlot</span>({</span>
+<span id="cb13-13"><a></a>   </span>
+<span id="cb13-14"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()), </span>
+<span id="cb13-15"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb13-16"><a></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb13-17"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb13-18"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb13-19"><a></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb13-20"><a></a>    </span>
+<span id="cb13-21"><a></a>  })</span>
+<span id="cb13-22"><a></a>  </span>
+<span id="cb13-23"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1037,15 +1038,15 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb14-2"><a href="#cb14-2"></a>  </span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="co"># filter data &amp; create penguin scatterplot ----</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_scatterplot</span>(input)</span>
-<span id="cb14-5"><a href="#cb14-5"></a>  </span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="co"># filter data &amp; create penguin histogram ----</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_histogram</span>(input)</span>
-<span id="cb14-8"><a href="#cb14-8"></a></span>
-<span id="cb14-9"><a href="#cb14-9"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="6-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb14-2"><a></a>  </span>
+<span id="cb14-3"><a></a>  <span class="co"># filter data &amp; create penguin scatterplot ----</span></span>
+<span id="cb14-4"><a></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_scatterplot</span>(input)</span>
+<span id="cb14-5"><a></a>  </span>
+<span id="cb14-6"><a></a>  <span class="co"># filter data &amp; create penguin histogram ----</span></span>
+<span id="cb14-7"><a></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_histogram</span>(input)</span>
+<span id="cb14-8"><a></a></span>
+<span id="cb14-9"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1066,11 +1067,11 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># load packages ----</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">library</span>(shinyWidgets)</span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb15-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb15-3"><a></a><span class="fu">library</span>(shinyWidgets)</span>
+<span id="cb15-4"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb15-5"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1080,39 +1081,39 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb16-2"><a href="#cb16-2"></a>  </span>
-<span id="cb16-3"><a href="#cb16-3"></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
-<span id="cb16-4"><a href="#cb16-4"></a>  </span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="co"># tabsetPanel ----</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb16-7"><a href="#cb16-7"></a>    </span>
-<span id="cb16-8"><a href="#cb16-8"></a>    <span class="co"># scatterplot tab ----</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
-<span id="cb16-10"><a href="#cb16-10"></a>             </span>
-<span id="cb16-11"><a href="#cb16-11"></a>             <span class="co"># species (scatterplot) pickerInput ---- </span></span>
-<span id="cb16-12"><a href="#cb16-12"></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>),</span>
-<span id="cb16-13"><a href="#cb16-13"></a>             </span>
-<span id="cb16-14"><a href="#cb16-14"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb16-15"><a href="#cb16-15"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
-<span id="cb16-16"><a href="#cb16-16"></a>             </span>
-<span id="cb16-17"><a href="#cb16-17"></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
-<span id="cb16-18"><a href="#cb16-18"></a>    </span>
-<span id="cb16-19"><a href="#cb16-19"></a>    </span>
-<span id="cb16-20"><a href="#cb16-20"></a>    <span class="co"># histogram tab ----</span></span>
-<span id="cb16-21"><a href="#cb16-21"></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
-<span id="cb16-22"><a href="#cb16-22"></a>             </span>
-<span id="cb16-23"><a href="#cb16-23"></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
-<span id="cb16-24"><a href="#cb16-24"></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>),</span>
-<span id="cb16-25"><a href="#cb16-25"></a>             </span>
-<span id="cb16-26"><a href="#cb16-26"></a>             <span class="co"># scatterplot output ----</span></span>
-<span id="cb16-27"><a href="#cb16-27"></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
-<span id="cb16-28"><a href="#cb16-28"></a>             </span>
-<span id="cb16-29"><a href="#cb16-29"></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
-<span id="cb16-30"><a href="#cb16-30"></a>    </span>
-<span id="cb16-31"><a href="#cb16-31"></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb16-32"><a href="#cb16-32"></a>  </span>
-<span id="cb16-33"><a href="#cb16-33"></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb16-2"><a></a>  </span>
+<span id="cb16-3"><a></a>  tags<span class="sc">$</span><span class="fu">h1</span>(<span class="st">"Demoing Functions"</span>),</span>
+<span id="cb16-4"><a></a>  </span>
+<span id="cb16-5"><a></a>  <span class="co"># tabsetPanel ----</span></span>
+<span id="cb16-6"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb16-7"><a></a>    </span>
+<span id="cb16-8"><a></a>    <span class="co"># scatterplot tab ----</span></span>
+<span id="cb16-9"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Scatterplot"</span>,</span>
+<span id="cb16-10"><a></a>             </span>
+<span id="cb16-11"><a></a>             <span class="co"># species (scatterplot) pickerInput ---- </span></span>
+<span id="cb16-12"><a></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>),</span>
+<span id="cb16-13"><a></a>             </span>
+<span id="cb16-14"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb16-15"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_scatterplot_output"</span>)</span>
+<span id="cb16-16"><a></a>             </span>
+<span id="cb16-17"><a></a>             ), <span class="co"># </span><span class="re">END</span><span class="co"> scatterplot tab</span></span>
+<span id="cb16-18"><a></a>    </span>
+<span id="cb16-19"><a></a>    </span>
+<span id="cb16-20"><a></a>    <span class="co"># histogram tab ----</span></span>
+<span id="cb16-21"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Histogram"</span>,</span>
+<span id="cb16-22"><a></a>             </span>
+<span id="cb16-23"><a></a>             <span class="co"># species (histogram) pickerInput ----</span></span>
+<span id="cb16-24"><a></a>             <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_histogram_input"</span>),</span>
+<span id="cb16-25"><a></a>             </span>
+<span id="cb16-26"><a></a>             <span class="co"># scatterplot output ----</span></span>
+<span id="cb16-27"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_histogram_output"</span>)</span>
+<span id="cb16-28"><a></a>             </span>
+<span id="cb16-29"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> histogram tab</span></span>
+<span id="cb16-30"><a></a>    </span>
+<span id="cb16-31"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb16-32"><a></a>  </span>
+<span id="cb16-33"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1122,15 +1123,15 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/server.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb17-2"><a href="#cb17-2"></a>  </span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="co"># filter data &amp; create penguin scatterplot ----</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_scatterplot</span>(input)</span>
-<span id="cb17-5"><a href="#cb17-5"></a>  </span>
-<span id="cb17-6"><a href="#cb17-6"></a>  <span class="co"># filter data &amp; create penguin histogram ----</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_histogram</span>(input)</span>
-<span id="cb17-8"><a href="#cb17-8"></a></span>
-<span id="cb17-9"><a href="#cb17-9"></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb17-2"><a></a>  </span>
+<span id="cb17-3"><a></a>  <span class="co"># filter data &amp; create penguin scatterplot ----</span></span>
+<span id="cb17-4"><a></a>  output<span class="sc">$</span>penguin_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_scatterplot</span>(input)</span>
+<span id="cb17-5"><a></a>  </span>
+<span id="cb17-6"><a></a>  <span class="co"># filter data &amp; create penguin histogram ----</span></span>
+<span id="cb17-7"><a></a>  output<span class="sc">$</span>penguin_histogram_output <span class="ot">&lt;-</span> <span class="fu">build_penguin_histogram</span>(input)</span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1147,13 +1148,13 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/penguinSpp-pickerInput.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>penguinSpp_pickerInput <span class="ot">&lt;-</span> <span class="cf">function</span>(inputId) {</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">pickerInput</span>(<span class="at">inputId =</span> inputId, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb18-4"><a href="#cb18-4"></a>              <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb18-5"><a href="#cb18-5"></a>              <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb18-6"><a href="#cb18-6"></a>              <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-7"><a href="#cb18-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>penguinSpp_pickerInput <span class="ot">&lt;-</span> <span class="cf">function</span>(inputId) {</span>
+<span id="cb18-2"><a></a>  <span class="fu">pickerInput</span>(<span class="at">inputId =</span> inputId, <span class="at">label =</span> <span class="st">"Select a species:"</span>,</span>
+<span id="cb18-3"><a></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb18-4"><a></a>              <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb18-5"><a></a>              <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-6"><a></a>              <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -1170,33 +1171,33 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/build-penguin-scatterplot.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>build_penguin_scatterplot <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
-<span id="cb19-2"><a href="#cb19-2"></a>  </span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
-<span id="cb19-8"><a href="#cb19-8"></a></span>
-<span id="cb19-9"><a href="#cb19-9"></a>  })</span>
-<span id="cb19-10"><a href="#cb19-10"></a></span>
-<span id="cb19-11"><a href="#cb19-11"></a>  </span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb19-13"><a href="#cb19-13"></a>  <span class="fu">renderPlot</span>({</span>
-<span id="cb19-14"><a href="#cb19-14"></a>    </span>
-<span id="cb19-15"><a href="#cb19-15"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
-<span id="cb19-16"><a href="#cb19-16"></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
-<span id="cb19-17"><a href="#cb19-17"></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb19-18"><a href="#cb19-18"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-19"><a href="#cb19-19"></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
-<span id="cb19-20"><a href="#cb19-20"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb19-21"><a href="#cb19-21"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb19-22"><a href="#cb19-22"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb19-23"><a href="#cb19-23"></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb19-24"><a href="#cb19-24"></a>    </span>
-<span id="cb19-25"><a href="#cb19-25"></a>  })</span>
-<span id="cb19-26"><a href="#cb19-26"></a>  </span>
-<span id="cb19-27"><a href="#cb19-27"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>build_penguin_scatterplot <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb19-2"><a></a>  </span>
+<span id="cb19-3"><a></a>  <span class="co"># filter penguin species (scatterplot) ----</span></span>
+<span id="cb19-4"><a></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb19-5"><a></a></span>
+<span id="cb19-6"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb19-7"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
+<span id="cb19-8"><a></a></span>
+<span id="cb19-9"><a></a>  })</span>
+<span id="cb19-10"><a></a></span>
+<span id="cb19-11"><a></a>  </span>
+<span id="cb19-12"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb19-13"><a></a>  <span class="fu">renderPlot</span>({</span>
+<span id="cb19-14"><a></a>    </span>
+<span id="cb19-15"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_scatterplot_df</span>()),</span>
+<span id="cb19-16"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm,</span>
+<span id="cb19-17"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb19-18"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-19"><a></a>      <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb19-20"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb19-21"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb19-22"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb19-23"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb19-24"><a></a>    </span>
+<span id="cb19-25"><a></a>  })</span>
+<span id="cb19-26"><a></a>  </span>
+<span id="cb19-27"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1206,29 +1207,29 @@ We can repeat a similar process to create a function for building our histogram:
 <div class="code-with-filename-file">
 <pre><strong>~/functions-app/R/build-penguin-histogram.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>build_penguin_histogram <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  </span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="co"># filter penguin spp ----</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
-<span id="cb20-5"><a href="#cb20-5"></a>    </span>
-<span id="cb20-6"><a href="#cb20-6"></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
-<span id="cb20-8"><a href="#cb20-8"></a>    </span>
-<span id="cb20-9"><a href="#cb20-9"></a>  })</span>
-<span id="cb20-10"><a href="#cb20-10"></a>  </span>
-<span id="cb20-11"><a href="#cb20-11"></a>  <span class="co"># render histogram ----</span></span>
-<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">renderPlot</span>({</span>
-<span id="cb20-13"><a href="#cb20-13"></a>   </span>
-<span id="cb20-14"><a href="#cb20-14"></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()), </span>
-<span id="cb20-15"><a href="#cb20-15"></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb20-16"><a href="#cb20-16"></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb20-17"><a href="#cb20-17"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb20-18"><a href="#cb20-18"></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb20-19"><a href="#cb20-19"></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
-<span id="cb20-20"><a href="#cb20-20"></a>    </span>
-<span id="cb20-21"><a href="#cb20-21"></a>  })</span>
-<span id="cb20-22"><a href="#cb20-22"></a>  </span>
-<span id="cb20-23"><a href="#cb20-23"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>build_penguin_histogram <span class="ot">&lt;-</span> <span class="cf">function</span>(input) {</span>
+<span id="cb20-2"><a></a>  </span>
+<span id="cb20-3"><a></a>  <span class="co"># filter penguin spp ----</span></span>
+<span id="cb20-4"><a></a>  filtered_spp_histogram_df <span class="ot">&lt;-</span> <span class="fu">reactive</span> ({</span>
+<span id="cb20-5"><a></a>    </span>
+<span id="cb20-6"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb20-7"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_histogram_input)</span>
+<span id="cb20-8"><a></a>    </span>
+<span id="cb20-9"><a></a>  })</span>
+<span id="cb20-10"><a></a>  </span>
+<span id="cb20-11"><a></a>  <span class="co"># render histogram ----</span></span>
+<span id="cb20-12"><a></a>  <span class="fu">renderPlot</span>({</span>
+<span id="cb20-13"><a></a>   </span>
+<span id="cb20-14"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">filtered_spp_histogram_df</span>()), </span>
+<span id="cb20-15"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb20-16"><a></a>      <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb20-17"><a></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb20-18"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb20-19"><a></a>           <span class="at">fill =</span> <span class="st">"Penguin species"</span>)</span>
+<span id="cb20-20"><a></a>    </span>
+<span id="cb20-21"><a></a>  })</span>
+<span id="cb20-22"><a></a>  </span>
+<span id="cb20-23"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1247,15 +1248,17 @@ End part 6.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_97a99375" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_1c57f8ec" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -1285,7 +1288,6 @@ End part 6.1
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1541,18 +1543,7 @@ End part 6.1
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1584,11 +1575,50 @@ End part 6.1
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1598,8 +1628,17 @@ End part 6.1
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1613,7 +1652,11 @@ End part 6.1
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

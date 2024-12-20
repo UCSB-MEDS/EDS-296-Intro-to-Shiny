@@ -3,13 +3,18 @@ project:
   output-dir: docs
 
 website:
+  announcement:
+    icon: info-circle
+    dismissable: false
+    position: above-navbar
+    content: "Course materials are currently undergoing revision! EDS 296-1W will begin again in February 2025."
   title: "EDS 296-1W"
   navbar:
     right:
       - text: home
         href: index.qmd
       - text: syllabus
-        href: https://docs.google.com/document/d/19dAmJ8Y1zguK1Y9aVdp_I34ekRUMY5_suv_MFwsfuzo/edit?usp=sharing
+        href: https://docs.google.com/document/d/1T8mFfE6-J5EUC1gOYy2g9YMxxivau5rivuVZIYiMn7E/edit?usp=sharing
         target: _blank
       - text: course materials
         menu:
@@ -36,7 +41,7 @@ website:
           - text: resources
             href: resources.qmd
           - text: MEDS installation guide
-            href: https://ucsb-meds.github.io/meds-install-guide.html
+            href: https://ucsb-meds.github.io/MEDS-installation-guide/
             target: _blank
       - icon: github
         menu:

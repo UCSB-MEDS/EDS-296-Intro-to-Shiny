@@ -9,7 +9,7 @@ toc: true
 {{< fa code title="symbol for code, </>" >}}
 :::
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 We'll be using the following R packages: 
 
@@ -22,7 +22,7 @@ library(shinyWidgets)
 library(tidyverse)
 ```
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 ```{r}
 #| eval: false
@@ -32,7 +32,7 @@ library(palmerpenguins)
 library(gapminder)
 ```
 
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
 Part 6 is broken down into two lessons:
 

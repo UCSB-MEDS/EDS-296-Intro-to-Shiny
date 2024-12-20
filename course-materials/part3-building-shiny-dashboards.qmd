@@ -17,7 +17,7 @@ knitr::include_graphics("images/shinydashboard.png")
 An example shinydashboard which displays streaming data from the RStudio CRAN mirror logs. Explore the [dashboard](https://gallery.shinyapps.io/087-crandash/) and [source code](https://github.com/rstudio/shiny-examples/tree/main/087-crandash).
 :::
 
-## Required Packages
+## {{< fa box-open title="an open box" >}} Required Packages {#pkgs}
 
 We'll be using the following R packages: 
 
@@ -33,7 +33,7 @@ library(leaflet)
 library(markdown)
 ```
 
-## Required Data
+## {{< fa table title="a data table" >}} Required Data {#data}
 
 We'll be using publicly-available data via the [Arctic Data Center](https://arcticdata.io/catalog) for our shiny dashboard.
 
@@ -44,7 +44,7 @@ Christopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water d
 
 Take a few moments to review the [metadata record](https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P) and download [FCWO_lakemonitoringdata_2011_2022_daily.csv](https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3).
 
-## Lecture Materials
+## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
 Part 3 is contained in one lesson:
 

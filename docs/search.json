@@ -35,45 +35,45 @@
     "text": "Data Visualization\nThere are so many incredible data viz resources. Check out the resources page on the EDS 240: Data Visualization & Communication course website for many of my favorites."
   },
   {
-    "objectID": "course-materials/part8-wrap-up.html#required-packages",
-    "href": "course-materials/part8-wrap-up.html#required-packages",
+    "objectID": "course-materials/part8-wrap-up.html#pkgs",
+    "href": "course-materials/part8-wrap-up.html#pkgs",
     "title": "Wrap up",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nNo coding required in this section!"
   },
   {
-    "objectID": "course-materials/part8-wrap-up.html#required-data",
-    "href": "course-materials/part8-wrap-up.html#required-data",
+    "objectID": "course-materials/part8-wrap-up.html#data",
+    "href": "course-materials/part8-wrap-up.html#data",
     "title": "Wrap up",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\nNo data downloads required for this section"
   },
   {
     "objectID": "course-materials/part8-wrap-up.html#lecture-materials",
     "href": "course-materials/part8-wrap-up.html#lecture-materials",
     "title": "Wrap up",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 8 is contained in one lesson:\n\nWrap up\n lecture 8 slides"
   },
   {
-    "objectID": "course-materials/part7-debugging-testing.html#required-packages",
-    "href": "course-materials/part7-debugging-testing.html#required-packages",
+    "objectID": "course-materials/part7-debugging-testing.html#pkgs",
+    "href": "course-materials/part7-debugging-testing.html#pkgs",
     "title": "Debugging & Unit Testing",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nWe’ll be using the following R packages:\n\nlibrary(shiny)\nlibrary(tidyverse)\nlibrary(reactlog)\nlibrary(shinytest2)"
   },
   {
-    "objectID": "course-materials/part7-debugging-testing.html#required-data",
-    "href": "course-materials/part7-debugging-testing.html#required-data",
+    "objectID": "course-materials/part7-debugging-testing.html#data",
+    "href": "course-materials/part7-debugging-testing.html#data",
     "title": "Debugging & Unit Testing",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\n\nlibrary(palmerpenguins)"
   },
   {
     "objectID": "course-materials/part7-debugging-testing.html#lecture-materials",
     "href": "course-materials/part7-debugging-testing.html#lecture-materials",
     "title": "Debugging & Unit Testing",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 7 is broken down into two lessons:\n\n\n\nDebugging\n lecture 7.1 slides\n\n\n\n\nUnit Testing\n lecture 7.2 slides"
   },
   {
@@ -270,7 +270,7 @@
     "href": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Question Exercise 1: Add another reactive widget\n\n\nThe {DT} package provides an R interface to the JavaScript library DataTables (you may have already used the {DT} package in your knitted RMarkdown / Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.\n\n\n\n\n\n\nWorking alone or in groups, add a reactive DT datatable to your app with a checkboxGroupInput that allows users to select which year(s) to include in the table. Configure your checkboxGroupInput so that the years 2007 and 2008 are pre-selected.\n\n\nIn the end, your app should look something like the example to the right.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
+    "text": "Question Exercise 1: Add another reactive widget\n\n\nThe {DT} package provides an R interface to the JavaScript library DataTables (you may have already used the {DT} package in your knitted RMarkdown / Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.\n\n\n\n\n\n\nWorking alone or in groups, add a reactive DT datatable to your app with a checkboxGroupInput that allows users to select which year(s) to include in the table. Configure your checkboxGroupInput so that the years 2007 and 2008 are pre-selected.\n\n\nIn the end, your app should look something like the example to the right.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
   },
   {
     "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#app1-ex1-tips",
@@ -326,7 +326,7 @@
     "href": "course-materials/slides/part2.2-two-file-app-slides.html#roadmap-app2v1",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Roadmap for App #2\n\n\nWe’ll be building out our two-file app using data from the {lterdatasampler} and {palmerpenguins} packages. We’ll focus on creating a functional app that has a more visually pleasing UI layout. Our goals are to create:\n\n\n\n \n\n(a) A navigation bar with two pages, one of which will contain two tabs (one tab for each plot)\n\n\n(b) A pickerInput and checkboxGroupButtons for users to filter cutthroat trout data in a reactive scatterplot\n\n\n(c) A pickerInput for users to filter penguin data and a sliderInput to adjust the number of bins in a reactive histogram\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou’ll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) – we’ll learn about ways to improve this in the next section."
+    "text": "Roadmap for App #2\n\n\nWe’ll be building out our two-file app using data from the {lterdatasampler} and {palmerpenguins} packages. We’ll focus on creating a functional app that has a more visually pleasing UI layout. Our goals are to create:\n\n\n\n \n\n(a) A navigation bar with two pages, one of which will contain two tabs (one tab for each plot)\n\n\n(b) A pickerInput and checkboxGroupButtons for users to filter cutthroat trout data in a reactive scatterplot\n\n\n(c) A pickerInput for users to filter penguin data and a sliderInput to adjust the number of bins in a reactive histogram\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou’ll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) – we’ll learn about ways to improve this in the next section."
   },
   {
     "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#two-source",
@@ -361,7 +361,7 @@
     "href": "course-materials/slides/part2.2-two-file-app-slides.html#unstructured-app1",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "We created a perfectly functional first app, but it’s not so visually pleasing\n\n\n\n   nothing really grabs your eye\n inputs & outputs are stacked vertically on top of one another (which requires a lot of vertical scrolling)\n widget label text is difficult to distinguish from other text\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBefore we jump into adding reactive outputs to our next app, we’ll first plan out the visual structure of our UI – first on paper, then with layout functions."
+    "text": "We created a perfectly functional first app, but it’s not so visually pleasing\n\n\n\n   nothing really grabs your eye\n inputs & outputs are stacked vertically on top of one another (which requires a lot of vertical scrolling)\n widget label text is difficult to distinguish from other text\n\n\n\n\n\n\n\n\n\n\n\n\n\nBefore we jump into adding reactive outputs to our next app, we’ll first plan out the visual structure of our UI – first on paper, then with layout functions."
   },
   {
     "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#layout-functions",
@@ -375,7 +375,7 @@
     "href": "course-materials/slides/part2.2-two-file-app-slides.html#layout-function-examples",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Example UI layouts (adapted from Mastering Shiny, Ch. 6)\n\n\nNote: You can combine multiple layout function groups to really customize your UI – for example, you can create a navbar, include tabs, and also establish sidebar and main panel areas for inputs and outputs.\n\n\nSidebar & main areaPage with multiple rowsTabsNavbar\n\n\n\nTo create a page with a side bar and main area to contain your inputs and outputs (respectively), explore the following layout functions and read up on the sidebarLayout documentation:\n\n\n\n\nfluidPage(\n  titlePanel(\n    # app title/description\n  ),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs here\n    ),\n    mainPanel(\n      # outputs here\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTo create a page with multiple rows, explore the following layout functions and check out the fluid layout documentation. Note that each row is made up of 12 columns. The first argument of the column() function takes a value of 1-12 to specify the number of columns to occupy.\n\n\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      ...\n    ),\n    column(8, \n      ...\n    )\n  ),\n  fluidRow(\n    column(6, \n      ...\n    ),\n    column(6, \n      ...\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may find that you eventually end up with too much content to fit on a single application page. Enter tabsetPanel() and tabPanel(). tabsetPanel() creates a container for any number of tabPanel()s. Each tabPanel() can contain any number of HTML components (e.g. inputs and outputs). Find the tabsetPanel documentation here and check out this example:\n\n\n\n\ntabsetPanel(\n  tabPanel(\"Tab 1\", \n    # an input\n    # an output\n  ),\n  tabPanel(\"Tab 2\"),\n  tabPanel(\"Tab 3\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may also want to use a navigation bar (navbarPage()) with different pages (created using tabPanel()) to organize your application. Read through the navbarPage documentation and try running the example below:\n\n\n\n\nnavbarPage(\n  title = \"My app\",\n  tabPanel(title = \"Tab 1\",\n           # an input\n           # an output\n           ),\n  tabPanel(title = \"Tab 2\")\n)"
+    "text": "Example UI layouts (adapted from Mastering Shiny, Ch. 6)\n\n\nNote: You can combine multiple layout function groups to really customize your UI – for example, you can create a navbar, include tabs, and also establish sidebar and main panel areas for inputs and outputs.\n\n\nSidebar & main areaPage with multiple rowsTabsNavbar\n\n\n\nTo create a page with a side bar and main area to contain your inputs and outputs (respectively), explore the following layout functions and read up on the sidebarLayout documentation:\n\n\n\n\nfluidPage(\n  titlePanel(\n    # app title/description\n  ),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs here\n    ),\n    mainPanel(\n      # outputs here\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTo create a page with multiple rows, explore the following layout functions and check out the fluid layout documentation. Note that each row is made up of 12 columns. The first argument of the column() function takes a value of 1-12 to specify the number of columns to occupy.\n\n\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      ...\n    ),\n    column(8, \n      ...\n    )\n  ),\n  fluidRow(\n    column(6, \n      ...\n    ),\n    column(6, \n      ...\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may find that you eventually end up with too much content to fit on a single application page. Enter tabsetPanel() and tabPanel(). tabsetPanel() creates a container for any number of tabPanel()s. Each tabPanel() can contain any number of HTML components (e.g. inputs and outputs). Find the tabsetPanel documentation here and check out this example:\n\n\n\n\ntabsetPanel(\n  tabPanel(\"Tab 1\", \n    # an input\n    # an output\n  ),\n  tabPanel(\"Tab 2\"),\n  tabPanel(\"Tab 3\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may also want to use a navigation bar (navbarPage()) with different pages (created using tabPanel()) to organize your application. Read through the navbarPage documentation and try running the example below:\n\n\n\n\nnavbarPage(\n  title = \"My app\",\n  tabPanel(title = \"Tab 1\",\n           # an input\n           # an output\n           ),\n  tabPanel(title = \"Tab 2\")\n)"
   },
   {
     "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#layout-fxns-app2",
@@ -417,7 +417,7 @@
     "href": "course-materials/slides/part2.2-two-file-app-slides.html#exercise2-prompt",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Exercise 2: Add sidebar and main panels to the Penguins tab\n\n\n\n \nI encourage you to type the code out yourself, rather than copy/paste!\n\nBe sure to add text where your input / output will eventually be placed.\n\nWhen you’re done, you app should look like this \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for a solution!"
+    "text": "Exercise 2: Add sidebar and main panels to the Penguins tab\n\n\n\n \nI encourage you to type the code out yourself, rather than copy/paste!\n\nBe sure to add text where your input / output will eventually be placed.\n\nWhen you’re done, you app should look like this \n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for a solution!"
   },
   {
     "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#exercise2-solution",
@@ -529,7 +529,7 @@
     "href": "course-materials/slides/part2.2-two-file-app-slides.html#exercise3-prompt",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Exercise 3: Add a reactive plot to the ‘Penguins’ tab\n\n\nWorking alone or in groups, add a reactive histogram of penguin flipper lengths (using the penguins data set from the {palmerpenguins} package) to the Penguins tab. Your plot should have the following features and look like the example below, when complete:\n\n\n\n\n data colored by penguin species\n\n\n a shinyWidgets::pickerInput() that allows users to filter data based on island, and that includes buttons to Select All / Deselect All island options at once\n\n\n a shiny::sliderInput() that allows users to change the number of histogram bins and that by default, displays a histogram with 25 bins\n\n\n the two widgets should be placed in the sidebarPanel and the reactive histogram should be placed in the mainPanel of the Penguins tab\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
+    "text": "Exercise 3: Add a reactive plot to the ‘Penguins’ tab\n\n\nWorking alone or in groups, add a reactive histogram of penguin flipper lengths (using the penguins data set from the {palmerpenguins} package) to the Penguins tab. Your plot should have the following features and look like the example below, when complete:\n\n\n\n\n data colored by penguin species\n\n\n a shinyWidgets::pickerInput() that allows users to filter data based on island, and that includes buttons to Select All / Deselect All island options at once\n\n\n a shiny::sliderInput() that allows users to change the number of histogram bins and that by default, displays a histogram with 25 bins\n\n\n the two widgets should be placed in the sidebarPanel and the reactive histogram should be placed in the mainPanel of the Penguins tab\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
   },
   {
     "objectID": "course-materials/slides/part2.2-two-file-app-slides.html#exercise3-tips",
@@ -1257,7 +1257,7 @@
     "href": "course-materials/slides/part4.2-css-sass-slides.html#sass-css",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Using Sass & CSS to style Shiny apps & dashboards\n\n\nYou can write your own stylesheets using CSS and Sass to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike {bslib} and {fresh}, these are languages, meaning they can be a bit more challenging to get started with (but the payoff it big!).\n\n\n\n\n\nPros:\n\n\n\n applies to any web page (not just shiny apps / dashboards)\n\n\n allows you to customize pretty much any aspect of your app\n\n\n can be combined with themes generated using {bslib} or {fresh} to fine-tune your app’s styling\n\n\n\n\nCons:\n\n\n\n a steeper learning curve / generally more complex than packages like {bslib} and {fresh}\n\n\n\n\n\n\n\nWe’ll review a little bit about CSS & Sass, then practice writing and applying custom styling to apps and dashboards."
+    "text": "Using Sass & CSS to style Shiny apps & dashboards\n\n\nYou can write your own stylesheets using CSS and Sass to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike {bslib} and {fresh}, these are languages, meaning they can be a bit more challenging to get started with (but the payoff it big!).\n\n\n\n\n\nPros:\n\n\n\n applies to any web page (not just shiny apps / dashboards)\n\n\n allows you to customize pretty much any aspect of your app\n\n\n can be combined with themes generated using {bslib} or {fresh} to fine-tune your app’s styling\n\n\n\n\nCons:\n\n\n\n a steeper learning curve / generally more complex than packages like {bslib} and {fresh}\n\n\n\n\n\n\nWe’ll review a little bit about CSS & Sass, then practice writing and applying custom styling to apps and dashboards."
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#css-review",
@@ -1278,14 +1278,14 @@
     "href": "course-materials/slides/part4.2-css-sass-slides.html#css-rule-based",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "CSS is a rule-based language\n\n\nCSS is a rule-based language, meaning that it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page. For example, “I want all level one headings (&lt;h1&gt; or tags$h1(), as written in Shiny) in my app to be green with a bit of extra space between each letter” could be coded as:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Selectors select the HTML element(s) you want to style (e.g. level one headings, &lt;h1&gt;)\n\n\n Declarations sit inside curly brackets, {}, and are made up of property and value pairs. Each pair specifies the property of the HTML element(s) you’re selecting (e.g. the color property of the element &lt;h1&gt;), and a value you’d like to assign to that property (e.g. green)\n\n\n A property and it’s corresponding value are separated by a colon, :. Declarations end with a semicolon, ;\n\n\n\n\nThere are a variety of CSS selectors – check out some of the basics that will take you far in styling your apps, starting on this slide of the Customizing Quarto Websites workshop."
+    "text": "CSS is a rule-based language\n\n\nCSS is a rule-based language, meaning that it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page. For example, “I want all level one headings (&lt;h1&gt; or tags$h1(), as written in Shiny) in my app to be green with a bit of extra space between each letter” could be coded as:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Selectors select the HTML element(s) you want to style (e.g. level one headings, &lt;h1&gt;)\n\n\n Declarations sit inside curly brackets, {}, and are made up of property and value pairs. Each pair specifies the property of the HTML element(s) you’re selecting (e.g. the color property of the element &lt;h1&gt;), and a value you’d like to assign to that property (e.g. green)\n\n\n A property and it’s corresponding value are separated by a colon, :. Declarations end with a semicolon, ;\n\n\n\nThere are a variety of CSS selectors – check out some of the basics that will take you far in styling your apps, starting on this slide of the Customizing Quarto Websites workshop."
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#css-3ways",
     "href": "course-materials/slides/part4.2-css-sass-slides.html#css-3ways",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "3 ways to add CSS styling to your apps\n\n\n\n1. tags2. header3. stylesheets (preferred)\n\n\n\nAdd styling directly to tags. It’s best not to use a lot of these! It’s easy to lose track of your “in-line” styling in large projects, you can’t reuse rules easily, it’s hard to keep styling consistent, and it’s difficult to implement large stylistic changes.\n\n\n\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  # text color = purple\n  tags$h1(\"My app title\",\n          style = \"color: #711EBA;\"),\n  \n  # text color = blue; increase space between letters\n  tags$h3(\"Section 1\",\n          style = \"color: #1E4DBA; letter-spacing: 4px;\"),\n  \n  # no styling\n  tags$h3(\"Section 2\"),\n  \n  # increase border thickness and color green; round corners \n  tags$button(\"This is a button\",\n              style = \"border: 2px solid #1EBA38; border-radius: 5px\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd CSS rules to your app’s header (tags$head). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can’t be cached (i.e. saved for future usage when you reopen your app). Note: explore Google fonts and check out this slide for instructions on selecting a font.\n\n\n\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  tags$head(\n    tags$style(\"\n    \n      @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n    \n      h1 {font-family: 'Lobster', cursive;}\n      \n      h3 {color: blue;}\n      \n      .wide-letters {letter-spacing: 4px;}\n      \n    \"\n    ) # END styles\n  ), # END head\n  \n  tags$h1(\"My app title\"),\n  \n  tags$h3(\"Section 1\"),\n  \n  tags$h3(class = \"wide-letters\", \"Section 2\"),\n  \n  tags$button(\"This is a button\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild a stylesheet (a .css file) inside your app’s www/ directory and apply your styles to your app’s header (for shinydashboards, include your header inside dashboardBody(). This is the most ideal approach – it allows for style reuse, caching, and keeps styling contained in one spot. Tip: use touch styles.css in the terminal to create a new .css file.\n\n\n\n\n\n\n~/myApp/app.R\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"styles.css\")\n  ),\n  \n  tags$h1(\"My app title\"),\n  \n  tags$h3(\"Section 1\"),\n  \n  tags$h3(class = \"wide-letters\", \"Section 2\"),\n  \n  tags$button(\"This is a button\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n~/myApp/www/styles.css\n\n/*import google fonts (Josephine Slab (serif) & Heebo (sans serfi))*/\n@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Josefin+Slab:wght@300&display=swap');\n\n/* element selectors */\nh1 {\n  font-family: 'Heebo', sans-serif;\n  color: #179A1F; /* green */\n}\n\nh3 {\n  font-family: 'Josefin Slab', serif;\n  color: #CA781C; /* orange */\n}\n\nbutton {\n  background-color: #FCF982; /* yellow */\n}\n\n\n/* class selectors */\n.wide-letters {\n  letter-spacing: 4px;\n}"
+    "text": "3 ways to add CSS styling to your apps\n\n\n\n1. tags2. header3. stylesheets (preferred)\n\n\n\nAdd styling directly to tags. It’s best not to use a lot of these! It’s easy to lose track of your “in-line” styling in large projects, you can’t reuse rules easily, it’s hard to keep styling consistent, and it’s difficult to implement large stylistic changes.\n\n\n\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  # text color = purple\n  tags$h1(\"My app title\",\n          style = \"color: #711EBA;\"),\n  \n  # text color = blue; increase space between letters\n  tags$h3(\"Section 1\",\n          style = \"color: #1E4DBA; letter-spacing: 4px;\"),\n  \n  # no styling\n  tags$h3(\"Section 2\"),\n  \n  # increase border thickness and color green; round corners \n  tags$button(\"This is a button\",\n              style = \"border: 2px solid #1EBA38; border-radius: 5px\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdd CSS rules to your app’s header (tags$head). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can’t be cached (i.e. saved for future usage when you reopen your app). Note: explore Google fonts and check out this slide for instructions on selecting a font.\n\n\n\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  tags$head(\n    tags$style(\"\n    \n      @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');\n    \n      h1 {font-family: 'Lobster', cursive;}\n      \n      h3 {color: blue;}\n      \n      .wide-letters {letter-spacing: 4px;}\n      \n    \"\n    ) # END styles\n  ), # END head\n  \n  tags$h1(\"My app title\"),\n  \n  tags$h3(\"Section 1\"),\n  \n  tags$h3(class = \"wide-letters\", \"Section 2\"),\n  \n  tags$button(\"This is a button\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild a stylesheet (a .css file) inside your app’s www/ directory and apply your styles to your app’s header (for shinydashboards, include your header inside dashboardBody(). This is the most ideal approach – it allows for style reuse, caching, and keeps styling contained in one spot. Tip: use touch styles.css in the terminal to create a new .css file.\n\n\n\n\n\n\n~/myApp/app.R\n\n#..............................setup.............................\nlibrary(shiny)\n\n#...............................ui...............................\nui &lt;- fluidPage(\n  \n  tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"styles.css\")\n  ),\n  \n  tags$h1(\"My app title\"),\n  \n  tags$h3(\"Section 1\"),\n  \n  tags$h3(class = \"wide-letters\", \"Section 2\"),\n  \n  tags$button(\"This is a button\")\n  \n)\n\n#.............................server.............................\nserver &lt;- function(input, output) {}\n\n#......................combine ui & server.......................\nshinyApp(ui, server)\n\n\n\n\n\n\n~/myApp/www/styles.css\n\n/*import google fonts (Josephine Slab (serif) & Heebo (sans serfi))*/\n@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300&family=Josefin+Slab:wght@300&display=swap');\n\n/* element selectors */\nh1 {\n  font-family: 'Heebo', sans-serif;\n  color: #179A1F; /* green */\n}\n\nh3 {\n  font-family: 'Josefin Slab', serif;\n  color: #CA781C; /* orange */\n}\n\nbutton {\n  background-color: #FCF982; /* yellow */\n}\n\n\n/* class selectors */\n.wide-letters {\n  letter-spacing: 4px;\n}"
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#dashboard-practice-css",
@@ -1320,7 +1320,7 @@
     "href": "course-materials/slides/part4.2-css-sass-slides.html#write-box-css",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Finally, apply box styling to our dashboard\n\n\nNow that we know that we can use the .box-body class to customize the appearance of our boxes, let’s create a stylesheet inside our www/ folder and add our new CSS rule. The shinydashboard framework already provides the “standard” styling for boxes, contained in the .box-body class. Anything we specify in our own stylesheet will build upon or modify existing styling.\n\n\nRemember to create a header and link your stylesheet within dashboardBody() to apply our styles.\n\n\nOur updated shinydashboardstyles.cssui.R\n\n\n\n\n \n\nCheck out the complete code for this small example dashboard.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n~/css-dashboard/www/styles.css\n\n.box-body {\n  background-color: #FCAE82; /* light orange */\n  color: #6368C6; /* purple-blue */\n}\n\n\n\n\n\n\n\n~/css-dashboard/ui.R\n\n#........................dashboardHeader.........................\nheader &lt;- dashboardHeader(\n  \n  # add title ----\n  title = \"Penguin Dashboard\"\n  \n) # END dashboardHeader\n\n#........................dashboardSidebar........................\nsidebar &lt;- dashboardSidebar(\n  \n  # sidebarMenu ----\n  sidebarMenu(\n    \n    menuItem(text = \"Dashboard\", tabName = \"dashboard\", icon = icon(\"gauge\"))\n    \n  ) # END sidebarMenu\n  \n) # END dashboardSidebar\n\n#..........................dashboardBody.........................\nbody &lt;- dashboardBody(\n  \n  # link stylesheet\n  tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"styles.css\"),\n  ),\n  \n  # tabItems ----\n  tabItems(\n    \n    # dashboard tabItem ----\n    tabItem(tabName = \"dashboard\",\n            \n            # fluidRow ----\n            fluidRow(\n              \n              # input box ----\n              box(width = 4,\n                  \n                  checkboxGroupInput(\n                    inputId = \"penguin_species\",\n                    label = \"Filter by species: \",\n                    choices = c(\"Adelie\", \"Chinstrap\", \"Gentoo\"),\n                    selected = c(\"Adelie\", \"Chinstrap\", \"Gentoo\")\n                    \n                  ) # END checkboxGroupInput\n                  \n              ), # END input box\n              \n              # output box ----\n              box(width = 8,\n                  \n                  plotOutput(outputId = \"penguin_plot\")\n                  \n              ) # END output box\n              \n            ), # END fluidRow\n            \n    ) # END dashboard tabItem\n    \n  ) # END tabItems\n  \n) # END dashboardBody\n\n#..................combine all in dashboardPage..................\ndashboardPage(header, sidebar, body)"
+    "text": "Finally, apply box styling to our dashboard\n\n\nNow that we know that we can use the .box-body class to customize the appearance of our boxes, let’s create a stylesheet inside our www/ folder and add our new CSS rule. The shinydashboard framework already provides the “standard” styling for boxes, contained in the .box-body class. Anything we specify in our own stylesheet will build upon or modify existing styling.\n\n\nRemember to create a header and link your stylesheet within dashboardBody() to apply our styles.\n\n\nOur updated shinydashboardstyles.cssui.R\n\n\n\n\n \n\nCheck out the complete code for this small example dashboard.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n~/css-dashboard/www/styles.css\n\n.box-body {\n  background-color: #FCAE82; /* light orange */\n  color: #6368C6; /* purple-blue */\n}\n\n\n\n\n\n\n\n~/css-dashboard/ui.R\n\n#........................dashboardHeader.........................\nheader &lt;- dashboardHeader(\n  \n  # add title ----\n  title = \"Penguin Dashboard\"\n  \n) # END dashboardHeader\n\n#........................dashboardSidebar........................\nsidebar &lt;- dashboardSidebar(\n  \n  # sidebarMenu ----\n  sidebarMenu(\n    \n    menuItem(text = \"Dashboard\", tabName = \"dashboard\", icon = icon(\"gauge\"))\n    \n  ) # END sidebarMenu\n  \n) # END dashboardSidebar\n\n#..........................dashboardBody.........................\nbody &lt;- dashboardBody(\n  \n  # link stylesheet\n  tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"styles.css\"),\n  ),\n  \n  # tabItems ----\n  tabItems(\n    \n    # dashboard tabItem ----\n    tabItem(tabName = \"dashboard\",\n            \n            # fluidRow ----\n            fluidRow(\n              \n              # input box ----\n              box(width = 4,\n                  \n                  checkboxGroupInput(\n                    inputId = \"penguin_species\",\n                    label = \"Filter by species: \",\n                    choices = c(\"Adelie\", \"Chinstrap\", \"Gentoo\"),\n                    selected = c(\"Adelie\", \"Chinstrap\", \"Gentoo\")\n                    \n                  ) # END checkboxGroupInput\n                  \n              ), # END input box\n              \n              # output box ----\n              box(width = 8,\n                  \n                  plotOutput(outputId = \"penguin_plot\")\n                  \n              ) # END output box\n              \n            ), # END fluidRow\n            \n    ) # END dashboard tabItem\n    \n  ) # END tabItems\n  \n) # END dashboardBody\n\n#..................combine all in dashboardPage..................\ndashboardPage(header, sidebar, body)"
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#what-about-sass",
@@ -1355,7 +1355,7 @@
     "href": "course-materials/slides/part4.2-css-sass-slides.html#convert-sass",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Then, compile Sass to CSS\n\n\nBecause web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the sass() function from the {sass} package. We can do this in global.R. The sass() function requires two arguments: a sass file input and a file path + named .css file output.\n\n\nWe also need to apply our styles to our app by linking this newly-generated .css file in our app’s header.\n\n\nNote: After running your app, you should see a sass-styles.css file appear in www/ – it should look quite familiar, except all of our Sass variables have been converted to CSS.\n\n\nour updated appglobal.Rui.Rsass-styles.css\n\n\n\n\n \n\nCheck out the complete code for App #2 (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n~/two-file-app/global.R\n\n# LOAD LIBRARIES ----\nlibrary(shiny)\nlibrary(sass)\n# ~ additional libraries omitted for brevity ~\n\n# COMPILE CSS ----\nsass(\n  input = sass_file(\"www/sass-styles.scss\"),\n  output = \"www/sass-styles.css\",\n  options = sass_options(output_style = \"compressed\") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable\n)\n\n# ~ additional global.R objects omitted for brevity ~\n\n\n\n\n\n\n\n~/two-file-app/ui.R\n\n# navbar page ----\nui &lt;- navbarPage(\n  \n  # add css file ----\n  header = tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"sass-styles.css\")\n  )\n  \n  # ~ additional UI elements omitted for brevity ~\n)\n\n\n\n\n\n\n\n~/two-file-app/www/sass-styles.css\n\n@import url(\"https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap\");\nbody {\n  background-color: #8ca376;\n  color: #f1f7eb;\n}\n\nh2 {\n  letter-spacing: 5px;\n  font-family: \"Karma\", serif;\n}\n\nh4 {\n  color: #525cd1;\n  font-family: \"Karma\", serif;\n}\n\np {\n  font-family: \"Prompt\", sans-serif;\n}\n\na {\n  color: #E59C5E;\n}\n\n.navbar-default {\n  background-color: #f0eaa5;\n}\n\n.btn.default.active {\n  background-color: #8ca376;\n}"
+    "text": "Then, compile Sass to CSS\n\n\nBecause web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the sass() function from the {sass} package. We can do this in global.R. The sass() function requires two arguments: a sass file input and a file path + named .css file output.\n\n\nWe also need to apply our styles to our app by linking this newly-generated .css file in our app’s header.\n\n\nNote: After running your app, you should see a sass-styles.css file appear in www/ – it should look quite familiar, except all of our Sass variables have been converted to CSS.\n\n\nour updated appglobal.Rui.Rsass-styles.css\n\n\n\n\n \n\nCheck out the complete code for App #2 (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n~/two-file-app/global.R\n\n# LOAD LIBRARIES ----\nlibrary(shiny)\nlibrary(sass)\n# ~ additional libraries omitted for brevity ~\n\n# COMPILE CSS ----\nsass(\n  input = sass_file(\"www/sass-styles.scss\"),\n  output = \"www/sass-styles.css\",\n  options = sass_options(output_style = \"compressed\") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable\n)\n\n# ~ additional global.R objects omitted for brevity ~\n\n\n\n\n\n\n\n~/two-file-app/ui.R\n\n# navbar page ----\nui &lt;- navbarPage(\n  \n  # add css file ----\n  header = tags$head(\n    tags$link(rel = \"stylesheet\", type = \"text/css\", href = \"sass-styles.css\")\n  )\n  \n  # ~ additional UI elements omitted for brevity ~\n)\n\n\n\n\n\n\n\n~/two-file-app/www/sass-styles.css\n\n@import url(\"https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap\");\nbody {\n  background-color: #8ca376;\n  color: #f1f7eb;\n}\n\nh2 {\n  letter-spacing: 5px;\n  font-family: \"Karma\", serif;\n}\n\nh4 {\n  color: #525cd1;\n  font-family: \"Karma\", serif;\n}\n\np {\n  font-family: \"Prompt\", sans-serif;\n}\n\na {\n  color: #E59C5E;\n}\n\n.navbar-default {\n  background-color: #f0eaa5;\n}\n\n.btn.default.active {\n  background-color: #8ca376;\n}"
   },
   {
     "objectID": "course-materials/slides/part4.2-css-sass-slides.html#end",
@@ -1390,7 +1390,7 @@
     "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Using the {bslib} package to theme Shiny apps\n\n\nThe {bslib} package provides a modern UI toolkit for Shiny and R Markdown based on Bootstrap, making custom themeing for Shiny apps (and R Markdown docs!) quite easy.\n\n\n\n\n\n\nPros:\n\n\n\n easy to use\n\n\n includes a real-time themeing widget to try out themes before applying them to your own app\n\n\n plays well with the {thematic} package for matching plot styling to app\n\n\n {bslib} does more than just themeing! Read more on their pkgdown site\n\n\n\n\nCons:\n\n\n\n does not work with shinydashboard ({bslib} is only intended for use with shiny apps), though one of the latest releases includes tooling to create and customize dashboard-style shiny apps – check out their vignette for more\n\n\n styling is constrained by the arguments available to bs_theme()\n\n\n\n\n\n\nLet’s practice applying new themes using bslib to our one-file-app (i.e. App #1)"
+    "text": "Using the {bslib} package to theme Shiny apps\n\n\nThe {bslib} package provides a modern UI toolkit for Shiny and R Markdown based on Bootstrap, making custom themeing for Shiny apps (and R Markdown docs!) quite easy.\n\n\n\n\n\n\nPros:\n\n\n\n easy to use\n\n\n includes a real-time themeing widget to try out themes before applying them to your own app\n\n\n plays well with the {thematic} package for matching plot styling to app\n\n\n {bslib} does more than just themeing! Read more on their pkgdown site\n\n\n\n\nCons:\n\n\n\n does not work with shinydashboard ({bslib} is only intended for use with shiny apps), though one of the latest releases includes tooling to create and customize dashboard-style shiny apps – check out their vignette for more\n\n\n styling is constrained by the arguments available to bs_theme()\n\n\n\n\n\nLet’s practice applying new themes using bslib to our one-file-app (i.e. App #1)"
   },
   {
     "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib-prebuilt-themes",
@@ -1404,21 +1404,21 @@
     "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#bslib-custom-themes",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Create a custom theme with {bslib}\n\n\nAlternatively, you can fully customize your own theme. Explore the bslib pkgdown site for detailed instructions. A small example here:\n\n\n\n\n\n\n~/single-file-app/ui.R\n\nlibrary(shiny)\nlibrary(bslib)\n# ~ additional libraries omitted for brevity ~\n\nui &lt;- fluidPage(\n  \n  theme = bs_theme(\n    bg = \"#A36F6F\", # background color\n    fg = \"#FDF7F7\", # foreground color\n    primary = \"#483132\", # primary accent color\n    base_font = font_google(\"Pacifico\")),\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBe sure to check out the interactive themeing widget to test custom color / font / etc. combos by running bs_theme_preview() in your console, or visit the hosted version. You can also call bs_themer() within your server function to open the theme customization UI alongside your own app."
+    "text": "Create a custom theme with {bslib}\n\n\nAlternatively, you can fully customize your own theme. Explore the bslib pkgdown site for detailed instructions. A small example here:\n\n\n\n\n\n\n~/single-file-app/ui.R\n\nlibrary(shiny)\nlibrary(bslib)\n# ~ additional libraries omitted for brevity ~\n\nui &lt;- fluidPage(\n  \n  theme = bs_theme(\n    bg = \"#A36F6F\", # background color\n    fg = \"#FDF7F7\", # foreground color\n    primary = \"#483132\", # primary accent color\n    base_font = font_google(\"Pacifico\")),\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\nBe sure to check out the interactive themeing widget to test custom color / font / etc. combos by running bs_theme_preview() in your console, or visit the hosted version. You can also call bs_themer() within your server function to open the theme customization UI alongside your own app."
   },
   {
     "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#thematic",
     "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#thematic",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Use {thematic} to extend your theme to plots\n\n\nYou probably noticed that our scatterplot looks a little silly against the darker background of our themed app. Enter the {thematic} package, which is built to help simplify plot themeing. Call thematic_shiny() before launching your app to generate plots that reflect your application’s bs_theme(). For example:\n\n\n\n\n\n\n~/single-file-app/ui.R\n\nlibrary(shiny)\nlibrary(bslib)\n# ~ additional libraries omitted for brevity ~\n\nthematic::thematic_shiny()\n\nui &lt;- fluidPage(\n  \n  theme = bs_theme(\n    bg = \"#A36F6F\", # background color\n    fg = \"#FDF7F7\", # foreground color\n    primary = \"#483132\", # primary accent color\n    base_font = font_google(\"Pacifico\")),\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCheck out the pkgdown site to learn more about using {thematic} to match plot fonts to the fonts applied across your app."
+    "text": "Use {thematic} to extend your theme to plots\n\n\nYou probably noticed that our scatterplot looks a little silly against the darker background of our themed app. Enter the {thematic} package, which is built to help simplify plot themeing. Call thematic_shiny() before launching your app to generate plots that reflect your application’s bs_theme(). For example:\n\n\n\n\n\n\n~/single-file-app/ui.R\n\nlibrary(shiny)\nlibrary(bslib)\n# ~ additional libraries omitted for brevity ~\n\nthematic::thematic_shiny()\n\nui &lt;- fluidPage(\n  \n  theme = bs_theme(\n    bg = \"#A36F6F\", # background color\n    fg = \"#FDF7F7\", # foreground color\n    primary = \"#483132\", # primary accent color\n    base_font = font_google(\"Pacifico\")),\n  \n  # ~ additional UI code omitted for brevity ~\n  \n)\n\n\n\nCheck out the complete source code for App #1 (NOTE: applied themes are commented out).\n\n\n\n\n\n\n\n\n\n\n\n\n\nCheck out the pkgdown site to learn more about using {thematic} to match plot fonts to the fonts applied across your app."
   },
   {
     "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh",
     "href": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Using the {fresh} package to theme Shiny apps & dashboards\n\n\nThe {fresh} package provides tools for creating custom themes to use in Shiny apps and dashboards – set parameters of your theme using create_theme(), generate a stylesheet based off your specifications, and apply your stylesheet to your app.\n\n\n\n\n\n\nPros:\n\n\n\n easy to use\n\n\n supports theme creation for both shiny apps and dashboards (and also {flexdashboard}s and {b4dash} applications)\n\n\n\n\n\n\nCons:\n\n\n\n styling is constrained by the variables available to create_theme()\n\n\n\n\n\n\n\nLet’s practice applying new themes using {fresh} to our two-file-app (i.e. App #2) and our shinydashbaord (i.e. App #3)"
+    "text": "Using the {fresh} package to theme Shiny apps & dashboards\n\n\nThe {fresh} package provides tools for creating custom themes to use in Shiny apps and dashboards – set parameters of your theme using create_theme(), generate a stylesheet based off your specifications, and apply your stylesheet to your app.\n\n\n\n\n\n\nPros:\n\n\n\n easy to use\n\n\n supports theme creation for both shiny apps and dashboards (and also {flexdashboard}s and {b4dash} applications)\n\n\n\n\n\n\nCons:\n\n\n\n styling is constrained by the variables available to create_theme()\n\n\n\n\n\n\nLet’s practice applying new themes using {fresh} to our two-file-app (i.e. App #2) and our shinydashbaord (i.e. App #3)"
   },
   {
     "objectID": "course-materials/slides/part4.1-bslib-fresh-slides.html#fresh-workflow",
@@ -1463,46 +1463,46 @@
     "text": "End part 4.1\n\n\nUp next: fully custom themes using CSS & Sass\n\n\n\n\n\n−+\n05:00"
   },
   {
-    "objectID": "course-materials/part4-styling-apps.html#required-packages",
-    "href": "course-materials/part4-styling-apps.html#required-packages",
+    "objectID": "course-materials/part4-styling-apps.html#pkgs",
+    "href": "course-materials/part4-styling-apps.html#pkgs",
     "title": "Styling apps",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nWe’ll be using the following R packages:\n\nlibrary(shiny)\nlibrary(shinydashboard)\nlibrary(tidyverse)\nlibrary(bslib)\nlibrary(fresh)\nlibrary(sass)"
   },
   {
-    "objectID": "course-materials/part4-styling-apps.html#required-data",
-    "href": "course-materials/part4-styling-apps.html#required-data",
+    "objectID": "course-materials/part4-styling-apps.html#data",
+    "href": "course-materials/part4-styling-apps.html#data",
     "title": "Styling apps",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
   },
   {
     "objectID": "course-materials/part4-styling-apps.html#lecture-materials",
     "href": "course-materials/part4-styling-apps.html#lecture-materials",
     "title": "Styling apps",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 4 is broken down into two lessons:\n\n\n\n{bslib} & {fresh}\n lecture 4.1 slides\n\n\n\n\nStyling with CSS & Sass\n lecture 4.2 slides"
   },
   {
-    "objectID": "course-materials/part1-intro.html#required-packages",
-    "href": "course-materials/part1-intro.html#required-packages",
+    "objectID": "course-materials/part1-intro.html#pkgs",
+    "href": "course-materials/part1-intro.html#pkgs",
     "title": "Setup & Intro",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nWe’ll be loading the following R packages:\n\nlibrary(shiny)"
   },
   {
-    "objectID": "course-materials/part1-intro.html#required-data",
-    "href": "course-materials/part1-intro.html#required-data",
+    "objectID": "course-materials/part1-intro.html#data",
+    "href": "course-materials/part1-intro.html#data",
     "title": "Setup & Intro",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\nNo data downloads required for this section"
   },
   {
     "objectID": "course-materials/part1-intro.html#lecture-materials",
     "href": "course-materials/part1-intro.html#lecture-materials",
     "title": "Setup & Intro",
-    "section": "Lecture Materials",
-    "text": "Lecture Materials\nPart 1 is broken down into two lessons:\n\n\n\nWhat is Shiny?\n lecture 1.1 slides\n\n\n\n\nSetting up your app\n lecture 1.2 slides"
+    "section": " Lecture Materials",
+    "text": "Lecture Materials\n\n\n\n\n\n\n\n Lecture slides\n\n\n\n\nLecture 1.1: What is Shiny?\n\n\nLecture 1.2: Setting up your app"
   },
   {
     "objectID": "about.html",
@@ -1516,14 +1516,14 @@
     "href": "index.html#course-description",
     "title": "Intro to Shiny - Building reactive apps and dashboards",
     "section": "Course Description",
-    "text": "Course Description\nThis website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, EDS 296-1W - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.\nIn this workshop, students will learn how to build and deploy Shiny applications. The {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, shinyapps.io."
+    "text": "Course Description\nThe {shiny} package provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this short course, students will gain the foundational skills for building and deploying Shiny apps. This includes:\n\nunderstanding the fundamentals of reactivity\napplying best practices, organizational approaches, and workflows for developing shiny apps\ncustomizing application user interfaces (UIs) to enhance usability and design\ndeploying apps online via Posit’s free hosting service shinyapps.io\nand more!\n\nPlease note: We are unlikely to cover all material included on this website in our 2-day short course. We will prioritize the skills necessary for getting started on building your first Shiny applications. You are welcome to reference and learn from any materials that we do not have time to cover together in class."
   },
   {
     "objectID": "index.html#teaching-team",
     "href": "index.html#teaching-team",
     "title": "Intro to Shiny - Building reactive apps and dashboards",
     "section": "Teaching Team",
-    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
+    "text": "Teaching Team\n\n\n\n\nInstructor\n\n\n\n\n\n\n\n\n\n\n\nSam Shanny-Csik\nEmail: scsik@ucsb.edu\nLearn more: samanthacsik.github.io"
   },
   {
     "objectID": "index.html#acknowledgements",
@@ -1533,66 +1533,66 @@
     "text": "Acknowledgements\nBuilding this short course would not have been possible without the incredibly talented members of the R / Shiny / data science community who so willingly share tutorials, examples, and code for others (like myself!) to learn from. Attribution will be included on any slides / materials where content is adapted from other educators."
   },
   {
-    "objectID": "course-materials/part2-building-shiny-apps.html#required-packages",
-    "href": "course-materials/part2-building-shiny-apps.html#required-packages",
+    "objectID": "course-materials/part2-building-shiny-apps.html#pkgs",
+    "href": "course-materials/part2-building-shiny-apps.html#pkgs",
     "title": "Building Shiny apps",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nWe’ll be using the following R packages:\n\nlibrary(shiny)\nlibrary(tidyverse)\nlibrary(DT)\nlibrary(shinyWidgets)\nlibrary(shinycssloaders)\nlibrary(markdown)\nlibrary(rsconnect)"
   },
   {
-    "objectID": "course-materials/part2-building-shiny-apps.html#required-data",
-    "href": "course-materials/part2-building-shiny-apps.html#required-data",
+    "objectID": "course-materials/part2-building-shiny-apps.html#data",
+    "href": "course-materials/part2-building-shiny-apps.html#data",
     "title": "Building Shiny apps",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(lterdatasampler)"
   },
   {
     "objectID": "course-materials/part2-building-shiny-apps.html#lecture-materials",
     "href": "course-materials/part2-building-shiny-apps.html#lecture-materials",
     "title": "Building Shiny apps",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 2 is broken down into three lessons:\n\n\n\n\nSingle-file app\n lecture 2.1 slides\n\n\n\n\nTwo-file app\n lecture 2.2 slides\n\n\n\n\nDeploying & Improving UX\n lecture 2.3 slides"
   },
   {
-    "objectID": "course-materials/part5-improving-ux-ui.html#required-packages",
-    "href": "course-materials/part5-improving-ux-ui.html#required-packages",
+    "objectID": "course-materials/part5-improving-ux-ui.html#pkgs",
+    "href": "course-materials/part5-improving-ux-ui.html#pkgs",
     "title": "Improving your app’s UX / UI",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nNo coding required in this section!"
   },
   {
-    "objectID": "course-materials/part5-improving-ux-ui.html#required-data",
-    "href": "course-materials/part5-improving-ux-ui.html#required-data",
+    "objectID": "course-materials/part5-improving-ux-ui.html#data",
+    "href": "course-materials/part5-improving-ux-ui.html#data",
     "title": "Improving your app’s UX / UI",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\nNo data downloads required for this section"
   },
   {
     "objectID": "course-materials/part5-improving-ux-ui.html#lecture-materials",
     "href": "course-materials/part5-improving-ux-ui.html#lecture-materials",
     "title": "Improving your app’s UX / UI",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 5 is contained in one lesson:\n\nUX / UI\n lecture 5 slides"
   },
   {
-    "objectID": "course-materials/part3-building-shiny-dashboards.html#required-packages",
-    "href": "course-materials/part3-building-shiny-dashboards.html#required-packages",
+    "objectID": "course-materials/part3-building-shiny-dashboards.html#pkgs",
+    "href": "course-materials/part3-building-shiny-dashboards.html#pkgs",
     "title": "Building Shiny dashboards",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nWe’ll be using the following R packages:\n\nlibrary(shiny)\nlibrary(shinydashboard)\nlibrary(tidyverse)\nlibrary(shinycssloaders)\nlibrary(leaflet)\nlibrary(markdown)"
   },
   {
-    "objectID": "course-materials/part3-building-shiny-dashboards.html#required-data",
-    "href": "course-materials/part3-building-shiny-dashboards.html#required-data",
+    "objectID": "course-materials/part3-building-shiny-dashboards.html#data",
+    "href": "course-materials/part3-building-shiny-dashboards.html#data",
     "title": "Building Shiny dashboards",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\nWe’ll be using publicly-available data via the Arctic Data Center for our shiny dashboard.\n\n\n\n\n\n\nData citation\n\n\n\nChristopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. doi:10.18739/A2JH3D41P.\n\n\nTake a few moments to review the metadata record and download FCWO_lakemonitoringdata_2011_2022_daily.csv."
   },
   {
     "objectID": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
     "href": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
     "title": "Building Shiny dashboards",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 3 is contained in one lesson:\n\nShiny dashboard\n lecture 3 slides"
   },
   {
@@ -1936,7 +1936,7 @@
     "href": "course-materials/slides/part8-wrap-up-slides.html#deploying",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Deploy with shinyapps.io, if possible\n\nThere are a number of ways to deploy a shiny app, but stick with shinyapps.io whenever possible – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.\n\n\n\n\n\n\n\n\n\n\n\n\nThe shinyapps.io dashboard\n\n\n\n\n\n\n\n\n\n\n\n\nA deployment log on shinyapps.io\n\n\n\nThe shinyapps.io dashboard provides lots of helpful information, particularly the deployment log – remember to check here for information about failed deployments."
+    "text": "Deploy with shinyapps.io, if possible\n\nThere are a number of ways to deploy a shiny app, but stick with shinyapps.io whenever possible – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.\n\n\n\n\n\n\n\n\n\n\n\n\nThe shinyapps.io dashboard\n\n\n\n\n\n\n\n\n\n\n\n\nA deployment log on shinyapps.io\n\n\nThe shinyapps.io dashboard provides lots of helpful information, particularly the deployment log – remember to check here for information about failed deployments."
   },
   {
     "objectID": "course-materials/slides/part8-wrap-up-slides.html#style-apps",
@@ -2118,7 +2118,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#shinytest2",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package provides useful tools for unit testing Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code (the documentation refers to this type of unit testing as regression testing – we’ll use these tests to verify that app behavior does not regress).\n\n\n \n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n{shinytest2} uses {chromote} to render your app in a headless Chromium browser – by default, it uses Google Chrome, so make sure you have that installed on your OS"
+    "text": "Enter the {shinytest2} package\n\nThe {shinytest2} package provides useful tools for unit testing Shiny apps. We’ll use these unit tests to ensure that desired app behavior remains consistent, even after changes to the app’s code (the documentation refers to this type of unit testing as regression testing – we’ll use these tests to verify that app behavior does not regress).\n\n\n \n\nFrom the {shinytest2} documentation:\n\n\n“{shinytest2} uses {testthat}’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n{shinytest2} uses {chromote} to render your app in a headless Chromium browser – by default, it uses Google Chrome, so make sure you have that installed on your OS"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#setting-stage",
@@ -2167,7 +2167,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#ft1-test1",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Let’s test our first assertion . . .\n\n…which is that when a user types [some text value] into the text box and clicks the Greet button (i.e. the actions), the greeting output will return Hello [some text value]! (i.e. the expectation). We’ll substitute a known value (e.g. “Sam”) for [some text value] in our test.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSteps:\n(1) Run shinytest2::record_test(\"testing-app\") in the Console\n(2) Type Sam into the text box &gt; click the Greet button &gt; click Expect Shiny Values\n(3) Give the test a unique name (e.g. one-name-greeting) &gt; click Save test and exit\n(4) The test recorder will quit, and your test will automatically execute (it should pass!)\n\n\n\nNotice that your actions (e.g. typing text, clicking the button) are recorded as code in the right-hand panel – this is your test code, and it’ll be saved when you quit the recorder."
+    "text": "Let’s test our first assertion . . .\n\n…which is that when a user types [some text value] into the text box and clicks the Greet button (i.e. the actions), the greeting output will return Hello [some text value]! (i.e. the expectation). We’ll substitute a known value (e.g. “Sam”) for [some text value] in our test.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSteps:\n(1) Run shinytest2::record_test(\"testing-app\") in the Console\n(2) Type Sam into the text box &gt; click the Greet button &gt; click Expect Shiny Values\n(3) Give the test a unique name (e.g. one-name-greeting) &gt; click Save test and exit\n(4) The test recorder will quit, and your test will automatically execute (it should pass!)\n\n\nNotice that your actions (e.g. typing text, clicking the button) are recorded as code in the right-hand panel – this is your test code, and it’ll be saved when you quit the recorder."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#test-auto-executes",
@@ -2195,7 +2195,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#snaps",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "The snaps/ folder\n\nWhen shinytest2::test_app() runs your test code, it plays back the specified actions (e.g. setting the textInput to Sam, then clicking the Greet button), and records your application’s resulting state as a snapshot. Snapshots are saved to the tests/testthat/shinytest2/_snaps/ folder. You should see two different snapshot files:\n\n\n\n\none-name-greeting-001_.png, a screenshot of the app when app$expect_values() was called:\n\n\n\n\n\n\n\n\n\n\n\n\none-name-greeting-001.json, a JSON representation of the state of the app when app$expect_values() was called:\n\n\n{\n  \"input\": {\n    \"greeting_input\": 1,\n    \"name_input\": \"Sam\"\n  },\n  \"output\": {\n    \"greeting_output\": \"Hello Sam!\"\n  },\n  \"export\": {\n\n  }\n}\n\n\n\n\nWe don’t have any exported values in our app, and we won’t be covering those here. Read more about exported values in the {shinytest2} documentation."
+    "text": "The snaps/ folder\n\nWhen shinytest2::test_app() runs your test code, it plays back the specified actions (e.g. setting the textInput to Sam, then clicking the Greet button), and records your application’s resulting state as a snapshot. Snapshots are saved to the tests/testthat/shinytest2/_snaps/ folder. You should see two different snapshot files:\n\n\n\n\none-name-greeting-001_.png, a screenshot of the app when app$expect_values() was called:\n\n\n\n\n\n\n\n\n\n\n\n\none-name-greeting-001.json, a JSON representation of the state of the app when app$expect_values() was called:\n\n\n{\n  \"input\": {\n    \"greeting_input\": 1,\n    \"name_input\": \"Sam\"\n  },\n  \"output\": {\n    \"greeting_output\": \"Hello Sam!\"\n  },\n  \"export\": {\n\n  }\n}\n\n\n\nWe don’t have any exported values in our app, and we won’t be covering those here. Read more about exported values in the {shinytest2} documentation."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#test-recap",
@@ -2433,7 +2433,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#testing-tips",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "A couple final tips for testing\n\n\n Use record_test() fairly often – make a test recording for each feature of your app (many little recordings are encouraged!)\n\n\n Think of both the most common and uncommon pathways that your user may take when interacting with your app. E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?\n\n\n\n\n\n\n\n\nThis is only a brief intro to {shinytest2}! Dig into the documentation to learn more."
+    "text": "A couple final tips for testing\n\n\n Use record_test() fairly often – make a test recording for each feature of your app (many little recordings are encouraged!)\n\n\n Think of both the most common and uncommon pathways that your user may take when interacting with your app. E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?\n\n\n\n\n\n\n\nThis is only a brief intro to {shinytest2}! Dig into the documentation to learn more."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#end",
@@ -2461,7 +2461,7 @@
     "href": "course-materials/slides/part2.2A.html#roadmap-app2v1",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Roadmap for App #2\n\n\nWe’ll be building out our two-file app using data from the {lterdatasampler} and {palmerpenguins} packages. We’ll focus on creating a functional app that has a more visually pleasing UI layout. Our goals are to create:\n\n\n\n \n\n(a) A navigation bar with two pages, one of which will contain two tabs (one tab for each plot)\n\n\n(b) A pickerInput and checkboxGroupButtons for users to filter cutthroat trout data in a reactive scatterplot\n\n\n(c) A pickerInput for users to filter penguin data and a sliderInput to adjust the number of bins in a reactive histogram\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou’ll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) – we’ll learn about ways to improve this in the next section."
+    "text": "Roadmap for App #2\n\n\nWe’ll be building out our two-file app using data from the {lterdatasampler} and {palmerpenguins} packages. We’ll focus on creating a functional app that has a more visually pleasing UI layout. Our goals are to create:\n\n\n\n \n\n(a) A navigation bar with two pages, one of which will contain two tabs (one tab for each plot)\n\n\n(b) A pickerInput and checkboxGroupButtons for users to filter cutthroat trout data in a reactive scatterplot\n\n\n(c) A pickerInput for users to filter penguin data and a sliderInput to adjust the number of bins in a reactive histogram\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou’ll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) – we’ll learn about ways to improve this in the next section."
   },
   {
     "objectID": "course-materials/slides/part2.2A.html#two-source",
@@ -2496,7 +2496,7 @@
     "href": "course-materials/slides/part2.2A.html#unstructured-app1",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "We created a perfectly functional first app, but it’s not so visually pleasing\n\n\n\n   nothing really grabs your eye\n inputs & outputs are stacked vertically on top of one another (which requires a lot of vertical scrolling)\n widget label text is difficult to distinguish from other text\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBefore we jump into adding reactive outputs to our next app, we’ll first plan out the visual structure of our UI – first on paper, then with layout functions."
+    "text": "We created a perfectly functional first app, but it’s not so visually pleasing\n\n\n\n   nothing really grabs your eye\n inputs & outputs are stacked vertically on top of one another (which requires a lot of vertical scrolling)\n widget label text is difficult to distinguish from other text\n\n\n\n\n\n\n\n\n\n\n\n\n\nBefore we jump into adding reactive outputs to our next app, we’ll first plan out the visual structure of our UI – first on paper, then with layout functions."
   },
   {
     "objectID": "course-materials/slides/part2.2A.html#layout-functions",
@@ -2510,7 +2510,7 @@
     "href": "course-materials/slides/part2.2A.html#layout-function-examples",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Example UI layouts (adapted from Mastering Shiny, Ch. 6)\n\n\nNote: You can combine multiple layout function groups to really customize your UI – for example, you can create a navbar, include tabs, and also establish sidebar and main panel areas for inputs and outputs.\n\n\nSidebar & main areaPage with multiple rowsTabsNavbar\n\n\n\nTo create a page with a side bar and main area to contain your inputs and outputs (respectively), explore the following layout functions and read up on the sidebarLayout documentation:\n\n\n\n\nfluidPage(\n  titlePanel(\n    # app title/description\n  ),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs here\n    ),\n    mainPanel(\n      # outputs here\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTo create a page with multiple rows, explore the following layout functions and check out the fluid layout documentation. Note that each row is made up of 12 columns. The first argument of the column() function takes a value of 1-12 to specify the number of columns to occupy.\n\n\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      ...\n    ),\n    column(8, \n      ...\n    )\n  ),\n  fluidRow(\n    column(6, \n      ...\n    ),\n    column(6, \n      ...\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may find that you eventually end up with too much content to fit on a single application page. Enter tabsetPanel() and tabPanel(). tabsetPanel() creates a container for any number of tabPanel()s. Each tabPanel() can contain any number of HTML components (e.g. inputs and outputs). Find the tabsetPanel documentation here and check out this example:\n\n\n\n\ntabsetPanel(\n  tabPanel(\"Tab 1\", \n    # an input\n    # an output\n  ),\n  tabPanel(\"Tab 2\"),\n  tabPanel(\"Tab 3\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may also want to use a navigation bar (navbarPage()) with different pages (created using tabPanel()) to organize your application. Read through the navbarPage documentation and try running the example below:\n\n\n\n\nnavbarPage(\n  title = \"My app\",\n  tabPanel(title = \"Tab 1\",\n           # an input\n           # an output\n           ),\n  tabPanel(title = \"Tab 2\")\n)"
+    "text": "Example UI layouts (adapted from Mastering Shiny, Ch. 6)\n\n\nNote: You can combine multiple layout function groups to really customize your UI – for example, you can create a navbar, include tabs, and also establish sidebar and main panel areas for inputs and outputs.\n\n\nSidebar & main areaPage with multiple rowsTabsNavbar\n\n\n\nTo create a page with a side bar and main area to contain your inputs and outputs (respectively), explore the following layout functions and read up on the sidebarLayout documentation:\n\n\n\n\nfluidPage(\n  titlePanel(\n    # app title/description\n  ),\n  sidebarLayout(\n    sidebarPanel(\n      # inputs here\n    ),\n    mainPanel(\n      # outputs here\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTo create a page with multiple rows, explore the following layout functions and check out the fluid layout documentation. Note that each row is made up of 12 columns. The first argument of the column() function takes a value of 1-12 to specify the number of columns to occupy.\n\n\n\n\nfluidPage(\n  fluidRow(\n    column(4, \n      ...\n    ),\n    column(8, \n      ...\n    )\n  ),\n  fluidRow(\n    column(6, \n      ...\n    ),\n    column(6, \n      ...\n    )\n  )\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may find that you eventually end up with too much content to fit on a single application page. Enter tabsetPanel() and tabPanel(). tabsetPanel() creates a container for any number of tabPanel()s. Each tabPanel() can contain any number of HTML components (e.g. inputs and outputs). Find the tabsetPanel documentation here and check out this example:\n\n\n\n\ntabsetPanel(\n  tabPanel(\"Tab 1\", \n    # an input\n    # an output\n  ),\n  tabPanel(\"Tab 2\"),\n  tabPanel(\"Tab 3\")\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou may also want to use a navigation bar (navbarPage()) with different pages (created using tabPanel()) to organize your application. Read through the navbarPage documentation and try running the example below:\n\n\n\n\nnavbarPage(\n  title = \"My app\",\n  tabPanel(title = \"Tab 1\",\n           # an input\n           # an output\n           ),\n  tabPanel(title = \"Tab 2\")\n)"
   },
   {
     "objectID": "course-materials/slides/part2.2A.html#layout-fxns-app2",
@@ -2552,7 +2552,7 @@
     "href": "course-materials/slides/part2.2A.html#exercise2-prompt",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Exercise 2: Add sidebar and main panels to the Penguins tab\n\n\n\n \nI encourage you to type the code out yourself, rather than copy/paste!\n\nBe sure to add text where your input / output will eventually be placed.\n\nWhen you’re done, you app should look like this \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for a solution!"
+    "text": "Exercise 2: Add sidebar and main panels to the Penguins tab\n\n\n\n \nI encourage you to type the code out yourself, rather than copy/paste!\n\nBe sure to add text where your input / output will eventually be placed.\n\nWhen you’re done, you app should look like this \n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for a solution!"
   },
   {
     "objectID": "course-materials/slides/part2.2A.html#exercise2-solution",
@@ -2664,7 +2664,7 @@
     "href": "course-materials/slides/part2.2B.html#exercise3-prompt",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Exercise 3: Add a reactive plot to the ‘Penguins’ tab\n\n\nWorking alone or in groups, add a reactive histogram of penguin flipper lengths (using the penguins data set from the {palmerpenguins} package) to the Penguins tab. Your plot should have the following features and look like the example below, when complete:\n\n\n\n\n data colored by penguin species\n\n\n a shinyWidgets::pickerInput() that allows users to filter data based on island, and that includes buttons to Select All / Deselect All island options at once\n\n\n a shiny::sliderInput() that allows users to change the number of histogram bins and that by default, displays a histogram with 25 bins\n\n\n the two widgets should be placed in the sidebarPanel and the reactive histogram should be placed in the mainPanel of the Penguins tab\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
+    "text": "Exercise 3: Add a reactive plot to the ‘Penguins’ tab\n\n\nWorking alone or in groups, add a reactive histogram of penguin flipper lengths (using the penguins data set from the {palmerpenguins} package) to the Penguins tab. Your plot should have the following features and look like the example below, when complete:\n\n\n\n\n data colored by penguin species\n\n\n a shinyWidgets::pickerInput() that allows users to filter data based on island, and that includes buttons to Select All / Deselect All island options at once\n\n\n a shiny::sliderInput() that allows users to change the number of histogram bins and that by default, displays a histogram with 25 bins\n\n\n the two widgets should be placed in the sidebarPanel and the reactive histogram should be placed in the mainPanel of the Penguins tab\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee next slide for some tips on getting started!"
   },
   {
     "objectID": "course-materials/slides/part2.2B.html#exercise3-tips",
@@ -2713,7 +2713,7 @@
     "href": "course-materials/slides/part1.1-shiny-overview-slides.html#framework",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "What’s a framework?\n\nA programming framework (like Shiny) is a set of tools that provide ready-made components and / or solutions for development.\n\n\n\n\nFrameworks serve as a foundation so that you don’t need to start development entirely from scratch. They are a starting point for you to add the higher-level functionality that actually makes your software work.\nFrameworks are often opinionated, meaning you need to follow the rules / structure of the framework.\nUse the Shiny framework for developing apps / dashboards in R or Python\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRead more about frameworks on codecademy"
+    "text": "What’s a framework?\n\nA programming framework (like Shiny) is a set of tools that provide ready-made components and / or solutions for development.\n\n\n\n\nFrameworks serve as a foundation so that you don’t need to start development entirely from scratch. They are a starting point for you to add the higher-level functionality that actually makes your software work.\nFrameworks are often opinionated, meaning you need to follow the rules / structure of the framework.\nUse the Shiny framework for developing apps / dashboards in R or Python\n\n\n\n\n\n\n\n\n\n\n\n\n\nRead more about frameworks on codecademy"
   },
   {
     "objectID": "course-materials/slides/part1.1-shiny-overview-slides.html#app-anatomy",
@@ -2811,7 +2811,7 @@
     "href": "course-materials/slides/part7.1-debugging-slides.html#ui-errors2",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "An example: debugging App #2 by un / commenting\n\n\n\n\n\nIf I were to trouble shoot the UI for App #2, I’d comment out everything except ui &lt;- navbarPage(title = \"LTER Animal Data Explorer\" and the ending ) # END navbarPage, then run my app to make sure an empty app with a gray navbar and title at the top appears. It does? Great. Next, un-comment the two tabPanel()s that create the “About this App” and “Explore the Data” pages. Works? Add a little bit more back in now, and continue this process. I like to un-comment / re-run all layout function code first, then begin adding back the inputs and outputs one-by-one. See a short, but incomplete demo to the right:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUltimately, taking your time, adding lots of code comments to mark the ending parentheses of each function, and leaving space between lines of code so that you can more easily see what’s going on will save you lots of headache!"
+    "text": "An example: debugging App #2 by un / commenting\n\n\n\n\n\nIf I were to trouble shoot the UI for App #2, I’d comment out everything except ui &lt;- navbarPage(title = \"LTER Animal Data Explorer\" and the ending ) # END navbarPage, then run my app to make sure an empty app with a gray navbar and title at the top appears. It does? Great. Next, un-comment the two tabPanel()s that create the “About this App” and “Explore the Data” pages. Works? Add a little bit more back in now, and continue this process. I like to un-comment / re-run all layout function code first, then begin adding back the inputs and outputs one-by-one. See a short, but incomplete demo to the right:\n\n\n\n\n\n\n\n\n\n\n\n\n\nUltimately, taking your time, adding lots of code comments to mark the ending parentheses of each function, and leaving space between lines of code so that you can more easily see what’s going on will save you lots of headache!"
   },
   {
     "objectID": "course-materials/slides/part7.1-debugging-slides.html#next",
@@ -2874,7 +2874,7 @@
     "href": "course-materials/slides/part7.1-debugging-slides.html#reactlog",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "If helpful, use {reactlog} to visualize reactivity\n\n\n\n    \nreactlog is a package / tool that provides:\n\n“A snapshot of the history (log) of all reactive interactions within a shiny application” - Barret Schloerke in his 2019 RSTUDIO::CONF talk, Reactlog 2.0: Debugging the state of Shiny\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReactivity can be confusing. I recommend watching Barret Schloerke’s talk, linked above, and reading through the Shiny Reactlog vignette as you get started."
+    "text": "If helpful, use {reactlog} to visualize reactivity\n\n\n\n    \nreactlog is a package / tool that provides:\n\n“A snapshot of the history (log) of all reactive interactions within a shiny application” - Barret Schloerke in his 2019 RSTUDIO::CONF talk, Reactlog 2.0: Debugging the state of Shiny\n\n\n\n\n\n\n\n\n\n\n\n\n\nReactivity can be confusing. I recommend watching Barret Schloerke’s talk, linked above, and reading through the Shiny Reactlog vignette as you get started."
   },
   {
     "objectID": "course-materials/slides/part7.1-debugging-slides.html#reactlog-workflow",
@@ -2972,7 +2972,7 @@
     "href": "course-materials/slides/part1.2-setup-app-slides.html#two-file",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "Create a two-file Shiny app\n\n\nIn practice, you will likely find yourself opting for the the two-file format – code expands quickly, even when building relatively small apps. This two-file approach (well, three if you use a global.R file, which is encouraged) will help to keep your code a bit more manageable.\n\n\n\n(1) In your project repo’s root directory, create a new subdirectory to house your app – I’m calling mine, two-file-app.\n\n\n\n\n(2) Create two new R scripts inside two-file-app/ named ui.R and server.R – you must name your scripts ui.R and server.R. Copy the following code into the respective files. Note: When splitting your UI and server into separate files, you do not need to include the shinyApp(ui = ui, server = server) line of code (as required in your single-file app).\n\n\n\n\n\n\n~/two-file-app/ui.R\n\n# user interface ----\nui &lt;- fluidPage()\n\n\n\n\n\n\n~/two-file-app/server.R\n\n# server instructions ----\nserver &lt;- function(input, output) {}\n\n\n\n\n\n\n\n(3) Lastly, let’s create a global.R file within two-file-app/ and add dependencies (right now, that’s just loading the shiny package). Run your app as we did earlier.\n\n\n\n\n~/two-file-app/global.R\n\n# load libraries ----\nlibrary(shiny)"
+    "text": "Create a two-file Shiny app\n\n\nIn practice, you will likely find yourself opting for the the two-file format – code expands quickly, even when building relatively small apps. This two-file approach (well, three if you use a global.R file, which is encouraged) will help to keep your code a bit more manageable.\n\n\n\n(1) In your project repo’s root directory, create a new subdirectory to house your app – I’m calling mine, two-file-app.\n\n\n\n\n(2) Create two new R scripts inside two-file-app/ named ui.R and server.R – you must name your scripts ui.R and server.R. Copy the following code into the respective files. Note: When splitting your UI and server into separate files, you do not need to include the shinyApp(ui = ui, server = server) line of code (as required in your single-file app).\n\n\n\n\n\n\n~/two-file-app/ui.R\n\n# user interface ----\nui &lt;- fluidPage()\n\n\n\n\n\n\n~/two-file-app/server.R\n\n# server instructions ----\nserver &lt;- function(input, output) {}\n\n\n\n\n\n\n(3) Lastly, let’s create a global.R file within two-file-app/ and add dependencies (right now, that’s just loading the shiny package). Run your app as we did earlier.\n\n\n\n\n~/two-file-app/global.R\n\n# load libraries ----\nlibrary(shiny)"
   },
   {
     "objectID": "course-materials/slides/part1.2-setup-app-slides.html#end-section",
@@ -2996,24 +2996,24 @@
     "text": "Reference code\nWe’ll be building / playing with a number of small apps and dashboards throughout this workshop. You can reference the complete source code for each of them on GitHub.\nWe’ll be creating our own GitHub repositories to house our apps, so you do not need to fork this repo (unless you want to, of course)."
   },
   {
-    "objectID": "course-materials/part6-streamlining-code.html#required-packages",
-    "href": "course-materials/part6-streamlining-code.html#required-packages",
+    "objectID": "course-materials/part6-streamlining-code.html#pkgs",
+    "href": "course-materials/part6-streamlining-code.html#pkgs",
     "title": "Streamlining code",
-    "section": "Required Packages",
+    "section": " Required Packages",
     "text": "Required Packages\nWe’ll be using the following R packages:\n\nlibrary(shiny)\nlibrary(shinyWidgets)\nlibrary(tidyverse)"
   },
   {
-    "objectID": "course-materials/part6-streamlining-code.html#required-data",
-    "href": "course-materials/part6-streamlining-code.html#required-data",
+    "objectID": "course-materials/part6-streamlining-code.html#data",
+    "href": "course-materials/part6-streamlining-code.html#data",
     "title": "Streamlining code",
-    "section": "Required Data",
+    "section": " Required Data",
     "text": "Required Data\n\nlibrary(palmerpenguins)\nlibrary(gapminder)"
   },
   {
     "objectID": "course-materials/part6-streamlining-code.html#lecture-materials",
     "href": "course-materials/part6-streamlining-code.html#lecture-materials",
     "title": "Streamlining code",
-    "section": "Lecture Materials",
+    "section": " Lecture Materials",
     "text": "Lecture Materials\nPart 6 is broken down into two lessons:\n\n\n\nFunctions\n lecture 6.1 slides\n\n\n\n\nModules\n lecture 6.2 slides"
   }
 ]
