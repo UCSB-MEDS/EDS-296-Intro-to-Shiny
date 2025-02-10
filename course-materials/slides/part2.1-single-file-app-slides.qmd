@@ -13,13 +13,11 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 2.1]{.custom-title}
+[EDS 296: Part 2.1]{.custom-title}
 
 [*Building a single-file app*]{.custom-subtitle}
 
 <hr class="hr-teal">
-
-<!-- [Week 1 | January 26^th^, 2024]{.custom-subtitle3} -->
 
 ---
 
@@ -34,51 +32,51 @@ editor_options:
 
 ##  {#LO-app1 data-menu-title="Learning Objectives - App #1"}
 
-[{{< fa book-open title="an open book" >}} Learning Objectives - App #1 (single-file app)]{.slide-title}
+[{{< fa book-open title="an open book" >}} Learning Objectives - App #1 (single-file app)]{.slide-title2}
 
 <hr>
 
-<p class="body-text-m teal-text bottombr">By the end of building out this first app, you should be a bit more familiar with:</p>
+[By the end of building out this first app, you should be a bit more familiar with:]{.body-text-m .teal-text}
 
 . .  .
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} writing a single-file (`app.R`) shiny app</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} writing a single-file (`app.R`) shiny app]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} adding and styling text in the UI using `tags`</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} adding and styling text in the UI using `tags`]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} practicing data wrangling and visualization *outside* of your shiny app</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} practicing data wrangling and visualization *outside* of your shiny app]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} following a general workflow for building reactive apps, which includes adding **inputs** and **outputs** to the **UI**, then writing the **server instructions** on how to assemble user input values into outputs</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} following a general workflow for building reactive apps, which includes adding **inputs** and **outputs** to the **UI**, then writing the **server instructions** on how to assemble user input values into outputs]{.body-text-s}
 
 . .  .
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} running and quitting apps in RStudio</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} running and quitting apps in RStudio]{.body-text-s}
 
 . . . 
 
-<p class="body-text-m teal-text topbr">Packages introduced:</p> 
+[Packages introduced:]{.body-text-m .teal-text}
 
 . . . 
 
-<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{shiny}`: framework for building our reactive app + standard widgets</p>
+[[{{< fa box-open title="an open box" >}}]{.teal-text} `{shiny}`: framework for building our reactive app + standard widgets]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{DT}`: interactive datatable widgets (that can be made reactive using shiny!)</p>
+[[{{< fa box-open title="an open box" >}}]{.teal-text} `{DT}`: interactive datatable widgets (that can be made reactive using shiny!)]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{tidyverse}`: collection of packages for wrangling & visualizing data</p>   
+[[{{< fa box-open title="an open box" >}}]{.teal-text} `{tidyverse}`: collection of packages for wrangling & visualizing data]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{palmerpenguins}`: data</p>
+[[{{< fa box-open title="an open box" >}}]{.teal-text} `{palmerpenguins}`: data]{.body-text-s}
 
 ---
 
@@ -97,11 +95,11 @@ editor_options:
 <br>
 <br>
 
-<p class="body-text">**(a)** A title and subtitle</p>
+**(a)** A title and subtitle
 
-<p class="body-text topbr">**(b)** A slider widget for users to select a range of penguin body masses</p>
+**(b)** A slider widget for users to select a range of penguin body masses
 
-<p class="body-text topbr">**(c)** A reactive scatterplot that updates based on user-supplied values</p>
+**(c)** A reactive scatter plot that updates based on user-supplied values
 :::
 
 ::: {.column width="5%"}
@@ -212,25 +210,16 @@ The `shiny` package comes with a number of input and output functions, but you c
 ::: {.column width="45%"}
 [**Examples of Input Functions:**]{.teal-text}
 
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `actionButton()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `checkboxInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `checkboxGroupInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `dateInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `dateRangeInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `radioButtons()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `selectInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `sliderInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `textInput()`]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/) of `shiny` input functions]{.body-text-s}
+- [`actionButton()`]{.body-text-s}
+- [`checkboxInput()`]{.body-text-s}
+- [`checkboxGroupInput()`]{.body-text-s}
+- [`dateInput()`]{.body-text-s}
+- [`dateRangeInput()`]{.body-text-s}
+- [`radioButtons()`]{.body-text-s}
+- [`selectInput()`]{.body-text-s}
+- [`sliderInput()`]{.body-text-s}
+- [`textInput()`]{.body-text-s}
+- [See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/){target="_blank"} of `shiny` input functions]{.body-text-s}
 :::
 
 ::: {.column width="5%"}
@@ -239,17 +228,12 @@ The `shiny` package comes with a number of input and output functions, but you c
 ::: {.column width="45%"}
 [**Examples of Output Functions:**]{.teal-text}
 
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `dataTableOutput()` (inserts an interactive table)]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `imageOutput()` (inserts an image)]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `plotOutput()` (inserts a plot)]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `tableOutput()` (inserts a table)]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `textOutput()` (inserts text)]{.body-text-s}
-
-[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/) of `shiny` output functions]{.body-text-s}
+- [`dataTableOutput()` (inserts an interactive table)]{.body-text-s}
+- [`imageOutput()` (inserts an image)]{.body-text-s}
+- [`plotOutput()` (inserts a plot)]{.body-text-s}
+- [`tableOutput()` (inserts a table)]{.body-text-s}
+- [`textOutput()` (inserts text)]{.body-text-s}
+- [See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/) of `shiny` output functions]{.body-text-s}
 :::
 
 ::::
@@ -262,16 +246,19 @@ The `shiny` package comes with a number of input and output functions, but you c
 
 <hr>
 
-<p class="body-text-s">Next, we'll create a **scatterplot of penguin bill lengths vs. penguin flipper lengths** using the `penguins` data set from the `{palmerpengiuns}` package. We will make this scatterplot *reactive* by adding a `sliderInput` that allows users to filter the displayed data points by **selecting a range of penguin body masses** (e.g. only plot bill and flipper lengths for penguins with body masses ranging from 4,500 grams to 6,000 grams).</p>
+[Next, we'll create a **scatterplot of penguin bill lengths vs. penguin flipper lengths** using the `penguins` data set from the `{palmerpengiuns}` package. We will make this scatterplot *reactive* by adding a `sliderInput` that allows users to filter the displayed data points by **selecting a range of penguin body masses** (e.g. only plot bill and flipper lengths for penguins with body masses ranging from 4,500 grams to 6,000 grams).]{.body-text-s}
 
 :::: {.columns}
 
 ::: {.column width="45%"}
 <br>
-<p class="body-text-s">[**To create a reactive plot, we will follow these steps:**]{.teal-text}</p>
-<p class="body-text-s topbr">[**(1)**]{.teal-text} Add an input (e.g. `sliderInput`) to the **UI** that users can interact with</p>
-<p class="body-text-s">[**(2)**]{.teal-text} Add an output (e.g. `plotOutput`) to the **UI** that creates a *placeholder space* to fill with our eventual reactive output</p>
-<p class="body-text-s">[**(3)**]{.teal-text} Tell the **server** how to assemble inputs into outputs</p>
+[**To create a reactive plot, we will follow these steps:**]{.teal-text}
+
+[[**(1)**]{.teal-text} Add an input (e.g. `sliderInput`) to the **UI** that users can interact with]{.body-text-s}
+
+[[**(2)**]{.teal-text} Add an output (e.g. `plotOutput`) to the **UI** that creates a *placeholder space* to fill with our eventual reactive output]{.body-text-s}
+
+[[**(3)**]{.teal-text} Tell the **server** how to assemble inputs into outputs]{.body-text-s}
 :::
 
 ::: {.column width="5%"}
@@ -298,7 +285,9 @@ knitr::include_graphics("images/part2/reactive-app-v1.gif")
 
 <hr>
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **All input functions have the same first argument, `inputId`** (**NOTE:** `Id` *not* `ID`), **which is used to connect the front end of your app (the UI) with the back end (the server).** For example, if your UI has an `inputId = "name"`, the server function will access that input value using the syntax `input$name`. The `inputId` has two constraints:</p>
+<!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} -->
+
+- [**All input functions have the same first argument, `inputId`** (**NOTE:** `Id` *not* `ID`), **which is used to connect the front end of your app (the UI) with the back end (the server).** For example, if your UI has an `inputId = "name"`, the server function will access that input value using the syntax `input$name`. The `inputId` has two constraints:]{.body-text-s}
 
 . . . 
 
@@ -308,9 +297,9 @@ knitr::include_graphics("images/part2/reactive-app-v1.gif")
 
 . . . 
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Most input functions have a second parameter called `label`, which is used to create a human-readable label for the control, which will appear in the UI.</p>
+- [Most input functions have a second parameter called `label`, which is used to create a human-readable label for the control, which will appear in the UI.]{.body-text-s}
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} The remaining arguments are unique to each input function. Oftentimes, these include a `value` parameter, which lets you set the default value of your widget, where applicable.</p>
+- [The remaining arguments are unique to each input function. Oftentimes, these include a `value` parameter, which lets you set the default value of your widget, where applicable.]{.body-text-s}
 
 [**A couple examples:**]{.teal-text}
 ```{r}
@@ -335,7 +324,7 @@ Check out the interactive [Shiny Widgets Gallery](https://shiny.rstudio.com/gall
 
 <hr>
 
-<p class="body-text">First let's add a `sliderInput()` that will allow users to select a range of penguin body masses (g).</p>
+First let's add a `sliderInput()` that will allow users to select a range of penguin body masses (g).
 
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
@@ -354,17 +343,24 @@ ui <- fluidPage(
 
 . . . 
 
-<p class="body-text">When you run your app, you should see something similar to the image below. It's operable, but does not yet have an associated output.</p>
+:::: {.columns}
+::: {.column width="50%"}
+<br>
+<br>
+When you run your app, you should see something similar to the image to the right. It's operable, but does not yet have an associated output.
+:::
 
+::: {.column width="50%"}
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "40%"
+#| out-width: "100%"
 #| fig-alt: "A basic Shiny app, with a title that says 'My App Title', a subtitle that says, 'Exploring Palmer Penguins and Antarctic Temperatures, and a slider input with a label that says 'Select a range of body masses (g)'. The slider bar has a minimum value of 2,700 and a maximum value of 6,300, and the moveable slider selectors currently range from 3,000 to 4,000."
 knitr::include_graphics("images/part2/3000-4000.png")
 ```
-
+:::
+::::
 ---
 
 ##  {#output-syntax data-menu-title="Output Syntax"}
@@ -373,13 +369,14 @@ knitr::include_graphics("images/part2/3000-4000.png")
 
 <hr>
 
-<p class="body-text">Outputs in the UI create **placeholders** which are later filled by the server function.</p>
+- Outputs in the UI create **placeholders** which are later filled by the server function.
 
-<p class="body-text topbr"> Similar to input functions, **all output functions take the same first argument, `outputId`** (again, note `Id` not `ID`), **which connects the front end UI with the back end server.** For example, if your UI contains an output function with an `outputId = "plot"`, the server function will access it (or in other words, know to place the plot in that particular placeholder) using the syntax `output$plot`.</p>
+. . .
 
-</p>
+- Similar to input functions, **all output functions take the same first argument, `outputId`** (again, note `Id` not `ID`), **which connects the front end UI with the back end server.** 
+  - For example, if your UI contains an output function with an `outputId = "plot"`, the server function will access it (or in other words, know to place the plot in that particular placeholder) using the syntax `output$plot`.
 
-<p class="body-text topbr">**A couple examples:**</p>
+[**A couple examples:**]{.teal-text}
 ```{r}
 #| eval: false
 #| echo: true
@@ -396,7 +393,7 @@ dataTableOutput(outputId = "penguin_data_output")
 
 <hr>
 
-<p class="body-text-s">Let's now add a `plotOutput()`, which will be updated based on the user inputs via the `sliderInput()`, then run the app.</p>
+Let's now add a `plotOutput()`, which will be updated based on the user inputs via the `sliderInput()`, then run the app.
 
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
@@ -439,6 +436,10 @@ Okay, it looks like nothing changed?? **Remember, `*Output()` functions create p
 knitr::include_graphics("images/part2/output-placeholder.png")
 ```
 
+::: {.footer}
+To inspect the HTML: open your app in the browser (not necessary, but I find it easier to see what's going on) > right click on your app > Inspect
+:::
+
 ---
 
 ##  {#rendering-outputs data-menu-title="Rendering outputs"}
@@ -447,11 +448,13 @@ knitr::include_graphics("images/part2/output-placeholder.png")
 
 <hr>
 
-<p class="body-text">Each `*Output()` function in the UI is coupled with a `render*()` function in the server, which contains the "instructions" for creating the output based on user inputs (or in other words, the instructions for making your output *reactive*).</p>
+Each `*Output()` function in the UI is coupled with a `render*()` function in the server, which contains the "instructions" for creating the output based on user inputs (or in other words, the instructions for making your output *reactive*).
 
 <br>
 
-<p class="body-text-m teal-text center-text topbr">Examples of `*Output()` functions and their corresponding `render*()` functions:</p>
+::: {.body-text-m .teal-text .center-text}
+Examples of `*Output()` functions and their corresponding `render*()` functions:
+:::
 
 <br>
 
@@ -471,23 +474,23 @@ knitr::include_graphics("images/part2/output-placeholder.png")
 
 <hr>
 
-<p class="body-text-s">Now that we've designed our input / output in the UI, we need to write the server instructions (i.e. write the server function) on how to use the input value(s) (i.e. penguin body mass range via a slider input) to update the output (scatter plot).</p>
+[Now that we've designed our input / output in the UI, we need to write the server instructions (i.e. write the server function) on how to use the input value(s) (i.e. penguin body mass range via a slider input) to update the output (scatter plot).]{.body-text-s}
 
-<p class="body-text-s">The **server function** is defined with two arguments, `input` and `output`, both of which are list-like objects. You *must* define both of these arguments within the server function. `input` contains the values of all the different inputs at any given time, while `output` is where you'll save output objects to be displayed in the app.</p>
+[The **server function** is defined with two arguments, `input` and `output`, both of which are list-like objects. You *must* define both of these arguments within the server function. `input` contains the values of all the different inputs at any given time, while `output` is where you'll save output objects to be displayed in the app.]{.body-text-s}
 
 [***This part can be intimidating, but if you follow these three rules, you will successfully create reactivity within your shiny app!***]{.body-text-s .teal-text}
 
 <br>
 
-<p class="body-text-xl teal-text">**Rules:**</p>
+[**Rules:**]{.body-text-xl .teal-text}
 
 . . . 
 
-<p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Save objects you want to display to `output$<id>`</p>
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Save objects you want to display to `output$<id>`
 
-<p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function</p>
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function
 
-<p class="body-text">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>`</p>
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>
 
 ---
 
@@ -551,11 +554,11 @@ server <- function(input, output) {
 
 ##  {#rule2.1 data-menu-title="Rule #2a"}
 
-[**Rule 2:** Build reactive objects with `render*()`]{.slide-title2}
+[**Rule 2:** Build reactive objects with `render*()`]{.slide-title3}
 
 <hr>
 
-<p class="body-text-s">Use the appropriate `render*()` function to make your output reactive (e.g. if you have a `plotOutput` in your UI, you will need to use `renderPlot()` in your server). Within your `render*()`, write any code inside a set of curly braces, `{}`. This allows you to include as many lines of code as it takes to build your object.</p>
+[Use the appropriate `render*()` function to make your output reactive (e.g. if you have a `plotOutput` in your UI, you will need to use `renderPlot()` in your server). Be sure to include a set of curly brackets, `{}` inside `render*()` -- this allows us to include as many lines of code as necessary to build our object.]{.body-text-s}
 
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
@@ -599,7 +602,7 @@ server <- function(input, output) {
 
 <hr>
 
-<p class="body-text bottombr">I find it easier to experiment and draft my objects (e.g. plots) first in a separate script (*outside* my app directory), then copy the code over to the server after. I want to make a plot that looks like this:</p>
+I find it easier to experiment and draft my objects (e.g. plots) first in a separate script (*outside* my app directory), then copy the code over to the server after. I want to make a plot that looks like this:
 
 ::: {.panel-tabset}
 
@@ -670,7 +673,7 @@ ggplot(na.omit(penguins),
 
 <hr>
 
-<p class="body-text-s">Copy your code over to your app, placing it inside the `{}` (and make sure to add any additional required packages to the top of your `app.R` script). Run your app. What do you notice?</p>
+[Copy your code over to your app, placing it inside the `{}` (and make sure to add any additional required packages to the top of your `app.R` script). Run your app. What do you notice?]{.body-text-s}
 
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
@@ -723,7 +726,7 @@ server <- function(input, output) {
 
 <hr>
 
-<p class="body-text bottombr">**We have a plot (yay!), but it isn't reactive.** We have not yet told the server how to update the plot based on user inputs via the `sliderInput()` in the UI. Let's do that next...</p>
+**We have a plot (yay!), but it isn't reactive.** We have not yet told the server how to update the plot based on user inputs via the `sliderInput()` in the UI. Let's do that next...
 
 ```{r}
 #| eval: true
@@ -742,7 +745,7 @@ knitr::include_graphics("images/part2/nonreactive-app.gif")
 
 <hr>
 
-<p class="body-text-s">First, create a new data frame where we filter the `body_mass_g` column for observations within a specific range of values (in this example, values ranging from 3000 - 4000):</p>
+[First, create a new data frame where we filter the `body_mass_g` column for observations within a specific range of values (in this example, values ranging from 3000 - 4000):]{.body-text-s}
 
 . . . 
 
@@ -760,7 +763,7 @@ body_mass_df <- penguins |>
 
 . . .
 
-<p class="body-text-s">Then, plot the new filtered data frame:</p>
+[Then, plot the new filtered data frame:]{.body-text-s}
 
 :::: {.columns}
 
@@ -823,7 +826,7 @@ body_mass_df <- penguins |>
 
 <br>
 
-<p class="body-text">**For example:**</p>
+[**For example:**]{.teal-text}
 
 :::: {.columns}
 
@@ -873,7 +876,7 @@ knitr::include_graphics("images/part2/3725-5191.png")
 
 <hr>
 
-<p class="body-text-s">Recall that in our **UI**, we gave our `sliderInput()` an `inputId = "body_mass_input"`.</p>
+[Recall that in our **UI**, we gave our `sliderInput()` an `inputId = "body_mass_input"`.]{.body-text-s}
 
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
@@ -980,7 +983,7 @@ server <- function(input, output) {
 
 <hr>
 
-<p class="body-text">You should now have a reactive Shiny app! *Note that reactivity automatically occurs whenever you use an **input value** to **render** an **output object**.*</p>
+You should now have a reactive Shiny app! *Note that reactivity automatically occurs whenever you use an **input value** to **render** an **output object**.*
 
 ```{r}
 #| eval: true
@@ -1002,23 +1005,25 @@ knitr::include_graphics("images/part2/reactive-app-v1.gif")
 
 . . . 
 
-<p class="body-text">[**(1)**]{.teal-text} We created an `app.R` file in it's own directory and began our app with the [template](https://ucsb-meds.github.io/EDS430-Shiny/#/single-file), though you can also create a [two-file Shiny app](https://ucsb-meds.github.io/EDS430-Shiny/#/two-file) by using separate `ui.R` and `server.R` files.</p>
+[**(1)**]{.teal-text} We created an `app.R` file in it's own directory and began our app with the [template](https://ucsb-meds.github.io/EDS430-Shiny/#/single-file), though you can also create a [two-file Shiny app](https://ucsb-meds.github.io/EDS430-Shiny/#/two-file) by using separate `ui.R` and `server.R` files.
 
 . . .
 
-<p class="body-text topbr">[**(2)**]{.teal-text} We added an input to the `fluidPage()` in our **UI** using an `*Input()` function and gave it a *unique* `inputId` (e.g. `inputId = "unique_input_Id_name"`)</p>
+[**(2)**]{.teal-text} We added an input to the `fluidPage()` in our **UI** using an `*Input()` function and gave it a *unique* `inputId` (e.g. `inputId = "unique_input_Id_name"`).
 
 . . . 
 
-<p class="body-text topbr">[**(3)**]{.teal-text} We created a placeholder for our reactive object by using an `*Output()` function in the `fluidPage()` of our **UI** and gave it an `outputId` (e.g. `outputId = "output_Id_name"`)</p>
+[**(3)**]{.teal-text} We created a placeholder for our reactive object by using an `*Output()` function in the `fluidPage()` of our **UI** and gave it an `outputId` (e.g. `outputId = "output_Id_name"`).
 
 . . .
 
-<p class="body-text topbr">[**(4)**]{.teal-text} We wrote the **server** instructions for how to assemble inputs into outputs, following these rules:</p>
+[**(4)**]{.teal-text} We wrote the **server** instructions for how to assemble inputs into outputs, following these rules:
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} save objects that you want to display to `output$<id>`</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} build reactive objects using a `render*()` function (and similarly, build reactive data frames using `reactive()`</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} access input values with `input$<id>`</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} save objects that you want to display to `output$<id>`]{.body-text-s}
+
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} build reactive objects using a `render*()` function (and similarly, build reactive data frames using `reactive()`]{.body-text-s}
+
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} access input values with `input$<id>`]{.body-text-s}
 
 . . . 
 
@@ -1034,7 +1039,7 @@ And we saw that reactivity automatically occurs whenever we use an ***input valu
 
 <hr>
 
-<p class="body-text-s bottombr"> The [`{DT}` package](https://rstudio.github.io/DT/) provides an R interface to the JavaScript library [DataTables](https://datatables.net/) (you may have already used the `{DT}` package in your knitted RMarkdown / Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.</p>
+[The [`{DT}` package](https://rstudio.github.io/DT/) provides an R interface to the JavaScript library [DataTables](https://datatables.net/) (you may have already used the `{DT}` package in your knitted RMarkdown / Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.]{.body-text-s}
 
 <br>
 
@@ -1042,8 +1047,9 @@ And we saw that reactivity automatically occurs whenever we use an ***input valu
 
 ::: {.column width="50%"}
 <br>
-<p class="body-text-s topbr">**Working alone or in groups, add a reactive `DT` datatable to your app with a `checkboxGroupInput` that allows users to select which year(s) to include in the table. Configure your `checkboxGroupInput` so that the years 2007 and 2008 are pre-selected.**</p>
-<p class="body-text-s topbr">In the end, your app should look something like the example to the right.</p>
+[**Working alone or in groups, add a reactive `DT` datatable to your app with a `checkboxGroupInput` that allows users to select which year(s) to include in the table. Configure your `checkboxGroupInput` so that the years 2007 and 2008 are pre-selected.**]{.body-text-s}
+
+In the end, your app should look something like the example to the right.]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -1065,28 +1071,57 @@ See next slide for some tips on getting started!
 
 ---
 
-##  {#app1-ex1-tips data-menu-title="** Exercise 1 Tips **" background="#d2e3f3"}
+##  {#app1-ex1-tips-1 data-menu-title="** Exercise 1 Tips (1/2) **" background="#d2e3f3"}
 
-[`r fontawesome::fa("lightbulb", fill = "#05859B", a11y = "sem")` Exercise 1: Tips]{.slide-title}
+[`r fontawesome::fa("lightbulb", fill = "#05859B", a11y = "sem")` Exercise 1: Tips (1/2)]{.slide-title}
 
 <hr>
 
-**Tips:**
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Use `?checkboxGroupInput` to learn more about which arguments you need (remember, all inputs require an `inputId` and oftentimes a `label`, but there are others required to make this work as well)</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Both `{shiny}` and `{DT}` packages have functions named `dataTableOutput()` and `renderDataTable()` -- `DT::renderDataTable()` allows you to create both server-side and client-side DataTables and supports additional DataTables features while `shiny::renderDataTable()` only provides server-side DataTables. Be sure to use the one from the `{DT}` package using the syntax `packageName::functionName()`.</p>
-<p class="body-text-s bottombr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} There are lots of ways to customize DT tables, but to create a basic one, all you need is `DT::dataTable(your_dataframe)`<p>
+<br>
 
+- Use `?checkboxGroupInput` to learn more about which arguments you need (remember, all inputs require an `inputId` and oftentimes a `label`, but there are others required to make this work as well)
 
-**And remember** to follow the steps outlined on the previous slides:
+<br>
 
-<p class="body-text-s">[**(1)**]{.teal-text} Add an input (e.g. `checkboxGroupInput`) to the **UI** that users can interact with<p>
-<p class="body-text-s">[**(2)**]{.teal-text} Add an output (e.g. `DT::datatableOutput`) to the **UI** that creates a placeholder space to fill with our eventual reactive output<p>
-<p class="body-text-s">[**(3)**]{.teal-text} Tell the **server** how to assemble inputs into outputs following 3 rules:<p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Save objects you want to display to `output$<id>`<p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function<p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>`<p>
+- Both the `{shiny}` and `{DT}` packages have functions named `dataTableOutput()` and `renderDataTable()`. The `{DT}` versions offer greater flexibility and customization options, so I recommend opting for those variants by namespacing the functions (i.e. using the syntax `packageName::functionName()`).
 
-<center><p class="body-text-l teal-text topbr">See next slide for a solution!</p></center>
+<br>
+
+- There are lots of ways to customize DT tables, but to create a basic one, all you need is `DT::dataTable(your_dataframe)`. Try it first in your scratch file!
+
+---
+
+##  {#app1-ex1-tips-2 data-menu-title="** Exercise 1 Tips (2/2) **" background="#d2e3f3"}
+
+[`r fontawesome::fa("lightbulb", fill = "#05859B", a11y = "sem")` Exercise 1: Tips (2/2)]{.slide-title}
+
+<hr>
+
+[**And remember** to follow the steps we've practiced:]{.body-text-m}
+
+<br>
+
+[**(1)**]{.teal-text} Add an input (e.g. `checkboxGroupInput`) to the **UI** that users can interact with
+
+<br>
+
+[**(2)**]{.teal-text} Add an output (e.g. `DT::datatableOutput`) to the **UI** that creates a placeholder space to fill with our eventual reactive output
+
+<br>
+
+[**(3)**]{.teal-text} Tell the **server** how to assemble inputs into outputs following 3 rules:
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Save objects you want to display to `output$<id>`
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>`
+
+<br>
+
+::: {.center-text .body-text-l .teal-text}
+See next slide for a solution!
+:::
 
 ---
 

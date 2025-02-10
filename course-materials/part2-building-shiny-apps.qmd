@@ -51,30 +51,37 @@ Part 2 is broken down into three lessons:
 
 <!-- UPDATE GGPLOT THEME TO FUNCTION  -->
 
-::: {.grid}
+| {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
+|------------------------------------------------------------------------------------------|
+| [Lecture 2.1: Building a single-file app](slides/part2.1-single-file-app-slides.qmd){target="_blank"}  | 
+| [Lecture 2.2: Building a two-file app](slides/part2.2-two-file-app-slides.qmd){target="_blank"}  |
+| [Lecture 2.3: Deploying apps + improving UX](slides/part2.3-deploy-improve-ux-slides.qmd){target="_blank"}  |
+: {.hover .bordered tbl-colwidths="[50,25,25]"}
 
-::: {.g-col-12 .g-col-md-4}
-::: {.center-text}
-[**Single-file app**]{.teal-text .body-text-m}
+<!-- ::: {.grid} -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.1 slides](slides/part2.1-single-file-app-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- ::: {.g-col-12 .g-col-md-4} -->
+<!-- ::: {.center-text} -->
+<!-- [**Single-file app**]{.teal-text .body-text-m} -->
 
-::: {.g-col-12 .g-col-md-4}
-::: {.center-text}
-[**Two-file app**]{.teal-text .body-text-m}
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.1 slides](slides/part2.1-single-file-app-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/part2.2-two-file-app-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- ::: {.g-col-12 .g-col-md-4} -->
+<!-- ::: {.center-text} -->
+<!-- [**Two-file app**]{.teal-text .body-text-m} -->
 
-::: {.g-col-12 .g-col-md-4}
-::: {.center-text}
-[**Deploying & Improving UX**]{.teal-text .body-text-m}
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.2 slides](slides/part2.2-two-file-app-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.3 slides](slides/part2.3-deploy-improve-ux-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- ::: {.g-col-12 .g-col-md-4} -->
+<!-- ::: {.center-text} -->
+<!-- [**Deploying & Improving UX**]{.teal-text .body-text-m} -->
 
-:::
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 2.3 slides](slides/part2.3-deploy-improve-ux-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- ::: -->

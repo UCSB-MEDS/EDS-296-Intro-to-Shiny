@@ -398,10 +398,9 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 2.1</span></p>
+<p><span class="custom-title">EDS 296: Part 2.1</span></p>
 <p><span class="custom-subtitle"><em>Building a single-file app</em></span></p>
 <hr class="hr-teal">
-<!-- [Week 1 | January 26^th^, 2024]{.custom-subtitle3} -->
 </section>
 <section id="build-app1" class="slide level2" data-menu-title="~~~ Building App #1 ~~~" data-background="#047C90">
 <h2></h2>
@@ -416,60 +415,38 @@
 </section>
 <section id="LO-app1" class="slide level2" data-menu-title="Learning Objectives - App #1">
 <h2></h2>
-<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #1 (single-file app)</span></p>
+<p><span class="slide-title2"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #1 (single-file app)</span></p>
 <hr>
-<p class="body-text-m teal-text bottombr">
-By the end of building out this first app, you should be a bit more familiar with:
-</p>
+<p><span class="body-text-m teal-text">By the end of building out this first app, you should be a bit more familiar with:</span></p>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> writing a single-file (<code>app.R</code>) shiny app
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> writing a single-file (<code>app.R</code>) shiny app</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> adding and styling text in the UI using <code>tags</code>
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> adding and styling text in the UI using <code>tags</code></span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> practicing data wrangling and visualization <em>outside</em> of your shiny app
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> practicing data wrangling and visualization <em>outside</em> of your shiny app</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> following a general workflow for building reactive apps, which includes adding <strong>inputs</strong> and <strong>outputs</strong> to the <strong>UI</strong>, then writing the <strong>server instructions</strong> on how to assemble user input values into outputs
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> following a general workflow for building reactive apps, which includes adding <strong>inputs</strong> and <strong>outputs</strong> to the <strong>UI</strong>, then writing the <strong>server instructions</strong> on how to assemble user input values into outputs</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> running and quitting apps in RStudio
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> running and quitting apps in RStudio</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-m teal-text topbr">
-Packages introduced:
-</p>
+<p><span class="body-text-m teal-text">Packages introduced:</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shiny}</code>: framework for building our reactive app + standard widgets
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shiny}</code>: framework for building our reactive app + standard widgets</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{DT}</code>: interactive datatable widgets (that can be made reactive using shiny!)
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{DT}</code>: interactive datatable widgets (that can be made reactive using shiny!)</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{tidyverse}</code>: collection of packages for wrangling &amp; visualizing data
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{tidyverse}</code>: collection of packages for wrangling &amp; visualizing data</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{palmerpenguins}</code>: data
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{palmerpenguins}</code>: data</span></p>
 </div>
 </section>
 <section id="roadmap-app1" class="slide level2" data-menu-title="Roadmap App#1">
@@ -482,15 +459,9 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><br> <br> <br></p>
-<p class="body-text">
-<strong>(a)</strong> A title and subtitle
-</p>
-<p class="body-text topbr">
-<strong>(b)</strong> A slider widget for users to select a range of penguin body masses
-</p>
-<p class="body-text topbr">
-<strong>(c)</strong> A reactive scatterplot that updates based on user-supplied values
-</p>
+<p><strong>(a)</strong> A title and subtitle</p>
+<p><strong>(b)</strong> A slider widget for users to select a range of penguin body masses</p>
+<p><strong>(c)</strong> A reactive scatter plot that updates based on user-supplied values</p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:45%;">
@@ -570,50 +541,43 @@ We’ll start by building a small <strong>single-file app</strong> using data fr
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><span class="teal-text"><strong>Examples of Input Functions:</strong></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>actionButton()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>checkboxInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>checkboxGroupInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>dateInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>dateRangeInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>radioButtons()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>selectInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>sliderInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>textInput()</code></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> See a <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/">full list</a> of <code>shiny</code> input functions</span></p>
+<ul>
+<li><span class="body-text-s"><code>actionButton()</code></span></li>
+<li><span class="body-text-s"><code>checkboxInput()</code></span></li>
+<li><span class="body-text-s"><code>checkboxGroupInput()</code></span></li>
+<li><span class="body-text-s"><code>dateInput()</code></span></li>
+<li><span class="body-text-s"><code>dateRangeInput()</code></span></li>
+<li><span class="body-text-s"><code>radioButtons()</code></span></li>
+<li><span class="body-text-s"><code>selectInput()</code></span></li>
+<li><span class="body-text-s"><code>sliderInput()</code></span></li>
+<li><span class="body-text-s"><code>textInput()</code></span></li>
+<li><span class="body-text-s">See a <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/" target="_blank">full list</a> of <code>shiny</code> input functions</span></li>
+</ul>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:45%;">
 <p><span class="teal-text"><strong>Examples of Output Functions:</strong></span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>dataTableOutput()</code> (inserts an interactive table)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>imageOutput()</code> (inserts an image)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>plotOutput()</code> (inserts a plot)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>tableOutput()</code> (inserts a table)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>textOutput()</code> (inserts text)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> See a <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/">full list</a> of <code>shiny</code> output functions</span></p>
+<ul>
+<li><span class="body-text-s"><code>dataTableOutput()</code> (inserts an interactive table)</span></li>
+<li><span class="body-text-s"><code>imageOutput()</code> (inserts an image)</span></li>
+<li><span class="body-text-s"><code>plotOutput()</code> (inserts a plot)</span></li>
+<li><span class="body-text-s"><code>tableOutput()</code> (inserts a table)</span></li>
+<li><span class="body-text-s"><code>textOutput()</code> (inserts text)</span></li>
+<li><span class="body-text-s">See a <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/">full list</a> of <code>shiny</code> output functions</span></li>
+</ul>
 </div></div>
 </section>
 <section id="reactive-plot-app1" class="slide level2" data-menu-title="Adding reactive plot (app #1)">
 <h2></h2>
 <p><span class="slide-title">Adding our reactive plot</span></p>
 <hr>
-<p class="body-text-s">
-Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;penguin flipper lengths</strong> using the <code>penguins</code> data set from the <code>{palmerpengiuns}</code> package. We will make this scatterplot <em>reactive</em> by adding a <code>sliderInput</code> that allows users to filter the displayed data points by <strong>selecting a range of penguin body masses</strong> (e.g.&nbsp;only plot bill and flipper lengths for penguins with body masses ranging from 4,500 grams to 6,000 grams).
-</p>
+<p><span class="body-text-s">Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;penguin flipper lengths</strong> using the <code>penguins</code> data set from the <code>{palmerpengiuns}</code> package. We will make this scatterplot <em>reactive</em> by adding a <code>sliderInput</code> that allows users to filter the displayed data points by <strong>selecting a range of penguin body masses</strong> (e.g.&nbsp;only plot bill and flipper lengths for penguins with body masses ranging from 4,500 grams to 6,000 grams).</span></p>
 <div class="columns">
 <div class="column" style="width:45%;">
-<br>
-<p class="body-text-s">
-<span class="teal-text"><strong>To create a reactive plot, we will follow these steps:</strong></span>
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><strong>(1)</strong></span> Add an input (e.g.&nbsp;<code>sliderInput</code>) to the <strong>UI</strong> that users can interact with
-</p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(2)</strong></span> Add an output (e.g.&nbsp;<code>plotOutput</code>) to the <strong>UI</strong> that creates a <em>placeholder space</em> to fill with our eventual reactive output
-</p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(3)</strong></span> Tell the <strong>server</strong> how to assemble inputs into outputs
-</p>
+<p><br> <span class="teal-text"><strong>To create a reactive plot, we will follow these steps:</strong></span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Add an input (e.g.&nbsp;<code>sliderInput</code>) to the <strong>UI</strong> that users can interact with</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> Add an output (e.g.&nbsp;<code>plotOutput</code>) to the <strong>UI</strong> that creates a <em>placeholder space</em> to fill with our eventual reactive output</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Tell the <strong>server</strong> how to assemble inputs into outputs</span></p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:45%;">
@@ -632,20 +596,19 @@ Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;peng
 <h2></h2>
 <p><span class="slide-title">Input function syntax</span></p>
 <hr>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>All input functions have the same first argument, <code>inputId</code></strong> (<strong>NOTE:</strong> <code>Id</code> <em>not</em> <code>ID</code>), <strong>which is used to connect the front end of your app (the UI) with the back end (the server).</strong> For example, if your UI has an <code>inputId = "name"</code>, the server function will access that input value using the syntax <code>input$name</code>. The <code>inputId</code> has two constraints:
-</p>
+<!-- []{.teal-text} -->
+<ul>
+<li><span class="body-text-s"><strong>All input functions have the same first argument, <code>inputId</code></strong> (<strong>NOTE:</strong> <code>Id</code> <em>not</em> <code>ID</code>), <strong>which is used to connect the front end of your app (the UI) with the back end (the server).</strong> For example, if your UI has an <code>inputId = "name"</code>, the server function will access that input value using the syntax <code>input$name</code>. The <code>inputId</code> has two constraints:</span></li>
+</ul>
 <div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> it must be a simple string containing only letters, numbers, and underscores,</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> it must be unique within your app.</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Most input functions have a second parameter called <code>label</code>, which is used to create a human-readable label for the control, which will appear in the UI.
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> The remaining arguments are unique to each input function. Oftentimes, these include a <code>value</code> parameter, which lets you set the default value of your widget, where applicable.
-</p>
+<ul>
+<li><p><span class="body-text-s">Most input functions have a second parameter called <code>label</code>, which is used to create a human-readable label for the control, which will appear in the UI.</span></p></li>
+<li><p><span class="body-text-s">The remaining arguments are unique to each input function. Oftentimes, these include a <code>value</code> parameter, which lets you set the default value of your widget, where applicable.</span></p></li>
+</ul>
 <p><span class="teal-text"><strong>A couple examples:</strong></span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g):"</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>), ...)</span>
@@ -662,9 +625,7 @@ Next, we’ll create a <strong>scatterplot of penguin bill lengths vs.&nbsp;peng
 <h2></h2>
 <p><span class="slide-title"><strong>Step 1:</strong> Add an input to your app</span></p>
 <hr>
-<p class="body-text">
-First let’s add a <code>sliderInput()</code> that will allow users to select a range of penguin body masses (g).
-</p>
+<p>First let’s add a <code>sliderInput()</code> that will allow users to select a range of penguin body masses (g).</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -682,47 +643,49 @@ First let’s add a <code>sliderInput()</code> that will allow users to select a
 </div>
 </div>
 <div class="fragment">
-<p class="body-text">
-When you run your app, you should see something similar to the image below. It’s operable, but does not yet have an associated output.
-</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br> <br> When you run your app, you should see something similar to the image to the right. It’s operable, but does not yet have an associated output.</p>
+</div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part2/3000-4000.png" class="quarto-figure quarto-figure-center" style="width:40.0%" alt="A basic Shiny app, with a title that says 'My App Title', a subtitle that says, 'Exploring Palmer Penguins and Antarctic Temperatures, and a slider input with a label that says 'Select a range of body masses (g)'. The slider bar has a minimum value of 2,700 and a maximum value of 6,300, and the moveable slider selectors currently range from 3,000 to 4,000."></p>
+<p><img data-src="images/part2/3000-4000.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A basic Shiny app, with a title that says 'My App Title', a subtitle that says, 'Exploring Palmer Penguins and Antarctic Temperatures, and a slider input with a label that says 'Select a range of body masses (g)'. The slider bar has a minimum value of 2,700 and a maximum value of 6,300, and the moveable slider selectors currently range from 3,000 to 4,000."></p>
 </figure>
 </div>
 </div>
 </div>
+</div></div>
 </div>
 </section>
 <section id="output-syntax" class="slide level2" data-menu-title="Output Syntax">
 <h2></h2>
 <p><span class="slide-title">Output function syntax</span></p>
 <hr>
-<p class="body-text">
-Outputs in the UI create <strong>placeholders</strong> which are later filled by the server function.
-</p>
-<p class="body-text topbr">
-Similar to input functions, <strong>all output functions take the same first argument, <code>outputId</code></strong> (again, note <code>Id</code> not <code>ID</code>), <strong>which connects the front end UI with the back end server.</strong> For example, if your UI contains an output function with an <code>outputId = "plot"</code>, the server function will access it (or in other words, know to place the plot in that particular placeholder) using the syntax <code>output$plot</code>.
-</p>
-<p></p>
-<p class="body-text topbr">
-<strong>A couple examples:</strong>
-</p>
+<ul>
+<li>Outputs in the UI create <strong>placeholders</strong> which are later filled by the server function.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Similar to input functions, <strong>all output functions take the same first argument, <code>outputId</code></strong> (again, note <code>Id</code> not <code>ID</code>), <strong>which connects the front end UI with the back end server.</strong>
+<ul>
+<li>For example, if your UI contains an output function with an <code>outputId = "plot"</code>, the server function will access it (or in other words, know to place the plot in that particular placeholder) using the syntax <code>output$plot</code>.</li>
+</ul></li>
+</ul>
+<p><span class="teal-text"><strong>A couple examples:</strong></span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a><span class="fu">dataTableOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_data_output"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section>
 <section id="add-output" class="slide level2" data-menu-title="Add Output">
 <h2></h2>
 <p><span class="slide-title"><strong>Step 2:</strong> Add an output to your app</span></p>
 <hr>
-<p class="body-text-s">
-Let’s now add a <code>plotOutput()</code>, which will be updated based on the user inputs via the <code>sliderInput()</code>, then run the app.
-</p>
+<p>Let’s now add a <code>plotOutput()</code>, which will be updated based on the user inputs via the <code>sliderInput()</code>, then run the app.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -751,18 +714,19 @@ Let’s now add a <code>plotOutput()</code>, which will be updated based on the 
 <p>Okay, it looks like nothing changed?? <strong>Remember, <code>*Output()</code> functions create placeholders, but we have not yet written the server instructions on how to fill and update those placeholders.</strong> We can inspect the HTML and see that there is, in fact, a placeholder area awaiting our eventual output, which will be a plot named “<em>bodyMass_scatterplot_output</em>”:</p>
 <p><br></p>
 
-<img data-src="images/part2/output-placeholder.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A Google Chrome browser window with our Shiny app open on the left-hand side and the underlying HTML document open on the right. The app looks the same as before, except hovering over the HTML associated with our new plotOutput highlights a blue square region beneath the sliderInput. This highlighted region is the placeholder where our plot will eventually be rendered."></section>
+<img data-src="images/part2/output-placeholder.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A Google Chrome browser window with our Shiny app open on the left-hand side and the underlying HTML document open on the right. The app looks the same as before, except hovering over the HTML associated with our new plotOutput highlights a blue square region beneath the sliderInput. This highlighted region is the placeholder where our plot will eventually be rendered."><div class="footer">
+<p>To inspect the HTML: open your app in the browser (not necessary, but I find it easier to see what’s going on) &gt; right click on your app &gt; Inspect</p>
+</div>
+</section>
 <section id="rendering-outputs" class="slide level2" data-menu-title="Rendering outputs">
 <h2></h2>
 <p><span class="slide-title">Render outputs with <code>render*()</code> functions</span></p>
 <hr>
-<p class="body-text">
-Each <code>*Output()</code> function in the UI is coupled with a <code>render*()</code> function in the server, which contains the “instructions” for creating the output based on user inputs (or in other words, the instructions for making your output <em>reactive</em>).
-</p>
+<p>Each <code>*Output()</code> function in the UI is coupled with a <code>render*()</code> function in the server, which contains the “instructions” for creating the output based on user inputs (or in other words, the instructions for making your output <em>reactive</em>).</p>
 <p><br></p>
-<p class="body-text-m teal-text center-text topbr">
-Examples of <code>*Output()</code> functions and their corresponding <code>render*()</code> functions:
-</p>
+<div class="body-text-m teal-text center-text">
+<p>Examples of <code>*Output()</code> functions and their corresponding <code>render*()</code> functions:</p>
+</div>
 <p><br></p>
 <table class="caption-top">
 <thead>
@@ -799,27 +763,15 @@ Examples of <code>*Output()</code> functions and their corresponding <code>rende
 <h2></h2>
 <p><span class="slide-title3"><strong>Step 3:</strong> Tell the server how to assemble inputs into outputs</span></p>
 <hr>
-<p class="body-text-s">
-Now that we’ve designed our input / output in the UI, we need to write the server instructions (i.e.&nbsp;write the server function) on how to use the input value(s) (i.e.&nbsp;penguin body mass range via a slider input) to update the output (scatter plot).
-</p>
-<p class="body-text-s">
-The <strong>server function</strong> is defined with two arguments, <code>input</code> and <code>output</code>, both of which are list-like objects. You <em>must</em> define both of these arguments within the server function. <code>input</code> contains the values of all the different inputs at any given time, while <code>output</code> is where you’ll save output objects to be displayed in the app.
-</p>
+<p><span class="body-text-s">Now that we’ve designed our input / output in the UI, we need to write the server instructions (i.e.&nbsp;write the server function) on how to use the input value(s) (i.e.&nbsp;penguin body mass range via a slider input) to update the output (scatter plot).</span></p>
+<p><span class="body-text-s">The <strong>server function</strong> is defined with two arguments, <code>input</code> and <code>output</code>, both of which are list-like objects. You <em>must</em> define both of these arguments within the server function. <code>input</code> contains the values of all the different inputs at any given time, while <code>output</code> is where you’ll save output objects to be displayed in the app.</span></p>
 <p><span class="body-text-s teal-text"><strong><em>This part can be intimidating, but if you follow these three rules, you will successfully create reactivity within your shiny app!</em></strong></span></p>
 <p><br></p>
-<p class="body-text-xl teal-text">
-<strong>Rules:</strong>
-</p>
+<p><span class="body-text-xl teal-text"><strong>Rules:</strong></span></p>
 <div class="fragment">
-<p class="body-text">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Save objects you want to display to <code>output$&lt;id&gt;</code>
-</p>
-<p class="body-text">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Build reactive objects using a <code>render*()</code> function
-</p>
-<p class="body-text">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Access input values with <code>input$&lt;id&gt;</code>
-</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Save objects you want to display to <code>output$&lt;id&gt;</code></p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Build reactive objects using a <code>render*()</code> function</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Access input values with `input$<id></id></p>
 </div>
 </section>
 <section id="rule1" class="slide level2" data-menu-title="Rule #1">
@@ -869,11 +821,9 @@ The <strong>server function</strong> is defined with two arguments, <code>input<
 </section>
 <section id="rule2.1" class="slide level2" data-menu-title="Rule #2a">
 <h2></h2>
-<p><span class="slide-title2"><strong>Rule 2:</strong> Build reactive objects with <code>render*()</code></span></p>
+<p><span class="slide-title3"><strong>Rule 2:</strong> Build reactive objects with <code>render*()</code></span></p>
 <hr>
-<p class="body-text-s">
-Use the appropriate <code>render*()</code> function to make your output reactive (e.g.&nbsp;if you have a <code>plotOutput</code> in your UI, you will need to use <code>renderPlot()</code> in your server). Within your <code>render*()</code>, write any code inside a set of curly braces, <code>{}</code>. This allows you to include as many lines of code as it takes to build your object.
-</p>
+<p><span class="body-text-s">Use the appropriate <code>render*()</code> function to make your output reactive (e.g.&nbsp;if you have a <code>plotOutput</code> in your UI, you will need to use <code>renderPlot()</code> in your server). Be sure to include a set of curly brackets, <code>{}</code> inside <code>render*()</code> – this allows us to include as many lines of code as necessary to build our object.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -913,9 +863,7 @@ Use the appropriate <code>render*()</code> function to make your output reactive
 <h2></h2>
 <p><span class="slide-title3"><strong>An Aside:</strong> Draft objects in a separate script first</span></p>
 <hr>
-<p class="body-text bottombr">
-I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a separate script (<em>outside</em> my app directory), then copy the code over to the server after. I want to make a plot that looks like this:
-</p>
+<p>I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a separate script (<em>outside</em> my app directory), then copy the code over to the server after. I want to make a plot that looks like this:</p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Code</a></li><li><a href="#tabset-1-2">Output</a></li></ul>
 <div class="tab-content">
@@ -962,9 +910,7 @@ I find it easier to experiment and draft my objects (e.g.&nbsp;plots) first in a
 <h2></h2>
 <p><span class="slide-title">Copy your plot code into the server</span></p>
 <hr>
-<p class="body-text-s">
-Copy your code over to your app, placing it inside the <code>{}</code> (and make sure to add any additional required packages to the top of your <code>app.R</code> script). Run your app. What do you notice?
-</p>
+<p><span class="body-text-s">Copy your code over to your app, placing it inside the <code>{}</code> (and make sure to add any additional required packages to the top of your <code>app.R</code> script). Run your app. What do you notice?</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1013,18 +959,14 @@ Copy your code over to your app, placing it inside the <code>{}</code> (and make
 <h2></h2>
 <p><span class="slide-title3">A non-reactive plot now lives in our <code>plotOutput()</code> placeholder</span></p>
 <hr>
-<p class="body-text bottombr">
-<strong>We have a plot (yay!), but it isn’t reactive.</strong> We have not yet told the server how to update the plot based on user inputs via the <code>sliderInput()</code> in the UI. Let’s do that next…
-</p>
+<p><strong>We have a plot (yay!), but it isn’t reactive.</strong> We have not yet told the server how to update the plot based on user inputs via the <code>sliderInput()</code> in the UI. Let’s do that next…</p>
 
 <img data-src="images/part2/nonreactive-app.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A user changes the sliderInput meant associated with the penguin data scatterplot, but the plot does not update (i.e. it is not yet reactive)."></section>
 <section id="practice-filtering" class="slide level2" data-menu-title="Practice filtering data">
 <h2></h2>
 <p><span class="slide-title2">Practice filtering data in our separate script</span></p>
 <hr>
-<p class="body-text-s">
-First, create a new data frame where we filter the <code>body_mass_g</code> column for observations within a specific range of values (in this example, values ranging from 3000 - 4000):
-</p>
+<p><span class="body-text-s">First, create a new data frame where we filter the <code>body_mass_g</code> column for observations within a specific range of values (in this example, values ranging from 3000 - 4000):</span></p>
 <div class="fragment">
 <div class="cell">
 <div class="code-with-filename">
@@ -1042,9 +984,7 @@ First, create a new data frame where we filter the <code>body_mass_g</code> colu
 </div>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-Then, plot the new filtered data frame:
-</p>
+<p><span class="body-text-s">Then, plot the new filtered data frame:</span></p>
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
@@ -1098,9 +1038,7 @@ Then, plot the new filtered data frame:
 </div>
 <div class="fragment">
 <p><br></p>
-<p class="body-text">
-<strong>For example:</strong>
-</p>
+<p><span class="teal-text"><strong>For example:</strong></span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -1137,9 +1075,7 @@ Then, plot the new filtered data frame:
 <h2></h2>
 <p><span class="slide-title2"><strong>Rule 3:</strong> Access input values with <code>input$&lt;id&gt;</code></span></p>
 <hr>
-<p class="body-text-s">
-Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> an <code>inputId = "body_mass_input"</code>.
-</p>
+<p><span class="body-text-s">Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> an <code>inputId = "body_mass_input"</code>.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1231,9 +1167,7 @@ Recall that in our <strong>UI</strong>, we gave our <code>sliderInput()</code> a
 <h2></h2>
 <p><span class="slide-title">Okay, RUN THAT APP!</span></p>
 <hr>
-<p class="body-text">
-You should now have a reactive Shiny app! <em>Note that reactivity automatically occurs whenever you use an <strong>input value</strong> to <strong>render</strong> an <strong>output object</strong>.</em>
-</p>
+<p>You should now have a reactive Shiny app! <em>Note that reactivity automatically occurs whenever you use an <strong>input value</strong> to <strong>render</strong> an <strong>output object</strong>.</em></p>
 
 <img data-src="images/part2/reactive-app-v1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A gif of our current Shiny app, demonstrating reactivity. At the top left of our app is the title, 'My App Title' in large header font. Beneath it is a subtitle, 'Exploring Antarctic Penguins and Temperatures'. Below the subtitle is the slider input with the label, 'Select a range of body masses (g)'. A gray horizontal slider bar ranges from the values 2,700 to 6,300. The interactive slider value selectors are two round white circles, which, when moved apart from one another highlight the selected value range in blue. The user is adjusting the slider value selectors and the scatterplot of penguin bill length (mm) vs. flipper length (mm) is automatically updating."></section>
 <section id="recapp-app1" class="slide level2" data-menu-title="Recap: app #1">
@@ -1241,33 +1175,19 @@ You should now have a reactive Shiny app! <em>Note that reactivity automatically
 <p><span class="slide-title3">Recap: We created our first <em>reactive</em> Shiny app following these steps:</span></p>
 <hr>
 <div class="fragment">
-<p class="body-text">
-<span class="teal-text"><strong>(1)</strong></span> We created an <code>app.R</code> file in it’s own directory and began our app with the <a href="https://ucsb-meds.github.io/EDS430-Shiny/#/single-file">template</a>, though you can also create a <a href="https://ucsb-meds.github.io/EDS430-Shiny/#/two-file">two-file Shiny app</a> by using separate <code>ui.R</code> and <code>server.R</code> files.
-</p>
+<p><span class="teal-text"><strong>(1)</strong></span> We created an <code>app.R</code> file in it’s own directory and began our app with the <a href="https://ucsb-meds.github.io/EDS430-Shiny/#/single-file">template</a>, though you can also create a <a href="https://ucsb-meds.github.io/EDS430-Shiny/#/two-file">two-file Shiny app</a> by using separate <code>ui.R</code> and <code>server.R</code> files.</p>
 </div>
 <div class="fragment">
-<p class="body-text topbr">
-<span class="teal-text"><strong>(2)</strong></span> We added an input to the <code>fluidPage()</code> in our <strong>UI</strong> using an <code>*Input()</code> function and gave it a <em>unique</em> <code>inputId</code> (e.g.&nbsp;<code>inputId = "unique_input_Id_name"</code>)
-</p>
+<p><span class="teal-text"><strong>(2)</strong></span> We added an input to the <code>fluidPage()</code> in our <strong>UI</strong> using an <code>*Input()</code> function and gave it a <em>unique</em> <code>inputId</code> (e.g.&nbsp;<code>inputId = "unique_input_Id_name"</code>).</p>
 </div>
 <div class="fragment">
-<p class="body-text topbr">
-<span class="teal-text"><strong>(3)</strong></span> We created a placeholder for our reactive object by using an <code>*Output()</code> function in the <code>fluidPage()</code> of our <strong>UI</strong> and gave it an <code>outputId</code> (e.g.&nbsp;<code>outputId = "output_Id_name"</code>)
-</p>
+<p><span class="teal-text"><strong>(3)</strong></span> We created a placeholder for our reactive object by using an <code>*Output()</code> function in the <code>fluidPage()</code> of our <strong>UI</strong> and gave it an <code>outputId</code> (e.g.&nbsp;<code>outputId = "output_Id_name"</code>).</p>
 </div>
 <div class="fragment">
-<p class="body-text topbr">
-<span class="teal-text"><strong>(4)</strong></span> We wrote the <strong>server</strong> instructions for how to assemble inputs into outputs, following these rules:
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> save objects that you want to display to <code>output$&lt;id&gt;</code>
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> build reactive objects using a <code>render*()</code> function (and similarly, build reactive data frames using <code>reactive()</code>
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> access input values with <code>input$&lt;id&gt;</code>
-</p>
+<p><span class="teal-text"><strong>(4)</strong></span> We wrote the <strong>server</strong> instructions for how to assemble inputs into outputs, following these rules:</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> save objects that you want to display to <code>output$&lt;id&gt;</code></span></p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> build reactive objects using a <code>render*()</code> function (and similarly, build reactive data frames using <code>reactive()</code></span></p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> access input values with <code>input$&lt;id&gt;</code></span></p>
 </div>
 <div class="fragment">
 <div class="center-text teal-text body-text-m">
@@ -1279,19 +1199,12 @@ You should now have a reactive Shiny app! <em>Note that reactivity automatically
 <h2></h2>
 <p><span class="slide-title2"><svg aria-label="Question" role="img" viewbox="0 0 320 512" style="height:1em;width:0.62em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Question</title><path d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"></path></svg> Exercise 1: Add another reactive widget</span></p>
 <hr>
-<p class="body-text-s bottombr">
-The <a href="https://rstudio.github.io/DT/"><code>{DT}</code> package</a> provides an R interface to the JavaScript library <a href="https://datatables.net/">DataTables</a> (you may have already used the <code>{DT}</code> package in your knitted RMarkdown / Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.
-</p>
+<p><span class="body-text-s">The <a href="https://rstudio.github.io/DT/"><code>{DT}</code> package</a> provides an R interface to the JavaScript library <a href="https://datatables.net/">DataTables</a> (you may have already used the <code>{DT}</code> package in your knitted RMarkdown / Quarto HTML documents). DT datatables allow for filtering, pagination, sorting, and lots of other neat features for tables on your HTML pages.</span></p>
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<br>
-<p class="body-text-s topbr">
-<strong>Working alone or in groups, add a reactive <code>DT</code> datatable to your app with a <code>checkboxGroupInput</code> that allows users to select which year(s) to include in the table. Configure your <code>checkboxGroupInput</code> so that the years 2007 and 2008 are pre-selected.</strong>
-</p>
-<p class="body-text-s topbr">
-In the end, your app should look something like the example to the right.
-</p>
+<p><br> <span class="body-text-s"><strong>Working alone or in groups, add a reactive <code>DT</code> datatable to your app with a <code>checkboxGroupInput</code> that allows users to select which year(s) to include in the table. Configure your <code>checkboxGroupInput</code> so that the years 2007 and 2008 are pre-selected.</strong></span></p>
+<p>In the end, your app should look something like the example to the right.]{.body-text-s}</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1307,44 +1220,41 @@ In the end, your app should look something like the example to the right.
 <p>See next slide for some tips on getting started!</p>
 </div>
 </section>
-<section id="app1-ex1-tips" class="slide level2" data-menu-title="** Exercise 1 Tips **" data-background="#d2e3f3">
+<section id="app1-ex1-tips-1" class="slide level2" data-menu-title="** Exercise 1 Tips (1/2) **" data-background="#d2e3f3">
 <h2></h2>
-<p><span class="slide-title"><svg aria-label="Lightbulb" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Lightbulb</title><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Exercise 1: Tips</span></p>
+<p><span class="slide-title"><svg aria-label="Lightbulb" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Lightbulb</title><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Exercise 1: Tips (1/2)</span></p>
 <hr>
-<strong>Tips:</strong>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Use <code>?checkboxGroupInput</code> to learn more about which arguments you need (remember, all inputs require an <code>inputId</code> and oftentimes a <code>label</code>, but there are others required to make this work as well)
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Both <code>{shiny}</code> and <code>{DT}</code> packages have functions named <code>dataTableOutput()</code> and <code>renderDataTable()</code> – <code>DT::renderDataTable()</code> allows you to create both server-side and client-side DataTables and supports additional DataTables features while <code>shiny::renderDataTable()</code> only provides server-side DataTables. Be sure to use the one from the <code>{DT}</code> package using the syntax <code>packageName::functionName()</code>.
-</p>
-<p class="body-text-s bottombr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> There are lots of ways to customize DT tables, but to create a basic one, all you need is <code>DT::dataTable(your_dataframe)</code>
-</p><p>
-</p><p><strong>And remember</strong> to follow the steps outlined on the previous slides:</p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(1)</strong></span> Add an input (e.g.&nbsp;<code>checkboxGroupInput</code>) to the <strong>UI</strong> that users can interact with
-</p><p>
-</p><p class="body-text-s">
-<span class="teal-text"><strong>(2)</strong></span> Add an output (e.g.&nbsp;<code>DT::datatableOutput</code>) to the <strong>UI</strong> that creates a placeholder space to fill with our eventual reactive output
-</p><p>
-</p><p class="body-text-s">
-<span class="teal-text"><strong>(3)</strong></span> Tell the <strong>server</strong> how to assemble inputs into outputs following 3 rules:
-</p><p>
-</p><p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Save objects you want to display to <code>output$&lt;id&gt;</code>
-</p><p>
-</p><p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Build reactive objects using a <code>render*()</code> function
-</p><p>
-</p><p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Access input values with <code>input$&lt;id&gt;</code>
-</p><p>
-</p><center>
-<p class="body-text-l teal-text topbr">
-See next slide for a solution!
-</p>
-</center>
+<p><br></p>
+<ul>
+<li>Use <code>?checkboxGroupInput</code> to learn more about which arguments you need (remember, all inputs require an <code>inputId</code> and oftentimes a <code>label</code>, but there are others required to make this work as well)</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Both the <code>{shiny}</code> and <code>{DT}</code> packages have functions named <code>dataTableOutput()</code> and <code>renderDataTable()</code>. The <code>{DT}</code> versions offer greater flexibility and customization options, so I recommend opting for those variants by namespacing the functions (i.e.&nbsp;using the syntax <code>packageName::functionName()</code>).</li>
+</ul>
+<p><br></p>
+<ul>
+<li>There are lots of ways to customize DT tables, but to create a basic one, all you need is <code>DT::dataTable(your_dataframe)</code>. Try it first in your scratch file!</li>
+</ul>
+</section>
+<section id="app1-ex1-tips-2" class="slide level2" data-menu-title="** Exercise 1 Tips (2/2) **" data-background="#d2e3f3">
+<h2></h2>
+<p><span class="slide-title"><svg aria-label="Lightbulb" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Lightbulb</title><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Exercise 1: Tips (2/2)</span></p>
+<hr>
+<p><span class="body-text-m"><strong>And remember</strong> to follow the steps we’ve practiced:</span></p>
+<p><br></p>
+<p><span class="teal-text"><strong>(1)</strong></span> Add an input (e.g.&nbsp;<code>checkboxGroupInput</code>) to the <strong>UI</strong> that users can interact with</p>
+<p><br></p>
+<p><span class="teal-text"><strong>(2)</strong></span> Add an output (e.g.&nbsp;<code>DT::datatableOutput</code>) to the <strong>UI</strong> that creates a placeholder space to fill with our eventual reactive output</p>
+<p><br></p>
+<p><span class="teal-text"><strong>(3)</strong></span> Tell the <strong>server</strong> how to assemble inputs into outputs following 3 rules:</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Save objects you want to display to <code>output$&lt;id&gt;</code></p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Build reactive objects using a <code>render*()</code> function</p>
+<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Access input values with <code>input$&lt;id&gt;</code></p>
+<p><br></p>
+<div class="center-text body-text-l teal-text">
+<p>See next slide for a solution!</p>
+</div>
 </section>
 <section id="app1-ex1-solution" class="slide level2" data-menu-title="** Exercise 1 Solution **" data-background="#d2e3f3">
 <h2></h2>
@@ -1486,7 +1396,7 @@ End part 2.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5d7f3510" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_f2410a89" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

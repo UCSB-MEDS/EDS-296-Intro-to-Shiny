@@ -67,5 +67,5 @@ toc: true
 
 ## Data Visualization
 
-There are *so* many incredible data viz resources. Check out the **[resources page](https://samanthacsik.github.io/EDS-240-data-viz/resources.html)** on the EDS 240: Data Visualization & Communication [course website](https://samanthacsik.github.io/EDS-240-data-viz/) for many of my favorites.
+There are *so* many incredible data viz resources. Check out the **[resources page](https://eds-240-data-viz.github.io/resources.html)** on the EDS 240: Data Visualization & Communication [course website](https://eds-240-data-viz.github.io/) for many of my favorites.
 

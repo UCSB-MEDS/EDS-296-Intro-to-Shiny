@@ -38,7 +38,7 @@ website:
             href: course-materials/part8-wrap-up.qmd
       - text: resources
         menu:
-          - text: resources
+          - text: recommended reading & resources
             href: resources.qmd
           - text: MEDS installation guide
             href: https://ucsb-meds.github.io/MEDS-installation-guide/
