@@ -401,46 +401,32 @@
 <i class="fa-solid fa-users" title="three people" aria-label="users"></i> Improving user experience
 </p>
 <p class="caption-text">
-<em>Our two-file-app is looking pretty good! It’s functional and deployed via shinyapps.io. Next, we’ll focus on making some minor tweaks that can help to improve usability</em>
+<em>Our two-file-app is looking pretty good! It’s functional and deployed via <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a>. Next, we’ll focus on making some minor tweaks that can help to improve usability</em>
 </p>
 </div>
 </section>
 <section id="LO-app2v2" class="slide level2" data-menu-title="Learning Objectives - App #2v2">
 <h2></h2>
-<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #2 (two-file app, updated)</span></p>
+<p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #2 (two-file app, <em>updated</em>)</span></p>
 <hr>
-<p class="body-text-m teal-text bottombr">
-By the end of this section, you should:
-</p>
+<p><span class="body-text-m teal-text">By the end of this section, you should:</span></p>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand how to provide users with helpful error messages using <code>validate()</code>
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand how to provide users with helpful error messages using <code>validate()</code></span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to add customizable loading animations to alert users when reactive objects are re-rendering
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to add customizable loading animations to alert users when reactive objects are re-rendering</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to add alternate (alt) text to rendered plots
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know how to add alternate (alt) text to rendered plots</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand how to <em>republish</em> an app using <a href="https://www.shinyapps.io/">shinyapps.io</a>
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand how to <em>republish</em> an app using <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a></span></p>
 </div>
 <div class="fragment">
-<p class="body-text-m teal-text topbr">
-Packages introduced:
-</p>
+<p><span class="body-text-m teal-text">Packages introduced:</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<svg aria-label="Box Open" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Box Open</title><path d="M58.9 42.1c3-6.1 9.6-9.6 16.3-8.7L320 64 564.8 33.4c6.7-.8 13.3 2.7 16.3 8.7l41.7 83.4c9 17.9-.6 39.6-19.8 45.1L439.6 217.3c-13.9 4-28.8-1.9-36.2-14.3L320 64 236.6 203c-7.4 12.4-22.3 18.3-36.2 14.3L37.1 170.6c-19.3-5.5-28.8-27.2-19.8-45.1L58.9 42.1zM321.1 128l54.9 91.4c14.9 24.8 44.6 36.6 72.5 28.6L576 211.6v167c0 22-15 41.2-36.4 46.6l-204.1 51c-10.2 2.6-20.9 2.6-31 0l-204.1-51C79 419.7 64 400.5 64 378.5v-167L191.6 248c27.8 8 57.6-3.8 72.5-28.6L318.9 128h2.2z"></path></svg> <code>{shinycssloaders}</code>: add loading animations to shiny outputs
-</p>
+<p><span class="body-text-s"><svg aria-label="Box Open" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Box Open</title><path d="M58.9 42.1c3-6.1 9.6-9.6 16.3-8.7L320 64 564.8 33.4c6.7-.8 13.3 2.7 16.3 8.7l41.7 83.4c9 17.9-.6 39.6-19.8 45.1L439.6 217.3c-13.9 4-28.8-1.9-36.2-14.3L320 64 236.6 203c-7.4 12.4-22.3 18.3-36.2 14.3L37.1 170.6c-19.3-5.5-28.8-27.2-19.8-45.1L58.9 42.1zM321.1 128l54.9 91.4c14.9 24.8 44.6 36.6 72.5 28.6L576 211.6v167c0 22-15 41.2-36.4 46.6l-204.1 51c-10.2 2.6-20.9 2.6-31 0l-204.1-51C79 419.7 64 400.5 64 378.5v-167L191.6 248c27.8 8 57.6-3.8 72.5-28.6L318.9 128h2.2z"></path></svg> <code>{shinycssloaders}</code>: add loading animations to shiny outputs</span></p>
 </div>
 </section>
 <section id="roadmap-app2v2" class="slide level2" data-menu-title="Roadmap App #2v2">
@@ -477,7 +463,7 @@ Packages introduced:
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
-<p>While this response is expected (and normal), we can generate a <span class="teal-text"><strong>user-friendly <a href="https://shiny.rstudio.com/articles/validation.html">validation error</a> message to provide clear guidance to our users</strong></span> on what is expected by the app in order to display data.</p>
+<p>While this response is expected (and normal), we can generate a <span class="teal-text"><strong>user-friendly <a href="https://shiny.rstudio.com/articles/validation.html" target="_blank">validation error</a> message to provide clear guidance to our users</strong></span> on what is expected by the app in order to display data.</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -494,15 +480,9 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Writing validation tests</span></p>
 <hr>
-<p class="body-text-s">
-<strong><code>validate()</code> tests a condition and returns an error if that conditions fails.</strong> It’s used in conjunction with <code>need()</code>, which takes an expression that returns <code>TRUE</code> or <code>FALSE</code>, along with a character string to return if the condition is <code>FALSE</code>.
-</p>
-<p class="body-text-s">
-Place your validation test(s) at the start of any <code>reactive()</code> or <code>render*()</code> expression that calls <code>input$data</code>.
-</p>
-<p class="body-text-s">
-For example, we can add two validation tests inside the reactive that generates our <code>trout_filtered_df</code> – we’ll need two separate validation tests, one for each of our inputs where users can deselect all data.
-</p>
+<p><span class="body-text-s"><strong><code>validate()</code> tests a condition and returns an error if that conditions fails.</strong> It’s used in conjunction with <code>need()</code>, which takes an expression that returns <code>TRUE</code> or <code>FALSE</code>, along with a character string to return if the condition is <code>FALSE</code>.</span></p>
+<p><span class="body-text-s">Place your validation test(s) at the start of any <code>reactive()</code> or <code>render*()</code> expression that calls <code>input$data</code>.</span></p>
+<p><span class="body-text-s">For example, we can add two validation tests inside the reactive that generates our <code>trout_filtered_df</code> – we’ll need two separate validation tests, one for each of our inputs where users can deselect all data.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -535,16 +515,18 @@ For example, we can add two validation tests inside the reactive that generates 
 <hr>
 <p><br></p>
 <p><span class="body-text-m"><strong>To Do:</strong></span></p>
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Construct a validation test that displays a clear but succinct message when a user deselects all islands using the <code>pickerWidget</code></p>
+<ul>
+<li>Construct a validation test that displays a clear but succinct message when a user deselects all islands using the <code>pickerWidget</code></li>
+</ul>
 <p><br></p>
 <p><span class="body-text-m"><strong>Tips:</strong></span></p>
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Despite having <strong>two</strong> inputs, we only need <strong>one</strong> validation test for our Penguins plot. Why is this?</p>
-<p><br> <br></p>
-<center>
-<p class="body-text-l teal-text">
-See next slide for a solution!
-</p>
-</center>
+<ul>
+<li>Despite having <strong>two</strong> inputs, we only need <strong>one</strong> validation test for our Penguins plot. Why is this?</li>
+</ul>
+<p><br></p>
+<div class="center-text body-text-l teal-text">
+<p>See next slide for a solution!</p>
+</div>
 </section>
 <section id="exercise4-solution" class="slide level2" data-menu-title="** Exercise 4 Solution **" data-background="#d2e3f3">
 <h2></h2>
@@ -619,15 +601,9 @@ See next slide for a solution!
 <h2></h2>
 <p><span class="slide-title2">Add loading animations to re-rendering outputs</span></p>
 <hr>
-<p class="body-text-s">
-<strong>The <a href="https://github.com/daattali/shinycssloaders"><code>{shinycssloaders}</code> package</a> makes it easy to add visual indicators to outputs as they’re loading or re-rendering.</strong> This can be particularly helpful if you have outputs that take more than a second or so to render – it alerts users that their updated inputs were recognized and that the app is working to re-render outputs.
-</p>
-<p class="body-text-s">
-Check out the <a href="https://daattali.com/shiny/shinycssloaders-demo/">demo app</a> to start designing your own “spinner” (choose style, color, size).
-</p>
-<p class="body-text-s">
-We can pipe the <code>withSpinner()</code> function directly into our <code>plotOutput</code>s in <code>ui.R</code> (be sure to load the package in <code>global.R</code> first) – here, we define the spinner color and style (there are 8 different spinner <code>type</code>s to choose from) and adjust the size of the penguin plot spinner.
-</p>
+<p><span class="body-text-s"><strong>The <a href="https://github.com/daattali/shinycssloaders" target="_blank"><code>{shinycssloaders}</code> package</a> makes it easy to add visual indicators to outputs as they’re loading or re-rendering.</strong> This can be particularly helpful if you have outputs that take more than a second or so to render – it alerts users that their updated inputs were recognized and that the app is working to re-render outputs.</span></p>
+<p><span class="body-text-s">Check out the <a href="https://daattali.com/shiny/shinycssloaders-demo/" target="_blank">demo app</a> to start designing your own “spinner” (choose style, color, size).</span></p>
+<p><span class="body-text-s">We can pipe the <code>withSpinner()</code> function directly into our <code>plotOutput</code>s in <code>ui.R</code> (be sure to load the package in <code>global.R</code> first) – here, we define the spinner color and style (there are 8 different spinner <code>type</code>s to choose from) and adjust the size of the penguin plot spinner.</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br></p>
@@ -659,15 +635,11 @@ We can pipe the <code>withSpinner()</code> function directly into our <code>plot
 <h2></h2>
 <p><span class="slide-title">Include alt text for all data visualizations</span></p>
 <hr>
-<p class="body-text-s">
-Alt text are <strong>written descriptions</strong> added to images, and importantly, to data visualizations, to <strong>help more users understand the content</strong>. Assistive technologies (e.g.&nbsp;screen readers) read alt text out loud for users to hear. When alt text is successfully added, the <code>alt</code> tag (along with your text) should appear in the HTML (right click on your app’s data viz to <strong>Inspect</strong> and ensure that it was added).
-</p>
+<p><span class="body-text-s">Alt text are <strong>written descriptions</strong> added to images, and importantly, to data visualizations, to <strong>help more users understand the content</strong>. Assistive technologies (e.g.&nbsp;screen readers) read alt text out loud for users to hear. When alt text is successfully added, the <code>alt</code> tag (along with your text) should appear in the HTML (right click on your app’s data viz to <strong>Inspect</strong> and ensure that it was added).</span></p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p><br> <br> <br></p>
-<p class="body-text-s">
-We’ll talk a bit more about alt text later on, but for now we can add alt text easily to our data visuzliations using the <code>alt</code> argument. Place this <em>outside</em> of the <code>{}</code> but inside the <code>()</code> of <code>renderPlot{()}</code>. For example, we can add alt text to our trout and penguin plots in <code>server.R</code>:
-</p>
+<p><span class="body-text-s">We’ll talk a bit more about alt text later on, but for now we can add alt text easily to our data visuzliations using the <code>alt</code> argument. Place this <em>outside</em> of the <code>{}</code> but inside the <code>()</code> of <code>renderPlot{()}</code>. For example, we can add alt text to our trout and penguin plots in <code>server.R</code>:</span></p>
 </div><div class="column" style="width:60%;">
 <div class="cell">
 <div class="code-with-filename">

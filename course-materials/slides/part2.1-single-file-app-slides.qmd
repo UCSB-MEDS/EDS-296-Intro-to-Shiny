@@ -490,7 +490,7 @@ Examples of `*Output()` functions and their corresponding `render*()` functions:
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>`
 
 ---
 
@@ -1231,15 +1231,17 @@ It's inevitable that you'll make mistakes here and there as you build out your a
 :::: {.columns}
 
 ::: {.column width="50%"}
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} misspelling `inputId` as `inputID` (or `outputId` as `outputID`)</p>
+::: {.incremental}
+- [misspelling `inputId` as `inputID` (or `outputId` as `outputID`)]{.body-text-s}
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} misspelling your inputId (or outputId) name in the server (e.g. UI: `inputId = "myInputID"`, server: `input$my_Input_ID`)</p>
+- [misspelling your inputId (or outputId) name in the server (e.g. UI: `inputId = "myInputID"`, server: `input$my_Input_ID`)]{.body-text-s}
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} repeating `inputId`s (each *must* be unique)</p>
+- [repeating `inputId`s (each *must* be unique)]{.body-text-s}
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} forgetting to separate UI elements with a comma, `,`</p>
+- [forgetting to separate UI elements with a comma, `,`]{.body-text-s}
 
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} forgetting the set of parentheses when calling the name of a reactive data frame (e.g. `ggplot(my_reactive_df(), aes(...))`)</p>
+- [forgetting the set of parentheses when calling the name of a reactive data frame (e.g. `ggplot(my_reactive_df(), aes(...))`)]{.body-text-s}
+:::
 :::
 
 ::: {.column width="50%"}

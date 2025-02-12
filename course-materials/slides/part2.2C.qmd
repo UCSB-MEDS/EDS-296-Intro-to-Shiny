@@ -17,7 +17,7 @@ editor_options:
 
 <hr>
 
-<p class="body-text">It's usually valuable (and important) to provide some background information / context for your app -- the landing page of your app can be a great place for this. We're going to add text to our app's landing page (i.e. the **About this App** page) so that it looks like the example below:</p>
+It's usually valuable (and important) to provide some background information / context for your app -- the landing page of your app can be a great place for this (but certainly doesn't have to be). We're going to add text to our app's landing page (i.e. the **About this App** page) so that it looks like the example below:
 
 <br>
 
@@ -36,13 +36,14 @@ knitr::include_graphics("images/part2/landing-text.png")
 
 ::: {.column width="50%"}
 <br>
-<br>
 
-<p class="body-text bottombr">**Some important pieces for information to consider adding:**</p>
+**Some important pieces for information to consider adding:**
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} motivation for building the app</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} brief instructions for exploring the data</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} who maintains the app, where the code lives, how to submit issues / suggestions</p>
+- [motivation for building the app]{.body-text-s}
+
+- [brief instructions for exploring the data]{.body-text-s}
+
+- [who maintains the app, where the code lives, how to submit issues / suggestions]{.body-text-s}
 :::
 
 ::::
@@ -55,7 +56,7 @@ knitr::include_graphics("images/part2/landing-text.png")
 
 <hr>
 
-<p class="body-text-s">For example, I've added and formatted my landing page's text directly in the **UI** using lots of nested `tags` -- I've done this inside the `tabPanel` titled **About this App** (**Note:** I've formatted the layout of this page a bit using `fluidRow` and `column`s to create some white space around the edges. I've also created a faint gray horizontal line, using `hr()`, beneath which I added a footnote):</p>
+[For example, I've added and formatted my landing page's text directly in the **UI** using lots of nested `tags` -- I've done this inside the `tabPanel` titled **About this App** (**Note:** I've formatted the layout of this page a bit using `fluidRow` and `column`s to create some white space around the edges. I've also created a faint gray horizontal line, using `hr()`, beneath which I added a footnote):]{.body-text-s}
 
 ```{r filename="~/two-file-app/ui.R"}
 #| eval: false
@@ -178,9 +179,7 @@ ui <- navbarPage(
 
 <hr>
 
-<p class="body-text-s">To maintain readability and an overall tidier-looking UI, you can write and style long bodies of text in separate markdown (`.md`) files that you then read into your UI using the `includeMarkdown()` function (**Important:** the `includeMarkdown()` function requires the `{markdown}` package -- be sure to add `library(markdown)` to your `global.R` file!). I recommend saving those `.md` files in a subdirectory named `/text` within your app's directory (e.g. `~/two-file-app/text/mytext.md`).</p>
-
-<p class="body-text-s">Below shows how we can use this approach to simplify our UI:</p>
+[Consider writing and styling long bodies of text in separate markdown (`.md`) files, then read them into your UI using `includeMarkdown()` (**IMPORTANT:** this requires the `{markdown}` package -- be sure to add `library(markdown)` to your `global.R` file!). I recommend saving those `.md` files in a subdirectory named `/text` within your app's directory (e.g. `~/two-file-app/text/mytext.md`):]{.body-text-s}
 
 ::: {.panel-tabset}
 
@@ -340,7 +339,7 @@ Check out the **Explore the Data** page to find interactive data visualizations 
 knitr::include_graphics("images/part2/app2_v1.gif")
 ```
 
-<p class="body-text-s">Again, we have some UX/UI quirks to fix (most notably, blank plots when all widget options are deselected), which we'll handle soon. But for now, we have a functioning app that we can practice deploying for the first time!</p>
+[Again, we have some UX/UI quirks to fix (most notably, blank plots when all widget options are deselected), which we'll handle soon. But for now, we have a functioning app that we can practice deploying for the first time!]{.body-text-s}
 
 ---
 
