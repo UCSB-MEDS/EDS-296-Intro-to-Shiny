@@ -46,7 +46,12 @@ Take a few moments to review the [metadata record](https://arcticdata.io/catalog
 
 ## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
-Part 3 is contained in one lesson:
+<!-- Part 3 is contained in one lesson: -->
+
+| {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
+|------------------------------------------------------------------------------------------|
+| [Lecture 3: Building Shiny dashboards](slides/part3-shiny-dashboard.qmd){target="_blank"}  | 
+: {.hover .bordered tbl-colwidths="[50,25,25]"}
 
 ::: {.center-text}
 [**Shiny dashboard**]{.teal-text .body-text-m}

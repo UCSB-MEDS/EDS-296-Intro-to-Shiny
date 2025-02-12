@@ -47,7 +47,7 @@ library(lterdatasampler)
 
 ## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
-Part 2 is broken down into three lessons:
+<!-- Part 2 is broken down into three lessons: -->
 
 <!-- UPDATE GGPLOT THEME TO FUNCTION  -->
 

@@ -412,10 +412,9 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 3</span></p>
+<p><span class="custom-title">EDS 296: Part 3</span></p>
 <p><span class="custom-subtitle"><em>Building Shiny dashboards</em></span></p>
 <hr class="hr-teal">
-<!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
 </section>
 <section id="building-dashboards" class="slide level2" data-menu-title="~~~ Building Dashboards ~~~" data-background="#047C90">
 <h2></h2>
@@ -432,68 +431,42 @@
 <h2></h2>
 <p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - App #3 (shinydashboard)</span></p>
 <hr>
-<p class="body-text-l teal-text bottombr">
-After this section, you should:
-</p>
+<p><span class="body-text-l teal-text">After this section, you should:</span></p>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand the general workflow for pre-processing, saving &amp; reading data into an app
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand the general workflow for pre-processing, saving &amp; reading data into an app</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> be comfortable building out a dashboard UI using <code>{shinydashboard}</code> layout functions
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> be comfortable building out a dashboard UI using <code>{shinydashboard}</code> layout functions</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand how to add static images to your app
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand how to add static images to your app</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> feel comfortable creating a basic reactive <code>leaflet</code> map
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> feel comfortable creating a basic reactive <code>leaflet</code> map</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-l teal-text topbr">
-Packages introduced:
-</p>
+<p><span class="body-text-l teal-text">Packages introduced:</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shinydashboard}</code>: provides an alternative UI framework for easily building dashboard-style shiny applications
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shinydashboard}</code>: provides an alternative UI framework for easily building dashboard-style shiny applications</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{leaflet}</code>: for building interactive maps
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{leaflet}</code>: for building interactive maps</span></p>
 </div>
 </section>
 <section id="roadmap-dashboard" class="slide level2" data-menu-title="Roadmap App #3">
 <h2></h2>
 <p><span class="slide-title">Roadmap for App #3</span></p>
 <hr>
-<p class="body-text">
-In this section, we’ll be building a <strong>shinydashboard</strong> using data downloaded from the <a href="https://arcticdata.io/">Arctic Data Center</a>. We’ll be building out the following features:
-</p>
+<p>In this section, we’ll be building a <strong>shinydashboard</strong> using data downloaded from the <a href="https://arcticdata.io/" target="_blank">Arctic Data Center</a>. We’ll be building out the following features:</p>
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(a)</strong></span> a <code>dashboardHeader</code> with the name of your app
-</p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(b)</strong></span> a <code>dashboardSidebar</code> with two <code>menuItem</code>s
-</p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(c)</strong></span> a landing page with background information about your app
-</p>
-<p class="body-text-s">
-<span class="teal-text"><strong>(d)</strong></span> an interactive <em>and</em> reactive <code>leaflet</code> map
-</p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(a)</strong></span> a <code>dashboardHeader</code> with the name of your app</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(b)</strong></span> a <code>dashboardSidebar</code> with two <code>menuItem</code>s</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(c)</strong></span> a landing page with background information about your app</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(d)</strong></span> an interactive <em>and</em> reactive <code>leaflet</code> map</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -510,16 +483,14 @@ In this section, we’ll be building a <strong>shinydashboard</strong> using dat
 <h2></h2>
 <p><span class="slide-title2">But first, what do we mean by a shiny “dashboard”?</span></p>
 <hr>
-<p><span class="body-text-s">The <a href="https://rstudio.github.io/shinydashboard/"><code>{shinydashboard}</code> package</a> provides additional UI layout functions that make building apps with a more classic “dashboard” feel a bit easier. You’ll always need to import <code>{shiny}</code> alongside <code>{shinydashboard}</code> (i.e.&nbsp;it’s not a full replacement for <code>{shiny}</code>).</span></p>
+<p><span class="body-text-s">The <a href="https://rstudio.github.io/shinydashboard/" target="_blank"><code>{shinydashboard}</code> package</a> provides additional UI layout functions that make building apps with a more classic “dashboard” feel a bit easier. You’ll always need to import <code>{shiny}</code> alongside <code>{shinydashboard}</code> (i.e.&nbsp;it’s not a full replacement for <code>{shiny}</code>).</span></p>
 
 <img data-src="images/part3/simple_dashboard.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A simple shinydashboard with two boxes (one containing a histogram and one containing a sliderInput) in the body. The header reads 'Basic tabs' and the sidebar has two menu items: Dashboard and Widgets."></section>
 <section id="dashboardPage" class="slide level2" data-menu-title="dashboardPage()">
 <h2></h2>
 <p><span class="slide-title2">The most basic shinydashboard is made up of a header, a sidebar, and a body</span></p>
 <hr>
-<p class="body-text-s">
-The main difference between a <strong>shiny app</strong> and a <strong>shinydashboard</strong> are the UI elements. Rather than a <code>fluidPage()</code> (as used in our previous shiny apps), we’ll create a <code>dashboardPage()</code>, which expects three main parts: a header, a sidebar, and a body. Below is the most minimal possible UI for a <code>{shinydashboard}</code> page (you can run this code in an <code>app.R</code> file, if you wish).
-</p>
+<p><span class="body-text-s">The main difference between a <strong>shiny app</strong> and a <strong>shinydashboard</strong> are the UI elements. Rather than a <code>fluidPage()</code> (as used in our previous shiny apps), we’ll create a <code>dashboardPage()</code>, which expects three main parts: a header, a sidebar, and a body. Below is the most minimal possible UI for a <code>{shinydashboard}</code> page (you can run this code in an <code>app.R</code> file, if you wish).</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -558,37 +529,21 @@ The main difference between a <strong>shiny app</strong> and a <strong>shinydash
 <h2></h2>
 <p><span class="slide-title3">Example shiny dashboards built by some familiar folks</span></p>
 <hr>
-<p><span class="body-text-m teal-text"><strong>Live dashboards:</strong></span></p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-school" title="a school house" aria-label="school"></i></span> <a href="https://shinyapps.bren.ucsb.edu/student-data-explorer/">Bren Student Data Explorer</a> (<a href="https://github.com/UCSB-MEDS/shiny-dashboard">source code</a>), <em>by MEDS 2022 alum, <a href="https://www.linkedin.com/in/halinadolinh/">Halina Do-Linh</a>, during her Bren Summer Fellowship (and continued by future MEDS students!)</em> – explore Bren school student demographics and career outcomes
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-person-hiking" title="a person hiking with a backpack on" aria-label="person-hiking"></i></span> <a href="https://samanthacsik.shinyapps.io/strava_dashboard/">Sam’s Strava Stats</a> (<a href="https://github.com/samanthacsik/strava-dashboard">source code</a>), <em>by yours truly, <a href="https://samanthacsik.github.io/">Sam Csik</a></em> – a new and ongoing side project exploring my Strava hiking/biking/walking data
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-fish-fins" title="a fish with fins" aria-label="fish-fins"></i></span> <a href="http://ohi-science.nceas.ucsb.edu/visualizing_human_impacts/">Visualizing human impacts on at-risk marine biodiversity</a> (<a href="https://github.com/BrennieDev/CHI_shiny_app">source code</a>, <em>developed by MESM 2022 alum, <a href="https://github.com/BrennieDev">Ian Brunjes</a> &amp; <a href="http://oharascience.com/index.html">Dr.&nbsp;Casey O’Hara</a>)</em> – explore how human activities and climate change impact marine biodiversity worldwide
-</p>
-<p><span class="body-text-m teal-text"><strong>Dashboards which are no longer deployed:</strong></span></p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-fish" title="a fish" aria-label="fish"></i></span> <a href="http://34.94.133.101/">Channel Islands National Park’s Kelp Forest Monitoring Program</a> (<a href="https://github.com/cullen-molitor/KFM_Shiny_App">source code</a>), <em>by MEDS 2022 alum, <a href="https://cullen-molitor.github.io/">Cullen Molitor</a></em> – explore subtidal monitoring data collected from our closest National Park
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-campground" title="a camping tent" aria-label="campground"></i></span> <a href="https://shinyapps.bren.ucsb.edu/oe_app/">The Outdoor Equity App</a> (<a href="https://github.com/outdoor-equity/outdoor-equity">source code</a>), <em>developed by MEDS 2022 alumni <a href="https://www.linkedin.com/in/halinadolinh/">Halina Do-Linh</a> &amp; <a href="https://cboyajian.github.io/">Clarissa Boyajian</a> as part of their MEDS capstone project</em> – analyze patterns in the access and demand of visitors at reservable overnight sites
-</p>
+<p><span class="teal-text"><i class="fa-solid fa-graduation-cap" title="a graduation cap" aria-label="graduation-cap"></i></span> <strong><a href="https://shinyapps.bren.ucsb.edu/student-data-explorer/" target="_blank">Bren Student Data Explorer</a> (<a href="https://github.com/UCSB-MEDS/shiny-dashboard" target="_blank">source code</a>)</strong>, <em>by MEDS 2022 alum, <a href="https://www.linkedin.com/in/halinadolinh/">Halina Do-Linh</a>, &amp; MEDS staff</em> – explore Bren school student demographics and career outcomes</p>
+<p><span class="teal-text"><i class="fa-solid fa-school" title="a school house" aria-label="school"></i></span> <strong><a href="https://shinyapps.bren.ucsb.edu/CASASchools/" target="_blank">CA Schools Climate Hazards</a> (<a href="https://github.com/CASAschools/casa_schools_app" target="_blank">source code</a>)</strong>, <em>by MEDS 2024 alumni <a href="https://github.com/charliecurtin1" target="_blank">Charlie Curtin</a>, <a href="https://github.com/kristinaglass" target="_blank">Kristina Glass</a>, <a href="https://github.com/lchenhub" target="_blank">Liane Chen</a> &amp; <a href="https://github.com/hazelvaq" target="_blank">Hazel Vaquero</a>, as part of their MEDS Capstone project – explore localized climate hazards for 10,000+ public schools in CA</em>. Also runner up in <a href="https://posit.co/blog/winners-of-the-2024-shiny-contest/" target="_blank">Posit’s 2024 Shiny Contest</a>!!!</p>
+<p><span class="teal-text"><i class="fa-solid fa-person-hiking" title="a person hiking with a backpack on" aria-label="person-hiking"></i></span> <strong><a href="https://samanthacsik.shinyapps.io/strava_dashboard/" target="_blank">Sam’s Strava Stats</a> (<a href="https://github.com/samanthacsik/strava-dashboard" target="_blank">source code</a>)</strong>, <em>by yours truly, <a href="https://samanthacsik.github.io/" target="_blank">Sam Csik</a></em> – a new and ongoing side project exploring my Strava hiking / biking / walking data</p>
+<p><span class="teal-text"><i class="fa-solid fa-fish-fins" title="a fish with fins" aria-label="fish-fins"></i></span> <strong><a href="http://ohi-science.nceas.ucsb.edu/visualizing_human_impacts/" target="_blank">Visualizing human impacts on at-risk marine biodiversity</a> (<a href="https://github.com/BrennieDev/CHI_shiny_app" target="_blank">source code</a>)</strong>, <em>developed by MESM 2022 alum, <a href="https://github.com/BrennieDev" target="_blank">Ian Brunjes</a> &amp; <a href="http://oharascience.com/index.html" target="_blank">Dr.&nbsp;Casey O’Hara</a>)</em> – explore how human activities and climate change impact marine biodiversity worldwide</p>
+<!-- [**Dashboards which are no longer deployed:**]{.body-text-m .teal-text} -->
+<!-- <p class="body-text-s topbr">[]{.teal-text} [Channel Islands National Park's Kelp Forest Monitoring Program](http://34.94.133.101/) ([source code](https://github.com/cullen-molitor/KFM_Shiny_App)), *by MEDS 2022 alum, [Cullen Molitor](https://cullen-molitor.github.io/)* -- explore subtidal monitoring data collected from our closest National Park</p> -->
+<!-- <p class="body-text-s topbr">[]{.teal-text} [The Outdoor Equity App](https://shinyapps.bren.ucsb.edu/oe_app/) ([source code](https://github.com/outdoor-equity/outdoor-equity)), *developed by MEDS 2022 alumni [Halina Do-Linh](https://www.linkedin.com/in/halinadolinh/) & [Clarissa Boyajian](https://cboyajian.github.io/) as part of their MEDS capstone project* -- analyze patterns in the access and demand of visitors at reservable overnight sites</p> -->
 </section>
 <section id="setup-dashboard-directory" class="slide level2" data-menu-title="Dashboard Setup">
 <h2></h2>
 <p><span class="slide-title">Setup your shiny dashboard</span></p>
 <hr>
-<p class="body-text bottombr">
-First, create a subdirectory called <code>shinydashboard/</code> and add a <code>ui.R</code>, <code>server.R</code>, and <code>global.R</code> file.
-</p>
-<p class="body-text-s bottombr">
-Add the server function to <code>server.R</code> and the three main UI components (header, sidebar, and body) to our dashboard page – <strong>I typically recommend splitting the UI into separate pieces, then combining them into a <code>dashboardPage</code> the end of <code>ui.R</code></strong> (as shown below) – this can help with organization as you app grows in complexity.
-</p>
-<p class="body-text-s bottombr">
-We’ll set our dashboard aside for now while we work on downloading and pre-processing our data, as well as practice creating our data visualization <em>outside</em> of our app.
-</p>
+<p><span class="body-text-s">First, create a subdirectory called <code>shinydashboard/</code> and add a <code>ui.R</code>, <code>server.R</code>, and <code>global.R</code> file.</span></p>
+<p><span class="body-text-s">Add the server function to <code>server.R</code> and the three main UI components (header, sidebar, and body) to our dashboard page – to keep things organized, <strong>I recommend splitting the UI into separate pieces, then combining them into a <code>dashboardPage</code> the end of <code>ui.R</code></strong></span></p>
+<p><span class="body-text-s">We’ll set our dashboard aside for now while we work on downloading and pre-processing our data, as well as practice creating our data visualization <em>outside</em> of our app.</span></p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>ui.R</code></a></li><li><a href="#tabset-1-2"><code>server.R</code></a></li><li><a href="#tabset-1-3"><code>global.R</code></a></li></ul>
 <div class="tab-content">
@@ -656,20 +611,14 @@ We’ll set our dashboard aside for now while we work on downloading and pre-pro
 <h2></h2>
 <p><span class="slide-title">As always, let’s start with the data</span></p>
 <hr>
-<p class="body-text bottombr">
-Building an app doesn’t make much sense if we don’t know what we’re going to put in it. So, just like the last two apps, we’ll start with some data wrangling and practice data visualization.
-</p>
-<p class="body-text bottombr">
-<em>Unlike</em> our last two apps, however, we’ll be working with tabular data from the <a href="https://arcticdata.io/">Arctic Data Center</a>, which we’ll download, process, save, then finally, read into our application. This process will likely be more similar to what you’ll encounter when working on your own applications moving forward. <strong>Take a few minutes to review the <a href="https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P">metadata record</a> for the following data set, and download <a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3">FCWO_lakemonitoringdata_2011_2022_daily.csv</a>:</strong>
-</p>
+<p>Building an app doesn’t make much sense if we don’t know what we’re going to put in it. So, just like the last two apps, we’ll start with some data wrangling and practice data visualization.</p>
+<p><em>Unlike</em> our last two apps, however, we’ll be working with tabular data from the <a href="https://arcticdata.io/" target="_blank">Arctic Data Center</a>, which we’ll download, process, save, then finally, read into our application. This process will likely be more similar to what you’ll encounter when working on your own applications moving forward. <strong>Take a few minutes to review the <a href="https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P" target="_blank">metadata record</a> for the following data set, and download <a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3" target="_blank">FCWO_lakemonitoringdata_2011_2022_daily.csv</a>:</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br></p>
-<center>
-<p class="body-text-s bottombr">
-Christopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. <a href="https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P">doi:10.18739/A2JH3D41P</a>.
-</p>
-</center>
+<div class="center-text body-text-s">
+<p>Christopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. <a href="https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P" target="_blank">doi:10.18739/A2JH3D41P</a>.</p>
+</div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -686,18 +635,12 @@ Christopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water d
 <h2></h2>
 <p><span class="slide-title">Pre-processing data is critical</span></p>
 <hr>
-<p class="body-text-s">
-<strong>Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who “owns” those data.</strong> It is likely that you’ll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens’ article, <a href="https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data">Where to store your Shiny application data</a> to start. Because we are going to be working with a relatively small data set today, we’ll bundle our data file with our dashboard inside our repository.
-</p>
-<p class="body-text-s topbr">
-Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it <em>only as much data as needed to run</em>. This means <strong>pre-processing</strong> your data.
-</p>
+<p><span class="body-text-s"><strong>Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who “owns” those data.</strong> It is likely that you’ll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens’ article, <a href="https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data" target="_blank">Where to store your Shiny application data</a> to start. Because we are going to be working with a relatively small data set today, we’ll bundle our data file with our dashboard inside our repository.</span></p>
+<p><span class="body-text-s">Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it <em>only as much data as needed to run</em>. This means <strong>pre-processing</strong> your data.</span></p>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<p class="body-text-s topbr">
-<a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3"><code>FCWO_lakemonitoringdata_2011_2022_daily.csv</code></a> contains <strong>8 attributes</strong> (variables) and <strong>18,994 observations</strong> collected from a set of <strong>11 lakes</strong> located in the Fish Creek Watershed in northern Alaska between 2011-2022. We’ll download and save the file to a <code>raw_data/</code> folder in the root directory of our repository. We’ll then pre-process the data in a separate script(s) saved to <code>scratch/</code> and save a cleaned / processed version of the data to our app’s directory, <code>/shinydashboard/data/lake_data_processed.csv</code>. Your repository structure should look similar to example on the right:
-</p>
+<p><span class="body-text-s"><a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3" target="_blank"><code>FCWO_lakemonitoringdata_2011_2022_daily.csv</code></a> contains <strong>8 attributes</strong> (variables) and <strong>18,994 observations</strong> collected from a set of <strong>11 lakes</strong> located in the Fish Creek Watershed in northern Alaska between 2011-2022. We’ll download and save the file to a <code>raw_data/</code> folder in the root directory of our repository. We’ll then pre-process the data in a separate script(s) saved to <code>scratch/</code> and save a cleaned / processed version of the data to our app’s directory, <code>/shinydashboard/data/lake_data_processed.csv</code>. Your repository structure should look similar to example on the right:</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -728,9 +671,7 @@ Regardless of where you choose to store your data, you can help your application
 </div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
-<p class="body-text bottombr">
-Our goal is to create a <code>leaflet</code> map with makers placed on each of the 11 unique lakes where data were collected. When clicked, a marker should reveal the <strong>lake name</strong>, <strong>elevation</strong> (in meters, above sea level), <strong>average depth</strong> of the lake (in meters), and <strong>average lake bed temperature</strong> (in degrees Celsius). <em>To do so, we’ll need a data frame that looks like the example below:</em>
-</p>
+<p>Our goal is to create a <code>leaflet</code> map with makers placed on each of the 11 unique lakes where data were collected. When clicked, a marker should reveal the <strong>lake name</strong>, <strong>elevation</strong> (in meters, above sea level), <strong>average depth</strong> of the lake (in meters), and <strong>average lake bed temperature</strong> (in degrees Celsius). <em>To do so, we’ll need a data frame that looks like the example below:</em></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -797,12 +738,8 @@ Our goal is to create a <code>leaflet</code> map with makers placed on each of t
 <h2></h2>
 <p><span class="slide-title">A note on file types</span></p>
 <hr>
-<p class="body-text-s">
-Oftentimes, you may choose to save your processed data frame as a <code>.rds</code> file (a data file format, native to R, which stores a single R object). <code>.rds</code> file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g.&nbsp;factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality – you can’t open a <code>.rds</code> file outside of R or read it in with another programming language (e.g.&nbsp;Python).
-</p>
-<p class="body-text-s topbr">
-While we’ll be sticking to <code>.csv</code> files in this workshop, it’s worth experimenting with <code>.rds</code> when you begin working with your own (likely larger) data. You can read in (<code>readRDS()</code>) and write out to (<code>saveRDS()</code>) <code>.rds</code> files as easily as <code>.csv</code> files.
-</p>
+<p><span class="body-text-s">Oftentimes, you may choose to save your processed data frame as a <code>.rds</code> file (a data file format, native to R, which stores a single R object). <code>.rds</code> file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g.&nbsp;factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality – you can’t open a <code>.rds</code> file outside of R or read it in with another programming language (e.g.&nbsp;Python).</span></p>
+<p><span class="body-text-s">While we’ll be sticking to <code>.csv</code> files in this workshop, it’s worth experimenting with <code>.rds</code> when you begin working with your own (likely larger) data. You can read in (<code>readRDS()</code>) and write out to (<code>saveRDS()</code>) <code>.rds</code> files as easily as <code>.csv</code> files.</span></p>
 
 <img data-src="images/part3/rds.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="The R language logo overlaid on top of a database stack -- often used to represent the rds data file format."></section>
 <section id="draft-leaflet" class="slide level2" data-menu-title="Draft Leaflet">
@@ -813,13 +750,11 @@ While we’ll be sticking to <code>.csv</code> files in this workshop, it’s wo
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">leaflet map</a></li><li><a href="#tabset-2-2">code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<p class="body-text-s">
-There are lots of ways to customize <code>leaflet</code> maps. We’ll be keeping ours relatively simple, but check out the <a href="https://rstudio.github.io/leaflet/">Leaflet for R</a> documentation for more ways to get creative with your maps.
-</p>
+<p><span class="body-text-s">There are lots of ways to customize <code>leaflet</code> maps. We’ll be keeping ours relatively simple, but check out the <a href="https://rstudio.github.io/leaflet/" target="_blank">Leaflet for R</a> documentation for more ways to get creative with your maps.</span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1428908ecee3cac83b10" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1428908ecee3cac83b10">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: Hipbone<br>Elevation: 21 meters (above SL)<br>Avg Depth: 2 meters<br>Avg Lake Bed Temperature: 10.7°C","Site Name: Iceshove<br>Elevation: 20.3 meters (above SL)<br>Avg Depth: 1.8 meters<br>Avg Lake Bed Temperature: 10.9°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C","Site Name: L9819<br>Elevation: 8.2 meters (above SL)<br>Avg Depth: 1.7 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9820<br>Elevation: 9.5 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 5.5°C","Site Name: LittleAlaska<br>Elevation: 28.9 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 5.2°C","Site Name: LowerSnowman<br>Elevation: 27.4 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 7.2°C","Site Name: M9925<br>Elevation: 14.7 meters (above SL)<br>Avg Depth: 0.9 meters<br>Avg Lake Bed Temperature: 7°C","Site Name: MiddleSnowman<br>Elevation: 26.3 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 6.4°C","Site Name: Serenity<br>Elevation: 12 meters (above SL)<br>Avg Depth: 3.9 meters<br>Avg Lake Bed Temperature: 10.7°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0a5bc422accee2f99650" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-0a5bc422accee2f99650">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: Hipbone<br>Elevation: 21 meters (above SL)<br>Avg Depth: 2 meters<br>Avg Lake Bed Temperature: 10.7°C","Site Name: Iceshove<br>Elevation: 20.3 meters (above SL)<br>Avg Depth: 1.8 meters<br>Avg Lake Bed Temperature: 10.9°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C","Site Name: L9819<br>Elevation: 8.2 meters (above SL)<br>Avg Depth: 1.7 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9820<br>Elevation: 9.5 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 5.5°C","Site Name: LittleAlaska<br>Elevation: 28.9 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 5.2°C","Site Name: LowerSnowman<br>Elevation: 27.4 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 7.2°C","Site Name: M9925<br>Elevation: 14.7 meters (above SL)<br>Avg Depth: 0.9 meters<br>Avg Lake Bed Temperature: 7°C","Site Name: MiddleSnowman<br>Elevation: 26.3 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 6.4°C","Site Name: Serenity<br>Elevation: 12 meters (above SL)<br>Avg Depth: 3.9 meters<br>Avg Lake Bed Temperature: 10.7°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -872,13 +807,11 @@ There are lots of ways to customize <code>leaflet</code> maps. We’ll be keepin
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">leaflet map (filtered)</a></li><li><a href="#tabset-3-2">code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<p class="body-text-s">
-We’ll eventually build three <code>sliderInput</code>s to filter lake makers by <code>Elevation</code>, <code>AvgDepth</code>, and <code>AvgTemp</code>. Practice filtering here first (and be sure to update the data frame name in your leaflet code!):
-</p>
+<p><span class="body-text-s">We’ll eventually build three <code>sliderInput</code>s to filter lake makers by <code>Elevation</code>, <code>AvgDepth</code>, and <code>AvgTemp</code>. Practice filtering here first (and be sure to update the data frame name in your leaflet code!):</span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2c748f3670eae387314f" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-2c748f3670eae387314f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0de50e473c3b779ef3af" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-0de50e473c3b779ef3af">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -935,9 +868,7 @@ We’ll eventually build three <code>sliderInput</code>s to filter lake makers b
 <h2></h2>
 <p><span class="slide-title">Sketch out our dashboard UI</span></p>
 <hr>
-<p class="body-text-s">
-I want my dashboard to have two menu items: a welcome page with some background information, and a dashboard page with my reactive map. All elements will be placed inside <code>box</code>es, the primary building blocks of shinydashboards (more on that soon).
-</p>
+<p><span class="body-text-s">I want my dashboard to have two menu items: a welcome page with some background information, and a dashboard page with my reactive map. All elements will be placed inside <code>box</code>es, the primary building blocks of shinydashboards (more on that soon).</span></p>
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -966,12 +897,8 @@ I want my dashboard to have two menu items: a welcome page with some background 
 <h2></h2>
 <p><span class="slide-title2">Add a <code>title</code> &amp; <code>menuItem</code>s</span></p>
 <hr>
-<p class="body-text-s">
-First, add a title to <code>dashboardHeader()</code> and make more space using <code>titleWidth</code>, if necessary.
-</p>
-<p class="body-text-s">
-Next, we’ll build our <code>dashboardSidebar()</code>. Add a <code>sidebarMenu()</code> that contains two <code>menuItem</code>s. Be sure to provide each <code>menuItem()</code> with <code>text</code> as you’d like it to appear in your app (for me, that’s <strong>Welcome</strong> and <strong>Dashboard</strong>), and a <code>tabName</code> which will be used to place <code>dashboardBody()</code> content in the appropriate <code>menuItem()</code>. Optionally, you can provide an icon. By default, <code>icon()</code> uses icons from <a href="https://fontawesome.com/">FontAwesome</a>.
-</p>
+<p><span class="body-text-s">First, add a title to <code>dashboardHeader()</code> and make more space using <code>titleWidth</code>, if necessary.</span></p>
+<p><span class="body-text-s">Next, we’ll build our <code>dashboardSidebar()</code>. Add a <code>sidebarMenu()</code> that contains two <code>menuItem</code>s. Be sure to provide each <code>menuItem()</code> with <code>text</code> as you’d like it to appear in your app (for me, that’s <strong>Welcome</strong> and <strong>Dashboard</strong>), and a <code>tabName</code> which will be used to place <code>dashboardBody()</code> content in the appropriate <code>menuItem()</code>. Optionally, you can provide an icon. By default, <code>icon()</code> uses icons from <a href="https://fontawesome.com/">FontAwesome</a>{target=“_blank”.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1011,9 +938,7 @@ Next, we’ll build our <code>dashboardSidebar()</code>. Add a <code>sidebarMenu
 <h2></h2>
 <p><span class="slide-title2">Add <code>tabItems</code> to your <code>dashboardBody</code></span></p>
 <hr>
-<p class="body-text-s">
-Next, we’ll create <code>tabItems</code> in our <code>dashboardBody</code> – we’ll make a <code>tabItem</code> (singular) for each <code>menuItem</code> in our <code>dashboardSidebar</code>. In order to match a <code>menuItem</code> and a <code>tabItem</code>, ensure that they have matching a <code>tabName</code> (e.g.&nbsp;any content added to the <strong>dashboard</strong> <code>tabItem</code> will appear under the <strong>dashboard</strong> <code>menuItem</code>).
-</p>
+<p><span class="body-text-s">Next, we’ll create <code>tabItems</code> in our <code>dashboardBody</code> – we’ll make a <code>tabItem</code> (singular) for each <code>menuItem</code> in our <code>dashboardSidebar</code>. In order to match a <code>menuItem</code> and a <code>tabItem</code>, ensure that they have matching a <code>tabName</code> (e.g.&nbsp;any content added to the <strong>dashboard</strong> <code>tabItem</code> will appear under the <strong>dashboard</strong> <code>menuItem</code>).</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1074,9 +999,7 @@ Next, we’ll create <code>tabItems</code> in our <code>dashboardBody</code> –
 <h2></h2>
 <p><span class="slide-title2">Add <code>box</code>es to contain UI content (part 1)</span></p>
 <hr>
-<p class="body-text-s">
-<a href="https://rstudio.github.io/shinydashboard/structure.html#boxes">Boxes</a> are the primary building blocks of shinydashboards and can contain almost any Shiny UI element (e.g.&nbsp;text, inputs, outputs). Start by adding two side-by-side boxes to our <strong>dashboard</strong> tab inside a <code>fluidRow()</code>. Together, their widths will add up to 12 (the total width of a browser page). These boxes will eventually contain our <code>sliderInput</code>s and our <code>leafletOutput</code>.
-</p>
+<p><span class="body-text-s"><a href="https://rstudio.github.io/shinydashboard/structure.html#boxes" target="_blank">Boxes</a> are the primary building blocks of shinydashboards and can contain almost any Shiny UI element (e.g.&nbsp;text, inputs, outputs). Start by adding two side-by-side boxes to our <strong>dashboard</strong> tab inside a <code>fluidRow()</code>. Together, their widths will add up to 12 (the total width of a browser page). These boxes will eventually contain our <code>sliderInput</code>s and our <code>leafletOutput</code>.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1154,9 +1077,7 @@ Next, we’ll create <code>tabItems</code> in our <code>dashboardBody</code> –
 <h2></h2>
 <p><span class="slide-title2">Add <code>box</code>es to contain UI content (part 2)</span></p>
 <hr>
-<p class="body-text-s">
-Lastly, add boxes to our <strong>welcome</strong> tab We’ll use <code>column</code>s to place one box on the left-hand side of our page, and two stacked boxes on the right-hand side. Each <code>column</code> will take up half the page (<strong>Note:</strong> <em>For column-based layouts, use <code>NULL</code> for the box width, as the width is set by the column that contains the box</em>). We can create two <code>fluidRow</code>s within the right-hand column to stack two boxes vertically.
-</p>
+<p><span class="body-text-s">Lastly, add boxes to our <strong>welcome</strong> tab We’ll use <code>column</code>s to place one box on the left-hand side of our page, and two stacked boxes on the right-hand side. Each <code>column</code> will take up half the page (<strong>Note:</strong> <em>For column-based layouts, use <code>NULL</code> for the box width, as the width is set by the column that contains the box</em>). We can create two <code>fluidRow</code>s within the right-hand column to stack two boxes vertically.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1273,9 +1194,7 @@ Lastly, add boxes to our <strong>welcome</strong> tab We’ll use <code>column</
 <h2></h2>
 <p><span class="slide-title3">Read data into <code>global.R</code> &amp; add necessary packages</span></p>
 <hr>
-<p class="body-text">
-Remember to load your <em>pre-processed</em> data, which should live in the <code>data/</code> folder within your app’s directory.
-</p>
+<p>Remember to load your <em>pre-processed</em> data, which should live in the <code>data/</code> folder within your app’s directory.</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1296,7 +1215,7 @@ Remember to load your <em>pre-processed</em> data, which should live in the <cod
 <p><br></p>
 <p><span class="teal-text"><strong>Some important notes:</strong></span></p>
 <ul>
-<li><span class="body-text-s"><strong>Avoid using <code>here::here()</code> in your shiny apps</strong>, as it can cause some unexpected issues (read more about it in <a href="https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505">this discussion</a>)</span></li>
+<li><span class="body-text-s"><strong>Avoid using <code>here::here()</code> in your shiny apps</strong>, as it can cause some unexpected issues (read more about it in <a href="https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505" target="_blank">this discussion</a>)</span></li>
 <li><span class="body-text-s">The <strong>file path</strong> specified for reading in our data <strong>is relative</strong> to the app files (<code>ui.R</code>, <code>server.R</code>). It’s important to note, however, that you won’t be able to run your code line-by-line (like in a typical script; the file path won’t be recognized) – this is expected!.</span></li>
 </ul>
 </div>
@@ -1305,9 +1224,7 @@ Remember to load your <em>pre-processed</em> data, which should live in the <cod
 <h2></h2>
 <p><span class="slide-title2">Add a <code>sliderInput</code> &amp; <code>leafletOutput</code> to the UI</span></p>
 <hr>
-<p class="body-text-s">
-Start by adding just one <code>sliderInput</code> (for selecting a range of lake <code>Elevation</code>s) to the left-hand box in the <strong>dashboard</strong> tab. Then, add a <code>leafletOutput</code> to create a placeholder space for our map, along with a Spinner animation (from the <code>{shinycssloaders}</code> package). While we’re here, we can also add <code>title</code>s to each box.
-</p>
+<p><span class="body-text-s">Start by adding just one <code>sliderInput</code> (for selecting a range of lake <code>Elevation</code>s) to the left-hand box in the <strong>dashboard</strong> tab. Then, add a <code>leafletOutput</code> to create a placeholder space for our map, along with a Spinner animation (from the <code>{shinycssloaders}</code> package). While we’re here, we can also add <code>title</code>s to each box.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1433,9 +1350,7 @@ Start by adding just one <code>sliderInput</code> (for selecting a range of lake
 <h2></h2>
 <p><span class="slide-title2">Assemble inputs &amp; outputs in <code>server.R</code></span></p>
 <hr>
-<p class="body-text-s">
-Remember to reference your practice data viz script and to follow our three steps for creating reactive outputs. And don’t forget to add <code>()</code> following each reactive data frame called in your leaflet map!
-</p>
+<p><span class="body-text-s">Remember to reference your practice data viz script and to follow our three steps for creating reactive outputs. And don’t forget to add <code>()</code> following each reactive data frame called in your leaflet map!</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1494,9 +1409,10 @@ Remember to reference your practice data viz script and to follow our three step
 <hr>
 <p><br></p>
 <p><span class="body-text-m"><strong>To Do:</strong></span></p>
-<p><br></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Add two more <code>sliderInput</code>s, one for <code>AvgDepth</code> and one for <code>AvgTemp</code> beneath our first Elevation <code>sliderInput</code> in the UI</span></p>
-<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Update our reactive data frame so that all three widgets filter the leaflet map</span></p>
+<ul>
+<li><p>Add two more <code>sliderInput</code>s, one for <code>AvgDepth</code> and one for <code>AvgTemp</code> beneath our first Elevation <code>sliderInput</code> in the UI</p></li>
+<li><p>Update our reactive data frame so that all three widgets filter the leaflet map</p></li>
+</ul>
 <p><br> <br> <br> <br> <br> <br></p>
 <div class="center-text body-text-l teal-text">
 <p>See next slide for a solution!</p>
@@ -1695,12 +1611,10 @@ Remember to reference your practice data viz script and to follow our three step
 <p><span class="slide-title2"><i class="fa-solid fa-question" title="question mark" aria-label="question"></i> &amp; <i class="fa-solid fa-lightbulb" title="a lightbulb" aria-label="lightbulb"></i> Exercise 6: Add titles &amp; text to Welcome page boxes</span></p>
 <hr>
 <p><span class="body-text-m"><strong>To Do:</strong></span></p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Add titles to each box on the <strong>Welcome</strong> page
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Create a <code>text/</code> folder within your app’s directory and add three markdown (<code>.md</code>) files. Write / format text for the background info (left), data citation (top-right), and disclaimer (bottom-right) boxes. Example text below:
-</p>
+<ul>
+<li><span class="body-text-s">Add titles to each box on the <strong>Welcome</strong> page</span></li>
+<li><span class="body-text-s">Create a <code>text/</code> folder within your app’s directory and add three markdown (<code>.md</code>) files. Write / format text for the background info (left), data citation (top-right), and disclaimer (bottom-right) boxes. Example text below:</span></li>
+</ul>
 <div class="panel-tabset">
 <ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1"><code>intro.md</code></a></li><li><a href="#tabset-5-2"><code>citation.md</code></a></li><li><a href="#tabset-5-3"><code>disclaimer.md</code></a></li></ul>
 <div class="tab-content">
@@ -1740,9 +1654,9 @@ Remember to reference your practice data viz script and to follow our three step
 </div>
 <p><br></p>
 <p><span class="body-text-m"><strong>Tips:</strong></span></p>
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Titles can include icons! For example: <code>title = tagList(icon("icon-name"), strong("title text here"))</code>
-</p>
+<ul>
+<li><span class="body-text-s">Titles can include icons! For example: <code>title = tagList(icon("icon-name"), strong("title text here"))</code></span></li>
+</ul>
 </section>
 <section id="exercise6-solution" class="slide level2" data-menu-title="** Exercise 6 Solution **" data-background="#d2e3f3">
 <h2></h2>
@@ -1912,12 +1826,8 @@ Press the right arrow key to advance through the newly added lines of code.
 <h2></h2>
 <p><span class="slide-title">Add a static image</span></p>
 <hr>
-<p class="body-text-s">
-As a final touch, let’s add an image to the Welcome page, inside the left-hand box beneath our intro text. First, <strong>create a <code>www/</code> folder inside your app’s directory</strong> (refer back to <a href="https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part1.2-setup-app-slides.html#/repo-structure">lecture 1.2</a> for a description of this special directory). Download the map of the Fish Creek Watershed from FCWO’s website <a href="http://www.fishcreekwatershed.org/images/FishCreekWatershedSiteMap_2020.jpg">here</a> and save it to your <code>www/</code> directory.
-</p>
-<p class="body-text-s">
-Next, use the <code>img</code> tag to add your image. Supply a file path, relative to your <code>www/</code> directory, using the <code>src</code> argument, and add alt text using the <code>alt</code> argument.
-</p>
+<p><span class="body-text-s">Let’s add an image to the Welcome page, inside the left-hand box beneath our intro text. First, <strong>create a <code>www/</code> folder inside your app’s directory</strong> (refer back to <a href="../../course-materials/slides/part1.2-setup-app-slides.html#repo-structure" target="_blank">part 1.2</a>. <strong>Download <a href="http://www.fishcreekwatershed.org/images/FishCreekWatershedSiteMap_2020.jpg" target="_blank">the map</a></strong> of the Fish Creek Watershed from FCWO’s website and save it to your <code>www/</code> directory.</span></p>
+<p><span class="body-text-s">Next, <strong>use the <code>img</code> tag</strong> to add your image. Supply a file path, relative to your <code>www/</code> directory, using the <code>src</code> argument, and add alt text using the <code>alt</code> argument.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -2061,12 +1971,8 @@ Next, use the <code>img</code> tag to add your image. Supply a file path, relati
 <h2></h2>
 <p><span class="slide-title2">Use in-line CSS to adjust the image size</span></p>
 <hr>
-<p class="body-text-s">
-We can use in-line CSS to style our image element, as shown below (see <code>style</code> argument). It’s okay if you don’t fully understand what’s going on here for now – we’ll talk in greater detail about how CSS (and Sass) can be used to customize the appearance of your apps in just a bit.
-</p>
-<p class="body-text-s">
-I’ve also added a caption below our image that links to the image source, and used in-line CSS to center my text within the box.
-</p>
+<p><span class="body-text-s">We can <strong>use in-line CSS to style our image element</strong>. It’s okay if you don’t fully understand what’s going on here for now – we’ll talk in greater detail about how CSS (and Sass) can be used to customize the appearance of your apps in just a bit.</span></p>
+<p><span class="body-text-s">Let’s also <strong>add a caption</strong> below our image that links to the image source, and use in-line CSS to center that text within the box.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -2208,9 +2114,7 @@ I’ve also added a caption below our image that links to the image source, and 
 <p><span class="slide-title">Check out your finished dashboard!</span></p>
 <hr>
 
-<img data-src="images/part3/final-dashboard.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="Our completed dashboard, with our image styled so that it fits within the background info box on the Welcome page, and three functional sliderInputs that update the leaflet map on the Dashboard page."><p class="body-text-s">
-There’s a ton more to learn about building shinydashboards. Check out the <a href="https://rstudio.github.io/shinydashboard/">documentation</a> to find instructions on adding components like <a href="https://rstudio.github.io/shinydashboard/structure.html#infobox"><code>infoBox</code>es</a> and <a href="https://rstudio.github.io/shinydashboard/structure.html#valuebox"><code>valueBox</code>es</a>, building <a href="https://rstudio.github.io/shinydashboard/structure.html#inputs-in-the-sidebar">inputs in the sidebar</a>, easy ways to update the color theme using <a href="https://rstudio.github.io/shinydashboard/appearance.html#skins">skins</a>, and more.
-</p>
+<img data-src="images/part3/final-dashboard.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="Our completed dashboard, with our image styled so that it fits within the background info box on the Welcome page, and three functional sliderInputs that update the leaflet map on the Dashboard page."><p><span class="body-text-s">There’s a ton more to learn about building shinydashboards. Check out the <a href="https://rstudio.github.io/shinydashboard/" target="_blank">documentation</a> to find instructions on adding components like <a href="https://rstudio.github.io/shinydashboard/structure.html#infobox" target="_blank"><code>infoBox</code>es</a> and <a href="https://rstudio.github.io/shinydashboard/structure.html#valuebox" target="_blank"><code>valueBox</code>es</a>, building <a href="https://rstudio.github.io/shinydashboard/structure.html#inputs-in-the-sidebar" target="_blank">inputs in the sidebar</a>, easy ways to update the color theme using <a href="https://rstudio.github.io/shinydashboard/appearance.html#skins" target="_blank">skins</a>, and more.</span></p>
 </section>
 <section id="final-dashboard-code" class="slide level2" data-menu-title="Complete dashboard code">
 <h2></h2>
@@ -2439,7 +2343,7 @@ End part 3
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_525511cc" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_415bc8a8" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
