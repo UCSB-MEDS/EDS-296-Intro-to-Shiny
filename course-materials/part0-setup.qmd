@@ -19,10 +19,10 @@ knitr::include_graphics("images/software.png")
 ::: {.callout-note}
 ## No prior Shiny experience is necessary for participating in this course! However,
 
-we do assume general familiarity with the R programming language. We also ask that you arrive with all necessary software installed / configured. See below, or the [MEDS Installation Guide](https://ucsb-meds.github.io/MEDS-installation-guide/){target="_blank"} (steps 1 - 7) for detailed instructions.
+we do assume general familiarity with the R programming language. We also ask that you arrive with all necessary software installed / configured. See the [MEDS Installation Guide](https://ucsb-meds.github.io/MEDS-installation-guide/){target="_blank"} (steps 1 - 7) for detailed instructions.
 :::
 
-Before class, you should have:
+[**Before class, you should have:**]{.teal-text}
 
 1. [R](https://cloud.r-project.org/) & [RStudio](https://posit.co/products/open-source/rstudio/) installed  
 2. A [GitHub](https://github.com/) profile & [git](https://git-scm.com/) installed / configured
