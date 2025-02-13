@@ -30,7 +30,9 @@ editor_options:
 knitr::include_graphics("images/part2/meet_the_penguins.png")
 ```
 
-<center><p class="body-text-s gray-text">Artwork by [@allison_horst](https://allisonhorst.com/)</p>
+::: {.center-text .body-text-s .gray-text}
+Artwork by [@allison_horst](https://allisonhorst.com/)
+:::
 
 ---
 
@@ -47,11 +49,11 @@ knitr::include_graphics("images/part2/meet_the_penguins.png")
 ::: {.column width="50%"}
 - [data colored by penguin `species`]{.body-text-s}
 
-- [a `shinyWidgets::pickerInput()` that allows users to filter data based on `island`, and that includes buttons to **Select All** / **Deselect All** island options at once]{.body-text-s}
+- [a `shinyWidgets::pickerInput()` that allows users to filter data based on `island`, and that includes buttons to **Select All** / **Deselect All** islands at once]{.body-text-s}
 
 - [a `shiny::sliderInput()` that allows users to change the number of histogram bins and that by default, displays a histogram with **25** bins]{.body-text-s}
 
-- [the two widgets should be placed in the `sidebarPanel` and the reactive histogram should be placed in the `mainPanel` of the **Penguins** tab<]{.body-text-s}
+- [the two widgets should be placed in the `sidebarPanel` and the reactive histogram should be placed in the `mainPanel` of the **Penguins** tab]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -93,11 +95,11 @@ See next slide for some tips on getting started!
 
 **And remember** to follow the our three steps for building reactive outputs:
 
-[[**(1)**]{.teal-text} add input to UI]{.body-text-s}
+[[**(1)**]{.teal-text} add an input(s) to UI]{.body-text-s}
 
-[[**(2)**]{.teal-text} add output to UI]{.body-text-s}
+[[**(2)**]{.teal-text} add an output(s) (placeholder) to UI]{.body-text-s}
 
-[[**(3)**]{.teal-text} tell server how to assemble inputs into outputs)!]{.body-text-s}
+[[**(3)**]{.teal-text} tell server how to assemble inputs into outputs (following our three rules; [see this slide for a reminder](part2.1-single-file-app-slides.qmd#app1-ex1-tips-2){target="_blank"})!]{.body-text-s}
 
 <br>
 
@@ -120,13 +122,13 @@ See next slide for a solution!
 ```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "4"
+#| code-line-numbers: "6"
 # LOAD LIBRARIES ----
 library(shiny)
-library(lterdatasampler)
-library(palmerpenguins)
 library(tidyverse)
 library(shinyWidgets)
+library(lterdatasampler)
+library(palmerpenguins)
 
 # GGPLOT THEME ----
 myCustomTheme <- function() {
@@ -195,8 +197,8 @@ ui <- navbarPage(
                           pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
                                       choices = unique(clean_trout$channel_type),
                                       selected = c("cascade", "pool"),
-                                      options = pickerOptions(actionsBox = TRUE),
-                                      multiple = TRUE), # END channel type pickerInput
+                                      multiple = TRUE,
+                                      options = pickerOptions(actionsBox = TRUE)), # END channel type pickerInput
                           
                           # # section checkboxGroupInput ----
                           checkboxGroupButtons(inputId = "section_input", label = "Select a sampling section(s):",
@@ -232,19 +234,19 @@ ui <- navbarPage(
                           pickerInput(inputId = "penguin_island_input", label = "Select an island(s):",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
-                                      options = pickerOptions(actionsBox = TRUE),
-                                      multiple = TRUE), # END island pickerInput
+                                      multiple = TRUE,
+                                      options = pickerOptions(actionsBox = TRUE)), # END island pickerInput
                           
                           # bin number sliderInput ----
                           sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
-                                      value = 25, max = 100, min = 1), # END bin number sliderInput
+                                      min = 1, max = 100, value = 25) # END bin number sliderInput
                           
                         ), # END penguin plot sidebarPanel
                         
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram_output") 
+                          plotOutput(outputId = "flipper_length_histogram_output") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -301,7 +303,7 @@ server <- function(input, output) {
   })
 
   # render the flipper length histogram ----
-  output$flipperLength_histogram_output <- renderPlot({
+  output$flipper_length_histogram_output <- renderPlot({
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.6, position = "identity", bins = input$bin_num_input) +

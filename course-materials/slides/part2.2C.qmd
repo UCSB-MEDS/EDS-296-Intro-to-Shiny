@@ -17,7 +17,7 @@ editor_options:
 
 <hr>
 
-It's usually valuable (and important) to provide some background information / context for your app -- the landing page of your app can be a great place for this (but certainly doesn't have to be). We're going to add text to our app's landing page (i.e. the **About this App** page) so that it looks like the example below:
+It's usually valuable (and important) to provide some background information / context for your app -- the landing page of your app can be a great place for this (but certainly doesn't have to be where it lives). We're going to add text to our app's landing page (i.e. the **About this App** page) so that it looks like the example below:
 
 <br>
 
@@ -29,7 +29,7 @@ It's usually valuable (and important) to provide some background information / c
 #| echo: false
 #| fig-align: "center"
 #| out-width: "100%"
-#| fig-alt: "The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."
+#| fig-alt: "The landing page (i.e. the 'About this App' page) of ourapp, which includes a large h1 title that says 'Welcome to the LTER Animal Data Explorer!' followed by two subsections titled, 'Why did we build this app?' and 'Where's the data?'. A faint gray horizontal divider line separates these sections from the footer at the bottom of the page, which tells the user that the app is maintained by Samantha Shanny-Csik, is updated as needed for teaching purposes, to report issues at a link, and that source code is found on GitHub."
 knitr::include_graphics("images/part2/landing-text.png")
 ```
 :::
@@ -75,7 +75,7 @@ ui <- navbarPage(
                     tags$h1("Welcome to the LTER Animal Data Explorer!"),
                     tags$br(),
                     tags$h4("Why did we build this app?"),
-                    tags$p("This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's", tags$a(href = "https://lternet.edu/", "Long Term Ecological Research (LTER)"), "sites...but primarily, it was built as a teaching tool for", tags$a(href = "https://bren.ucsb.edu/courses/eds-430", "EDS 430 (Intro to Shiny)"), "-- this workshop, taught through the", tags$a(href = "https://ucsb-meds.github.io/", "Master of Environmental Data Science (MEDS) program"), "at the", tags$a(href = "https://bren.ucsb.edu/", "Bren School of Environmental Science and Management"), "is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development."),
+                    tags$p("This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's", tags$a(href = "https://lternet.edu/", "Long Term Ecological Research (LTER)"), "sites...but primarily, it was built as a teaching tool for", tags$a(href = "https://bren.ucsb.edu/courses/eds-430", "EDS 296 (Intro to Shiny)"), "-- this workshop, taught through the", tags$a(href = "https://ucsb-meds.github.io/", "Master of Environmental Data Science (MEDS) program"), "at the", tags$a(href = "https://bren.ucsb.edu/", "Bren School of Environmental Science and Management"), "is a two-day coding-intensive course meant to provide a introductory foundation in shiny app development."),
                     tags$br(),
                     tags$h4("Where's the data?"),
                     tags$p("Check out the", tags$strong("Explore the Data"), "page to find interactive data visualizations looking at Cutthroat trout of the", tags$a(href = "https://andrewsforest.oregonstate.edu/", "Andrews Forest LTER"), "and Adélie, Gentoo & Chinstrap penguins of the", tags$a(href = "https://pallter.marine.rutgers.edu/", "Palmer Station LTER."))
@@ -85,7 +85,7 @@ ui <- navbarPage(
            
            hr(),
            
-           em("This app is maintained by", tags$a(href = "https://samanthacsik.github.io/", "Samantha Csik"), "and is updated as needed for teaching purposes. Please report any issues", tags$a(href = "https://github.com/samanthacsik/EDS430-shiny-app/issues", "here."), "Source code can be found on", tags$a(href = "https://github.com/samanthacsik/EDS430-shiny-app", "GitHub."))
+           em("This app is maintained by", tags$a(href = "https://samanthacsik.github.io/", "Samantha Shanny-Csik"), "and is updated as needed for teaching purposes. Please report", tags$a(href = "https://github.com/samanthacsik/EDS-296-shiny-apps/issues", "any issues."), "Source code can be found on", tags$a(href = "https://github.com/samanthacsik/EDS-296-shiny-apps", "GitHub."))
            
   ), # END (Page 1) intro tabPanel
   
@@ -156,7 +156,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram_output") 
+                          plotOutput(outputId = "flipper_length_histogram_output") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -279,7 +279,7 @@ ui <- navbarPage(
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram_output")
+                          plotOutput(outputId = "flipper_length_histogram_output")
                           
                         ) # END penguin plot mainPanel
                         
@@ -304,7 +304,7 @@ ui <- navbarPage(
 
 #### Why did we build this app?
 
-This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 430 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.
+This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 296 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to provide a introductory foundation in shiny app development.
 
 <br>
 
@@ -317,7 +317,7 @@ Check out the **Explore the Data** page to find interactive data visualizations 
 ```{markdown filename="~/two-file-app/text/footer/md"}
 #| eval: false
 #| echo: true
-*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*
+*This app is maintained by [Samantha Shanny-Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report [any issues](https://github.com/samanthacsik/EDS-296-shiny-apps/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS-296-shiny-apps).*
 ```
 
 :::
@@ -357,22 +357,24 @@ knitr::include_graphics("images/part2/app2_v1.gif")
 #| echo: true
 # LOAD LIBRARIES ----
 library(shiny)
+library(tidyverse)
+library(markdown)
+library(shinyWidgets)
 library(lterdatasampler)
 library(palmerpenguins)
-library(tidyverse)
-library(shinyWidgets)
-library(markdown)
 
 # GGPLOT THEME ----
 myCustomTheme <- function() {
   
   theme_light() +
-  theme(axis.text = element_text(color = "black", size = 12),
+  theme(
+    axis.text = element_text(color = "black", size = 12),
     axis.title = element_text(size = 14, face = "bold"),
     legend.title = element_text(size = 14, face = "bold"),
     legend.text = element_text(size = 13),
     legend.position = "bottom",
-    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7)
+    )
   
 }
 
@@ -443,8 +445,8 @@ ui <- navbarPage(
                           pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
                                       choices = unique(clean_trout$channel_type), # alternatively, include vector of options
                                       selected = c("cascade", "pool"),
-                                      options = pickerOptions(actionsBox = TRUE),
-                                      multiple = TRUE), # END channel type pickerInput
+                                      multiple = TRUE,
+                                      options = pickerOptions(actionsBox = TRUE)), # END channel type pickerInput
                           
                           # # section checkboxGroupInput ----
                           checkboxGroupButtons(inputId = "section_input", label = "Select a sampling section(s):",
@@ -485,14 +487,14 @@ ui <- navbarPage(
                           
                           # bin number sliderInput ----
                           sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
-                                      value = 25, max = 100, min = 1), # END bin number sliderInput
+                                      min = 1, max = 100, value = 25), # END bin number sliderInput
                           
                         ), # END penguin plot sidebarPanel
                         
                         # penguin plot mainPanel ----
                         mainPanel(
                           
-                          plotOutput(outputId = "flipperLength_histogram_output") 
+                          plotOutput(outputId = "flipper_length_histogram_output") 
                           
                         ) # END penguin plot mainPanel
                         
@@ -527,13 +529,24 @@ server <- function(input, output) {
 
     ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
-      scale_color_manual(values = c("cascade" = "#2E2585", "riffle" = "#337538", "isolated pool" = "#DCCD7D",
-                                    "pool" = "#5DA899", "rapid" = "#C16A77", "step (small falls)" = "#9F4A96",
+      scale_color_manual(values = c("cascade" = "#2E2585", 
+                                    "riffle" = "#337538", 
+                                    "isolated pool" = "#DCCD7D",
+                                    "pool" = "#5DA899", 
+                                    "rapid" = "#C16A77", 
+                                    "step (small falls)" = "#9F4A96",
                                     "side channel" = "#94CBEC")) +
-      scale_shape_manual(values = c("cascade" = 15, "riffle" = 17, "isolated pool" = 19,
-                                    "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
+      scale_shape_manual(values = c("cascade" = 15, 
+                                    "riffle" = 17, 
+                                    "isolated pool" = 19,
+                                    "pool" = 18, 
+                                    "rapid" = 8, 
+                                    "step (small falls)" = 23,
                                     "side channel" = 25)) +
-      labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
+      labs(x = "Trout Length (mm)", 
+           y = "Trout Weight (g)", 
+           color = "Channel Type", 
+           shape = "Channel Type") +
       myCustomTheme()
 
   })
@@ -547,7 +560,7 @@ server <- function(input, output) {
   })
 
   # render the flipper length histogram ----
-  output$flipperLength_histogram_output <- renderPlot({
+  output$flipper_length_histogram_output <- renderPlot({
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.6, position = "identity", bins = input$bin_num_input) +
@@ -571,7 +584,7 @@ server <- function(input, output) {
 
 #### Why did we build this app?
 
-This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 430 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to meant to provide a introductory foundation in shiny app development.
+This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 296 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to provide a introductory foundation in shiny app development.
 
 <br>
 
@@ -584,7 +597,7 @@ Check out the **Explore the Data** page to find interactive data visualizations 
 ```{md filename="~/two-file-app/text/footer.md"}
 #| eval: false
 #| echo: true
-*This app is maintained by [Samantha Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report any issues [here](https://github.com/samanthacsik/EDS430-shiny-app/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS430-shiny-app).*
+*This app is maintained by [Samantha Shanny-Csik](https://samanthacsik.github.io/) and is updated as needed for teaching purposes. Please report [any issues](https://github.com/samanthacsik/EDS-296-shiny-apps/issues). Source code can be found on [GitHub](https://github.com/samanthacsik/EDS-296-shiny-apps).*
 ```
 
 :::
@@ -595,7 +608,7 @@ Check out the **Explore the Data** page to find interactive data visualizations 
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">End part 2.2</p>
-<p class="caption-text">***Up next:** deploying our app with [shinyapps.io](https://www.shinyapps.io/)*</p>
+<p class="caption-text">***Up next:** deploying our app with [shinyapps.io](https://www.shinyapps.io/){target="_blank"}*</p>
 </div>
 
 ```{r}

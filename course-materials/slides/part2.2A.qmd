@@ -103,26 +103,26 @@ knitr::include_graphics("images/part2/app2_v1.gif")
 
 [You'll notice that there are some UI quirks (most notably, blank plots that appear when no data is selected) that can make the user experience less than ideal (and even confusing) -- we'll learn about ways to improve this in the [next section](part2.3-deploy-improve-ux-slides.qmd#LO-app2v2){target="_blank"}.]{.body-text-s}
 
----
+<!-- --- -->
 
-##  {#two-source data-menu-title="Two source panes"}
+<!-- ##  {#two-source data-menu-title="Two source panes"} -->
 
-[Two files? Try two panes!]{.slide-title}
+<!-- [Two files? Try two panes!]{.slide-title} -->
 
-<hr>
+<!-- <hr> -->
 
-We'll be building out a **two-file shiny app** this time around. You can open multiple scripts up side-by-side by navigating to **Tools** > **Global Options** > **Pane Layout** > **Add Column**
+<!-- We'll be building out a **two-file shiny app** this time around. You can open multiple scripts up side-by-side by navigating to **Tools** > **Global Options** > **Pane Layout** > **Add Column** -->
 
-```{r}
-#| eval: true
-#| echo: false
-#| out-width: "100%"
-#| fig-align: "center"
-#| fig-alt: "RStudio with three columns. (From left to right): (1) a source pane with `ui.R` open (2) a second source pane on the top with `server.R` open and the console on the bottom, (3) Environment/History/Git/etc. on the top and Files/Plots/Packages/etc. on the bottom"
-knitr::include_graphics("images/part2/two_source.png")
-```
+<!-- ```{r} -->
+<!-- #| eval: true -->
+<!-- #| echo: false -->
+<!-- #| out-width: "100%" -->
+<!-- #| fig-align: "center" -->
+<!-- #| fig-alt: "RStudio with three columns. (From left to right): (1) a source pane with `ui.R` open (2) a second source pane on the top with `server.R` open and the console on the bottom, (3) Environment/History/Git/etc. on the top and Files/Plots/Packages/etc. on the bottom" -->
+<!-- knitr::include_graphics("images/part2/two_source.png") -->
+<!-- ``` -->
 
-This setup is certainly not required / necessary -- organize your IDE however you work best!
+<!-- This setup is certainly not required / necessary -- organize your IDE however you work best! -->
 
 ---
 
@@ -147,12 +147,14 @@ library(tidyverse)
 #............custom ggplot theme (apply to both plots)...........
 myCustomTheme <- function() {
   theme_light() +
-  theme(axis.text = element_text(size = 12),
+  theme(
+    axis.text = element_text(size = 12),
     axis.title = element_text(size = 14, face = "bold"),
     legend.title = element_text(size = 14, face = "bold"),
     legend.text = element_text(size = 13),
     legend.position = "bottom",
-    panel.border = element_rect(linewidth = 0.7))
+    panel.border = element_rect(linewidth = 0.7)
+    )
 }
 
 #.......................wrangle trout data.......................
@@ -180,15 +182,27 @@ trout_filtered_df <- clean_trout |>
   filter(section %in% c("clear cut forest"))
 
 #........................plot trout data.........................
-ggplot(trout_filtered_df, aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
+ggplot(trout_filtered_df, aes(x = length_mm, y = weight_g, 
+                              color = channel_type, shape = channel_type)) +
   geom_point(alpha = 0.7, size = 5) +
-  scale_color_manual(values = c("cascade" = "#2E2585", "riffle" = "#337538", "isolated pool" = "#DCCD7D", 
-                                "pool" = "#5DA899", "rapid" = "#C16A77", "step (small falls)" = "#9F4A96", 
+  scale_color_manual(values = c("cascade" = "#2E2585", 
+                                "riffle" = "#337538", 
+                                "isolated pool" = "#DCCD7D", 
+                                "pool" = "#5DA899", 
+                                "rapid" = "#C16A77", 
+                                "step (small falls)" = "#9F4A96", 
                                 "side channel" = "#94CBEC")) +
-  scale_shape_manual(values = c("cascade" = 15, "riffle" = 17, "isolated pool" = 19, 
-                                "pool" = 18, "rapid" = 8, "step (small falls)" = 23, 
+  scale_shape_manual(values = c("cascade" = 15, 
+                                "riffle" = 17, 
+                                "isolated pool" = 19, 
+                                "pool" = 18, 
+                                "rapid" = 8, 
+                                "step (small falls)" = 23, 
                                 "side channel" = 25)) +
-  labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
+  labs(x = "Trout Length (mm)", 
+       y = "Trout Weight (g)", 
+       color = "Channel Type", 
+       shape = "Channel Type") +
   myCustomTheme()
 ```
 :::
@@ -931,9 +945,9 @@ In addition to the [`{lterdatasampler}` package](https://lter.github.io/lterdata
 #| code-line-numbers: "3-5"
 # LOAD LIBRARIES ----
 library(shiny)
-library(lterdatasampler) 
 library(tidyverse)
 library(shinyWidgets) 
+library(lterdatasampler) 
 ```
 
 ---
@@ -949,14 +963,15 @@ library(shinyWidgets)
 ```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "6-24"
+#| code-line-numbers: "6-25"
 # LOAD LIBRARIES ----
 library(shiny)
-library(lterdatasampler)
 library(tidyverse)
 library(shinyWidgets) 
+library(lterdatasampler)
 
 # DATA WRANGLING ----
+# NOTE: if working with really large data, it is often beneficial to write your wrangled data to file, then read that file directly into `global.R`; this can help to increase your app's speed
 clean_trout <- and_vertebrates |>
   filter(species == "Cutthroat trout") |>
   select(sampledate, section, species, length_mm = length_1_mm, weight_g, channel_type = unittype) |> 
@@ -996,9 +1011,10 @@ clean_trout <- and_vertebrates |>
 # channel type pickerInput ----
 pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
             choices = unique(clean_trout$channel_type), # alternatively: choices = c("rapid", "cascade" ...)
-            selected = c("cascade", "pool"), 
-            options = pickerOptions(actionsBox = TRUE), # creates "Select All / Deselect All" buttons
-            multiple = TRUE) # END channel type pickerInput
+            selected = c("cascade", "pool"),
+            multiple = TRUE,
+            options = pickerOptions(actionsBox = TRUE) # creates "Select All / Deselect All" buttons
+            ) # END channel type pickerInput
 ```
 
 [Save and run your app -- a functional `pickerInput` should now appear in your UI.]{.body-text-s}
@@ -1046,7 +1062,7 @@ knitr::include_graphics("images/part2/trout_plotOutput.png")
 
 <hr>
 
-[**Remember the three rules for building reactive outputs:** **(1)** save objects you want to display to `output$<id>`, **(2)** build reactive objects using a `render*()` function, and **(3)** access input values with `input$<id>`:]{.body-text-s}
+[**Remember the three rules for building reactive outputs:** [**(1)**]{.teal-text} save objects you want to display to `output$<id>`, [**(2)**]{.teal-text} build reactive objects using a `render*()` function, and [**(3)**]{.teal-text} access input values with `input$<id>`:]{.body-text-s}
 
 :::: {.columns}
 
@@ -1054,7 +1070,7 @@ knitr::include_graphics("images/part2/trout_plotOutput.png")
 ```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "3-25"
+#| code-line-numbers: "3-37"
 server <- function(input, output) {
   
   # filter trout data ----
@@ -1068,15 +1084,27 @@ server <- function(input, output) {
   # trout scatterplot ----
   output$trout_scatterplot_output <- renderPlot({
     
-    ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
+    ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, 
+                                    color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
-      scale_color_manual(values = c("cascade" = "#2E2585", "riffle" = "#337538", "isolated pool" = "#DCCD7D",
-                                    "pool" = "#5DA899", "rapid" = "#C16A77", "step (small falls)" = "#9F4A96",
+      scale_color_manual(values = c("cascade" = "#2E2585", 
+                                    "riffle" = "#337538", 
+                                    "isolated pool" = "#DCCD7D",
+                                    "pool" = "#5DA899", 
+                                    "rapid" = "#C16A77", 
+                                    "step (small falls)" = "#9F4A96",
                                     "side channel" = "#94CBEC")) +
-      scale_shape_manual(values = c("cascade" = 15, "riffle" = 17, "isolated pool" = 19,
-                                    "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
+      scale_shape_manual(values = c("cascade" = 15, 
+                                    "riffle" = 17, 
+                                    "isolated pool" = 19,
+                                    "pool" = 18, 
+                                    "rapid" = 8, 
+                                    "step (small falls)" = 23,
                                     "side channel" = 25)) +
-      labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
+      labs(x = "Trout Length (mm)", 
+           y = "Trout Weight (g)", 
+           color = "Channel Type", 
+           shape = "Channel Type") +
       myCustomTheme()
     
   }) 
@@ -1091,7 +1119,7 @@ server <- function(input, output) {
 ::: {.column width="35%"}
 **A couple notes / reminders:**
 
-- [If needed, reference your [practice script](https://ucsb-meds.github.io/EDS-430-Intro-to-Shiny/course-materials/slides/part2.2-two-file-app-slides.html#/app2-trout-plot) to remind yourself how you planned to filter and plot your data]{.body-text-s}
+- [If needed, reference your [practice script](part2.2A.qmd#app2-trout-plot){target="_blank"} to remind yourself how you planned to filter and plot your data]{.body-text-s}
 
 - [Reactive data frames need a set of parentheses, `()`, following the name of the df (see `ggplot(trout_filtered_df() ...)`)]{.body-text-s}
 
@@ -1113,24 +1141,26 @@ server <- function(input, output) {
 ```{r filename="~/two-file-app/global.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "8-19"
+#| code-line-numbers: "8-21"
 # LOAD LIBRARIES ----
 library(shiny)
-library(lterdatasampler)
-library(palmerpenguins)
 library(tidyverse)
 library(shinyWidgets)
+library(lterdatasampler)
+library(palmerpenguins)
 
 # GGPLOT THEME ----
 myCustomTheme <- function() {
   
   theme_light() +
-  theme(axis.text = element_text(color = "black", size = 12),
+  theme(
+    axis.text = element_text(color = "black", size = 12),
     axis.title = element_text(size = 14, face = "bold"),
     legend.title = element_text(size = 14, face = "bold"),
     legend.text = element_text(size = 13),
     legend.position = "bottom",
-    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7))
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7)
+    )
   
 }
 
