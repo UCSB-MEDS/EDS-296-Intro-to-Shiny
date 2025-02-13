@@ -86,7 +86,7 @@ editor_options:
 
 <hr>
 
-<p class="body-text">We'll start by building a small **single-file app** using data from the `{palmerpenguins}` package. We'll build out the the following features:</p>
+We'll start by building a small **single-file app** using data from the `{palmerpenguins}` package. We'll build out the the following features:
 
 :::: {.columns}
 
@@ -95,11 +95,11 @@ editor_options:
 <br>
 <br>
 
-**(a)** A title and subtitle
+[**(a)**]{.teal-text} A title and subtitle
 
-**(b)** A slider widget for users to select a range of penguin body masses
+[**(b)**]{.teal-text} A slider widget for users to select a range of penguin body masses
 
-**(c)** A reactive scatter plot that updates based on user-supplied values
+[**(c)**]{.teal-text} A reactive scatter plot that updates based on user-supplied values
 :::
 
 ::: {.column width="5%"}
@@ -203,7 +203,7 @@ knitr::include_graphics("images/part2/input-output-app.png")
 
 <hr>
 
-The `shiny` package comes with a number of input and output functions, but you can extend these with additional packages (e.g. `shinyWidgets`, `plotly`, `DT`, etc.; more on those later).
+`{shiny}` comes with a number of input and output functions, but you can extend these with additional packages (e.g. `{shinyWidgets}`, `{plotly}`, `{DT}`, etc.; more on those later).
 
 :::: {.columns}
 
@@ -219,7 +219,7 @@ The `shiny` package comes with a number of input and output functions, but you c
 - [`selectInput()`]{.body-text-s}
 - [`sliderInput()`]{.body-text-s}
 - [`textInput()`]{.body-text-s}
-- [See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/){target="_blank"} of `shiny` input functions]{.body-text-s}
+- [See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/){target="_blank"} of `{shiny}` input functions]{.body-text-s}
 :::
 
 ::: {.column width="5%"}
@@ -233,7 +233,7 @@ The `shiny` package comes with a number of input and output functions, but you c
 - [`plotOutput()` (inserts a plot)]{.body-text-s}
 - [`tableOutput()` (inserts a table)]{.body-text-s}
 - [`textOutput()` (inserts text)]{.body-text-s}
-- [See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/) of `shiny` output functions]{.body-text-s}
+- [See a [full list](https://shiny.rstudio.com/tutorial/written-tutorial/lesson4/){target="_blank"} of `{shiny}` output functions]{.body-text-s}
 :::
 
 ::::
@@ -313,7 +313,7 @@ selectInput(inputId = "island_input", label = "Choose and island:", ...)
 <br>
 
 ::: {.footer}
-Check out the interactive [Shiny Widgets Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html) to learn how to implement the most common widgets.
+Check out the interactive [Shiny Widgets Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html){target="_blank"} to learn how to implement the most common widgets.
 :::
 
 ---
@@ -380,7 +380,7 @@ knitr::include_graphics("images/part2/3000-4000.png")
 ```{r}
 #| eval: false
 #| echo: true
-plotOutput(outputId = "bodyMass_scatterplot_output")
+plotOutput(outputId = "body_mass_scatterplot_output")
 
 dataTableOutput(outputId = "penguin_data_output")
 ```
@@ -410,7 +410,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot ouput ----
-  plotOutput(outputId = "bodyMass_scatterplot_output")
+  plotOutput(outputId = "body_mass_scatterplot_output")
   
   )
 ```
@@ -423,7 +423,7 @@ ui <- fluidPage(
 
 <hr>
 
-Okay, it looks like nothing changed?? **Remember, `*Output()` functions create placeholders, but we have not yet written the server instructions on how to fill and update those placeholders.** We can inspect the HTML and see that there is, in fact, a placeholder area awaiting our eventual output, which will be a plot named "*bodyMass_scatterplot_output*":
+Okay, it looks like nothing changed?? **Remember, `*Output()` functions create placeholders, but we have not yet written the server instructions on how to fill and update those placeholders.** We can inspect the HTML and see that there is, in fact, a placeholder area awaiting our eventual output, which will be a plot named "*body_mass_scatterplot_output*":
 
 <br>
 
@@ -523,7 +523,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterplot_output") 
+  plotOutput(outputId = "body_mass_scatterplot_output") 
   
 )
 
@@ -531,7 +531,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # render penguin scatter plot ----
-  output$bodyMass_scatterplot_output <- # code to generate plot here
+  output$body_mass_scatterplot_output <- # code to generate plot here
   
 }
 ```
@@ -541,11 +541,11 @@ server <- function(input, output) {
 
 <br>
 
-[In our **UI**, we created a placeholder for our plot using the `plotOutput()` function and gave it the Id `"bodyMass_scatterplot_output"`.]{.body-text-s} 
+[In our **UI**, we created a placeholder for our plot using the `plotOutput()` function and gave it the Id `"body_mass_scatterplot_output"`.]{.body-text-s} 
 
 [In our **server**, we will save our plot to the output argument by its `outputId`.]{.body-text-s} 
 
-[**Note: In the *UI*, our `outputId` is quoted (`"bodyMass_scatterplot_output"`), but not in the *server* (`bodyMass_scatterplot_output`).**]{.body-text-s .teal-text}
+[**Note: In the *UI*, our `outputId` is quoted (`"body_mass_scatterplot_output"`), but not in the *server* (`body_mass_scatterplot_output`).**]{.body-text-s .teal-text}
 :::
 
 ::::
@@ -578,7 +578,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterplot_output") 
+  plotOutput(outputId = "body_mass_scatterplot_output") 
   
 )
 
@@ -586,7 +586,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # render penguin scatter plot ----
-  output$bodyMass_scatterplot_output <- renderPlot({
+  output$body_mass_scatterplot_output <- renderPlot({
     
      # code to generate plot here
     
@@ -602,7 +602,7 @@ server <- function(input, output) {
 
 <hr>
 
-I find it easier to experiment and draft my objects (e.g. plots) first in a separate script (*outside* my app directory), then copy the code over to the server after. I want to make a plot that looks like this:
+[I find it easier to experiment and draft my objects (e.g. plots) first in a separate script (*outside* the app directory), then copy the code over to the server after. I want to make a plot that looks like this:]{.body-text-s}
 
 ::: {.panel-tabset}
 
@@ -612,8 +612,8 @@ I find it easier to experiment and draft my objects (e.g. plots) first in a sepa
 #| eval: false
 #| echo: true
 # load packages ----
-library(palmerpenguins)
 library(tidyverse)
+library(palmerpenguins)
 
 # create scatterplot ----
 ggplot(na.omit(penguins), 
@@ -624,9 +624,12 @@ ggplot(na.omit(penguins),
   scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
   labs(x = "Flipper length (mm)", y = "Bill length (mm)", 
        color = "Penguin species", shape = "Penguin species") +
+  guides(color = guide_legend(position = "inside"),
+         size = guide_legend(position = "inside")) +
   theme_minimal() +
-  theme(legend.position = c(0.85, 0.2),
+  theme(legend.position.inside = c(0.85, 0.2), 
         legend.background = element_rect(color = "white"))
+
 ```
 
 ## Output
@@ -649,9 +652,12 @@ ggplot(na.omit(penguins),
   scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
   labs(x = "Flipper length (mm)", y = "Bill length (mm)", 
        color = "Penguin species", shape = "Penguin species") +
+  guides(color = guide_legend(position = "inside"),
+         size = guide_legend(position = "inside")) +
   theme_minimal() +
-  theme(legend.position = c(0.85, 0.2),
+  theme(legend.position.inside = c(0.85, 0.2), 
         legend.background = element_rect(color = "white"))
+
 ```
 
 ```{r}
@@ -678,12 +684,12 @@ ggplot(na.omit(penguins),
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "3-4,25-35" 
+#| code-line-numbers: "3-4,25-37" 
 
 # load packages ----
 library(shiny)
-library(palmerpenguins)
 library(tidyverse)
+library(palmerpenguins)
 
 # user interface ----
 ui <- fluidPage(
@@ -695,7 +701,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterplot_output")
+  plotOutput(outputId = "body_mass_scatterplot_output")
   
 )
 
@@ -703,7 +709,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # render penguin scatter plot ----
-  output$bodyMass_scatterplot_output <- renderPlot({ 
+  output$body_mass_scatterplot_output <- renderPlot({ 
       ggplot(na.omit(penguins),
              aes(x = flipper_length_mm, y = bill_length_mm,
                  color = species, shape = species)) + 
@@ -712,9 +718,12 @@ server <- function(input, output) {
         scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
         labs(x = "Flipper length (mm)", y = "Bill length (mm)", 
              color = "Penguin species", shape = "Penguin species") + 
-        theme_minimal() + 
-        theme(legend.position = c(0.85, 0.2), 
-              legend.background = element_rect(color = "white")) 
+        guides(color = guide_legend(position = "inside"),
+               size = guide_legend(position = "inside")) +
+        theme_minimal() +
+        theme(legend.position.inside = c(0.85, 0.2), 
+              legend.background = element_rect(color = "white"))
+
   }) 
 ```
 
@@ -782,9 +791,12 @@ ggplot(na.omit(body_mass_df), # plot 'body_mass_df' rather than 'penguins' df
   scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
   labs(x = "Flipper length (mm)", y = "Bill length (mm)", 
        color = "Penguin species", shape = "Penguin species") +
+  guides(color = guide_legend(position = "inside"),
+         size = guide_legend(position = "inside")) +
   theme_minimal() +
-  theme(legend.position = c(0.85, 0.2),
+  theme(legend.position.inside = c(0.85, 0.2), 
         legend.background = element_rect(color = "white"))
+
 ```
 :::
 
@@ -895,7 +907,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterplot_output")
+  plotOutput(outputId = "body_mass_scatterplot_output")
   
 )
 
@@ -903,7 +915,7 @@ ui <- fluidPage(
 server <- function(input, output) {
       
   # render the scatter plot ----
-  output$bodyMass_scatterplot_output <- renderPlot({ 
+  output$body_mass_scatterplot_output <- renderPlot({ 
       ggplot(na.omit(penguins, aes(...)) + # etc. (omitted for brevity)
   }) 
     
@@ -938,7 +950,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
   
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterplot_output")
+  plotOutput(outputId = "body_mass_scatterplot_output")
   
 )
 
@@ -952,7 +964,7 @@ server <- function(input, output) {
   })
       
   # render the scatter plot ----
-  output$bodyMass_scatterplot_output <- renderPlot({ 
+  output$body_mass_scatterplot_output <- renderPlot({ 
       ggplot(na.omit(body_mass_df(), aes(...)) + 
         # etc. (omitted for brevity)
   }) 
@@ -1049,7 +1061,7 @@ And we saw that reactivity automatically occurs whenever we use an ***input valu
 <br>
 [**Working alone or in groups, add a reactive `DT` datatable to your app with a `checkboxGroupInput` that allows users to select which year(s) to include in the table. Configure your `checkboxGroupInput` so that the years 2007 and 2008 are pre-selected.**]{.body-text-s}
 
-In the end, your app should look something like the example to the right.]{.body-text-s}
+[In the end, your app should look something like the example to the right.]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -1066,7 +1078,7 @@ knitr::include_graphics("images/part2/DT.gif")
 ::::
 
 ::: {.center-text .body-text-l .teal-text}
-See next slide for some tips on getting started!
+See next slides for some tips on getting started!
 :::
 
 ---
@@ -1079,15 +1091,20 @@ See next slide for some tips on getting started!
 
 <br>
 
-- Use `?checkboxGroupInput` to learn more about which arguments you need (remember, all inputs require an `inputId` and oftentimes a `label`, but there are others required to make this work as well)
+::: {.center-text .body-text-m}
+First practice the following in your `practice-script-app1.R` file!
+:::
 
-<br>
+1. There are lots of ways to customize DT tables, but to create a basic one, all you need is `DT::datatable(your_dataframe)`. Do so for the `penguins` data frame.
 
-- Both the `{shiny}` and `{DT}` packages have functions named `dataTableOutput()` and `renderDataTable()`. The `{DT}` versions offer greater flexibility and customization options, so I recommend opting for those variants by namespacing the functions (i.e. using the syntax `packageName::functionName()`).
+. . . 
 
-<br>
+2. Once you have a working `DT::datatable`, practice creating a new data frame that's filtered for just the years `2007` and `2008`. Use this new data frame to create your `DT::datatable`.
 
-- There are lots of ways to customize DT tables, but to create a basic one, all you need is `DT::dataTable(your_dataframe)`. Try it first in your scratch file!
+. . .
+
+3. Once you've successfully gotten a working data table and understand how to filter for your years of interest, you're ready to move your code over to your `app.R` file. 
+
 
 ---
 
@@ -1097,27 +1114,31 @@ See next slide for some tips on getting started!
 
 <hr>
 
-[**And remember** to follow the steps we've practiced:]{.body-text-m}
+<!-- ***And remember to follow the steps / rules, as we've discussed:*** -->
 
-<br>
+<!-- <br> -->
 
 [**(1)**]{.teal-text} Add an input (e.g. `checkboxGroupInput`) to the **UI** that users can interact with
 
-<br>
+- [Use `?checkboxGroupInput` to learn more about which arguments you need (remember, all inputs require an `inputId` and oftentimes a `label`, but there are others required to make this work as well)]{.body-text-s}
+
+. . . 
 
 [**(2)**]{.teal-text} Add an output (e.g. `DT::datatableOutput`) to the **UI** that creates a placeholder space to fill with our eventual reactive output
 
-<br>
+- [Both the `{shiny}` and `{DT}` packages have functions named `dataTableOutput()` and `renderDataTable()`. The `{DT}` versions offer greater flexibility and customization options, so I recommend opting for those variants by namespacing the functions (i.e. using the syntax `packageName::functionName()`).]{.body-text-s}
+
+. . .
 
 [**(3)**]{.teal-text} Tell the **server** how to assemble inputs into outputs following 3 rules:
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Save objects you want to display to `output$<id>`
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Save objects you want to display to `output$<id>`]{.body-text-s}
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Build reactive objects using a `render*()` function]{.body-text-s}
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>`
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Access input values with `input$<id>`]{.body-text-s}
 
-<br>
+. . . 
 
 ::: {.center-text .body-text-l .teal-text}
 See next slide for a solution!
@@ -1136,11 +1157,11 @@ See next slide for a solution!
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "5|23-29|59-72"
+#| code-line-numbers: "5|23-29|62-75"
 # load packages ----
 library(shiny)
-library(palmerpenguins)
 library(tidyverse)
+library(palmerpenguins)
 library(DT)
 
 # user interface ----
@@ -1157,7 +1178,7 @@ ui <- fluidPage(
               min = 2700, max = 6300, value = c(3000, 4000)),
 
   # body mass plot output ----
-  plotOutput(outputId = "bodyMass_scatterplot_output"),
+  plotOutput(outputId = "body_mass_scatterplot_output"),
   
   # year input ----
   checkboxGroupInput(inputId = "year_input", label = "Select year(s):",
@@ -1179,7 +1200,7 @@ server <- function(input, output) {
   })
 
   # render the scatterplot output ----
-  output$bodyMass_scatterplot_output <- renderPlot({
+  output$body_mass_scatterplot_output <- renderPlot({
 
     ggplot(na.omit(body_mass_df()),
            aes(x = flipper_length_mm, y = bill_length_mm,
@@ -1189,9 +1210,12 @@ server <- function(input, output) {
       scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
       labs(x = "Flipper length (mm)", y = "Bill length (mm)",
            color = "Penguin species", shape = "Penguin species") +
+      guides(color = guide_legend(position = "inside"),
+             size = guide_legend(position = "inside")) +
       theme_minimal() +
-      theme(legend.position = c(0.85, 0.2),
+      theme(legend.position.inside = c(0.85, 0.2), 
             legend.background = element_rect(color = "white"))
+
     
   })
   

@@ -209,7 +209,7 @@ server <- function(input, output) {}
 
 . . . 
 
-[[**(3)**]{.teal-text} Lastly, let's create a `global.R` file within `two-file-app/` and add dependencies (right now, that's just loading the `shiny` package). Run your app as we did earlier.]{.body-text-s}
+[[**(3)**]{.teal-text} Lastly, let's create a `global.R` file within `two-file-app/` and add dependencies (right now, that's just loading `{shiny}`). Run your app as we did earlier.]{.body-text-s}
 
 ```{r filename="~/two-file-app/global.R"}
 #| eval: false

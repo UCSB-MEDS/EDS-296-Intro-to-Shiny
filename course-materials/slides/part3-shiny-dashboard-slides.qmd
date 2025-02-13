@@ -184,9 +184,11 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 <hr>
 
-[{{< fa graduation-cap title="a graduation cap" >}}]{.teal-text} **[Bren Student Data Explorer](https://shinyapps.bren.ucsb.edu/student-data-explorer/){target="_blank"} ([source code](https://github.com/UCSB-MEDS/shiny-dashboard){target="_blank"})**, *by MEDS 2022 alum, [Halina Do-Linh](https://www.linkedin.com/in/halinadolinh/), & MEDS staff* -- explore Bren school student demographics and career outcomes
-
 [{{< fa school title="a school house" >}}]{.teal-text} **[CA Schools Climate Hazards](https://shinyapps.bren.ucsb.edu/CASASchools/){target="_blank"} ([source code](https://github.com/CASAschools/casa_schools_app){target="_blank"})**, *by MEDS 2024 alumni [Charlie Curtin](https://github.com/charliecurtin1){target="_blank"}, [Kristina Glass](https://github.com/kristinaglass){target="_blank"}, [Liane Chen](https://github.com/lchenhub){target="_blank"} & [Hazel Vaquero](https://github.com/hazelvaq){target="_blank"}, as part of their MEDS Capstone project -- explore localized climate hazards for 10,000+ public schools in CA*. Also runner up in [Posit's 2024 Shiny Contest](https://posit.co/blog/winners-of-the-2024-shiny-contest/){target="_blank"}!!!
+
+[{{< fa seedling title="a seedling plant" >}}]{.teal-text} **[Milkweed Site Finder](https://sarah-cusser.shinyapps.io/milkweed-site-finder/){target="_blank"}**, *by MEDS 2024 alumni [Amanda Herbst](https://github.com/amandaherbst){target="_blank"}, [Anna Ramji](https://github.com/annaramji){target="_blank"}, [Melissa Widas](https://github.com/mwidas){target="_blank"} & [Sam Muir](https://github.com/shmuir){target="_blank"}, as part of their MEDS Capstone project -- a tool for the Santa Barbara Botanic Garden to prioritize Milkweed restoration sites across the Los Padres National Forest*
+
+[{{< fa graduation-cap title="a graduation cap" >}}]{.teal-text} **[Bren Student Data Explorer](https://shinyapps.bren.ucsb.edu/student-data-explorer/){target="_blank"} ([source code](https://github.com/UCSB-MEDS/shiny-dashboard){target="_blank"})**, *by MEDS 2022 alum, [Halina Do-Linh](https://www.linkedin.com/in/halinadolinh/), & MEDS staff* -- explore Bren school student demographics and career outcomes
 
 [{{< fa person-hiking title="a person hiking with a backpack on" >}}]{.teal-text} **[Sam's Strava Stats](https://samanthacsik.shinyapps.io/strava_dashboard/){target="_blank"} ([source code](https://github.com/samanthacsik/strava-dashboard){target="_blank"})**, *by yours truly, [Sam Csik](https://samanthacsik.github.io/){target="_blank"}* -- a new and ongoing side project exploring my Strava hiking / biking / walking data
 

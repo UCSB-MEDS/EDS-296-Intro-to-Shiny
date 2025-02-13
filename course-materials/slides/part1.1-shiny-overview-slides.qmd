@@ -200,25 +200,25 @@ Check out Garrett Grolemund's article, [How to understand reactivity in R ](http
 
 <hr>
 
-[**Live apps:**]{.body-text-m .teal-text}
+<!-- [**Live apps:**]{.body-text-m .teal-text} -->
 
-[[{{< fa droplet title="a water droplet" >}}]{.teal-text} [HydroTech Helper](https://danielkerstan.shinyapps.io/usgs_water_data/){target="_blank"} ([video tutorial](https://www.youtube.com/watch?v=t8AUNpIb4eE){target="_blank"}), *by MEDS 2022 alum, [Daniel Kerstan](https://www.linkedin.com/in/daniel-kerstan-5b162321b/){target="_blank"}, developed during his time as a USGS Hydrologic Technician* -- access real-time monitoring of USGS hydrology sites and equipment]{.body-text-s}
+[{{< fa droplet title="a water droplet" >}}]{.teal-text} [HydroTech Helper](https://danielkerstan.shinyapps.io/usgs_water_data/){target="_blank"} ([video tutorial](https://www.youtube.com/watch?v=t8AUNpIb4eE){target="_blank"}), *by MEDS 2022 alum, [Daniel Kerstan](https://www.linkedin.com/in/daniel-kerstan-5b162321b/){target="_blank"}, developed during his time as a USGS Hydrologic Technician* -- access real-time monitoring of USGS hydrology sites and equipment
 
-[[{{< fa water title="three water waves" >}}]{.teal-text} [Marine Mammal Bycatch Impacts Exploration Tool](https://msiple.shinyapps.io/mmrefpoints/){target="_blank"} ([source code](https://github.com/mcsiple/mmrefpoints){target="_blank"}) *by [Dr. Megsie Siple](https://www.linkedin.com/in/margaret-siple-66157211/){target="_blank"} and colleagues* -- compute population projections under different bycatch mortality levels]{.body-text-s}
+[{{< fa water title="three water waves" >}}]{.teal-text} [Marine Mammal Bycatch Impacts Exploration Tool](https://msiple.shinyapps.io/mmrefpoints/){target="_blank"} ([source code](https://github.com/mcsiple/mmrefpoints){target="_blank"}) *by [Dr. Megsie Siple](https://www.linkedin.com/in/margaret-siple-66157211/){target="_blank"} and colleagues* -- compute population projections under different bycatch mortality levels
 
-[[{{< fa book-open-reader title="a person holding a book up to their face" >}}]{.teal-text} [Novel-gazing](https://msiple.shinyapps.io/NovelGazingApp/){target="_blank"} ([source code](https://github.com/mcsiple/novelgazing){target="_blank"}) *by [Dr. Megsie Siple](https://www.linkedin.com/in/margaret-siple-66157211/){target="_blank"}* -- a fun app for exploring your Goodreads data, inspired by community ecology]{.body-text-s}
+[{{< fa book-open-reader title="a person holding a book up to their face" >}}]{.teal-text} [Novel-gazing](https://msiple.shinyapps.io/NovelGazingApp/){target="_blank"} ([source code](https://github.com/mcsiple/novelgazing){target="_blank"}) *by [Dr. Megsie Siple](https://www.linkedin.com/in/margaret-siple-66157211/){target="_blank"}* -- a fun app for exploring your Goodreads data, inspired by community ecology
 
-<br>
+<!-- <br> -->
 
-[**Apps which are no longer deployed:**]{.body-text-m .teal-text}
+<!-- [**Apps which are no longer deployed:**]{.body-text-m .teal-text} -->
 
-[[{{< fa fish-fins title="a fish with fins" >}}]{.teal-text} [Moorea Coral Reef LTER Shiny Application](https://shinyapps.bren.ucsb.edu/ShinyAppMooreaViz/){target="_blank"} ([source code](https://shinyapps.bren.ucsb.edu/ShinyAppMooreaViz/){target="_blank"}), *by MEDS 2022 alumni, [Allie Cole](https://www.linkedin.com/in/allie-ingrid-cole-60351a1ba/){target="_blank"}, [Felicia Cruz](https://www.linkedin.com/in/cruz-felicia/){target="_blank"}, [Jake Eisaguirre](https://jake-eisaguirre.github.io/){target="_blank"} & [Charles Henrickson](https://www.linkedin.com/in/charles-hendrickson-0001a0223/){target="_blank"} as part of their MEDS capstone project* -- visualize spatial and temporal patterns of coral reef stressors surrounding Moorea, French Polynesia]{.body-text-s}
+<!-- [[{{< fa fish-fins title="a fish with fins" >}}]{.teal-text} [Moorea Coral Reef LTER Shiny Application](https://shinyapps.bren.ucsb.edu/ShinyAppMooreaViz/){target="_blank"} ([source code](https://shinyapps.bren.ucsb.edu/ShinyAppMooreaViz/){target="_blank"}), *by MEDS 2022 alumni, [Allie Cole](https://www.linkedin.com/in/allie-ingrid-cole-60351a1ba/){target="_blank"}, [Felicia Cruz](https://www.linkedin.com/in/cruz-felicia/){target="_blank"}, [Jake Eisaguirre](https://jake-eisaguirre.github.io/){target="_blank"} & [Charles Henrickson](https://www.linkedin.com/in/charles-hendrickson-0001a0223/){target="_blank"} as part of their MEDS capstone project* -- visualize spatial and temporal patterns of coral reef stressors surrounding Moorea, French Polynesia]{.body-text-s} -->
 
 ---
 
 ##  {#built-in-examples data-menu-title="Built-in Examples"}
 
-[The Shiny packages comes with 11 built-in examples]{.slide-title3}
+[`{shiny}` comes with 11 built-in examples]{.slide-title}
 
 <hr>
 
@@ -228,7 +228,7 @@ Check out the available Shiny app examples by running this code in your console:
 #| eval: false
 #| echo: true
 library(shiny)
-runExample(example = NA)
+runExample()
 ```
 
 . . .
