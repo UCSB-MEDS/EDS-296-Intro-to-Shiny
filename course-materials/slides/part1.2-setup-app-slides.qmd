@@ -55,7 +55,7 @@ knitr::include_graphics("images/part1/create-repo.gif")
 
 <hr>
 
-[Not much is *required* to make a functional app (which is awesome) -- for a basic app, you really just need an `app.R` file where you'll write the code for your UI and server. To stay organized, we'll place `app.R` into a subdirectory (e.g. `/myapp`), which will also house any dependencies (e.g. other scripts/files/etc.) used by `app.R`.]{.body-text-s}
+[Not much is *required* to make a functional app (which is awesome) -- for a basic app, you really just need an `app.R` file where you'll write the code for your UI and server. To stay organized, we'll place `app.R` into a subdirectory (e.g. `myapp/`), which will also house any dependencies (e.g. other scripts / files / etc.) used by `app.R`.]{.body-text-s}
 
 ```{r}
 #| eval: true

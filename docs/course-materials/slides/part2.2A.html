@@ -586,19 +586,18 @@
 </div>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#..........................load packages.........................</span></span>
 <span id="cb2-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a><span class="co">#..................practice filtering for island.................</span></span>
-<span id="cb2-6"><a></a>island_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
-<span id="cb2-7"><a></a>  <span class="fu">filter</span>(island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Dream"</span>, <span class="st">"Torgesen"</span>))</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a><span class="co">#........................plot penguin data.......................</span></span>
-<span id="cb2-10"><a></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(island_df), <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
-<span id="cb2-11"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> <span class="dv">25</span>) <span class="sc">+</span></span>
-<span id="cb2-12"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb2-13"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
-<span id="cb2-14"><a></a>       <span class="at">fill =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb2-15"><a></a>  <span class="fu">myCustomTheme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co">#..................practice filtering for island.................</span></span>
+<span id="cb2-5"><a></a>island_df <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a></a>  <span class="fu">filter</span>(island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Dream"</span>, <span class="st">"Torgesen"</span>))</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a><span class="co">#........................plot penguin data.......................</span></span>
+<span id="cb2-9"><a></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(island_df), <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb2-10"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">bins =</span> <span class="dv">25</span>) <span class="sc">+</span></span>
+<span id="cb2-11"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb2-12"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb2-13"><a></a>       <span class="at">fill =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a></a>  <span class="fu">myCustomTheme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1460,7 +1459,7 @@ Take a break
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c60bb896" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_207c3366" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

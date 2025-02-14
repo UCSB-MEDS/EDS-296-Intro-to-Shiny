@@ -242,7 +242,6 @@ We'll use the `and_vertebrates` data set from `{lterdatasampler}` to create a sc
 #| echo: true
 #..........................load packages.........................
 library(palmerpenguins)
-library(tidyverse)
 
 #..................practice filtering for island.................
 island_df <- penguins |> 

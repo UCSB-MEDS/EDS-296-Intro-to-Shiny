@@ -1017,7 +1017,7 @@ knitr::include_graphics("images/part2/reactive-app-v1.gif")
 
 . . . 
 
-[**(1)**]{.teal-text} We created an `app.R` file in it's own directory and began our app with the [template](https://ucsb-meds.github.io/EDS430-Shiny/#/single-file), though you can also create a [two-file Shiny app](https://ucsb-meds.github.io/EDS430-Shiny/#/two-file) by using separate `ui.R` and `server.R` files.
+[**(1)**]{.teal-text} We created an `app.R` file in it's own directory and began our app with the [template](https://ucsb-meds.github.io/EDS430-Shiny/#/single-file){target="_blank"}, though you can also create a [two-file Shiny app](https://ucsb-meds.github.io/EDS430-Shiny/#/two-file){target="_blank"} by using separate `ui.R` and `server.R` files.
 
 . . .
 
@@ -1152,7 +1152,7 @@ See next slide for a solution!
 
 <hr>
 
-<p class="body-text-s">Press the right arrow key to advance through the newly added lines of code.</p>
+[Press the right arrow key to advance through the newly added lines of code.]{.body-text-s}
 
 ```{r filename="~/one-file-app/app.R"}
 #| eval: false
