@@ -132,12 +132,12 @@ knitr::include_graphics("images/part2/app2_v1.gif")
 
 <hr>
 
-In a `~scratch/practice_script_app2.R` file, practice wrangling & plotting trout data. . .
+In a `~scratch/practice-script-app2.R` file, practice wrangling & plotting trout data. . .
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-```{r, filename="~/scratch/practice_script_app2.R"}
+```{r, filename="~/scratch/practice-script-app2.R"}
 #| eval: false
 #| echo: true
 #..........................load packages.........................
@@ -237,7 +237,7 @@ We'll use the `and_vertebrates` data set from `{lterdatasampler}` to create a sc
 :::: {.columns}
 
 ::: {.column width="50%"}
-```{r filename="~/scratch/practice_script_app2.R"}
+```{r filename="~/scratch/practice-script-app2.R"}
 #| eval: false
 #| echo: true
 #..........................load packages.........................

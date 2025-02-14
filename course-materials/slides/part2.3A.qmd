@@ -47,10 +47,12 @@ knitr::include_graphics("images/part2/shinyapps_setup.png")
 
 [Once your account has been authorized, run `rsconnect::deployApp("<app_directory_name>")` in your console to deploy your app to [shinyapps.io](https://www.shinyapps.io/){target="_blank"}. Here, we'll run `rsconnect::deployApp("two-file-app")` to deploy the app we've been working on.]{.body-text-s}
 
+. . . 
+
 :::: {.columns}
 
 ::: {.column width="50%"}
-[Once deployed, a browser will open to your application. The URL will take the form: [**https://username.shinyapps.io/your_app_directory_name**]{.teal-text}. You should also now see an `/rsconnect` folder within your app's directory -- this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e. the name, title, server address, account, URL, and time). **This `/rsconnect` folder should be added and committed into version control (i.e. push it to GitHub!)** so that future re-deployments target the same endpoint (i.e. your app's URL).]{.body-text-s}
+[Once deployed, a browser will open to your application. The URL will take the form: [**https://username.shinyapps.io/your_app_directory_name**]{.teal-text}. You should also now see an `rsconnect/` folder within your app's directory -- this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e. the name, title, server address, account, URL, and time). **This `rsconnect/` folder should be added and committed into version control (i.e. push it to GitHub!)** so that future re-deployments target the same endpoint (i.e. your app's URL).]{.body-text-s}
 :::
 
 ::: {.column width="50%"}

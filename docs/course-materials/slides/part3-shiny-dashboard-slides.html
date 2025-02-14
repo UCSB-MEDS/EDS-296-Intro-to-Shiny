@@ -490,7 +490,7 @@
 <h2></h2>
 <p><span class="slide-title2">The most basic shinydashboard is made up of a header, a sidebar, and a body</span></p>
 <hr>
-<p><span class="body-text-s">The main difference between a <strong>shiny app</strong> and a <strong>shinydashboard</strong> are the UI elements. Rather than a <code>fluidPage()</code> (as used in our previous shiny apps), we’ll create a <code>dashboardPage()</code>, which expects three main parts: a header, a sidebar, and a body. Below is the most minimal possible UI for a <code>{shinydashboard}</code> page (you can run this code in an <code>app.R</code> file, if you wish).</span></p>
+<p><span class="body-text-s">The main difference between a <strong>shiny app</strong> and a <strong>shinydashboard</strong> are the UI elements. Rather than a <code>fluidPage()</code> or <code>navbarPage()</code> (as used in our previous shiny apps), we’ll create a <code>dashboardPage()</code>, which expects three main parts: a header, a sidebar, and a body. Below is the most minimal possible UI for a <code>{shinydashboard}</code> page (you can run this code in an <code>app.R</code> file, if you wish).</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -530,7 +530,7 @@
 <p><span class="slide-title3">Example shiny dashboards built by some familiar folks</span></p>
 <hr>
 <p><span class="teal-text"><i class="fa-solid fa-school" title="a school house" aria-label="school"></i></span> <strong><a href="https://shinyapps.bren.ucsb.edu/CASASchools/" target="_blank">CA Schools Climate Hazards</a> (<a href="https://github.com/CASAschools/casa_schools_app" target="_blank">source code</a>)</strong>, <em>by MEDS 2024 alumni <a href="https://github.com/charliecurtin1" target="_blank">Charlie Curtin</a>, <a href="https://github.com/kristinaglass" target="_blank">Kristina Glass</a>, <a href="https://github.com/lchenhub" target="_blank">Liane Chen</a> &amp; <a href="https://github.com/hazelvaq" target="_blank">Hazel Vaquero</a>, as part of their MEDS Capstone project – explore localized climate hazards for 10,000+ public schools in CA</em>. Also runner up in <a href="https://posit.co/blog/winners-of-the-2024-shiny-contest/" target="_blank">Posit’s 2024 Shiny Contest</a>!!!</p>
-<p><span class="teal-text"><i class="fa-solid fa-seedling" title="a seedling plant" aria-label="seedling"></i></span> <strong><a href="https://sarah-cusser.shinyapps.io/milkweed-site-finder/" target="_blank">Milkweed Site Finder</a></strong>, <em>by MEDS 2024 alumni <a href="https://github.com/amandaherbst" target="_blank">Amanda Herbst</a>, <a href="https://github.com/annaramji" target="_blank">Anna Ramji</a>, <a href="https://github.com/mwidas" target="_blank">Melissa Widas</a> &amp; <a href="https://github.com/shmuir" target="_blank">Sam Muir</a>, as part of their MEDS Capstone project – a tool for the Santa Barbara Botanic Garden to prioritize Milkweed restoration sites across the Los Padres National Forest</em></p>
+<p><span class="teal-text"><i class="fa-solid fa-seedling" title="a seedling plant" aria-label="seedling"></i></span> <strong><a href="https://sarah-cusser.shinyapps.io/milkweed-site-finder/" target="_blank">Milkweed Site Finder</a> (<a href="https://github.com/MEDS-SBBG-milkweed/milkweed-site-finder" target="_blank">source code</a>)</strong>, <em>by MEDS 2024 alumni <a href="https://github.com/amandaherbst" target="_blank">Amanda Herbst</a>, <a href="https://github.com/annaramji" target="_blank">Anna Ramji</a>, <a href="https://github.com/mwidas" target="_blank">Melissa Widas</a> &amp; <a href="https://github.com/shmuir" target="_blank">Sam Muir</a>, as part of their MEDS Capstone project – a tool for the Santa Barbara Botanic Garden to prioritize Milkweed restoration sites across the Los Padres National Forest</em></p>
 <p><span class="teal-text"><i class="fa-solid fa-graduation-cap" title="a graduation cap" aria-label="graduation-cap"></i></span> <strong><a href="https://shinyapps.bren.ucsb.edu/student-data-explorer/" target="_blank">Bren Student Data Explorer</a> (<a href="https://github.com/UCSB-MEDS/shiny-dashboard" target="_blank">source code</a>)</strong>, <em>by MEDS 2022 alum, <a href="https://www.linkedin.com/in/halinadolinh/">Halina Do-Linh</a>, &amp; MEDS staff</em> – explore Bren school student demographics and career outcomes</p>
 <p><span class="teal-text"><i class="fa-solid fa-person-hiking" title="a person hiking with a backpack on" aria-label="person-hiking"></i></span> <strong><a href="https://samanthacsik.shinyapps.io/strava_dashboard/" target="_blank">Sam’s Strava Stats</a> (<a href="https://github.com/samanthacsik/strava-dashboard" target="_blank">source code</a>)</strong>, <em>by yours truly, <a href="https://samanthacsik.github.io/" target="_blank">Sam Csik</a></em> – a new and ongoing side project exploring my Strava hiking / biking / walking data</p>
 <p><span class="teal-text"><i class="fa-solid fa-fish-fins" title="a fish with fins" aria-label="fish-fins"></i></span> <strong><a href="http://ohi-science.nceas.ucsb.edu/visualizing_human_impacts/" target="_blank">Visualizing human impacts on at-risk marine biodiversity</a> (<a href="https://github.com/BrennieDev/CHI_shiny_app" target="_blank">source code</a>)</strong>, <em>developed by MESM 2022 alum, <a href="https://github.com/BrennieDev" target="_blank">Ian Brunjes</a> &amp; <a href="http://oharascience.com/index.html" target="_blank">Dr.&nbsp;Casey O’Hara</a>)</em> – explore how human activities and climate change impact marine biodiversity worldwide</p>
@@ -632,27 +632,45 @@
 </div>
 </div></div>
 </section>
-<section id="processing-storing-data" class="slide level2" data-menu-title="Processing &amp; Storing Data">
+<section id="processing-storing-data1" class="slide level2" data-menu-title="Processing &amp; Storing Data 1">
 <h2></h2>
 <p><span class="slide-title">Pre-processing data is critical</span></p>
 <hr>
-<p><span class="body-text-s"><strong>Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who “owns” those data.</strong> It is likely that you’ll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens’ article, <a href="https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data" target="_blank">Where to store your Shiny application data</a> to start. Because we are going to be working with a relatively small data set today, we’ll bundle our data file with our dashboard inside our repository.</span></p>
-<p><span class="body-text-s">Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it <em>only as much data as needed to run</em>. This means <strong>pre-processing</strong> your data.</span></p>
+<p><strong>Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who “owns” those data.</strong></p>
+<p><br></p>
 <div class="fragment">
+<p>It is likely that you’ll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens’ article, <a href="https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data" target="_blank">Where to store your Shiny application data</a> to start. Because we are going to be working with a relatively small data set today, we’ll bundle our data file with our dashboard inside our repository.</p>
+<p><br></p>
+</div>
+<div class="fragment">
+<p>Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it <em>only as much data as needed to run</em>. This means <strong>pre-processing</strong> your data.</p>
+</div>
+</section>
+<section id="processing-storing-data2" class="slide level2" data-menu-title="Processing &amp; Storing Data 2">
+<h2></h2>
+<p><span class="slide-title">Pre-processing data is critical</span></p>
+<hr>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="body-text-s"><a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3" target="_blank"><code>FCWO_lakemonitoringdata_2011_2022_daily.csv</code></a> contains <strong>8 attributes</strong> (variables) and <strong>18,994 observations</strong> collected from a set of <strong>11 lakes</strong> located in the Fish Creek Watershed in northern Alaska between 2011-2022. We’ll download and save the file to a <code>raw_data/</code> folder in the root directory of our repository. We’ll then pre-process the data in a separate script(s) saved to <code>scratch/</code> and save a cleaned / processed version of the data to our app’s directory, <code>/shinydashboard/data/lake_data_processed.csv</code>. Your repository structure should look similar to example on the right:</span></p>
+<p><span class="body-text-s"><a href="https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3" target="_blank"><code>FCWO_lakemonitoringdata_2011_2022_daily.csv</code></a> contains <strong>8 attributes</strong> (variables) and <strong>18,994 observations</strong> collected from a set of <strong>11 lakes</strong> located in the Fish Creek Watershed in northern Alaska between 2011-2022. We’ll:</span></p>
+<ul>
+<li><p><span class="body-text-s">download and save the file to a <code>raw-data/</code> folder in the root directory of our repository</span></p></li>
+<li><p><span class="body-text-s">pre-process the data in a separate script(s) saved to <code>scratch/</code></span></p></li>
+<li><p><span class="body-text-s">save a cleaned / processed version of the data to our app’s directory, <code>/shinydashboard/data/lake_data_processed.csv</code>.</span></p></li>
+</ul>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/part3/shinydashboard-directory-structure.png" class="quarto-figure quarto-figure-center" style="width:73.0%" alt="A schematic of the repository structure, as described."></p>
+<p><img data-src="images/part3/shinydashboard-directory-structure.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A schematic of the repository structure, as described."></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+<div class="footer">
+<p>Your repository structure should look similar to example, above.</p>
 </div>
 </section>
 <section id="lake-data-goal" class="slide level2" data-menu-title="Lake Data End Goal">
@@ -691,7 +709,7 @@
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/scratch/data_processing_app3_shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/data-processing-app3.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co">#...............................................................................</span></span>
 <span id="cb5-2"><a></a><span class="co">#                                                                              .</span></span>
@@ -709,7 +727,7 @@
 <span id="cb5-14"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-15"><a></a></span>
 <span id="cb5-16"><a></a><span class="co"># read in raw data ----</span></span>
-<span id="cb5-17"><a></a>lake_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"raw_data"</span>, <span class="st">"FCWO_lakemonitoringdata_2011_2022_daily.csv"</span>))</span>
+<span id="cb5-17"><a></a>lake_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"raw-data"</span>, <span class="st">"FCWO_lakemonitoringdata_2011_2022_daily.csv"</span>))</span>
 <span id="cb5-18"><a></a></span>
 <span id="cb5-19"><a></a><span class="co"># calculate avg depth &amp; temp ----</span></span>
 <span id="cb5-20"><a></a>avg_depth_temp <span class="ot">&lt;-</span> lake_raw <span class="sc">|&gt;</span> </span>
@@ -739,13 +757,13 @@
 <h2></h2>
 <p><span class="slide-title">A note on file types</span></p>
 <hr>
-<p><span class="body-text-s">Oftentimes, you may choose to save your processed data frame as a <code>.rds</code> file (a data file format, native to R, which stores a single R object). <code>.rds</code> file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g.&nbsp;factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality – you can’t open a <code>.rds</code> file outside of R or read it in with another programming language (e.g.&nbsp;Python).</span></p>
+<p><span class="body-text-s">You may choose to save your processed data frame as a <code>.rds</code> file (a data file format, native to R, which stores a single R object). <code>.rds</code> file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g.&nbsp;factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality – you can’t open a <code>.rds</code> file outside of R or read it in with another programming language (e.g.&nbsp;Python).</span></p>
 <p><span class="body-text-s">While we’ll be sticking to <code>.csv</code> files in this workshop, it’s worth experimenting with <code>.rds</code> when you begin working with your own (likely larger) data. You can read in (<code>readRDS()</code>) and write out to (<code>saveRDS()</code>) <code>.rds</code> files as easily as <code>.csv</code> files.</span></p>
 
 <img data-src="images/part3/rds.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="The R language logo overlaid on top of a database stack -- often used to represent the rds data file format."></section>
 <section id="draft-leaflet" class="slide level2" data-menu-title="Draft Leaflet">
 <h2></h2>
-<p><span class="slide-title">Draft <code>leaflet</code> map</span></p>
+<p><span class="slide-title2">Draft <code>leaflet</code> map</span></p>
 <hr>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">leaflet map</a></li><li><a href="#tabset-2-2">code</a></li></ul>
@@ -754,8 +772,8 @@
 <p><span class="body-text-s">There are lots of ways to customize <code>leaflet</code> maps. We’ll be keeping ours relatively simple, but check out the <a href="https://rstudio.github.io/leaflet/" target="_blank">Leaflet for R</a> documentation for more ways to get creative with your maps.</span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-783bae0c1fe46ce6925c" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-783bae0c1fe46ce6925c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: Hipbone<br>Elevation: 21 meters (above SL)<br>Avg Depth: 2 meters<br>Avg Lake Bed Temperature: 10.7°C","Site Name: Iceshove<br>Elevation: 20.3 meters (above SL)<br>Avg Depth: 1.8 meters<br>Avg Lake Bed Temperature: 10.9°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C","Site Name: L9819<br>Elevation: 8.2 meters (above SL)<br>Avg Depth: 1.7 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9820<br>Elevation: 9.5 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 5.5°C","Site Name: LittleAlaska<br>Elevation: 28.9 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 5.2°C","Site Name: LowerSnowman<br>Elevation: 27.4 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 7.2°C","Site Name: M9925<br>Elevation: 14.7 meters (above SL)<br>Avg Depth: 0.9 meters<br>Avg Lake Bed Temperature: 7°C","Site Name: MiddleSnowman<br>Elevation: 26.3 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 6.4°C","Site Name: Serenity<br>Elevation: 12 meters (above SL)<br>Avg Depth: 3.9 meters<br>Avg Lake Bed Temperature: 10.7°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-08f556f9395baa787610" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-08f556f9395baa787610">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.236,70.17,70.233,70.27,70.267,70.032,70.09699999999999,70.247,70.113,70.246],[-152.194,-152.186,-152.785,-151.339,-151.355,-151.387,-152.194,-152.074,-151.478,-152.077,-152.141],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: Hipbone<br>Elevation: 21 meters (above SL)<br>Avg Depth: 2 meters<br>Avg Lake Bed Temperature: 10.7°C","Site Name: Iceshove<br>Elevation: 20.3 meters (above SL)<br>Avg Depth: 1.8 meters<br>Avg Lake Bed Temperature: 10.9°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C","Site Name: L9819<br>Elevation: 8.2 meters (above SL)<br>Avg Depth: 1.7 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9820<br>Elevation: 9.5 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 5.5°C","Site Name: LittleAlaska<br>Elevation: 28.9 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 5.2°C","Site Name: LowerSnowman<br>Elevation: 27.4 meters (above SL)<br>Avg Depth: 1.2 meters<br>Avg Lake Bed Temperature: 7.2°C","Site Name: M9925<br>Elevation: 14.7 meters (above SL)<br>Avg Depth: 0.9 meters<br>Avg Lake Bed Temperature: 7°C","Site Name: MiddleSnowman<br>Elevation: 26.3 meters (above SL)<br>Avg Depth: 1.1 meters<br>Avg Lake Bed Temperature: 6.4°C","Site Name: Serenity<br>Elevation: 12 meters (above SL)<br>Avg Depth: 3.9 meters<br>Avg Lake Bed Temperature: 10.7°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.27],"lng":[-152.785,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -763,7 +781,7 @@
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/scratch/practice_script_app3_shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/practice-script-app3.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co">#..............................SETUP.............................</span></span>
 <span id="cb6-2"><a></a></span>
@@ -775,25 +793,24 @@
 <span id="cb6-8"><a></a>lake_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"shinydashboard"</span>, <span class="st">"data"</span>, <span class="st">"lake_data_processed.csv"</span>))</span>
 <span id="cb6-9"><a></a></span>
 <span id="cb6-10"><a></a><span class="co">#..........................PRACTICE VIZ..........................</span></span>
-<span id="cb6-11"><a></a></span>
-<span id="cb6-12"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb6-13"><a></a>  </span>
-<span id="cb6-14"><a></a>  <span class="co"># add tiles</span></span>
-<span id="cb6-15"><a></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Esri.WorldImagery) <span class="sc">|&gt;</span> </span>
-<span id="cb6-16"><a></a>  </span>
-<span id="cb6-17"><a></a>  <span class="co"># set view over AK</span></span>
-<span id="cb6-18"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">152.048442</span>, <span class="at">lat =</span> <span class="fl">70.249234</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-19"><a></a>  </span>
-<span id="cb6-20"><a></a>  <span class="co"># add mini map</span></span>
-<span id="cb6-21"><a></a>  <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-22"><a></a>  </span>
-<span id="cb6-23"><a></a>  <span class="co"># add markers</span></span>
-<span id="cb6-24"><a></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> lake_data, </span>
-<span id="cb6-25"><a></a>             <span class="at">lng =</span> lake_data<span class="sc">$</span>Longitude, <span class="at">lat =</span> lake_data<span class="sc">$</span>Latitude,</span>
-<span id="cb6-26"><a></a>             <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"Site Name: "</span>, lake_data<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb6-27"><a></a>                           <span class="st">"Elevation: "</span>, lake_data<span class="sc">$</span>Elevation, <span class="st">" meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb6-28"><a></a>                           <span class="st">"Avg Depth: "</span>, lake_data<span class="sc">$</span>AvgDepth, <span class="st">" meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb6-29"><a></a>                           <span class="st">"Avg Lake Bed Temperature: "</span>, lake_data<span class="sc">$</span>AvgTemp, <span class="st">"\u00B0C"</span>)) <span class="co"># </span><span class="al">NOTE</span><span class="co">: Unicode for degree symbol icon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-11"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-12"><a></a>  </span>
+<span id="cb6-13"><a></a>  <span class="co"># add tiles</span></span>
+<span id="cb6-14"><a></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Esri.WorldImagery) <span class="sc">|&gt;</span> </span>
+<span id="cb6-15"><a></a>  </span>
+<span id="cb6-16"><a></a>  <span class="co"># set view over AK</span></span>
+<span id="cb6-17"><a></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">152.048442</span>, <span class="at">lat =</span> <span class="fl">70.249234</span>, <span class="at">zoom =</span> <span class="dv">6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-18"><a></a>  </span>
+<span id="cb6-19"><a></a>  <span class="co"># add mini map</span></span>
+<span id="cb6-20"><a></a>  <span class="fu">addMiniMap</span>(<span class="at">toggleDisplay =</span> <span class="cn">TRUE</span>, <span class="at">minimized =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-21"><a></a>  </span>
+<span id="cb6-22"><a></a>  <span class="co"># add markers</span></span>
+<span id="cb6-23"><a></a>  <span class="fu">addMarkers</span>(<span class="at">data =</span> lake_data, </span>
+<span id="cb6-24"><a></a>             <span class="at">lng =</span> lake_data<span class="sc">$</span>Longitude, <span class="at">lat =</span> lake_data<span class="sc">$</span>Latitude,</span>
+<span id="cb6-25"><a></a>             <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"Site Name: "</span>, lake_data<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb6-26"><a></a>                           <span class="st">"Elevation: "</span>, lake_data<span class="sc">$</span>Elevation, <span class="st">" meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb6-27"><a></a>                           <span class="st">"Avg Depth: "</span>, lake_data<span class="sc">$</span>AvgDepth, <span class="st">" meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb6-28"><a></a>                           <span class="st">"Avg Lake Bed Temperature: "</span>, lake_data<span class="sc">$</span>AvgTemp, <span class="st">"°C"</span>)) <span class="co"># </span><span class="al">NOTE</span><span class="co">: Shift + Option + 8 (mac), Alt + 0176 (Windows), or use unicode "\u00B0C"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -811,8 +828,8 @@
 <p><span class="body-text-s">We’ll eventually build three <code>sliderInput</code>s to filter lake makers by <code>Elevation</code>, <code>AvgDepth</code>, and <code>AvgTemp</code>. Practice filtering here first (and be sure to update the data frame name in your leaflet code!):</span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-05f85002684e24c92fad" style="width:60%;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-05f85002684e24c92fad">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8bd600c1df934c1f91a3" style="width:60%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-8bd600c1df934c1f91a3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMiniMap","args":[null,null,"bottomright",150,150,19,19,-5,false,false,false,true,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addMarkers","args":[[70.032,70.233],[-152.194,-151.339],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Site Name: HarryPotter<br>Elevation: 12.3 meters (above SL)<br>Avg Depth: 2.3 meters<br>Avg Lake Bed Temperature: 5.6°C","Site Name: L9817<br>Elevation: 16.1 meters (above SL)<br>Avg Depth: 2.6 meters<br>Avg Lake Bed Temperature: 5.9°C"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[70.249234,-152.048442],6,[]],"limits":{"lat":[70.032,70.233],"lng":[-152.194,-151.339]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -820,7 +837,7 @@
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/scratch/practice_script_app3_shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/practice-script-app3.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7" data-code-line-numbers="10-15|31-37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co">#..............................SETUP.............................</span></span>
 <span id="cb7-2"><a></a></span>
@@ -858,7 +875,7 @@
 <span id="cb7-34"><a></a>             <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"Site Name: "</span>, filtered_lakes<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb7-35"><a></a>                           <span class="st">"Elevation: "</span>, filtered_lakes<span class="sc">$</span>Elevation, <span class="st">" meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb7-36"><a></a>                           <span class="st">"Avg Depth: "</span>, filtered_lakes<span class="sc">$</span>AvgDepth, <span class="st">" meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb7-37"><a></a>                           <span class="st">"Avg Lake Bed Temperature: "</span>, filtered_lakes<span class="sc">$</span>AvgTemp, <span class="st">"\u00B0C"</span>)) <span class="co"># </span><span class="al">NOTE</span><span class="co">: Unicode for degree symbol icon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-37"><a></a>                           <span class="st">"Avg Lake Bed Temperature: "</span>, filtered_lakes<span class="sc">$</span>AvgTemp, <span class="st">"°C"</span>)) <span class="co"># </span><span class="al">NOTE</span><span class="co">: Shift + Option + 8 (mac), Alt + 0176 (Windows), or use unicode "\u00B0C"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -899,7 +916,7 @@
 <p><span class="slide-title2">Add a <code>title</code> &amp; <code>menuItem</code>s</span></p>
 <hr>
 <p><span class="body-text-s">First, add a title to <code>dashboardHeader()</code> and make more space using <code>titleWidth</code>, if necessary.</span></p>
-<p><span class="body-text-s">Next, we’ll build our <code>dashboardSidebar()</code>. Add a <code>sidebarMenu()</code> that contains two <code>menuItem</code>s. Be sure to provide each <code>menuItem()</code> with <code>text</code> as you’d like it to appear in your app (for me, that’s <strong>Welcome</strong> and <strong>Dashboard</strong>), and a <code>tabName</code> which will be used to place <code>dashboardBody()</code> content in the appropriate <code>menuItem()</code>. Optionally, you can provide an icon. By default, <code>icon()</code> uses icons from <a href="https://fontawesome.com/">FontAwesome</a>{target=“_blank”.</span></p>
+<p><span class="body-text-s">Next, we’ll build our <code>dashboardSidebar()</code>. Add a <code>sidebarMenu()</code> that contains two <code>menuItem</code>s. Be sure to provide each <code>menuItem()</code> with <code>text</code> as you’d like it to appear in your app (for me, that’s <strong>Welcome</strong> and <strong>Dashboard</strong>), and a <code>tabName</code> which will be used to place <code>dashboardBody()</code> content in the appropriate <code>menuItem()</code>. Optionally, you can provide an icon. By default, <code>icon()</code> uses icons from <a href="https://fontawesome.com/" target="_blank">FontAwesome</a>.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1389,7 +1406,7 @@
 <span id="cb14-30"><a></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb14-31"><a></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb14-32"><a></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb14-33"><a></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
+<span id="cb14-33"><a></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"°C"</span>))</span>
 <span id="cb14-34"><a></a>    </span>
 <span id="cb14-35"><a></a>  })</span>
 <span id="cb14-36"><a></a>  </span>
@@ -1526,7 +1543,7 @@
 <span id="cb15-92"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
 <span id="cb15-93"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
 <span id="cb15-94"><a></a></span>
-<span id="cb15-95"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb15-95"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (°C):"</span>,</span>
 <span id="cb15-96"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
 <span id="cb15-97"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
 <span id="cb15-98"><a></a></span>
@@ -1596,7 +1613,7 @@
 <span id="cb16-32"><a></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb16-33"><a></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb16-34"><a></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb16-35"><a></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
+<span id="cb16-35"><a></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"°C"</span>))</span>
 <span id="cb16-36"><a></a>    </span>
 <span id="cb16-37"><a></a>  })</span>
 <span id="cb16-38"><a></a>  </span>
@@ -1791,7 +1808,7 @@ Press the right arrow key to advance through the newly added lines of code.
 <span id="cb21-95"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
 <span id="cb21-96"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
 <span id="cb21-97"><a></a></span>
-<span id="cb21-98"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb21-98"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (°C):"</span>,</span>
 <span id="cb21-99"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
 <span id="cb21-100"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
 <span id="cb21-101"><a></a></span>
@@ -1933,7 +1950,7 @@ Press the right arrow key to advance through the newly added lines of code.
 <span id="cb22-97"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
 <span id="cb22-98"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
 <span id="cb22-99"><a></a></span>
-<span id="cb22-100"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb22-100"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (°C):"</span>,</span>
 <span id="cb22-101"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
 <span id="cb22-102"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
 <span id="cb22-103"><a></a></span>
@@ -2081,7 +2098,7 @@ Press the right arrow key to advance through the newly added lines of code.
 <span id="cb23-100"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
 <span id="cb23-101"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
 <span id="cb23-102"><a></a></span>
-<span id="cb23-103"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb23-103"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (°C):"</span>,</span>
 <span id="cb23-104"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
 <span id="cb23-105"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
 <span id="cb23-106"><a></a></span>
@@ -2251,7 +2268,7 @@ Press the right arrow key to advance through the newly added lines of code.
 <span id="cb25-100"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth),</span>
 <span id="cb25-101"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgDepth), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgDepth))),</span>
 <span id="cb25-102"><a></a></span>
-<span id="cb25-103"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (degrees C):"</span>,</span>
+<span id="cb25-103"><a></a>                  <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"temp_slider_input"</span>, <span class="at">label =</span> <span class="st">"Average lake bed temperature (°C):"</span>,</span>
 <span id="cb25-104"><a></a>                              <span class="at">min =</span> <span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="at">max =</span> <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp),</span>
 <span id="cb25-105"><a></a>                              <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">min</span>(lake_data<span class="sc">$</span>AvgTemp), <span class="fu">max</span>(lake_data<span class="sc">$</span>AvgTemp)))</span>
 <span id="cb25-106"><a></a></span>
@@ -2321,7 +2338,7 @@ Press the right arrow key to advance through the newly added lines of code.
 <span id="cb26-32"><a></a>                 <span class="at">popup =</span> <span class="fu">paste</span>(<span class="st">"Site Name:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Site, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb26-33"><a></a>                               <span class="st">"Elevation:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>Elevation, <span class="st">"meters (above SL)"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
 <span id="cb26-34"><a></a>                               <span class="st">"Avg Depth:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgDepth, <span class="st">"meters"</span>, <span class="st">"&lt;br&gt;"</span>,</span>
-<span id="cb26-35"><a></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"deg Celsius"</span>))</span>
+<span id="cb26-35"><a></a>                               <span class="st">"Avg Lake Bed Temperature:"</span>, <span class="fu">filtered_lakes_df</span>()<span class="sc">$</span>AvgTemp, <span class="st">"°C"</span>))</span>
 <span id="cb26-36"><a></a>    </span>
 <span id="cb26-37"><a></a>  })</span>
 <span id="cb26-38"><a></a>  </span>
@@ -2344,7 +2361,7 @@ End part 3
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_da14a88a" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_c1b3bb12" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

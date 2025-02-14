@@ -352,9 +352,10 @@
 <p><span class="slide-title">Deploy your app to shinyapps.io</span></p>
 <hr>
 <p><span class="body-text-s">Once your account has been authorized, run <code>rsconnect::deployApp("&lt;app_directory_name&gt;")</code> in your console to deploy your app to <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a>. Here, we’ll run <code>rsconnect::deployApp("two-file-app")</code> to deploy the app we’ve been working on.</span></p>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="body-text-s">Once deployed, a browser will open to your application. The URL will take the form: <span class="teal-text"><strong>https://username.shinyapps.io/your_app_directory_name</strong></span>. You should also now see an <code>/rsconnect</code> folder within your app’s directory – this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e.&nbsp;the name, title, server address, account, URL, and time). <strong>This <code>/rsconnect</code> folder should be added and committed into version control (i.e.&nbsp;push it to GitHub!)</strong> so that future re-deployments target the same endpoint (i.e.&nbsp;your app’s URL).</span></p>
+<p><span class="body-text-s">Once deployed, a browser will open to your application. The URL will take the form: <span class="teal-text"><strong>https://username.shinyapps.io/your_app_directory_name</strong></span>. You should also now see an <code>rsconnect/</code> folder within your app’s directory – this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e.&nbsp;the name, title, server address, account, URL, and time). <strong>This <code>rsconnect/</code> folder should be added and committed into version control (i.e.&nbsp;push it to GitHub!)</strong> so that future re-deployments target the same endpoint (i.e.&nbsp;your app’s URL).</span></p>
 </div><div class="column" style="width:50%;">
 <p><br></p>
 <div class="cell" data-layout-align="center">
@@ -367,6 +368,7 @@
 </div>
 </div>
 </div></div>
+</div>
 </section>
 <section id="shinyapps-dashboard" class="slide level2" data-menu-title="shinyapps.io dashboard">
 <h2></h2>

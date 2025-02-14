@@ -425,9 +425,10 @@
 <p><span class="slide-title">Deploy your app to shinyapps.io</span></p>
 <hr>
 <p><span class="body-text-s">Once your account has been authorized, run <code>rsconnect::deployApp("&lt;app_directory_name&gt;")</code> in your console to deploy your app to <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a>. Here, we’ll run <code>rsconnect::deployApp("two-file-app")</code> to deploy the app we’ve been working on.</span></p>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="body-text-s">Once deployed, a browser will open to your application. The URL will take the form: <span class="teal-text"><strong>https://username.shinyapps.io/your_app_directory_name</strong></span>. You should also now see an <code>/rsconnect</code> folder within your app’s directory – this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e.&nbsp;the name, title, server address, account, URL, and time). <strong>This <code>/rsconnect</code> folder should be added and committed into version control (i.e.&nbsp;push it to GitHub!)</strong> so that future re-deployments target the same endpoint (i.e.&nbsp;your app’s URL).</span></p>
+<p><span class="body-text-s">Once deployed, a browser will open to your application. The URL will take the form: <span class="teal-text"><strong>https://username.shinyapps.io/your_app_directory_name</strong></span>. You should also now see an <code>rsconnect/</code> folder within your app’s directory – this is generated when an application bundle is successfully deployed and contains a DCF file with information on the deployed content (i.e.&nbsp;the name, title, server address, account, URL, and time). <strong>This <code>rsconnect/</code> folder should be added and committed into version control (i.e.&nbsp;push it to GitHub!)</strong> so that future re-deployments target the same endpoint (i.e.&nbsp;your app’s URL).</span></p>
 </div><div class="column" style="width:50%;">
 <p><br></p>
 <div class="cell" data-layout-align="center">
@@ -440,6 +441,7 @@
 </div>
 </div>
 </div></div>
+</div>
 </section>
 <section id="shinyapps-dashboard" class="slide level2" data-menu-title="shinyapps.io dashboard">
 <h2></h2>
@@ -773,11 +775,11 @@
 <h2></h2>
 <p><span class="slide-title">Include alt text for all data visualizations</span></p>
 <hr>
-<p><span class="body-text-s">Alt text are <strong>written descriptions</strong> added to images, and importantly, to data visualizations, to <strong>help more users understand the content</strong>. Assistive technologies (e.g.&nbsp;screen readers) read alt text out loud for users to hear. When alt text is successfully added, the <code>alt</code> tag (along with your text) should appear in the HTML (right click on your app’s data viz to <strong>Inspect</strong> and ensure that it was added).</span></p>
+<p><span class="body-text-s">Alt text are <strong>written descriptions</strong> added to images, and importantly, to data visualizations, to <strong>help more users understand the content</strong>. Assistive technologies (e.g.&nbsp;screen readers) read alt text out loud for users to hear.</span></p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p><br> <br> <br></p>
-<p><span class="body-text-s">We’ll talk a bit more about alt text later on, but for now we can add alt text easily to our data visuzliations using the <code>alt</code> argument. Place this <em>outside</em> of the <code>{}</code> but inside the <code>()</code> of <code>renderPlot{()}</code>. For example, we can add alt text to our trout and penguin plots in <code>server.R</code>:</span></p>
+<p><span class="body-text-s">We’ll talk a bit more about alt text later on, but for now we can add alt text easily to our data visualizations using the <code>alt</code> argument. Place this <em>outside</em> of the <code>{}</code> but inside the <code>()</code> of <code>renderPlot{()}</code>. For example, we can add alt text to our trout and penguin plots in <code>server.R</code>:</span></p>
 </div><div class="column" style="width:60%;">
 <div class="cell">
 <div class="code-with-filename">
@@ -828,7 +830,7 @@
 <h2></h2>
 <p><span class="slide-title2">Make sure your alt text was successfully added</span></p>
 <hr>
-<p><strong>Right click</strong> on your plot &gt; choose <strong>Inspect Element</strong> &gt; you should see your alt tag and text appear in the developer pane beside your plot.</p>
+<p>When alt text is successfully added, the <code>alt</code> tag (along with your text) should appear in the HTML (right click on your app’s data viz to <strong>Inspect</strong> and ensure that it was added). <strong>Right click</strong> on your plot &gt; choose <strong>Inspect Element</strong> &gt; you should see your alt tag and text appear in the developer pane beside your plot.</p>
 
 <img data-src="images/part2/verify-alt-text.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Loading animations appear each time an input value is changed and plot outputs are re-rendered. The trout plot has a blue animation of three perpendicular vertical bars that undulate in length. The penguin plot has a green trailing circular pattern of small circles that grow and shrink in size as they rotate."></section>
 <section id="redeploying-apps" class="slide level2" data-menu-title="~~~ Redeploying apps ~~~" data-background="#047C90">
@@ -866,7 +868,7 @@ End part 2.3
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4886e450" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_b91b3547" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

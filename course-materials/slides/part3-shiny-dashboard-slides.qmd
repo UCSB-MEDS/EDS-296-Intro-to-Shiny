@@ -134,7 +134,7 @@ knitr::include_graphics("images/part3/simple_dashboard.png")
 
 <hr>
 
-[The main difference between a **shiny app** and a **shinydashboard** are the UI elements. Rather than a `fluidPage()` (as used in our previous shiny apps), we'll create a `dashboardPage()`, which expects three main parts: a header, a sidebar, and a body. Below is the most minimal possible UI for a `{shinydashboard}` page (you can run this code in an `app.R` file, if you wish).]{.body-text-s}
+[The main difference between a **shiny app** and a **shinydashboard** are the UI elements. Rather than a `fluidPage()` or `navbarPage()` (as used in our previous shiny apps), we'll create a `dashboardPage()`, which expects three main parts: a header, a sidebar, and a body. Below is the most minimal possible UI for a `{shinydashboard}` page (you can run this code in an `app.R` file, if you wish).]{.body-text-s}
 
 :::: {.columns}
 
@@ -186,7 +186,7 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 [{{< fa school title="a school house" >}}]{.teal-text} **[CA Schools Climate Hazards](https://shinyapps.bren.ucsb.edu/CASASchools/){target="_blank"} ([source code](https://github.com/CASAschools/casa_schools_app){target="_blank"})**, *by MEDS 2024 alumni [Charlie Curtin](https://github.com/charliecurtin1){target="_blank"}, [Kristina Glass](https://github.com/kristinaglass){target="_blank"}, [Liane Chen](https://github.com/lchenhub){target="_blank"} & [Hazel Vaquero](https://github.com/hazelvaq){target="_blank"}, as part of their MEDS Capstone project -- explore localized climate hazards for 10,000+ public schools in CA*. Also runner up in [Posit's 2024 Shiny Contest](https://posit.co/blog/winners-of-the-2024-shiny-contest/){target="_blank"}!!!
 
-[{{< fa seedling title="a seedling plant" >}}]{.teal-text} **[Milkweed Site Finder](https://sarah-cusser.shinyapps.io/milkweed-site-finder/){target="_blank"}**, *by MEDS 2024 alumni [Amanda Herbst](https://github.com/amandaherbst){target="_blank"}, [Anna Ramji](https://github.com/annaramji){target="_blank"}, [Melissa Widas](https://github.com/mwidas){target="_blank"} & [Sam Muir](https://github.com/shmuir){target="_blank"}, as part of their MEDS Capstone project -- a tool for the Santa Barbara Botanic Garden to prioritize Milkweed restoration sites across the Los Padres National Forest*
+[{{< fa seedling title="a seedling plant" >}}]{.teal-text} **[Milkweed Site Finder](https://sarah-cusser.shinyapps.io/milkweed-site-finder/){target="_blank"} ([source code](https://github.com/MEDS-SBBG-milkweed/milkweed-site-finder){target="_blank"})**, *by MEDS 2024 alumni [Amanda Herbst](https://github.com/amandaherbst){target="_blank"}, [Anna Ramji](https://github.com/annaramji){target="_blank"}, [Melissa Widas](https://github.com/mwidas){target="_blank"} & [Sam Muir](https://github.com/shmuir){target="_blank"}, as part of their MEDS Capstone project -- a tool for the Santa Barbara Botanic Garden to prioritize Milkweed restoration sites across the Los Padres National Forest*
 
 [{{< fa graduation-cap title="a graduation cap" >}}]{.teal-text} **[Bren Student Data Explorer](https://shinyapps.bren.ucsb.edu/student-data-explorer/){target="_blank"} ([source code](https://github.com/UCSB-MEDS/shiny-dashboard){target="_blank"})**, *by MEDS 2022 alum, [Halina Do-Linh](https://www.linkedin.com/in/halinadolinh/), & MEDS staff* -- explore Bren school student demographics and career outcomes
 
@@ -316,22 +316,44 @@ knitr::include_graphics("images/part3/adc_logo.png")
 
 ---
 
-##  {#processing-storing-data data-menu-title="Processing & Storing Data"}
+##  {#processing-storing-data1 data-menu-title="Processing & Storing Data 1"}
 
 [Pre-processing data is critical]{.slide-title}
 
 <hr>
 
-[**Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who "owns" those data.** It is likely that you'll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens' article, [Where to store your Shiny application data](https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data){target="_blank"} to start. Because we are going to be working with a relatively small data set today, we'll bundle our data file with our dashboard inside our repository.]{.body-text-s}
+**Where you choose to store the data used by your Shiny app will depend largely on the type and size of the file(s) and who "owns" those data.** 
 
-[Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it *only as much data as needed to run*. This means **pre-processing** your data.]{.body-text-s}
+<br>
 
 . . . 
+
+It is likely that you'll be working with data stored in a database or on a server. This is outside the scope of this workshop, but I suggest reading Nathan Stephens' article, [Where to store your Shiny application data](https://support.posit.co/hc/en-us/articles/115001248028-Where-to-store-your-Shiny-application-data){target="_blank"} to start. Because we are going to be working with a relatively small data set today, we'll bundle our data file with our dashboard inside our repository.
+
+<br>
+
+. . . 
+
+Regardless of where you choose to store your data, you can help your application more quickly process inputs / outputs by providing it *only as much data as needed to run*. This means **pre-processing** your data.
+
+---
+
+##  {#processing-storing-data2 data-menu-title="Processing & Storing Data 2"}
+
+[Pre-processing data is critical]{.slide-title}
+
+<hr>
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-[[`FCWO_lakemonitoringdata_2011_2022_daily.csv`](https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3){target="_blank"} contains **8 attributes** (variables) and **18,994 observations** collected from a set of **11 lakes** located in the Fish Creek Watershed in northern Alaska between 2011-2022. We'll download and save the file to a `raw_data/` folder in the root directory of our repository. We'll then pre-process the data in a separate script(s) saved to `scratch/` and save a cleaned / processed version of the data to our app's directory, `/shinydashboard/data/lake_data_processed.csv`. Your repository structure should look similar to example on the right:]{.body-text-s}
+[[`FCWO_lakemonitoringdata_2011_2022_daily.csv`](https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A73800a2e-7617-470a-83aa-b530a01f32e3){target="_blank"} contains **8 attributes** (variables) and **18,994 observations** collected from a set of **11 lakes** located in the Fish Creek Watershed in northern Alaska between 2011-2022. We'll:]{.body-text-s} 
+
+- [download and save the file to a `raw-data/` folder in the root directory of our repository]{.body-text-s} 
+
+- [pre-process the data in a separate script(s) saved to `scratch/`]{.body-text-s}
+
+- [save a cleaned / processed version of the data to our app's directory, `/shinydashboard/data/lake_data_processed.csv`. ]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -339,13 +361,17 @@ knitr::include_graphics("images/part3/adc_logo.png")
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "73%"
+#| out-width: "100%"
 #| fig-alt: "A schematic of the repository structure, as described."
 knitr::include_graphics("images/part3/shinydashboard-directory-structure.png")
 ```
 :::
 
 ::::
+
+::: {.footer}
+Your repository structure should look similar to example, above.
+:::
 
 ---
 
@@ -394,7 +420,7 @@ knitr::include_graphics("images/part3/lakes_df.png")
 
 <hr>
 
-```{r filename="~/scratch/data_processing_app3_shinydashboard.R"}
+```{r filename="~/scratch/data-processing-app3.R"}
 #| eval: false
 #| echo: true
 
@@ -414,7 +440,7 @@ knitr::include_graphics("images/part3/lakes_df.png")
 library(tidyverse)
 
 # read in raw data ----
-lake_raw <- read_csv(here::here("raw_data", "FCWO_lakemonitoringdata_2011_2022_daily.csv"))
+lake_raw <- read_csv(here::here("raw-data", "FCWO_lakemonitoringdata_2011_2022_daily.csv"))
 
 # calculate avg depth & temp ----
 avg_depth_temp <- lake_raw |> 
@@ -447,7 +473,7 @@ write_csv(x = unique_lakes, file = here::here("shinydashboard", "data", "lake_da
 
 <hr>
 
-[Oftentimes, you may choose to save your processed data frame as a `.rds` file (a data file format, native to R, which stores a single R object). `.rds` file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g. factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality -- you can't open a `.rds` file outside of R or read it in with another programming language (e.g. Python).]{.body-text-s}
+[You may choose to save your processed data frame as a `.rds` file (a data file format, native to R, which stores a single R object). `.rds` file are relatively small (and therefore take up little storage space), take less time to import / export, and preserve data types and classes (e.g. factors and dates), eliminating the need to redefine data types after loading the file. Bear in mind that this increased speed and space-saving may come at the cost of generality -- you can't open a `.rds` file outside of R or read it in with another programming language (e.g. Python).]{.body-text-s}
 
 [While we'll be sticking to `.csv` files in this workshop, it's worth experimenting with `.rds` when you begin working with your own (likely larger) data. You can read in (`readRDS()`) and write out to (`saveRDS()`) `.rds` files as easily as `.csv` files.]{.body-text-s}
 
@@ -464,7 +490,7 @@ knitr::include_graphics("images/part3/rds.png")
 
 ##  {#draft-leaflet data-menu-title="Draft Leaflet"}
 
-[Draft `leaflet` map]{.slide-title}
+[Draft `leaflet` map]{.slide-title2}
 
 <hr>
 
@@ -504,13 +530,13 @@ map <- leaflet() |>
              popup = paste0("Site Name: ", lake_data$Site, "<br>",
                            "Elevation: ", lake_data$Elevation, " meters (above SL)", "<br>",
                            "Avg Depth: ", lake_data$AvgDepth, " meters", "<br>",
-                           "Avg Lake Bed Temperature: ", lake_data$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
+                           "Avg Lake Bed Temperature: ", lake_data$AvgTemp, "°C")) # NOTE: Shift + Option + 8 (mac), Alt + 0176 (Windows), or use unicode "\u00B0C"
 
 map
 ```
 
 ## code
-```{r filename="~/scratch/practice_script_app3_shinydashboard.R"}
+```{r filename="~/scratch/practice-script-app3.R"}
 #| eval: false
 #| echo: true
 #..............................SETUP.............................
@@ -523,7 +549,6 @@ library(leaflet)
 lake_data <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
 
 #..........................PRACTICE VIZ..........................
-
 leaflet() |> 
   
   # add tiles
@@ -541,7 +566,7 @@ leaflet() |>
              popup = paste0("Site Name: ", lake_data$Site, "<br>",
                            "Elevation: ", lake_data$Elevation, " meters (above SL)", "<br>",
                            "Avg Depth: ", lake_data$AvgDepth, " meters", "<br>",
-                           "Avg Lake Bed Temperature: ", lake_data$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
+                           "Avg Lake Bed Temperature: ", lake_data$AvgTemp, "°C")) # NOTE: Shift + Option + 8 (mac), Alt + 0176 (Windows), or use unicode "\u00B0C"
 ```
 
 :::
@@ -598,14 +623,14 @@ map <- leaflet() |>
              popup = paste0("Site Name: ", filtered_lakes$Site, "<br>",
                            "Elevation: ", filtered_lakes$Elevation, " meters (above SL)", "<br>",
                            "Avg Depth: ", filtered_lakes$AvgDepth, " meters", "<br>",
-                           "Avg Lake Bed Temperature: ", filtered_lakes$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
+                           "Avg Lake Bed Temperature: ", filtered_lakes$AvgTemp, "°C")) # NOTE: Shift + Option + 8 (mac), Alt + 0176 (Windows), or use unicode "\u00B0C"
 
 map
 ```
 
 ## code
 
-```{r filename="~/scratch/practice_script_app3_shinydashboard.R"}
+```{r filename="~/scratch/practice-script-app3.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "10-15|31-37"
@@ -645,7 +670,7 @@ leaflet() |>
              popup = paste0("Site Name: ", filtered_lakes$Site, "<br>",
                            "Elevation: ", filtered_lakes$Elevation, " meters (above SL)", "<br>",
                            "Avg Depth: ", filtered_lakes$AvgDepth, " meters", "<br>",
-                           "Avg Lake Bed Temperature: ", filtered_lakes$AvgTemp, "\u00B0C")) # NOTE: Unicode for degree symbol icon
+                           "Avg Lake Bed Temperature: ", filtered_lakes$AvgTemp, "°C")) # NOTE: Shift + Option + 8 (mac), Alt + 0176 (Windows), or use unicode "\u00B0C"
 ```
 :::
 
@@ -697,7 +722,7 @@ knitr::include_graphics("images/part3/dashboard_sketch.png")
 
 [First, add a title to `dashboardHeader()` and make more space using `titleWidth`, if necessary.]{.body-text-s}
 
-[Next, we'll build our `dashboardSidebar()`. Add a `sidebarMenu()` that contains two `menuItem`s. Be sure to provide each `menuItem()` with `text` as you'd like it to appear in your app (for me, that's **Welcome** and **Dashboard**), and a `tabName` which will be used to place `dashboardBody()` content in the appropriate `menuItem()`. Optionally, you can provide an icon. By default, `icon()` uses icons from [FontAwesome](https://fontawesome.com/){target="_blank".]{.body-text-s}
+[Next, we'll build our `dashboardSidebar()`. Add a `sidebarMenu()` that contains two `menuItem`s. Be sure to provide each `menuItem()` with `text` as you'd like it to appear in your app (for me, that's **Welcome** and **Dashboard**), and a `tabName` which will be used to place `dashboardBody()` content in the appropriate `menuItem()`. Optionally, you can provide an icon. By default, `icon()` uses icons from [FontAwesome](https://fontawesome.com/){target="_blank"}.]{.body-text-s}
 
 ```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
@@ -1204,7 +1229,7 @@ server <- function(input, output) {
                  popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
                                "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
                                "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
-                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "deg Celsius"))
+                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "°C"))
     
   })
   
@@ -1367,7 +1392,7 @@ body <- dashboardBody(
                               min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider_input", label = "Average lake bed temperature (degrees C):",
+                  sliderInput(inputId = "temp_slider_input", label = "Average lake bed temperature (°C):",
                               min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
@@ -1435,7 +1460,7 @@ server <- function(input, output) {
                  popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
                                "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
                                "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
-                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "deg Celsius"))
+                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "°C"))
     
   })
   
@@ -1623,7 +1648,7 @@ body <- dashboardBody(
                               min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (degrees C):",
+                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (°C):",
                               min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
@@ -1768,7 +1793,7 @@ body <- dashboardBody(
                               min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (degrees C):",
+                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (°C):",
                               min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
@@ -1931,7 +1956,7 @@ body <- dashboardBody(
                               min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (degrees C):",
+                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (°C):",
                               min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
@@ -2110,7 +2135,7 @@ body <- dashboardBody(
                               min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider_input", label = "Average lake bed temperature (degrees C):",
+                  sliderInput(inputId = "temp_slider_input", label = "Average lake bed temperature (°C):",
                               min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
@@ -2178,7 +2203,7 @@ server <- function(input, output) {
                  popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
                                "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
                                "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
-                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "deg Celsius"))
+                               "Avg Lake Bed Temperature:", filtered_lakes_df()$AvgTemp, "°C"))
     
   })
   

@@ -312,7 +312,7 @@ knitr::include_graphics("images/part2/spinners.gif")
 
 <hr>
 
-[Alt text are **written descriptions** added to images, and importantly, to data visualizations, to **help more users understand the content**. Assistive technologies (e.g. screen readers) read alt text out loud for users to hear. When alt text is successfully added, the `alt` tag (along with your text) should appear in the HTML (right click on your app's data viz to **Inspect** and ensure that it was added).]{.body-text-s}
+[Alt text are **written descriptions** added to images, and importantly, to data visualizations, to **help more users understand the content**. Assistive technologies (e.g. screen readers) read alt text out loud for users to hear.]{.body-text-s}
 
 :::: {.columns}
 
@@ -322,7 +322,7 @@ knitr::include_graphics("images/part2/spinners.gif")
 <br>
 <br>
 
-[We'll talk a bit more about alt text later on, but for now we can add alt text easily to our data visuzliations using the `alt` argument. Place this *outside* of the `{}` but inside the `()` of `renderPlot{()}`. For example, we can add alt text to our trout and penguin plots in `server.R`:]{.body-text-s}
+[We'll talk a bit more about alt text later on, but for now we can add alt text easily to our data visualizations using the `alt` argument. Place this *outside* of the `{}` but inside the `()` of `renderPlot{()}`. For example, we can add alt text to our trout and penguin plots in `server.R`:]{.body-text-s}
 :::
 
 ::: {.column width="60%"}
@@ -381,7 +381,7 @@ output$flipperLength_histogram_output <- renderPlot({
 
 <hr>
 
-**Right click** on your plot > choose **Inspect Element** > you should see your alt tag and text appear in the developer pane beside your plot. 
+When alt text is successfully added, the `alt` tag (along with your text) should appear in the HTML (right click on your app's data viz to **Inspect** and ensure that it was added). **Right click** on your plot > choose **Inspect Element** > you should see your alt tag and text appear in the developer pane beside your plot. 
 
 ```{r}
 #| eval: true

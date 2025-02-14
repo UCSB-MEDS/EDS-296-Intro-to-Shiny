@@ -50,12 +50,12 @@ Take a few moments to review the [metadata record](https://arcticdata.io/catalog
 
 | {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
 |------------------------------------------------------------------------------------------|
-| [Lecture 3: Building Shiny dashboards](slides/part3-shiny-dashboard.qmd){target="_blank"}  | 
+| [Lecture 3: Building Shiny dashboards](slides/part3-shiny-dashboard-slides.qmd){target="_blank"}  | 
 : {.hover .bordered tbl-colwidths="[50,25,25]"}
 
-::: {.center-text}
-[**Shiny dashboard**]{.teal-text .body-text-m}
+<!-- ::: {.center-text} -->
+<!-- [**Shiny dashboard**]{.teal-text .body-text-m} -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 3 slides](slides/part3-shiny-dashboard-slides.qmd){.btn role="button" target="_blank"} 
-:::
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 3 slides](slides/part3-shiny-dashboard-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
 
