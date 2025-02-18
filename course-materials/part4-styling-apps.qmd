@@ -10,7 +10,7 @@ toc: true
 #| echo: false
 #| fig-align: "center"
 #| out-width: "50%" 
-#| fig-alt: "{fresh} and {sass} R package hexes, the logo for CSS 3, and text that reads '{bslib}`"
+#| fig-alt: "{bslib}, {fresh}, {sass} R package hexes, and the logo for CSS 3"
 knitr::include_graphics("images/styling-apps.png")
 ```
 

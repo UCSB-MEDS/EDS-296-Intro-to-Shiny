@@ -23,7 +23,7 @@ editor_options:
 
 ---
 
-##  {#themeing-pkgs data-menu-title="~~~ Themeing Shiny Apps (with pkgs) ~~~" background="#047C90"}
+##  {#theming-pkgs data-menu-title="~~~ Theming Shiny Apps (with pkgs) ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">{{< fa paint-roller title="a paint roller" >}} Creating custom themes</p>
@@ -32,79 +32,87 @@ editor_options:
 
 ---
 
-##  {#LO-themeing data-menu-title="Learning Objectives - Themeing/Styling"}
+##  {#LO-theming data-menu-title="Learning Objectives - Theming/Styling"}
 
-[{{< fa book-open title="an open book" >}} Learning Objectives - Themeing/Styling Apps]{.slide-title}
+[{{< fa book-open title="an open book" >}} Learning Objectives - Theming/Styling Apps]{.slide-title}
 
 <hr>
 
-<p class="body-text-l teal-text bottombr">By the end of this section, you should be equipped with:</p>
+[By the end of this section, you should be equipped with:]{.body-text-l .teal-text}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an understanding of how to use packaged-based tooling for themeing and styling your shiny apps and dashboards</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an understanding of how to use packaged-based tooling for theming and styling your shiny apps and dashboards]{.body-text-s}
 
 <br>
 
 . . .
 
-<p class="body-text-l teal-text topbr">Packages introduced:</p> 
+[Packages introduced:]{.body-text-l .teal-text}
 
 . . . 
 
-<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{bslib}`: provides tools for customizing Bootstrap themes directly from R for shiny apps and RMarkdowns</p>
+[[{{< fa box-open title="an open box" >}}]{.teal-text} `{bslib}`: provides tools for customizing Bootstrap themes directly from R for shiny apps and RMarkdown documents]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa box-open title="an open box" >}}]{.teal-text} `{fresh}`: provides tools for creating custom themes for use with shiny, `shinydashboard`, and `bs4Dash` apps</p>
+[[{{< fa box-open title="an open box" >}}]{.teal-text} `{fresh}`: provides tools for creating custom themes for use with shiny, `shinydashboard`, and `bs4Dash` apps]{.body-text-s}
 
 ---
 
 ##  {#bslib data-menu-title="{bslib}"}
 
-[Using the [`{bslib}` package](https://rstudio.github.io/bslib/) to theme Shiny apps]{.slide-title2}
+[Using the [`{bslib}` package](https://rstudio.github.io/bslib/){target="_blank"} to theme Shiny apps]{.slide-title2}
 
 <hr>
 
-<p class="body-text">The [`{bslib}` package](https://rstudio.github.io/bslib/) provides a modern UI toolkit for Shiny and R Markdown based on [Bootstrap](https://getbootstrap.com/), making custom themeing for Shiny apps (and R Markdown docs!) quite easy.</p>
+Shiny's default UI components (e.g. `navbarPage()`, `sidebarLayout()`) are styled using [Bootstrap](https://getbootstrap.com/){target="_blank"}, a popular front-end framework for designing responsive web applications. The [`{bslib}` package](https://rstudio.github.io/bslib/){target="_blank"} provides tools for modifying Bootstrap variables.
 
-<br>
+<!-- The [`{bslib}` package](https://rstudio.github.io/bslib/){target="_blank"} provides a modern UI toolkit for Shiny and R Markdown based on [Bootstrap](https://getbootstrap.com/){target="_blank"}, making custom theming for Shiny apps (and R Markdown docs!) quite easy. -->
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-<center><p class="body-text-l teal-text">Pros:</p></center>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} easy to use</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} includes a [real-time themeing widget](https://testing-apps.shinyapps.io/themer-demo/) to try out themes before applying them to your own app</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} plays well with the `{thematic}` package for matching plot styling to app</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} `{bslib}` does more than just themeing! Read more on their [pkgdown site](https://rstudio.github.io/bslib/index.html)</p>
+::: {.center-text .body-text-l .teal-text}
+Pros:
+:::
+[[{{< fa check title="check mark" >}}]{.teal-text} easy to use]{.body-text-s}
+
+[[{{< fa check title="check mark" >}}]{.teal-text} includes a [real-time theming widget](https://testing-apps.shinyapps.io/themer-demo/){target="_blank"} to try out themes before applying them to your own app]{.body-text-s}
+
+[[{{< fa check title="check mark" >}}]{.teal-text} plays well with the `{thematic}` package for matching plot styling to app]{.body-text-s}
+
+[[{{< fa check title="check mark" >}}]{.teal-text} `{bslib}` does more than just theming! Read more on their [pkgdown site](https://rstudio.github.io/bslib/index.html){target="_blank"}]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
-<center><p class="body-text-l teal-text">Cons:</p></center>
-<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} does **not** work with `shinydashboard` (`{bslib}` is only intended for use with `shiny` *apps*), though one of the latest releases includes tooling to create and customize dashboard-style shiny apps -- check out their [vignette](https://rstudio.github.io/bslib/articles/dashboards/) for more</p>
-<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} styling is constrained by the arguments available to `bs_theme()`</p>
+::: {.center-text .body-text-l .teal-text}
+Cons:
+:::
+[[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} does **not** work with `shinydashboard` (`{bslib}` is only intended for use with `shiny` *apps*), though one of the latest releases includes tooling to create and customize dashboard-style shiny apps -- check out their [vignette](https://rstudio.github.io/bslib/articles/dashboards/){target="_blank"} for more]{.body-text-s}
+
+[[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} styling is constrained to Bootstrap variables / the arguments available to `bs_theme()`]{.body-text-s}
 :::
 
 ::::
 
-. . . 
-
 <br>
 
+. . . 
+
 ::: {.center-text}
-**Let's practice applying new themes using `bslib` to our `one-file-app` (i.e. App #1)**
+**Let's practice applying new themes using `{bslib}` to our `one-file-app` (i.e. App #1)**
 :::
 
 ---
 
 ##  {#bslib-prebuilt-themes data-menu-title="Pre-built themes with {bslib}"}
 
-[Apply a pre-built theme with {bslib}]{.slide-title}
+[Apply a pre-built theme with `{bslib}`]{.slide-title}
 
 <hr>
 
-<p class="body-text-s topbr">By default, Shiny uses the Bootstrap v3 theme (which is not so exciting). Change the theme to a slightly more modern Bootstrap v5 theme by setting the `theme` argument of `fluidPage()` to `bslib::bs_theme(version = 5)`, *or* supply `bs_theme()` with a pre-built bootswatch theme, as shown below (for a list of theme names, run `bootswatch_themes()` in your console):</p>
+[By default, Shiny uses the Bootstrap v3 theme (which is not so exciting). Change the theme to a slightly more modern Bootstrap v5 theme by setting the `theme` argument of `fluidPage()` to `bslib::bs_theme(version = 5)`, *or* supply `bs_theme()` with a pre-built bootswatch theme, as shown below (for a list of theme names, run `bootswatch_themes()` in your console):]{.body-text-s}
 
 :::: {.columns}
 
@@ -128,7 +136,7 @@ ui <- fluidPage(
 )
 ```
 
-<p class="body-text-s">Check out the complete [source code](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app) for App #1 (NOTE: applied themes are commented out).</p>
+[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -148,11 +156,13 @@ knitr::include_graphics("images/part4/solar.png")
 
 ##  {#bslib-custom-themes data-menu-title="Custom themes with {bslib}"}
 
-[Create a custom theme with {bslib}]{.slide-title}
+[Create a custom theme with `{bslib}`]{.slide-title}
 
 <hr>
 
-<p class="body-text-s">Alternatively, you can fully customize your own theme. Explore the [`bslib` pkgdown site](https://rstudio.github.io/bslib/index.html) for detailed instructions. A small example here:</p>
+[Alternatively, you can fully customize your own theme. Explore the [`{bslib}` pkgdown site](https://rstudio.github.io/bslib/index.html){target="_blank"} for detailed instructions. A small example here:]{.body-text-s}
+
+<br>
 
 :::: {.columns}
 
@@ -177,7 +187,7 @@ ui <- fluidPage(
 )
 ```
 
-<p class="body-text-s">Check out the complete [source code](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app) for App #1 (NOTE: applied themes are commented out).</p>
+[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -193,17 +203,19 @@ knitr::include_graphics("images/part4/custom-bslib.png")
 
 ::::
 
-<p class="body-text-s">Be sure to check out the interactive themeing widget to test custom color / font / etc. combos by running `bs_theme_preview()` in your console, or visit the [hosted version](https://testing-apps.shinyapps.io/themer-demo/). You can also call `bs_themer()` within your `server` function to open the theme customization UI alongside your own app.</p>
+::: {.footer}
+Be sure to check out the interactive theming widget to test custom color / font / etc. combos by running `bs_theme_preview()` in your console, or visit the [hosted version](https://testing-apps.shinyapps.io/themer-demo/){target="_blank"}. You can also call `bs_themer()` within your `server` function to open the theme customization UI alongside your own app.
+:::
 
 ----
 
-##  {#thematic data-menu-title="{thematic} for plot themeing"}
+##  {#thematic data-menu-title="{thematic} for plot theming"}
 
-[Use {thematic} to extend your theme to plots]{.slide-title2}
+[Use `{thematic}` to extend your theme to plots]{.slide-title2}
 
 <hr>
 
-<p class="body-text-s">You probably noticed that our scatterplot looks a little silly against the darker background of our themed app. Enter the [`{thematic}` package](https://rstudio.github.io/thematic/index.html), which is built to help simplify plot themeing. Call `thematic_shiny()` before launching your app to generate plots that reflect your application's `bs_theme()`. For example:</p>
+[You probably noticed that our scatterplot looks a little silly against the darker background of our themed app. Enter the [`{thematic}` package](https://rstudio.github.io/thematic/index.html){target="_blank"}, which is built to help simplify plot theming. Call `thematic_shiny()` before launching your app to generate plots that reflect your application's `bs_theme()`. For example:]{.body-text-s}
 
 :::: {.columns}
 
@@ -231,7 +243,7 @@ ui <- fluidPage(
 )
 ```
 
-<p class="body-text-s">Check out the complete [source code](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/single-file-app) for App #1 (NOTE: applied themes are commented out).</p>
+[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s}
 
 :::
 
@@ -248,34 +260,45 @@ knitr::include_graphics("images/part4/bslib-thematic.png")
 
 ::::
 
-<p class="body-text-s">Check out the [pkgdown site](https://rstudio.github.io/thematic/index.html) to learn more about using `{thematic}` to match plot fonts to the fonts applied across your app.</p>
+::: {.footer}
+Check out the [pkgdown site](https://rstudio.github.io/thematic/index.html){target="_blank"} to learn more about using `{thematic}` to match plot fonts to the fonts applied across your app.
+:::
 
 ---
 
 ##  {#fresh data-menu-title="{fresh}"}
 
-[Using the [`{fresh}` package](https://dreamrs.github.io/fresh/) to theme Shiny apps & dashboards]{.slide-title}
+[Using the [`{fresh}` package](https://dreamrs.github.io/fresh/){target="_blank"} to theme Shiny apps & dashboards]{.slide-title}
 
 <hr>
 
-<p class="body-text">The [`{fresh}` package](https://dreamrs.github.io/fresh/) provides tools for creating custom themes to use in Shiny apps *and* dashboards -- set parameters of your theme using `create_theme()`, generate a stylesheet based off your specifications, and apply your stylesheet to your app.</p>
+[The [`{fresh}` package](https://dreamrs.github.io/fresh/){target="_blank"} provides tools for creating custom themes for *both* Shiny apps and dashboards -- set parameters of your theme using `create_theme()`, generate a stylesheet based off your specifications, and apply your stylesheet to your app.]{.body-text-s}
 
 <br>
 
 :::: {.columns}
 
 ::: {.column width="45%"}
-<center><p class="body-text-l teal-text">Pros:</p></center>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} easy to use</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} supports theme creation for *both* shiny apps and dashboards (and also `{flexdashboard}`s and [`{b4dash}` applications](https://rinterface.github.io/bs4Dash/index.html)) </p>
+::: {.body-text-l .teal-text}
+Pros:
+:::
+
+[[{{< fa check title="check mark" >}}]{.teal-text} still pretty easy to use]{.body-text-s}
+
+[[{{< fa check title="check mark" >}}]{.teal-text} supports theming for shiny dashboards (unlike `{bslib}`; also supports `{flexdashboard}`s and [`{b4dash}` applications](https://rinterface.github.io/bs4Dash/index.html){target="_blank"})]{.body-text-s}
 :::
 
 ::: {.column width="4%"}
 :::
 
 ::: {.column width="45%"}
-<center><p class="body-text-l teal-text">Cons:</p></center>
-<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} styling is constrained by the variables available to `create_theme()`</p>
+::: {.body-text-l .teal-text}
+Cons:
+:::
+
+[[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} styling is constrained by the variables available to `create_theme()`]{.body-text-s}
+
+COME BACK TO THIS
 :::
 
 ::::
@@ -284,38 +307,41 @@ knitr::include_graphics("images/part4/bslib-thematic.png")
 
 . . . 
 
-<center><p class="body-text topbr">**Let's practice applying new themes using `{fresh}` to our `two-file-app` (i.e. App #2) and our `shinydashbaord` (i.e. App #3)**</p></center>
+::: {.center-text}
+**Let's practice applying new themes using `{fresh}` to our `two-file-app` (i.e. App #2) and our `shinydashbaord` (i.e. App #3)**
+:::
 
 ---
 
 ##  {#fresh-workflow data-menu-title="{fresh} workflow"}
 
-[A general workflow for using `fresh` themes]{.slide-title2}
+[A general workflow for using `{fresh}` themes]{.slide-title2}
 
 <hr>
 
-<p class="body-text topbr">Whether you're working on a shiny *app* or a shiny *dashboard*, you'll need the following:</p>
+Whether you're working on a shiny *app* or a shiny *dashboard*, you'll need the following:
 
-<p class="body-text-s topbr">[**(1)**]{.teal-text} a `www/` folder within your app's directory -- this is where we'll save the stylesheet (a `.css` file) that `{fresh}` will generate for us</p>
-<p class="body-text-s topbr">[**(2)**]{.teal-text} a separate script for building our theme using the `create_theme()` function -- I recommend saving this to `scratch/` (it seemed to cause issues when saved anywhere within my app directory)</p>
+[[**(1)**]{.teal-text} a `www/` folder within your app's directory -- this is where we'll save the stylesheet (a `.css` file) that `{fresh}` will generate for us]{.body-text-s}
+
+[[**(2)**]{.teal-text} a separate script for building our theme using the `create_theme()` function -- I recommend saving this to `scratch/` (it seemed to cause issues when saved anywhere within my app directory)]{.body-text-s}
 
 . . .
 
 <br>
 
-<p class="body-text topbr">Importantly, `create_theme()` takes **different variables** to set the parameters of your theme, depending on what type of app you're building: for **shiny apps**, you'll need to use [`bs_vars_*` variables](https://dreamrs.github.io/fresh/articles/vars-shiny.html), and for **shiny dashboards** you'll use [`adminlte_*` variables](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html) (examples on the following slides).</p>
+Importantly, `create_theme()` takes **different variables** to set the parameters of your theme, depending on what type of app you're building: for **shiny apps**, you'll need to use [`bs_vars_*` variables](https://dreamrs.github.io/fresh/articles/vars-shiny.html){target="_blank"}, and for **shiny dashboards** you'll use [`adminlte_*` variables](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html){target="_blank"} (examples on the following slides).
 
-<p class="body-text topbr">There are also a [couple ways](https://cran.r-project.org/web/packages/fresh/vignettes/fresh.html) to apply your finished theme to your app, but we'll use the method of generating a `.css` file, then calling that file in our app.</p>
+There are also a [couple ways](https://cran.r-project.org/web/packages/fresh/vignettes/fresh.html){target="_blank"} to apply your finished theme to your app, but we'll use the method of generating a `.css` file, then calling that file in our app.
 
 ---
 
 ##  {#create-fresh-app-theme data-menu-title="Create {fresh} app theme"}
 
-[Creating a `fresh` theme for `two-file-app`]{.slide-title3}
+[Creating a `{fresh}` theme for `two-file-app`]{.slide-title3}
 
 <hr>
 
-<p class="body-text-s">In this example, we update the colors of our app's body, navbar, and tabPanels using the appropriate `{fresh}` [variables for shiny *apps*](https://dreamrs.github.io/fresh/articles/vars-shiny.html). We specify a file path, `two-file-app/www` (you'll need to create the `www/` directory, since we don't have one yet), where our stylesheet (e.g. `shiny-fresh-theme.css`, as shown here) file will be saved to. Of course, these color combos are *not* recommended, but chosen purely for demonstration purposes {{< fa face-smile title="a smiling face" >}}.</p>
+[In this example, we update the colors of our app's body, navbar, and tabPanels using the appropriate `{fresh}` [variables for shiny *apps*](https://dreamrs.github.io/fresh/articles/vars-shiny.html){target="_blank"}. We specify a file path, `two-file-app/www` (you'll need to create the `www/` directory, since we don't have one yet), where our stylesheet (e.g. `shiny-fresh-theme.css`, as shown here) file will be saved to. Of course, these color combos are *not* recommended, but chosen purely for demonstration purposes {{< fa face-smile title="a smiling face" >}}.]{.body-text-s}
 
 ```{r filename="~/R/create-fresh-theme-shiny.R"}
 #| eval: false
@@ -351,11 +377,11 @@ create_theme(
 
 ##  {#apply-fresh-apps-theme data-menu-title="Apply {fresh} app theme"}
 
-[Apply a `fresh` theme to our app]{.slide-title}
+[Apply a `{fresh}` theme to our app]{.slide-title}
 
 <hr>
 
-<p class="body-text">To apply our theme, provide the `theme` argument of your `fluidPage()` or `navbarPage()` with the name of our stylesheet. **Note:** shiny knows to look in the `/www` directory, so you can omit that from your file path, as shown below:</p>
+To apply our theme, provide the `theme` argument of your `fluidPage()` or `navbarPage()` with the name of our stylesheet. **Note:** shiny knows to look in the `/www` directory, so you can omit that from your file path, as shown below:
 
 <br>
 
@@ -378,7 +404,7 @@ ui <- navbarPage(
 ) # END navbarPage
 ```
 
-<p class="body-text-s">Check out the complete [source code](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/two-file-app) for App #2 (NOTE: applied themes are commented out).</p>
+[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app){target="_blank"} for App #2 (NOTE: applied themes are commented out).]{.body-text-s}
 
 :::
 
@@ -399,11 +425,11 @@ knitr::include_graphics("images/part4/fresh_app.gif")
 
 ##  {#fresh-shinydashboard data-menu-title="{fresh} shiny dashboard"}
 
-[Creating a `fresh` theme for our `shinydashboard`]{.slide-title3}
+[Creating a `{fresh}` theme for our `shinydashboard`]{.slide-title3}
 
 <hr>
 
-<p class="body-text-s">In this example, we update the colors of our app's header, body, and sidebar using the appropriate `fresh` [variables for shiny *dashboards*](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html). We specify a file path, `shinydashboard/www/` where our stylesheet (e.g. `shinydashboard-fresh-theme.css`, as shown here) file will be saved to. Again, these color combos are *not* recommended, but chosen purely for demonstration purposes.</p>
+[In this example, we update the colors of our app's header, body, and sidebar using the appropriate `fresh` [variables for shiny *dashboards*](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html){target="_blank"}. We specify a file path, `shinydashboard/www/` where our stylesheet (e.g. `shinydashboard-fresh-theme.css`, as shown here) file will be saved to. Again, these color combos are *not* recommended, but chosen purely for demonstration purposes.]{.body-text-s}
 
 ```{r filename="~/R/create-fresh-theme-shinydashboard.R"}
 #| eval: false
@@ -439,11 +465,11 @@ create_theme(
 
 ##  {#apply-fresh-dashboard-theme data-menu-title="Apply {fresh} dashboard theme"}
 
-[Apply a `fresh` theme to our dashboard]{.slide-title2}
+[Apply a `{fresh}` theme to our dashboard]{.slide-title2}
 
 <hr>
 
-<p class="body-text">To apply our theme, use the `fresh::use_theme()` function inside your `dashboardBody`, providing it with the name of your stylesheet. **Note:** shiny knows to look in the `www/` directory, so you can omit that from your file path, as shown below:</p>
+To apply our theme, use the `fresh::use_theme()` function inside your `dashboardBody`, providing it with the name of your stylesheet. **Note:** shiny knows to look in the `www/` directory, so you can omit that from your file path, as shown below:
 
 <br>
 
@@ -466,7 +492,7 @@ body <- dashboardBody(
 )
 ```
 
-<p class="body-text-s">Check out the complete [source code](ttps://github.com/samanthacsik/EDS430-shiny-app/tree/main/shinydashboard) for the shinydashboard (NOTE: applied themes are commented out).</p>
+[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/shinydashboard){target="_blank"} for the shinydashboard (NOTE: applied themes are commented out).]{.body-text-s}
 
 :::
 
