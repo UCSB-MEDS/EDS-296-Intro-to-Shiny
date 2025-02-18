@@ -28,10 +28,7 @@ But do you *really* need a dashboard? Image source: [X (formally Twitter)](https
 
 ## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
-Part 8 is contained in one lesson:
-
-::: {.center-text}
-[**Wrap up**]{.teal-text .body-text-m}
-
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 8 slides](slides/part8-wrap-up-slides.qmd){.btn role="button" target="_blank"} 
-:::
+| {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
+|------------------------------------------------------------------------------------------|
+| [Lecture 8: Wrap Up](slides/part8-wrap-up-slides.qmd){target="_blank"}  | 
+: {.hover .bordered tbl-colwidths="[50,25,25]"}

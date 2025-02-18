@@ -43,24 +43,8 @@ library(palmerpenguins)
 
 ## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
-Part 7 is broken down into two lessons:
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-6}
-::: {.center-text}
-[**Debugging**]{.teal-text .body-text-m}
-
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 7.1 slides](slides/part7.1-debugging-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
-
-::: {.g-col-12 .g-col-md-6}
-::: {.center-text}
-[**Unit Testing**]{.teal-text .body-text-m}
-
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 7.2 slides](slides/part7.2-unit-testing-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
-
-:::
+| {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
+|------------------------------------------------------------------------------------------|
+| [Lecture 7.1: Debugging](slides/part7.1-debugging-slides.qmd){target="_blank"}  | 
+| [Lecture 7.2: Unit Testing](slides/part7.2-unit-testing-slides.qmd){target="_blank"}  | 
+: {.hover .bordered tbl-colwidths="[50,25,25]"}

@@ -42,25 +42,31 @@ library(lterdatasampler)
 
 ## {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture Materials {#lecture-materials}
 
-Part 4 is broken down into two lessons:
+<!-- Part 4 is broken down into two lessons: -->
 
-::: {.grid}
+| {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
+|------------------------------------------------------------------------------------------|
+| [Lecture 4.1: `{bslib}` & `{fresh}`](slides/part4.1-bslib-fresh-slides.qmd){target="_blank"}  | 
+| [Lecture 4.2: Styling with CSS & Sass](slides/part4.2-css-sass-slides.qmd){target="_blank"} |
+: {.hover .bordered tbl-colwidths="[50,25,25]"}
 
-::: {.g-col-12 .g-col-md-6}
-::: {.center-text}
-[**`{bslib}` & `{fresh}`**]{.teal-text .body-text-m}
+<!-- ::: {.grid} -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 4.1 slides](slides/part4.1-bslib-fresh-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- ::: {.g-col-12 .g-col-md-6} -->
+<!-- ::: {.center-text} -->
+<!-- [**`{bslib}` & `{fresh}`**]{.teal-text .body-text-m} -->
+
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 4.1 slides](slides/part4.1-bslib-fresh-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
 
 
-::: {.g-col-12 .g-col-md-6}
-::: {.center-text}
-[**Styling with CSS & Sass**]{.teal-text .body-text-m}
+<!-- ::: {.g-col-12 .g-col-md-6} -->
+<!-- ::: {.center-text} -->
+<!-- [**Styling with CSS & Sass**]{.teal-text .body-text-m} -->
 
-[{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 4.2 slides](slides/part4.2-css-sass-slides.qmd){.btn role="button" target="_blank"} 
-:::
-:::
+<!-- [{{< fa person-chalkboard title="A person motioning at a chalkboard" >}} lecture 4.2 slides](slides/part4.2-css-sass-slides.qmd){.btn role="button" target="_blank"}  -->
+<!-- ::: -->
+<!-- ::: -->
 
-:::
+<!-- ::: -->

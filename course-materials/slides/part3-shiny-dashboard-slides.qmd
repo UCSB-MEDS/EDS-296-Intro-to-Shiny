@@ -190,7 +190,7 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 [{{< fa graduation-cap title="a graduation cap" >}}]{.teal-text} **[Bren Student Data Explorer](https://shinyapps.bren.ucsb.edu/student-data-explorer/){target="_blank"} ([source code](https://github.com/UCSB-MEDS/shiny-dashboard){target="_blank"})**, *by MEDS 2022 alum, [Halina Do-Linh](https://www.linkedin.com/in/halinadolinh/), & MEDS staff* -- explore Bren school student demographics and career outcomes
 
-[{{< fa person-hiking title="a person hiking with a backpack on" >}}]{.teal-text} **[Sam's Strava Stats](https://samanthacsik.shinyapps.io/strava_dashboard/){target="_blank"} ([source code](https://github.com/samanthacsik/strava-dashboard){target="_blank"})**, *by yours truly, [Sam Csik](https://samanthacsik.github.io/){target="_blank"}* -- a new and ongoing side project exploring my Strava hiking / biking / walking data
+[{{< fa person-hiking title="a person hiking with a backpack on" >}}]{.teal-text} **[Sam's Strava Stats](https://samanthacsik.shinyapps.io/strava_dashboard/){target="_blank"} ([source code](https://github.com/samanthacsik/strava-dashboard){target="_blank"})**, *by yours truly, [Sam Shanny-Csik](https://samanthacsik.github.io/){target="_blank"}* -- a new and ongoing side project exploring my Strava hiking / biking / walking data
 
 [{{< fa fish-fins title="a fish with fins" >}}]{.teal-text} **[Visualizing human impacts on at-risk marine biodiversity](http://ohi-science.nceas.ucsb.edu/visualizing_human_impacts/){target="_blank"} ([source code](https://github.com/BrennieDev/CHI_shiny_app){target="_blank"})**, *developed by MESM 2022 alum, [Ian Brunjes](https://github.com/BrennieDev){target="_blank"} & [Dr. Casey O'Hara](http://oharascience.com/index.html){target="_blank"})* -- explore how human activities and climate change impact marine biodiversity worldwide
 
@@ -1733,7 +1733,7 @@ body <- dashboardBody(
                        
                        title = tagList(icon("water"), strong("Monitoring Fish Creek Watershed")),
                        includeMarkdown("text/intro.md"),
-                       tags$img(src = "FishCreekWatershedSiteMap_2020.jpeg", 
+                       tags$img(src = "FishCreekWatershedSiteMap_2020.jpg", 
                                 alt = "A map of Northern Alaska, showing Fish Creek Watershed located within the National Petroleum Reserve.") 
 
                    ) # END background box
