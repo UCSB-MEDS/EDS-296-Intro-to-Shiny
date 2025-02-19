@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 4.2]{.custom-title}
+[EDS 296: Part 4.2]{.custom-title}
 
 [*Styling apps with CSS & Sass*]{.custom-subtitle}
 
@@ -27,7 +27,7 @@ editor_options:
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">{{< fa paintbrush title="a paint brush" >}} Styling apps with CSS & Sass</p>
-<p class="caption-text">*`{bslib}` & `{fresh}` are great ways to get started on your app customization journeys, but knowing some CSS & Sass can help you really fine-tune the appearance of your apps*</p>
+<p class="caption-text">*`{bslib}` & `{fresh}` are great ways to get started on your app customization journeys, but knowing some CSS & Sass can help you really fine-tune the appearance of your apps (as well as make the most of your `{bslib}` and `{fresh}` themes)*</p>
 </div>
 
 ---
@@ -38,28 +38,37 @@ editor_options:
 
 <hr>
 
-<p class="body-text">You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html) and [Sass](https://sass-lang.com/) to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `{bslib}` and `{fresh}`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff it big!).</p>
+You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html){target="_blank"} and [Sass](https://sass-lang.com/){target="_blank"} to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `{bslib}` and `{fresh}`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff it big!).
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-<center><p class="body-text-l teal-text">Pros:</p></center>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} applies to any web page (not just shiny apps / dashboards)</p>
-<p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} allows you to customize pretty much any aspect of your app</p> <p class="body-text-s">[{{< fa check title="check mark" >}}]{.teal-text} can be combined with themes generated using `{bslib}` or `{fresh}` to fine-tune your app's styling</p>
+::: {.center-text .body-text-l .teal-text}
+Pros:
+:::
+
+[[{{< fa check title="check mark" >}}]{.teal-text} applies to any web page (not just shiny apps / dashboards)]{.body-text-s}
+
+[[{{< fa check title="check mark" >}}]{.teal-text} allows you to customize pretty much any aspect of your app]{.body-text-s}
+
+[[{{< fa check title="check mark" >}}]{.teal-text} can be combined with themes generated using `{bslib}` or `{fresh}` to fine-tune your app's styling]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
-<center><p class="body-text-l teal-text">Cons:</p></center>
-<p class="body-text-s">[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} a steeper learning curve / generally more complex than packages like `{bslib}` and `{fresh}`</p>
+::: {.center-text .body-text-l .teal-text}
+Cons:
+:::
+
+[[{{< fa xmark title="an 'x' mark" >}}]{.teal-text} a steeper learning curve / generally more complex than packages like `{bslib}` and `{fresh}`]{.body-text-s}
 :::
 
 ::::
 
-<br>
-
 . . . 
 
-<center><p class="body-text topbr">**We'll review a little bit about CSS & Sass, then practice writing and applying custom styling to apps and dashboards.**</p></center>
+::: {.center-text}
+**We'll review a little bit about CSS & Sass, then practice writing and applying custom styling to apps and dashboards.**
+:::
 
 ---
 
@@ -69,11 +78,11 @@ editor_options:
 
 <hr>
 
-<p class="body-text">We'll be doing a rather high-level and quick overview of Sass & CSS today, though I encourage you to **check out the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop materials**, which takes a much deeper dive (the information in that workshop is largely applicable here).</p>
+We'll be doing a rather high-level and quick overview of Sass & CSS today, though I encourage you to **check out the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide){target="_blank"} workshop materials**, which takes a much deeper dive (the information in that workshop is largely applicable here).
 
 . . . 
 
-<p class="body-text topbr">**[W3Schools](https://www.w3schools.com/css/default.asp) is my favorite online resource for all-things CSS** -- in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).</p>
+**[W3Schools](https://www.w3schools.com/css/default.asp){target="_blank"} is my favorite online resource for all-things CSS** -- in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).
 
 <br>
 
@@ -106,7 +115,9 @@ knitr::include_graphics("images/part4//w3.png")
 knitr::include_graphics("images/part4/css3.png")
 ```
 
-<center><p class="body-text-s">**CSS** (**C**ascading **S**tyle **S**heets) is a programming language that allows you to control how HTML elements look (e.g. colors, font styles, etc.) on a webpage.</p></center>
+::: {.center-text .body-text-s}
+**CSS** (**C**ascading **S**tyle **S**heets) is a programming language that allows you to control how HTML elements look (e.g. colors, font styles, etc.) on a webpage.
+:::
 :::
 
 ::: {.column width="50%"}
@@ -122,8 +133,9 @@ knitr::include_graphics("images/part4/css3.png")
 knitr::include_graphics("images/part4/sass.png")
 ```
 
-
-<center><p class="body-text-s topbr">**Sass** (**S**yntactically **A**wesome **S**tyle**s**heets) is a CSS extension language and CSS preprocessor -- meaning Sass needs to be converted (aka compiled) to CSS before it can be interpreted by your web browser.</p></center> 
+::: {.center-text .body-text-s}
+**Sass** (**S**yntactically **A**wesome **S**tyle**s**heets) is a CSS extension language and CSS preprocessor -- meaning Sass needs to be converted (aka compiled) to CSS before it can be interpreted by your web browser.
+:::
 :::
 
 ::::
@@ -136,9 +148,7 @@ knitr::include_graphics("images/part4/sass.png")
 
 <hr>
 
-<p class="body-text">CSS is a rule-based language, meaning that **it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page**. For example, *"I want all level one headings (`<h1>` or `tags$h1()`, as written in Shiny) in my app to be green with a bit of extra space between each letter"* could be coded as:</p>
-
-<br>
+CSS is a rule-based language, meaning that **it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page**. For example, *"I want all level one headings (`<h1>` or `tags$h1()`, as written in Shiny) in my app to be green with a bit of extra space between each letter"* could be coded as:
 
 :::: {.columns}
 
@@ -154,14 +164,16 @@ knitr::include_graphics("images/part4/CSS_syntax.png")
 :::
 
 ::: {.column width="50%"}
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Selectors** select the HTML element(s) you want to style (*e.g. level one headings, `<h1>`)*</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Declarations** sit inside curly brackets, `{}`, and are made up of [**property**](https://www.w3schools.com/cssref/index.php) and **value** pairs. Each pair specifies the property of the HTML element(s) you're selecting *(e.g. the color property of the element `<h1>`)*, and a value you'd like to assign to that property *(e.g. green)*</p>
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} A property and it's corresponding value are separated by a colon, `:`. Declarations end with a semicolon, `;`</p>
+- [**Selectors** select the HTML element(s) you want to style (*e.g. level one headings, `<h1>`)*]{.body-text-s}
+
+- [**Declarations** sit inside curly brackets, `{}`, and are made up of [**property**](https://www.w3schools.com/cssref/index.php) and **value** pairs. Each pair specifies the property of the HTML element(s) you're selecting *(e.g. the color property of the element `<h1>`)*, and a value you'd like to assign to that property *(e.g. green)*]{.body-text-s}
+
+- [A property and it's corresponding value are separated by a colon, `:`. Declarations end with a semicolon, `;`]{.body-text-s}
 :::
 
 ::::
 
-<p class="body-text-s">There are a variety of CSS selectors -- check out some of the basics that will take you far in styling your apps, starting [on this slide](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types) of the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide) workshop.</p>
+[There are a variety of CSS selectors -- check out some of the basics that will take you far in styling your apps, starting [on this slide](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types1){target="_blank"} of the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide){target="_blank"} workshop.]{.body-text-s}
 
 ---
 
@@ -231,7 +243,7 @@ knitr::include_graphics("images/part4/in-line_styling.png")
 
 ## 2. header
 
-<p class="body-text-xs">Add CSS rules to your app's header (`tags$head`). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can't be cached (i.e. saved for future usage when you reopen your app). **Note:** explore [Google fonts](https://fonts.google.com/) and check out [this slide](https://ucsb-meds.github.io/customizing-quarto-websites/#/select-fonts) for instructions on selecting a font.</p>
+<p class="body-text-xs">Add CSS rules to your app's header (`tags$head`). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can't be cached (i.e. saved for future usage when you reopen your app). **Note:** explore [Google fonts](https://fonts.google.com/){target="_blank"} and check out [this slide](https://ucsb-meds.github.io/customizing-quarto-websites/#/select-fonts){target="_blank"} for instructions on selecting a font.</p>
 
 :::: {.columns}
 
@@ -515,7 +527,7 @@ library(palmerpenguins)
 
 <hr>
 
-<p class="body-text-s">Oftentimes, you'll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, **right click on an element of interest** > choose **Inspect** (or **Inspect Element**) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g. adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.</p>
+[Oftentimes, you'll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, **right click on an element of interest** > choose **Inspect** (or **Inspect Element**) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g. adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -534,7 +546,7 @@ knitr::include_graphics("images/part4/inspect_orientation.png")
 
 <hr>
 
-<p class="body-text-s">For example, let's say I want to change the color of this shinydashboard's boxes and the color of the box text (find a gif of these steps on the next slide).</p> 
+[For example, let's say I want to change the color of this shinydashboard's boxes and the color of the box text (find a gif of these steps on the next slide).]{.body-text-s}
 
 . . .
 
@@ -557,7 +569,9 @@ knitr::include_graphics("images/part4/inspect_orientation.png")
   
 . . . 
 
-[*This process is purely for testing purposes -- refreshing your app will remove any of these changes.*]{.body-text-s}
+::: {.center-text .body-text-s}
+*This process is purely for testing purposes -- refreshing your app will remove any of these changes.*
+:::
 
 ---
 
@@ -583,9 +597,9 @@ knitr::include_graphics("images/part4/inspecting.gif")
 
 <hr>
 
-<p class="body-text-s">Now that we know that we can use the `.box-body` class to customize the appearance of our boxes, let's create a stylesheet **inside our `www/` folder** and add our new CSS rule. The `shinydashboard` framework already provides the "standard" styling for boxes, contained in the `.box-body` class. Anything we specify in our own stylesheet will build upon or modify existing styling.</p>
+[Now that we know that we can use the `.box-body` class to customize the appearance of our boxes, let's create a stylesheet **inside our `www/` folder** and add our new CSS rule. The `shinydashboard` framework already provides the "standard" styling for boxes, contained in the `.box-body` class. Anything we specify in our own stylesheet will build upon or modify existing styling.]{.body-text-s}
 
-<p class="body-text-s">Remember to create a header and link your stylesheet within `dashboardBody()` to apply our styles.</p>
+[Remember to create a header and link your stylesheet within `dashboardBody()` to apply our styles.]{.body-text-s}
 
 ::: {.panel-tabset}
 
@@ -598,7 +612,7 @@ knitr::include_graphics("images/part4/inspecting.gif")
 <br>
 <br>
 
-<p class="body-text">Check out the [complete code](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/dashboard_css_example) for this small example dashboard.</p>
+Check out the [complete code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/dashboard_css_example){target="_blank"} for this small example dashboard.
 :::
 
 ::: {.column width="50%"}
@@ -708,9 +722,9 @@ dashboardPage(header, sidebar, body)
 
 <hr>
 
-<p class="body-text">Okay, we wrote and applied some CSS styling to our apps, but what about Sass? You don't *need* to write any Sass at all, however, it provides a number of benefits, including helping to reduce repetition.</p> 
+Okay, we wrote and applied some CSS styling to our apps, but what about Sass? You don't *need* to write any Sass at all, however, it provides a number of benefits, including helping to reduce repetition.
 
-<p class="body-text">For example, let's say you're working on an app that uses three primary colors throughout:</p>
+For example, let's say you're working on an app that uses three primary colors throughout:
 
 ```{r}
 #| eval: true
@@ -721,7 +735,7 @@ dashboardPage(header, sidebar, body)
 knitr::include_graphics("images/part4/meds-colors.png")
 ```
 
-<p class="body-text topbr">You might imagine how often you’ll need to type those HEX codes out as you developing your stylesheet…it can get annoying rather quickly.</p>
+You might imagine how often you’ll need to type those HEX codes out as you developing your stylesheet…it can get annoying rather quickly.
 
 ---
 
@@ -731,7 +745,7 @@ knitr::include_graphics("images/part4/meds-colors.png")
 
 <hr>
 
-<p class="body-text-s">Sass allows us to define variables (in the form `$var-name: value;`) for our colors to reference instead of writing out their HEX codes each time:</p>
+[Sass allows us to define variables (in the form `$var-name: value;`) for our colors to reference instead of writing out their HEX codes each time:]{.body-text-s}
 
 ```{css filename="example-stylesheet.scss"}
 #| eval: false
@@ -756,7 +770,7 @@ h1 {
 
 ```
 
-<p class="body-text-s">If you decide that you actually like a *different* shade of teal better, you’ll only need to update the hex code where you first define the `$teal` Sass variable, saving lots of time.</p>
+[If you decide that you actually like a *different* shade of teal better, you’ll only need to update the hex code where you first define the `$teal` Sass variable, saving lots of time.]{.body-text-s}
 
 ---
 
@@ -766,13 +780,13 @@ h1 {
 
 <hr>
 
-<p class="body-text">To style apps using both Sass *and* CSS, you'll follow this general workflow:</p>
+To style apps using both Sass *and* CSS, you'll follow this general workflow:
 
-<p class="body-text-s topbr">[**(1)**]{.teal-text} Create a `.scss` file inside `~/myApp/www/` (either through the terminal using the `touch` command, or using RStudio's New File > Text File button). Write both your Sass variables and CSS rules in your `.scss` file (**Note:** you can write both Sass & CSS in a `.scss` file, but *only* CSS in a `.css` file)</p> 
+[[**(1)**]{.teal-text} Create a `.scss` file inside `~/myApp/www/` (either through the terminal using the `touch` command, or using RStudio's New File > Text File button). Write both your Sass variables and CSS rules in your `.scss` file (**Note:** you can write both Sass & CSS in a `.scss` file, but *only* CSS in a `.css` file)]{.body-text-s}
 
-<p class="body-text-s topbr">[**(2)**]{.teal-text} Compile (i.e. convert) Sass to CSS in `global.R` (or, if using a one-file app, at the top of your script before you define your UI) using the the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html) -- this will generate a `.css` file that our shiny app can actually use. Be sure to save your `.css` file to your app's `/www` directory.</p>
+[[**(2)**]{.teal-text} Compile (i.e. convert) Sass to CSS in `global.R` (or, if using a one-file app, at the top of your script before you define your UI) using the the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html){target="_blank"} -- this will generate a `.css` file that our shiny app can actually use. Be sure to save your `.css` file to your app's `/www` directory.]{.body-text-s}
 
-<p class="body-text-s topbr">[**(3)**]{.teal-text} Apply your styles to your app by linking to to your `.css` file in your app's header.</p>
+[[**(3)**]{.teal-text} Apply your styles to your app by linking to to your `.css` file in your app's header.]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -791,13 +805,13 @@ knitr::include_graphics("images/part4/sass-to-css-workflow.png")
 
 <hr>
 
-<p class="body-text-s">We'll practice on our `two-file-app` -- first, remove (or comment out) any reference to your `{bslib}` or `{fresh}` themes that we practiced applying earlier so that we're starting off with just the default shiny styling.</p>
+[We'll practice on our `two-file-app` -- first, remove (or comment out) any reference to your `{bslib}` or `{fresh}` themes that we practiced applying earlier so that we're starting off with just the default shiny styling.]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">Next, create a `.scss` file inside `~/two-file-app/www` using either the `touch` command or **New Blank File** > **Text File** (I'm calling mine `sass-styles.scss`). Finally, add Sass variables and CSS rules to `sass-styles.scss`:</p>
+[Next, create a `.scss` file inside `~/two-file-app/www/` using either the `touch` command or **New Blank File** > **Text File** (I'm calling mine `styles.scss`). Finally, add Sass variables and CSS rules to `styles.scss`:]{.body-text-s}
 
-```{css filename="~/two-file-app/www/sass-styles.scss"}
+```{css filename="~/two-file-app/www/styles.scss"}
 #| eval: false
 #| echo: true
 // import & define fonts vars
@@ -854,11 +868,11 @@ a {
 
 <hr>
 
-<p class="body-text-s">Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html). We can do this in `global.R`. The `sass()` function requires two arguments: a sass file `input` and a file path + named `.css` file `output`.</p>
+[Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html){target="_blank"}. We can do this in `global.R`. The `sass()` function requires two arguments: a sass file `input` and a file path + named `.css` file `output`.]{.body-text-s}
 
-<p class="body-text-s">We also need to apply our styles to our app by linking this newly-generated `.css` file in our app's header.</p>
+[We also need to apply our styles to our app by linking this newly-generated `.css` file in our app's header.]{.body-text-s}
 
-<p class="body-text-s">**Note:** After running your app, you should see a `sass-styles.css` file appear in `www/` -- it should look quite familiar, except all of our Sass variables have been converted to CSS.</p>
+[**Note:** After running your app, you should see a `styles.css` file appear in `www/` -- it should look quite familiar, except all of our Sass variables have been converted to CSS.]{.body-text-s}
 
 ::: {.panel-tabset}
 
@@ -871,7 +885,7 @@ a {
 <br>
 <br> 
 
-<p class="body-text">Check out the [complete code](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/two-file-app) for App #2 (NOTE: applied themes are commented out).</p>
+Check out the [complete code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app){target="_blank"} for App #2 (NOTE: applied themes are commented out).
 :::
 
 ::: {.column width="50%"}
@@ -898,8 +912,8 @@ library(sass)
 
 # COMPILE CSS ----
 sass(
-  input = sass_file("www/sass-styles.scss"),
-  output = "www/sass-styles.css",
+  input = sass_file("www/styles.scss"),
+  output = "www/styles.css",
   options = sass_options(output_style = "compressed") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable
 )
 
@@ -915,15 +929,15 @@ ui <- navbarPage(
   
   # add css file ----
   header = tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "sass-styles.css")
+    tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
   )
   
   # ~ additional UI elements omitted for brevity ~
 )
 ```
 
-## `sass-styles.css`
-```{css filename="~/two-file-app/www/sass-styles.css"}
+## `styles.css`
+```{css filename="~/two-file-app/www/styles.css"}
 #| eval: false
 #| echo: true
 @import url("https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap");

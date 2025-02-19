@@ -398,7 +398,7 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 4.2</span></p>
+<p><span class="custom-title">EDS 296: Part 4.2</span></p>
 <p><span class="custom-subtitle"><em>Styling apps with CSS &amp; Sass</em></span></p>
 <hr class="hr-teal">
 <!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
@@ -410,7 +410,7 @@
 <i class="fa-solid fa-paintbrush" title="a paint brush" aria-label="paintbrush"></i> Styling apps with CSS &amp; Sass
 </p>
 <p class="caption-text">
-<em><code>{bslib}</code> &amp; <code>{fresh}</code> are great ways to get started on your app customization journeys, but knowing some CSS &amp; Sass can help you really fine-tune the appearance of your apps</em>
+<em><code>{bslib}</code> &amp; <code>{fresh}</code> are great ways to get started on your app customization journeys, but knowing some CSS &amp; Sass can help you really fine-tune the appearance of your apps (as well as make the most of your <code>{bslib}</code> and <code>{fresh}</code> themes)</em>
 </p>
 </div>
 </section>
@@ -418,55 +418,34 @@
 <h2></h2>
 <p><span class="slide-title2">Using Sass &amp; CSS to style Shiny apps &amp; dashboards</span></p>
 <hr>
-<p class="body-text">
-You can write your own stylesheets using <a href="https://www.w3.org/Style/CSS/Overview.en.html">CSS</a> and <a href="https://sass-lang.com/">Sass</a> to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike <code>{bslib}</code> and <code>{fresh}</code>, these are <em>languages</em>, meaning they can be a bit more challenging to get started with (but the payoff it big!).
-</p>
+<p>You can write your own stylesheets using <a href="https://www.w3.org/Style/CSS/Overview.en.html" target="_blank">CSS</a> and <a href="https://sass-lang.com/" target="_blank">Sass</a> to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike <code>{bslib}</code> and <code>{fresh}</code>, these are <em>languages</em>, meaning they can be a bit more challenging to get started with (but the payoff it big!).</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<center>
-<p class="body-text-l teal-text">
-Pros:
-</p>
-</center>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> applies to any web page (not just shiny apps / dashboards)
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> allows you to customize pretty much any aspect of your app
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> can be combined with themes generated using <code>{bslib}</code> or <code>{fresh}</code> to fine-tune your app’s styling
-</p>
+<div class="center-text body-text-l teal-text">
+<p>Pros:</p>
+</div>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> applies to any web page (not just shiny apps / dashboards)</span></p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> allows you to customize pretty much any aspect of your app</span></p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-check" title="check mark" aria-label="check"></i></span> can be combined with themes generated using <code>{bslib}</code> or <code>{fresh}</code> to fine-tune your app’s styling</span></p>
 </div><div class="column" style="width:50%;">
-<center>
-<p class="body-text-l teal-text">
-Cons:
-</p>
-</center>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-xmark" title="an 'x' mark" aria-label="xmark"></i></span> a steeper learning curve / generally more complex than packages like <code>{bslib}</code> and <code>{fresh}</code>
-</p>
+<div class="center-text body-text-l teal-text">
+<p>Cons:</p>
+</div>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-xmark" title="an 'x' mark" aria-label="xmark"></i></span> a steeper learning curve / generally more complex than packages like <code>{bslib}</code> and <code>{fresh}</code></span></p>
 </div></div>
-<p><br></p>
 <div class="fragment">
-<center>
-<p class="body-text topbr">
-<strong>We’ll review a little bit about CSS &amp; Sass, then practice writing and applying custom styling to apps and dashboards.</strong>
-</p>
-</center>
+<div class="center-text">
+<p><strong>We’ll review a little bit about CSS &amp; Sass, then practice writing and applying custom styling to apps and dashboards.</strong></p>
+</div>
 </div>
 </section>
 <section id="css-review" class="slide level2" data-menu-title="CSS Review/Resources">
 <h2></h2>
 <p><span class="slide-title2">Resources for a deeper dive</span></p>
 <hr>
-<p class="body-text">
-We’ll be doing a rather high-level and quick overview of Sass &amp; CSS today, though I encourage you to <strong>check out the <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide">Customizing Quarto Websites</a> workshop materials</strong>, which takes a much deeper dive (the information in that workshop is largely applicable here).
-</p>
+<p>We’ll be doing a rather high-level and quick overview of Sass &amp; CSS today, though I encourage you to <strong>check out the <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide" target="_blank">Customizing Quarto Websites</a> workshop materials</strong>, which takes a much deeper dive (the information in that workshop is largely applicable here).</p>
 <div class="fragment">
-<p class="body-text topbr">
-<strong><a href="https://www.w3schools.com/css/default.asp">W3Schools</a> is my favorite online resource for all-things CSS</strong> – in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).
-</p>
+<p><strong><a href="https://www.w3schools.com/css/default.asp" target="_blank">W3Schools</a> is my favorite online resource for all-things CSS</strong> – in addition to really digestible descriptions and examples, they also offer interactive tutorials to get your hands on updating (and breaking) code (in a safe space, of course).</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -494,11 +473,9 @@ We’ll be doing a rather high-level and quick overview of Sass &amp; CSS today,
 </div>
 </div>
 </div>
-<center>
-<p class="body-text-s">
-<strong>CSS</strong> (<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets) is a programming language that allows you to control how HTML elements look (e.g.&nbsp;colors, font styles, etc.) on a webpage.
-</p>
-</center>
+<div class="center-text body-text-s">
+<p><strong>CSS</strong> (<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets) is a programming language that allows you to control how HTML elements look (e.g.&nbsp;colors, font styles, etc.) on a webpage.</p>
+</div>
 </div><div class="column" style="width:50%;">
 <p><br></p>
 <div class="cell" data-layout-align="center">
@@ -510,21 +487,16 @@ We’ll be doing a rather high-level and quick overview of Sass &amp; CSS today,
 </div>
 </div>
 </div>
-<center>
-<p class="body-text-s topbr">
-<strong>Sass</strong> (<strong>S</strong>yntactically <strong>A</strong>wesome <strong>S</strong>tyle<strong>s</strong>heets) is a CSS extension language and CSS preprocessor – meaning Sass needs to be converted (aka compiled) to CSS before it can be interpreted by your web browser.
-</p>
-</center>
+<div class="center-text body-text-s">
+<p><strong>Sass</strong> (<strong>S</strong>yntactically <strong>A</strong>wesome <strong>S</strong>tyle<strong>s</strong>heets) is a CSS extension language and CSS preprocessor – meaning Sass needs to be converted (aka compiled) to CSS before it can be interpreted by your web browser.</p>
+</div>
 </div></div>
 </section>
 <section id="css-rule-based" class="slide level2" data-menu-title="CSS is rule-based">
 <h2></h2>
 <p><span class="slide-title">CSS is a rule-based language</span></p>
 <hr>
-<p class="body-text">
-CSS is a rule-based language, meaning that <strong>it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page</strong>. For example, <em>“I want all level one headings (<code>&lt;h1&gt;</code> or <code>tags$h1()</code>, as written in Shiny) in my app to be green with a bit of extra space between each letter”</em> could be coded as:
-</p>
-<p><br></p>
+<p>CSS is a rule-based language, meaning that <strong>it allows you to define groups of styles that should be applied to particular elements or groups of elements on a web page</strong>. For example, <em>“I want all level one headings (<code>&lt;h1&gt;</code> or <code>tags$h1()</code>, as written in Shiny) in my app to be green with a bit of extra space between each letter”</em> could be coded as:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -537,19 +509,13 @@ CSS is a rule-based language, meaning that <strong>it allows you to define group
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Selectors</strong> select the HTML element(s) you want to style (<em>e.g.&nbsp;level one headings, <code>&lt;h1&gt;</code>)</em>
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Declarations</strong> sit inside curly brackets, <code>{}</code>, and are made up of <a href="https://www.w3schools.com/cssref/index.php"><strong>property</strong></a> and <strong>value</strong> pairs. Each pair specifies the property of the HTML element(s) you’re selecting <em>(e.g.&nbsp;the color property of the element <code>&lt;h1&gt;</code>)</em>, and a value you’d like to assign to that property <em>(e.g.&nbsp;green)</em>
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> A property and it’s corresponding value are separated by a colon, <code>:</code>. Declarations end with a semicolon, <code>;</code>
-</p>
+<ul>
+<li><p><span class="body-text-s"><strong>Selectors</strong> select the HTML element(s) you want to style (<em>e.g.&nbsp;level one headings, <code>&lt;h1&gt;</code>)</em></span></p></li>
+<li><p><span class="body-text-s"><strong>Declarations</strong> sit inside curly brackets, <code>{}</code>, and are made up of <a href="https://www.w3schools.com/cssref/index.php"><strong>property</strong></a> and <strong>value</strong> pairs. Each pair specifies the property of the HTML element(s) you’re selecting <em>(e.g.&nbsp;the color property of the element <code>&lt;h1&gt;</code>)</em>, and a value you’d like to assign to that property <em>(e.g.&nbsp;green)</em></span></p></li>
+<li><p><span class="body-text-s">A property and it’s corresponding value are separated by a colon, <code>:</code>. Declarations end with a semicolon, <code>;</code></span></p></li>
+</ul>
 </div></div>
-<p class="body-text-s">
-There are a variety of CSS selectors – check out some of the basics that will take you far in styling your apps, starting <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types">on this slide</a> of the <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide">Customizing Quarto Websites</a> workshop.
-</p>
+<p><span class="body-text-s">There are a variety of CSS selectors – check out some of the basics that will take you far in styling your apps, starting <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types1" target="_blank">on this slide</a> of the <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide" target="_blank">Customizing Quarto Websites</a> workshop.</span></p>
 </section>
 <section id="css-3ways" class="slide level2" data-menu-title="3 ways to add CSS styling">
 <h2></h2>
@@ -609,7 +575,7 @@ Add styling directly to tags. <strong>It’s best not to use a lot of these!</st
 </div>
 <div id="tabset-1-2">
 <p class="body-text-xs">
-Add CSS rules to your app’s header (<code>tags$head</code>). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can’t be cached (i.e.&nbsp;saved for future usage when you reopen your app). <strong>Note:</strong> explore <a href="https://fonts.google.com/">Google fonts</a> and check out <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/select-fonts">this slide</a> for instructions on selecting a font.
+Add CSS rules to your app’s header (<code>tags$head</code>). This is a little bit better than option 1 since it allows for the reuse of rules, however, styles can’t be cached (i.e.&nbsp;saved for future usage when you reopen your app). <strong>Note:</strong> explore <a href="https://fonts.google.com/" target="_blank">Google fonts</a> and check out <a href="https://ucsb-meds.github.io/customizing-quarto-websites/#/select-fonts" target="_blank">this slide</a> for instructions on selecting a font.
 </p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -889,18 +855,14 @@ Build a stylesheet (a <code>.css</code> file) inside your app’s <code>www/</co
 <h2></h2>
 <p><span class="slide-title2">What if I want to style an element, but don’t know how to target it?</span></p>
 <hr>
-<p class="body-text-s">
-Oftentimes, you’ll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, <strong>right click on an element of interest</strong> &gt; choose <strong>Inspect</strong> (or <strong>Inspect Element</strong>) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g.&nbsp;adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.
-</p>
+<p><span class="body-text-s">Oftentimes, you’ll have to do a bit of exploration to determine how to target specific elements for styling. In either your app viewer or web browser, <strong>right click on an element of interest</strong> &gt; choose <strong>Inspect</strong> (or <strong>Inspect Element</strong>) to open up the underlying HTML and CSS. You can make temporary edits to your app (e.g.&nbsp;adding a background color, changing font sizes, etc.) to see how they look first, then copy the appropriate CSS rule into your stylesheet to apply to your app.</span></p>
 
 <img data-src="images/part4/inspect_orientation.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A shiny dashboard, opened in the RStudio viewer, with the Inspect pane open to the right. The top half of the inspect pane shows the underlying HTML and the bottom half shows the underlying CSS styles."></section>
 <section id="inspect-dashboard1" class="slide level2" data-menu-title="Inspect dashboard box 1">
 <h2></h2>
 <p><span class="slide-title2">Inspect &amp; identify how to update box styling</span></p>
 <hr>
-<p class="body-text-s">
-For example, let’s say I want to change the color of this shinydashboard’s boxes and the color of the box text (find a gif of these steps on the next slide).
-</p>
+<p><span class="body-text-s">For example, let’s say I want to change the color of this shinydashboard’s boxes and the color of the box text (find a gif of these steps on the next slide).</span></p>
 <div class="fragment">
 <ol type="1">
 <li><span class="teal-text"><strong>Determine which type of HTML element creates our box</strong></span></li>
@@ -926,7 +888,9 @@ For example, let’s say I want to change the color of this shinydashboard’s b
 </ul>
 </div>
 <div class="fragment">
-<p><span class="body-text-s"><em>This process is purely for testing purposes – refreshing your app will remove any of these changes.</em></span></p>
+<div class="center-text body-text-s">
+<p><em>This process is purely for testing purposes – refreshing your app will remove any of these changes.</em></p>
+</div>
 </div>
 </section>
 <section id="inspect-dashboard2" class="slide level2" data-menu-title="Inspect dashboard box 2">
@@ -939,12 +903,8 @@ For example, let’s say I want to change the color of this shinydashboard’s b
 <h2></h2>
 <p><span class="slide-title2">Finally, apply box styling to our dashboard</span></p>
 <hr>
-<p class="body-text-s">
-Now that we know that we can use the <code>.box-body</code> class to customize the appearance of our boxes, let’s create a stylesheet <strong>inside our <code>www/</code> folder</strong> and add our new CSS rule. The <code>shinydashboard</code> framework already provides the “standard” styling for boxes, contained in the <code>.box-body</code> class. Anything we specify in our own stylesheet will build upon or modify existing styling.
-</p>
-<p class="body-text-s">
-Remember to create a header and link your stylesheet within <code>dashboardBody()</code> to apply our styles.
-</p>
+<p><span class="body-text-s">Now that we know that we can use the <code>.box-body</code> class to customize the appearance of our boxes, let’s create a stylesheet <strong>inside our <code>www/</code> folder</strong> and add our new CSS rule. The <code>shinydashboard</code> framework already provides the “standard” styling for boxes, contained in the <code>.box-body</code> class. Anything we specify in our own stylesheet will build upon or modify existing styling.</span></p>
+<p><span class="body-text-s">Remember to create a header and link your stylesheet within <code>dashboardBody()</code> to apply our styles.</span></p>
 <div class="panel-tabset">
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Our updated shinydashboard</a></li><li><a href="#tabset-3-2"><code>styles.css</code></a></li><li><a href="#tabset-3-3"><code>ui.R</code></a></li></ul>
 <div class="tab-content">
@@ -952,9 +912,7 @@ Remember to create a header and link your stylesheet within <code>dashboardBody(
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
-<p class="body-text">
-Check out the <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/dashboard_css_example">complete code</a> for this small example dashboard.
-</p>
+<p>Check out the <a href="https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/dashboard_css_example" target="_blank">complete code</a> for this small example dashboard.</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1063,24 +1021,16 @@ Check out the <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/mai
 <h2></h2>
 <p><span class="slide-title2">What about Sass?</span></p>
 <hr>
-<p class="body-text">
-Okay, we wrote and applied some CSS styling to our apps, but what about Sass? You don’t <em>need</em> to write any Sass at all, however, it provides a number of benefits, including helping to reduce repetition.
-</p>
-<p class="body-text">
-For example, let’s say you’re working on an app that uses three primary colors throughout:
-</p>
+<p>Okay, we wrote and applied some CSS styling to our apps, but what about Sass? You don’t <em>need</em> to write any Sass at all, however, it provides a number of benefits, including helping to reduce repetition.</p>
+<p>For example, let’s say you’re working on an app that uses three primary colors throughout:</p>
 
-<img data-src="images/part4/meds-colors.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="A color palette consisting of three colors: dark blue, teal, and dark gray."><p class="body-text topbr">
-You might imagine how often you’ll need to type those HEX codes out as you developing your stylesheet…it can get annoying rather quickly.
-</p>
+<img data-src="images/part4/meds-colors.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="A color palette consisting of three colors: dark blue, teal, and dark gray."><p>You might imagine how often you’ll need to type those HEX codes out as you developing your stylesheet…it can get annoying rather quickly.</p>
 </section>
 <section id="sass-vars" class="slide level2" data-menu-title="Sass variables">
 <h2></h2>
 <p><span class="slide-title2">We can define and reference Sass variables throughout our stylesheet</span></p>
 <hr>
-<p class="body-text-s">
-Sass allows us to define variables (in the form <code>$var-name: value;</code>) for our colors to reference instead of writing out their HEX codes each time:
-</p>
+<p><span class="body-text-s">Sass allows us to define variables (in the form <code>$var-name: value;</code>) for our colors to reference instead of writing out their HEX codes each time:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1105,43 +1055,29 @@ Sass allows us to define variables (in the form <code>$var-name: value;</code>) 
 <span id="cb10-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p class="body-text-s">
-If you decide that you actually like a <em>different</em> shade of teal better, you’ll only need to update the hex code where you first define the <code>$teal</code> Sass variable, saving lots of time.
-</p>
+<p><span class="body-text-s">If you decide that you actually like a <em>different</em> shade of teal better, you’ll only need to update the hex code where you first define the <code>$teal</code> Sass variable, saving lots of time.</span></p>
 </section>
 <section id="sass-workflow" class="slide level2" data-menu-title="Sass workflow">
 <h2></h2>
 <p><span class="slide-title">Sass for Shiny workflow</span></p>
 <hr>
-<p class="body-text">
-To style apps using both Sass <em>and</em> CSS, you’ll follow this general workflow:
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><strong>(1)</strong></span> Create a <code>.scss</code> file inside <code>~/myApp/www/</code> (either through the terminal using the <code>touch</code> command, or using RStudio’s New File &gt; Text File button). Write both your Sass variables and CSS rules in your <code>.scss</code> file (<strong>Note:</strong> you can write both Sass &amp; CSS in a <code>.scss</code> file, but <em>only</em> CSS in a <code>.css</code> file)
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><strong>(2)</strong></span> Compile (i.e.&nbsp;convert) Sass to CSS in <code>global.R</code> (or, if using a one-file app, at the top of your script before you define your UI) using the the <code>sass()</code> function from the <a href="https://rstudio.github.io/sass/index.html"><code>{sass}</code> package</a> – this will generate a <code>.css</code> file that our shiny app can actually use. Be sure to save your <code>.css</code> file to your app’s <code>/www</code> directory.
-</p>
-<p class="body-text-s topbr">
-<span class="teal-text"><strong>(3)</strong></span> Apply your styles to your app by linking to to your <code>.css</code> file in your app’s header.
-</p>
+<p>To style apps using both Sass <em>and</em> CSS, you’ll follow this general workflow:</p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Create a <code>.scss</code> file inside <code>~/myApp/www/</code> (either through the terminal using the <code>touch</code> command, or using RStudio’s New File &gt; Text File button). Write both your Sass variables and CSS rules in your <code>.scss</code> file (<strong>Note:</strong> you can write both Sass &amp; CSS in a <code>.scss</code> file, but <em>only</em> CSS in a <code>.css</code> file)</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> Compile (i.e.&nbsp;convert) Sass to CSS in <code>global.R</code> (or, if using a one-file app, at the top of your script before you define your UI) using the the <code>sass()</code> function from the <a href="https://rstudio.github.io/sass/index.html" target="_blank"><code>{sass}</code> package</a> – this will generate a <code>.css</code> file that our shiny app can actually use. Be sure to save your <code>.css</code> file to your app’s <code>/www</code> directory.</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Apply your styles to your app by linking to to your <code>.css</code> file in your app’s header.</span></p>
 
 <img data-src="images/part4/sass-to-css-workflow.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A chart showing the Sass to CSS workflow -- begin with writing Sass variables and CSS rule in a .scss file, then use the sass R package to compile sass to css, and finally use your compiled .css file to apply your styles to your app."></section>
 <section id="write-sass" class="slide level2" data-menu-title="Write Sass">
 <h2></h2>
 <p><span class="slide-title">Let’s build our Sass file</span></p>
 <hr>
-<p class="body-text-s">
-We’ll practice on our <code>two-file-app</code> – first, remove (or comment out) any reference to your <code>{bslib}</code> or <code>{fresh}</code> themes that we practiced applying earlier so that we’re starting off with just the default shiny styling.
-</p>
+<p><span class="body-text-s">We’ll practice on our <code>two-file-app</code> – first, remove (or comment out) any reference to your <code>{bslib}</code> or <code>{fresh}</code> themes that we practiced applying earlier so that we’re starting off with just the default shiny styling.</span></p>
 <div class="fragment">
-<p class="body-text-s">
-Next, create a <code>.scss</code> file inside <code>~/two-file-app/www</code> using either the <code>touch</code> command or <strong>New Blank File</strong> &gt; <strong>Text File</strong> (I’m calling mine <code>sass-styles.scss</code>). Finally, add Sass variables and CSS rules to <code>sass-styles.scss</code>:
-</p>
+<p><span class="body-text-s">Next, create a <code>.scss</code> file inside <code>~/two-file-app/www/</code> using either the <code>touch</code> command or <strong>New Blank File</strong> &gt; <strong>Text File</strong> (I’m calling mine <code>styles.scss</code>). Finally, add Sass variables and CSS rules to <code>styles.scss</code>:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/two-file-app/www/sass-styles.scss</strong></pre>
+<pre><strong>~/two-file-app/www/styles.scss</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource css number-lines code-with-copy"><code class="sourceCode css"><span id="cb11-1"><a></a><span class="er">// import &amp; define fonts vars</span></span>
 <span id="cb11-2"><a></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=Karma&amp;family=Prompt:wght@200&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
@@ -1195,25 +1131,17 @@ Next, create a <code>.scss</code> file inside <code>~/two-file-app/www</code> us
 <h2></h2>
 <p><span class="slide-title2">Then, compile Sass to CSS</span></p>
 <hr>
-<p class="body-text-s">
-Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the <code>sass()</code> function from the <a href="https://rstudio.github.io/sass/index.html"><code>{sass}</code> package</a>. We can do this in <code>global.R</code>. The <code>sass()</code> function requires two arguments: a sass file <code>input</code> and a file path + named <code>.css</code> file <code>output</code>.
-</p>
-<p class="body-text-s">
-We also need to apply our styles to our app by linking this newly-generated <code>.css</code> file in our app’s header.
-</p>
-<p class="body-text-s">
-<strong>Note:</strong> After running your app, you should see a <code>sass-styles.css</code> file appear in <code>www/</code> – it should look quite familiar, except all of our Sass variables have been converted to CSS.
-</p>
+<p><span class="body-text-s">Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the <code>sass()</code> function from the <a href="https://rstudio.github.io/sass/index.html" target="_blank"><code>{sass}</code> package</a>. We can do this in <code>global.R</code>. The <code>sass()</code> function requires two arguments: a sass file <code>input</code> and a file path + named <code>.css</code> file <code>output</code>.</span></p>
+<p><span class="body-text-s">We also need to apply our styles to our app by linking this newly-generated <code>.css</code> file in our app’s header.</span></p>
+<p><span class="body-text-s"><strong>Note:</strong> After running your app, you should see a <code>styles.css</code> file appear in <code>www/</code> – it should look quite familiar, except all of our Sass variables have been converted to CSS.</span></p>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">our updated app</a></li><li><a href="#tabset-4-2"><code>global.R</code></a></li><li><a href="#tabset-4-3"><code>ui.R</code></a></li><li><a href="#tabset-4-4"><code>sass-styles.css</code></a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">our updated app</a></li><li><a href="#tabset-4-2"><code>global.R</code></a></li><li><a href="#tabset-4-3"><code>ui.R</code></a></li><li><a href="#tabset-4-4"><code>styles.css</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
-<p class="body-text">
-Check out the <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/two-file-app">complete code</a> for App #2 (NOTE: applied themes are commented out).
-</p>
+<p>Check out the <a href="https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app" target="_blank">complete code</a> for App #2 (NOTE: applied themes are commented out).</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1239,8 +1167,8 @@ Check out the <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/mai
 <span id="cb12-5"><a></a></span>
 <span id="cb12-6"><a></a><span class="co"># COMPILE CSS ----</span></span>
 <span id="cb12-7"><a></a><span class="fu">sass</span>(</span>
-<span id="cb12-8"><a></a>  <span class="at">input =</span> <span class="fu">sass_file</span>(<span class="st">"www/sass-styles.scss"</span>),</span>
-<span id="cb12-9"><a></a>  <span class="at">output =</span> <span class="st">"www/sass-styles.css"</span>,</span>
+<span id="cb12-8"><a></a>  <span class="at">input =</span> <span class="fu">sass_file</span>(<span class="st">"www/styles.scss"</span>),</span>
+<span id="cb12-9"><a></a>  <span class="at">output =</span> <span class="st">"www/styles.css"</span>,</span>
 <span id="cb12-10"><a></a>  <span class="at">options =</span> <span class="fu">sass_options</span>(<span class="at">output_style =</span> <span class="st">"compressed"</span>) <span class="co"># OPTIONAL, but speeds up page load time by removing white-space &amp; line-breaks that make css files more human-readable</span></span>
 <span id="cb12-11"><a></a>)</span>
 <span id="cb12-12"><a></a></span>
@@ -1259,7 +1187,7 @@ Check out the <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/mai
 <span id="cb13-3"><a></a>  </span>
 <span id="cb13-4"><a></a>  <span class="co"># add css file ----</span></span>
 <span id="cb13-5"><a></a>  <span class="at">header =</span> tags<span class="sc">$</span><span class="fu">head</span>(</span>
-<span id="cb13-6"><a></a>    tags<span class="sc">$</span><span class="fu">link</span>(<span class="at">rel =</span> <span class="st">"stylesheet"</span>, <span class="at">type =</span> <span class="st">"text/css"</span>, <span class="at">href =</span> <span class="st">"sass-styles.css"</span>)</span>
+<span id="cb13-6"><a></a>    tags<span class="sc">$</span><span class="fu">link</span>(<span class="at">rel =</span> <span class="st">"stylesheet"</span>, <span class="at">type =</span> <span class="st">"text/css"</span>, <span class="at">href =</span> <span class="st">"styles.css"</span>)</span>
 <span id="cb13-7"><a></a>  )</span>
 <span id="cb13-8"><a></a>  </span>
 <span id="cb13-9"><a></a>  <span class="co"># ~ additional UI elements omitted for brevity ~</span></span>
@@ -1271,7 +1199,7 @@ Check out the <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/mai
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/two-file-app/www/sass-styles.css</strong></pre>
+<pre><strong>~/two-file-app/www/styles.css</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource css number-lines code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">"https://fonts.googleapis.com/css2?family=Karma&amp;family=Prompt:wght@200&amp;display=swap"</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb14-2"><a></a>body {</span>
@@ -1322,7 +1250,7 @@ End part 4.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_cb996597" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_e07b5ca7" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
