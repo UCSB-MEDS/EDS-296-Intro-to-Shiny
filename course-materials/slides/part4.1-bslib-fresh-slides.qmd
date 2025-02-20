@@ -86,7 +86,7 @@ Use [`{fresh}`](https://dreamrs.github.io/fresh/){target="_blank"} for *shinydas
 :::
 
 - [`{bslib}` is not (currently) compatible with `{shinydashboard}`]{.body-text-s} 
-- [`{shinydashboard}` is built on the [AdminLTE](https://adminlte.io/){target="_blank"} framework. `{fresh}` is specifically designed to modify AdminLTE elements.]{.body-text-s}  
+- [`{shinydashboard}` is built on the [AdminLTE](https://adminlte.io/){target="_blank"} framework. `{fresh}` is specifically designed to modify AdminLTE elements.]{.body-text-s}
 :::
 ::::
 
@@ -394,9 +394,9 @@ There are also a [couple ways](https://cran.r-project.org/web/packages/fresh/vig
 
 <hr>
 
-[In this example, we update the colors of our app's body, navbar, and tabPanels using the appropriate `{fresh}` [variables for shiny *apps*](https://dreamrs.github.io/fresh/articles/vars-shiny.html){target="_blank"}. We specify a file path, `two-file-app/www` (you'll need to create the `www/` directory, since we don't have one yet), where our stylesheet (e.g. `shiny-fresh-theme.css`, as shown here) file will be saved to. Of course, these color combos are *not* recommended, but chosen purely for demonstration purposes {{< fa face-smile title="a smiling face" >}}.]{.body-text-s}
+[In this example, we update the colors of our app's body, navbar, and tabPanels using the appropriate `{fresh}` [variables for shiny *apps*](https://dreamrs.github.io/fresh/articles/vars-shiny.html){target="_blank"}. We specify a file path, `two-file-app/www` (you'll need to create the `www/` directory, since we don't have one yet), where our stylesheet (e.g. `app-fresh-theme.css`, as shown here) file will be saved to. Of course, these color combos are *not* recommended, but chosen purely for demonstration purposes {{< fa face-smile title="a smiling face" >}}.]{.body-text-s}
 
-```{r filename="~/R/create-fresh-theme-shiny.R"}
+```{r filename="~/scratch/create-fresh-theme-app.R"}
 #| eval: false
 #| echo: true
 # load library ----
@@ -422,7 +422,7 @@ create_theme(
     border_color = "#F90909" # red
   ),
   
-  output_file = "two-file-app/www/shiny-fresh-theme.css" # generate css file & save to www/
+  output_file = "two-file-app/www/app-fresh-theme.css" # generate css file & save to www/
 )
 ```
 
@@ -434,7 +434,7 @@ create_theme(
 
 <hr>
 
-To apply our theme, provide the `theme` argument of your `fluidPage()` or `navbarPage()` with the name of our stylesheet. **Note:** shiny knows to look in the `/www` directory, so you can omit that from your file path, as shown below:
+To apply our theme, provide the `theme` argument of your `fluidPage()` or `navbarPage()` with the name of our stylesheet. **Note:** shiny knows to look in the `www/` directory, so you can omit that from your file path, as shown below:
 
 <br>
 
@@ -450,7 +450,7 @@ To apply our theme, provide the `theme` argument of your `fluidPage()` or `navba
 # navbar page ----
 ui <- navbarPage(
 
-  theme = "shiny-fresh-theme.css",
+  theme = "app-fresh-theme.css",
   
   # ~ additional UI code omitted for brevity ~
   
@@ -482,9 +482,9 @@ knitr::include_graphics("images/part4/fresh_app.gif")
 
 <hr>
 
-[In this example, we update the colors of our app's header, body, and sidebar using the appropriate `fresh` [variables for shiny *dashboards*](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html){target="_blank"}. We specify a file path, `shinydashboard/www/` where our stylesheet (e.g. `shinydashboard-fresh-theme.css`, as shown here) file will be saved to. Again, these color combos are *not* recommended, but chosen purely for demonstration purposes.]{.body-text-s}
+[In this example, we update the colors of our app's header, body, and sidebar using the appropriate `{fresh}` [variables for shiny *dashboards*](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html){target="_blank"}. We specify a file path, `shinydashboard/www/` where our stylesheet (e.g. `dashboard-fresh-theme.css`, as shown here) file will be saved to. Again, these color combos are *not* recommended, but chosen purely for demonstration purposes.]{.body-text-s}
 
-```{r filename="~/R/create-fresh-theme-shinydashboard.R"}
+```{r filename="~/scratch/create-fresh-theme-dashboard.R"}
 #| eval: false
 #| echo: true
 # load libraries ----
@@ -510,7 +510,7 @@ create_theme(
     dark_hover_bg = "#BF21E6", # magenta
     dark_color = "#F90000" # red
   ),
-  output_file = "shinydashboard/www/shinydashboard-fresh-theme.css" # generate css file & save to www/
+  output_file = "shinydashboard/www/dashboard-fresh-theme.css" # generate css file & save to www/
 )
 ```
 
@@ -538,7 +538,7 @@ To apply our theme, use the `fresh::use_theme()` function inside your `dashboard
 body <- dashboardBody(
   
   # set theme
-  fresh::use_theme("shinydashboard-fresh-theme.css"),
+  fresh::use_theme("dashboard-fresh-theme.css"),
   
   # ~ additional dashboardBody code omitted for brevity ~
   

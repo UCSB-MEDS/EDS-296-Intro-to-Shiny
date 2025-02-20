@@ -453,8 +453,7 @@
 </div>
 <ul>
 <li><span class="body-text-s"><code>{bslib}</code> is not (currently) compatible with <code>{shinydashboard}</code></span></li>
-<li><span class="body-text-s"><code>{shinydashboard}</code> is built on the <a href="https://adminlte.io/" target="_blank">AdminLTE</a> framework. <code>{fresh}</code> is specifically designed to modify AdminLTE elements.</span><br>
-</li>
+<li><span class="body-text-s"><code>{shinydashboard}</code> is built on the <a href="https://adminlte.io/" target="_blank">AdminLTE</a> framework. <code>{fresh}</code> is specifically designed to modify AdminLTE elements.</span></li>
 </ul>
 </div></div>
 </section>
@@ -682,11 +681,11 @@
 <h2></h2>
 <p><span class="slide-title3">Creating a <code>{fresh}</code> theme for <code>two-file-app</code></span></p>
 <hr>
-<p><span class="body-text-s">In this example, we update the colors of our app’s body, navbar, and tabPanels using the appropriate <code>{fresh}</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shiny.html" target="_blank">variables for shiny <em>apps</em></a>. We specify a file path, <code>two-file-app/www</code> (you’ll need to create the <code>www/</code> directory, since we don’t have one yet), where our stylesheet (e.g.&nbsp;<code>shiny-fresh-theme.css</code>, as shown here) file will be saved to. Of course, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes <i class="fa-solid fa-face-smile" title="a smiling face" aria-label="face-smile"></i>.</span></p>
+<p><span class="body-text-s">In this example, we update the colors of our app’s body, navbar, and tabPanels using the appropriate <code>{fresh}</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shiny.html" target="_blank">variables for shiny <em>apps</em></a>. We specify a file path, <code>two-file-app/www</code> (you’ll need to create the <code>www/</code> directory, since we don’t have one yet), where our stylesheet (e.g.&nbsp;<code>app-fresh-theme.css</code>, as shown here) file will be saved to. Of course, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes <i class="fa-solid fa-face-smile" title="a smiling face" aria-label="face-smile"></i>.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/R/create-fresh-theme-shiny.R</strong></pre>
+<pre><strong>~/scratch/create-fresh-theme-app.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># load library ----</span></span>
 <span id="cb3-2"><a></a><span class="fu">library</span>(fresh)</span>
@@ -711,7 +710,7 @@
 <span id="cb3-21"><a></a>    <span class="at">border_color =</span> <span class="st">"#F90909"</span> <span class="co"># red</span></span>
 <span id="cb3-22"><a></a>  ),</span>
 <span id="cb3-23"><a></a>  </span>
-<span id="cb3-24"><a></a>  <span class="at">output_file =</span> <span class="st">"two-file-app/www/shiny-fresh-theme.css"</span> <span class="co"># generate css file &amp; save to www/</span></span>
+<span id="cb3-24"><a></a>  <span class="at">output_file =</span> <span class="st">"two-file-app/www/app-fresh-theme.css"</span> <span class="co"># generate css file &amp; save to www/</span></span>
 <span id="cb3-25"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -720,7 +719,7 @@
 <h2></h2>
 <p><span class="slide-title">Apply a <code>{fresh}</code> theme to our app</span></p>
 <hr>
-<p>To apply our theme, provide the <code>theme</code> argument of your <code>fluidPage()</code> or <code>navbarPage()</code> with the name of our stylesheet. <strong>Note:</strong> shiny knows to look in the <code>/www</code> directory, so you can omit that from your file path, as shown below:</p>
+<p>To apply our theme, provide the <code>theme</code> argument of your <code>fluidPage()</code> or <code>navbarPage()</code> with the name of our stylesheet. <strong>Note:</strong> shiny knows to look in the <code>www/</code> directory, so you can omit that from your file path, as shown below:</p>
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -733,7 +732,7 @@
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># navbar page ----</span></span>
 <span id="cb4-2"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
 <span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a>  <span class="at">theme =</span> <span class="st">"shiny-fresh-theme.css"</span>,</span>
+<span id="cb4-4"><a></a>  <span class="at">theme =</span> <span class="st">"app-fresh-theme.css"</span>,</span>
 <span id="cb4-5"><a></a>  </span>
 <span id="cb4-6"><a></a>  <span class="co"># ~ additional UI code omitted for brevity ~</span></span>
 <span id="cb4-7"><a></a>  </span>
@@ -757,11 +756,11 @@
 <h2></h2>
 <p><span class="slide-title3">Creating a <code>{fresh}</code> theme for our <code>shinydashboard</code></span></p>
 <hr>
-<p><span class="body-text-s">In this example, we update the colors of our app’s header, body, and sidebar using the appropriate <code>fresh</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html" target="_blank">variables for shiny <em>dashboards</em></a>. We specify a file path, <code>shinydashboard/www/</code> where our stylesheet (e.g.&nbsp;<code>shinydashboard-fresh-theme.css</code>, as shown here) file will be saved to. Again, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes.</span></p>
+<p><span class="body-text-s">In this example, we update the colors of our app’s header, body, and sidebar using the appropriate <code>{fresh}</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html" target="_blank">variables for shiny <em>dashboards</em></a>. We specify a file path, <code>shinydashboard/www/</code> where our stylesheet (e.g.&nbsp;<code>dashboard-fresh-theme.css</code>, as shown here) file will be saved to. Again, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/R/create-fresh-theme-shinydashboard.R</strong></pre>
+<pre><strong>~/scratch/create-fresh-theme-dashboard.R</strong></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># load libraries ----</span></span>
 <span id="cb5-2"><a></a><span class="fu">library</span>(fresh)</span>
@@ -786,7 +785,7 @@
 <span id="cb5-21"><a></a>    <span class="at">dark_hover_bg =</span> <span class="st">"#BF21E6"</span>, <span class="co"># magenta</span></span>
 <span id="cb5-22"><a></a>    <span class="at">dark_color =</span> <span class="st">"#F90000"</span> <span class="co"># red</span></span>
 <span id="cb5-23"><a></a>  ),</span>
-<span id="cb5-24"><a></a>  <span class="at">output_file =</span> <span class="st">"shinydashboard/www/shinydashboard-fresh-theme.css"</span> <span class="co"># generate css file &amp; save to www/</span></span>
+<span id="cb5-24"><a></a>  <span class="at">output_file =</span> <span class="st">"shinydashboard/www/dashboard-fresh-theme.css"</span> <span class="co"># generate css file &amp; save to www/</span></span>
 <span id="cb5-25"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -808,7 +807,7 @@
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>body <span class="ot">&lt;-</span> <span class="fu">dashboardBody</span>(</span>
 <span id="cb6-2"><a></a>  </span>
 <span id="cb6-3"><a></a>  <span class="co"># set theme</span></span>
-<span id="cb6-4"><a></a>  fresh<span class="sc">::</span><span class="fu">use_theme</span>(<span class="st">"shinydashboard-fresh-theme.css"</span>),</span>
+<span id="cb6-4"><a></a>  fresh<span class="sc">::</span><span class="fu">use_theme</span>(<span class="st">"dashboard-fresh-theme.css"</span>),</span>
 <span id="cb6-5"><a></a>  </span>
 <span id="cb6-6"><a></a>  <span class="co"># ~ additional dashboardBody code omitted for brevity ~</span></span>
 <span id="cb6-7"><a></a>  </span>
@@ -840,7 +839,7 @@ End part 4.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_17fe8918" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_7d430e8a" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

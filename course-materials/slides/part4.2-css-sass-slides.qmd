@@ -38,7 +38,7 @@ editor_options:
 
 <hr>
 
-You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html){target="_blank"} and [Sass](https://sass-lang.com/){target="_blank"} to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `{bslib}` and `{fresh}`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff it big!).
+You can write your own stylesheets using [CSS](https://www.w3.org/Style/CSS/Overview.en.html){target="_blank"} and [Sass](https://sass-lang.com/){target="_blank"} to fully customize your apps, from background colors, to font styles, to size and shape of elements, and more. Unlike `{bslib}` and `{fresh}`, these are *languages*, meaning they can be a bit more challenging to get started with (but the payoff is big!).
 
 :::: {.columns}
 
@@ -448,7 +448,7 @@ body <- dashboardBody(
               box(width = 4,
                   
                   checkboxGroupInput(
-                    inputId = "penguin_species",
+                    inputId = "penguin_species_input",
                     label = "Filter by species: ",
                     choices = c("Adelie", "Chinstrap", "Gentoo"),
                     selected = c("Adelie", "Chinstrap", "Gentoo")
@@ -460,7 +460,7 @@ body <- dashboardBody(
               # output box ----
               box(width = 8,
                   
-                  plotOutput(outputId = "penguin_plot")
+                  plotOutput(outputId = "penguin_scatterplot_output")
                   
               ) # END output box
               
@@ -487,14 +487,14 @@ server <- function(input, output) {
   penguin_spp <- reactive({
     
     na.omit(penguins) |> 
-      filter(species %in% input$penguin_species) |> 
+      filter(species %in% input$penguin_species_input) |> 
       select(species, island, bill_length_mm, bill_depth_mm)
     
   }) # END penguin spp reactive df
   
   
   # plot ----
-  output$penguin_plot <- renderPlot({
+  output$penguin_scatterplot_output <- renderPlot({
     
     ggplot(penguin_spp(), aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
       geom_point() + 
@@ -868,7 +868,7 @@ a {
 
 <hr>
 
-[Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. To do this, we can use the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html){target="_blank"}. We can do this in `global.R`. The `sass()` function requires two arguments: a sass file `input` and a file path + named `.css` file `output`.]{.body-text-s}
+[Because web browsers can only interpret CSS (not Sass), we need to compile our Sass to CSS. We'll do this using the `sass()` function from the [`{sass}` package](https://rstudio.github.io/sass/index.html){target="_blank"} in `global.R`. The `sass()` function requires two arguments: a sass file `input` and a file path + named `.css` file `output`.]{.body-text-s}
 
 [We also need to apply our styles to our app by linking this newly-generated `.css` file in our app's header.]{.body-text-s}
 
