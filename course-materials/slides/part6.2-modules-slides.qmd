@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 6.2]{.custom-title}
+[EDS 296: Part 6.2]{.custom-title}
 
 [*Modules*]{.custom-subtitle}
 
@@ -38,27 +38,29 @@ editor_options:
 
 <hr>
 
-<p class="body-text-l teal-text bottombr">By the end of this section, you should have an intro-level understanding of:</p>
+::: {.body-text-l .teal-text}
+By the end of this section, you should have an intro-level understanding of:
+:::
 
 . .  .
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} what is a shiny module and when it might make sense to build one</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} what is a shiny module and when it might make sense to build one]{.body-text-s}
 
 . .  .
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} the structure of a shiny module</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} the structure of a shiny module]{.body-text-s}
 
 . .  .
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} how to use a module</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} how to use a module]{.body-text-s}
 
 . .  .
 
-<p class="body-text-l teal-text topbr">Packages introduced:</p> 
+[Packages introduced:]{.body-text-l .teal-text}
 
 . . . 
 
-<p class="body-text-s">`r fontawesome::fa("box-open", fill = "#05859B", a11y = "sem")` `{gapminder}`: data</p>
+[`r fontawesome::fa("box-open", fill = "#05859B", a11y = "sem")` `{gapminder}`: data]{.body-text-s}
 
 ----
 
@@ -68,9 +70,9 @@ editor_options:
 
 <hr>
 
-<p class="body-text-s">This app, developed by [Garrett Grolemund](https://github.com/garrettgman) & [Joe Cheng](https://github.com/jcheng5) as part of their [Modules](https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806) lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.</p>
+[This app, developed by [Garrett Grolemund](https://github.com/garrettgman){target="_blank"} & [Joe Cheng](https://github.com/jcheng5){target="_blank"} as part of their [Modules](https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806){target="_blank"} lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.]{.body-text-s}
 
-<p class="body-text-s">It uses the `gapminder` data set to display life expectancy by GDP per capita from 1952 to 2007 for Africa, the Americas, Asia, Europe, Oceania, and all regions collectively. The only difference between each tab is the subset of data displayed.</p> 
+[It uses the `gapminder` data set to display life expectancy by GDP per capita from 1952 to 2007 for Africa, the Americas, Asia, Europe, Oceania, and all regions collectively. The only difference between each tab is the subset of data displayed.]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -92,8 +94,6 @@ knitr::include_graphics("images/part7/gapminder-app.gif")
 ```{r filename="~/modularized-app/app.R"}
 #| eval: false
 #| echo: true
-# app.R
-
 #..............................setup.............................
 library(shiny)
 library(tidyverse)
@@ -424,9 +424,9 @@ shinyApp(ui = ui, server = server)
 
 <hr>
 
-<p class="body-text-s">Taking a closer look at the gapminder app code, we'll see that the following sections of code are repeated for each region (6 times total; only code sections for "all" regions shown below):</p>
+[Taking a closer look at the gapminder app code, we'll see that the following sections of code are repeated for each region (6 times total; only code sections for "all" regions shown below):]{.body-text-s}
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `tabPanel` (**UI**)</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `tabPanel` (**UI**)]{.body-text-s}
 ```{r}
 #| eval: false
 #| echo: true
@@ -438,7 +438,7 @@ tabPanel(title = "All",
                      animate = animationOptions(interval = 500)))
 ```
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reactive data frame (**server**)</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reactive data frame (**server**)]{.body-text-s}
 ```{r}
 #| eval: false
 #| echo: true
@@ -448,7 +448,7 @@ ydata_all <- reactive({
 })
 ```
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} calculating date ranges (**server**)</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} calculating date ranges (**server**)]{.body-text-s}
 ```{r}
 #| eval: false
 #| echo: true
@@ -465,7 +465,7 @@ yrange_all <- range(all_data$lifeExp)
 
 <hr>
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `renderPlot({})` (**server**)</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} `renderPlot({})` (**server**)]{.body-text-s}
 
 ```{r}
 #| eval: false
@@ -514,15 +514,13 @@ output$all_plot <- renderPlot({
 
 <br>
 
-[{{< fa angle-right title="a bullet point" >}} **A shiny module is a piece of a shiny app**]{.teal-text} -- it can't be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.
+::: {.incremental}
+- [**A shiny module is a piece of a shiny app**]{.teal-text} -- it can't be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.
 
-. . . 
+- [**Modules can represent inputs, outputs, or both**]{.teal-text} (*we'll be building a module that represents both*). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.
 
-[{{< fa angle-right title="a bullet point" >}} **Modules can represent inputs, outputs, or both**]{.teal-text} (*we'll be building a module that represents both*). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.
-
-. . .
-
-[{{< fa angle-right title="a bullet point" >}} **Modules help to solve a *namespacing* problem**]{.teal-text} -- recall that all `Id`s (e.g. `inputId`s) *must* be unique across your app. **Namespacing** is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax `package::function()` e.g. `plyr::arrange()` vs `dplyr::arrange()`).
+- [**Modules help to solve a *namespacing* problem**]{.teal-text} -- recall that all `inputId`s *must* be unique across your app. **Namespacing** is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax `package::function()` e.g. `plyr::arrange()` vs `dplyr::arrange()`).
+:::
 
 ---
 
@@ -532,7 +530,7 @@ output$all_plot <- renderPlot({
 
 <hr>
 
-<p class="body-text">Modules are a coding pattern, organized into **two** functions: one that creates the **UI elements** and one that **loads the server logic**. They can look a bit different, depending on your module, but they generally follow this pattern:</p>
+Modules are a coding pattern, organized into **two functions**: one that **creates the UI elements** and one that **loads the server logic**. They can look a bit different, depending on your module, but they generally follow this pattern:
 
 ```{r filename="myModule.R"}
 #| eval: false
@@ -570,21 +568,21 @@ myModuleServer <- function(id, ...) { # where `...` includes any number of addit
 
 <hr>
 
-<p class="body-text">Part of the appeal of creating modules is breaking your long `app.R` (or `ui.R` & `server.R`) scripts into smaller pieces. **Creating a separate R script to house a given module (both the UI *and* Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix "Module" e.g. `gapModule.R`).** There are a variety of places you can write and / or save your modularized code to, but I recommend one of the following two options (at least while we're just getting started on our shiny modules journey):</p>
+Part of the appeal of creating modules is breaking your long `app.R` (or `ui.R` & `server.R`) scripts into smaller pieces. **Creating a separate R script to house a given module (both the UI *and* Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix "Module" e.g. `gapModule.R`).** There are a variety of places you can write and / or save your modularized code to, but I recommend one of the following two options (at least while we're just getting started on our shiny modules journey):
 
 <br>
 
 . . . 
 
-[**(1)**]{.teal-text} save your modularized code script inside your app's directory (e.g. `~/<app-directory>/myModule.R`)
+[**(1)**]{.teal-text} save your modularized code script inside your app's directory (e.g. `~/myApp/myModule.R`)
 
-<p class="body-text-s">If you choose this option, call `source("myModule.R")` into `global.R` (if using `ui.R` / `server.R`) or `app.R`.</p>
+[If you choose this option, call `source("myModule.R")` into `global.R` (if using `ui.R` / `server.R`) or `app.R`.]{.body-text-s}
 
 <br>
 
 . . . 
 
-[**(2)**]{.teal-text} save your modularized code script inside the `R/` subdirectory of your application (e.g. `~/<app-directory>/R/myModule.R`)</p>
+[**(2)**]{.teal-text} save your modularized code script inside the `R/` subdirectory of your application (e.g. `~/myApp/R/myModule.R`)
 
 <p class="body-text-s">If you choose this option, your module will automatically be sourced (as of Shiny 1.5.0) when the application is loaded.</p>
 
@@ -782,7 +780,7 @@ gapModuleServer <- function(id, data) { # step 2: the first argument to a server
 
 <!-- <hr> -->
 
-<p class="body-text-s">First, let's use our module's UI function. We'll need to define / name each of our `tabPanel`s (one for each of our six regions), but rather than building a `plotOutput` and `sliderInput` inside each `tabPanel` (each with unique `Id`s), we can instead call our `gapModuleUI()` function, and ensure that each time we call it to supply a unique character string for our `id` parameter.</p>
+[First, let's use our module's UI function. We'll need to define / name each of our `tabPanel`s (one for each of our six regions), but rather than building a `plotOutput` and `sliderInput` inside each `tabPanel` (each with unique `Id`s), we can instead call our `gapModuleUI()` function, and ensure that each time we call it to supply a unique character string for our `id` parameter.]{.body-text-s}
 
 ```{r filename="~/modularized-app/app.R"}
 #| eval: false
@@ -831,7 +829,7 @@ ui <- fluidPage(
 
 <hr>
 
-<p class="body-text-s">Finally, we can re-write our server. Rather than writing out the *lengthy* code required to make each plot six times over, we can instead call our `gapModuleServer()` function, supplying each call with `id`s that match those used in `gapModuleUI()`, along with the appropriate data subset. Now, run your app! If written correctly, your app should run exactly the same as your initial version.</p>
+[Finally, we can re-write our server. Rather than writing out the *lengthy* code required to make each plot six times over, we can instead call our `gapModuleServer()` function, supplying each call with `id`s that match those used in `gapModuleUI()`, along with the appropriate data subset. Now, run your app! If written correctly, your app should run exactly the same as your initial version.]{.body-text-s}
 
 ```{r filename="~/modularized-app/app.R"}
 #| eval: false
@@ -906,7 +904,7 @@ We've barely scratched the surface of modules!
 <br>
 
 ::: {.center-text .body-text-l .teal-text}
-Continue your learning journey's with suggested readings and videos on the **[resources page]()**.
+Continue your learning journey's with suggested readings and videos on the **[resources page](../../resources.qmd#modules){target="_blank"}**.
 :::
 
 ---

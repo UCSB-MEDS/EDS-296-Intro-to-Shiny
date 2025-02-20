@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 7.2]{.custom-title}
+[EDS 296: Part 7.2]{.custom-title}
 
 [*Unit Testing*]{.custom-subtitle}
 
@@ -144,7 +144,7 @@ Or many team members?
 
 . . . 
 
-**It becomes increasingly challenging to remember all the features you need to test, or how each works.** Things can also get lost in translation with manual testing (e.g. can you explain to your coworker(s) *all* of your app's features and make sure that they manually test it properly?).
+**It becomes increasingly more challenging to remember all the features you need to test, or how each works.** Things can also get lost in translation with manual testing (e.g. can you explain to your coworker(s) *all* of your app's features and make sure that they manually test it properly?).
 
 ::: {.footer}
 Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`: Unit testing for Shiny applications](https://www.youtube.com/watch?v=DMgAW4m5aTI)
@@ -160,17 +160,11 @@ Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`:
 
 **It's almost inevitable that our app(s) will (at some point) break** -- there are lots of reasons why this happens, but to name a few:
 
-. . . 
-
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **an upgraded R package(s)** has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</p>
-
-. . . 
-
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **you make changes to your app** (e.g. add new features, refactor code)</p>
-
-. . . 
-
-<p class="body-text-s topbr">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **an external data source stops working** or returns data in a different format than that expected by your app</p>
+::: {.incremental}
+- [**an upgraded R package(s)** has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators]{.body-text-s}
+- [**you make changes to your app** (e.g. add new features, refactor code)]{.body-text-s}
+- [**an external data source stops working** or returns data in a different format than that expected by your app]{.body-text-s}
+:::
 
 . . .
 
@@ -194,7 +188,7 @@ It can save a lot of time and headache to have an automated system that checks i
 
 <hr>
 
-The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html) provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to [**ensure that desired app behavior remains consistent, even after changes to the app's code**]{.teal-text} (the documentation refers to this type of unit testing as *regression testing* -- we'll use these tests to verify that app behavior *does not regress*).
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html){target="_blank"} provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to [**ensure that desired app behavior remains consistent, even after changes to the app's code**]{.teal-text} (the documentation refers to this type of unit testing as *regression testing* -- we'll use these tests to verify that app behavior *does not regress*).
 
 :::: {.columns}
 
@@ -203,7 +197,7 @@ The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shiny
 <br>
 <br>
 
-<p class="body-text">From the `{shinytest2}` documentation:</p>
+From the `{shinytest2}` documentation:
 
 <p class="body-text-s quote-text-bg">"*`{shinytest2}` uses `{testthat}`’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.*"</p> 
 :::
@@ -231,7 +225,7 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 <!-- ::: -->
 
 ::: {.footer}
-`{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/) to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/) -- by default, it uses Google Chrome, so make sure you have that installed on your OS
+`{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/){target="_blank"} to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/){target="_blank"} -- by default, it uses Google Chrome, so make sure you have that installed on your OS
 :::
 
 ---
@@ -354,13 +348,13 @@ Let's say that you are satisfied with your work (yay!) and are now ready to writ
 
 <hr>
 
-Before we dive into writing any tests, it's super helpful to inspect your app and *importantly*, **jot down (in your own words) the expected behaviors of your application**. These will form the basis of the [assertions](https://en.wikipedia.org/wiki/Test_assertion) made in your tests.
+Before we dive into writing any tests, it's super helpful to inspect your app and *importantly*, **jot down (in your own words) the expected behaviors of your application**. These will form the basis of the [assertions](https://en.wikipedia.org/wiki/Test_assertion){target="_blank"} made in your tests.
 
 <br>
 
 . . . 
 
-I find it helpful to make a table that outlines both (a) what **actions** can be taken by a user? and (b) what are the **expected outputs / behaviors** that result from those actions?
+I find it helpful to make a table that outlines both [**(a)**]{.teal-text} what **actions** can be taken by a user? and [**(b)**]{.teal-text} what are the **expected outputs / behaviors** that result from those actions?
 
 <br>
 
@@ -492,7 +486,7 @@ Caused by error:
 
 <br>
 
-It's a pretty annoying error, which seems to be an [ongoing issue](https://github.com/rstudio/chromote/issues/94) with `{chromote}`. R may be slow to restart (and I've had to restart numerous times {{< fa face-sad-tear title="a sad face with a tear" >}}).
+It's a pretty annoying error, which seems to be an [ongoing issue](https://github.com/rstudio/chromote/issues/94){target="_blank"} with `{chromote}`. R may be slow to restart (and I've had to restart numerous times {{< fa face-sad-tear title="a sad face with a tear" >}}).
 
 ---
 
@@ -675,7 +669,7 @@ knitr::include_graphics("images/part6/one-name-greeting.png")
 
 ::: {.column width="50%"}
 ::: {.center-text .body-text-s}
-`one-name-greeting-001.json`, a [JSON](https://www.json.org/json-en.html) representation of the state of the app when `app$expect_values()` was called:
+`one-name-greeting-001.json`, a [JSON](https://www.json.org/json-en.html){target="_blank"} representation of the state of the app when `app$expect_values()` was called:
 :::
 
 ```{json}
@@ -699,7 +693,7 @@ knitr::include_graphics("images/part6/one-name-greeting.png")
 ::::
 
 ::: {.footer}
-We don't have any exported values in our app, and we won't be covering those here. Read more about exported values in the [`{shinytest2}` documentation](https://rstudio.github.io/shinytest2/articles/in-depth.html#exported-values).
+We don't have any exported values in our app, and we won't be covering those here. Read more about exported values in the [`{shinytest2}` documentation](https://rstudio.github.io/shinytest2/articles/in-depth.html#exported-values){target="_blank"}.
 :::
 
 ---
@@ -962,7 +956,7 @@ Test complete
 
 [**Steps:**]{.teal-text .body-text-m}
 
-1. Install the [`{diffviewer}` package](https://github.com/r-lib/diffviewer)
+1. Install the [`{diffviewer}` package](https://github.com/r-lib/diffviewer){target="_blank"}
 
 ```{r}
 #| eval: false
@@ -1211,7 +1205,7 @@ server <- function(input, output) {
 
 <hr>
 
-You can practice uploading [this csv file, `real-sample-data.csv`](https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link), which is representative of the data that your team will want processed.
+You can practice uploading [this csv file, `real-sample-data.csv`](https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link){target="_blank"}, which is representative of the data that your team will want processed.
 
 ```{r}
 #| eval: true
@@ -1887,7 +1881,7 @@ knitr::include_graphics("images/part6/command-click.gif")
 
 [[**(2**]{.teal-text} Click Browse, select `incorrect-cols.csv` from your Desktop (or wherever you have it saved)]{.body-text-s}
 
-[[**(3)**]{.teal-text} Hold down the Command/Control button on your keyboard, then click on the **output** -- for us, that's the error message that is rendered in place of `summary_table_output`]{.body-text-s}
+[[**(3)**]{.teal-text} Hold down the `cmd`/`ctrl` button on your keyboard, then click on the **output** -- for us, that's the error message that is rendered in place of `summary_table_output`]{.body-text-s}
 
 [[**(4)**]{.teal-text} Give the test a unique name (e.g. `upload-incorrect-cols`) > click Save test and exit (tests should automatically execute and pass!)]{.body-text-s}
 
@@ -2097,7 +2091,7 @@ ui <- fluidPage(
       sidebarPanel(
         
         # penguin spp pickerInput -----
-        pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select species:",
+        pickerInput(inputId = "penguin_spp_scatterplot_input", label = "Select species:",
                     choices = c("Adelie", "Chinstrap", "Gentoo"),
                     selected = c("Adelie", "Chinstrap", "Gentoo"),
                     options = pickerOptions(actionsBox = TRUE),
@@ -2199,10 +2193,10 @@ server <- function(input, output) {
   filtered_spp_scatterplot_df <- reactive({
     
     validate(
-      need(length(input$penguinSpp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
+      need(length(input$penguin_spp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
     
     penguins |>
-      filter(species %in% input$penguinSpp_scatterplot_input)
+      filter(species %in% input$penguin_spp_scatterplot_input)
     
   })
   
@@ -2392,27 +2386,27 @@ test_that("{shinytest2} recording: select-three-spp", {
 
 test_that("{shinytest2} recording: deselect-adelie", {
   app <- AppDriver$new(name = "deselect-adelie", height = 1048, width = 1441)
-  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguinSpp_scatterplot_input = c("Chinstrap", "Gentoo"))
+  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input = c("Chinstrap", "Gentoo"))
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
 })
 
 
 test_that("{shinytest2} recording: consecutive-spp-selections", {
   app <- AppDriver$new(name = "consecutive-spp-selections", height = 1048, width = 1441)
-  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguinSpp_scatterplot_input = character(0))
+  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input = character(0))
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguinSpp_scatterplot_input = "Gentoo")
+  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input = "Gentoo")
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguinSpp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguinSpp_scatterplot_input = c("Adelie", "Chinstrap", "Gentoo"))
+  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input = c("Adelie", "Chinstrap", "Gentoo"))
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguinSpp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
 })
 ```
 
@@ -2533,7 +2527,7 @@ ui <- fluidPage(
       sidebarPanel(
         
         # penguin spp pickerInput -----
-        penguinSpp_pickerInput(inputId = "penguinSpp_scatterplot_input")
+        penguin_spp_pickerInput(inputId = "penguin_spp_scatterplot_input")
 
       ), # END plot sidebarPanel
       
@@ -2633,10 +2627,10 @@ server <- function(input, output) {
   filtered_spp_scatterplot_df <- reactive({
     
     validate(
-      need(length(input$penguinSpp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
+      need(length(input$penguin_spp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
     
     penguins |>
-      filter(species %in% input$penguinSpp_scatterplot_input)
+      filter(species %in% input$penguin_spp_scatterplot_input)
     
   })
   
@@ -2659,16 +2653,17 @@ server <- function(input, output) {
 } # END server
 ```
 
-## `penguinSpp_pickerInput.R`
+## `penguin_spp_pickerInput.R`
 
 [(Newly added file; be sure to place it inside the new `testing-app/R/` subdirectory)]{.body-text-s}
 
-```{r filename="~/testing-app/R/penguinSpp_pickerInput.R"}
+```{r filename="~/testing-app/R/penguin_spp_pickerInput.R"}
 #| eval: false
 #| echo: true
-penguinSpp_pickerInput <- function(inputId) {
+penguin_spp_pickerInput <- function(inputId) {
   
-  pickerInput(inputId = inputId, label = "Select species:",
+  pickerInput(inputId = inputId, 
+              label = "Select species:",
               choices = c("Adelie", "Chinstrap", "Gentoo"),
               selected = c("Adelie", "Chinstrap", "Gentoo"),
               options = pickerOptions(actionsBox = TRUE),
@@ -2759,13 +2754,13 @@ Should our app's default state change (e.g. if we add a new feature, we update e
 
 <br>
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Use `record_test()` fairly often** -- make a test recording for each feature of your app (many little recordings are encouraged!)
+- **Use `record_test()` fairly often** -- make a test recording for each feature of your app (many little recordings are encouraged!)
 
 <!-- . . .  -->
 
 <br>
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Think of both the most common *and* uncommon pathways that your user may take when interacting with your app.**
+-  **Think of both the most common *and* uncommon pathways that your user may take when interacting with your app.**
 E.g. your user types in a name, then deletes everything, then clicks the "Greet" button...would you app handle that use case?
 
 <!-- . . . -->
@@ -2786,7 +2781,7 @@ E.g. your user types in a name, then deletes everything, then clicks the "Greet"
 
 <div class="page-center vertical-center">
 <p class="custom-subtitle bottombr">End part 7.2</p>
-<p class="caption-text">***Up next:** streamlining code*</p>
+<p class="caption-text">***Up next:** wrap up*</p>
 </div>
 
 ```{r}

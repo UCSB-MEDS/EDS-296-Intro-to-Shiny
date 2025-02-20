@@ -398,7 +398,7 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 7.2</span></p>
+<p><span class="custom-title">EDS 296: Part 7.2</span></p>
 <p><span class="custom-subtitle"><em>Unit Testing</em></span></p>
 <hr class="hr-teal">
 <!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
@@ -501,7 +501,7 @@ Packages introduced:
 <p><br></p>
 </div>
 <div class="fragment">
-<p><strong>It becomes increasingly challenging to remember all the features you need to test, or how each works.</strong> Things can also get lost in translation with manual testing (e.g.&nbsp;can you explain to your coworker(s) <em>all</em> of your app’s features and make sure that they manually test it properly?).</p>
+<p><strong>It becomes increasingly more challenging to remember all the features you need to test, or how each works.</strong> Things can also get lost in translation with manual testing (e.g.&nbsp;can you explain to your coworker(s) <em>all</em> of your app’s features and make sure that they manually test it properly?).</p>
 <div class="footer">
 <p>Slide adapted from Barret Schloerke’s rstudio::conf(2022) talk, <a href="https://www.youtube.com/watch?v=DMgAW4m5aTI"><code>{shinytest2}</code>: Unit testing for Shiny applications</a></p>
 </div>
@@ -512,20 +512,12 @@ Packages introduced:
 <p><span class="slide-title">Why test our Shiny apps?</span></p>
 <hr>
 <p><strong>It’s almost inevitable that our app(s) will (at some point) break</strong> – there are lots of reasons why this happens, but to name a few:</p>
-<div class="fragment">
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>an upgraded R package(s)</strong> has a different behavior (this includes <code>{shiny}</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators
-</p>
-</div>
-<div class="fragment">
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>you make changes to your app</strong> (e.g.&nbsp;add new features, refactor code)
-</p>
-</div>
-<div class="fragment">
-<p class="body-text-s topbr">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>an external data source stops working</strong> or returns data in a different format than that expected by your app
-</p>
+<div>
+<ul>
+<li class="fragment"><span class="body-text-s"><strong>an upgraded R package(s)</strong> has a different behavior (this includes <code>{shiny}</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</span></li>
+<li class="fragment"><span class="body-text-s"><strong>you make changes to your app</strong> (e.g.&nbsp;add new features, refactor code)</span></li>
+<li class="fragment"><span class="body-text-s"><strong>an external data source stops working</strong> or returns data in a different format than that expected by your app</span></li>
+</ul>
 </div>
 <div class="fragment">
 <p><br></p>
@@ -542,13 +534,11 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Enter the <code>{shinytest2}</code> package</span></p>
 <hr>
-<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. We’ll use these unit tests to <span class="teal-text"><strong>ensure that desired app behavior remains consistent, even after changes to the app’s code</strong></span> (the documentation refers to this type of unit testing as <em>regression testing</em> – we’ll use these tests to verify that app behavior <em>does not regress</em>).</p>
+<p>The <a href="https://rstudio.github.io/shinytest2/articles/shinytest2.html" target="_blank"><code>{shinytest2}</code> package</a> provides useful tools for <strong>unit testing</strong> Shiny apps. We’ll use these unit tests to <span class="teal-text"><strong>ensure that desired app behavior remains consistent, even after changes to the app’s code</strong></span> (the documentation refers to this type of unit testing as <em>regression testing</em> – we’ll use these tests to verify that app behavior <em>does not regress</em>).</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
-<p class="body-text">
-From the <code>{shinytest2}</code> documentation:
-</p>
+<p>From the <code>{shinytest2}</code> documentation:</p>
 <p class="body-text-s quote-text-bg">
 “<em><code>{shinytest2}</code> uses <code>{testthat}</code>’s snapshot-based testing strategy. The first time it runs a set of tests for an application, it performs some scripted interactions with the app and takes one or more snapshots of the application’s state. These snapshots are saved to disk so that future runs of the tests can compare their results to them.</em>”
 </p>
@@ -569,7 +559,7 @@ From the <code>{shinytest2}</code> documentation:
 <!-- *With `{shinytest2}`, we can interact with our app via the "app recorder" and our test code will be automatically generated for us. We can then rerun tests to check for consistency as we iterate on our app.* -->
 <!-- ::: -->
 <div class="footer">
-<p><code>{shinytest2}</code> uses <a href="https://rstudio.github.io/chromote/"><code>{chromote}</code></a> to render your app in a headless <a href="https://www.chromium.org/chromium-projects/">Chromium browser</a> – by default, it uses Google Chrome, so make sure you have that installed on your OS</p>
+<p><code>{shinytest2}</code> uses <a href="https://rstudio.github.io/chromote/" target="_blank"><code>{chromote}</code></a> to render your app in a headless <a href="https://www.chromium.org/chromium-projects/" target="_blank">Chromium browser</a> – by default, it uses Google Chrome, so make sure you have that installed on your OS</p>
 </div>
 </section>
 <section id="setting-stage" class="slide level2" data-menu-title="Setting the stage">
@@ -676,10 +666,10 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title">Write down your assertions</span></p>
 <hr>
-<p>Before we dive into writing any tests, it’s super helpful to inspect your app and <em>importantly</em>, <strong>jot down (in your own words) the expected behaviors of your application</strong>. These will form the basis of the <a href="https://en.wikipedia.org/wiki/Test_assertion">assertions</a> made in your tests.</p>
+<p>Before we dive into writing any tests, it’s super helpful to inspect your app and <em>importantly</em>, <strong>jot down (in your own words) the expected behaviors of your application</strong>. These will form the basis of the <a href="https://en.wikipedia.org/wiki/Test_assertion" target="_blank">assertions</a> made in your tests.</p>
 <p><br></p>
 <div class="fragment">
-<p>I find it helpful to make a table that outlines both (a) what <strong>actions</strong> can be taken by a user? and (b) what are the <strong>expected outputs / behaviors</strong> that result from those actions?</p>
+<p>I find it helpful to make a table that outlines both <span class="teal-text"><strong>(a)</strong></span> what <strong>actions</strong> can be taken by a user? and <span class="teal-text"><strong>(b)</strong></span> what are the <strong>expected outputs / behaviors</strong> that result from those actions?</p>
 <p><br></p>
 </div>
 <div class="fragment">
@@ -776,7 +766,7 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="sc">!</span> Chromote<span class="sc">:</span> timed out waiting <span class="cf">for</span> response to command Target.createTarget</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
-<p>It’s a pretty annoying error, which seems to be an <a href="https://github.com/rstudio/chromote/issues/94">ongoing issue</a> with <code>{chromote}</code>. R may be slow to restart (and I’ve had to restart numerous times <i class="fa-solid fa-face-sad-tear" title="a sad face with a tear" aria-label="face-sad-tear"></i>).</p>
+<p>It’s a pretty annoying error, which seems to be an <a href="https://github.com/rstudio/chromote/issues/94" target="_blank">ongoing issue</a> with <code>{chromote}</code>. R may be slow to restart (and I’ve had to restart numerous times <i class="fa-solid fa-face-sad-tear" title="a sad face with a tear" aria-label="face-sad-tear"></i>).</p>
 </section>
 <section id="ft1-test1" class="slide level2" data-menu-title="Feature 1, test 1">
 <h2></h2>
@@ -919,7 +909,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 </div><div class="column" style="width:50%;">
 <div class="center-text body-text-s">
-<p><code>one-name-greeting-001.json</code>, a <a href="https://www.json.org/json-en.html">JSON</a> representation of the state of the app when <code>app$expect_values()</code> was called:</p>
+<p><code>one-name-greeting-001.json</code>, a <a href="https://www.json.org/json-en.html" target="_blank">JSON</a> representation of the state of the app when <code>app$expect_values()</code> was called:</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb8-1"><a></a><span class="fu">{</span></span>
@@ -937,7 +927,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 </div></div>
 <div class="footer">
-<p>We don’t have any exported values in our app, and we won’t be covering those here. Read more about exported values in the <a href="https://rstudio.github.io/shinytest2/articles/in-depth.html#exported-values"><code>{shinytest2}</code> documentation</a>.</p>
+<p>We don’t have any exported values in our app, and we won’t be covering those here. Read more about exported values in the <a href="https://rstudio.github.io/shinytest2/articles/in-depth.html#exported-values" target="_blank"><code>{shinytest2}</code> documentation</a>.</p>
 </div>
 </section>
 <section id="test-recap" class="slide level2" data-menu-title="Test recap">
@@ -1013,7 +1003,7 @@ From the <code>{shinytest2}</code> documentation:
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b027bd70" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_f68e34e5" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1173,7 +1163,7 @@ From the <code>{shinytest2}</code> documentation:
 <p><br></p>
 <p><span class="teal-text body-text-m"><strong>Steps:</strong></span></p>
 <ol type="1">
-<li>Install the <a href="https://github.com/r-lib/diffviewer"><code>{diffviewer}</code> package</a></li>
+<li>Install the <a href="https://github.com/r-lib/diffviewer" target="_blank"><code>{diffviewer}</code> package</a></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"diffviewer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1400,7 +1390,7 @@ From the <code>{shinytest2}</code> documentation:
 <h2></h2>
 <p><span class="slide-title2">Run your app &amp; play around with the new feature</span></p>
 <hr>
-<p>You can practice uploading <a href="https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link">this csv file, <code>real-sample-data.csv</code></a>, which is representative of the data that your team will want processed.</p>
+<p>You can practice uploading <a href="https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link" target="_blank">this csv file, <code>real-sample-data.csv</code></a>, which is representative of the data that your team will want processed.</p>
 
 <img data-src="images/part6/ft2-upload.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p><br></p>
 <div class="center-text">
@@ -1414,7 +1404,7 @@ From the <code>{shinytest2}</code> documentation:
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6d5a164e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_54626019" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1954,7 +1944,7 @@ From the <code>{shinytest2}</code> documentation:
 <p><span class="teal-text"><strong>Steps:</strong></span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Run <code>shinytest2::record_test("testing-app")</code> in the Console</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(2</strong></span> Click Browse, select <code>incorrect-cols.csv</code> from your Desktop (or wherever you have it saved)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Hold down the Command/Control button on your keyboard, then click on the <strong>output</strong> – for us, that’s the error message that is rendered in place of <code>summary_table_output</code></span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Hold down the <code>cmd</code>/<code>ctrl</code> button on your keyboard, then click on the <strong>output</strong> – for us, that’s the error message that is rendered in place of <code>summary_table_output</code></span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> Give the test a unique name (e.g.&nbsp;<code>upload-incorrect-cols</code>) &gt; click Save test and exit (tests should automatically execute and pass!)</span></p>
 <!-- [[**(5)**]{.teal-text} The test recorder will quick, and your test will automatically execute (it should pass!)]{.body-text-s} -->
 </div></div>
@@ -2148,7 +2138,7 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb26-84"><a></a>      <span class="fu">sidebarPanel</span>(</span>
 <span id="cb26-85"><a></a>        </span>
 <span id="cb26-86"><a></a>        <span class="co"># penguin spp pickerInput -----</span></span>
-<span id="cb26-87"><a></a>        <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select species:"</span>,</span>
+<span id="cb26-87"><a></a>        <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_spp_scatterplot_input"</span>, <span class="at">label =</span> <span class="st">"Select species:"</span>,</span>
 <span id="cb26-88"><a></a>                    <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
 <span id="cb26-89"><a></a>                    <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
 <span id="cb26-90"><a></a>                    <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
@@ -2247,10 +2237,10 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb27-73"><a></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb27-74"><a></a>    </span>
 <span id="cb27-75"><a></a>    <span class="fu">validate</span>(</span>
-<span id="cb27-76"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>penguinSpp_scatterplot_input) <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Please select at least one penguin species to visualize data for."</span>))</span>
+<span id="cb27-76"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>penguin_spp_scatterplot_input) <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Please select at least one penguin species to visualize data for."</span>))</span>
 <span id="cb27-77"><a></a>    </span>
 <span id="cb27-78"><a></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb27-79"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
+<span id="cb27-79"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguin_spp_scatterplot_input)</span>
 <span id="cb27-80"><a></a>    </span>
 <span id="cb27-81"><a></a>  })</span>
 <span id="cb27-82"><a></a>  </span>
@@ -2327,7 +2317,7 @@ From the <code>{shinytest2}</code> documentation:
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_24d3ba88" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_e0be106e" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2421,27 +2411,27 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb28-79"><a></a></span>
 <span id="cb28-80"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: deselect-adelie"</span>, {</span>
 <span id="cb28-81"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"deselect-adelie"</span>, <span class="at">height =</span> <span class="dv">1048</span>, <span class="at">width =</span> <span class="dv">1441</span>)</span>
-<span id="cb28-82"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-83"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input =</span> <span class="fu">c</span>(<span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>))</span>
+<span id="cb28-82"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-83"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input =</span> <span class="fu">c</span>(<span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>))</span>
 <span id="cb28-84"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
-<span id="cb28-85"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-85"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb28-86"><a></a>})</span>
 <span id="cb28-87"><a></a></span>
 <span id="cb28-88"><a></a></span>
 <span id="cb28-89"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: consecutive-spp-selections"</span>, {</span>
 <span id="cb28-90"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-spp-selections"</span>, <span class="at">height =</span> <span class="dv">1048</span>, <span class="at">width =</span> <span class="dv">1441</span>)</span>
-<span id="cb28-91"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-92"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input =</span> <span class="fu">character</span>(<span class="dv">0</span>))</span>
+<span id="cb28-91"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-92"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input =</span> <span class="fu">character</span>(<span class="dv">0</span>))</span>
 <span id="cb28-93"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
-<span id="cb28-94"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-95"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-96"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input =</span> <span class="st">"Gentoo"</span>)</span>
+<span id="cb28-94"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-95"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-96"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input =</span> <span class="st">"Gentoo"</span>)</span>
 <span id="cb28-97"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
-<span id="cb28-98"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-99"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb28-100"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>))</span>
+<span id="cb28-98"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-99"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-100"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>))</span>
 <span id="cb28-101"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
-<span id="cb28-102"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguinSpp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-102"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_scatterplot_input_open =</span> <span class="cn">FALSE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb28-103"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -2451,7 +2441,7 @@ From the <code>{shinytest2}</code> documentation:
 <hr>
 <p><span class="body-text-s">Let’s say we want to extract our <code>pickerInput</code> code from our UI and turn it into a function. We make the following updates to our code:</span></p>
 <div class="panel-tabset">
-<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1"><code>global.R</code></a></li><li><a href="#tabset-4-2"><code>ui.R</code></a></li><li><a href="#tabset-4-3"><code>server.R</code></a></li><li><a href="#tabset-4-4"><code>penguinSpp_pickerInput.R</code></a></li></ul>
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1"><code>global.R</code></a></li><li><a href="#tabset-4-2"><code>ui.R</code></a></li><li><a href="#tabset-4-3"><code>server.R</code></a></li><li><a href="#tabset-4-4"><code>penguin_spp_pickerInput.R</code></a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1">
 <p><span class="body-text-s">(File is unchanged)</span></p>
@@ -2560,7 +2550,7 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb30-84"><a></a>      <span class="fu">sidebarPanel</span>(</span>
 <span id="cb30-85"><a></a>        </span>
 <span id="cb30-86"><a></a>        <span class="co"># penguin spp pickerInput -----</span></span>
-<span id="cb30-87"><a></a>        <span class="fu">penguinSpp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguinSpp_scatterplot_input"</span>)</span>
+<span id="cb30-87"><a></a>        <span class="fu">penguin_spp_pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_spp_scatterplot_input"</span>)</span>
 <span id="cb30-88"><a></a></span>
 <span id="cb30-89"><a></a>      ), <span class="co"># </span><span class="re">END</span><span class="co"> plot sidebarPanel</span></span>
 <span id="cb30-90"><a></a>      </span>
@@ -2661,10 +2651,10 @@ From the <code>{shinytest2}</code> documentation:
 <span id="cb31-73"><a></a>  filtered_spp_scatterplot_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb31-74"><a></a>    </span>
 <span id="cb31-75"><a></a>    <span class="fu">validate</span>(</span>
-<span id="cb31-76"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>penguinSpp_scatterplot_input) <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Please select at least one penguin species to visualize data for."</span>))</span>
+<span id="cb31-76"><a></a>      <span class="fu">need</span>(<span class="fu">length</span>(input<span class="sc">$</span>penguin_spp_scatterplot_input) <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"Please select at least one penguin species to visualize data for."</span>))</span>
 <span id="cb31-77"><a></a>    </span>
 <span id="cb31-78"><a></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb31-79"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguinSpp_scatterplot_input)</span>
+<span id="cb31-79"><a></a>      <span class="fu">filter</span>(species <span class="sc">%in%</span> input<span class="sc">$</span>penguin_spp_scatterplot_input)</span>
 <span id="cb31-80"><a></a>    </span>
 <span id="cb31-81"><a></a>  })</span>
 <span id="cb31-82"><a></a>  </span>
@@ -2693,17 +2683,18 @@ From the <code>{shinytest2}</code> documentation:
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>~/testing-app/R/penguinSpp_pickerInput.R</strong></pre>
+<pre><strong>~/testing-app/R/penguin_spp_pickerInput.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>penguinSpp_pickerInput <span class="ot">&lt;-</span> <span class="cf">function</span>(inputId) {</span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>penguin_spp_pickerInput <span class="ot">&lt;-</span> <span class="cf">function</span>(inputId) {</span>
 <span id="cb32-2"><a></a>  </span>
-<span id="cb32-3"><a></a>  <span class="fu">pickerInput</span>(<span class="at">inputId =</span> inputId, <span class="at">label =</span> <span class="st">"Select species:"</span>,</span>
-<span id="cb32-4"><a></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb32-5"><a></a>              <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb32-6"><a></a>              <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb32-7"><a></a>              <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-8"><a></a>  </span>
-<span id="cb32-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-3"><a></a>  <span class="fu">pickerInput</span>(<span class="at">inputId =</span> inputId, </span>
+<span id="cb32-4"><a></a>              <span class="at">label =</span> <span class="st">"Select species:"</span>,</span>
+<span id="cb32-5"><a></a>              <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb32-6"><a></a>              <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb32-7"><a></a>              <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-8"><a></a>              <span class="at">multiple =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-9"><a></a>  </span>
+<span id="cb32-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2758,10 +2749,14 @@ From the <code>{shinytest2}</code> documentation:
 <p><span class="slide-title">A couple final tips for testing</span></p>
 <hr>
 <p><br></p>
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Use <code>record_test()</code> fairly often</strong> – make a test recording for each feature of your app (many little recordings are encouraged!)</p>
+<ul>
+<li><strong>Use <code>record_test()</code> fairly often</strong> – make a test recording for each feature of your app (many little recordings are encouraged!)</li>
+</ul>
 <!-- . . .  -->
 <p><br></p>
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>Think of both the most common <em>and</em> uncommon pathways that your user may take when interacting with your app.</strong> E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?</p>
+<ul>
+<li><strong>Think of both the most common <em>and</em> uncommon pathways that your user may take when interacting with your app.</strong> E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?</li>
+</ul>
 <!-- . . . -->
 <!-- <br> -->
 <!-- []{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`. -->
@@ -2780,12 +2775,12 @@ This is only a brief intro to <code>{shinytest2}</code>! Dig into the <a href="h
 End part 7.2
 </p>
 <p class="caption-text">
-<em><strong>Up next:</strong> streamlining code</em>
+<em><strong>Up next:</strong> wrap up</em>
 </p>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_689a6bfb" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_b3d2b6f3" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

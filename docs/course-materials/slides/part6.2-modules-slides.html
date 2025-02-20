@@ -398,7 +398,7 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 6.2</span></p>
+<p><span class="custom-title">EDS 296: Part 6.2</span></p>
 <p><span class="custom-subtitle"><em>Modules</em></span></p>
 <hr class="hr-teal">
 <!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
@@ -418,45 +418,31 @@
 <h2></h2>
 <p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - Modules</span></p>
 <hr>
-<p class="body-text-l teal-text bottombr">
-By the end of this section, you should have an intro-level understanding of:
-</p>
-<div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> what is a shiny module and when it might make sense to build one
-</p>
+<div class="body-text-l teal-text">
+<p>By the end of this section, you should have an intro-level understanding of:</p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> the structure of a shiny module
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> what is a shiny module and when it might make sense to build one</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> how to use a module
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> the structure of a shiny module</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-l teal-text topbr">
-Packages introduced:
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> how to use a module</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<svg aria-label="Box Open" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Box Open</title><path d="M58.9 42.1c3-6.1 9.6-9.6 16.3-8.7L320 64 564.8 33.4c6.7-.8 13.3 2.7 16.3 8.7l41.7 83.4c9 17.9-.6 39.6-19.8 45.1L439.6 217.3c-13.9 4-28.8-1.9-36.2-14.3L320 64 236.6 203c-7.4 12.4-22.3 18.3-36.2 14.3L37.1 170.6c-19.3-5.5-28.8-27.2-19.8-45.1L58.9 42.1zM321.1 128l54.9 91.4c14.9 24.8 44.6 36.6 72.5 28.6L576 211.6v167c0 22-15 41.2-36.4 46.6l-204.1 51c-10.2 2.6-20.9 2.6-31 0l-204.1-51C79 419.7 64 400.5 64 378.5v-167L191.6 248c27.8 8 57.6-3.8 72.5-28.6L318.9 128h2.2z"></path></svg> <code>{gapminder}</code>: data
-</p>
+<p><span class="body-text-l teal-text">Packages introduced:</span></p>
+</div>
+<div class="fragment">
+<p><span class="body-text-s"><svg aria-label="Box Open" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#05859B;overflow:visible;position:relative;"><title>Box Open</title><path d="M58.9 42.1c3-6.1 9.6-9.6 16.3-8.7L320 64 564.8 33.4c6.7-.8 13.3 2.7 16.3 8.7l41.7 83.4c9 17.9-.6 39.6-19.8 45.1L439.6 217.3c-13.9 4-28.8-1.9-36.2-14.3L320 64 236.6 203c-7.4 12.4-22.3 18.3-36.2 14.3L37.1 170.6c-19.3-5.5-28.8-27.2-19.8-45.1L58.9 42.1zM321.1 128l54.9 91.4c14.9 24.8 44.6 36.6 72.5 28.6L576 211.6v167c0 22-15 41.2-36.4 46.6l-204.1 51c-10.2 2.6-20.9 2.6-31 0l-204.1-51C79 419.7 64 400.5 64 378.5v-167L191.6 248c27.8 8 57.6-3.8 72.5-28.6L318.9 128h2.2z"></path></svg> <code>{gapminder}</code>: data</span></p>
 </div>
 </section>
 <section id="gapminder-app" class="slide level2" data-menu-title="Gapminder app">
 <h2></h2>
 <p><span class="slide-title2">The utility of modules is best demonstrated by taking a look at an example app</span></p>
 <hr>
-<p class="body-text-s">
-This app, developed by <a href="https://github.com/garrettgman">Garrett Grolemund</a> &amp; <a href="https://github.com/jcheng5">Joe Cheng</a> as part of their <a href="https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806">Modules</a> lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.
-</p>
-<p class="body-text-s">
-It uses the <code>gapminder</code> data set to display life expectancy by GDP per capita from 1952 to 2007 for Africa, the Americas, Asia, Europe, Oceania, and all regions collectively. The only difference between each tab is the subset of data displayed.
-</p>
+<p><span class="body-text-s">This app, developed by <a href="https://github.com/garrettgman" target="_blank">Garrett Grolemund</a> &amp; <a href="https://github.com/jcheng5" target="_blank">Joe Cheng</a> as part of their <a href="https://www.rstudio.com/resources/shiny-dev-con/modules/?_ga=2.163786815.1475817156.1670220567-309155161.1666221806" target="_blank">Modules</a> lesson, taught at the 2016 Shiny Developer Conference, is a prime candidate for modularization.</span></p>
+<p><span class="body-text-s">It uses the <code>gapminder</code> data set to display life expectancy by GDP per capita from 1952 to 2007 for Africa, the Americas, Asia, Europe, Oceania, and all regions collectively. The only difference between each tab is the subset of data displayed.</span></p>
 
 <img data-src="images/part7/gapminder-app.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="The gapminder app, which has 6 tabs, one for each global region. A bubble plot takes up the width of the ap and displays Life Expectancy by GDP per capita, where each bubble represents a country and the size of bubbles represent the population size of that country. An automated sliderInput advances through the years (1952-2007), and the plot updates accordingly."></section>
 <section id="gapminder-code" class="slide level2" data-menu-title="Gapminder code">
@@ -468,328 +454,326 @@ It uses the <code>gapminder</code> data set to display life expectancy by GDP pe
 <div class="code-with-filename-file">
 <pre><strong>~/modularized-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># app.R</span></span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="co">#..............................setup.............................</span></span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co"># Note: This code creates data sets to use in each tab.</span></span>
-<span id="cb1-9"><a></a><span class="co"># It removes Kuwait since Kuwait distorts the gdp scale</span></span>
-<span id="cb1-10"><a></a>all_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, country <span class="sc">!=</span> <span class="st">"Kuwait"</span>)</span>
-<span id="cb1-11"><a></a>africa_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
-<span id="cb1-12"><a></a>americas_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Americas"</span>)</span>
-<span id="cb1-13"><a></a>asia_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Asia"</span>, country <span class="sc">!=</span> <span class="st">"Kuwait"</span>)</span>
-<span id="cb1-14"><a></a>europe_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Europe"</span>)</span>
-<span id="cb1-15"><a></a>oceania_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Oceania"</span>)</span>
-<span id="cb1-16"><a></a></span>
-<span id="cb1-17"><a></a><span class="co">#...............................ui...............................</span></span>
-<span id="cb1-18"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-19"><a></a>  </span>
-<span id="cb1-20"><a></a>  <span class="co"># app title ----</span></span>
-<span id="cb1-21"><a></a>  <span class="fu">titlePanel</span>(<span class="st">"Gapminder"</span>),</span>
-<span id="cb1-22"><a></a>  </span>
-<span id="cb1-23"><a></a>  <span class="co"># continent tabsetPanel ----</span></span>
-<span id="cb1-24"><a></a>  <span class="fu">tabsetPanel</span>(<span class="at">id =</span> <span class="st">"continent"</span>, </span>
-<span id="cb1-25"><a></a>              </span>
-<span id="cb1-26"><a></a>              <span class="co"># All tab ----</span></span>
-<span id="cb1-27"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"All"</span>, </span>
-<span id="cb1-28"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"all_plot"</span>),</span>
-<span id="cb1-29"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"all_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
-<span id="cb1-30"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
-<span id="cb1-31"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
-<span id="cb1-32"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> All tab</span></span>
-<span id="cb1-33"><a></a>              </span>
-<span id="cb1-34"><a></a>              <span class="co"># Africa tab ----</span></span>
-<span id="cb1-35"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Africa"</span>, </span>
-<span id="cb1-36"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"africa_plot"</span>),</span>
-<span id="cb1-37"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"africa_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
-<span id="cb1-38"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
-<span id="cb1-39"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
-<span id="cb1-40"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Africa tab </span></span>
-<span id="cb1-41"><a></a>              </span>
-<span id="cb1-42"><a></a>              <span class="co"># Americas tab ----</span></span>
-<span id="cb1-43"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Americas"</span>, </span>
-<span id="cb1-44"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"americas_plot"</span>),</span>
-<span id="cb1-45"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"americas_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
-<span id="cb1-46"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
-<span id="cb1-47"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
-<span id="cb1-48"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Americas tab</span></span>
-<span id="cb1-49"><a></a>              </span>
-<span id="cb1-50"><a></a>              <span class="co"># Asia tab ----</span></span>
-<span id="cb1-51"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Asia"</span>, </span>
-<span id="cb1-52"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"asia_plot"</span>),</span>
-<span id="cb1-53"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"asia_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
-<span id="cb1-54"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
-<span id="cb1-55"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
-<span id="cb1-56"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Asia tab</span></span>
-<span id="cb1-57"><a></a>              </span>
-<span id="cb1-58"><a></a>              <span class="co"># Europe tab ----</span></span>
-<span id="cb1-59"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Europe"</span>, </span>
-<span id="cb1-60"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"europe_plot"</span>),</span>
-<span id="cb1-61"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"europe_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
-<span id="cb1-62"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, </span>
-<span id="cb1-63"><a></a>                                   <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
-<span id="cb1-64"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Europe</span></span>
-<span id="cb1-65"><a></a>              </span>
-<span id="cb1-66"><a></a>              <span class="co"># Oceania tab ----</span></span>
-<span id="cb1-67"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Oceania"</span>, </span>
-<span id="cb1-68"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"oceania_plot"</span>),</span>
-<span id="cb1-69"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"oceania_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
-<span id="cb1-70"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
-<span id="cb1-71"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
-<span id="cb1-72"><a></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> Oceania tab</span></span>
-<span id="cb1-73"><a></a>              </span>
-<span id="cb1-74"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> continent tabsetPanel</span></span>
-<span id="cb1-75"><a></a>  </span>
-<span id="cb1-76"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
-<span id="cb1-77"><a></a></span>
-<span id="cb1-78"><a></a><span class="co">#.............................server.............................</span></span>
-<span id="cb1-79"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb1-80"><a></a>  </span>
-<span id="cb1-81"><a></a>  <span class="co"># ---- collect one year of data ----</span></span>
-<span id="cb1-82"><a></a>  ydata_all <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-83"><a></a>    <span class="fu">filter</span>(all_data, year <span class="sc">==</span> input<span class="sc">$</span>all_year)</span>
-<span id="cb1-84"><a></a>  })</span>
-<span id="cb1-85"><a></a>  </span>
-<span id="cb1-86"><a></a>  ydata_africa <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-87"><a></a>    <span class="fu">filter</span>(africa_data, year <span class="sc">==</span> input<span class="sc">$</span>africa_year)</span>
-<span id="cb1-88"><a></a>  })</span>
-<span id="cb1-89"><a></a>  </span>
-<span id="cb1-90"><a></a>  ydata_americas <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-91"><a></a>    <span class="fu">filter</span>(americas_data, year <span class="sc">==</span> input<span class="sc">$</span>americas_year)</span>
-<span id="cb1-92"><a></a>  })</span>
-<span id="cb1-93"><a></a>  </span>
-<span id="cb1-94"><a></a>  ydata_asia <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-95"><a></a>    <span class="fu">filter</span>(asia_data, year <span class="sc">==</span> input<span class="sc">$</span>asia_year)</span>
-<span id="cb1-96"><a></a>  })  </span>
-<span id="cb1-97"><a></a>  </span>
-<span id="cb1-98"><a></a>  ydata_europe <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-99"><a></a>    <span class="fu">filter</span>(europe_data, year <span class="sc">==</span> input<span class="sc">$</span>europe_year)</span>
-<span id="cb1-100"><a></a>  })</span>
-<span id="cb1-101"><a></a>  </span>
-<span id="cb1-102"><a></a>  ydata_oceania <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-103"><a></a>    <span class="fu">filter</span>(oceania_data, year <span class="sc">==</span> input<span class="sc">$</span>oceania_year)</span>
-<span id="cb1-104"><a></a>  })</span>
-<span id="cb1-105"><a></a>  </span>
-<span id="cb1-106"><a></a>  <span class="co"># ---- compute plot ranges ----</span></span>
-<span id="cb1-107"><a></a>  xrange_all <span class="ot">&lt;-</span> <span class="fu">range</span>(all_data<span class="sc">$</span>gdpPercap)</span>
-<span id="cb1-108"><a></a>  yrange_all <span class="ot">&lt;-</span> <span class="fu">range</span>(all_data<span class="sc">$</span>lifeExp)</span>
-<span id="cb1-109"><a></a>  </span>
-<span id="cb1-110"><a></a>  xrange_africa <span class="ot">&lt;-</span> <span class="fu">range</span>(africa_data<span class="sc">$</span>gdpPercap)</span>
-<span id="cb1-111"><a></a>  yrange_africa <span class="ot">&lt;-</span> <span class="fu">range</span>(africa_data<span class="sc">$</span>lifeExp)</span>
-<span id="cb1-112"><a></a>  </span>
-<span id="cb1-113"><a></a>  xrange_americas <span class="ot">&lt;-</span> <span class="fu">range</span>(americas_data<span class="sc">$</span>gdpPercap)</span>
-<span id="cb1-114"><a></a>  yrange_americas <span class="ot">&lt;-</span> <span class="fu">range</span>(americas_data<span class="sc">$</span>lifeExp)</span>
-<span id="cb1-115"><a></a>  </span>
-<span id="cb1-116"><a></a>  xrange_asia <span class="ot">&lt;-</span> <span class="fu">range</span>(asia_data<span class="sc">$</span>gdpPercap)</span>
-<span id="cb1-117"><a></a>  yrange_asia <span class="ot">&lt;-</span> <span class="fu">range</span>(asia_data<span class="sc">$</span>lifeExp)</span>
-<span id="cb1-118"><a></a>  </span>
-<span id="cb1-119"><a></a>  xrange_europe <span class="ot">&lt;-</span> <span class="fu">range</span>(europe_data<span class="sc">$</span>gdpPercap)</span>
-<span id="cb1-120"><a></a>  yrange_europe <span class="ot">&lt;-</span> <span class="fu">range</span>(europe_data<span class="sc">$</span>lifeExp)</span>
-<span id="cb1-121"><a></a>  </span>
-<span id="cb1-122"><a></a>  xrange_oceania <span class="ot">&lt;-</span> <span class="fu">range</span>(oceania_data<span class="sc">$</span>gdpPercap)</span>
-<span id="cb1-123"><a></a>  yrange_oceania <span class="ot">&lt;-</span> <span class="fu">range</span>(oceania_data<span class="sc">$</span>lifeExp)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co">#..............................setup.............................</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a><span class="co"># Note: This code creates data sets to use in each tab.</span></span>
+<span id="cb1-7"><a></a><span class="co"># It removes Kuwait since Kuwait distorts the gdp scale</span></span>
+<span id="cb1-8"><a></a>all_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, country <span class="sc">!=</span> <span class="st">"Kuwait"</span>)</span>
+<span id="cb1-9"><a></a>africa_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
+<span id="cb1-10"><a></a>americas_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Americas"</span>)</span>
+<span id="cb1-11"><a></a>asia_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Asia"</span>, country <span class="sc">!=</span> <span class="st">"Kuwait"</span>)</span>
+<span id="cb1-12"><a></a>europe_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Europe"</span>)</span>
+<span id="cb1-13"><a></a>oceania_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(gapminder, continent <span class="sc">==</span> <span class="st">"Oceania"</span>)</span>
+<span id="cb1-14"><a></a></span>
+<span id="cb1-15"><a></a><span class="co">#...............................ui...............................</span></span>
+<span id="cb1-16"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb1-17"><a></a>  </span>
+<span id="cb1-18"><a></a>  <span class="co"># app title ----</span></span>
+<span id="cb1-19"><a></a>  <span class="fu">titlePanel</span>(<span class="st">"Gapminder"</span>),</span>
+<span id="cb1-20"><a></a>  </span>
+<span id="cb1-21"><a></a>  <span class="co"># continent tabsetPanel ----</span></span>
+<span id="cb1-22"><a></a>  <span class="fu">tabsetPanel</span>(<span class="at">id =</span> <span class="st">"continent"</span>, </span>
+<span id="cb1-23"><a></a>              </span>
+<span id="cb1-24"><a></a>              <span class="co"># All tab ----</span></span>
+<span id="cb1-25"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"All"</span>, </span>
+<span id="cb1-26"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"all_plot"</span>),</span>
+<span id="cb1-27"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"all_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
+<span id="cb1-28"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
+<span id="cb1-29"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
+<span id="cb1-30"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> All tab</span></span>
+<span id="cb1-31"><a></a>              </span>
+<span id="cb1-32"><a></a>              <span class="co"># Africa tab ----</span></span>
+<span id="cb1-33"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Africa"</span>, </span>
+<span id="cb1-34"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"africa_plot"</span>),</span>
+<span id="cb1-35"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"africa_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
+<span id="cb1-36"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
+<span id="cb1-37"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
+<span id="cb1-38"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Africa tab </span></span>
+<span id="cb1-39"><a></a>              </span>
+<span id="cb1-40"><a></a>              <span class="co"># Americas tab ----</span></span>
+<span id="cb1-41"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Americas"</span>, </span>
+<span id="cb1-42"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"americas_plot"</span>),</span>
+<span id="cb1-43"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"americas_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
+<span id="cb1-44"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
+<span id="cb1-45"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
+<span id="cb1-46"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Americas tab</span></span>
+<span id="cb1-47"><a></a>              </span>
+<span id="cb1-48"><a></a>              <span class="co"># Asia tab ----</span></span>
+<span id="cb1-49"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Asia"</span>, </span>
+<span id="cb1-50"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"asia_plot"</span>),</span>
+<span id="cb1-51"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"asia_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
+<span id="cb1-52"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
+<span id="cb1-53"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
+<span id="cb1-54"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Asia tab</span></span>
+<span id="cb1-55"><a></a>              </span>
+<span id="cb1-56"><a></a>              <span class="co"># Europe tab ----</span></span>
+<span id="cb1-57"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Europe"</span>, </span>
+<span id="cb1-58"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"europe_plot"</span>),</span>
+<span id="cb1-59"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"europe_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
+<span id="cb1-60"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, </span>
+<span id="cb1-61"><a></a>                                   <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
+<span id="cb1-62"><a></a>              ), <span class="co"># </span><span class="re">END</span><span class="co"> Europe</span></span>
+<span id="cb1-63"><a></a>              </span>
+<span id="cb1-64"><a></a>              <span class="co"># Oceania tab ----</span></span>
+<span id="cb1-65"><a></a>              <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Oceania"</span>, </span>
+<span id="cb1-66"><a></a>                       <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"oceania_plot"</span>),</span>
+<span id="cb1-67"><a></a>                       <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"oceania_year"</span>, <span class="at">label =</span> <span class="st">"Select Year"</span>, </span>
+<span id="cb1-68"><a></a>                                   <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
+<span id="cb1-69"><a></a>                                   <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>))</span>
+<span id="cb1-70"><a></a>              ) <span class="co"># </span><span class="re">END</span><span class="co"> Oceania tab</span></span>
+<span id="cb1-71"><a></a>              </span>
+<span id="cb1-72"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> continent tabsetPanel</span></span>
+<span id="cb1-73"><a></a>  </span>
+<span id="cb1-74"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
+<span id="cb1-75"><a></a></span>
+<span id="cb1-76"><a></a><span class="co">#.............................server.............................</span></span>
+<span id="cb1-77"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb1-78"><a></a>  </span>
+<span id="cb1-79"><a></a>  <span class="co"># ---- collect one year of data ----</span></span>
+<span id="cb1-80"><a></a>  ydata_all <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-81"><a></a>    <span class="fu">filter</span>(all_data, year <span class="sc">==</span> input<span class="sc">$</span>all_year)</span>
+<span id="cb1-82"><a></a>  })</span>
+<span id="cb1-83"><a></a>  </span>
+<span id="cb1-84"><a></a>  ydata_africa <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-85"><a></a>    <span class="fu">filter</span>(africa_data, year <span class="sc">==</span> input<span class="sc">$</span>africa_year)</span>
+<span id="cb1-86"><a></a>  })</span>
+<span id="cb1-87"><a></a>  </span>
+<span id="cb1-88"><a></a>  ydata_americas <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-89"><a></a>    <span class="fu">filter</span>(americas_data, year <span class="sc">==</span> input<span class="sc">$</span>americas_year)</span>
+<span id="cb1-90"><a></a>  })</span>
+<span id="cb1-91"><a></a>  </span>
+<span id="cb1-92"><a></a>  ydata_asia <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-93"><a></a>    <span class="fu">filter</span>(asia_data, year <span class="sc">==</span> input<span class="sc">$</span>asia_year)</span>
+<span id="cb1-94"><a></a>  })  </span>
+<span id="cb1-95"><a></a>  </span>
+<span id="cb1-96"><a></a>  ydata_europe <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-97"><a></a>    <span class="fu">filter</span>(europe_data, year <span class="sc">==</span> input<span class="sc">$</span>europe_year)</span>
+<span id="cb1-98"><a></a>  })</span>
+<span id="cb1-99"><a></a>  </span>
+<span id="cb1-100"><a></a>  ydata_oceania <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-101"><a></a>    <span class="fu">filter</span>(oceania_data, year <span class="sc">==</span> input<span class="sc">$</span>oceania_year)</span>
+<span id="cb1-102"><a></a>  })</span>
+<span id="cb1-103"><a></a>  </span>
+<span id="cb1-104"><a></a>  <span class="co"># ---- compute plot ranges ----</span></span>
+<span id="cb1-105"><a></a>  xrange_all <span class="ot">&lt;-</span> <span class="fu">range</span>(all_data<span class="sc">$</span>gdpPercap)</span>
+<span id="cb1-106"><a></a>  yrange_all <span class="ot">&lt;-</span> <span class="fu">range</span>(all_data<span class="sc">$</span>lifeExp)</span>
+<span id="cb1-107"><a></a>  </span>
+<span id="cb1-108"><a></a>  xrange_africa <span class="ot">&lt;-</span> <span class="fu">range</span>(africa_data<span class="sc">$</span>gdpPercap)</span>
+<span id="cb1-109"><a></a>  yrange_africa <span class="ot">&lt;-</span> <span class="fu">range</span>(africa_data<span class="sc">$</span>lifeExp)</span>
+<span id="cb1-110"><a></a>  </span>
+<span id="cb1-111"><a></a>  xrange_americas <span class="ot">&lt;-</span> <span class="fu">range</span>(americas_data<span class="sc">$</span>gdpPercap)</span>
+<span id="cb1-112"><a></a>  yrange_americas <span class="ot">&lt;-</span> <span class="fu">range</span>(americas_data<span class="sc">$</span>lifeExp)</span>
+<span id="cb1-113"><a></a>  </span>
+<span id="cb1-114"><a></a>  xrange_asia <span class="ot">&lt;-</span> <span class="fu">range</span>(asia_data<span class="sc">$</span>gdpPercap)</span>
+<span id="cb1-115"><a></a>  yrange_asia <span class="ot">&lt;-</span> <span class="fu">range</span>(asia_data<span class="sc">$</span>lifeExp)</span>
+<span id="cb1-116"><a></a>  </span>
+<span id="cb1-117"><a></a>  xrange_europe <span class="ot">&lt;-</span> <span class="fu">range</span>(europe_data<span class="sc">$</span>gdpPercap)</span>
+<span id="cb1-118"><a></a>  yrange_europe <span class="ot">&lt;-</span> <span class="fu">range</span>(europe_data<span class="sc">$</span>lifeExp)</span>
+<span id="cb1-119"><a></a>  </span>
+<span id="cb1-120"><a></a>  xrange_oceania <span class="ot">&lt;-</span> <span class="fu">range</span>(oceania_data<span class="sc">$</span>gdpPercap)</span>
+<span id="cb1-121"><a></a>  yrange_oceania <span class="ot">&lt;-</span> <span class="fu">range</span>(oceania_data<span class="sc">$</span>lifeExp)</span>
+<span id="cb1-122"><a></a>  </span>
+<span id="cb1-123"><a></a>  <span class="co"># ---- render plots ----</span></span>
 <span id="cb1-124"><a></a>  </span>
-<span id="cb1-125"><a></a>  <span class="co"># ---- render plots ----</span></span>
-<span id="cb1-126"><a></a>  </span>
-<span id="cb1-127"><a></a>  <span class="co"># render all countries ----</span></span>
-<span id="cb1-128"><a></a>  output<span class="sc">$</span>all_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-129"><a></a>    </span>
-<span id="cb1-130"><a></a>    <span class="co"># draw background plot with legend </span></span>
-<span id="cb1-131"><a></a>    <span class="fu">plot</span>(all_data<span class="sc">$</span>gdpPercap, all_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb1-132"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
-<span id="cb1-133"><a></a>         <span class="at">panel.first =</span> {</span>
-<span id="cb1-134"><a></a>           <span class="fu">grid</span>()</span>
-<span id="cb1-135"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_all), <span class="fu">mean</span>(yrange_all), input<span class="sc">$</span>all_year, </span>
-<span id="cb1-136"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
-<span id="cb1-137"><a></a>         }</span>
-<span id="cb1-138"><a></a>    )</span>
-<span id="cb1-139"><a></a>    </span>
-<span id="cb1-140"><a></a>    <span class="co"># build legend</span></span>
-<span id="cb1-141"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(all_data<span class="sc">$</span>continent), </span>
-<span id="cb1-142"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_all)<span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-143"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
-<span id="cb1-144"><a></a>    )</span>
-<span id="cb1-145"><a></a>    </span>
-<span id="cb1-146"><a></a>    <span class="co"># Determine bubble colors</span></span>
-<span id="cb1-147"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
-<span id="cb1-148"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
-<span id="cb1-149"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
-<span id="cb1-150"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
-<span id="cb1-151"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_all</span>()<span class="sc">$</span>continent]</span>
-<span id="cb1-152"><a></a>    </span>
-<span id="cb1-153"><a></a>    <span class="co"># add bubbles </span></span>
-<span id="cb1-154"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_all</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_all</span>()<span class="sc">$</span>lifeExp, </span>
-<span id="cb1-155"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_all</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
-<span id="cb1-156"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-157"><a></a>  })</span>
-<span id="cb1-158"><a></a>  </span>
-<span id="cb1-159"><a></a>  <span class="co"># render africa ----</span></span>
-<span id="cb1-160"><a></a>  output<span class="sc">$</span>africa_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-161"><a></a>    </span>
-<span id="cb1-162"><a></a>    <span class="co"># draw background plot with legend</span></span>
-<span id="cb1-163"><a></a>    <span class="fu">plot</span>(africa_data<span class="sc">$</span>gdpPercap, africa_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb1-164"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
-<span id="cb1-165"><a></a>         <span class="at">panel.first =</span> {</span>
-<span id="cb1-166"><a></a>           <span class="fu">grid</span>()</span>
-<span id="cb1-167"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_africa), <span class="fu">mean</span>(yrange_africa), input<span class="sc">$</span>africa_year, </span>
-<span id="cb1-168"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
-<span id="cb1-169"><a></a>         }</span>
-<span id="cb1-170"><a></a>    )</span>
-<span id="cb1-171"><a></a>    </span>
-<span id="cb1-172"><a></a>    <span class="co"># build legend</span></span>
-<span id="cb1-173"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(africa_data<span class="sc">$</span>continent), </span>
-<span id="cb1-174"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_africa)<span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-175"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
-<span id="cb1-176"><a></a>    )</span>
-<span id="cb1-177"><a></a>    </span>
-<span id="cb1-178"><a></a>    <span class="co"># Determine bubble colors</span></span>
-<span id="cb1-179"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
-<span id="cb1-180"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
-<span id="cb1-181"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
-<span id="cb1-182"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
-<span id="cb1-183"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_africa</span>()<span class="sc">$</span>continent]</span>
-<span id="cb1-184"><a></a>    </span>
-<span id="cb1-185"><a></a>    <span class="co"># add bubbles</span></span>
-<span id="cb1-186"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_africa</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_africa</span>()<span class="sc">$</span>lifeExp, </span>
-<span id="cb1-187"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_africa</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
-<span id="cb1-188"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-189"><a></a>  })</span>
-<span id="cb1-190"><a></a>  </span>
-<span id="cb1-191"><a></a>  <span class="co"># render americas ----</span></span>
-<span id="cb1-192"><a></a>  output<span class="sc">$</span>americas_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-193"><a></a>    </span>
-<span id="cb1-194"><a></a>    <span class="co"># draw background plot with legend</span></span>
-<span id="cb1-195"><a></a>    <span class="fu">plot</span>(americas_data<span class="sc">$</span>gdpPercap, americas_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb1-196"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
-<span id="cb1-197"><a></a>         <span class="at">panel.first =</span> {</span>
-<span id="cb1-198"><a></a>           <span class="fu">grid</span>()</span>
-<span id="cb1-199"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_americas), <span class="fu">mean</span>(yrange_americas), input<span class="sc">$</span>americas_year, </span>
-<span id="cb1-200"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
-<span id="cb1-201"><a></a>         }</span>
-<span id="cb1-202"><a></a>    )</span>
-<span id="cb1-203"><a></a>    </span>
-<span id="cb1-204"><a></a>    <span class="co"># build legend</span></span>
-<span id="cb1-205"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(americas_data<span class="sc">$</span>continent), </span>
-<span id="cb1-206"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_americas)<span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-207"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
-<span id="cb1-208"><a></a>    )</span>
-<span id="cb1-209"><a></a>    </span>
-<span id="cb1-210"><a></a>    <span class="co"># Determine bubble colors</span></span>
-<span id="cb1-211"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
-<span id="cb1-212"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
-<span id="cb1-213"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
-<span id="cb1-214"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
-<span id="cb1-215"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_americas</span>()<span class="sc">$</span>continent]</span>
-<span id="cb1-216"><a></a>    </span>
-<span id="cb1-217"><a></a>    <span class="co"># add bubbles</span></span>
-<span id="cb1-218"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_americas</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_americas</span>()<span class="sc">$</span>lifeExp, </span>
-<span id="cb1-219"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_americas</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
-<span id="cb1-220"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-221"><a></a>  })</span>
-<span id="cb1-222"><a></a>  </span>
-<span id="cb1-223"><a></a>  <span class="co"># render asia ----</span></span>
-<span id="cb1-224"><a></a>  output<span class="sc">$</span>asia_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-225"><a></a>    </span>
-<span id="cb1-226"><a></a>    <span class="co"># draw background plot with legend</span></span>
-<span id="cb1-227"><a></a>    <span class="fu">plot</span>(asia_data<span class="sc">$</span>gdpPercap, asia_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb1-228"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
-<span id="cb1-229"><a></a>         <span class="at">panel.first =</span> {</span>
-<span id="cb1-230"><a></a>           <span class="fu">grid</span>()</span>
-<span id="cb1-231"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_asia), <span class="fu">mean</span>(yrange_asia), input<span class="sc">$</span>asia_year, </span>
-<span id="cb1-232"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
-<span id="cb1-233"><a></a>         }</span>
-<span id="cb1-234"><a></a>    )</span>
-<span id="cb1-235"><a></a>    </span>
-<span id="cb1-236"><a></a>    <span class="co"># build legend</span></span>
-<span id="cb1-237"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(asia_data<span class="sc">$</span>continent), </span>
-<span id="cb1-238"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_asia)<span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-239"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
-<span id="cb1-240"><a></a>    )</span>
-<span id="cb1-241"><a></a>    </span>
-<span id="cb1-242"><a></a>    <span class="co"># Determine bubble colors</span></span>
-<span id="cb1-243"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
-<span id="cb1-244"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
-<span id="cb1-245"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
-<span id="cb1-246"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
-<span id="cb1-247"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_asia</span>()<span class="sc">$</span>continent]</span>
-<span id="cb1-248"><a></a>    </span>
-<span id="cb1-249"><a></a>    <span class="co"># add bubbles</span></span>
-<span id="cb1-250"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_asia</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_asia</span>()<span class="sc">$</span>lifeExp, </span>
-<span id="cb1-251"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_asia</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
-<span id="cb1-252"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-253"><a></a>  })</span>
-<span id="cb1-254"><a></a>  </span>
-<span id="cb1-255"><a></a>  <span class="co"># render europe ----</span></span>
-<span id="cb1-256"><a></a>  output<span class="sc">$</span>europe_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-257"><a></a>    <span class="fu">stop</span>(<span class="st">"Error: Don't look at Europe"</span>)</span>
-<span id="cb1-258"><a></a>    <span class="co"># draw background plot with legend</span></span>
-<span id="cb1-259"><a></a>    <span class="fu">plot</span>(europe_data<span class="sc">$</span>gdpPercap, europe_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb1-260"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
-<span id="cb1-261"><a></a>         <span class="at">panel.first =</span> {</span>
-<span id="cb1-262"><a></a>           <span class="fu">grid</span>()</span>
-<span id="cb1-263"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_europe), <span class="fu">mean</span>(yrange_europe), input<span class="sc">$</span>europe_year, </span>
-<span id="cb1-264"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
-<span id="cb1-265"><a></a>         }</span>
-<span id="cb1-266"><a></a>    )</span>
-<span id="cb1-267"><a></a>    </span>
-<span id="cb1-268"><a></a>    <span class="co"># build legend</span></span>
-<span id="cb1-269"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(europe_data<span class="sc">$</span>continent), </span>
-<span id="cb1-270"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_europe)<span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-271"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
-<span id="cb1-272"><a></a>    )</span>
-<span id="cb1-273"><a></a>    </span>
-<span id="cb1-274"><a></a>    <span class="co"># Determine bubble colors</span></span>
-<span id="cb1-275"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
-<span id="cb1-276"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
-<span id="cb1-277"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
-<span id="cb1-278"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
-<span id="cb1-279"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_europe</span>()<span class="sc">$</span>continent]</span>
-<span id="cb1-280"><a></a>    </span>
-<span id="cb1-281"><a></a>    <span class="co"># add bubbles</span></span>
-<span id="cb1-282"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_europe</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_europe</span>()<span class="sc">$</span>lifeExp, </span>
-<span id="cb1-283"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_europe</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
-<span id="cb1-284"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-285"><a></a>  })</span>
-<span id="cb1-286"><a></a>  </span>
-<span id="cb1-287"><a></a>  <span class="co"># render oceania ----</span></span>
-<span id="cb1-288"><a></a>  output<span class="sc">$</span>oceania_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-289"><a></a>    </span>
-<span id="cb1-290"><a></a>    <span class="co"># draw background plot with legend</span></span>
-<span id="cb1-291"><a></a>    <span class="fu">plot</span>(oceania_data<span class="sc">$</span>gdpPercap, oceania_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb1-292"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
-<span id="cb1-293"><a></a>         <span class="at">panel.first =</span> {</span>
-<span id="cb1-294"><a></a>           <span class="fu">grid</span>()</span>
-<span id="cb1-295"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_oceania), <span class="fu">mean</span>(yrange_oceania), input<span class="sc">$</span>oceania_year, </span>
-<span id="cb1-296"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
-<span id="cb1-297"><a></a>         }</span>
-<span id="cb1-298"><a></a>    )</span>
-<span id="cb1-299"><a></a>    </span>
-<span id="cb1-300"><a></a>    <span class="co"># build legend</span></span>
-<span id="cb1-301"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(oceania_data<span class="sc">$</span>continent), </span>
-<span id="cb1-302"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_oceania)<span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-303"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
-<span id="cb1-304"><a></a>    )</span>
-<span id="cb1-305"><a></a>    </span>
-<span id="cb1-306"><a></a>    <span class="co"># Determine bubble colors</span></span>
-<span id="cb1-307"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
-<span id="cb1-308"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
-<span id="cb1-309"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
-<span id="cb1-310"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
-<span id="cb1-311"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_oceania</span>()<span class="sc">$</span>continent]</span>
-<span id="cb1-312"><a></a>    </span>
-<span id="cb1-313"><a></a>    <span class="co"># add bubbles ----</span></span>
-<span id="cb1-314"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_oceania</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_oceania</span>()<span class="sc">$</span>lifeExp, </span>
-<span id="cb1-315"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_oceania</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
-<span id="cb1-316"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-317"><a></a>  })</span>
-<span id="cb1-318"><a></a>  </span>
-<span id="cb1-319"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
-<span id="cb1-320"><a></a></span>
-<span id="cb1-321"><a></a><span class="co"># Run the application </span></span>
-<span id="cb1-322"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-125"><a></a>  <span class="co"># render all countries ----</span></span>
+<span id="cb1-126"><a></a>  output<span class="sc">$</span>all_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-127"><a></a>    </span>
+<span id="cb1-128"><a></a>    <span class="co"># draw background plot with legend </span></span>
+<span id="cb1-129"><a></a>    <span class="fu">plot</span>(all_data<span class="sc">$</span>gdpPercap, all_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-130"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
+<span id="cb1-131"><a></a>         <span class="at">panel.first =</span> {</span>
+<span id="cb1-132"><a></a>           <span class="fu">grid</span>()</span>
+<span id="cb1-133"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_all), <span class="fu">mean</span>(yrange_all), input<span class="sc">$</span>all_year, </span>
+<span id="cb1-134"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
+<span id="cb1-135"><a></a>         }</span>
+<span id="cb1-136"><a></a>    )</span>
+<span id="cb1-137"><a></a>    </span>
+<span id="cb1-138"><a></a>    <span class="co"># build legend</span></span>
+<span id="cb1-139"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(all_data<span class="sc">$</span>continent), </span>
+<span id="cb1-140"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_all)<span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-141"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
+<span id="cb1-142"><a></a>    )</span>
+<span id="cb1-143"><a></a>    </span>
+<span id="cb1-144"><a></a>    <span class="co"># Determine bubble colors</span></span>
+<span id="cb1-145"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
+<span id="cb1-146"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
+<span id="cb1-147"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
+<span id="cb1-148"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
+<span id="cb1-149"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_all</span>()<span class="sc">$</span>continent]</span>
+<span id="cb1-150"><a></a>    </span>
+<span id="cb1-151"><a></a>    <span class="co"># add bubbles </span></span>
+<span id="cb1-152"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_all</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_all</span>()<span class="sc">$</span>lifeExp, </span>
+<span id="cb1-153"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_all</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
+<span id="cb1-154"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-155"><a></a>  })</span>
+<span id="cb1-156"><a></a>  </span>
+<span id="cb1-157"><a></a>  <span class="co"># render africa ----</span></span>
+<span id="cb1-158"><a></a>  output<span class="sc">$</span>africa_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-159"><a></a>    </span>
+<span id="cb1-160"><a></a>    <span class="co"># draw background plot with legend</span></span>
+<span id="cb1-161"><a></a>    <span class="fu">plot</span>(africa_data<span class="sc">$</span>gdpPercap, africa_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-162"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
+<span id="cb1-163"><a></a>         <span class="at">panel.first =</span> {</span>
+<span id="cb1-164"><a></a>           <span class="fu">grid</span>()</span>
+<span id="cb1-165"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_africa), <span class="fu">mean</span>(yrange_africa), input<span class="sc">$</span>africa_year, </span>
+<span id="cb1-166"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
+<span id="cb1-167"><a></a>         }</span>
+<span id="cb1-168"><a></a>    )</span>
+<span id="cb1-169"><a></a>    </span>
+<span id="cb1-170"><a></a>    <span class="co"># build legend</span></span>
+<span id="cb1-171"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(africa_data<span class="sc">$</span>continent), </span>
+<span id="cb1-172"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_africa)<span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-173"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
+<span id="cb1-174"><a></a>    )</span>
+<span id="cb1-175"><a></a>    </span>
+<span id="cb1-176"><a></a>    <span class="co"># Determine bubble colors</span></span>
+<span id="cb1-177"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
+<span id="cb1-178"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
+<span id="cb1-179"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
+<span id="cb1-180"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
+<span id="cb1-181"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_africa</span>()<span class="sc">$</span>continent]</span>
+<span id="cb1-182"><a></a>    </span>
+<span id="cb1-183"><a></a>    <span class="co"># add bubbles</span></span>
+<span id="cb1-184"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_africa</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_africa</span>()<span class="sc">$</span>lifeExp, </span>
+<span id="cb1-185"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_africa</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
+<span id="cb1-186"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-187"><a></a>  })</span>
+<span id="cb1-188"><a></a>  </span>
+<span id="cb1-189"><a></a>  <span class="co"># render americas ----</span></span>
+<span id="cb1-190"><a></a>  output<span class="sc">$</span>americas_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-191"><a></a>    </span>
+<span id="cb1-192"><a></a>    <span class="co"># draw background plot with legend</span></span>
+<span id="cb1-193"><a></a>    <span class="fu">plot</span>(americas_data<span class="sc">$</span>gdpPercap, americas_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-194"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
+<span id="cb1-195"><a></a>         <span class="at">panel.first =</span> {</span>
+<span id="cb1-196"><a></a>           <span class="fu">grid</span>()</span>
+<span id="cb1-197"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_americas), <span class="fu">mean</span>(yrange_americas), input<span class="sc">$</span>americas_year, </span>
+<span id="cb1-198"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
+<span id="cb1-199"><a></a>         }</span>
+<span id="cb1-200"><a></a>    )</span>
+<span id="cb1-201"><a></a>    </span>
+<span id="cb1-202"><a></a>    <span class="co"># build legend</span></span>
+<span id="cb1-203"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(americas_data<span class="sc">$</span>continent), </span>
+<span id="cb1-204"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_americas)<span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-205"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
+<span id="cb1-206"><a></a>    )</span>
+<span id="cb1-207"><a></a>    </span>
+<span id="cb1-208"><a></a>    <span class="co"># Determine bubble colors</span></span>
+<span id="cb1-209"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
+<span id="cb1-210"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
+<span id="cb1-211"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
+<span id="cb1-212"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
+<span id="cb1-213"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_americas</span>()<span class="sc">$</span>continent]</span>
+<span id="cb1-214"><a></a>    </span>
+<span id="cb1-215"><a></a>    <span class="co"># add bubbles</span></span>
+<span id="cb1-216"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_americas</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_americas</span>()<span class="sc">$</span>lifeExp, </span>
+<span id="cb1-217"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_americas</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
+<span id="cb1-218"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-219"><a></a>  })</span>
+<span id="cb1-220"><a></a>  </span>
+<span id="cb1-221"><a></a>  <span class="co"># render asia ----</span></span>
+<span id="cb1-222"><a></a>  output<span class="sc">$</span>asia_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-223"><a></a>    </span>
+<span id="cb1-224"><a></a>    <span class="co"># draw background plot with legend</span></span>
+<span id="cb1-225"><a></a>    <span class="fu">plot</span>(asia_data<span class="sc">$</span>gdpPercap, asia_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-226"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
+<span id="cb1-227"><a></a>         <span class="at">panel.first =</span> {</span>
+<span id="cb1-228"><a></a>           <span class="fu">grid</span>()</span>
+<span id="cb1-229"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_asia), <span class="fu">mean</span>(yrange_asia), input<span class="sc">$</span>asia_year, </span>
+<span id="cb1-230"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
+<span id="cb1-231"><a></a>         }</span>
+<span id="cb1-232"><a></a>    )</span>
+<span id="cb1-233"><a></a>    </span>
+<span id="cb1-234"><a></a>    <span class="co"># build legend</span></span>
+<span id="cb1-235"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(asia_data<span class="sc">$</span>continent), </span>
+<span id="cb1-236"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_asia)<span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-237"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
+<span id="cb1-238"><a></a>    )</span>
+<span id="cb1-239"><a></a>    </span>
+<span id="cb1-240"><a></a>    <span class="co"># Determine bubble colors</span></span>
+<span id="cb1-241"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
+<span id="cb1-242"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
+<span id="cb1-243"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
+<span id="cb1-244"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
+<span id="cb1-245"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_asia</span>()<span class="sc">$</span>continent]</span>
+<span id="cb1-246"><a></a>    </span>
+<span id="cb1-247"><a></a>    <span class="co"># add bubbles</span></span>
+<span id="cb1-248"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_asia</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_asia</span>()<span class="sc">$</span>lifeExp, </span>
+<span id="cb1-249"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_asia</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
+<span id="cb1-250"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-251"><a></a>  })</span>
+<span id="cb1-252"><a></a>  </span>
+<span id="cb1-253"><a></a>  <span class="co"># render europe ----</span></span>
+<span id="cb1-254"><a></a>  output<span class="sc">$</span>europe_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-255"><a></a>    <span class="fu">stop</span>(<span class="st">"Error: Don't look at Europe"</span>)</span>
+<span id="cb1-256"><a></a>    <span class="co"># draw background plot with legend</span></span>
+<span id="cb1-257"><a></a>    <span class="fu">plot</span>(europe_data<span class="sc">$</span>gdpPercap, europe_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-258"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
+<span id="cb1-259"><a></a>         <span class="at">panel.first =</span> {</span>
+<span id="cb1-260"><a></a>           <span class="fu">grid</span>()</span>
+<span id="cb1-261"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_europe), <span class="fu">mean</span>(yrange_europe), input<span class="sc">$</span>europe_year, </span>
+<span id="cb1-262"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
+<span id="cb1-263"><a></a>         }</span>
+<span id="cb1-264"><a></a>    )</span>
+<span id="cb1-265"><a></a>    </span>
+<span id="cb1-266"><a></a>    <span class="co"># build legend</span></span>
+<span id="cb1-267"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(europe_data<span class="sc">$</span>continent), </span>
+<span id="cb1-268"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_europe)<span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-269"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
+<span id="cb1-270"><a></a>    )</span>
+<span id="cb1-271"><a></a>    </span>
+<span id="cb1-272"><a></a>    <span class="co"># Determine bubble colors</span></span>
+<span id="cb1-273"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
+<span id="cb1-274"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
+<span id="cb1-275"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
+<span id="cb1-276"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
+<span id="cb1-277"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_europe</span>()<span class="sc">$</span>continent]</span>
+<span id="cb1-278"><a></a>    </span>
+<span id="cb1-279"><a></a>    <span class="co"># add bubbles</span></span>
+<span id="cb1-280"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_europe</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_europe</span>()<span class="sc">$</span>lifeExp, </span>
+<span id="cb1-281"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_europe</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
+<span id="cb1-282"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-283"><a></a>  })</span>
+<span id="cb1-284"><a></a>  </span>
+<span id="cb1-285"><a></a>  <span class="co"># render oceania ----</span></span>
+<span id="cb1-286"><a></a>  output<span class="sc">$</span>oceania_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-287"><a></a>    </span>
+<span id="cb1-288"><a></a>    <span class="co"># draw background plot with legend</span></span>
+<span id="cb1-289"><a></a>    <span class="fu">plot</span>(oceania_data<span class="sc">$</span>gdpPercap, oceania_data<span class="sc">$</span>lifeExp, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb1-290"><a></a>         <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>, <span class="at">ylab =</span> <span class="st">"Life Expectancy"</span>, </span>
+<span id="cb1-291"><a></a>         <span class="at">panel.first =</span> {</span>
+<span id="cb1-292"><a></a>           <span class="fu">grid</span>()</span>
+<span id="cb1-293"><a></a>           <span class="fu">text</span>(<span class="fu">mean</span>(xrange_oceania), <span class="fu">mean</span>(yrange_oceania), input<span class="sc">$</span>oceania_year, </span>
+<span id="cb1-294"><a></a>                <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">cex =</span> <span class="dv">5</span>)</span>
+<span id="cb1-295"><a></a>         }</span>
+<span id="cb1-296"><a></a>    )</span>
+<span id="cb1-297"><a></a>    </span>
+<span id="cb1-298"><a></a>    <span class="co"># build legend</span></span>
+<span id="cb1-299"><a></a>    <span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">levels</span>(oceania_data<span class="sc">$</span>continent), </span>
+<span id="cb1-300"><a></a>           <span class="at">cex =</span> <span class="fl">1.3</span>, <span class="at">inset =</span> <span class="fl">0.01</span>, <span class="at">text.width =</span> <span class="fu">diff</span>(xrange_oceania)<span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-301"><a></a>           <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#E41A1C99"</span>, <span class="st">"#377EB899"</span>, <span class="st">"#4DAF4A99"</span>, <span class="st">"#984EA399"</span>, <span class="st">"#FF7F0099"</span>)</span>
+<span id="cb1-302"><a></a>    )</span>
+<span id="cb1-303"><a></a>    </span>
+<span id="cb1-304"><a></a>    <span class="co"># Determine bubble colors</span></span>
+<span id="cb1-305"><a></a>    cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Africa"</span> <span class="ot">=</span> <span class="st">"#E41A1C99"</span>,</span>
+<span id="cb1-306"><a></a>              <span class="st">"Americas"</span> <span class="ot">=</span> <span class="st">"#377EB899"</span>,</span>
+<span id="cb1-307"><a></a>              <span class="st">"Asia"</span> <span class="ot">=</span> <span class="st">"#4DAF4A99"</span>,</span>
+<span id="cb1-308"><a></a>              <span class="st">"Europe"</span> <span class="ot">=</span> <span class="st">"#984EA399"</span>,</span>
+<span id="cb1-309"><a></a>              <span class="st">"Oceania"</span> <span class="ot">=</span> <span class="st">"#FF7F0099"</span>)[<span class="fu">ydata_oceania</span>()<span class="sc">$</span>continent]</span>
+<span id="cb1-310"><a></a>    </span>
+<span id="cb1-311"><a></a>    <span class="co"># add bubbles ----</span></span>
+<span id="cb1-312"><a></a>    <span class="fu">symbols</span>(<span class="fu">ydata_oceania</span>()<span class="sc">$</span>gdpPercap, <span class="fu">ydata_oceania</span>()<span class="sc">$</span>lifeExp, </span>
+<span id="cb1-313"><a></a>            <span class="at">circles =</span> <span class="fu">sqrt</span>(<span class="fu">ydata_oceania</span>()<span class="sc">$</span>pop), <span class="at">bg =</span> cols, <span class="at">inches =</span> <span class="fl">0.5</span>, <span class="at">fg =</span> <span class="st">"white"</span>, </span>
+<span id="cb1-314"><a></a>            <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-315"><a></a>  })</span>
+<span id="cb1-316"><a></a>  </span>
+<span id="cb1-317"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
+<span id="cb1-318"><a></a></span>
+<span id="cb1-319"><a></a><span class="co"># Run the application </span></span>
+<span id="cb1-320"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -797,12 +781,8 @@ It uses the <code>gapminder</code> data set to display life expectancy by GDP pe
 <h2></h2>
 <p><span class="slide-title">Repeated code sections (1/2)</span></p>
 <hr>
-<p class="body-text-s">
-Taking a closer look at the gapminder app code, we’ll see that the following sections of code are repeated for each region (6 times total; only code sections for “all” regions shown below):
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>tabPanel</code> (<strong>UI</strong>)
-</p>
+<p><span class="body-text-s">Taking a closer look at the gapminder app code, we’ll see that the following sections of code are repeated for each region (6 times total; only code sections for “all” regions shown below):</span></p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>tabPanel</code> (<strong>UI</strong>)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># "All" tabPanel (repeated 5 more times for each subregion) </span></span>
 <span id="cb2-2"><a></a><span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"All"</span>, </span>
@@ -811,18 +791,14 @@ Taking a closer look at the gapminder app code, we’ll see that the following s
 <span id="cb2-5"><a></a>                     <span class="at">value =</span> <span class="dv">1952</span>, <span class="at">min =</span> <span class="dv">1952</span>, <span class="at">max =</span> <span class="dv">2007</span>, <span class="at">step =</span> <span class="dv">5</span>, </span>
 <span id="cb2-6"><a></a>                     <span class="at">animate =</span> <span class="fu">animationOptions</span>(<span class="at">interval =</span> <span class="dv">500</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> reactive data frame (<strong>server</strong>)
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> reactive data frame (<strong>server</strong>)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># "All" reactive data frame (repeated 5 more times for each subregion)</span></span>
 <span id="cb3-2"><a></a>ydata_all <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
 <span id="cb3-3"><a></a>  <span class="fu">filter</span>(all_data, year <span class="sc">==</span> input<span class="sc">$</span>all_year)</span>
 <span id="cb3-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> calculating date ranges (<strong>server</strong>)
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> calculating date ranges (<strong>server</strong>)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># "All" date range (repeated 5 more times for each subregion)</span></span>
 <span id="cb4-2"><a></a>xrange_all <span class="ot">&lt;-</span> <span class="fu">range</span>(all_data<span class="sc">$</span>gdpPercap)</span>
@@ -833,9 +809,7 @@ Taking a closer look at the gapminder app code, we’ll see that the following s
 <h2></h2>
 <p><span class="slide-title">Repeated code sections (2/2)</span></p>
 <hr>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>renderPlot({})</code> (<strong>server</strong>)
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <code>renderPlot({})</code> (<strong>server</strong>)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># "All" plot (repeated 5 more times for each subregion)</span></span>
 <span id="cb5-2"><a></a>output<span class="sc">$</span>all_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
@@ -875,21 +849,19 @@ Taking a closer look at the gapminder app code, we’ll see that the following s
 <p><span class="slide-title">Enter Shiny modules</span></p>
 <hr>
 <p><br></p>
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i> <strong>A shiny module is a piece of a shiny app</strong></span> – it can’t be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.</p>
-<div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i> <strong>Modules can represent inputs, outputs, or both</strong></span> (<em>we’ll be building a module that represents both</em>). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.</p>
-</div>
-<div class="fragment">
-<p><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i> <strong>Modules help to solve a <em>namespacing</em> problem</strong></span> – recall that all <code>Id</code>s (e.g.&nbsp;<code>inputId</code>s) <em>must</em> be unique across your app. <strong>Namespacing</strong> is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax <code>package::function()</code> e.g.&nbsp;<code>plyr::arrange()</code> vs <code>dplyr::arrange()</code>).</p>
+<div>
+<ul>
+<li class="fragment"><p><span class="teal-text"><strong>A shiny module is a piece of a shiny app</strong></span> – it can’t be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.</p></li>
+<li class="fragment"><p><span class="teal-text"><strong>Modules can represent inputs, outputs, or both</strong></span> (<em>we’ll be building a module that represents both</em>). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.</p></li>
+<li class="fragment"><p><span class="teal-text"><strong>Modules help to solve a <em>namespacing</em> problem</strong></span> – recall that all <code>inputId</code>s <em>must</em> be unique across your app. <strong>Namespacing</strong> is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax <code>package::function()</code> e.g.&nbsp;<code>plyr::arrange()</code> vs <code>dplyr::arrange()</code>).</p></li>
+</ul>
 </div>
 </section>
 <section id="modules-structure" class="slide level2" data-menu-title="Structure of modules">
 <h2></h2>
 <p><span class="slide-title2">What do modules look like?</span></p>
 <hr>
-<p class="body-text">
-Modules are a coding pattern, organized into <strong>two</strong> functions: one that creates the <strong>UI elements</strong> and one that <strong>loads the server logic</strong>. They can look a bit different, depending on your module, but they generally follow this pattern:
-</p>
+<p>Modules are a coding pattern, organized into <strong>two functions</strong>: one that <strong>creates the UI elements</strong> and one that <strong>loads the server logic</strong>. They can look a bit different, depending on your module, but they generally follow this pattern:</p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -925,20 +897,15 @@ Modules are a coding pattern, organized into <strong>two</strong> functions: one
 <h2></h2>
 <p><span class="slide-title">Where should I define / save my module?</span></p>
 <hr>
-<p class="body-text">
-Part of the appeal of creating modules is breaking your long <code>app.R</code> (or <code>ui.R</code> &amp; <code>server.R</code>) scripts into smaller pieces. <strong>Creating a separate R script to house a given module (both the UI <em>and</em> Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix “Module” e.g.&nbsp;<code>gapModule.R</code>).</strong> There are a variety of places you can write and / or save your modularized code to, but I recommend one of the following two options (at least while we’re just getting started on our shiny modules journey):
-</p>
+<p>Part of the appeal of creating modules is breaking your long <code>app.R</code> (or <code>ui.R</code> &amp; <code>server.R</code>) scripts into smaller pieces. <strong>Creating a separate R script to house a given module (both the UI <em>and</em> Server function components) is typically the best course of action (a good naming convention is giving it a descriptive name with the suffix “Module” e.g.&nbsp;<code>gapModule.R</code>).</strong> There are a variety of places you can write and / or save your modularized code to, but I recommend one of the following two options (at least while we’re just getting started on our shiny modules journey):</p>
 <p><br></p>
 <div class="fragment">
-<p><span class="teal-text"><strong>(1)</strong></span> save your modularized code script inside your app’s directory (e.g.&nbsp;<code>~/&lt;app-directory&gt;/myModule.R</code>)</p>
-<p class="body-text-s">
-If you choose this option, call <code>source("myModule.R")</code> into <code>global.R</code> (if using <code>ui.R</code> / <code>server.R</code>) or <code>app.R</code>.
-</p>
+<p><span class="teal-text"><strong>(1)</strong></span> save your modularized code script inside your app’s directory (e.g.&nbsp;<code>~/myApp/myModule.R</code>)</p>
+<p><span class="body-text-s">If you choose this option, call <code>source("myModule.R")</code> into <code>global.R</code> (if using <code>ui.R</code> / <code>server.R</code>) or <code>app.R</code>.</span></p>
 <p><br></p>
 </div>
 <div class="fragment">
-<span class="teal-text"><strong>(2)</strong></span> save your modularized code script inside the <code>R/</code> subdirectory of your application (e.g.&nbsp;<code>~/&lt;app-directory&gt;/R/myModule.R</code>)
-<p></p>
+<p><span class="teal-text"><strong>(2)</strong></span> save your modularized code script inside the <code>R/</code> subdirectory of your application (e.g.&nbsp;<code>~/myApp/R/myModule.R</code>)</p>
 <p class="body-text-s">
 If you choose this option, your module will automatically be sourced (as of Shiny 1.5.0) when the application is loaded.
 </p>
@@ -1106,9 +1073,7 @@ If you choose this option, your module will automatically be sourced (as of Shin
 <!-- ##  {#using-module-2 data-menu-title="Using your module 2"} -->
 <!-- [Now let's use our module:]{.slide-title} -->
 <!-- <hr> -->
-<p class="body-text-s">
-First, let’s use our module’s UI function. We’ll need to define / name each of our <code>tabPanel</code>s (one for each of our six regions), but rather than building a <code>plotOutput</code> and <code>sliderInput</code> inside each <code>tabPanel</code> (each with unique <code>Id</code>s), we can instead call our <code>gapModuleUI()</code> function, and ensure that each time we call it to supply a unique character string for our <code>id</code> parameter.
-</p>
+<p><span class="body-text-s">First, let’s use our module’s UI function. We’ll need to define / name each of our <code>tabPanel</code>s (one for each of our six regions), but rather than building a <code>plotOutput</code> and <code>sliderInput</code> inside each <code>tabPanel</code> (each with unique <code>Id</code>s), we can instead call our <code>gapModuleUI()</code> function, and ensure that each time we call it to supply a unique character string for our <code>id</code> parameter.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1154,9 +1119,7 @@ First, let’s use our module’s UI function. We’ll need to define / name eac
 <h2></h2>
 <p><span class="slide-title">Now let’s use our module:</span></p>
 <hr>
-<p class="body-text-s">
-Finally, we can re-write our server. Rather than writing out the <em>lengthy</em> code required to make each plot six times over, we can instead call our <code>gapModuleServer()</code> function, supplying each call with <code>id</code>s that match those used in <code>gapModuleUI()</code>, along with the appropriate data subset. Now, run your app! If written correctly, your app should run exactly the same as your initial version.
-</p>
+<p><span class="body-text-s">Finally, we can re-write our server. Rather than writing out the <em>lengthy</em> code required to make each plot six times over, we can instead call our <code>gapModuleServer()</code> function, supplying each call with <code>id</code>s that match those used in <code>gapModuleUI()</code>, along with the appropriate data subset. Now, run your app! If written correctly, your app should run exactly the same as your initial version.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1223,7 +1186,7 @@ Finally, we can re-write our server. Rather than writing out the <em>lengthy</em
 </div>
 <p><br></p>
 <div class="center-text body-text-l teal-text">
-<p>Continue your learning journey’s with suggested readings and videos on the <strong><a href="">resources page</a></strong>.</p>
+<p>Continue your learning journey’s with suggested readings and videos on the <strong><a href="../../resources.html#modules" target="_blank">resources page</a></strong>.</p>
 </div>
 </section>
 <section id="end" class="slide level2" data-menu-title="~~~ BREAK ~~~" data-background="#047C90">
@@ -1238,7 +1201,7 @@ End part 6.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5f201c41" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_12f35bc6" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

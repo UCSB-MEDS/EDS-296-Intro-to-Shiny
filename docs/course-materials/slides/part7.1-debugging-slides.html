@@ -398,7 +398,7 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 7.1</span></p>
+<p><span class="custom-title">EDS 296: Part 7.1</span></p>
 <p><span class="custom-subtitle"><em>Debugging</em></span></p>
 <hr class="hr-teal">
 <!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
@@ -418,64 +418,40 @@
 <h2></h2>
 <p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - Debugging</span></p>
 <hr>
-<p class="body-text-l teal-text bottombr">
-After this section, you should:
-</p>
+<p><span class="body-text-l teal-text">After this section, you should:</span></p>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand some of the challenges associated with debugging shiny applications
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> understand some of the challenges associated with debugging shiny applications</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know to a few approaches and tools for debugging shiny applications, including using diagnostic messages and the <code>reactlog</code> package.
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> know to a few approaches and tools for debugging shiny applications, including using diagnostic messages and the <code>{reactlog}</code> package.</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-l teal-text topbr">
-Packages introduced:
-</p>
+<p><span class="body-text-l teal-text">Packages introduced:</span></p>
 </div>
 <div class="fragment">
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i></span> <code>{reactlog}</code>: a reactivity visualizer for shiny
-</p>
+<p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i></span> <code>{reactlog}</code>: a reactivity visualizer for shiny</span></p>
 </div>
 </section>
 <section id="debugging-challenges" class="slide level2" data-menu-title="Debugging is challenging">
 <h2></h2>
 <p><span class="slide-title">Debugging can be challenging</span></p>
 <hr>
-<p class="body-text">
-Shiny apps can be particularly challenging to debug for a few reasons:
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Shiny is <strong>reactive</strong>, so code execution isn’t as linear as other code that you’re likely more familiar with (e.g.&nbsp;analytical pipelines written in “normal” R scripts, where each line of code is executed in succession)
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> Shiny code runs behind a web server <em>and</em> the Shiny framework itself, which can obscure what’s going on
-</p>
+<p>Shiny apps can be particularly challenging to debug for a few reasons:</p>
+<ul>
+<li><p><span class="body-text-s">Shiny is <strong>reactive</strong>, so code execution isn’t as linear as other code that you’re likely more familiar with (e.g.&nbsp;analytical pipelines written in “normal” R scripts, where each line of code is executed in succession)</span></p></li>
+<li><p><span class="body-text-s">Shiny code runs behind a web server <em>and</em> the Shiny framework itself, which can obscure what’s going on</span></p></li>
+</ul>
 <div class="fragment">
-<p class="body-text topbr">
-While there are a number of different tools / strategies for debugging Shiny apps, I find myself turning to one (or more) of these approaches most often:
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>isolating pesky errors</strong> (typos, missing commas, unmatched parentheses) in the UI by commenting out code from the outside in
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>reducing your app to <em>just</em> problematic code</strong> by commenting out as much correctly-functioning code as possible
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>adding diagnostic messages</strong> to my reactives
-</p>
-<p class="body-text-s">
-<span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> <strong>using <code>{reactlog}</code></strong> to visualize reactivity errors
-</p>
+<p>While there are a number of different tools / strategies for debugging Shiny apps, I find myself turning to one (or more) of these approaches most often:</p>
+<ul>
+<li><p><span class="body-text-s"><strong>isolating pesky errors</strong> (typos, missing commas, unmatched parentheses) in the UI by commenting out code from the outside in</span></p></li>
+<li><p><span class="body-text-s"><strong>reducing your app to <em>just</em> problematic code</strong> by commenting out as much correctly-functioning code as possible</span></p></li>
+<li><p><span class="body-text-s"><strong>adding diagnostic messages</strong> to reactives</span></p></li>
+<li><p><span class="body-text-s"><strong>using <code>{reactlog}</code></strong> to visualize reactivity errors</span></p></li>
+</ul>
 </div>
 <div class="fragment">
-<p class="body-text topbr">
-We’ll touch on each of these, briefly, but be sure to check out the Shiny article, <a href="https://shiny.rstudio.com/articles/debugging.html">Debugging Shiny applications</a> and <a href="https://mastering-shiny.org/action-workflow.html#debugging">Mastering Shiny Ch. 5.2</a>, by Hadley Wickham, for more approaches, details, and examples.
-</p>
+<p>We’ll touch on each of these, briefly, but be sure to check out the Shiny article, <a href="https://shiny.rstudio.com/articles/debugging.html" target="_blank">Debugging Shiny applications</a> and <a href="https://mastering-shiny.org/action-workflow.html#debugging" target="_blank">Mastering Shiny Ch. 5.2</a>, by Hadley Wickham, for more approaches, details, and examples.</p>
 </div>
 </section>
 <section id="ui-errors1" class="slide level2" data-menu-title="Tracking down UI errors">
@@ -485,7 +461,7 @@ We’ll touch on each of these, briefly, but be sure to check out the Shiny arti
 <p><br></p>
 <p>Many of us experienced the frustrations of finding unmatched parentheses, typos, missing commas, etc. when building out our UI layout for App #2, and tracking down the issue can require some patience and persistence.</p>
 <p><br></p>
-<p><strong>My preferred approach for troubleshooting a situation like this is to <span class="teal-text">comment out all code inside the highest-level layout function (e.g.&nbsp;<code>navbarPage()</code>)</span>, re-run your app to ensure that it works, uncomment the next inner-most pieces, re-run, etc. until you find the place where your app breaks.</strong></p>
+<p><strong>My preferred approach for troubleshooting a situation like this is to <span class="teal-text">comment out all code inside the highest-level layout function (e.g.&nbsp;<code>navbarPage()</code>)</span> &gt; re-run your app to ensure that it works &gt; uncomment the next inner-most pieces &gt; repeat, until you find the place where your app breaks.</strong></p>
 <p><br> <br></p>
 <div class="center-text body-text-l teal-text">
 <p>See next slide for an example</p>
@@ -498,9 +474,7 @@ We’ll touch on each of these, briefly, but be sure to check out the Shiny arti
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p class="body-text-s topbr">
-If I were to trouble shoot the UI for App #2, I’d comment out everything except <code>ui &lt;- navbarPage(title = "LTER Animal Data Explorer"</code> and the ending <code>) # END navbarPage</code>, then run my app to make sure an empty app with a gray navbar and title at the top appears. It does? Great. Next, un-comment the two <code>tabPanel()</code>s that create the “About this App” and “Explore the Data” pages. Works? Add a little bit more back in now, and continue this process. I like to un-comment / re-run all layout function code <em>first</em>, then begin adding back the inputs and outputs one-by-one. See a short, but incomplete demo to the right:
-</p>
+<p><span class="body-text-s">If I were to trouble shoot the UI for App #2, I’d comment out everything except <code>ui &lt;- navbarPage(title = "LTER Animal Data Explorer"</code> and the ending <code>) # END navbarPage</code>, then run my app to make sure an empty app with a gray navbar and title at the top appears. It does? Great. Next, un-comment the two <code>tabPanel()</code>s that create the “About this App” and “Explore the Data” pages. Works? Add a little bit more back in now, and continue this process. I like to un-comment / re-run all layout function code <em>first</em>, then begin adding back the inputs and outputs one-by-one. See a short, but incomplete demo to the right:</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -525,38 +499,34 @@ If I were to trouble shoot the UI for App #2, I’d comment out everything excep
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> commenting out everything except the UI elements and server logic where I believe the issue is stemming from</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> adding diagnostic messages to my reactives</span></p>
 <div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> …<em>and</em> on rare occasions, I’ll try using the <a href="https://rstudio.github.io/reactlog/"><code>{reactlog}</code> package</a> to help visualize my app’s reactivity in an attempt to identify the problem.</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> …<em>and</em> on rare occasions, I’ll try using the <a href="https://rstudio.github.io/reactlog/" target="&quot;_blank"><code>{reactlog}</code> package</a> to help visualize my app’s reactivity in an attempt to identify the problem.</span></p>
 </div>
 <div class="fragment">
 <p><br></p>
 <p>To demo these approaches, we’ll use two pre-constructed apps as examples:</p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-working"><code>working-app</code></a> (a small app that’s functioning as intended)</span></p>
-<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-broken"><code>broken-app</code></a> (the same small app that’s <em>not</em> functioning as intended)</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-working" target="&quot;_blank"><code>working-app</code></a> (a small app that’s functioning as intended)</span></p>
+<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> <a href="https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-broken" target="&quot;_blank"><code>broken-app</code></a> (the same small app that’s <em>not</em> functioning as intended)</span></p>
 </div>
 </section>
 <section id="non-buggy-app" class="slide level2" data-menu-title="A correctly functioning app">
 <h2></h2>
 <p><span class="slide-title2">I’m building an app that should look like this…</span></p>
 <hr>
-<p class="body-text-s">
-In <strong>Tab 1</strong>, both the image and text should update whenever a new radio button is chosen. In <strong>Tab 2</strong>, the scatterplot should update so that only data points for penguins with body masses within our chosen range are displayed.
-</p>
+<p><span class="body-text-s">In <strong>Tab 1</strong>, both the image and text should update whenever a new radio button is chosen. In <strong>Tab 2</strong>, the scatterplot should update so that only data points for penguins with body masses within our chosen range are displayed.</span></p>
 
 <img data-src="images/part6/working-app.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="A functioning shiny app with two tabs. The first tab has radioButtons that when selected, update the penguin image and description text. The second tab has a sliderInput and scatterplot."></section>
 <section id="buggy-app" class="slide level2" data-menu-title="A buggy app">
 <h2></h2>
 <p><span class="slide-title">. . . but let’s say it actually looks like this:</span></p>
 <hr>
-<p class="body-text-s">
-In <strong>Tab 1</strong>, only the image updates whenever a new radio button is chosen, and text is missing altogether. In <strong>Tab 2</strong>, the scatterplot updates as expected whenever the body mass range is changed.
-</p>
+<p><span class="body-text-s">In <strong>Tab 1</strong>, only the image updates whenever a new radio button is chosen, and text is missing altogether. In <strong>Tab 2</strong>, the scatterplot updates as expected whenever the body mass range is changed.</span></p>
 
 <img data-src="images/part6/buggy-app.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="The same shiny app as on the previous slide, but this time when the radioButtons are updated, only the image changes -- no text appears."></section>
 <section id="setup-apps" class="slide level2" data-menu-title="Set up both apps">
 <h2></h2>
 <p><span class="slide-title">Create both apps in your repo</span></p>
 <hr>
-<p><span class="body-text-s">Create two new subdirectories (one for each of the following apps) and copy the code below into the respective <code>app.R</code> files. You’ll also want to <a href="https://drive.google.com/drive/folders/18lnX4sMjrgKyF1vw28vByCEk0Uhh8xmc?usp=drive_link">download this <code>www/</code> folder</a> (containing penguin images) and put a copy of it into each subdirectory:</span></p>
+<p><span class="body-text-s">Create two new subdirectories (one for each of the following apps) and copy the code below into the respective <code>app.R</code> files. You’ll also want to <a href="https://drive.google.com/drive/folders/18lnX4sMjrgKyF1vw28vByCEk0Uhh8xmc?usp=drive_link" target="_blank">download this <code>www/</code> folder</a> (containing penguin images) and put a copy of it into each subdirectory:</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -564,120 +534,121 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="code-with-filename-file">
 <pre><strong>~/working-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load packages ----</span></span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(reactlog)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a><span class="co"># ui ----</span></span>
-<span id="cb1-8"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-9"><a></a>  </span>
-<span id="cb1-10"><a></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb1-11"><a></a>    </span>
-<span id="cb1-12"><a></a>    <span class="co"># tab 1 ----</span></span>
-<span id="cb1-13"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 1"</span>,</span>
-<span id="cb1-14"><a></a>             </span>
-<span id="cb1-15"><a></a>             <span class="co"># radio button input ----</span></span>
-<span id="cb1-16"><a></a>             <span class="fu">radioButtons</span>(</span>
-<span id="cb1-17"><a></a>               <span class="at">inputId =</span> <span class="st">"img_input"</span>, <span class="at">label =</span> <span class="st">"Choose a penguin to display:"</span>,</span>
-<span id="cb1-18"><a></a>               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"All penguins"</span>, <span class="st">"Sassy chinstrap"</span>, <span class="st">"Staring gentoo"</span>, <span class="st">"Adorable adelie"</span>),</span>
-<span id="cb1-19"><a></a>               <span class="at">selected =</span> <span class="st">"All penguins"</span>),</span>
-<span id="cb1-20"><a></a>             </span>
-<span id="cb1-21"><a></a>             <span class="co"># text output ----</span></span>
-<span id="cb1-22"><a></a>             <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_text_output"</span>),</span>
-<span id="cb1-23"><a></a>             </span>
-<span id="cb1-24"><a></a>             <span class="co"># img output ----</span></span>
-<span id="cb1-25"><a></a>             <span class="fu">imageOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_img_output"</span>)</span>
-<span id="cb1-26"><a></a>             </span>
-<span id="cb1-27"><a></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> tab 1</span></span>
-<span id="cb1-28"><a></a>    </span>
-<span id="cb1-29"><a></a>    <span class="co"># tab 2 ----</span></span>
-<span id="cb1-30"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 2"</span>,</span>
-<span id="cb1-31"><a></a>             </span>
-<span id="cb1-32"><a></a>             <span class="co"># body mass slider input ----</span></span>
-<span id="cb1-33"><a></a>             <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g)"</span>,</span>
-<span id="cb1-34"><a></a>                         <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb1-35"><a></a></span>
-<span id="cb1-36"><a></a>             <span class="co"># body mass plot output ----</span></span>
-<span id="cb1-37"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb1-38"><a></a>             </span>
-<span id="cb1-39"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
-<span id="cb1-40"><a></a>    </span>
-<span id="cb1-41"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb1-42"><a></a>  </span>
-<span id="cb1-43"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
-<span id="cb1-44"><a></a></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># ----- working app -----</span></span>
+<span id="cb1-2"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a></a><span class="fu">library</span>(reactlog)</span>
+<span id="cb1-6"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a><span class="co"># ui ----</span></span>
+<span id="cb1-9"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb1-10"><a></a>  </span>
+<span id="cb1-11"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb1-12"><a></a>    </span>
+<span id="cb1-13"><a></a>    <span class="co"># tab 1 ----</span></span>
+<span id="cb1-14"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 1"</span>,</span>
+<span id="cb1-15"><a></a>             </span>
+<span id="cb1-16"><a></a>             <span class="co"># radio button input ----</span></span>
+<span id="cb1-17"><a></a>             <span class="fu">radioButtons</span>(</span>
+<span id="cb1-18"><a></a>               <span class="at">inputId =</span> <span class="st">"img_input"</span>, <span class="at">label =</span> <span class="st">"Choose a penguin to display:"</span>,</span>
+<span id="cb1-19"><a></a>               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"All penguins"</span>, <span class="st">"Sassy chinstrap"</span>, <span class="st">"Staring gentoo"</span>, <span class="st">"Adorable adelie"</span>),</span>
+<span id="cb1-20"><a></a>               <span class="at">selected =</span> <span class="st">"All penguins"</span>),</span>
+<span id="cb1-21"><a></a>             </span>
+<span id="cb1-22"><a></a>             <span class="co"># text output ----</span></span>
+<span id="cb1-23"><a></a>             <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_text_output"</span>),</span>
+<span id="cb1-24"><a></a>             </span>
+<span id="cb1-25"><a></a>             <span class="co"># img output ----</span></span>
+<span id="cb1-26"><a></a>             <span class="fu">imageOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_img_output"</span>)</span>
+<span id="cb1-27"><a></a>             </span>
+<span id="cb1-28"><a></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> tab 1</span></span>
+<span id="cb1-29"><a></a>    </span>
+<span id="cb1-30"><a></a>    <span class="co"># tab 2 ----</span></span>
+<span id="cb1-31"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 2"</span>,</span>
+<span id="cb1-32"><a></a>             </span>
+<span id="cb1-33"><a></a>             <span class="co"># body mass slider input ----</span></span>
+<span id="cb1-34"><a></a>             <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g)"</span>,</span>
+<span id="cb1-35"><a></a>                         <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb1-36"><a></a></span>
+<span id="cb1-37"><a></a>             <span class="co"># body mass plot output ----</span></span>
+<span id="cb1-38"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"body_mass_scatterplot_output"</span>)</span>
+<span id="cb1-39"><a></a>             </span>
+<span id="cb1-40"><a></a>             ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
+<span id="cb1-41"><a></a>    </span>
+<span id="cb1-42"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb1-43"><a></a>  </span>
+<span id="cb1-44"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
 <span id="cb1-45"><a></a></span>
-<span id="cb1-46"><a></a><span class="co"># server ----</span></span>
-<span id="cb1-47"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
-<span id="cb1-48"><a></a>  </span>
-<span id="cb1-49"><a></a>  <span class="co"># render penguin text ----</span></span>
-<span id="cb1-50"><a></a>  output<span class="sc">$</span>penguin_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb1-51"><a></a>    </span>
-<span id="cb1-52"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb1-53"><a></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
-<span id="cb1-54"><a></a>    }</span>
-<span id="cb1-55"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb1-56"><a></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
-<span id="cb1-57"><a></a>    }</span>
-<span id="cb1-58"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb1-59"><a></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
-<span id="cb1-60"><a></a>    }</span>
-<span id="cb1-61"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb1-62"><a></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
-<span id="cb1-63"><a></a>    }</span>
-<span id="cb1-64"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
-<span id="cb1-65"><a></a>  </span>
+<span id="cb1-46"><a></a></span>
+<span id="cb1-47"><a></a><span class="co"># server ----</span></span>
+<span id="cb1-48"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
+<span id="cb1-49"><a></a>  </span>
+<span id="cb1-50"><a></a>  <span class="co"># render penguin text ----</span></span>
+<span id="cb1-51"><a></a>  output<span class="sc">$</span>penguin_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb1-52"><a></a>    </span>
+<span id="cb1-53"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb1-54"><a></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
+<span id="cb1-55"><a></a>    }</span>
+<span id="cb1-56"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb1-57"><a></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
+<span id="cb1-58"><a></a>    }</span>
+<span id="cb1-59"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb1-60"><a></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
+<span id="cb1-61"><a></a>    }</span>
+<span id="cb1-62"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb1-63"><a></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
+<span id="cb1-64"><a></a>    }</span>
+<span id="cb1-65"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
 <span id="cb1-66"><a></a>  </span>
-<span id="cb1-67"><a></a>  <span class="co"># render penguin images ----</span></span>
-<span id="cb1-68"><a></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
-<span id="cb1-69"><a></a>    </span>
-<span id="cb1-70"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb1-71"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb1-72"><a></a>    }</span>
-<span id="cb1-73"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb1-74"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb1-75"><a></a>    }</span>
-<span id="cb1-76"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb1-77"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb1-78"><a></a>    }</span>
-<span id="cb1-79"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb1-80"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb1-81"><a></a>    }</span>
-<span id="cb1-82"><a></a>    </span>
-<span id="cb1-83"><a></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
-<span id="cb1-84"><a></a>  </span>
+<span id="cb1-67"><a></a>  </span>
+<span id="cb1-68"><a></a>  <span class="co"># render penguin images ----</span></span>
+<span id="cb1-69"><a></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
+<span id="cb1-70"><a></a>    </span>
+<span id="cb1-71"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb1-72"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb1-73"><a></a>    }</span>
+<span id="cb1-74"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb1-75"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb1-76"><a></a>    }</span>
+<span id="cb1-77"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb1-78"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb1-79"><a></a>    }</span>
+<span id="cb1-80"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb1-81"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb1-82"><a></a>    }</span>
+<span id="cb1-83"><a></a>    </span>
+<span id="cb1-84"><a></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
 <span id="cb1-85"><a></a>  </span>
-<span id="cb1-86"><a></a>  <span class="co"># filter body masses ----</span></span>
-<span id="cb1-87"><a></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb1-88"><a></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-89"><a></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>])</span>
-<span id="cb1-90"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> filter body masses</span></span>
-<span id="cb1-91"><a></a></span>
-<span id="cb1-92"><a></a>  </span>
-<span id="cb1-93"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb1-94"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-95"><a></a></span>
-<span id="cb1-96"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
-<span id="cb1-97"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
-<span id="cb1-98"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb1-99"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-100"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb1-101"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb1-102"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb1-103"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb1-104"><a></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-105"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
-<span id="cb1-106"><a></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
-<span id="cb1-107"><a></a></span>
-<span id="cb1-108"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
-<span id="cb1-109"><a></a></span>
-<span id="cb1-110"><a></a>  </span>
-<span id="cb1-111"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
-<span id="cb1-112"><a></a></span>
-<span id="cb1-113"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
-<span id="cb1-114"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-86"><a></a>  </span>
+<span id="cb1-87"><a></a>  <span class="co"># filter body masses ----</span></span>
+<span id="cb1-88"><a></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb1-89"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb1-90"><a></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>])</span>
+<span id="cb1-91"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> filter body masses</span></span>
+<span id="cb1-92"><a></a></span>
+<span id="cb1-93"><a></a>  </span>
+<span id="cb1-94"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb1-95"><a></a>  output<span class="sc">$</span>body_mass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb1-96"><a></a></span>
+<span id="cb1-97"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
+<span id="cb1-98"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb1-99"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb1-100"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-101"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb1-102"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb1-103"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb1-104"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb1-105"><a></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-106"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
+<span id="cb1-107"><a></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
+<span id="cb1-108"><a></a></span>
+<span id="cb1-109"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
+<span id="cb1-110"><a></a></span>
+<span id="cb1-111"><a></a>  </span>
+<span id="cb1-112"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
+<span id="cb1-113"><a></a></span>
+<span id="cb1-114"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
+<span id="cb1-115"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -689,120 +660,121 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="code-with-filename-file">
 <pre><strong>~/broken-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># load packages ----</span></span>
-<span id="cb2-2"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb2-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-4"><a></a><span class="fu">library</span>(reactlog)</span>
-<span id="cb2-5"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="co"># ui ----</span></span>
-<span id="cb2-8"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-9"><a></a>  </span>
-<span id="cb2-10"><a></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb2-11"><a></a>    </span>
-<span id="cb2-12"><a></a>    <span class="co"># tab 1 ----</span></span>
-<span id="cb2-13"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 1"</span>,</span>
-<span id="cb2-14"><a></a>             </span>
-<span id="cb2-15"><a></a>             <span class="co"># radio button input ----</span></span>
-<span id="cb2-16"><a></a>             <span class="fu">radioButtons</span>(</span>
-<span id="cb2-17"><a></a>               <span class="at">inputId =</span> <span class="st">"img_input"</span>, <span class="at">label =</span> <span class="st">"Choose a penguin to display:"</span>,</span>
-<span id="cb2-18"><a></a>               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"All penguins"</span>, <span class="st">"Sassy chinstrap"</span>, <span class="st">"Staring gentoo"</span>, <span class="st">"Adorable adelie"</span>),</span>
-<span id="cb2-19"><a></a>               <span class="at">selected =</span> <span class="st">"All penguins"</span>),</span>
-<span id="cb2-20"><a></a>             </span>
-<span id="cb2-21"><a></a>             <span class="co"># text output ----</span></span>
-<span id="cb2-22"><a></a>             <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_text_output"</span>),</span>
-<span id="cb2-23"><a></a>             </span>
-<span id="cb2-24"><a></a>             <span class="co"># img output ----</span></span>
-<span id="cb2-25"><a></a>             <span class="fu">imageOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_img_output"</span>)</span>
-<span id="cb2-26"><a></a>             </span>
-<span id="cb2-27"><a></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> tab 1</span></span>
-<span id="cb2-28"><a></a>    </span>
-<span id="cb2-29"><a></a>    <span class="co"># tab 2 ----</span></span>
-<span id="cb2-30"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 2"</span>,</span>
-<span id="cb2-31"><a></a>             </span>
-<span id="cb2-32"><a></a>             <span class="co"># body mass slider input ----</span></span>
-<span id="cb2-33"><a></a>             <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g)"</span>,</span>
-<span id="cb2-34"><a></a>                         <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
-<span id="cb2-35"><a></a>             </span>
-<span id="cb2-36"><a></a>             <span class="co"># body mass plot output ----</span></span>
-<span id="cb2-37"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"bodyMass_scatterplot_output"</span>)</span>
-<span id="cb2-38"><a></a>             </span>
-<span id="cb2-39"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
-<span id="cb2-40"><a></a>    </span>
-<span id="cb2-41"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb2-42"><a></a>  </span>
-<span id="cb2-43"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
-<span id="cb2-44"><a></a></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># ----- broken app -----</span></span>
+<span id="cb2-2"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb2-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-5"><a></a><span class="fu">library</span>(reactlog)</span>
+<span id="cb2-6"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a><span class="co"># ui ----</span></span>
+<span id="cb2-9"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-10"><a></a>  </span>
+<span id="cb2-11"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb2-12"><a></a>    </span>
+<span id="cb2-13"><a></a>    <span class="co"># tab 1 ----</span></span>
+<span id="cb2-14"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 1"</span>,</span>
+<span id="cb2-15"><a></a>             </span>
+<span id="cb2-16"><a></a>             <span class="co"># radio button input ----</span></span>
+<span id="cb2-17"><a></a>             <span class="fu">radioButtons</span>(</span>
+<span id="cb2-18"><a></a>               <span class="at">inputId =</span> <span class="st">"img_input"</span>, <span class="at">label =</span> <span class="st">"Choose a penguin to display:"</span>,</span>
+<span id="cb2-19"><a></a>               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"All penguins"</span>, <span class="st">"Sassy chinstrap"</span>, <span class="st">"Staring gentoo"</span>, <span class="st">"Adorable adelie"</span>),</span>
+<span id="cb2-20"><a></a>               <span class="at">selected =</span> <span class="st">"All penguins"</span>),</span>
+<span id="cb2-21"><a></a>             </span>
+<span id="cb2-22"><a></a>             <span class="co"># text output ----</span></span>
+<span id="cb2-23"><a></a>             <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_text_output"</span>),</span>
+<span id="cb2-24"><a></a>             </span>
+<span id="cb2-25"><a></a>             <span class="co"># img output ----</span></span>
+<span id="cb2-26"><a></a>             <span class="fu">imageOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_img_output"</span>)</span>
+<span id="cb2-27"><a></a>             </span>
+<span id="cb2-28"><a></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> tab 1</span></span>
+<span id="cb2-29"><a></a>    </span>
+<span id="cb2-30"><a></a>    <span class="co"># tab 2 ----</span></span>
+<span id="cb2-31"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 2"</span>,</span>
+<span id="cb2-32"><a></a>             </span>
+<span id="cb2-33"><a></a>             <span class="co"># body mass slider input ----</span></span>
+<span id="cb2-34"><a></a>             <span class="fu">sliderInput</span>(<span class="at">inputId =</span> <span class="st">"body_mass_input"</span>, <span class="at">label =</span> <span class="st">"Select a range of body masses (g)"</span>,</span>
+<span id="cb2-35"><a></a>                         <span class="at">min =</span> <span class="dv">2700</span>, <span class="at">max =</span> <span class="dv">6300</span>, <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">3000</span>, <span class="dv">4000</span>)),</span>
+<span id="cb2-36"><a></a>             </span>
+<span id="cb2-37"><a></a>             <span class="co"># body mass plot output ----</span></span>
+<span id="cb2-38"><a></a>             <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"body_mass_scatterplot_output"</span>)</span>
+<span id="cb2-39"><a></a>             </span>
+<span id="cb2-40"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
+<span id="cb2-41"><a></a>    </span>
+<span id="cb2-42"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb2-43"><a></a>  </span>
+<span id="cb2-44"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
 <span id="cb2-45"><a></a></span>
-<span id="cb2-46"><a></a><span class="co"># server ----</span></span>
-<span id="cb2-47"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
-<span id="cb2-48"><a></a>  </span>
-<span id="cb2-49"><a></a>  <span class="co"># render penguin text ----</span></span>
-<span id="cb2-50"><a></a>  output<span class="sc">$</span>penguins_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb2-51"><a></a>    </span>
-<span id="cb2-52"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb2-53"><a></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
-<span id="cb2-54"><a></a>    }</span>
-<span id="cb2-55"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb2-56"><a></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
-<span id="cb2-57"><a></a>    }</span>
-<span id="cb2-58"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb2-59"><a></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
-<span id="cb2-60"><a></a>    }</span>
-<span id="cb2-61"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb2-62"><a></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
-<span id="cb2-63"><a></a>    }</span>
-<span id="cb2-64"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
-<span id="cb2-65"><a></a>  </span>
+<span id="cb2-46"><a></a></span>
+<span id="cb2-47"><a></a><span class="co"># server ----</span></span>
+<span id="cb2-48"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
+<span id="cb2-49"><a></a>  </span>
+<span id="cb2-50"><a></a>  <span class="co"># render penguin text ----</span></span>
+<span id="cb2-51"><a></a>  output<span class="sc">$</span>penguins_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb2-52"><a></a>    </span>
+<span id="cb2-53"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb2-54"><a></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
+<span id="cb2-55"><a></a>    }</span>
+<span id="cb2-56"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb2-57"><a></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
+<span id="cb2-58"><a></a>    }</span>
+<span id="cb2-59"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb2-60"><a></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
+<span id="cb2-61"><a></a>    }</span>
+<span id="cb2-62"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb2-63"><a></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
+<span id="cb2-64"><a></a>    }</span>
+<span id="cb2-65"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
 <span id="cb2-66"><a></a>  </span>
-<span id="cb2-67"><a></a>  <span class="co"># render penguin images ----</span></span>
-<span id="cb2-68"><a></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
-<span id="cb2-69"><a></a>    </span>
-<span id="cb2-70"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb2-71"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-72"><a></a>    }</span>
-<span id="cb2-73"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb2-74"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-75"><a></a>    }</span>
-<span id="cb2-76"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb2-77"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-78"><a></a>    }</span>
-<span id="cb2-79"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb2-80"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb2-81"><a></a>    }</span>
-<span id="cb2-82"><a></a>    </span>
-<span id="cb2-83"><a></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
-<span id="cb2-84"><a></a>  </span>
+<span id="cb2-67"><a></a>  </span>
+<span id="cb2-68"><a></a>  <span class="co"># render penguin images ----</span></span>
+<span id="cb2-69"><a></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
+<span id="cb2-70"><a></a>    </span>
+<span id="cb2-71"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb2-72"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-73"><a></a>    }</span>
+<span id="cb2-74"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb2-75"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-76"><a></a>    }</span>
+<span id="cb2-77"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb2-78"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-79"><a></a>    }</span>
+<span id="cb2-80"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb2-81"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb2-82"><a></a>    }</span>
+<span id="cb2-83"><a></a>    </span>
+<span id="cb2-84"><a></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
 <span id="cb2-85"><a></a>  </span>
-<span id="cb2-86"><a></a>  <span class="co"># filter body masses ----</span></span>
-<span id="cb2-87"><a></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb2-88"><a></a>    penguins <span class="sc">|&gt;</span></span>
-<span id="cb2-89"><a></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>]) </span>
-<span id="cb2-90"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> filter body masses</span></span>
-<span id="cb2-91"><a></a>  </span>
+<span id="cb2-86"><a></a>  </span>
+<span id="cb2-87"><a></a>  <span class="co"># filter body masses ----</span></span>
+<span id="cb2-88"><a></a>  body_mass_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb2-89"><a></a>    penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-90"><a></a>      <span class="fu">filter</span>(body_mass_g <span class="sc">%in%</span> input<span class="sc">$</span>body_mass_input[<span class="dv">1</span>]<span class="sc">:</span>input<span class="sc">$</span>body_mass_input[<span class="dv">2</span>]) </span>
+<span id="cb2-91"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> filter body masses</span></span>
 <span id="cb2-92"><a></a>  </span>
-<span id="cb2-93"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
-<span id="cb2-94"><a></a>  output<span class="sc">$</span>bodyMass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb2-95"><a></a></span>
-<span id="cb2-96"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
-<span id="cb2-97"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
-<span id="cb2-98"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
-<span id="cb2-99"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-100"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
-<span id="cb2-101"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb2-102"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb2-103"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
-<span id="cb2-104"><a></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-105"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
-<span id="cb2-106"><a></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
-<span id="cb2-107"><a></a></span>
-<span id="cb2-108"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
-<span id="cb2-109"><a></a>  </span>
+<span id="cb2-93"><a></a>  </span>
+<span id="cb2-94"><a></a>  <span class="co"># render the scatterplot output ----</span></span>
+<span id="cb2-95"><a></a>  output<span class="sc">$</span>body_mass_scatterplot_output <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-96"><a></a></span>
+<span id="cb2-97"><a></a>    <span class="fu">ggplot</span>(<span class="fu">na.omit</span>(<span class="fu">body_mass_df</span>()),</span>
+<span id="cb2-98"><a></a>           <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb2-99"><a></a>               <span class="at">color =</span> species, <span class="at">shape =</span> species)) <span class="sc">+</span></span>
+<span id="cb2-100"><a></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-101"><a></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="st">"#FEA346"</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="st">"#B251F1"</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="st">"#4BA4A4"</span>)) <span class="sc">+</span></span>
+<span id="cb2-102"><a></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span> <span class="ot">=</span> <span class="dv">19</span>, <span class="st">"Chinstrap"</span> <span class="ot">=</span> <span class="dv">17</span>, <span class="st">"Gentoo"</span> <span class="ot">=</span> <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb2-103"><a></a>      <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>, <span class="at">y =</span> <span class="st">"Bill length (mm)"</span>,</span>
+<span id="cb2-104"><a></a>           <span class="at">color =</span> <span class="st">"Penguin species"</span>, <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb2-105"><a></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-106"><a></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.2</span>),</span>
+<span id="cb2-107"><a></a>            <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"white"</span>))</span>
+<span id="cb2-108"><a></a></span>
+<span id="cb2-109"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
 <span id="cb2-110"><a></a>  </span>
-<span id="cb2-111"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
-<span id="cb2-112"><a></a></span>
-<span id="cb2-113"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
-<span id="cb2-114"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-111"><a></a>  </span>
+<span id="cb2-112"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
+<span id="cb2-113"><a></a></span>
+<span id="cb2-114"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
+<span id="cb2-115"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div></div>
@@ -835,120 +807,121 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="code-with-filename-file">
 <pre><strong>~/broken-app/app.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># load packages ----</span></span>
-<span id="cb3-2"><a></a><span class="fu">library</span>(shiny)</span>
-<span id="cb3-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a></a><span class="fu">library</span>(reactlog)</span>
-<span id="cb3-5"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="co"># ui ----</span></span>
-<span id="cb3-8"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb3-9"><a></a>  </span>
-<span id="cb3-10"><a></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb3-11"><a></a>    </span>
-<span id="cb3-12"><a></a>    <span class="co"># tab 1 ----</span></span>
-<span id="cb3-13"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 1"</span>,</span>
-<span id="cb3-14"><a></a>             </span>
-<span id="cb3-15"><a></a>             <span class="co"># radio button input ----</span></span>
-<span id="cb3-16"><a></a>             <span class="fu">radioButtons</span>(</span>
-<span id="cb3-17"><a></a>               <span class="at">inputId =</span> <span class="st">"img_input"</span>, <span class="at">label =</span> <span class="st">"Choose a penguin to display:"</span>,</span>
-<span id="cb3-18"><a></a>               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"All penguins"</span>, <span class="st">"Sassy chinstrap"</span>, <span class="st">"Staring gentoo"</span>, <span class="st">"Adorable adelie"</span>),</span>
-<span id="cb3-19"><a></a>               <span class="at">selected =</span> <span class="st">"All penguins"</span>),</span>
-<span id="cb3-20"><a></a>             </span>
-<span id="cb3-21"><a></a>             <span class="co"># text output ----</span></span>
-<span id="cb3-22"><a></a>             <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_text_output"</span>),</span>
-<span id="cb3-23"><a></a>             </span>
-<span id="cb3-24"><a></a>             <span class="co"># img output ----</span></span>
-<span id="cb3-25"><a></a>             <span class="fu">imageOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_img_output"</span>)</span>
-<span id="cb3-26"><a></a>             </span>
-<span id="cb3-27"><a></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> tab 1</span></span>
-<span id="cb3-28"><a></a>    </span>
-<span id="cb3-29"><a></a>    <span class="co"># tab 2 ----</span></span>
-<span id="cb3-30"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 2"</span><span class="co">#,</span></span>
-<span id="cb3-31"><a></a>             </span>
-<span id="cb3-32"><a></a>             <span class="co"># # body mass slider input ----</span></span>
-<span id="cb3-33"><a></a>             <span class="co"># sliderInput(inputId = "body_mass_input", label = "Select a range of body masses (g)",</span></span>
-<span id="cb3-34"><a></a>             <span class="co">#             min = 2700, max = 6300, value = c(3000, 4000)),</span></span>
-<span id="cb3-35"><a></a>             </span>
-<span id="cb3-36"><a></a>             <span class="co"># # body mass plot output ----</span></span>
-<span id="cb3-37"><a></a>             <span class="co"># plotOutput(outputId = "bodyMass_scatterplot_output")</span></span>
-<span id="cb3-38"><a></a>             </span>
-<span id="cb3-39"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
-<span id="cb3-40"><a></a>    </span>
-<span id="cb3-41"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
-<span id="cb3-42"><a></a>  </span>
-<span id="cb3-43"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
-<span id="cb3-44"><a></a></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># ----- broken app -----</span></span>
+<span id="cb3-2"><a></a><span class="co"># load packages ----</span></span>
+<span id="cb3-3"><a></a><span class="fu">library</span>(shiny)</span>
+<span id="cb3-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-5"><a></a><span class="fu">library</span>(reactlog)</span>
+<span id="cb3-6"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a><span class="co"># ui ----</span></span>
+<span id="cb3-9"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb3-10"><a></a>  </span>
+<span id="cb3-11"><a></a>  <span class="fu">tabsetPanel</span>(</span>
+<span id="cb3-12"><a></a>    </span>
+<span id="cb3-13"><a></a>    <span class="co"># tab 1 ----</span></span>
+<span id="cb3-14"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 1"</span>,</span>
+<span id="cb3-15"><a></a>             </span>
+<span id="cb3-16"><a></a>             <span class="co"># radio button input ----</span></span>
+<span id="cb3-17"><a></a>             <span class="fu">radioButtons</span>(</span>
+<span id="cb3-18"><a></a>               <span class="at">inputId =</span> <span class="st">"img_input"</span>, <span class="at">label =</span> <span class="st">"Choose a penguin to display:"</span>,</span>
+<span id="cb3-19"><a></a>               <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"All penguins"</span>, <span class="st">"Sassy chinstrap"</span>, <span class="st">"Staring gentoo"</span>, <span class="st">"Adorable adelie"</span>),</span>
+<span id="cb3-20"><a></a>               <span class="at">selected =</span> <span class="st">"All penguins"</span>),</span>
+<span id="cb3-21"><a></a>             </span>
+<span id="cb3-22"><a></a>             <span class="co"># text output ----</span></span>
+<span id="cb3-23"><a></a>             <span class="fu">textOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_text_output"</span>),</span>
+<span id="cb3-24"><a></a>             </span>
+<span id="cb3-25"><a></a>             <span class="co"># img output ----</span></span>
+<span id="cb3-26"><a></a>             <span class="fu">imageOutput</span>(<span class="at">outputId =</span> <span class="st">"penguin_img_output"</span>)</span>
+<span id="cb3-27"><a></a>             </span>
+<span id="cb3-28"><a></a>    ), <span class="co"># </span><span class="re">END</span><span class="co"> tab 1</span></span>
+<span id="cb3-29"><a></a>    </span>
+<span id="cb3-30"><a></a>    <span class="co"># tab 2 ----</span></span>
+<span id="cb3-31"><a></a>    <span class="fu">tabPanel</span>(<span class="at">title =</span> <span class="st">"Tab 2"</span><span class="co">#,</span></span>
+<span id="cb3-32"><a></a>             </span>
+<span id="cb3-33"><a></a>             <span class="co"># # body mass slider input ----</span></span>
+<span id="cb3-34"><a></a>             <span class="co"># sliderInput(inputId = "body_mass_input", label = "Select a range of body masses (g)",</span></span>
+<span id="cb3-35"><a></a>             <span class="co">#             min = 2700, max = 6300, value = c(3000, 4000)),</span></span>
+<span id="cb3-36"><a></a>             </span>
+<span id="cb3-37"><a></a>             <span class="co"># # body mass plot output ----</span></span>
+<span id="cb3-38"><a></a>             <span class="co"># plotOutput(outputId = "body_mass_scatterplot_output")</span></span>
+<span id="cb3-39"><a></a>             </span>
+<span id="cb3-40"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
+<span id="cb3-41"><a></a>    </span>
+<span id="cb3-42"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> tabsetPanel</span></span>
+<span id="cb3-43"><a></a>  </span>
+<span id="cb3-44"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage</span></span>
 <span id="cb3-45"><a></a></span>
-<span id="cb3-46"><a></a><span class="co"># server ----</span></span>
-<span id="cb3-47"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
-<span id="cb3-48"><a></a>  </span>
-<span id="cb3-49"><a></a>  <span class="co"># render penguin text ----</span></span>
-<span id="cb3-50"><a></a>  output<span class="sc">$</span>penguins_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb3-51"><a></a>    </span>
-<span id="cb3-52"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb3-53"><a></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
-<span id="cb3-54"><a></a>    }</span>
-<span id="cb3-55"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb3-56"><a></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
-<span id="cb3-57"><a></a>    }</span>
-<span id="cb3-58"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb3-59"><a></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
-<span id="cb3-60"><a></a>    }</span>
-<span id="cb3-61"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb3-62"><a></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
-<span id="cb3-63"><a></a>    }</span>
-<span id="cb3-64"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
-<span id="cb3-65"><a></a>  </span>
+<span id="cb3-46"><a></a></span>
+<span id="cb3-47"><a></a><span class="co"># server ----</span></span>
+<span id="cb3-48"><a></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
+<span id="cb3-49"><a></a>  </span>
+<span id="cb3-50"><a></a>  <span class="co"># render penguin text ----</span></span>
+<span id="cb3-51"><a></a>  output<span class="sc">$</span>penguins_text_output <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb3-52"><a></a>    </span>
+<span id="cb3-53"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb3-54"><a></a>      <span class="st">"Meet all of our lovely penguins species!"</span></span>
+<span id="cb3-55"><a></a>    }</span>
+<span id="cb3-56"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb3-57"><a></a>      <span class="st">"Chinstraps get their name from the thin black line that runs under their chins"</span></span>
+<span id="cb3-58"><a></a>    }</span>
+<span id="cb3-59"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb3-60"><a></a>      <span class="st">"Gentoos stand out because of their bright orange bills and feet"</span></span>
+<span id="cb3-61"><a></a>    }</span>
+<span id="cb3-62"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb3-63"><a></a>      <span class="st">"Adelie penguins are my personal favorite &lt;3"</span></span>
+<span id="cb3-64"><a></a>    }</span>
+<span id="cb3-65"><a></a>  }) <span class="co"># </span><span class="re">END</span><span class="co"> renderText</span></span>
 <span id="cb3-66"><a></a>  </span>
-<span id="cb3-67"><a></a>  <span class="co"># render penguin images ----</span></span>
-<span id="cb3-68"><a></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
-<span id="cb3-69"><a></a>    </span>
-<span id="cb3-70"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
-<span id="cb3-71"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb3-72"><a></a>    }</span>
-<span id="cb3-73"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
-<span id="cb3-74"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb3-75"><a></a>    }</span>
-<span id="cb3-76"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb3-77"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb3-78"><a></a>    }</span>
-<span id="cb3-79"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb3-80"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
-<span id="cb3-81"><a></a>    }</span>
-<span id="cb3-82"><a></a>    </span>
-<span id="cb3-83"><a></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
-<span id="cb3-84"><a></a>  </span>
+<span id="cb3-67"><a></a>  </span>
+<span id="cb3-68"><a></a>  <span class="co"># render penguin images ----</span></span>
+<span id="cb3-69"><a></a>  output<span class="sc">$</span>penguin_img_output <span class="ot">&lt;-</span> <span class="fu">renderImage</span>({</span>
+<span id="cb3-70"><a></a>    </span>
+<span id="cb3-71"><a></a>    <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"All penguins"</span>){</span>
+<span id="cb3-72"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/all_penguins.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb3-73"><a></a>    }</span>
+<span id="cb3-74"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Sassy chinstrap"</span>){</span>
+<span id="cb3-75"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb3-76"><a></a>    }</span>
+<span id="cb3-77"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
+<span id="cb3-78"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb3-79"><a></a>    }</span>
+<span id="cb3-80"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
+<span id="cb3-81"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
+<span id="cb3-82"><a></a>    }</span>
+<span id="cb3-83"><a></a>    </span>
+<span id="cb3-84"><a></a>  }, <span class="at">deleteFile =</span> <span class="cn">FALSE</span>) <span class="co"># </span><span class="re">END</span><span class="co"> renderImage</span></span>
 <span id="cb3-85"><a></a>  </span>
-<span id="cb3-86"><a></a>  <span class="co"># # filter body masses ----</span></span>
-<span id="cb3-87"><a></a>  <span class="co"># body_mass_df &lt;- reactive({</span></span>
-<span id="cb3-88"><a></a>  <span class="co">#   penguins |&gt;</span></span>
-<span id="cb3-89"><a></a>  <span class="co">#     filter(body_mass_g %in% input$body_mass_input[1]:input$body_mass_input[2])</span></span>
-<span id="cb3-90"><a></a>  <span class="co"># }) # </span><span class="re">END</span><span class="co"> filter body masses</span></span>
-<span id="cb3-91"><a></a>  </span>
+<span id="cb3-86"><a></a>  </span>
+<span id="cb3-87"><a></a>  <span class="co"># # filter body masses ----</span></span>
+<span id="cb3-88"><a></a>  <span class="co"># body_mass_df &lt;- reactive({</span></span>
+<span id="cb3-89"><a></a>  <span class="co">#   penguins |&gt;</span></span>
+<span id="cb3-90"><a></a>  <span class="co">#     filter(body_mass_g %in% input$body_mass_input[1]:input$body_mass_input[2])</span></span>
+<span id="cb3-91"><a></a>  <span class="co"># }) # </span><span class="re">END</span><span class="co"> filter body masses</span></span>
 <span id="cb3-92"><a></a>  </span>
-<span id="cb3-93"><a></a>  <span class="co"># # render the scatterplot output ----</span></span>
-<span id="cb3-94"><a></a>  <span class="co"># output$bodyMass_scatterplot_output &lt;- renderPlot({</span></span>
-<span id="cb3-95"><a></a>  <span class="co">#   </span></span>
-<span id="cb3-96"><a></a>  <span class="co">#   ggplot(na.omit(body_mass_df()),</span></span>
-<span id="cb3-97"><a></a>  <span class="co">#          aes(x = flipper_length_mm, y = bill_length_mm,</span></span>
-<span id="cb3-98"><a></a>  <span class="co">#              color = species, shape = species)) +</span></span>
-<span id="cb3-99"><a></a>  <span class="co">#     geom_point() +</span></span>
-<span id="cb3-100"><a></a>  <span class="co">#     scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +</span></span>
-<span id="cb3-101"><a></a>  <span class="co">#     scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +</span></span>
-<span id="cb3-102"><a></a>  <span class="co">#     labs(x = "Flipper length (mm)", y = "Bill length (mm)",</span></span>
-<span id="cb3-103"><a></a>  <span class="co">#          color = "Penguin species", shape = "Penguin species") +</span></span>
-<span id="cb3-104"><a></a>  <span class="co">#     theme_minimal() +</span></span>
-<span id="cb3-105"><a></a>  <span class="co">#     theme(legend.position = c(0.85, 0.2),</span></span>
-<span id="cb3-106"><a></a>  <span class="co">#           legend.background = element_rect(color = "white"))</span></span>
-<span id="cb3-107"><a></a>  <span class="co">#   </span></span>
-<span id="cb3-108"><a></a>  <span class="co"># }) # </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
-<span id="cb3-109"><a></a>  </span>
+<span id="cb3-93"><a></a>  </span>
+<span id="cb3-94"><a></a>  <span class="co"># # render the scatterplot output ----</span></span>
+<span id="cb3-95"><a></a>  <span class="co"># output$body_mass_scatterplot_output &lt;- renderPlot({</span></span>
+<span id="cb3-96"><a></a>  <span class="co">#   </span></span>
+<span id="cb3-97"><a></a>  <span class="co">#   ggplot(na.omit(body_mass_df()),</span></span>
+<span id="cb3-98"><a></a>  <span class="co">#          aes(x = flipper_length_mm, y = bill_length_mm,</span></span>
+<span id="cb3-99"><a></a>  <span class="co">#              color = species, shape = species)) +</span></span>
+<span id="cb3-100"><a></a>  <span class="co">#     geom_point() +</span></span>
+<span id="cb3-101"><a></a>  <span class="co">#     scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +</span></span>
+<span id="cb3-102"><a></a>  <span class="co">#     scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +</span></span>
+<span id="cb3-103"><a></a>  <span class="co">#     labs(x = "Flipper length (mm)", y = "Bill length (mm)",</span></span>
+<span id="cb3-104"><a></a>  <span class="co">#          color = "Penguin species", shape = "Penguin species") +</span></span>
+<span id="cb3-105"><a></a>  <span class="co">#     theme_minimal() +</span></span>
+<span id="cb3-106"><a></a>  <span class="co">#     theme(legend.position = c(0.85, 0.2),</span></span>
+<span id="cb3-107"><a></a>  <span class="co">#           legend.background = element_rect(color = "white"))</span></span>
+<span id="cb3-108"><a></a>  <span class="co">#   </span></span>
+<span id="cb3-109"><a></a>  <span class="co"># }) # </span><span class="re">END</span><span class="co"> render scatterplot</span></span>
 <span id="cb3-110"><a></a>  </span>
-<span id="cb3-111"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
-<span id="cb3-112"><a></a></span>
-<span id="cb3-113"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
-<span id="cb3-114"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-111"><a></a>  </span>
+<span id="cb3-112"><a></a>} <span class="co"># </span><span class="re">END</span><span class="co"> server</span></span>
+<span id="cb3-113"><a></a></span>
+<span id="cb3-114"><a></a><span class="co"># combine UI &amp; server into an app ----</span></span>
+<span id="cb3-115"><a></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1012,7 +985,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <span id="cb4-34"><a></a>             <span class="co">#             min = 2700, max = 6300, value = c(3000, 4000)),</span></span>
 <span id="cb4-35"><a></a>             </span>
 <span id="cb4-36"><a></a>             <span class="co"># # body mass plot output ----</span></span>
-<span id="cb4-37"><a></a>             <span class="co"># plotOutput(outputId = "bodyMass_scatterplot_output")</span></span>
+<span id="cb4-37"><a></a>             <span class="co"># plotOutput(outputId = "body_mass_scatterplot_output")</span></span>
 <span id="cb4-38"><a></a>             </span>
 <span id="cb4-39"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> tab 2</span></span>
 <span id="cb4-40"><a></a>    </span>
@@ -1058,11 +1031,11 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <span id="cb4-80"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/chinstrap.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
 <span id="cb4-81"><a></a>    }</span>
 <span id="cb4-82"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Staring gentoo"</span>){</span>
-<span id="cb4-83"><a></a>      <span class="fu">message</span>(<span class="st">"Displaying all gentoo image"</span>)</span>
+<span id="cb4-83"><a></a>      <span class="fu">message</span>(<span class="st">"Displaying gentoo image"</span>)</span>
 <span id="cb4-84"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/gentoo.jpeg"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
 <span id="cb4-85"><a></a>    }</span>
 <span id="cb4-86"><a></a>    <span class="cf">else</span> <span class="cf">if</span>(input<span class="sc">$</span>img_input <span class="sc">==</span> <span class="st">"Adorable adelie"</span>){</span>
-<span id="cb4-87"><a></a>      <span class="fu">message</span>(<span class="st">"Displaying all adelie image"</span>)</span>
+<span id="cb4-87"><a></a>      <span class="fu">message</span>(<span class="st">"Displaying adelie image"</span>)</span>
 <span id="cb4-88"><a></a>      <span class="fu">list</span>(<span class="at">src =</span> <span class="st">"www/adelie.gif"</span>, <span class="at">height =</span> <span class="dv">240</span>, <span class="at">width =</span> <span class="dv">300</span>)</span>
 <span id="cb4-89"><a></a>    }</span>
 <span id="cb4-90"><a></a>    </span>
@@ -1077,7 +1050,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <span id="cb4-99"><a></a>  </span>
 <span id="cb4-100"><a></a>  </span>
 <span id="cb4-101"><a></a>  <span class="co"># # render the scatterplot output ----</span></span>
-<span id="cb4-102"><a></a>  <span class="co"># output$bodyMass_scatterplot_output &lt;- renderPlot({</span></span>
+<span id="cb4-102"><a></a>  <span class="co"># output$body_mass_scatterplot_output &lt;- renderPlot({</span></span>
 <span id="cb4-103"><a></a>  <span class="co">#   </span></span>
 <span id="cb4-104"><a></a>  <span class="co">#   ggplot(na.omit(body_mass_df()),</span></span>
 <span id="cb4-105"><a></a>  <span class="co">#          aes(x = flipper_length_mm, y = bill_length_mm,</span></span>
@@ -1105,7 +1078,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <h2></h2>
 <p><span class="slide-title">See which messages successfully print</span></p>
 <hr>
-<p><span class="body-text-s">We can run our app and see messages successfully (or in the case of a broken app, unsuccessfully) print in the RStudio console as we interact with the app. You’ll notice that the each image message (e.g.&nbsp;<em>“Displaying all penguins image”</em>) prints when a new radioButton is selected, but those associated with the text outputs do not. <strong>This tells us that code is not being executed, beginning with first <code>if</code> statement inside <code>renderText</code></strong> and that this is a good starting location for reviewing code (e.g.&nbsp;carefully crosschecking all <code>inputId</code>s and <code>outputId</code>s in that section).</span></p>
+<p><span class="body-text-s">We can run our app and see messages successfully (or in the case of a broken app, unsuccessfully) print in the RStudio console as we interact with the app. You’ll notice that the each image message (e.g.&nbsp;<em>“Displaying all penguins image”</em>) prints when a new radioButton is selected, but those associated with the text outputs do not. <strong>This tells us that code is not being executed, beginning with first <code>if</code> statement inside <code>renderText()</code></strong> and that this is a good starting location for reviewing code (e.g.&nbsp;carefully crosschecking all <code>inputId</code>s and <code>outputId</code>s in that section).</span></p>
 
 <img data-src="images/part6/messages.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="We see our app.R file with 'message()'s inserted throughout our reactive elements. When our app is run and the user updates the radioButtons, we see the associated messages appear in the console (or not appear, if code is broken)."></section>
 <section id="reactlog" class="slide level2" data-menu-title="{reactlog}">
@@ -1116,9 +1089,7 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 <div class="column" style="width:50%;">
 <p><br> <br> <br> <br> <br></p>
 <p><code>reactlog</code> is a package / tool that provides:</p>
-<p class="body-text-s quote-text-bg">
-<em>“A snapshot of the history (<strong>log</strong>) of all <strong>react</strong>ive interactions within a shiny application”</em> <strong>- Barret Schloerke in his 2019 RSTUDIO::CONF talk, <a href="https://www.rstudio.com/resources/rstudioconf-2019/reactlog-2-0-debugging-the-state-of-shiny/">Reactlog 2.0: Debugging the state of Shiny</a></strong>
-</p>
+<p><span class="body-text-s"><em>“A snapshot of the history (<strong>log</strong>) of all <strong>react</strong>ive interactions within a shiny application”</em> <strong>- Barret Schloerke in his 2019 RSTUDIO::CONF talk, <a href="https://www.rstudio.com/resources/rstudioconf-2019/reactlog-2-0-debugging-the-state-of-shiny/" target="_blank">Reactlog 2.0: Debugging the state of Shiny</a></strong></span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1130,15 +1101,13 @@ In <strong>Tab 1</strong>, only the image updates whenever a new radio button is
 </div>
 </div>
 </div></div>
-<p class="body-text-s">
-Reactivity can be confusing. I recommend watching Barret Schloerke’s talk, linked above, and reading through the <a href="https://rstudio.github.io/reactlog/articles/reactlog.html">Shiny Reactlog vignette</a> as you get started.
-</p>
+<p><span class="body-text-s">Reactivity can be confusing. I recommend watching Barret Schloerke’s talk, linked above, and reading through the <a href="https://rstudio.github.io/reactlog/articles/reactlog.html" target="&quot;_blank">Shiny Reactlog vignette</a> as you get started.</span></p>
 </section>
 <section id="reactlog-workflow" class="slide level2" data-menu-title="{reactlog} workflow">
 <h2></h2>
 <p><span class="slide-title">Using <code>{reactlog}</code></span></p>
 <hr>
-<p><code>reactlog</code> should already be installed as a dependency of <code>shiny</code> (but you’ll need to load it using <code>library(reactlog)</code> in your console). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.</p>
+<p><code>{reactlog}</code> should already be installed as a dependency of <code>{shiny}</code> (but you’ll need to load it using <code>library(reactlog)</code> in your console). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.</p>
 <p><br></p>
 <p><strong>To use <code>reactlog</code>, follow these steps:</strong></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> Load the reactlog library in you console (<code>library(reactlog)</code>)</span></p>
@@ -1148,26 +1117,43 @@ Reactivity can be confusing. I recommend watching Barret Schloerke’s talk, lin
 <p><span class="body-text-s"><span class="teal-text"><strong>(5)</strong></span> Use your <code>&lt;-</code> and <code>-&gt;</code> arrow keys (or <img src="images/part6/previous.png" alt="A gray, left-facing play button" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"> and <img src="images/part6/forward.png" alt="A gray, right-facing play button" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;">) to move forward and backward through your app’s reactive life cycle</span></p>
 <p><br></p>
 <div class="footer">
-<p>Read about the components of the <a href="https://rstudio.github.io/reactlog/articles/reactlog.html#status-bar">status bar</a> and the meaning of different <a href="https://rstudio.github.io/reactlog/articles/reactlog.html#reactive-states">reactive states</a> in the <code>reactlog</code> vignette.</p>
+<p>Read about the components of the <a href="https://rstudio.github.io/reactlog/articles/reactlog.html#status-bar">status bar</a>{target=“_blank} and the meaning of different <a href="https://rstudio.github.io/reactlog/articles/reactlog.html#reactive-states" target="&quot;_blank">reactive states</a> in the <code>reactlog</code> vignette.</p>
 </div>
 </section>
 <section id="using-reactlog-working-app" class="slide level2" data-menu-title="Using {reactlog} - working app">
 <h2></h2>
 <p><span class="slide-title3">Using <code>{reactlog}</code> to visualize reactivity in a correctly-functioning app</span></p>
 <hr>
-<p class="body-text-s">
-To visualize the reactive life cycle of the <code>reactlog-working</code> app, let’s first load the reactlog library, then call <code>reactlog_enable()</code> in our console. Next, we’ll run the app and interact with it. By default, <strong>All penguins</strong> is selected. For demonstration purposes, let’s click down the list (<strong>Sassy chinstrap</strong>, <strong>Staring gentoo</strong>, and finally <strong>Adorable adelie</strong>). When done, stop the app, then run <code>shiny::reactlogShow()</code> in the console to open the reactlog visualizer in a browser window.
-</p>
-<p class="body-text-s">
-<strong>Note:</strong> We’ve left the scatter plot on Tab 2 (and it’s related UI elements) commented out (as we practiced in the earlier few slides) for this demo – the <code>{reactlog}</code> package has many features that allow you to explore reactive dependencies across your whole app, but it can get complicated quickly. For demo purposes, we’re going to work with this “smaller” version of our app, which contains just the problematic code.
-</p>
-
-<img data-src="images/part6/reactlog-working.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>To visualize the reactive life cycle of the <code>reactlog-working</code> app, let’s perform the following steps:</p>
+<ul>
+<li><span class="body-text-s">load the <code>{reactlog}</code> library in our console, by running <code>library(reactlog)</code></span></li>
+<li><span class="body-text-s">call <code>reactlog_enable()</code> in our console</span></li>
+<li><span class="body-text-s">run the app and interact with it – by default, <strong>All penguins</strong> is selected. For demonstration purposes, let’s click down the list (<strong>Sassy chinstrap</strong>, <strong>Staring gentoo</strong>, and finally <strong>Adorable adelie</strong>)</span></li>
+<li><span class="body-text-s">when done, stop the app, then run <code>shiny::reactlogShow()</code> in the console to open the reactlog visualizer in a browser window</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><br> <br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/part6/reactlog-working.gif" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="footer">
+<p><strong>Note:</strong> We’ve left the scatter plot on Tab 2 (and it’s related UI elements) commented out (as we practiced in the earlier few slides) for this demo – the <code>{reactlog}</code> package has many features that allow you to explore reactive dependencies across your whole app, but it can get complicated quickly. For demo purposes, we’re going to work with this “smaller” version of our app, which contains just the problematic code.]{.body-text-s}</p>
+</div>
+</section>
 <section id="interpreting-reactlog-working-app" class="slide level2" data-menu-title="Interpreting {reactlog}">
 <h2></h2>
 <p><span class="slide-title2">Interpreting <code>{reactlog}</code> (used with our correctly-functioning app)</span></p>
 <hr>
-<p>There’s a lot to take when looking at the reactlog viewer, so let’s take it one step at a time:</p>
+<p>There’s a lot to take when looking at the reactlog viewer, so let’s take it one step at a time (click your right arrow key to advance steps in the viewer):</p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> The <code>radioButton</code> input defaults to show the <strong>All penguins</strong> image and associated text. When we launch reactlog, our input <img src="images/part6/input.png" alt="" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;">, reactive expression <img src="images/part6/expression.png" alt="" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;">, and outputs <img src="images/part6/output.png" alt="" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"> are <strong>Ready</strong>, meaning the calculated values are available (defaults in this case) and reactive elements have finished executing (i.e.&nbsp;the image and text is displayed). This <strong>Ready</strong> state is indicated by the green icons.</span></p>
 <div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> I (the user) then updated the input by choosing <strong>Sassy chinstrap</strong>, invalidating (i.e.&nbsp;resetting) the input and thereby invalidating any dependencies – in this case both the image and text outputs. This <strong>Invalidating</strong> state is indicated by the gray icons.</span></p>
@@ -1183,18 +1169,12 @@ To visualize the reactive life cycle of the <code>reactlog-working</code> app, l
 <h2></h2>
 <p><span class="slide-title2">Using <code>{reactlog}</code> to visualize reactivity in a broken app</span></p>
 <hr>
-<p class="body-text-s">
-Let’s try out reactlog on our intentionally broken app (<code>reactlog-broken</code>, where our image changes when a radioButton user input is updated, but our text doesn’t appear). As in our functioning app, the <strong>All penguins</strong> image is selected by default. For demonstration purposes, let’s select each option moving down the list (<strong>Sassy chinstrap</strong>, <strong>Staring gentoo</strong>, <strong>Adorable adelie</strong>) before launching the reactlog browser view (using <code>shiny::reactlogShow()</code>).
-</p>
+<p><span class="body-text-s">Let’s try out reactlog on our intentionally broken app (<code>reactlog-broken</code>, where our image changes when a radioButton user input is updated, but our text doesn’t appear). As in our functioning app, the <strong>All penguins</strong> image is selected by default. For demonstration purposes, let’s select each option moving down the list (<strong>Sassy chinstrap</strong>, <strong>Staring gentoo</strong>, <strong>Adorable adelie</strong>) before launching the reactlog browser view (using <code>shiny::reactlogShow()</code>).</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br></p>
-<p class="body-text-s">
-Similar to our functioning app, the default input, <strong>All penguins</strong>, and image output are <strong>Ready</strong> (green). However, in this example our text output is <em>not a dependency</em> of our application’s input – there’s no linkage and the text output is <strong>Invalidated</strong> (gray).
-</p>
-<p class="body-text-s">
-As we click down the list of radioButtons, the image output is invalidated, then updated accordingly, but the text output remains disconnected from our input.
-</p>
+<p><span class="body-text-s">Similar to our functioning app, the default input, <strong>All penguins</strong>, and image output are <strong>Ready</strong> (green). However, in this example our text output is <em>not a dependency</em> of our application’s input – there’s no linkage and the text output is <strong>Invalidated</strong> (gray).</span></p>
+<p><span class="body-text-s">As we click down the list of radioButtons, the image output is invalidated, then updated accordingly, but the text output remains disconnected from our input.</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1211,12 +1191,8 @@ As we click down the list of radioButtons, the image output is invalidated, then
 <h2></h2>
 <p><span class="slide-title">So what’s the issue with our app?</span></p>
 <hr>
-<p class="body-text-s">
-Evidence from our diagnostic messages <em>and</em> <code>reactlog</code> suggests that we should make sure that our UI and server are actually able to communicate about our desired text output. After careful inspection of our <code>textOutput()</code> and <code>renderText()</code> code, we find that a spelling error is to blame:
-</p>
-<p class="body-text-s">
-Our <code>outputId</code> in the <strong>UI</strong> is set to <code>penguin_text_output</code>:
-</p>
+<p><span class="body-text-s">Evidence from our diagnostic messages <em>and</em> <code>reactlog</code> suggests that we should make sure that our UI and server are actually able to communicate about our desired text output. After careful inspection of our <code>textOutput()</code> and <code>renderText()</code> code, we find that a spelling error is to blame:</span></p>
+<p><span class="body-text-s">Our <code>outputId</code> in the <strong>UI</strong> is set to <code>penguin_text_output</code>:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1232,9 +1208,7 @@ Our <code>outputId</code> in the <strong>UI</strong> is set to <code>penguin_tex
 <span id="cb5-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p class="body-text-s">
-But we call <code>penguins_text_output</code> (note the plural) when rendering our output in the <strong>server</strong>:
-</p>
+<p><span class="body-text-s">But we call <code>penguins_text_output</code> (note the plural) when rendering our output in the <strong>server</strong>:</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1253,9 +1227,7 @@ But we call <code>penguins_text_output</code> (note the plural) when rendering o
 <span id="cb6-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p class="body-text-s">
-By updating our <code>outputId</code> to match in both the UI and the server, we fix our app.
-</p>
+<p><span class="body-text-s">By updating our <code>outputId</code> to match in both the UI and the server, we fix our app.</span></p>
 </section>
 <section id="end" class="slide level2" data-menu-title="~~~ END ~~~" data-background="#047C90">
 <h2></h2>
@@ -1269,7 +1241,7 @@ End part 7.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_755e07d8" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_716b8a73" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

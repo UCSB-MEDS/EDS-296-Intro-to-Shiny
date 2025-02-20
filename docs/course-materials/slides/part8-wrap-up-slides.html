@@ -331,7 +331,7 @@
 
 <section id="title-slide" class="slide level2 center" data-menu-title="Title Slide" data-background="#053660">
 <h2></h2>
-<p><span class="custom-title">EDS 430: Part 8</span></p>
+<p><span class="custom-title">EDS 296: Part 8</span></p>
 <p><span class="custom-subtitle"><em>Wrap up</em></span></p>
 <hr class="hr-teal">
 <!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
@@ -355,13 +355,19 @@
 <p>First, we don’t think shiny apps are inherently <em>bad</em>. They’re popular (particularly as Capstone deliverables) for a good reason – they can:</p>
 <p><br></p>
 <div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(1)</strong></span> effectively <strong>expose data / analytics</strong> to those who don’t have the technical or computational skills <em>or</em> the time to process data</span></p>
+<ol type="1">
+<li>effectively <strong>expose data / analytics</strong> to those who don’t have the technical or computational skills <em>or</em> the time to process data</li>
+</ol>
 </div>
 <div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(2)</strong></span> they can <strong>streamline otherwise obtuse workflows</strong> (<a href="https://bren.ucsb.edu/projects/improving-monitoring-and-evaluation-enforcement-coastal-marine-protected-areas-and">Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries</a> (MEDS Capstone, 2023) is an excellent example of this)</span></p>
+<ol start="2" type="1">
+<li>they can <strong>streamline otherwise obtuse workflows</strong> (<a href="https://bren.ucsb.edu/projects/improving-monitoring-and-evaluation-enforcement-coastal-marine-protected-areas-and" target="_blank">Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries</a> (MEDS Capstone, 2023) is an excellent example of this)</li>
+</ol>
 </div>
 <div class="fragment">
-<p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> allow users to <strong>derive greater insights</strong> as they interact with the data</span></p>
+<ol start="3" type="1">
+<li>allow users to <strong>derive greater insights</strong> as they interact with the data</li>
+</ol>
 </div>
 </section>
 <section id="considerations" class="slide level2" data-menu-title="Considerations">
@@ -388,7 +394,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p>Image Source: <a href="https://www.reddit.com/r/dataengineering/comments/15f9uab/fancy_dashboards_with_volatile_data_pipelines/">Reddit</a></p>
+<p>Image Source: <a href="https://www.reddit.com/r/dataengineering/comments/15f9uab/fancy_dashboards_with_volatile_data_pipelines/" target="_blank">Reddit</a></p>
 </div>
 </div></div>
 </section>
@@ -396,7 +402,7 @@
 <h2></h2>
 <p><span class="slide-title2">Embed htmlwidgets into your reports / websites</span></p>
 <hr>
-<p><span class="body-text-s"><strong><a href="https://www.htmlwidgets.org/">htmlwidgets</a> allow you to create interactive data visualizations using JavaScript libraries in R.</strong> They can be embedded into Shiny apps (recall we used both the <a href="https://rstudio.github.io/DT/"><code>{DT}</code> package</a> to create an interactive datatable and the <a href="https://rstudio.github.io/leaflet/"><code>{leaflet}</code> package</a> to create an interactive map), <em>or</em> into RMarkdown and Quarto Markdown reports. <strong>A well-designed reproducible report with interactive widgets is powerful, easier to maintain, and can be deployed on the web (for free) using tools like <a href="https://pages.github.com/">GitHub pages</a>.</strong> Explore 130 registered widgets on the <a href="https://gallery.htmlwidgets.org/">htmlwidget gallery</a>.</span></p>
+<p><span class="body-text-s"><strong><a href="https://www.htmlwidgets.org/" target="_blank">htmlwidgets</a> allow you to create interactive data visualizations using JavaScript libraries in R.</strong> They can be embedded into Shiny apps (recall we used both the <a href="https://rstudio.github.io/DT/" target="_blank"><code>{DT}</code> package</a> to create an interactive datatable and the <a href="https://rstudio.github.io/leaflet/" target="_blank"><code>{leaflet}</code> package</a> to create an interactive map), <em>or</em> into RMarkdown and Quarto Markdown reports. <strong>A well-designed reproducible report with interactive widgets is powerful, easier to maintain, and can be deployed on the web (for free) using tools like <a href="https://pages.github.com/">GitHub pages</a>.</strong> Explore 130 registered widgets on the <a href="https://gallery.htmlwidgets.org/" target="_blank">htmlwidget gallery</a>.</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -409,7 +415,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p>An example leaflet map embedded in an RMarkdown report. Image Source: <a href="https://www.htmlwidgets.org/index.html">htmlwidgets for R</a></p>
+<p>An example leaflet map embedded in an RMarkdown report. Image Source: <a href="https://www.htmlwidgets.org/index.html" target="_blank">htmlwidgets for R</a></p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -422,7 +428,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p>An example leaflet map embedded in a Quarto website. Image Source: <a href="https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby">my website</a></p>
+<p>An example leaflet map embedded in a Quarto website. Image Source: <a href="https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby" target="_blank">my website</a></p>
 </div>
 </div></div>
 </section>
@@ -430,7 +436,7 @@
 <h2></h2>
 <p><span class="slide-title">Compose multiple widgets into a dashboard</span></p>
 <hr>
-<p><span class="body-text-s">Have lots of interactive htmlwidgets to present? <strong>Consider composing multiple widgets into a dashboard using <a href="https://pkgs.rstudio.com/flexdashboard/"><code>{flexdashboard}</code></a> (based in RMarkdown) or <a href="https://quarto.org/docs/dashboards/">Quarto dashboard</a>.</strong> Both frameworks support UI layouts similar to those achieved using <code>{shiny}</code> / <code>{shinydashboard}</code> (columns, rows, tabsets, navbars, value boxes etc.). You can also optionally use Shiny to embed reactive outputs. Check out the <a href="https://pkgs.rstudio.com/flexdashboard/articles/examples.html"><code>{flexdashboard}</code> gallery</a> and <a href="https://quarto.org/docs/dashboards/examples/">Quarto dashboard gallery</a> for examples and source code.</span></p>
+<p><span class="body-text-s">Have lots of interactive htmlwidgets to present? <strong>Consider composing multiple widgets into a dashboard using <a href="https://pkgs.rstudio.com/flexdashboard/" target="_blank"><code>{flexdashboard}</code></a> (based in RMarkdown) or <a href="https://quarto.org/docs/dashboards/" target="_blank">Quarto dashboard</a>.</strong> Both frameworks support UI layouts similar to those achieved using <code>{shiny}</code> / <code>{shinydashboard}</code> (columns, rows, tabsets, navbars, value boxes etc.). You can also optionally use Shiny to embed reactive outputs. Check out the <a href="https://pkgs.rstudio.com/flexdashboard/articles/examples.html" target="_blank"><code>{flexdashboard}</code> gallery</a> and <a href="https://quarto.org/docs/gallery/#dashboards" target="_blank">Quarto dashboard gallery</a> for examples and source code.</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -443,7 +449,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p><a href="https://testing-apps.shinyapps.io/flexdashboard-leaflet-waste/">Waste Lands - America’s Forgotten Nuclear Legacy</a>, (built using <code>{flexdashboard}</code>)</p>
+<p><a href="https://testing-apps.shinyapps.io/flexdashboard-leaflet-waste/" target="_blank">Waste Lands - America’s Forgotten Nuclear Legacy</a>, (built using <code>{flexdashboard}</code>)</p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -456,7 +462,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p><a href="https://colorado.posit.co/rsc/nz-quakes/quakes.html">Recent Earthquakes in Aotearoa New Zealand</a> (built using Quarto)</p>
+<p><a href="https://colorado.posit.co/rsc/nz-quakes/quakes.html" target="_blank">Recent Earthquakes in Aotearoa New Zealand</a> (built using Quarto)</p>
 </div>
 </div></div>
 </section>
@@ -464,7 +470,7 @@
 <h2></h2>
 <p><span class="slide-title2">Embed shiny components in Quarto docs</span></p>
 <hr>
-<p><span class="body-text-s"><strong>Embed reactive shiny components (e.g.&nbsp;a plot with sliders that control its inputs) in Quarto documents.</strong> By using some fun new code chunk options, you can instruct Quarto to spin up it’s own self-contained shiny server to run your reactives. Read the <a href="https://quarto.org/docs/interactive/shiny/">Quarto documentation</a> to learn more and check out some <a href="https://quarto.org/docs/interactive/shiny/#examples">teaching examples</a>.</span></p>
+<p><span class="body-text-s"><strong>Embed reactive shiny components (e.g.&nbsp;a plot with sliders that control its inputs) in Quarto documents.</strong> By using some fun new code chunk options, you can instruct Quarto to spin up it’s own self-contained shiny server to run your reactives. Read the <a href="https://quarto.org/docs/interactive/shiny/" target="_blank">Quarto documentation</a> to learn more and check out some <a href="https://quarto.org/docs/interactive/shiny/#examples" target="_blank">teaching examples</a>.</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -477,7 +483,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p><a href="https://jjallaire.shinyapps.io/shiny-old-faithful/">Old Faithful</a>, which demonstrates incorporating an interactive plot into the main flow of a document. <a href="https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/old-faithful/shiny-old-faithful.qmd">Source code</a></p>
+<p><a href="https://jjallaire.shinyapps.io/shiny-old-faithful/" target="_blank">Old Faithful</a>, which demonstrates incorporating an interactive plot into the main flow of a document. <a href="https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/old-faithful/shiny-old-faithful.qmd" target="_blank">Source code</a></p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -490,7 +496,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p><a href="https://jjallaire.shinyapps.io/shiny-k-means/">Iris K-Means Clustering</a>, which demonstrates using a more “application-like” page layout (sidebar and main panel). <a href="https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/k-means/shiny-k-means.qmd">Source code</a></p>
+<p><a href="https://jjallaire.shinyapps.io/shiny-k-means/" target="_blank">Iris K-Means Clustering</a>, which demonstrates using a more “application-like” page layout (sidebar and main panel). <a href="https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/k-means/shiny-k-means.qmd" target="_blank">Source code</a></p>
 </div>
 </div></div>
 </section>
@@ -498,14 +504,14 @@
 <h2></h2>
 <p><span class="slide-title">Run serverless shiny apps using Shinylive</span></p>
 <hr>
-<p><span class="body-text-s"><strong>Shinylive is a serverless version of Shiny</strong>, which was recently annoucned at <a href="https://posit.co/conference/">posit::conf(2023)</a> by Joe Cheng (rewatch his <a href="https://www.youtube.com/watch?v=j1M6YyU2ZX8&amp;list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&amp;index=88">talk</a>!). It supports Shiny for both R <em>and</em> Python (that’s right, you can build shiny apps using Python too! See <a href="https://shiny.posit.co/py/">Shiny for Python</a> for more info). You have a few options:</span></p>
+<p><span class="body-text-s"><strong>Shinylive is a serverless version of Shiny</strong>, which was recently annoucned at <a href="https://posit.co/conference/" target="_blank">posit::conf(2023)</a> by Joe Cheng (rewatch his <a href="https://www.youtube.com/watch?v=j1M6YyU2ZX8&amp;list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&amp;index=88" target="_blank">talk</a>!). It supports Shiny for both R <em>and</em> Python (that’s right, you can build shiny apps using Python too! See <a href="https://shiny.posit.co/py/" target="_blank">Shiny for Python</a> for more info). You have a few options:</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><br> <br></p>
 <ul>
-<li><span class="body-text-s"><strong>Convert shiny apps to static websites</strong> using this <a href="https://github.com/posit-dev/r-shinylive"><code>{shinylive}</code> package for R</a> or <a href="https://github.com/posit-dev/py-shinylive"><code>{shinylive}</code> package for Python</a></span></li>
-<li><span class="body-text-s"><strong>Write, run, and share Shiny apps right in the browser</strong> at <a href="https://shinylive.io/r/examples/" class="uri">https://shinylive.io/r/examples/</a> (R) or <a href="https://shinylive.io/py/examples/" class="uri">https://shinylive.io/py/examples/</a> (Python)</span></li>
-<li><span class="body-text-s"><strong>Include Shiny apps in Quarto docs</strong> using the <a href="https://github.com/quarto-ext/shinylive">Shinylive Quarto extension</a></span></li>
+<li><span class="body-text-s"><strong>Convert shiny apps to static websites</strong> using this <a href="https://github.com/posit-dev/r-shinylive" target="_blank"><code>{shinylive}</code> package for R</a> or <a href="https://github.com/posit-dev/py-shinylive" target="_blank"><code>{shinylive}</code> package for Python</a></span></li>
+<li><span class="body-text-s"><strong>Write, run, and share Shiny apps right in the browser</strong> at <a href="https://shinylive.io/r/examples/" target="_blank">https://shinylive.io/r/examples/</a> (R) or <a href="https://shinylive.io/py/examples/" target="_blank">https://shinylive.io/py/examples/</a> (Python)</span></li>
+<li><span class="body-text-s"><strong>Include Shiny apps in Quarto docs</strong> using the <a href="https://github.com/quarto-ext/shinylive" target="_blank">Shinylive Quarto extension</a></span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -518,7 +524,7 @@
 </div>
 </div>
 <div class="center-text body-text-s gray-text">
-<p>Image Source: <a href="https://hypebright.nl/index.php/en/2023/10/02/run-a-shiny-app-in-the-browser-with-shinylive-for-r/">Run a Shiny app in the browser with shinylive for R</a>, by <a href="https://hypebright.nl/index.php/en/author/veerlevanleemputlive-nl/">Veerle van Leemput</a></p>
+<p>Image Source: <a href="https://hypebright.nl/index.php/en/2023/10/02/run-a-shiny-app-in-the-browser-with-shinylive-for-r/" target="_blank">Run a Shiny app in the browser with shinylive for R</a>, by <a href="https://hypebright.nl/index.php/en/author/veerlevanleemputlive-nl/" target="_blank">Veerle van Leemput</a></p>
 </div>
 </div></div>
 </section>
@@ -618,7 +624,7 @@
 <h2></h2>
 <p><span class="slide-title">Deploy with shinyapps.io, if possible</span></p>
 <hr>
-<p><span class="body-text-s">There are a number of ways to deploy a shiny app, but <strong>stick with <a href="https://www.shinyapps.io/">shinyapps.io</a> whenever possible</strong> – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.</span></p>
+<p><span class="body-text-s">There are a number of ways to deploy a shiny app, but <strong>stick with <a href="https://www.shinyapps.io/" target="_blank">shinyapps.io</a> whenever possible</strong> – it’s the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it’s easily scalable with a number of paid plan options.</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">

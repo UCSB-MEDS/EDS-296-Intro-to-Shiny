@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 8]{.custom-title}
+[EDS 296: Part 8]{.custom-title}
 
 [*Wrap up*]{.custom-subtitle}
 
@@ -46,15 +46,15 @@ First, we don't think shiny apps are inherently *bad*. They're popular (particul
 
 . . .
 
-[[**(1)**]{.teal-text} effectively **expose data / analytics** to those who don't have the technical or computational skills *or* the time to process data]{.body-text-s}
+1. effectively **expose data / analytics** to those who don't have the technical or computational skills *or* the time to process data
 
 . . . 
 
-[[**(2)**]{.teal-text} they can **streamline otherwise obtuse workflows** ([Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries](https://bren.ucsb.edu/projects/improving-monitoring-and-evaluation-enforcement-coastal-marine-protected-areas-and) (MEDS Capstone, 2023) is an excellent example of this)]{.body-text-s}
+2.  they can **streamline otherwise obtuse workflows** ([Improving Monitoring and Evaluation of Enforcement in Coastal Marine Protected Areas and Fisheries](https://bren.ucsb.edu/projects/improving-monitoring-and-evaluation-enforcement-coastal-marine-protected-areas-and){target="_blank"} (MEDS Capstone, 2023) is an excellent example of this)
 
 . . . 
 
-[[**(3)**]{.teal-text} allow users to **derive greater insights** as they interact with the data]{.body-text-s}
+3. allow users to **derive greater insights** as they interact with the data
 
 ---
 
@@ -90,7 +90,7 @@ knitr::include_graphics("images/part8/barbenheimer.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-Image Source: [Reddit](https://www.reddit.com/r/dataengineering/comments/15f9uab/fancy_dashboards_with_volatile_data_pipelines/)
+Image Source: [Reddit](https://www.reddit.com/r/dataengineering/comments/15f9uab/fancy_dashboards_with_volatile_data_pipelines/){target="_blank"}
 :::
 :::
 
@@ -104,7 +104,7 @@ Image Source: [Reddit](https://www.reddit.com/r/dataengineering/comments/15f9uab
 
 <hr>
 
-[**[htmlwidgets](https://www.htmlwidgets.org/) allow you to create interactive data visualizations using JavaScript libraries in R.** They can be embedded into Shiny apps (recall we used both the [`{DT}` package](https://rstudio.github.io/DT/) to create an interactive datatable and the [`{leaflet}` package](https://rstudio.github.io/leaflet/) to create an interactive map), *or* into RMarkdown and Quarto Markdown reports. **A well-designed reproducible report with interactive widgets is powerful, easier to maintain, and can be deployed on the web (for free) using tools like [GitHub pages](https://pages.github.com/).** Explore 130 registered widgets on the [htmlwidget gallery](https://gallery.htmlwidgets.org/).]{.body-text-s}
+[**[htmlwidgets](https://www.htmlwidgets.org/){target="_blank"} allow you to create interactive data visualizations using JavaScript libraries in R.** They can be embedded into Shiny apps (recall we used both the [`{DT}` package](https://rstudio.github.io/DT/){target="_blank"} to create an interactive datatable and the [`{leaflet}` package](https://rstudio.github.io/leaflet/){target="_blank"} to create an interactive map), *or* into RMarkdown and Quarto Markdown reports. **A well-designed reproducible report with interactive widgets is powerful, easier to maintain, and can be deployed on the web (for free) using tools like [GitHub pages](https://pages.github.com/).** Explore 130 registered widgets on the [htmlwidget gallery](https://gallery.htmlwidgets.org/){target="_blank"}.]{.body-text-s}
 
 :::: {.columns}
 
@@ -119,7 +119,7 @@ knitr::include_graphics("images/part8/htmlwidget.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-An example leaflet map embedded in an RMarkdown report. Image Source: [htmlwidgets for R](https://www.htmlwidgets.org/index.html)
+An example leaflet map embedded in an RMarkdown report. Image Source: [htmlwidgets for R](https://www.htmlwidgets.org/index.html){target="_blank"}
 :::
 
 :::
@@ -135,7 +135,7 @@ knitr::include_graphics("images/part8/leaflet-mywebsite.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-An example leaflet map embedded in a Quarto website. Image Source: [my website](https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby)
+An example leaflet map embedded in a Quarto website. Image Source: [my website](https://samanthacsik.github.io/about.html#fa-hiking-titlea-person-with-a-backpack-and-trekking-pole-the-hobby){target="_blank"}
 :::
 
 :::
@@ -150,7 +150,7 @@ An example leaflet map embedded in a Quarto website. Image Source: [my website](
 
 <hr>
 
-[Have lots of interactive htmlwidgets to present? **Consider composing multiple widgets into a dashboard using [`{flexdashboard}`](https://pkgs.rstudio.com/flexdashboard/) (based in RMarkdown) or [Quarto dashboard](https://quarto.org/docs/dashboards/).** Both frameworks support UI layouts similar to those achieved using `{shiny}` / `{shinydashboard}` (columns, rows, tabsets, navbars, value boxes etc.). You can also optionally use Shiny to embed reactive outputs. Check out the [`{flexdashboard}` gallery](https://pkgs.rstudio.com/flexdashboard/articles/examples.html) and [Quarto dashboard gallery](https://quarto.org/docs/dashboards/examples/) for examples and source code.]{.body-text-s}
+[Have lots of interactive htmlwidgets to present? **Consider composing multiple widgets into a dashboard using [`{flexdashboard}`](https://pkgs.rstudio.com/flexdashboard/){target="_blank"} (based in RMarkdown) or [Quarto dashboard](https://quarto.org/docs/dashboards/){target="_blank"}.** Both frameworks support UI layouts similar to those achieved using `{shiny}` / `{shinydashboard}` (columns, rows, tabsets, navbars, value boxes etc.). You can also optionally use Shiny to embed reactive outputs. Check out the [`{flexdashboard}` gallery](https://pkgs.rstudio.com/flexdashboard/articles/examples.html){target="_blank"} and [Quarto dashboard gallery](https://quarto.org/docs/gallery/#dashboards){target="_blank"} for examples and source code.]{.body-text-s}
 
 :::: {.columns}
 
@@ -164,7 +164,7 @@ knitr::include_graphics("images/part8/flexdashboard.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-[Waste Lands - America's Forgotten Nuclear Legacy](https://testing-apps.shinyapps.io/flexdashboard-leaflet-waste/), (built using `{flexdashboard}`)
+[Waste Lands - America's Forgotten Nuclear Legacy](https://testing-apps.shinyapps.io/flexdashboard-leaflet-waste/){target="_blank"}, (built using `{flexdashboard}`)
 :::
 
 :::
@@ -180,7 +180,7 @@ knitr::include_graphics("images/part8/quarto-dashboard.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-[Recent Earthquakes in Aotearoa New Zealand](https://colorado.posit.co/rsc/nz-quakes/quakes.html) (built using Quarto)
+[Recent Earthquakes in Aotearoa New Zealand](https://colorado.posit.co/rsc/nz-quakes/quakes.html){target="_blank"} (built using Quarto)
 :::
 
 :::
@@ -195,7 +195,7 @@ knitr::include_graphics("images/part8/quarto-dashboard.png")
 
 <hr>
 
-[**Embed reactive shiny components (e.g. a plot with sliders that control its inputs) in Quarto documents.** By using some fun new code chunk options, you can instruct Quarto to spin up it's own self-contained shiny server to run your reactives. Read the [Quarto documentation](https://quarto.org/docs/interactive/shiny/) to learn more and check out some [teaching examples](https://quarto.org/docs/interactive/shiny/#examples).]{.body-text-s}
+[**Embed reactive shiny components (e.g. a plot with sliders that control its inputs) in Quarto documents.** By using some fun new code chunk options, you can instruct Quarto to spin up it's own self-contained shiny server to run your reactives. Read the [Quarto documentation](https://quarto.org/docs/interactive/shiny/){target="_blank"} to learn more and check out some [teaching examples](https://quarto.org/docs/interactive/shiny/#examples){target="_blank"}.]{.body-text-s}
 
 :::: {.columns}
 
@@ -209,7 +209,7 @@ knitr::include_graphics("images/part8/quarto-shiny-faithful.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-[Old Faithful](https://jjallaire.shinyapps.io/shiny-old-faithful/), which demonstrates incorporating an interactive plot into the main flow of a document. [Source code](https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/old-faithful/shiny-old-faithful.qmd)
+[Old Faithful](https://jjallaire.shinyapps.io/shiny-old-faithful/){target="_blank"}, which demonstrates incorporating an interactive plot into the main flow of a document. [Source code](https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/old-faithful/shiny-old-faithful.qmd){target="_blank"}
 :::
 
 :::
@@ -225,7 +225,7 @@ knitr::include_graphics("images/part8/quarto-shiny-kmeans.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-[Iris K-Means Clustering](https://jjallaire.shinyapps.io/shiny-k-means/), which demonstrates using a more “application-like” page layout (sidebar and main panel). [Source code](https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/k-means/shiny-k-means.qmd)
+[Iris K-Means Clustering](https://jjallaire.shinyapps.io/shiny-k-means/){target="_blank"}, which demonstrates using a more “application-like” page layout (sidebar and main panel). [Source code](https://github.com/quarto-dev/quarto-web/blob/main/docs/interactive/shiny/_examples/k-means/shiny-k-means.qmd){target="_blank"}
 :::
 
 :::
@@ -240,7 +240,7 @@ knitr::include_graphics("images/part8/quarto-shiny-kmeans.png")
 
 <hr>
 
-[**Shinylive is a serverless version of Shiny**, which was recently annoucned at [posit::conf(2023)](https://posit.co/conference/) by Joe Cheng (rewatch his [talk ](https://www.youtube.com/watch?v=j1M6YyU2ZX8&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=88)!). It supports Shiny for both R *and* Python (that's right, you can build shiny apps using Python too! See [Shiny for Python](https://shiny.posit.co/py/) for more info). You have a few options:]{.body-text-s}
+[**Shinylive is a serverless version of Shiny**, which was recently annoucned at [posit::conf(2023)](https://posit.co/conference/){target="_blank"} by Joe Cheng (rewatch his [talk ](https://www.youtube.com/watch?v=j1M6YyU2ZX8&list=PL9HYL-VRX0oRFZslRGHwHuwea7SvAATHp&index=88){target="_blank"}!). It supports Shiny for both R *and* Python (that's right, you can build shiny apps using Python too! See [Shiny for Python](https://shiny.posit.co/py/){target="_blank"} for more info). You have a few options:]{.body-text-s}
 
 :::: {.columns}
 
@@ -249,9 +249,9 @@ knitr::include_graphics("images/part8/quarto-shiny-kmeans.png")
 <br>
 <br>
 
-- [**Convert shiny apps to static websites** using this [`{shinylive}` package for R](https://github.com/posit-dev/r-shinylive) or [`{shinylive}` package for Python](https://github.com/posit-dev/py-shinylive)]{.body-text-s}
-- [**Write, run, and share Shiny apps right in the browser** at <https://shinylive.io/r/examples/> (R) or <https://shinylive.io/py/examples/> (Python)]{.body-text-s}
-- [**Include Shiny apps in Quarto docs** using the [Shinylive Quarto extension](https://github.com/quarto-ext/shinylive)]{.body-text-s}
+- [**Convert shiny apps to static websites** using this [`{shinylive}` package for R](https://github.com/posit-dev/r-shinylive){target="_blank"} or [`{shinylive}` package for Python](https://github.com/posit-dev/py-shinylive){target="_blank"}]{.body-text-s}
+- [**Write, run, and share Shiny apps right in the browser** at [https://shinylive.io/r/examples/](https://shinylive.io/r/examples/){target="_blank"} (R) or [https://shinylive.io/py/examples/](https://shinylive.io/py/examples/){target="_blank"} (Python)]{.body-text-s}
+- [**Include Shiny apps in Quarto docs** using the [Shinylive Quarto extension](https://github.com/quarto-ext/shinylive){target="_blank"}]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -264,7 +264,7 @@ knitr::include_graphics("images/part8/shinylive.png")
 ```
 
 ::: {.center-text .body-text-s .gray-text}
-Image Source: [Run a Shiny app in the browser with shinylive for R](https://hypebright.nl/index.php/en/2023/10/02/run-a-shiny-app-in-the-browser-with-shinylive-for-r/), by [Veerle van Leemput](https://hypebright.nl/index.php/en/author/veerlevanleemputlive-nl/)
+Image Source: [Run a Shiny app in the browser with shinylive for R](https://hypebright.nl/index.php/en/2023/10/02/run-a-shiny-app-in-the-browser-with-shinylive-for-r/){target="_blank"}, by [Veerle van Leemput](https://hypebright.nl/index.php/en/author/veerlevanleemputlive-nl/){target="_blank"}
 :::
 :::
 
@@ -415,7 +415,7 @@ knitr::include_graphics("images/part8/app2-layout-fxns.png")
 
 <hr>
 
-[There are a number of ways to deploy a shiny app, but **stick with [shinyapps.io](https://www.shinyapps.io/) whenever possible** -- it's the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it's easily scalable with a number of paid plan options.]{.body-text-s}
+[There are a number of ways to deploy a shiny app, but **stick with [shinyapps.io](https://www.shinyapps.io/){target="_blank"} whenever possible** -- it's the quickest and fastest way to securely host your app. The free tier allows you to host 5 apps with up to 25 active hours a month, however it's easily scalable with a number of paid plan options.]{.body-text-s}
 
 :::: {.columns}
 

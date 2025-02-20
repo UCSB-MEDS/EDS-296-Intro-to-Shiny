@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 7.1]{.custom-title}
+[EDS 296: Part 7.1]{.custom-title}
 
 [*Debugging*]{.custom-subtitle}
 
@@ -38,23 +38,23 @@ editor_options:
 
 <hr>
 
-<p class="body-text-l teal-text bottombr">After this section, you should:</p>
+[After this section, you should:]{.body-text-l .teal-text}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the challenges associated with debugging shiny applications</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the challenges associated with debugging shiny applications]{.body-text-s}
 
 . . .
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know to a few approaches and tools for debugging shiny applications, including using diagnostic messages and the `reactlog` package.</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know to a few approaches and tools for debugging shiny applications, including using diagnostic messages and the `{reactlog}` package.]{.body-text-s}
 
 . . . 
 
-<p class="body-text-l teal-text topbr">Packages introduced:</p> 
+[Packages introduced:]{.body-text-l .teal-text}
 
 . . . 
 
-<p class="body-text-s">[{{< fa book-open title="an open book" >}}]{.teal-text} `{reactlog}`:  a reactivity visualizer for shiny</p>
+[[{{< fa book-open title="an open book" >}}]{.teal-text} `{reactlog}`:  a reactivity visualizer for shiny]{.body-text-s}
 
 ---
 
@@ -64,27 +64,27 @@ editor_options:
 
 <hr>
 
-<p class="body-text">Shiny apps can be particularly challenging to debug for a few reasons:</p>
+Shiny apps can be particularly challenging to debug for a few reasons:
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Shiny is **reactive**, so code execution isn't as linear as other code that you're likely more familiar with (e.g. analytical pipelines written in "normal" R scripts, where each line of code is executed in succession)</p>
+- [Shiny is **reactive**, so code execution isn't as linear as other code that you're likely more familiar with (e.g. analytical pipelines written in "normal" R scripts, where each line of code is executed in succession)]{.body-text-s}
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} Shiny code runs behind a web server *and* the Shiny framework itself, which can obscure what's going on</p>
-
-. . . 
-
-<p class="body-text topbr">While there are a number of different tools / strategies for debugging Shiny apps, I find myself turning to one (or more) of these approaches most often:</p>
-
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **isolating pesky errors** (typos, missing commas, unmatched parentheses) in the UI by commenting out code from the outside in</p>
-
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **reducing your app to *just* problematic code** by commenting out as much correctly-functioning code as possible</p>
-
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **adding diagnostic messages** to my reactives</p>
-
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} **using `{reactlog}`** to visualize reactivity errors</p>
+- [Shiny code runs behind a web server *and* the Shiny framework itself, which can obscure what's going on]{.body-text-s}
 
 . . . 
 
-<p class="body-text topbr">We'll touch on each of these, briefly, but be sure to check out the Shiny article, [Debugging Shiny applications](https://shiny.rstudio.com/articles/debugging.html) and [Mastering Shiny Ch. 5.2](https://mastering-shiny.org/action-workflow.html#debugging), by Hadley Wickham, for more approaches, details, and examples.</p>
+While there are a number of different tools / strategies for debugging Shiny apps, I find myself turning to one (or more) of these approaches most often:
+
+- [**isolating pesky errors** (typos, missing commas, unmatched parentheses) in the UI by commenting out code from the outside in]{.body-text-s}
+
+- [**reducing your app to *just* problematic code** by commenting out as much correctly-functioning code as possible]{.body-text-s}
+
+- [**adding diagnostic messages** to reactives]{.body-text-s}
+
+- [**using `{reactlog}`** to visualize reactivity errors]{.body-text-s}
+
+. . . 
+
+We'll touch on each of these, briefly, but be sure to check out the Shiny article, [Debugging Shiny applications](https://shiny.rstudio.com/articles/debugging.html){target="_blank"} and [Mastering Shiny Ch. 5.2](https://mastering-shiny.org/action-workflow.html#debugging){target="_blank"}, by Hadley Wickham, for more approaches, details, and examples.
 
 ---
 
@@ -100,7 +100,7 @@ Many of us experienced the frustrations of finding unmatched parentheses, typos,
 
 <br>
 
-**My preferred approach for troubleshooting a situation like this is to [comment out all code inside the highest-level layout function (e.g. `navbarPage()`)]{.teal-text}, re-run your app to ensure that it works, uncomment the next inner-most pieces, re-run, etc. until you find the place where your app breaks.**
+**My preferred approach for troubleshooting a situation like this is to [comment out all code inside the highest-level layout function (e.g. `navbarPage()`)]{.teal-text} > re-run your app to ensure that it works > uncomment the next inner-most pieces > repeat, until you find the place where your app breaks.**
 
 <br>
 <br>
@@ -122,7 +122,7 @@ See next slide for an example
 :::: {.columns}
 
 ::: {.column width="50%"}
-<p class="body-text-s topbr">If I were to trouble shoot the UI for App #2, I'd comment out everything except `ui <- navbarPage(title = "LTER Animal Data Explorer"` and the ending `) # END navbarPage`, then run my app to make sure an empty app with a gray navbar and title at the top appears. It does? Great. Next, un-comment the two `tabPanel()`s that create the "About this App" and "Explore the Data" pages. Works? Add a little bit more back in now, and continue this process. I like to un-comment / re-run all layout function code *first*, then begin adding back the inputs and outputs one-by-one. See a short, but incomplete demo to the right:</p>
+[If I were to trouble shoot the UI for App #2, I'd comment out everything except `ui <- navbarPage(title = "LTER Animal Data Explorer"` and the ending `) # END navbarPage`, then run my app to make sure an empty app with a gray navbar and title at the top appears. It does? Great. Next, un-comment the two `tabPanel()`s that create the "About this App" and "Explore the Data" pages. Works? Add a little bit more back in now, and continue this process. I like to un-comment / re-run all layout function code *first*, then begin adding back the inputs and outputs one-by-one. See a short, but incomplete demo to the right:]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -162,7 +162,7 @@ Oftentimes, you'll need to identify larger, more complex errors, like why an out
 
 . . . 
 
-[[**(3)**]{.teal-text} ...*and* on rare occasions, I'll try using the [`{reactlog}` package](https://rstudio.github.io/reactlog/) to help visualize my app's reactivity in an attempt to identify the problem.]{.body-text-s}
+[[**(3)**]{.teal-text} ...*and* on rare occasions, I'll try using the [`{reactlog}` package](https://rstudio.github.io/reactlog/){target="_blank} to help visualize my app's reactivity in an attempt to identify the problem.]{.body-text-s}
 
 . . . 
 
@@ -170,9 +170,9 @@ Oftentimes, you'll need to identify larger, more complex errors, like why an out
 
 To demo these approaches, we'll use two pre-constructed apps as examples: 
 
-[[**(1)**]{.teal-text} [`working-app`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-working) (a small app that's functioning as intended)]{.body-text-s} 
+[[**(1)**]{.teal-text} [`working-app`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-working){target="_blank} (a small app that's functioning as intended)]{.body-text-s} 
 
-[[**(2)**]{.teal-text} [`broken-app`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-broken) (the same small app that's *not* functioning as intended)]{.body-text-s}
+[[**(2)**]{.teal-text} [`broken-app`](https://github.com/samanthacsik/EDS430-shiny-app/tree/main/reactlog-broken){target="_blank} (the same small app that's *not* functioning as intended)]{.body-text-s}
 
 ---
 
@@ -182,7 +182,7 @@ To demo these approaches, we'll use two pre-constructed apps as examples:
 
 <hr>
 
-<p class="body-text-s">In **Tab 1**, both the image and text should update whenever a new radio button is chosen. In **Tab 2**, the scatterplot should update so that only data points for penguins with body masses within our chosen range are displayed.</p>
+[In **Tab 1**, both the image and text should update whenever a new radio button is chosen. In **Tab 2**, the scatterplot should update so that only data points for penguins with body masses within our chosen range are displayed.]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -201,7 +201,7 @@ knitr::include_graphics("images/part6/working-app.gif")
 
 <hr>
 
-<p class="body-text-s">In **Tab 1**, only the image updates whenever a new radio button is chosen, and text is missing altogether. In **Tab 2**, the scatterplot updates as expected whenever the body mass range is changed.</p>
+[In **Tab 1**, only the image updates whenever a new radio button is chosen, and text is missing altogether. In **Tab 2**, the scatterplot updates as expected whenever the body mass range is changed.]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -220,7 +220,7 @@ knitr::include_graphics("images/part6/buggy-app.gif")
 
 <hr>
 
-[Create two new subdirectories (one for each of the following apps) and copy the code below into the respective `app.R` files. You'll also want to [download this `www/` folder](https://drive.google.com/drive/folders/18lnX4sMjrgKyF1vw28vByCEk0Uhh8xmc?usp=drive_link) (containing penguin images) and put a copy of it into each subdirectory:]{.body-text-s}
+[Create two new subdirectories (one for each of the following apps) and copy the code below into the respective `app.R` files. You'll also want to [download this `www/` folder](https://drive.google.com/drive/folders/18lnX4sMjrgKyF1vw28vByCEk0Uhh8xmc?usp=drive_link){target="_blank"} (containing penguin images) and put a copy of it into each subdirectory:]{.body-text-s}
 
 :::: {.columns}
 
@@ -229,6 +229,7 @@ knitr::include_graphics("images/part6/buggy-app.gif")
 ```{r filename="~/working-app/app.R"}
 #| eval: false
 #| echo: true
+# ----- working app -----
 # load packages ----
 library(shiny)
 library(tidyverse)
@@ -265,7 +266,7 @@ ui <- fluidPage(
                          min = 2700, max = 6300, value = c(3000, 4000)),
 
              # body mass plot output ----
-             plotOutput(outputId = "bodyMass_scatterplot_output")
+             plotOutput(outputId = "body_mass_scatterplot_output")
              
              ) # END tab 2
     
@@ -322,7 +323,7 @@ server <- function(input, output){
 
   
   # render the scatterplot output ----
-  output$bodyMass_scatterplot_output <- renderPlot({
+  output$body_mass_scatterplot_output <- renderPlot({
 
     ggplot(na.omit(body_mass_df()),
            aes(x = flipper_length_mm, y = bill_length_mm,
@@ -356,6 +357,7 @@ shinyApp(ui = ui, server = server)
 ```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
+# ----- broken app -----
 # load packages ----
 library(shiny)
 library(tidyverse)
@@ -392,7 +394,7 @@ ui <- fluidPage(
                          min = 2700, max = 6300, value = c(3000, 4000)),
              
              # body mass plot output ----
-             plotOutput(outputId = "bodyMass_scatterplot_output")
+             plotOutput(outputId = "body_mass_scatterplot_output")
              
     ) # END tab 2
     
@@ -449,7 +451,7 @@ server <- function(input, output){
   
   
   # render the scatterplot output ----
-  output$bodyMass_scatterplot_output <- renderPlot({
+  output$body_mass_scatterplot_output <- renderPlot({
 
     ggplot(na.omit(body_mass_df()),
            aes(x = flipper_length_mm, y = bill_length_mm,
@@ -516,6 +518,7 @@ See next slide for code
 ```{r filename="~/broken-app/app.R"}
 #| eval: false
 #| echo: true
+# ----- broken app -----
 # load packages ----
 library(shiny)
 library(tidyverse)
@@ -552,7 +555,7 @@ ui <- fluidPage(
              #             min = 2700, max = 6300, value = c(3000, 4000)),
              
              # # body mass plot output ----
-             # plotOutput(outputId = "bodyMass_scatterplot_output")
+             # plotOutput(outputId = "body_mass_scatterplot_output")
              
     ) # END tab 2
     
@@ -609,7 +612,7 @@ server <- function(input, output){
   
   
   # # render the scatterplot output ----
-  # output$bodyMass_scatterplot_output <- renderPlot({
+  # output$body_mass_scatterplot_output <- renderPlot({
   #   
   #   ggplot(na.omit(body_mass_df()),
   #          aes(x = flipper_length_mm, y = bill_length_mm,
@@ -695,7 +698,7 @@ ui <- fluidPage(
              #             min = 2700, max = 6300, value = c(3000, 4000)),
              
              # # body mass plot output ----
-             # plotOutput(outputId = "bodyMass_scatterplot_output")
+             # plotOutput(outputId = "body_mass_scatterplot_output")
              
     ) # END tab 2
     
@@ -741,11 +744,11 @@ server <- function(input, output){
       list(src = "www/chinstrap.jpeg", height = 240, width = 300)
     }
     else if(input$img_input == "Staring gentoo"){
-      message("Displaying all gentoo image")
+      message("Displaying gentoo image")
       list(src = "www/gentoo.jpeg", height = 240, width = 300)
     }
     else if(input$img_input == "Adorable adelie"){
-      message("Displaying all adelie image")
+      message("Displaying adelie image")
       list(src = "www/adelie.gif", height = 240, width = 300)
     }
     
@@ -760,7 +763,7 @@ server <- function(input, output){
   
   
   # # render the scatterplot output ----
-  # output$bodyMass_scatterplot_output <- renderPlot({
+  # output$body_mass_scatterplot_output <- renderPlot({
   #   
   #   ggplot(na.omit(body_mass_df()),
   #          aes(x = flipper_length_mm, y = bill_length_mm,
@@ -791,7 +794,7 @@ shinyApp(ui = ui, server = server)
 
 <hr>
 
-[We can run our app and see messages successfully (or in the case of a broken app, unsuccessfully) print in the RStudio console as we interact with the app. You'll notice that the each image message (e.g. *"Displaying all penguins image"*) prints when a new radioButton is selected, but those associated with the text outputs do not. **This tells us that code is not being executed, beginning with first `if` statement inside `renderText`** and that this is a good starting location for reviewing code (e.g. carefully crosschecking all `inputId`s and `outputId`s in that section).]{.body-text-s}
+[We can run our app and see messages successfully (or in the case of a broken app, unsuccessfully) print in the RStudio console as we interact with the app. You'll notice that the each image message (e.g. *"Displaying all penguins image"*) prints when a new radioButton is selected, but those associated with the text outputs do not. **This tells us that code is not being executed, beginning with first `if` statement inside `renderText()`** and that this is a good starting location for reviewing code (e.g. carefully crosschecking all `inputId`s and `outputId`s in that section).]{.body-text-s}
 
 ```{r}
 #| eval: true
@@ -823,7 +826,7 @@ knitr::include_graphics("images/part6/messages.gif")
 
 `reactlog` is a package / tool that provides:
 
-<p class="body-text-s quote-text-bg">*"A snapshot of the history (**log**) of all **react**ive interactions within a shiny application"* **- Barret Schloerke in his 2019 RSTUDIO::CONF talk, [Reactlog 2.0: Debugging the state of Shiny](https://www.rstudio.com/resources/rstudioconf-2019/reactlog-2-0-debugging-the-state-of-shiny/)**</p>
+[*"A snapshot of the history (**log**) of all **react**ive interactions within a shiny application"* **- Barret Schloerke in his 2019 RSTUDIO::CONF talk, [Reactlog 2.0: Debugging the state of Shiny](https://www.rstudio.com/resources/rstudioconf-2019/reactlog-2-0-debugging-the-state-of-shiny/){target="_blank"}**]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -839,7 +842,7 @@ knitr::include_graphics("images/part6/reactlog.png")
 
 ::::
 
-<p class="body-text-s">Reactivity can be confusing. I recommend watching Barret Schloerke's talk, linked above, and reading through the [Shiny Reactlog vignette](https://rstudio.github.io/reactlog/articles/reactlog.html) as you get started.</p>
+[Reactivity can be confusing. I recommend watching Barret Schloerke's talk, linked above, and reading through the [Shiny Reactlog vignette](https://rstudio.github.io/reactlog/articles/reactlog.html){target="_blank} as you get started.]{.body-text-s}
 
 ---
 
@@ -849,7 +852,7 @@ knitr::include_graphics("images/part6/reactlog.png")
 
 <hr>
 
-`reactlog` should already be installed as a dependency of `shiny` (but you'll need to load it using `library(reactlog)` in your console). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.
+`{reactlog}` should already be installed as a dependency of `{shiny}` (but you'll need to load it using `library(reactlog)` in your console). When enabled, it provides an interactive browser-based tool to visualize reactive dependencies and executions in your app.
 
 <br>
 
@@ -868,7 +871,7 @@ knitr::include_graphics("images/part6/reactlog.png")
 <br>
 
 ::: {.footer}
-Read about the components of the [status bar](https://rstudio.github.io/reactlog/articles/reactlog.html#status-bar) and the meaning of different [reactive states](https://rstudio.github.io/reactlog/articles/reactlog.html#reactive-states) in the `reactlog` vignette.
+Read about the components of the [status bar](https://rstudio.github.io/reactlog/articles/reactlog.html#status-bar){target="_blank} and the meaning of different [reactive states](https://rstudio.github.io/reactlog/articles/reactlog.html#reactive-states){target="_blank} in the `reactlog` vignette.
 :::
 
 ---
@@ -879,10 +882,18 @@ Read about the components of the [status bar](https://rstudio.github.io/reactlog
 
 <hr>
 
-<p class="body-text-s">To visualize the reactive life cycle of the `reactlog-working` app, let's first load the reactlog library, then call `reactlog_enable()` in our console. Next, we'll run the app and interact with it. By default, **All penguins** is selected. For demonstration purposes, let's click down the list (**Sassy chinstrap**, **Staring gentoo**, and finally **Adorable adelie**). When done, stop the app, then run `shiny::reactlogShow()` in the console to open the reactlog visualizer in a browser window.</p>
+:::: {.columns}
+::: {.column width="50%"}
+To visualize the reactive life cycle of the `reactlog-working` app, let's perform the following steps: 
 
-<p class="body-text-s">**Note:** We've left the scatter plot on Tab 2 (and it's related UI elements) commented out (as we practiced in the earlier few slides) for this demo -- the `{reactlog}` package has many features that allow you to explore reactive dependencies across your whole app, but it can get complicated quickly. For demo purposes, we're going to work with this "smaller" version of our app, which contains just the problematic code.</p>
-
+- [load the `{reactlog}` library in our console, by running `library(reactlog)`]{.body-text-s}
+- [call `reactlog_enable()` in our console]{.body-text-s}
+- [run the app and interact with it -- by default, **All penguins** is selected. For demonstration purposes, let's click down the list (**Sassy chinstrap**, **Staring gentoo**, and finally **Adorable adelie**)]{.body-text-s}
+- [when done, stop the app, then run `shiny::reactlogShow()` in the console to open the reactlog visualizer in a browser window]{.body-text-s}
+:::
+::: {.column width="50%"}
+<br>
+<br>
 ```{r}
 #| eval: true
 #| echo: false
@@ -890,6 +901,12 @@ Read about the components of the [status bar](https://rstudio.github.io/reactlog
 #| out-width: "80%"
 knitr::include_graphics("images/part6/reactlog-working.gif")
 ```
+:::
+::::
+
+::: {.footer}
+**Note:** We've left the scatter plot on Tab 2 (and it's related UI elements) commented out (as we practiced in the earlier few slides) for this demo -- the `{reactlog}` package has many features that allow you to explore reactive dependencies across your whole app, but it can get complicated quickly. For demo purposes, we're going to work with this "smaller" version of our app, which contains just the problematic code.]{.body-text-s}
+:::
 
 ---
 
@@ -899,7 +916,7 @@ knitr::include_graphics("images/part6/reactlog-working.gif")
 
 <hr>
 
-There's a lot to take when looking at the reactlog viewer, so let's take it one step at a time:
+There's a lot to take when looking at the reactlog viewer, so let's take it one step at a time (click your right arrow key to advance steps in the viewer):
 
 [[**(1)**]{.teal-text} The `radioButton` input defaults to show the **All penguins** image and associated text. When we launch reactlog, our input <img src="images/part6/input.png" alt="" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"/>, reactive expression <img src="images/part6/expression.png" alt="" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"/>, and outputs <img src="images/part6/output.png" alt="" style="display: inline-block; margin: 0; position: relative; top: 3px; width:15px;height:15px;"/> are **Ready**, meaning the calculated values are available (defaults in this case) and reactive elements have finished executing (i.e. the image and text is displayed). This **Ready** state is indicated by the green icons.]{.body-text-s}
 
@@ -923,7 +940,7 @@ There's a lot to take when looking at the reactlog viewer, so let's take it one 
 
 <hr>
 
-<p class="body-text-s">Let's try out reactlog on our intentionally broken app (`reactlog-broken`, where our image changes when a radioButton user input is updated, but our text doesn't appear). As in our functioning app, the **All penguins** image is selected by default. For demonstration purposes, let's select each option moving down the list (**Sassy chinstrap**, **Staring gentoo**, **Adorable adelie**) before launching the reactlog browser view (using `shiny::reactlogShow()`).</p>
+[Let's try out reactlog on our intentionally broken app (`reactlog-broken`, where our image changes when a radioButton user input is updated, but our text doesn't appear). As in our functioning app, the **All penguins** image is selected by default. For demonstration purposes, let's select each option moving down the list (**Sassy chinstrap**, **Staring gentoo**, **Adorable adelie**) before launching the reactlog browser view (using `shiny::reactlogShow()`).]{.body-text-s}
 
 :::: {.columns}
 
@@ -931,9 +948,9 @@ There's a lot to take when looking at the reactlog viewer, so let's take it one 
 
 <br>
 
-<p class="body-text-s">Similar to our functioning app, the default input, **All penguins**, and image output are **Ready** (green). However, in this example our text output is *not a dependency* of our application's input -- there's no linkage and the text output is **Invalidated** (gray).</p>
+[Similar to our functioning app, the default input, **All penguins**, and image output are **Ready** (green). However, in this example our text output is *not a dependency* of our application's input -- there's no linkage and the text output is **Invalidated** (gray).]{.body-text-s}
 
-<p class="body-text-s">As we click down the list of radioButtons, the image output is invalidated, then updated accordingly, but the text output remains disconnected from our input.</p>
+[As we click down the list of radioButtons, the image output is invalidated, then updated accordingly, but the text output remains disconnected from our input.]{.body-text-s}
 :::
 
 ::: {.column width="50%"}
@@ -957,9 +974,9 @@ knitr::include_graphics("images/part6/reactlog-broken.gif")
 
 <hr>
 
-<p class="body-text-s">Evidence from our diagnostic messages *and* `reactlog` suggests that we should make sure that our UI and server are actually able to communicate about our desired text output. After careful inspection of our `textOutput()` and `renderText()` code, we find that a spelling error is to blame:</p>
+[Evidence from our diagnostic messages *and* `reactlog` suggests that we should make sure that our UI and server are actually able to communicate about our desired text output. After careful inspection of our `textOutput()` and `renderText()` code, we find that a spelling error is to blame:]{.body-text-s}
 
-<p class="body-text-s">Our `outputId` in the **UI** is set to `penguin_text_output`:</p>
+[Our `outputId` in the **UI** is set to `penguin_text_output`:]{.body-text-s}
 
 ```{r filename="~/broken-app/app.R"}
 #| eval: false
@@ -975,7 +992,7 @@ ui <- fluidPage(
 )
 ```
 
-<p class="body-text-s">But we call `penguins_text_output` (note the plural) when rendering our output in the **server**:</p>
+[But we call `penguins_text_output` (note the plural) when rendering our output in the **server**:]{.body-text-s}
 
 ```{r filename="~/broken-app/app.R"}
 #| eval: false
@@ -994,7 +1011,7 @@ server <- function(input, output){
 }
 ```
 
-<p class="body-text-s">By updating our `outputId` to match in both the UI and the server, we fix our app.</p>
+[By updating our `outputId` to match in both the UI and the server, we fix our app.]{.body-text-s}
 
 ---
 
