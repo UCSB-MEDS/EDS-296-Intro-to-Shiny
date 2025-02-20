@@ -13,7 +13,7 @@ editor_options:
 
 ## {#title-slide data-menu-title="Title Slide" background="#053660"} 
 
-[EDS 430: Part 6.1]{.custom-title}
+[EDS 296: Part 6.1]{.custom-title}
 
 [*Functions*]{.custom-subtitle}
 
@@ -38,23 +38,23 @@ editor_options:
 
 <hr>
 
-<p class="body-text-l teal-text bottombr">By the end of this section, you should:</p>
+[By the end of this section, you should:]{.body-text-l .teal-text}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the benefits of turning UI elements and server logic into functions</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the benefits of turning UI elements and server logic into functions]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know where to write / save your functions</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know where to write / save your functions]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully turn a repeated input into a function</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully turn a repeated input into a function]{.body-text-s}
 
 . . . 
 
-<p class="body-text-s">[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully turn a piece of server logic into a function</p>
+[[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully turn a piece of server logic into a function]{.body-text-s}
 
 
 ---
@@ -71,21 +71,12 @@ editor_options:
 
 <br>
 
-. . . 
-
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reducing redundancy
-
-. . . 
-
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} reducing complexity
-
-. . . 
-
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} increasing code comprehension
-
-. . . 
-
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} increasing testability
+::: {.incremental}
+- reducing redundancy
+- reducing complexity
+- increasing code comprehension
+- increasing testability
+:::
 
 ---
 
@@ -97,12 +88,13 @@ editor_options:
 
 <br>
 
-**Importantly, functions can live outside of your app file(s)** (i.e. `app.R` or `ui.R` / `server.R` / `global.R`), helping you to break up / streamline your code. Hadley Wickham [recommends](https://mastering-shiny.org/scaling-functions.html#file-organisation) creating a folder called `/R` **inside** your app's directory (e.g. `~/<app-directory>/R/...`) and:
+**Importantly, functions can live outside of your app file(s)** (i.e. `app.R` or `ui.R` / `server.R` / `global.R`), helping you to break up and streamline your code. Hadley Wickham [recommends](https://mastering-shiny.org/scaling-functions.html#file-organisation){target="_blank"} creating a folder called `/R` **inside** your app's directory (e.g. `~/myApp/R/...`) and:
 
 <br>
 
-<p class="body-text-s bottombr">[**(a)**]{.teal-text} storing larger functions in their own files (e.g. `~/<app-directory>/R/function-name.R`) and / or</p> 
-<p class="body-text-s bottombr">[**(b)** ]{.teal-text} creating a `utils.R` file (e.g `~/<app-directory>/R/utils.R`) to store smaller, simpler functions all in one script.</p> 
+[[**(a)**]{.teal-text} storing larger functions in their own files (e.g. `~/myApp/R/function-name.R`) and / or]{.body-text-s}
+
+[[**(b)** ]{.teal-text} creating a `utils.R` file (e.g `~/myApp/R/utils.R`) to store smaller, simpler functions all in one script]{.body-text-s}
 
 <br>
 
@@ -110,7 +102,9 @@ editor_options:
 
 You can **source your function files into `global.R`** so that your functions are made available for use throughout your app. 
 
-**NOTE:** As of Shiny version 1.5.0, any scripts stored in `~/<app-directory>/R/` will be [**automatically sourced**]{.teal-text} when your application is loaded (meaning you don't *need* to `source()` them into `global.R`, if you're running at least Shiny v1.5.0).
+. . .
+
+**NOTE:** As of Shiny version 1.5.0, any scripts stored in `~/myApp/R/` will be [**automatically sourced**]{.teal-text} when your application is loaded (meaning you don't *need* to `source()` them into `global.R`, if you're running at least Shiny v1.5.0).
 
 ---
 
@@ -161,7 +155,8 @@ ui <- fluidPage(
     tabPanel(title = "Scatterplot",
              
              # species (scatterplot) pickerInput ----
-             pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select a species:",
+             pickerInput(inputId = "penguin_spp_scatterplot_input", 
+                         label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
                          options = pickerOptions(actionsBox = TRUE),
@@ -177,7 +172,8 @@ ui <- fluidPage(
     tabPanel(title = "Histogram",
              
              # species (histogram) pickerInput ----
-             pickerInput(inputId = "penguinSpp_histogram_input", label = "Select a species:",
+             pickerInput(inputId = "penguin_spp_histogram_input", 
+                         label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
                          options = pickerOptions(actionsBox = TRUE),
@@ -205,7 +201,7 @@ server <- function(input, output) {
   filtered_spp_scatterplot_df <- reactive ({
 
     penguins |>
-      filter(species %in% input$penguinSpp_scatterplot_input)
+      filter(species %in% input$penguin_spp_scatterplot_input)
 
   })
 
@@ -218,10 +214,16 @@ server <- function(input, output) {
                color = species, shape = species)) +
       geom_point() +
       geom_smooth(method = "lm", se = FALSE, aes(color = species)) + 
-      scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
-      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
-           color = "Penguin species", shape = "Penguin species")
+      scale_color_manual(values = c("Adelie" = "darkorange", 
+                                    "Chinstrap" = "purple", 
+                                    "Gentoo" = "cyan4")) +
+      scale_shape_manual(values = c("Adelie" = 19, 
+                                    "Chinstrap" = 17, 
+                                    "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", 
+           y = "Bill length (mm)",
+           color = "Penguin species", 
+           shape = "Penguin species")
     
   })
   
@@ -230,7 +232,7 @@ server <- function(input, output) {
   filtered_spp_histogram_df <- reactive ({
     
     penguins |>
-      filter(species %in% input$penguinSpp_histogram_input)
+      filter(species %in% input$penguin_spp_histogram_input)
     
   })
   
@@ -240,8 +242,11 @@ server <- function(input, output) {
     ggplot(na.omit(filtered_spp_histogram_df()),
            aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.5, position = "identity") +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      labs(x = "Flipper length (mm)", y = "Frequency",
+      scale_fill_manual(values = c("Adelie" = "darkorange", 
+                                   "Chinstrap" = "purple", 
+                                   "Gentoo" = "cyan4")) +
+      labs(x = "Flipper length (mm)", 
+           y = "Frequency",
            fill = "Penguin species")
     
   })
@@ -266,7 +271,7 @@ Let's first focus on the UI -- where do we have nearly identically duplicated co
 ```{r filename="~/functions-app/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "11-16|27-32"
+#| code-line-numbers: "11-17|28-34"
 ui <- fluidPage(
   
   tags$h1("Demoing Functions"),
@@ -278,7 +283,8 @@ ui <- fluidPage(
     tabPanel(title = "Scatterplot",
              
              # species (scatterplot) pickerInput ----
-             pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select a species:",
+             pickerInput(inputId = "penguin_spp_scatterplot_input", 
+                         label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
                          options = pickerOptions(actionsBox = TRUE),
@@ -294,7 +300,8 @@ ui <- fluidPage(
     tabPanel(title = "Histogram",
              
              # species (histogram) pickerInput ----
-             pickerInput(inputId = "penguinSpp_histogram_input", label = "Select a species:",
+             pickerInput(inputId = "penguin_spp_histogram_input", 
+                         label = "Select a species:",
                          choices = c("Adelie", "Chinstrap", "Gentoo"),
                          selected = c("Adelie", "Chinstrap", "Gentoo"),
                          options = pickerOptions(actionsBox = TRUE),
@@ -323,16 +330,18 @@ This app includes two `pickerInputs`, both of which allow users to select which 
 ```{r}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "2,9"
+#| code-line-numbers: "2,10"
 # Scatterplot pickerInput for selecting penguin species:
-pickerInput(inputId = "penguinSpp_scatterplot_input", label = "Select a species:",
+pickerInput(inputId = "penguin_spp_scatterplot_input", 
+            label = "Select a species:",
             choices = c("Adelie", "Chinstrap", "Gentoo"),
             selected = c("Adelie", "Chinstrap", "Gentoo"),
             options = pickerOptions(actionsBox = TRUE),
             multiple = TRUE)
 
 # Histogram pickerInput for selecting penguin species:
-pickerInput(inputId = "penguinSpp_histogram_input", label = "Select a species:",
+pickerInput(inputId = "penguin_spp_histogram_input", 
+            label = "Select a species:",
             choices = c("Adelie", "Chinstrap", "Gentoo"),
             selected = c("Adelie", "Chinstrap", "Gentoo"),
             options = pickerOptions(actionsBox = TRUE),
@@ -355,20 +364,21 @@ Let's write a function for our **penguin species pickerInput** that we can use i
 
 <hr> 
 
-<p class="body-text-s">First, create an `R/` folder inside your `functions-app/` directory, then add a new script to this folder. I'm calling mine `penguinSpp-pickerInput.R`.</p>
+[First, create an `R/` folder inside your `functions-app/` directory, then add a new script to this folder. I'm calling mine `penguinSpp-pickerInput.R`.]{.body-text-s}
 
-<p class="body-text-s">Since the only difference between our original two `pickerInput`s are their `inputId`s, we can write a function that takes `inputId` as an argument (**Recall** that `inputId`s must be unique within an app, so it makes sense that both of our `pickerInput`s have different `inputId`s).</p>
+[Since the only difference between our original two `pickerInput`s are their `inputId`s, we can write a function that takes `inputId` as an argument (**Recall** that `inputId`s must be unique within an app, so it makes sense that both of our `pickerInput`s have different `inputId`s).]{.body-text-s}
 
-<p class="body-text-s">Once written, `source()` your function script into `global.R` (if necessary) to make your function available for use in your app.</p>
+[Once written, `source()` your function script into `global.R` (if necessary) to make your function available for use in your app.]{.body-text-s}
 
 ::: {.panel-tabset}
 
-## `penguinSpp-pickerInput.R`
-```{r filename="~/functions-app/R/penguinSpp-pickerInput.R"}
+## `penguin_spp-pickerInput.R`
+```{r filename="~/functions-app/R/penguin_spp-pickerInput.R"}
 #| eval: false  
 #| echo: true
-penguinSpp_pickerInput <- function(inputId) {
-  pickerInput(inputId = inputId, label = "Select a species:",
+penguin_spp_pickerInput <- function(inputId) {
+  pickerInput(inputId = inputId, 
+              label = "Select a species:",
               choices = c("Adelie", "Chinstrap", "Gentoo"),
               selected = c("Adelie", "Chinstrap", "Gentoo"),
               options = pickerOptions(actionsBox = TRUE),
@@ -401,7 +411,7 @@ source("R/penguinSpp-pickerInput.R") # will source automatically with Shiny v1.5
 
 <hr>
 
-<p class="body-text-s">Finally, replace your original UI code for building both `pickerInput`s with our `penguinSpp_pickerInput()` function, save, and run your app. It should look exactly the same as before!</p>
+[Finally, replace your original UI code for building both `pickerInput`s with our `penguin_spp_pickerInput()` function, save, and run your app. It should look exactly the same as before!]{.body-text-s}
 
 ```{r filename="~/functions-app/ui.R"}
 #| eval: false  
@@ -418,7 +428,7 @@ ui <- fluidPage(
     tabPanel(title = "Scatterplot",
              
              # species (scatterplot) pickerInput ---- 
-             penguinSpp_pickerInput(inputId = "penguinSpp_scatterplot_input"),
+             penguin_spp_pickerInput(inputId = "penguin_spp_scatterplot_input"),
              
              # scatterplot output ----
              plotOutput(outputId = "penguin_scatterplot_output")
@@ -430,7 +440,7 @@ ui <- fluidPage(
     tabPanel(title = "Histogram",
              
              # species (histogram) pickerInput ----
-             penguinSpp_pickerInput(inputId = "penguinSpp_histogram_input"),
+             penguin_spp_pickerInput(inputId = "penguin_spp_histogram_input"),
              
              # scatterplot output ----
              plotOutput(outputId = "penguin_histogram_output")
@@ -458,7 +468,7 @@ So...what's the big deal with this??
 
 [[**(1)**]{.teal-text} **reduced *ten* lines of UI code into *two*** (not only does this make `ui.R` a bit more manageable to navigate, it also means we can more easily isolate `R/penguinSpp-pickerInput.R` when troubleshooting)]{.body-text-s}
 
-[[**(2)**]{.teal-text} **made our UI code a bit easier to read** (`penguinSpp_pickerInput()` tells a reader / collaborator / future you *exactly* what that line of code is meant to do, which is to create a `pickerInput` that allows users to select penguin species. Even without code comments or additional context, one may deduce what that line of code does)]{.body-text-s}
+[[**(2)**]{.teal-text} **made our UI code a bit easier to read** (`penguin_spp_pickerInput()` tells a reader / collaborator / future you *exactly* what that line of code is meant to do, which is to create a `pickerInput` that allows users to select penguin species. Even without code comments or additional context, one may deduce what that line of code does)]{.body-text-s}
 
 ---
 
@@ -468,12 +478,12 @@ So...what's the big deal with this??
 
 <hr>
 
-<p class="body-text-s">Next, let's see where we can streamline our server code using functions. We have two discrete sections of code -- [**(1)**]{.teal-text} a reactive data frame and scatterplot output and [**(2)**]{.teal-text} a reactive data frame and histogram output.</p>
+[Next, let's see where we can streamline our server code using functions. We have two discrete sections of code -- [**(1)**]{.teal-text} a reactive data frame and scatterplot output and [**(2)**]{.teal-text} a reactive data frame and histogram output.]{.body-text-s}
 
 ```{r filename="~/functions-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "4-26|29-47"
+#| code-line-numbers: "4-32|35-56"
 server <- function(input, output) {
   
   
@@ -481,7 +491,7 @@ server <- function(input, output) {
   filtered_spp_scatterplot_df <- reactive ({
 
     penguins |>
-      filter(species %in% input$penguinSpp_scatterplot_input)
+      filter(species %in% input$penguin_spp_scatterplot_input)
 
   })
 
@@ -494,10 +504,16 @@ server <- function(input, output) {
                color = species, shape = species)) +
       geom_point() +
       geom_smooth(method = "lm", se = FALSE, aes(color = species)) + 
-      scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
-      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
-           color = "Penguin species", shape = "Penguin species")
+      scale_color_manual(values = c("Adelie" = "#FEA346", 
+                                    "Chinstrap" = "#B251F1", 
+                                    "Gentoo" = "#4BA4A4")) +
+      scale_shape_manual(values = c("Adelie" = 19, 
+                                    "Chinstrap" = 17, 
+                                    "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", 
+           y = "Bill length (mm)",
+           color = "Penguin species", 
+           shape = "Penguin species")
     
   })
   
@@ -506,7 +522,7 @@ server <- function(input, output) {
   filtered_spp_histogram_df <- reactive ({
     
     penguins |>
-      filter(species %in% input$penguinSpp_histogram_input)
+      filter(species %in% input$penguin_spp_histogram_input)
     
   })
   
@@ -516,8 +532,11 @@ server <- function(input, output) {
     ggplot(na.omit(filtered_spp_histogram_df()),
            aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.5, position = "identity") +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      labs(x = "Flipper length (mm)", y = "Frequency",
+      scale_fill_manual(values = c("Adelie" = "#FEA346", 
+                                   "Chinstrap" = "#B251F1", 
+                                   "Gentoo" = "#4BA4A4")) +
+      labs(x = "Flipper length (mm)", 
+           y = "Frequency",
            fill = "Penguin species")
     
   })
@@ -544,7 +563,7 @@ build_penguin_scatterplot <- function(input) {
   filtered_spp_scatterplot_df <- reactive ({
 
     penguins |>
-      filter(species %in% input$penguinSpp_scatterplot_input)
+      filter(species %in% input$penguin_spp_scatterplot_input)
 
   })
 
@@ -557,10 +576,16 @@ build_penguin_scatterplot <- function(input) {
                color = species, shape = species)) +
       geom_point() +
       geom_smooth(method = "lm", se = FALSE, aes(color = species)) + 
-      scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
-      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
-           color = "Penguin species", shape = "Penguin species")
+      scale_color_manual(values = c("Adelie" = "#FEA346", 
+                                    "Chinstrap" = "#B251F1", 
+                                    "Gentoo" = "#4BA4A4")) +
+      scale_shape_manual(values = c("Adelie" = 19, 
+                                    "Chinstrap" = 17, 
+                                    "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", 
+           y = "Bill length (mm)",
+           color = "Penguin species", 
+           shape = "Penguin species")
     
   })
   
@@ -603,7 +628,7 @@ build_penguin_scatterplot <- function(input) {
 
 <hr>
 
-<p class="body-text-s">**Remember**, the output of `build_penguin_scatterplot()` is `renderPlot()`, which is used to build our reactive scatterplot. Following our rules for creating reactivity, we need to save our function's output to `output$penguin_scatterplot`. In doing so, we reduced 23 lines of code to 1 inside our server function.</p>
+[**Remember**, the output of `build_penguin_scatterplot()` is `renderPlot()`, which is used to build our reactive scatterplot. Following our rules for creating reactivity, we need to save our function's output to `output$penguin_scatterplot_output`. In doing so, we reduced 23 lines of code to 1 inside our server function.]{.body-text-s}
 ```{r filename="~/functions-app/server.R"}
 #| eval: false
 #| echo: true
@@ -619,7 +644,7 @@ server <- function(input, output) {
   filtered_spp_histogram_df <- reactive ({
     
     penguins |>
-      filter(species %in% input$penguinSpp_histogram_input)
+      filter(species %in% input$penguin_spp_histogram_input)
     
   })
   
@@ -629,8 +654,11 @@ server <- function(input, output) {
     ggplot(na.omit(filtered_spp_histogram_df()),
            aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.5, position = "identity") +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      labs(x = "Flipper length (mm)", y = "Frequency",
+      scale_fill_manual(values = c("Adelie" = "#FEA346", 
+                                   "Chinstrap" = "#B251F1", 
+                                   "Gentoo" = "#4BA4A4")) +
+      labs(x = "Flipper length (mm)", 
+           y = "Frequency",
            fill = "Penguin species")
     
   })
@@ -647,7 +675,7 @@ server <- function(input, output) {
 
 <hr>
 
-<p class="body-text-s">We can repeat a similar process to create a function for building our histogram:</p>
+[We can repeat a similar process to create a function for building our histogram:]{.body-text-s}
 
 ::: {.panel-tabset}
 
@@ -662,7 +690,7 @@ build_penguin_histogram <- function(input) {
   filtered_spp_histogram_df <- reactive ({
     
     penguins |>
-      filter(species %in% input$penguinSpp_histogram_input)
+      filter(species %in% input$penguin_spp_histogram_input)
     
   })
   
@@ -672,8 +700,11 @@ build_penguin_histogram <- function(input) {
     ggplot(na.omit(filtered_spp_histogram_df()), 
            aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.5, position = "identity") +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      labs(x = "Flipper length (mm)", y = "Frequency",
+      scale_fill_manual(values = c("Adelie" = "#FEA346", 
+                                   "Chinstrap" = "#B251F1", 
+                                   "Gentoo" = "#4BA4A4")) +
+      labs(x = "Flipper length (mm)", 
+           y = "Frequency",
            fill = "Penguin species")
     
   })
@@ -741,7 +772,7 @@ ui <- fluidPage(
     tabPanel(title = "Scatterplot",
              
              # species (scatterplot) pickerInput ---- 
-             penguinSpp_pickerInput(inputId = "penguinSpp_scatterplot_input"),
+             penguin_spp_pickerInput(inputId = "penguin_spp_scatterplot_input"),
              
              # scatterplot output ----
              plotOutput(outputId = "penguin_scatterplot_output")
@@ -753,7 +784,7 @@ ui <- fluidPage(
     tabPanel(title = "Histogram",
              
              # species (histogram) pickerInput ----
-             penguinSpp_pickerInput(inputId = "penguinSpp_histogram_input"),
+             penguin_spp_pickerInput(inputId = "penguin_spp_histogram_input"),
              
              # scatterplot output ----
              plotOutput(outputId = "penguin_histogram_output")
@@ -793,11 +824,12 @@ server <- function(input, output) {
 
 [`penguinSpp-pickerInput.R`]{.body-text-m}
 
-```{r filename="~/functions-app/R/penguinSpp-pickerInput.R"}
+```{r filename="~/functions-app/R/penguin_spp-pickerInput.R"}
 #| eval: false
 #| echo: true
-penguinSpp_pickerInput <- function(inputId) {
-  pickerInput(inputId = inputId, label = "Select a species:",
+penguin_spp_pickerInput <- function(inputId) {
+  pickerInput(inputId = inputId, 
+              label = "Select a species:",
               choices = c("Adelie", "Chinstrap", "Gentoo"),
               selected = c("Adelie", "Chinstrap", "Gentoo"),
               options = pickerOptions(actionsBox = TRUE),
@@ -826,7 +858,7 @@ build_penguin_scatterplot <- function(input) {
   filtered_spp_scatterplot_df <- reactive ({
 
     penguins |>
-      filter(species %in% input$penguinSpp_scatterplot_input)
+      filter(species %in% input$penguin_spp_scatterplot_input)
 
   })
 
@@ -839,10 +871,16 @@ build_penguin_scatterplot <- function(input) {
                color = species, shape = species)) +
       geom_point() +
       geom_smooth(method = "lm", se = FALSE, aes(color = species)) + 
-      scale_color_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
-      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
-           color = "Penguin species", shape = "Penguin species")
+      scale_color_manual(values = c("Adelie" = "#FEA346", 
+                                    "Chinstrap" = "#B251F1", 
+                                    "Gentoo" = "#4BA4A4")) +
+      scale_shape_manual(values = c("Adelie" = 19, 
+                                    "Chinstrap" = 17, 
+                                    "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", 
+           y = "Bill length (mm)",
+           color = "Penguin species", 
+           shape = "Penguin species")
     
   })
   
@@ -860,7 +898,7 @@ build_penguin_histogram <- function(input) {
   filtered_spp_histogram_df <- reactive ({
     
     penguins |>
-      filter(species %in% input$penguinSpp_histogram_input)
+      filter(species %in% input$penguin_spp_histogram_input)
     
   })
   
@@ -870,8 +908,11 @@ build_penguin_histogram <- function(input) {
     ggplot(na.omit(filtered_spp_histogram_df()), 
            aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.5, position = "identity") +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      labs(x = "Flipper length (mm)", y = "Frequency",
+      scale_fill_manual(values = c("Adelie" = "#FEA346", 
+                                   "Chinstrap" = "#B251F1", 
+                                   "Gentoo" = "#4BA4A4")) +
+      labs(x = "Flipper length (mm)", 
+           y = "Frequency",
            fill = "Penguin species")
     
   })
@@ -880,7 +921,6 @@ build_penguin_histogram <- function(input) {
 ```
 
 :::
-
 
 ---
 
