@@ -188,7 +188,7 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 [{{< fa seedling title="a seedling plant" >}}]{.teal-text} **[Milkweed Site Finder](https://sarah-cusser.shinyapps.io/milkweed-site-finder/){target="_blank"} ([source code](https://github.com/MEDS-SBBG-milkweed/milkweed-site-finder){target="_blank"})**, *by MEDS 2024 alumni [Amanda Herbst](https://github.com/amandaherbst){target="_blank"}, [Anna Ramji](https://github.com/annaramji){target="_blank"}, [Melissa Widas](https://github.com/mwidas){target="_blank"} & [Sam Muir](https://github.com/shmuir){target="_blank"}, as part of their MEDS Capstone project -- a tool for the Santa Barbara Botanic Garden to prioritize Milkweed restoration sites across the Los Padres National Forest*
 
-[{{< fa graduation-cap title="a graduation cap" >}}]{.teal-text} **[Bren Student Data Explorer](https://shinyapps.bren.ucsb.edu/student-data-explorer/){target="_blank"} ([source code](https://github.com/UCSB-MEDS/shiny-dashboard){target="_blank"})**, *by MEDS 2022 alum, [Halina Do-Linh](https://www.linkedin.com/in/halinadolinh/), & MEDS staff* -- explore Bren school student demographics and career outcomes
+[{{< fa graduation-cap title="a graduation cap" >}}]{.teal-text} **[Bren Student Data Explorer](https://shinyapps.bren.ucsb.edu/student-data-explorer/){target="_blank"} ([source code](https://github.com/UCSB-MEDS/shiny-dashboard){target="_blank"})**, *by MEDS 2022 alum, [Halina Do-Linh](https://github.com/hdolinh), & MEDS staff* -- explore Bren school student demographics and career outcomes
 
 [{{< fa person-hiking title="a person hiking with a backpack on" >}}]{.teal-text} **[Sam's Strava Stats](https://samanthacsik.shinyapps.io/strava_dashboard/){target="_blank"} ([source code](https://github.com/samanthacsik/strava-dashboard){target="_blank"})**, *by yours truly, [Sam Shanny-Csik](https://samanthacsik.github.io/){target="_blank"}* -- a new and ongoing side project exploring my Strava hiking / biking / walking data
 
@@ -210,7 +210,7 @@ knitr::include_graphics("images/part3/basic_dashboard.png")
 
 [First, create a subdirectory called `shinydashboard/` and add a `ui.R`,  `server.R`, and `global.R` file.]{.body-text-s}
 
-[Add the server function to `server.R` and the three main UI components (header, sidebar, and body) to our dashboard page -- to keep things organized, **I recommend splitting the UI into separate pieces, then combining them into a `dashboardPage` the end of `ui.R`**]{.body-text-s}
+[Add the server function to `server.R` and the three main UI components (header, sidebar, and body) to our dashboard page -- to keep things organized, **I recommend splitting the UI into separate pieces, then combining them into a `dashboardPage` at the end of `ui.R`**]{.body-text-s}
 
 [We'll set our dashboard aside for now while we work on downloading and pre-processing our data, as well as practice creating our data visualization *outside* of our app.]{.body-text-s}
 
@@ -546,7 +546,7 @@ library(tidyverse)
 library(leaflet)
 
 # read in data ----
-lake_data <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
+lake_data <- read_csv(here::here("shinydashboard", "raw-data", "lake_data_processed.csv"))
 
 #..........................PRACTICE VIZ..........................
 leaflet() |> 
@@ -1067,7 +1067,7 @@ lake_data <- read_csv("data/lake_data_processed.csv")
 ```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "84-89|96-100"
+#| code-line-numbers: "84-91|98-102"
 #........................dashboardHeader.........................
 header <- dashboardHeader(
   
@@ -1154,8 +1154,10 @@ body <- dashboardBody(
                   title = tags$strong("Adjust lake parameter ranges:"),
 
                   # sliderInputs ----
-                  sliderInput(inputId = "elevation_slider_input", label = "Elevation (meters above SL):",
-                              min = min(lake_data$Elevation), max = max(lake_data$Elevation),
+                  sliderInput(inputId = "elevation_slider_input", 
+                              label = "Elevation (meters above SL):",
+                              min = min(lake_data$Elevation), 
+                              max = max(lake_data$Elevation),
                               value = c(min(lake_data$Elevation), max(lake_data$Elevation)))
 
               ), # END input box
@@ -1225,7 +1227,8 @@ server <- function(input, output) {
       
       # add markers
       addMarkers(data =  filtered_lakes_df(),
-                 lng = filtered_lakes_df()$Longitude, lat = filtered_lakes_df()$Latitude,
+                 lng = filtered_lakes_df()$Longitude, 
+                 lat = filtered_lakes_df()$Latitude,
                  popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
                                "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
                                "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
@@ -1297,7 +1300,7 @@ See next slide for a solution!
 ```{r filename="~/shinydashboard/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "91-97"
+#| code-line-numbers: "92-103"
 #........................dashboardHeader.........................
 header <- dashboardHeader(
   
@@ -1384,16 +1387,22 @@ body <- dashboardBody(
                   title = tags$strong("Adjust lake parameter ranges:"),
 
                   # sliderInputs ----
-                  sliderInput(inputId = "elevation_slider_input", label = "Elevation (meters above SL):",
-                              min = min(lake_data$Elevation), max = max(lake_data$Elevation),
+                  sliderInput(inputId = "elevation_slider_input", 
+                              label = "Elevation (meters above SL):",
+                              min = min(lake_data$Elevation), 
+                              max = max(lake_data$Elevation),
                               value = c(min(lake_data$Elevation), max(lake_data$Elevation))),
 
-                  sliderInput(inputId = "depth_slider_input", label = "Average depth (meters):",
-                              min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
+                  sliderInput(inputId = "depth_slider_input", 
+                              label = "Average depth (meters):",
+                              min = min(lake_data$AvgDepth), 
+                              max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider_input", label = "Average lake bed temperature (°C):",
-                              min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
+                  sliderInput(inputId = "temp_slider_input", 
+                              label = "Average lake bed temperature (°C):",
+                              min = min(lake_data$AvgTemp), 
+                              max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
               ), # END input box
@@ -1456,7 +1465,8 @@ server <- function(input, output) {
       
       # add markers
       addMarkers(data =  filtered_lakes_df(),
-                 lng = filtered_lakes_df()$Longitude, lat = filtered_lakes_df()$Latitude,
+                 lng = filtered_lakes_df()$Longitude, 
+                 lat = filtered_lakes_df()$Latitude,
                  popup = paste("Site Name:", filtered_lakes_df()$Site, "<br>",
                                "Elevation:", filtered_lakes_df()$Elevation, "meters (above SL)", "<br>",
                                "Avg Depth:", filtered_lakes_df()$AvgDepth, "meters", "<br>",
@@ -1523,7 +1533,7 @@ This app is build for demonstration/teaching purposes only and is not paid for o
 
 <hr>
 
-<p class="body-text-s">Press the right arrow key to advance through the newly added lines of code.</p>
+[Press the right arrow key to advance through the newly added lines of code.]{.body-text-s}
 
 ::: {.panel-tabset}
 
@@ -1640,16 +1650,22 @@ body <- dashboardBody(
                   title = tags$strong("Adjust lake parameter ranges:"),
 
                   # sliderInputs ----
-                  sliderInput(inputId = "elevation_slider", label = "Elevation (meters above SL):",
-                              min = min(lake_data$Elevation), max = max(lake_data$Elevation),
+                  sliderInput(inputId = "elevation_slider", 
+                              label = "Elevation (meters above SL):",
+                              min = min(lake_data$Elevation), 
+                              max = max(lake_data$Elevation),
                               value = c(min(lake_data$Elevation), max(lake_data$Elevation))),
 
-                  sliderInput(inputId = "depth_slider", label = "Average depth (meters):",
-                              min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
+                  sliderInput(inputId = "depth_slider", 
+                              label = "Average depth (meters):",
+                              min = min(lake_data$AvgDepth), 
+                              max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider", label = "Average lake bed temperature (°C):",
-                              min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
+                  sliderInput(inputId = "temp_slider", 
+                              label = "Average lake bed temperature (°C):",
+                              min = min(lake_data$AvgTemp), 
+                              max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
               ), # END input box
@@ -2127,16 +2143,22 @@ body <- dashboardBody(
                   title = tags$strong("Adjust lake parameter ranges:"),
 
                   # sliderInputs ----
-                  sliderInput(inputId = "elevation_slider_input", label = "Elevation (meters above SL):",
-                              min = min(lake_data$Elevation), max = max(lake_data$Elevation),
+                  sliderInput(inputId = "elevation_slider_input", 
+                              label = "Elevation (meters above SL):",
+                              min = min(lake_data$Elevation), 
+                              max = max(lake_data$Elevation),
                               value = c(min(lake_data$Elevation), max(lake_data$Elevation))),
 
-                  sliderInput(inputId = "depth_slider_input", label = "Average depth (meters):",
-                              min = min(lake_data$AvgDepth), max = max(lake_data$AvgDepth),
+                  sliderInput(inputId = "depth_slider_input", 
+                              label = "Average depth (meters):",
+                              min = min(lake_data$AvgDepth), 
+                              max = max(lake_data$AvgDepth),
                               value = c(min(lake_data$AvgDepth), max(lake_data$AvgDepth))),
 
-                  sliderInput(inputId = "temp_slider_input", label = "Average lake bed temperature (°C):",
-                              min = min(lake_data$AvgTemp), max = max(lake_data$AvgTemp),
+                  sliderInput(inputId = "temp_slider_input", 
+                              label = "Average lake bed temperature (°C):",
+                              min = min(lake_data$AvgTemp), 
+                              max = max(lake_data$AvgTemp),
                               value = c(min(lake_data$AvgTemp), max(lake_data$AvgTemp)))
 
               ), # END input box

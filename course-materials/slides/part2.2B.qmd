@@ -168,7 +168,7 @@ clean_trout <- and_vertebrates |>
 ```{r filename="~/two-file-app/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "61-82"
+#| code-line-numbers: "64-75,82"
 ui <- navbarPage(
   
   title = "LTER Animal Data Explorer",
@@ -194,14 +194,16 @@ ui <- navbarPage(
                         sidebarPanel(
                           
                           # channel type pickerInput ----
-                          pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
+                          pickerInput(inputId = "channel_type_input", 
+                                      label = "Select channel type(s):",
                                       choices = unique(clean_trout$channel_type),
                                       selected = c("cascade", "pool"),
                                       multiple = TRUE,
                                       options = pickerOptions(actionsBox = TRUE)), # END channel type pickerInput
                           
                           # # section checkboxGroupInput ----
-                          checkboxGroupButtons(inputId = "section_input", label = "Select a sampling section(s):",
+                          checkboxGroupButtons(inputId = "section_input", 
+                                               label = "Select a sampling section(s):",
                                                choices = c("clear cut forest", "old growth forest"),
                                                selected = c("clear cut forest", "old growth forest"),
                                                individual = FALSE, justified = TRUE, size = "sm",
@@ -231,14 +233,16 @@ ui <- navbarPage(
                         sidebarPanel(
                           
                           # island pickerInput ----
-                          pickerInput(inputId = "penguin_island_input", label = "Select an island(s):",
+                          pickerInput(inputId = "penguin_island_input", 
+                                      label = "Select an island(s):",
                                       choices = c("Torgersen", "Dream", "Biscoe"),
                                       selected = c("Torgersen", "Dream", "Biscoe"),
                                       multiple = TRUE,
                                       options = pickerOptions(actionsBox = TRUE)), # END island pickerInput
                           
                           # bin number sliderInput ----
-                          sliderInput(inputId = "bin_num_input", label = "Select number of bins:",
+                          sliderInput(inputId = "bin_num_input", 
+                                      label = "Select number of bins:",
                                       min = 1, max = 100, value = 25) # END bin number sliderInput
                           
                         ), # END penguin plot sidebarPanel
@@ -266,7 +270,7 @@ ui <- navbarPage(
 ```{r filename="~/two-file-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "28-47"
+#| code-line-numbers: "37-58"
 server <- function(input, output) {
   
   # filter for channel types ----
@@ -281,13 +285,22 @@ server <- function(input, output) {
   # trout scatterplot ----
   output$trout_scatterplot_output <- renderPlot({
 
-    ggplot(trout_filtered_df(), aes(x = length_mm, y = weight_g, color = channel_type, shape = channel_type)) +
+    ggplot(trout_filtered_df(), 
+           aes(x = length_mm, y = weight_g, 
+               color = channel_type, shape = channel_type)) +
       geom_point(alpha = 0.7, size = 5) +
-      scale_color_manual(values = c("cascade" = "#2E2585", "riffle" = "#337538", "isolated pool" = "#DCCD7D",
-                                    "pool" = "#5DA899", "rapid" = "#C16A77", "step (small falls)" = "#9F4A96",
+      scale_color_manual(values = c("cascade" = "#2E2585", 
+                                    "riffle" = "#337538", 
+                                    "isolated pool" = "#DCCD7D",
+                                    "pool" = "#5DA899", 
+                                    "rapid" = "#C16A77", 
+                                    "step (small falls)" = "#9F4A96",
                                     "side channel" = "#94CBEC")) +
-      scale_shape_manual(values = c("cascade" = 15, "riffle" = 17, "isolated pool" = 19,
-                                    "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
+      scale_shape_manual(values = c("cascade" = 15, "riffle" = 17, 
+                                    "isolated pool" = 19,
+                                    "pool" = 18, 
+                                    "rapid" = 8, 
+                                    "step (small falls)" = 23,
                                     "side channel" = 25)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
       myCustomTheme()
@@ -307,8 +320,11 @@ server <- function(input, output) {
 
     ggplot(na.omit(island_df()), aes(x = flipper_length_mm, fill = species)) +
       geom_histogram(alpha = 0.6, position = "identity", bins = input$bin_num_input) +
-      scale_fill_manual(values = c("Adelie" = "#FEA346", "Chinstrap" = "#B251F1", "Gentoo" = "#4BA4A4")) +
-      labs(x = "Flipper length (mm)", y = "Frequency",
+      scale_fill_manual(values = c("Adelie" = "#FEA346", 
+                                   "Chinstrap" = "#B251F1", 
+                                   "Gentoo" = "#4BA4A4")) +
+      labs(x = "Flipper length (mm)", 
+           y = "Frequency",
            fill = "Penguin species") +
       myCustomTheme()
     

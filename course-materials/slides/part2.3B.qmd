@@ -364,7 +364,7 @@ output$flipperLength_histogram_output <- renderPlot({
     
  },
   
-  alt = "A histogram of penguin flipper lengths (mm). Flipper lengths tend to be smallest on Adélie penguins tend to have the smallest flipper lengths and Gentoo have the largest."
+  alt = "A histogram of penguin flipper lengths (mm). Adélie penguins tend to have the smallest flipper lengths and Gentoo have the largest."
   
 ) # END render flipperLength histogram
 
