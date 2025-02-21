@@ -74,10 +74,10 @@ ui <- navbarPage(
              column(10,
                     tags$h1("Welcome to the LTER Animal Data Explorer!"),
                     tags$br(),
-                    tags$h4("Why did we build this app?"),
+                    tags$h2("Why did we build this app?"),
                     tags$p("This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's", tags$a(href = "https://lternet.edu/", "Long Term Ecological Research (LTER)"), "sites...but primarily, it was built as a teaching tool for", tags$a(href = "https://bren.ucsb.edu/courses/eds-430", "EDS 296 (Intro to Shiny)"), "-- this workshop, taught through the", tags$a(href = "https://ucsb-meds.github.io/", "Master of Environmental Data Science (MEDS) program"), "at the", tags$a(href = "https://bren.ucsb.edu/", "Bren School of Environmental Science and Management"), "is a two-day coding-intensive course meant to provide a introductory foundation in shiny app development."),
                     tags$br(),
-                    tags$h4("Where's the data?"),
+                    tags$h2("Where's the data?"),
                     tags$p("Check out the", tags$strong("Explore the Data"), "page to find interactive data visualizations looking at Cutthroat trout of the", tags$a(href = "https://andrewsforest.oregonstate.edu/", "Andrews Forest LTER"), "and Adélie, Gentoo & Chinstrap penguins of the", tags$a(href = "https://pallter.marine.rutgers.edu/", "Palmer Station LTER."))
              ),
              column(1)
@@ -182,6 +182,20 @@ ui <- navbarPage(
 [Consider writing and styling long bodies of text in separate markdown (`.md`) files, then read them into your UI using `includeMarkdown()` (**IMPORTANT:** this requires the `{markdown}` package -- be sure to add `library(markdown)` to your `global.R` file!). I recommend saving those `.md` files in a subdirectory named `/text` within your app's directory (e.g. `~/two-file-app/text/mytext.md`):]{.body-text-s}
 
 ::: {.panel-tabset}
+
+## `global.R`
+```{r filename="~/two-file-app/global.R"}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "7"
+# LOAD LIBRARIES ----
+library(shiny)
+library(tidyverse)
+library(shinyWidgets)
+library(lterdatasampler)
+library(palmerpenguins)
+library(markdown)
+```
 
 ## `ui.R`
 ```{r filename="~/two-file-app/ui.R"}
@@ -298,17 +312,17 @@ ui <- navbarPage(
 ```{markdown filename="~/two-file-app/text/about.md"}
 #| eval: false
 #| echo: true
-## Welcome to the LTER Animal Data Explorer!
+# Welcome to the LTER Animal Data Explorer!
 
 <br>
 
-#### Why did we build this app?
+## Why did we build this app?
 
 This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 296 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to provide a introductory foundation in shiny app development.
 
 <br>
 
-#### Where's the data? 
+## Where's the data? 
 
 Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/) and Adelie, Gentoo & Chinstrap penguins of the [Palmer Station LTER](https://pallter.marine.rutgers.edu/).
 ```
@@ -582,13 +596,13 @@ server <- function(input, output) {
 
 <br>
 
-#### Why did we build this app?
+## Why did we build this app?
 
 This shiny app was built, in part, to provide users a way of exploring morphological characteristics of the different animal species found within NSF's [Long Term Ecological Research (LTER)](https://lternet.edu/) sites...but primarily, it was built as a teaching tool for [EDS 296 (Intro to Shiny)](https://bren.ucsb.edu/courses/eds-430) -- this workshop, taught through the [Master of Environmental Data Science (MEDS) program](https://ucsb-meds.github.io/) at the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/), is a two-day coding-intensive course meant to provide a introductory foundation in shiny app development.
 
 <br>
 
-#### Where's the data? 
+## Where's the data? 
 
 Check out the **Explore the Data** page to find interactive data visualizations looking at Cutthroat trout of the [Andrews Forest LTER](https://andrewsforest.oregonstate.edu/) and Adelie, Gentoo & Chinstrap penguins of the [Palmer Station LTER](https://pallter.marine.rutgers.edu/).
 ```
