@@ -422,7 +422,7 @@ create_theme(
     border_color = "#F90909" # red
   ),
   
-  output_file = "two-file-app/www/app-fresh-theme.css" # generate css file & save to www/
+  output_file = here::here("two-file-app", "www", "app-fresh-theme.css") # generate css file & save to www/
 )
 ```
 
@@ -510,7 +510,7 @@ create_theme(
     dark_hover_bg = "#BF21E6", # magenta
     dark_color = "#F90000" # red
   ),
-  output_file = "shinydashboard/www/dashboard-fresh-theme.css" # generate css file & save to www/
+  output_file = here::here("shinydashboard", "www", "dashboard-fresh-theme.css") # generate css file & save to www/
 )
 ```
 

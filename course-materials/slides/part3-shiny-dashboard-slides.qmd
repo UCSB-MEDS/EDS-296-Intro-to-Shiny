@@ -546,7 +546,7 @@ library(tidyverse)
 library(leaflet)
 
 # read in data ----
-lake_data <- read_csv(here::here("shinydashboard", "raw-data", "lake_data_processed.csv"))
+lake_data <- read_csv(here::here("shinydashboard", "data", "lake_data_processed.csv"))
 
 #..........................PRACTICE VIZ..........................
 leaflet() |> 
