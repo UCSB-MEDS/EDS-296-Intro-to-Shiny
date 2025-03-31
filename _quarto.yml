@@ -3,11 +3,11 @@ project:
   output-dir: docs
 
 website:
-  announcement:
-    icon: info-circle
-    dismissable: false
-    position: above-navbar
-    content: "Course materials are currently undergoing revision! EDS 296-1W will begin again in February 2025."
+  # announcement:
+  #   icon: info-circle
+  #   dismissable: false
+  #   position: above-navbar
+  #   content: "Course materials are currently undergoing revision! EDS 296-1W will begin again in February 2025."
   title: "EDS 296-1W"
   navbar:
     right:
