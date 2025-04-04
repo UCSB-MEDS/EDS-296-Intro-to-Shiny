@@ -32,7 +32,7 @@ we do assume general familiarity with the R programming language. We also ask th
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-install.packages(pkgs = c( "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "thematic", "fresh", "sass", "reactlog", "shinytest2", "palmerpenguins", "lterdatasampler", "gapminder"))
+install.packages(pkgs = c("here", "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "fresh", "sass", "reactlog", "shinytest2", "diffviewer", "palmerpenguins", "lterdatasampler", "gapminder"))
 ```
 
 4. **(Optional, but recommended)** Install the [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck){target="_blank"} Google Chrome extension

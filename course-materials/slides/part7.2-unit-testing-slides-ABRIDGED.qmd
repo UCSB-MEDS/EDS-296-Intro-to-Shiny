@@ -15,11 +15,13 @@ editor_options:
 
 [EDS 296: Part 7.2]{.custom-title}
 
-[*Unit Testing*]{.custom-subtitle}
+[*Unit Testing (abridged version)*]{.custom-subtitle}
 
 <hr class="hr-teal">
 
 <!-- [Week 2 | February 2^nd^, 2024]{.custom-subtitle3} -->
+
+*[Explore the [complete lesson](part7.2-unit-testing-slides.qmd){target="_blank"} for additional testing examples]{.custom-subtitle3}*
 
 ---
 
@@ -58,7 +60,11 @@ editor_options:
 
 . . . 
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`: provides tools for creating and running automated tests on Shiny applications
+
+. . . 
+
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{diffviewer}`: an HTML widget to visually compare files
 
 ---
 
@@ -147,7 +153,7 @@ Or many team members?
 **It becomes increasingly more challenging to remember all the features you need to test, or how each works.** Things can also get lost in translation with manual testing (e.g. can you explain to your coworker(s) *all* of your app's features and make sure that they manually test it properly?).
 
 ::: {.footer}
-Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`: Unit testing for Shiny applications](https://www.youtube.com/watch?v=DMgAW4m5aTI)
+Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`: Unit testing for Shiny applications](https://www.youtube.com/watch?v=DMgAW4m5aTI){target="_blank"}
 :::
 
 ---
@@ -871,7 +877,7 @@ server <- function(input, output) {
 
 . . .
 
-Our first two tests pass, but **the third one failed** {{< fa face-frown title="a frowning face" >}}. You'll see something like this to start:
+Our first tests pass, but **the most recent one failed** {{< fa face-frown title="a frowning face" >}}. You'll see something like this to start:
 
 ```{r}
 #| eval: true
@@ -1025,7 +1031,7 @@ knitr::include_graphics("images/part6/updated-snapshots.png")
 
 <hr>
 
-[Your boss is jazzed about your latest improvements, and now asks that you add a file uploader which accepts a standardized CSV file (predictable headings / data types) then averages values by column. You update your app:]{.body-text-s}
+[Your boss is jazzed about your latest improvements, and now asks you to add a data viz -- a scatterplot of penguin bill depths by bill lengths, with a pickerInput that allows users to filter the data by species. You update your app:]{.body-text-s}
 
 ::: {.panel-tabset}
 ## `global.R`
@@ -1033,9 +1039,12 @@ knitr::include_graphics("images/part6/updated-snapshots.png")
 ```{r filename="~/testing-app/global.R"}
 #| eval: false
 #| echo: true
+#| code-line-numbers: "4-5"
 # load libraries ----
 library(shiny)
 library(tidyverse)
+library(shinyWidgets)
+library(palmerpenguins)
 ```
 
 ## `ui.R`
@@ -1043,76 +1052,76 @@ library(tidyverse)
 ```{r filename="~/testing-app/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "37-69"
+#| code-line-numbers: "35-69"
 ui <- fluidPage(
-
+  
   # Feature 1 ------------------------------------------------------------------
-
+  
   h1("Feature 1"),
-
+  
   # fluidRow (Feature 1: greeting) ----
   fluidRow(
-
+    
     # greeting sidebarLayout ----
     sidebarLayout(
-
+      
       # greeting sidebarPanel ----
       sidebarPanel(
-
+        
         textInput(inputId = "name_input",
                   label = "What is your name?"),
-
+        
         actionButton(inputId = "greeting_button_input",
                      label = "Greet"),
-
+        
       ), # END greeting sidebarPanel
-
+      
       # greeting mainPanel ----
       mainPanel(
-
+        
         textOutput(outputId = "greeting_output"),
-
+        
       ) # END greeting mainPanel
-
+      
     ) # END greeting sidebarLayout
-
+    
   ), # END fluidRow (Feature 1: greeting)
   
-  tags$hr(),
-
+  hr(),
+  
   # Feature 2 ------------------------------------------------------------------
-
+  
   h1("Feature 2"),
-
-  # fluidRow (Feature 2: file upload) -----
+  
+  # fluidRow (Feature 2: plot) -----
   fluidRow(
-
-    # file upload sidebarLayout ----
+    
+    # plot sidebarLayout ----
     sidebarLayout(
-
-      # file upload sidebarPanel ----
+      
+      # plot sidebarPanel ----
       sidebarPanel(
-
-        # upload fileInput -----
-        fileInput(inputId = "csv_input",
-                  label = "Upload your CSV file:",
-                  multiple = FALSE,
-                  accept = c(".csv"),
-                  buttonLabel = "Browse",
-                  placeholder = "No file selected"), # END upload fileInput
-
-      ), # END file upload sidebarPanel
-
-      # fileInput mainPanel ----
+        
+        # penguin spp pickerInput -----
+        pickerInput(inputId = "penguin_spp_input", 
+                    label = "Select species:",
+                    choices = c("Adelie", "Chinstrap", "Gentoo"),
+                    selected = c("Adelie", "Chinstrap", "Gentoo"),
+                    multiple = TRUE,
+                    options = pickerOptions(actionsBox = TRUE)), # END penguin spp pickerInput
+        
+      ), # END plot sidebarPanel
+      
+      # plot mainPanel ----
       mainPanel(
-
-        tableOutput(outputId = "summary_table_output")
-
-      ) # END file upload mainPanel
-
-    ) # END file upload sidebarLayout
-
-  ), # END fluidRow (Feature 2: file upload)
+        
+        plotOutput(outputId = "scatterplot_output")
+        
+      ) # END plot mainPanel
+      
+    ) # END plot sidebarLayout
+    
+  ) # END fluidRow (Feature 2: plot)
   
 ) # END fluidPage 
 ```
@@ -1122,7 +1131,7 @@ ui <- fluidPage(
 ```{r filename="~/testing-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "25-68"
+#| code-line-numbers: "25-52"
 server <- function(input, output) {
   
   # Feature 1 ------------------------------------------------------------------
@@ -1144,55 +1153,39 @@ server <- function(input, output) {
     }
   }) |>
     
-    # Execute the above observer once the button is pressed ----
-    bindEvent(input$greeting_button_input)
+  # Execute the above observer once the button is pressed ----
+  bindEvent(input$greeting_button_input)
   
   # Feature 2 ------------------------------------------------------------------
   
-  # file upload ----
-  output$summary_table_output <- renderTable({
+  # filter penguin spp (scatterplot) ----
+  filtered_spp_scatterplot_df <- reactive({
     
-    # NOTE: `input$csv_input` will be NULL initially
-    # after user selects / uploads a file, it will be a df with 'name', 'size', 'type', 'datapath' cols
-    # 'datapath' col will contain the local filenames where data can be found
-    # see: https://shiny.posit.co/r/reference/shiny/1.4.0/fileinput
-    
-    # save input value to object named `inputFile` ----
-    inputFile <- input$csv_input
-    
-    # if a file has not been uploaded yet, don't return / print anything ----
-    if(is.null(inputFile))
-      return(NULL)
-    
-    # read in file using it's datapath ----
-    df_raw <- read_csv(inputFile$datapath)
-    
-    # validate that the uploaded CSV has the expected column names ----
-    required_cols <- c("temp_c", "precip_cm", "wind_kmhr", "pressure_inhg")
-    column_names <- colnames(df_raw)
     validate(
-      need(all(required_cols %in% column_names), "Your CSV does not have the expected column headers.")
-    )
+      need(length(input$penguin_spp_input) > 0, "Please select at least one penguin species to visualize data for."))
     
-    # return summarized data in a table ----
-    df_summary <- df_raw |>
-      summarize(
-        avg_temp = mean(temp_c),
-        avg_precip = mean(precip_cm),
-        avg_wind = mean(wind_kmhr),
-        avg_pressure = mean(pressure_inhg),
-        tot_num_obs = length(temp_c)
-      ) |>
-      rename("Mean Temperature (C)" = "avg_temp",
-             "Mean Precipitation (cm)" = "avg_precip",
-             "Mean Wind Speed (km/hr)" = "avg_wind",
-             "Mean Pressure (inHg)" = "avg_pressure",
-             "Total Number of Observations" = "tot_num_obs")
-    return(df_summary)
+    penguins |>
+      filter(species %in% input$penguin_spp_input)
     
   })
   
-} # END server
+  # render scatterplot ----
+  output$scatterplot_output <- renderPlot({
+    
+    ggplot(na.omit(filtered_spp_scatterplot_df()),
+           aes(x = bill_length_mm, y = bill_depth_mm,
+               color = species, shape = species)) +
+      geom_point() +
+      geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+      scale_color_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
+      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
+      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
+           color = "Penguin species", shape = "Penguin species") +
+      theme(legend.position = "bottom")
+    
+  })
+  
+}
 ```
 
 :::
@@ -1205,14 +1198,14 @@ server <- function(input, output) {
 
 <hr>
 
-You can practice uploading [this csv file, `real-sample-data.csv`](https://drive.google.com/file/d/1X3Y1J1pWX1OHNEcieyBpueL2MXOt5hWB/view?usp=drive_link){target="_blank"}, which is representative of the data that your team will want processed.
+Try out the pickerInput and identify different actions / scenarios that a user may encounter which you’d like to write tests for.
 
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
 #| out-width: "100%"
-knitr::include_graphics("images/part6/ft2-upload.gif")
+knitr::include_graphics("images/part6/ft2-plot-ABRIDGED.gif")
 ```
 
 <br>
@@ -1225,15 +1218,15 @@ Your boss gives you the green light to start writing tests.
 
 ##  {#ft2-assertions data-menu-title="Feature 2 assertions"}
 
-[Begin by jotting down any assertions you can think of]{.slide-title3}
+[Begin by jotting down some assertions]{.slide-title3}
 
 <hr>
 
-Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter.
+Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter with Feature 2. You *do not* need to describe every single possible scenario, but ensure that they are varied and represent different user interactions.
 
 ```{r}
 countdown::countdown(
-  minutes = 5,
+  minutes = 3,
   # left = 0, right = 0,
   # Fanfare when it's over
   # play_sound = TRUE,
@@ -1247,79 +1240,79 @@ countdown::countdown(
   )
 ```
 
+<br>
+
 . . . 
 
-| Action(s)                                                                                                                                              | Expectation(s)                                                                                     |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Click Browse > Select CSV file with correct column headers and data                                                                                    | The data set is returned as a table with renamed / averaged columns                                |
-| Click Browse > Select CSV with incorrect column headers                                                                                                | An error message, "Your CSV does not have the expected column headers" is returned                 |
-| Click Browse > Select empty CSV (no column headers or data)                                                                                            | An error message, "Your CSV does not have the expected column headers" is returned                 |
-| Click Browse > Select CSV file with only column headers and no data                                                                                    | The data set is returned as a table with renamed columns and NA values                             |
-| Click Browse > Select CSV file with only data and no column headers                                                                                    | An error message, "Your CSV does not have the expected column headers" is returned                 |
-| Click Browse > Select CSV file with correct column headers and data > Click Browse again > Select a different CSV with correct column headers and data | The first data set is returned as a table with renamed / averaged columns is returned, then the second data set is returned as a table with renamed / averaged columns |
+| Action(s)                                             | Expectation(s)                                                                                                                                                                                               |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Select all 3 species (no action / default state)      | A scatterplot with all three species' data is rendered                                                                                                                                                       |
+| Deselect Adelie                                       | A scatterplot with just Gentoo & Chinstrap data is rendered                                                                                                                                                  |
+| Click Deselect All > Select Gentoo > Click Select All | An error message, "Please select at least one penguin species to visualize data for." is returned > A scatterplot with just Gentoo data is rendered > A scatterplot with all three species' data is rendered |
 
----
 
-##  {#create-test-data data-menu-title="Create test data"}
+<!-- --- -->
 
-[We'll also need some test data]{.slide-title}
+<!-- ##  {#create-test-data data-menu-title="Create test data"} -->
 
-<hr>
+<!-- [We'll also need some test data]{.slide-title} -->
 
-We'll need CSVs which can be used as representative examples for each of the scenarios we want to test for. This includes: 
+<!-- <hr> -->
 
-- [two different CSVs, each with correct column headers / data]{.body-text-s}
-- [one CSV with incorrect column headers]{.body-text-s} 
-- [one completely blank CSV]{.body-text-s}
-- [one CSV with column headers but missing data]{.body-text-s}
-- [one CSV with data but missing column headers]{.body-text-s}
+<!-- We'll need CSVs which can be used as representative examples for each of the scenarios we want to test for. This includes:  -->
 
-<br>
+<!-- - [two different CSVs, each with correct column headers / data]{.body-text-s} -->
+<!-- - [one CSV with incorrect column headers]{.body-text-s}  -->
+<!-- - [one completely blank CSV]{.body-text-s} -->
+<!-- - [one CSV with column headers but missing data]{.body-text-s} -->
+<!-- - [one CSV with data but missing column headers]{.body-text-s} -->
 
-The test data do not necessarily need to be "real" (i.e. real measurements collected by instruments or people). They can be simple, short data sets, so long as they cover the scenarios we've discussed.
+<!-- <br> -->
 
-<br>
+<!-- The test data do not necessarily need to be "real" (i.e. real measurements collected by instruments or people). They can be simple, short data sets, so long as they cover the scenarios we've discussed. -->
 
-::: {.center-text .body-text-m}
-**Download these test data [CSV files](https://drive.google.com/drive/folders/14VIirofAz04KwTyHqQ_8pbOK95IqUQ1H?usp=drive_link)**, which we'll use to create our tests (you can save them to your Desktop for now).
-:::
+<!-- <br> -->
 
----
+<!-- ::: {.center-text .body-text-m} -->
+<!-- **Download these test data [CSV files](https://drive.google.com/drive/folders/14VIirofAz04KwTyHqQ_8pbOK95IqUQ1H?usp=drive_link)**, which we'll use to create our tests (you can save them to your Desktop for now). -->
+<!-- ::: -->
 
-##  {#storing-test-data data-menu-title="Storing test data"}
+<!-- --- -->
 
-[Store test data in `tests/testthat/`]{.slide-title}
+<!-- ##  {#storing-test-data data-menu-title="Storing test data"} -->
 
-<hr>
+<!-- [Store test data in `tests/testthat/`]{.slide-title} -->
 
-<br>
+<!-- <hr> -->
 
-Whenever you record a file upload event to a `fileInput`, the test script will include a line similar to this,
+<!-- <br> -->
 
-<br>
+<!-- Whenever you record a file upload event to a `fileInput`, the test script will include a line similar to this, -->
 
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: false
-app$uploadFile(file1 = "your-data.csv")
-```
+<!-- <br> -->
 
-<br>
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- #| echo: true -->
+<!-- #| code-line-numbers: false -->
+<!-- app$uploadFile(file1 = "your-data.csv") -->
+<!-- ``` -->
 
-which indicates the file name, but not the file path. `{shinytest2}` will look for a test file with that name inside the `tests/testthat/` folder.
+<!-- <br> -->
 
-<br>
+<!-- which indicates the file name, but not the file path. `{shinytest2}` will look for a test file with that name inside the `tests/testthat/` folder. -->
 
-::: {.center-text .body-text-m}
-**Make *copies* of all of the test files into `tests/testthat/`.**
-:::
+<!-- <br> -->
+
+<!-- ::: {.center-text .body-text-m} -->
+<!-- **Make *copies* of all of the test files into `tests/testthat/`.** -->
+<!-- ::: -->
 
 ---
 
 ##  {#ft2-test1 data-menu-title="Feature 2, test 1"}
 
-[Okay, let's finally write our first test!]{.slide-title2}
+[Okay, let's write our first test for feature 2!]{.slide-title2}
 
 <hr>
 
@@ -1329,25 +1322,24 @@ which indicates the file name, but not the file path. `{shinytest2}` will look f
 
 [[**(1)**]{.teal-text} Run `shinytest2::record_test("testing-app")` in the Console]{.body-text-s}
 
-[[**(2)**]{.teal-text} Click Browse > select `cols-and-data1.csv` from wherever you have it saved (mine is on my Desktop) > click Expect Shiny Values]{.body-text-s}
+[[**(2)**]{.teal-text} Click Expect Shiny Values (to capture the default state, i.e. all three species selected by default)]{.body-text-s}
 
-[[**(3)**]{.teal-text} Give the test a unique name (e.g. `upload-cols-and-data`) > click Save test and exit]{.body-text-s}
+[[**(3)**]{.teal-text} Give the test a unique name (e.g. `default-three-spp`) > click Save test and exit]{.body-text-s}
 
 [[**(4)**]{.teal-text} The test recorder will quit, and your test will automatically execute]{.body-text-s}
 
 <br>
 
-. . . 
-
-::: {.center-text .body-text-l}
-What happens?
-:::
-
 . . .
 
-::: {.center-text .body-text-l}
-Our last three tests failed??? What???
-:::
+[What happens?]{.body-text-l}
+
+
+<br>
+
+. . . 
+
+[All of our feature 1 tests failed??? What???]{.body-text-l}
 
 ---
 
@@ -1362,17 +1354,20 @@ Your console should look similar to this:
 ```{r}
 #| eval: false
 #| echo: true
-Listening on http://127.0.0.1:6179
+Listening on http://127.0.0.1:4680
 {shiny} R stderr ----------- Loading required package: shiny
 {shiny} R stderr ----------- Warning: package ‘shiny’ was built under R version 4.3.1
 {shiny} R stderr ----------- Running application in test mode.
 {shiny} R stderr ----------- Warning: package ‘ggplot2’ was built under R version 4.3.1
+{shiny} R stderr ----------- Warning: package ‘readr’ was built under R version 4.3.1
 {shiny} R stderr ----------- Warning: package ‘dplyr’ was built under R version 4.3.1
 {shiny} R stderr ----------- Warning: package ‘stringr’ was built under R version 4.3.1
+{shiny} R stderr ----------- Warning: package ‘shinyWidgets’ was built under R version 4.3.1
 {shiny} R stderr ----------- 
-{shiny} R stderr ----------- Listening on http://127.0.0.1:4693
+{shiny} R stderr ----------- Listening on http://127.0.0.1:6652
+{shiny} R stderr ----------- `geom_smooth()` using formula = 'y ~ x'
 {shiny} R stdout ----------- ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-{shiny} R stdout ----------- ✔ dplyr     1.1.4     ✔ readr     2.1.4
+{shiny} R stdout ----------- ✔ dplyr     1.1.4     ✔ readr     2.1.5
 {shiny} R stdout ----------- ✔ forcats   1.0.0     ✔ stringr   1.5.1
 {shiny} R stdout ----------- ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
 {shiny} R stdout ----------- ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
@@ -1381,34 +1376,13 @@ Listening on http://127.0.0.1:6179
 {shiny} R stdout ----------- ✖ dplyr::filter() masks stats::filter()
 {shiny} R stdout ----------- ✖ dplyr::lag()    masks stats::lag()
 {shiny} R stdout ----------- ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-{shiny} R stdout ----------- Rows: 4 Columns: 4
-{shiny} R stdout ----------- ── Column specification ────────────────────────────────────────────────────────
-{shiny} R stdout ----------- Delimiter: ","
-{shiny} R stdout ----------- dbl (4): temp_c, precip_cm, wind_kmhr, pressure_inhg
-{shiny} R stdout ----------- 
-{shiny} R stdout ----------- ℹ Use `spec()` to retrieve the full column specification for this data.
-{shiny} R stdout ----------- ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+{shiny} R stderr ----------- `geom_smooth()` using formula = 'y ~ x'
 • Saving test file: tests/testthat/test-shinytest2.R
-• Modify '/Users/samanthacsik/git/EDS-430/testing-shiny-apps/testing-app/tests/testthat/test-shinytest2.R'
+• Modify '/Users/samanthacsik/Desktop/testing-app-practice/testing-app/tests/testthat/test-shinytest2.R'
 • Running recorded test: tests/testthat/test-shinytest2.R
-Loading required package: testthat
-── Attaching core tidyverse packages ─────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ───────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ readr::edition_get()   masks testthat::edition_get()
-✖ dplyr::filter()        masks stats::filter()
-✖ purrr::is_null()       masks testthat::is_null()
-✖ dplyr::lag()           masks stats::lag()
-✖ readr::local_edition() masks testthat::local_edition()
-✖ dplyr::matches()       masks tidyr::matches(), testthat::matches()
-ℹ Use the conflicted package to force all conflicts to become errors
 ✔ | F W  S  OK | Context
-✖ | 4 6      1 | shinytest2 [7.4s]                                                                                             
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+✖ | 4 6      1 | shinytest2 [10.0s]                                                                                     
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Failure (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
 Snapshot of `file` to 'shinytest2/one-name-greeting-001.json' has changed
 Run testthat::snapshot_review('shinytest2/') to review changes
@@ -1422,19 +1396,69 @@ Backtrace:
 
 Warning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
 Diff in snapshot file `shinytest2one-name-greeting-001.json`
-< before                                > after                               
-@@ 1,9 @@                               @@ 1,11 @@                            
-  {                                       {                                   
-    "input": {                              "input": {                        
-~                                       >     "csv_input": null,              
-      "greeting_button_input": 1,             "greeting_button_input": 1,     
-      "name_input": "Sam"                     "name_input": "Sam"             
-    },                                      },                                
-    "output": {                             "output": {                       
-<     "greeting_output": "Hello Sam!"   >     "greeting_output": "Hello Sam!",
-~                                       >     "summary_table_output": null    
-    },                                      },                                
-    "export": {                             "export": {                       
+< before                                                             
+> after                                                              
+@@ 2,9 / 2,58 @@                                                     
+    "input": {                                                       
+      "greeting_button_input": 1,                                    
+<     "name_input": "Sam"                                            
+>     "name_input": "Sam",                                           
+>     "penguin_spp_input": [                                         
+>       "Adelie",                                                    
+>       "Chinstrap",                                                 
+>       "Gentoo"                                                     
+>     ]                                                              
+    },                                                               
+    "output": {                                                      
+<     "greeting_output": "Hello Sam!"                                
+>     "greeting_output": "Hello Sam!",                               
+>     "scatterplot_output": {                                        
+>       "src": "[image data hash: 728c0875df36ff065ee4688ef08088ac]",
+>       "width": 841.328125,                                         
+>       "height": 400,                                               
+>       "alt": "Plot object",                                        
+>       "coordmap": {                                                
+>         "panels": [                                                
+>           {                                                        
+>             "panel": 1,                                            
+>             "row": 1,                                              
+>             "col": 1,                                              
+>             "panel_vars": {                                        
+>                                                                    
+>             },                                                     
+>             "log": {                                               
+>               "x": null,                                           
+>               "y": null                                            
+    },                                                               
+>             "domain": {                                            
+>               "left": 30.725,                                      
+>               "right": 60.975,                                     
+>               "bottom": 12.68,                                     
+>               "top": 21.92                                         
+>             },                                                     
+>             "mapping": {                                           
+>               "x": "bill_length_mm",                               
+>               "y": "bill_depth_mm",                                
+>               "colour": "species",                                 
+>               "shape": "species"                                   
+>             },                                                     
+>             "range": {                                             
+>               "left": 40.26005993150689,                           
+>               "right": 835.5205479452055,                          
+>               "bottom": 329.6486649310203,                         
+>               "top": 5.479452054794522                             
+>             }                                                      
+>           }                                                        
+>         ],                                                         
+>         "dims": {                                                  
+>           "width": 841.328125,                                     
+>           "height": 400                                            
+>         }                                                          
+>       }                                                            
+>     }                                                              
+>   },                                                               
+    "export": {                                                      
+                                                                     
 
 Failure (test-shinytest2.R:15:3): {shinytest2} recording: consecutive-name-greeting
 Snapshot of `file` to 'shinytest2/consecutive-name-greeting-001.json' has changed
@@ -1449,19 +1473,69 @@ Backtrace:
 
 Warning (test-shinytest2.R:15:3): {shinytest2} recording: consecutive-name-greeting
 Diff in snapshot file `shinytest2consecutive-name-greeting-001.json`
-< before                                > after                               
-@@ 1,9 @@                               @@ 1,11 @@                            
-  {                                       {                                   
-    "input": {                              "input": {                        
-~                                       >     "csv_input": null,              
-      "greeting_button_input": 1,             "greeting_button_input": 1,     
-      "name_input": "Sam"                     "name_input": "Sam"             
-    },                                      },                                
-    "output": {                             "output": {                       
-<     "greeting_output": "Hello Sam!"   >     "greeting_output": "Hello Sam!",
-~                                       >     "summary_table_output": null    
-    },                                      },                                
-    "export": {                             "export": {                       
+< before                                                             
+> after                                                              
+@@ 2,9 / 2,58 @@                                                     
+    "input": {                                                       
+      "greeting_button_input": 1,                                    
+<     "name_input": "Sam"                                            
+>     "name_input": "Sam",                                           
+>     "penguin_spp_input": [                                         
+>       "Adelie",                                                    
+>       "Chinstrap",                                                 
+>       "Gentoo"                                                     
+>     ]                                                              
+    },                                                               
+    "output": {                                                      
+<     "greeting_output": "Hello Sam!"                                
+>     "greeting_output": "Hello Sam!",                               
+>     "scatterplot_output": {                                        
+>       "src": "[image data hash: 728c0875df36ff065ee4688ef08088ac]",
+>       "width": 841.328125,                                         
+>       "height": 400,                                               
+>       "alt": "Plot object",                                        
+>       "coordmap": {                                                
+>         "panels": [                                                
+>           {                                                        
+>             "panel": 1,                                            
+>             "row": 1,                                              
+>             "col": 1,                                              
+>             "panel_vars": {                                        
+>                                                                    
+>             },                                                     
+>             "log": {                                               
+>               "x": null,                                           
+>               "y": null                                            
+    },                                                               
+>             "domain": {                                            
+>               "left": 30.725,                                      
+>               "right": 60.975,                                     
+>               "bottom": 12.68,                                     
+>               "top": 21.92                                         
+>             },                                                     
+>             "mapping": {                                           
+>               "x": "bill_length_mm",                               
+>               "y": "bill_depth_mm",                                
+>               "colour": "species",                                 
+>               "shape": "species"                                   
+>             },                                                     
+>             "range": {                                             
+>               "left": 40.26005993150689,                           
+>               "right": 835.5205479452055,                          
+>               "bottom": 329.6486649310203,                         
+>               "top": 5.479452054794522                             
+>             }                                                      
+>           }                                                        
+>         ],                                                         
+>         "dims": {                                                  
+>           "width": 841.328125,                                     
+>           "height": 400                                            
+>         }                                                          
+>       }                                                            
+>     }                                                              
+>   },                                                               
+    "export": {                                                      
+                                                                     
 
 Failure (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
 Snapshot of `file` to 'shinytest2/consecutive-name-greeting-002.json' has changed
@@ -1476,19 +1550,69 @@ Backtrace:
 
 Warning (test-shinytest2.R:18:3): {shinytest2} recording: consecutive-name-greeting
 Diff in snapshot file `shinytest2consecutive-name-greeting-002.json`
-< before                                > after                               
-@@ 1,9 @@                               @@ 1,11 @@                            
-  {                                       {                                   
-    "input": {                              "input": {                        
-~                                       >     "csv_input": null,              
-      "greeting_button_input": 2,             "greeting_button_input": 2,     
-      "name_input": "Kat"                     "name_input": "Kat"             
-    },                                      },                                
-    "output": {                             "output": {                       
-<     "greeting_output": "Hello Kat!"   >     "greeting_output": "Hello Kat!",
-~                                       >     "summary_table_output": null    
-    },                                      },                                
-    "export": {                             "export": {                       
+< before                                                             
+> after                                                              
+@@ 2,9 / 2,58 @@                                                     
+    "input": {                                                       
+      "greeting_button_input": 2,                                    
+<     "name_input": "Kat"                                            
+>     "name_input": "Kat",                                           
+>     "penguin_spp_input": [                                         
+>       "Adelie",                                                    
+>       "Chinstrap",                                                 
+>       "Gentoo"                                                     
+>     ]                                                              
+    },                                                               
+    "output": {                                                      
+<     "greeting_output": "Hello Kat!"                                
+>     "greeting_output": "Hello Kat!",                               
+>     "scatterplot_output": {                                        
+>       "src": "[image data hash: 728c0875df36ff065ee4688ef08088ac]",
+>       "width": 841.328125,                                         
+>       "height": 400,                                               
+>       "alt": "Plot object",                                        
+>       "coordmap": {                                                
+>         "panels": [                                                
+>           {                                                        
+>             "panel": 1,                                            
+>             "row": 1,                                              
+>             "col": 1,                                              
+>             "panel_vars": {                                        
+>                                                                    
+>             },                                                     
+>             "log": {                                               
+>               "x": null,                                           
+>               "y": null                                            
+    },                                                               
+>             "domain": {                                            
+>               "left": 30.725,                                      
+>               "right": 60.975,                                     
+>               "bottom": 12.68,                                     
+>               "top": 21.92                                         
+>             },                                                     
+>             "mapping": {                                           
+>               "x": "bill_length_mm",                               
+>               "y": "bill_depth_mm",                                
+>               "colour": "species",                                 
+>               "shape": "species"                                   
+>             },                                                     
+>             "range": {                                             
+>               "left": 40.26005993150689,                           
+>               "right": 835.5205479452055,                          
+>               "bottom": 329.6486649310203,                         
+>               "top": 5.479452054794522                             
+>             }                                                      
+>           }                                                        
+>         ],                                                         
+>         "dims": {                                                  
+>           "width": 841.328125,                                     
+>           "height": 400                                            
+>         }                                                          
+>       }                                                            
+>     }                                                              
+>   },                                                               
+    "export": {                                                      
+                                                                     
 
 Failure (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting
 Snapshot of `file` to 'shinytest2/no-name-greeting-001.json' has changed
@@ -1505,31 +1629,79 @@ Warning (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting
 Diff in snapshot file `shinytest2no-name-greeting-001.json`
 < before                                                                    
 > after                                                                     
-@@ 1,9 / 1,11 @@                                                            
-  {                                                                         
+@@ 2,9 / 2,58 @@                                                            
     "input": {                                                              
->     "csv_input": null,                                                    
       "greeting_button_input": 1,                                           
-      "name_input": ""                                                      
+<     "name_input": ""                                                      
+>     "name_input": "",                                                     
+>     "penguin_spp_input": [                                                
+>       "Adelie",                                                           
+>       "Chinstrap",                                                        
+>       "Gentoo"                                                            
+>     ]                                                                     
     },                                                                      
     "output": {                                                             
 <     "greeting_output": "Please type a name, then click the Greet button." 
 >     "greeting_output": "Please type a name, then click the Greet button.",
->     "summary_table_output": null                                          
+>     "scatterplot_output": {                                               
+>       "src": "[image data hash: 728c0875df36ff065ee4688ef08088ac]",       
+>       "width": 841.328125,                                                
+>       "height": 400,                                                      
+>       "alt": "Plot object",                                               
+>       "coordmap": {                                                       
+>         "panels": [                                                       
+>           {                                                               
+>             "panel": 1,                                                   
+>             "row": 1,                                                     
+>             "col": 1,                                                     
+>             "panel_vars": {                                               
+>                                                                           
+>             },                                                            
+>             "log": {                                                      
+>               "x": null,                                                  
+>               "y": null                                                   
     },                                                                      
+>             "domain": {                                                   
+>               "left": 30.725,                                             
+>               "right": 60.975,                                            
+>               "bottom": 12.68,                                            
+>               "top": 21.92                                                
+>             },                                                            
+>             "mapping": {                                                  
+>               "x": "bill_length_mm",                                      
+>               "y": "bill_depth_mm",                                       
+>               "colour": "species",                                        
+>               "shape": "species"                                          
+>             },                                                            
+>             "range": {                                                    
+>               "left": 40.26005993150689,                                  
+>               "right": 835.5205479452055,                                 
+>               "bottom": 329.6486649310203,                                
+>               "top": 5.479452054794522                                    
+>             }                                                             
+>           }                                                               
+>         ],                                                                
+>         "dims": {                                                         
+>           "width": 841.328125,                                            
+>           "height": 400                                                   
+>         }                                                                 
+>       }                                                                   
+>     }                                                                     
+>   },                                                                      
     "export": {                                                             
+                                                                            
 
-Warning (test-shinytest2.R:32:3): {shinytest2} recording: upload-cols-and-data
-Adding new file snapshot: 'tests/testthat/_snaps/upload-cols-and-data-001_.png'
+Warning (test-shinytest2.R:31:3): {shinytest2} recording: default-three-spp
+Adding new file snapshot: 'tests/testthat/_snaps/default-three-spp-001_.png'
 
-Warning (test-shinytest2.R:32:3): {shinytest2} recording: upload-cols-and-data
-Adding new file snapshot: 'tests/testthat/_snaps/upload-cols-and-data-001.json'
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Warning (test-shinytest2.R:31:3): {shinytest2} recording: default-three-spp
+Adding new file snapshot: 'tests/testthat/_snaps/default-three-spp-001.json'
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-Duration: 7.9 s
+══ Results ═════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Duration: 10.5 s
 
-── Failed tests ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+── Failed tests ────────────────────────────────────────────────────────────────────────────────────────────────────────
 Failure (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
 Snapshot of `file` to 'shinytest2/one-name-greeting-001.json' has changed
 Run testthat::snapshot_review('shinytest2/') to review changes
@@ -1575,12 +1747,9 @@ Backtrace:
  5.       └─testthat::expect_snapshot_file(...)
 
 [ FAIL 4 | WARN 6 | SKIP 0 | PASS 1 ]
+
+Don't worry, you'll get it.
 Error: Test failures
-In addition: Warning messages:
-1: package ‘testthat’ was built under R version 4.3.1 
-2: package ‘ggplot2’ was built under R version 4.3.1 
-3: package ‘dplyr’ was built under R version 4.3.1 
-4: package ‘stringr’ was built under R version 4.3.1 
 ```
 
 ---
@@ -1625,7 +1794,7 @@ Use the drop down to switch between snapshots. Don't Accept any updates just yet
 #| echo: false
 #| fig-align: "center"
 #| out-width: "100%"
-knitr::include_graphics("images/part6/snapshot-review-dropdown.png")
+knitr::include_graphics("images/part6/snapshot-review-dropdown-ABRIDGED.png")
 ```
 :::
 ::::
@@ -1651,7 +1820,7 @@ knitr::include_graphics("images/part6/snapshot-review-dropdown.png")
 #| echo: false
 #| out-width: "100%"
 #| fig-align: "center"
-knitr::include_graphics("images/part6/old.png")
+knitr::include_graphics("images/part6/old-ABRIDGED.png")
 ```
 :::
 ::: {.column width="50%"}
@@ -1660,7 +1829,7 @@ knitr::include_graphics("images/part6/old.png")
 #| echo: false
 #| out-width: "100%"
 #| fig-align: "center"
-knitr::include_graphics("images/part6/new.png")
+knitr::include_graphics("images/part6/new-ABRIDGED.png")
 ```
 :::
 ::::
@@ -1682,7 +1851,7 @@ knitr::include_graphics("images/part6/new.png")
 #| echo: false
 #| out-width: "100%"
 #| fig-align: "center"
-knitr::include_graphics("images/part6/one-name-greeting-json-failed.png")
+knitr::include_graphics("images/part6/one-name-greeting-json-failed-ABRIDGED.png")
 ```
 
 ---
@@ -1717,6 +1886,11 @@ Therefore, **we need to modify our tests so that they capture a *targeted value 
 
 :::: {.columns}
 ::: {.column width="50%"}
+
+::: {.center-text .gray-text .body-text-s}
+Non-targeted value expectation
+:::
+
 ```{r}
 #| eval: false
 #| echo: true
@@ -1730,6 +1904,11 @@ test_that("{shinytest2} recording: one-name-greeting", {
 ```
 :::
 ::: {.column width="50%"}
+
+::: {.center-text .gray-text .body-text-s}
+Targeted value expectation
+:::
+
 ```{r}
 #| eval: false
 #| echo: true
@@ -1755,11 +1934,11 @@ test_that("{shinytest2} recording: one-name-greeting", {
 ```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "7,15,18,25,32"
+#| code-line-numbers: "7,15,18,25,31"
 library(shinytest2)
 
 test_that("{shinytest2} recording: one-name-greeting", {
-  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app <- AppDriver$new(name = "one-name-greeting", height = 1097, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -1767,7 +1946,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 
 test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 1112, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -1778,18 +1957,16 @@ test_that("{shinytest2} recording: consecutive-name-greeting", {
 
 
 test_that("{shinytest2} recording: no-name-greeting", {
-  app <- AppDriver$new(name = "no-name-greeting", height = 838, width = 1299)
+  app <- AppDriver$new(name = "no-name-greeting", height = 1097, width = 1277)
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
 })
 
 
-test_that("{shinytest2} recording: upload-cols-and-data", {
-  app <- AppDriver$new(name = "upload-cols-and-data", height = 734, width = 1119)
-  app$upload_file(csv_input = "cols-and-data1.csv")
-  app$expect_values(output = "summary_table_output")
+test_that("{shinytest2} recording: default-three-spp", {
+  app <- AppDriver$new(name = "default-three-spp", height = 1099, width = 1209)
+  app$expect_values(output = "scatterplot_output")
 })
-
 ```
 
 ---
@@ -1855,10 +2032,10 @@ knitr::include_graphics("images/part6/targeted-value-expectations.gif")
 
 <hr>
 
-[Let's write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our [original table](#ft2-assertions)):]{.body-text-s}
+[Let's write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our [original table](#ft2-assertions){target="_blank"}):]{.body-text-s}
 
-- [**Action(s):** Click Browse > Select CSV file with incorrect column headers]{.body-text-s}
-- [**Expectation:** An error message, "Your CSV does not have the expected column headers" is returned]{.body-text-s}
+- [**Action(s):** Deselect Adelie]{.body-text-s}
+- [**Expectation:** A scatterplot with just Gentoo & Chinstrap data rendered]{.body-text-s}
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -1870,7 +2047,7 @@ knitr::include_graphics("images/part6/targeted-value-expectations.gif")
 #| echo: false
 #| fig-align: "center"
 #| out-width: "100%"
-knitr::include_graphics("images/part6/command-click.gif")
+knitr::include_graphics("images/part6/command-click-ABRIDGED.gif")
 ```
 :::
 
@@ -1879,34 +2056,53 @@ knitr::include_graphics("images/part6/command-click.gif")
 
 [[**(1)**]{.teal-text} Run `shinytest2::record_test("testing-app")` in the Console]{.body-text-s}
 
-[[**(2**]{.teal-text} Click Browse, select `incorrect-cols.csv` from your Desktop (or wherever you have it saved)]{.body-text-s}
+[[**(2**]{.teal-text} Click on the `pickerInput` and deselect Adelie]{.body-text-s}
 
-[[**(3)**]{.teal-text} Hold down the `cmd`/`ctrl` button on your keyboard, then click on the **output** -- for us, that's the error message that is rendered in place of `summary_table_output`]{.body-text-s}
+[[**(3)**]{.teal-text} Hold down the `cmd`/`ctrl` button on your keyboard, then click on the **output** -- for us, that's the updated plot that displays just Gentoo & Chinstrap data]{.body-text-s}
 
-[[**(4)**]{.teal-text} Give the test a unique name (e.g. `upload-incorrect-cols`) > click Save test and exit (tests should automatically execute and pass!)]{.body-text-s}
-
-<!-- [[**(5)**]{.teal-text} The test recorder will quick, and your test will automatically execute (it should pass!)]{.body-text-s} -->
+[[**(4)**]{.teal-text} Give the test a unique name (e.g. `deselect-adelie`) > click Save test and exit (tests should automatically execute and pass!)]{.body-text-s}
 :::
 ::::
+
+::: {.footer}
+IMPORTANT: You'll likely encounter a popup each time you click on the `pickerInput`. **Be sure to click *Record*.** Read more about [input bindings](https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings).
+:::
+
+<!-- --- -->
+
+<!-- ::: {.center-text} -->
+<!-- *NOTE: You'll likely encounter this popup each time you click on the `pickerInput` -- click **Record**:* -->
+<!-- ::: -->
+
+<!-- ```{r} -->
+<!-- #| eval: true -->
+<!-- #| echo: false -->
+<!-- #| out-width: "30%" -->
+<!-- #| fig-align: "center" -->
+<!-- knitr::include_graphics("images/part6/input-binding.png") -->
+<!-- ``` -->
+
+<!-- ::: {.footer} -->
+<!-- Read more about [input bindings](https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings) in the `{shinytest2}` documentation. -->
+<!-- ::: -->
 
 ---
 
 ##  {#write-all-ft2-tests data-menu-title="Write remaining feature 2 tests"}
 
-[Write tests for the remaining feature 2 assertions]{.slide-title3}
+[Write a test for the final feature 2 assertion]{.slide-title}
 
 <hr>
 
-[When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):]{.body-text-s}
+[See the [original table](#ft2-assertions){target="_blank"} for a reminder of our defined action and expectation. When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):]{.body-text-s}
 
 ```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "29-71"
 library(shinytest2)
 
 test_that("{shinytest2} recording: one-name-greeting", {
-  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
+  app <- AppDriver$new(name = "one-name-greeting", height = 1097, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -1914,7 +2110,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 
 test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
+  app <- AppDriver$new(name = "consecutive-name-greeting", height = 1112, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -1925,488 +2121,41 @@ test_that("{shinytest2} recording: consecutive-name-greeting", {
 
 
 test_that("{shinytest2} recording: no-name-greeting", {
-  app <- AppDriver$new(name = "no-name-greeting", height = 838, width = 1299)
+  app <- AppDriver$new(name = "no-name-greeting", height = 1097, width = 1277)
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
 })
 
 
-test_that("{shinytest2} recording: upload-cols-and-data", {
-  app <- AppDriver$new(name = "upload-cols-and-data", height = 734, width = 1119)
-  app$upload_file(csv_input = "cols-and-data1.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-incorrect-cols", {
-  app <- AppDriver$new(name = "upload-incorrect-cols", height = 754, width = 1139)
-  app$upload_file(csv_input = "incorrect-cols.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-empty", {
-  app <- AppDriver$new(name = "upload-empty", height = 734, width = 1119)
-  app$upload_file(csv_input = "empty.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-only-cols", {
-  app <- AppDriver$new(name = "upload-only-cols", height = 1048, width = 1441)
-  app$upload_file(csv_input = "only-cols.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-only-data", {
-  app <- AppDriver$new(name = "upload-only-data", height = 1048, width = 1441)
-  app$upload_file(csv_input = "only-data.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-consecutive-correct-files", {
-  app <- AppDriver$new(name = "upload-consecutive-correct-files", height = 1048, 
-      width = 1441)
-  app$upload_file(csv_input = "cols-and-data1.csv")
-  app$expect_values(output = "summary_table_output")
-  app$upload_file(csv_input = "cols-and-data2.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-```
-
----
-
-##  {#feature3-code data-menu-title="Feature 3 code"}
-
-[Your boss requests one final feature]{.slide-title}
-
-<hr>
-
-[You're tasked with creating a scatterplot of penguin bill depths by bill lengths, with a pickerInput that allows users to filter the data by species:]{.body-text-s}
-
-::: {.panel-tabset}
-## `global.R`
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "4-5"
-# load libraries ----
-library(shiny)
-library(tidyverse)
-library(shinyWidgets)
-library(palmerpenguins)
-```
-
-## `ui.R`
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "73-104"
-ui <- fluidPage(
-  
-  # Feature 1 ------------------------------------------------------------------
-  
-  h1("Feature 1"),
-  
-  # fluidRow (Feature 1: greeting) ----
-  fluidRow(
-    
-    # greeting sidebarLayout ----
-    sidebarLayout(
-      
-      # greeting sidebarPanel ----
-      sidebarPanel(
-        
-        textInput(inputId = "name_input",
-                  label = "What is your name?"),
-        
-        actionButton(inputId = "greeting_button_input",
-                     label = "Greet"),
-        
-      ), # END greeting sidebarPanel
-      
-      # greeting mainPanel ----
-      mainPanel(
-        
-        textOutput(outputId = "greeting_output"),
-        
-      ) # END greeting mainPanel
-      
-    ) # END greeting sidebarLayout
-    
-  ), # END fluidRow (Feature 1: greeting)
-  
-  tags$hr(),
-  
-  # Feature 2 ------------------------------------------------------------------
-  
-  h1("Feature 2"),
-  
-  # fluidRow (Feature 2: file upload) -----
-  fluidRow(
-    
-    # file upload sidebarLayout ----
-    sidebarLayout(
-      
-      # file upload sidebarPanel ----
-      sidebarPanel(
-        
-        # upload fileInput -----
-        fileInput(inputId = "csv_input",
-                  label = "Upload your CSV file:",
-                  multiple = FALSE,
-                  accept = c(".csv"),
-                  buttonLabel = "Browse",
-                  placeholder = "No file selected"), # END upload fileInput
-        
-      ), # END file upload sidebarPanel
-      
-      # fileInput mainPanel ----
-      mainPanel(
-        
-        tableOutput(outputId = "summary_table_output")
-        
-      ) # END file upload mainPanel
-      
-    ) # END file upload sidebarLayout
-    
-  ), # END fluidRow (Feature 2: file upload)
-  
-  tags$hr(),
-  
-  # Feature 3 ------------------------------------------------------------------
-  
-  h1("Feature 3"),
-  
-  # fluidRow (Feature 3: plot) -----
-  fluidRow(
-    
-    # plot sidebarLayout ----
-    sidebarLayout(
-      
-      # plot sidebarPanel ----
-      sidebarPanel(
-        
-        # penguin spp pickerInput -----
-        pickerInput(inputId = "penguin_spp_scatterplot_input", label = "Select species:",
-                    choices = c("Adelie", "Chinstrap", "Gentoo"),
-                    selected = c("Adelie", "Chinstrap", "Gentoo"),
-                    options = pickerOptions(actionsBox = TRUE),
-                    multiple = TRUE), # END penguin spp pickerInput
-        
-      ), # END plot sidebarPanel
-      
-      # plot mainPanel ----
-      mainPanel(
-        
-        plotOutput(outputId = "scatterplot_output")
-        
-      ) # END plot mainPanel
-      
-    ) # END plot sidebarLayout
-    
-  ) # END fluidRow (Feature 3: plot)
-  
-) # END fluidPage 
-```
-
-## `server.R`
-```{r}
-#| eval: false
-#| echo: true
-#| code-line-numbers: "70-97"
-server <- function(input, output) {
-  
-  # Feature 1 ------------------------------------------------------------------
-  
-  # observe() automatically re-executes when dependencies change (i.e. when `name_input` is updated), but does not return a result ----
-  observe({
-    
-    # if the user does not type anything before clicking the button, return the message, "Please type a name, then click the Greet button." ----
-    if (nchar(input$name_input) == 0) {
-      output$greeting_output <- renderText({
-        "Please type a name, then click the Greet button."
-      })
-      
-      # if the user does type a name before clicking the button, return the greeting, "Hello [name]!" ----
-    } else {
-      output$greeting_output <- renderText({
-        paste0("Hello ", isolate(input$name_input), "!")
-      })
-    }
-  }) |>
-    
-    # Execute the above observer once the button is pressed ----
-    bindEvent(input$greeting_button_input)
-  
-  # Feature 2 ------------------------------------------------------------------
-  
-  # file upload ----
-  output$summary_table_output <- renderTable({
-    
-    # NOTE: `input$csv_input` will be NULL initially
-    # after user selects / uploads a file, it will be a df with 'name', 'size', 'type', 'datapath' cols
-    # 'datapath' col will contain the local filenames where data can be found
-    # see: https://shiny.posit.co/r/reference/shiny/1.4.0/fileinput
-    
-    # save input value to object named `inputFile` ----
-    inputFile <- input$csv_input
-    
-    # if a file has not been uploaded yet, don't return / print anything ----
-    if(is.null(inputFile))
-      return(NULL)
-    
-    # read in file using it's datapath ----
-    df_raw <- read_csv(inputFile$datapath)
-    
-    # validate that the uploaded CSV has the expected column names ----
-    required_cols <- c("temp_c", "precip_cm", "wind_kmhr", "pressure_inhg")
-    column_names <- colnames(df_raw)
-    validate(
-      need(all(required_cols %in% column_names), "Your CSV does not have the expected column headers.")
-    )
-    
-    # return summarized data in a table ----
-    df_summary <- df_raw |>
-      summarize(
-        avg_temp = mean(temp_c),
-        avg_precip = mean(precip_cm),
-        avg_wind = mean(wind_kmhr),
-        avg_pressure = mean(pressure_inhg),
-        tot_num_obs = length(temp_c)
-      ) |>
-      rename("Mean Temperature (C)" = "avg_temp",
-             "Mean Precipitation (cm)" = "avg_precip",
-             "Mean Wind Speed (km/hr)" = "avg_wind",
-             "Mean Pressure (inHg)" = "avg_pressure",
-             "Total Number of Observations" = "tot_num_obs")
-    return(df_summary)
-    
-  })
-  
-  # Feature 3 ------------------------------------------------------------------
-  
-  # filter penguin spp (scatterplot) ----
-  filtered_spp_scatterplot_df <- reactive({
-    
-    validate(
-      need(length(input$penguin_spp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
-    
-    penguins |>
-      filter(species %in% input$penguin_spp_scatterplot_input)
-    
-  })
-  
-  # render scatterplot ----
-  output$scatterplot_output <- renderPlot({
-    
-    ggplot(na.omit(filtered_spp_scatterplot_df()),
-           aes(x = bill_length_mm, y = bill_depth_mm,
-               color = species, shape = species)) +
-      geom_point() +
-      geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
-      scale_color_manual(values = c("Adelie" = "darkorange", "Chinstrap" = "purple", "Gentoo" = "cyan4")) +
-      scale_shape_manual(values = c("Adelie" = 19, "Chinstrap" = 17, "Gentoo" = 15)) +
-      labs(x = "Flipper length (mm)", y = "Bill length (mm)",
-           color = "Penguin species", shape = "Penguin species") +
-      theme(legend.position = "bottom")
-    
-  })
-  
-} # END server
-```
-:::
-
---- 
-
-##  {#run-ft3-app data-menu-title="Run the app"}
-
-[Run your app & try out the latest feature]{.slide-title}
-
-<hr>
-
-Try out the pickerInput and identify different actions / scenarios that a user may encounter which you'd like to write tests for.
-
-<br>
-
-```{r}
-#| eval: true
-#| echo: false
-#| fig-align: "center"
-#| out-width: "100%"
-knitr::include_graphics("images/part6/ft3-plot.gif")
-```
-
----
-
-##  {#feature3-assertions data-menu-title="Feature 3 assertions"}
-
-[We'll write tests for the following assertions]{.slide-title}
-
-<hr>
-
-| Action(s)                                             | Expectation(s)                                                                                                                                                                                               |
-|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Select all 3 species (no action / default state)      | A scatterplot with all three species' data is rendered                                                                                                                                                       |
-| Deselect Adelie                                       | A scatterplot with just Gentoo & Chinstrap data is rendered                                                                                                                                                  |
-| Click Deselect All > Select Gentoo > Click Select All | An error message, "Please select at least one penguin species to visualize data for." is returned > A scatterplot with just Gentoo data is rendered > A scatterplot with all three species' data is rendered |
-
-<br>
-
-::: {.center-text .body-text-m}
-Give it a try on your own, and remember to make *targeted value expectations*!
-:::
-
-::: {.center-text}
-*NOTE: You'll likely encounter this popup each time you click on the `pickerInput` -- click **Record**:*
-:::
-
-```{r}
-#| eval: true
-#| echo: false
-#| out-width: "30%"
-#| fig-align: "center"
-knitr::include_graphics("images/part6/input-binding.png")
-```
-
-::: {.footer}
-Read more about [input bindings](https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings) in the `{shinytest2}` documentation.
-:::
-
-```{r}
-countdown::countdown(
-  minutes = 3,
-  # left = 0, right = 0,
-  # Fanfare when it's over
-  # play_sound = TRUE,
-  color_border              = "#FFFFFF",
-  color_text                = "#7aa81e",
-  color_running_background  = "#7aa81e",
-  color_running_text        = "#FFFFFF",
-  color_finished_background = "#ffa07a",
-  color_finished_text       = "#FFFFFF",
-  font_size = "2em",
-  )
-```
-
----
-
-##  {#feature3-tests data-menu-title="Feature 3 tests"}
-
-[Written tests for feature 3]{.slide-title}
-
-<hr>
-
-Once complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):
-
-```{r}
-#| eval: false
-#| echo: true
-library(shinytest2)
-
-test_that("{shinytest2} recording: one-name-greeting", {
-  app <- AppDriver$new(name = "one-name-greeting", height = 815, width = 1276)
-  app$set_inputs(name_input = "Sam")
-  app$click("greeting_button_input")
-  app$expect_values(output = "greeting_output")
-})
-
-
-test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
-  app$set_inputs(name_input = "Sam")
-  app$click("greeting_button_input")
-  app$expect_values(output = "greeting_output")
-  app$set_inputs(name_input = "Kat")
-  app$click("greeting_button_input")
-  app$expect_values(output = "greeting_output")
-})
-
-
-test_that("{shinytest2} recording: no-name-greeting", {
-  app <- AppDriver$new(name = "no-name-greeting", height = 838, width = 1299)
-  app$click("greeting_button_input")
-  app$expect_values(output = "greeting_output")
-})
-
-
-test_that("{shinytest2} recording: upload-cols-and-data", {
-  app <- AppDriver$new(name = "upload-cols-and-data", height = 734, width = 1119)
-  app$upload_file(csv_input = "cols-and-data1.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-incorrect-cols", {
-  app <- AppDriver$new(name = "upload-incorrect-cols", height = 754, width = 1139)
-  app$upload_file(csv_input = "incorrect-cols.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-empty", {
-  app <- AppDriver$new(name = "upload-empty", height = 734, width = 1119)
-  app$upload_file(csv_input = "empty.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-only-cols", {
-  app <- AppDriver$new(name = "upload-only-cols", height = 1048, width = 1441)
-  app$upload_file(csv_input = "only-cols.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-only-data", {
-  app <- AppDriver$new(name = "upload-only-data", height = 1048, width = 1441)
-  app$upload_file(csv_input = "only-data.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: upload-consecutive-correct-files", {
-  app <- AppDriver$new(name = "upload-consecutive-correct-files", height = 1048, 
-      width = 1441)
-  app$upload_file(csv_input = "cols-and-data1.csv")
-  app$expect_values(output = "summary_table_output")
-  app$upload_file(csv_input = "cols-and-data2.csv")
-  app$expect_values(output = "summary_table_output")
-})
-
-
-test_that("{shinytest2} recording: select-three-spp", {
-  app <- AppDriver$new(name = "select-three-spp", height = 1048, width = 1441)
+test_that("{shinytest2} recording: default-three-spp", {
+  app <- AppDriver$new(name = "default-three-spp", height = 1099, width = 1209)
   app$expect_values(output = "scatterplot_output")
 })
 
 
 test_that("{shinytest2} recording: deselect-adelie", {
-  app <- AppDriver$new(name = "deselect-adelie", height = 1048, width = 1441)
-  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguin_spp_scatterplot_input = c("Chinstrap", "Gentoo"))
+  app <- AppDriver$new(name = "deselect-adelie", height = 875, width = 1293)
+  app$set_inputs(penguin_spp_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input = c("Chinstrap", "Gentoo"))
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input_open = FALSE, allow_no_input_binding_ = TRUE)
 })
 
 
 test_that("{shinytest2} recording: consecutive-spp-selections", {
-  app <- AppDriver$new(name = "consecutive-spp-selections", height = 1048, width = 1441)
-  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguin_spp_scatterplot_input = character(0))
+  app <- AppDriver$new(name = "consecutive-spp-selections", height = 875, width = 1292)
+  app$set_inputs(penguin_spp_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input = character(0))
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguin_spp_scatterplot_input = "Gentoo")
+  app$set_inputs(penguin_spp_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input = "Gentoo")
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguin_spp_scatterplot_input_open = TRUE, allow_no_input_binding_ = TRUE)
-  app$set_inputs(penguin_spp_scatterplot_input = c("Adelie", "Chinstrap", "Gentoo"))
+  app$set_inputs(penguin_spp_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input = c("Adelie", "Chinstrap", "Gentoo"))
   app$expect_values(output = "scatterplot_output")
-  app$set_inputs(penguin_spp_scatterplot_input_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(penguin_spp_input_open = FALSE, allow_no_input_binding_ = TRUE)
 })
 ```
 
@@ -2527,7 +2276,7 @@ ui <- fluidPage(
       sidebarPanel(
         
         # penguin spp pickerInput -----
-        penguin_spp_pickerInput(inputId = "penguin_spp_scatterplot_input")
+        penguin_spp_pickerInput(inputId = "penguin_spp_input")
 
       ), # END plot sidebarPanel
       
@@ -2627,10 +2376,10 @@ server <- function(input, output) {
   filtered_spp_scatterplot_df <- reactive({
     
     validate(
-      need(length(input$penguin_spp_scatterplot_input) > 0, "Please select at least one penguin species to visualize data for."))
+      need(length(input$penguin_spp_input) > 0, "Please select at least one penguin species to visualize data for."))
     
     penguins |>
-      filter(species %in% input$penguin_spp_scatterplot_input)
+      filter(species %in% input$penguin_spp_input)
     
   })
   
@@ -2666,8 +2415,8 @@ penguin_spp_pickerInput <- function(inputId) {
               label = "Select species:",
               choices = c("Adelie", "Chinstrap", "Gentoo"),
               selected = c("Adelie", "Chinstrap", "Gentoo"),
-              options = pickerOptions(actionsBox = TRUE),
-              multiple = TRUE)
+              multiple = TRUE,
+              options = pickerOptions(actionsBox = TRUE))
   
 }
 ```
@@ -2696,7 +2445,7 @@ Open `test-shinytest2.R`, click **Run Tests**, and watch all of your tests pass 
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 16 ]
+[ FAIL 0 | WARN 1 | SKIP 0 | PASS 9 ]
 ```
 
 . . .
@@ -2704,45 +2453,6 @@ Open `test-shinytest2.R`, click **Run Tests**, and watch all of your tests pass 
 <br>
 
 Automated tests allow you to confidently refactor code / make sweeping changes while being able to verify that the expected functionality remains the same. 
-
----
-
-##  {#scoping-assertions data-menu-title="When to broaden scope?"}
-
-[When do we *not* want to use targeted value expectations?]{.slide-title3}
-
-<hr>
-
-<br>
-
-What if we want to capture our entire (completed) Shiny app in it's default state, i.e. what users should see when they first visit the app? 
-
-<br>
-
-. . .
-
-**Make a non-targeted expectation of your app's state!** Start the app recorder, then click *Expect Shiny values* to capture the default state of your app. 
-
-<br>
-
-. . .
-
-Your test should look something like this:
-
-```{r}
-#| eval: false
-#| echo: true
-test_that("{shinytest2} recording: default-app-state", {
-  app <- AppDriver$new(name = "default-app-state", height = 754, width = 1137)
-  app$expect_values()
-})
-```
-
-<br>
-
-. . .
-
-Should our app's default state change (e.g. if we add a new feature, we update exisiting code so that the default values are different, etc.), our test would break.
 
 ---
 

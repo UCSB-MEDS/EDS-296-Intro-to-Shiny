@@ -30,6 +30,8 @@ library(shiny)
 library(tidyverse)
 library(reactlog)
 library(shinytest2)
+library(diffviewer)
+# library(chromote) # installed as a dependency of {shinytest2}, though there may be cases where you need to reinstall
 ```
 
 ## {{< fa table title="a data table" >}} Required Data {#data}
@@ -46,5 +48,5 @@ library(palmerpenguins)
 | {{< fa person-chalkboard title="A person motioning at a chalkboard" >}} Lecture slides   | 
 |------------------------------------------------------------------------------------------|
 | [Lecture 7.1: Debugging](slides/part7.1-debugging-slides.qmd){target="_blank"}  | 
-| [Lecture 7.2: Unit Testing](slides/part7.2-unit-testing-slides.qmd){target="_blank"}  | 
+| [Lecture 7.2: Unit Testing](slides/part7.2-unit-testing-slides.qmd){target="_blank"} ([abridged version](slides/part7.2-unit-testing-slides-ABRIDGED.qmd){target="_blank"}) | 
 : {.hover .bordered tbl-colwidths="[50,25,25]"}
