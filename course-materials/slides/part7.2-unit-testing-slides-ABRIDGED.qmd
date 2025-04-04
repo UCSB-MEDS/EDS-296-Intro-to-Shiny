@@ -60,7 +60,11 @@ editor_options:
 
 . . . 
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`: provides tools for creating and running automated tests on Shiny applications
+
+. . . 
+
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{diffviewer}`: an HTML widget to visually compare files
 
 ---
 
@@ -873,7 +877,7 @@ server <- function(input, output) {
 
 . . .
 
-Our first two tests pass, but **the third one failed** {{< fa face-frown title="a frowning face" >}}. You'll see something like this to start:
+Our first tests pass, but **the most recent one failed** {{< fa face-frown title="a frowning face" >}}. You'll see something like this to start:
 
 ```{r}
 #| eval: true
@@ -1048,7 +1052,7 @@ library(palmerpenguins)
 ```{r filename="~/testing-app/ui.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "35-67"
+#| code-line-numbers: "35-69"
 ui <- fluidPage(
   
   # Feature 1 ------------------------------------------------------------------
@@ -1082,6 +1086,8 @@ ui <- fluidPage(
     ) # END greeting sidebarLayout
     
   ), # END fluidRow (Feature 1: greeting)
+  
+  hr(),
   
   # Feature 2 ------------------------------------------------------------------
   
@@ -1324,26 +1330,16 @@ countdown::countdown(
 
 <br>
 
----
+. . .
 
-##  {#ft2-test1-fails data-menu-title="Failure?"}
+[What happens?]{.body-text-l}
 
-[What happens?]{.slide-title}
 
-<hr>
+<br>
 
 . . . 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-::: {.center-text .body-text-xl}
-All of our feature 1 tests failed??? What???
-:::
+[All of our feature 1 tests failed??? What???]{.body-text-l}
 
 ---
 
@@ -2036,7 +2032,7 @@ knitr::include_graphics("images/part6/targeted-value-expectations.gif")
 
 <hr>
 
-[Let's write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our [original table](#ft2-assertions)):]{.body-text-s}
+[Let's write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our [original table](#ft2-assertions){target="_blank"}):]{.body-text-s}
 
 - [**Action(s):** Deselect Adelie]{.body-text-s}
 - [**Expectation:** A scatterplot with just Gentoo & Chinstrap data rendered]{.body-text-s}
@@ -2098,7 +2094,7 @@ IMPORTANT: You'll likely encounter a popup each time you click on the `pickerInp
 
 <hr>
 
-[See the [original table](#ft2-assertions) for a reminder of our defined action and expectation. When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):]{.body-text-s}
+[See the [original table](#ft2-assertions){target="_blank"} for a reminder of our defined action and expectation. When complete, your updated `test-shinytest2.R` file should look similar to this (and all tests should pass!):]{.body-text-s}
 
 ```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
@@ -2449,7 +2445,7 @@ Open `test-shinytest2.R`, click **Run Tests**, and watch all of your tests pass 
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 16 ]
+[ FAIL 0 | WARN 1 | SKIP 0 | PASS 9 ]
 ```
 
 . . .
@@ -2457,45 +2453,6 @@ Open `test-shinytest2.R`, click **Run Tests**, and watch all of your tests pass 
 <br>
 
 Automated tests allow you to confidently refactor code / make sweeping changes while being able to verify that the expected functionality remains the same. 
-
----
-
-##  {#scoping-assertions data-menu-title="When to broaden scope?"}
-
-[When do we *not* want to use targeted value expectations?]{.slide-title3}
-
-<hr>
-
-<br>
-
-What if we want to capture our entire (completed) Shiny app in it's default state, i.e. what users should see when they first visit the app? 
-
-<br>
-
-. . .
-
-**Make a non-targeted expectation of your app's state!** Start the app recorder, then click *Expect Shiny values* to capture the default state of your app. 
-
-<br>
-
-. . .
-
-Your test should look something like this:
-
-```{r}
-#| eval: false
-#| echo: true
-test_that("{shinytest2} recording: default-app-state", {
-  app <- AppDriver$new(name = "default-app-state", height = 754, width = 1137)
-  app$expect_values()
-})
-```
-
-<br>
-
-. . .
-
-Should our app's default state change (e.g. if we add a new feature, we update exisiting code so that the default values are different, etc.), our test would break.
 
 ---
 

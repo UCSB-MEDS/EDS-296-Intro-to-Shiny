@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.56">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>EDS 296-1W – part7.2-unit-testing-slides-abridged</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -438,6 +438,9 @@ Packages introduced:
 </div>
 <div class="fragment">
 <p><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{shinytest2}</code>: provides tools for creating and running automated tests on Shiny applications</p>
+</div>
+<div class="fragment">
+<p><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{diffviewer}</code>: an HTML widget to visually compare files</p>
 </div>
 </section>
 <section id="what-is-testing" class="slide level2" data-menu-title="What is testing?">
@@ -1004,7 +1007,7 @@ Packages introduced:
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9b094f2b" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_26fc1ceb" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1095,7 +1098,7 @@ Packages introduced:
 <p><span class="slide-title">Rerun your tests after making your update</span></p>
 <hr>
 <div class="fragment">
-<p>Our first two tests pass, but <strong>the third one failed</strong> <i class="fa-solid fa-face-frown" title="a frowning face" aria-label="face-frown"></i>. You’ll see something like this to start:</p>
+<p>Our first tests pass, but <strong>the most recent one failed</strong> <i class="fa-solid fa-face-frown" title="a frowning face" aria-label="face-frown"></i>. You’ll see something like this to start:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1233,7 +1236,7 @@ Packages introduced:
 <div class="code-with-filename-file">
 <pre><strong>~/testing-app/ui.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="35-67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="35-69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb15-2"><a></a>  </span>
 <span id="cb15-3"><a></a>  <span class="co"># Feature 1 ------------------------------------------------------------------</span></span>
 <span id="cb15-4"><a></a>  </span>
@@ -1267,41 +1270,43 @@ Packages introduced:
 <span id="cb15-32"><a></a>    </span>
 <span id="cb15-33"><a></a>  ), <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow (Feature 1: greeting)</span></span>
 <span id="cb15-34"><a></a>  </span>
-<span id="cb15-35"><a></a>  <span class="co"># Feature 2 ------------------------------------------------------------------</span></span>
+<span id="cb15-35"><a></a>  <span class="fu">hr</span>(),</span>
 <span id="cb15-36"><a></a>  </span>
-<span id="cb15-37"><a></a>  <span class="fu">h1</span>(<span class="st">"Feature 2"</span>),</span>
+<span id="cb15-37"><a></a>  <span class="co"># Feature 2 ------------------------------------------------------------------</span></span>
 <span id="cb15-38"><a></a>  </span>
-<span id="cb15-39"><a></a>  <span class="co"># fluidRow (Feature 2: plot) -----</span></span>
-<span id="cb15-40"><a></a>  <span class="fu">fluidRow</span>(</span>
-<span id="cb15-41"><a></a>    </span>
-<span id="cb15-42"><a></a>    <span class="co"># plot sidebarLayout ----</span></span>
-<span id="cb15-43"><a></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb15-44"><a></a>      </span>
-<span id="cb15-45"><a></a>      <span class="co"># plot sidebarPanel ----</span></span>
-<span id="cb15-46"><a></a>      <span class="fu">sidebarPanel</span>(</span>
-<span id="cb15-47"><a></a>        </span>
-<span id="cb15-48"><a></a>        <span class="co"># penguin spp pickerInput -----</span></span>
-<span id="cb15-49"><a></a>        <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_spp_input"</span>, </span>
-<span id="cb15-50"><a></a>                    <span class="at">label =</span> <span class="st">"Select species:"</span>,</span>
-<span id="cb15-51"><a></a>                    <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb15-52"><a></a>                    <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
-<span id="cb15-53"><a></a>                    <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-54"><a></a>                    <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>)), <span class="co"># </span><span class="re">END</span><span class="co"> penguin spp pickerInput</span></span>
-<span id="cb15-55"><a></a>        </span>
-<span id="cb15-56"><a></a>      ), <span class="co"># </span><span class="re">END</span><span class="co"> plot sidebarPanel</span></span>
-<span id="cb15-57"><a></a>      </span>
-<span id="cb15-58"><a></a>      <span class="co"># plot mainPanel ----</span></span>
-<span id="cb15-59"><a></a>      <span class="fu">mainPanel</span>(</span>
-<span id="cb15-60"><a></a>        </span>
-<span id="cb15-61"><a></a>        <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"scatterplot_output"</span>)</span>
+<span id="cb15-39"><a></a>  <span class="fu">h1</span>(<span class="st">"Feature 2"</span>),</span>
+<span id="cb15-40"><a></a>  </span>
+<span id="cb15-41"><a></a>  <span class="co"># fluidRow (Feature 2: plot) -----</span></span>
+<span id="cb15-42"><a></a>  <span class="fu">fluidRow</span>(</span>
+<span id="cb15-43"><a></a>    </span>
+<span id="cb15-44"><a></a>    <span class="co"># plot sidebarLayout ----</span></span>
+<span id="cb15-45"><a></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb15-46"><a></a>      </span>
+<span id="cb15-47"><a></a>      <span class="co"># plot sidebarPanel ----</span></span>
+<span id="cb15-48"><a></a>      <span class="fu">sidebarPanel</span>(</span>
+<span id="cb15-49"><a></a>        </span>
+<span id="cb15-50"><a></a>        <span class="co"># penguin spp pickerInput -----</span></span>
+<span id="cb15-51"><a></a>        <span class="fu">pickerInput</span>(<span class="at">inputId =</span> <span class="st">"penguin_spp_input"</span>, </span>
+<span id="cb15-52"><a></a>                    <span class="at">label =</span> <span class="st">"Select species:"</span>,</span>
+<span id="cb15-53"><a></a>                    <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb15-54"><a></a>                    <span class="at">selected =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>),</span>
+<span id="cb15-55"><a></a>                    <span class="at">multiple =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-56"><a></a>                    <span class="at">options =</span> <span class="fu">pickerOptions</span>(<span class="at">actionsBox =</span> <span class="cn">TRUE</span>)), <span class="co"># </span><span class="re">END</span><span class="co"> penguin spp pickerInput</span></span>
+<span id="cb15-57"><a></a>        </span>
+<span id="cb15-58"><a></a>      ), <span class="co"># </span><span class="re">END</span><span class="co"> plot sidebarPanel</span></span>
+<span id="cb15-59"><a></a>      </span>
+<span id="cb15-60"><a></a>      <span class="co"># plot mainPanel ----</span></span>
+<span id="cb15-61"><a></a>      <span class="fu">mainPanel</span>(</span>
 <span id="cb15-62"><a></a>        </span>
-<span id="cb15-63"><a></a>      ) <span class="co"># </span><span class="re">END</span><span class="co"> plot mainPanel</span></span>
-<span id="cb15-64"><a></a>      </span>
-<span id="cb15-65"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> plot sidebarLayout</span></span>
-<span id="cb15-66"><a></a>    </span>
-<span id="cb15-67"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow (Feature 2: plot)</span></span>
-<span id="cb15-68"><a></a>  </span>
-<span id="cb15-69"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-63"><a></a>        <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"scatterplot_output"</span>)</span>
+<span id="cb15-64"><a></a>        </span>
+<span id="cb15-65"><a></a>      ) <span class="co"># </span><span class="re">END</span><span class="co"> plot mainPanel</span></span>
+<span id="cb15-66"><a></a>      </span>
+<span id="cb15-67"><a></a>    ) <span class="co"># </span><span class="re">END</span><span class="co"> plot sidebarLayout</span></span>
+<span id="cb15-68"><a></a>    </span>
+<span id="cb15-69"><a></a>  ) <span class="co"># </span><span class="re">END</span><span class="co"> fluidRow (Feature 2: plot)</span></span>
+<span id="cb15-70"><a></a>  </span>
+<span id="cb15-71"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> fluidPage </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1389,7 +1394,7 @@ Packages introduced:
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter with Feature 2. You <em>do not</em> need to describe every single possible scenario, but ensure that they are varied and represent different user interactions.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d3fe24f2" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_ada023e5" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1471,16 +1476,12 @@ Packages introduced:
 <p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Give the test a unique name (e.g.&nbsp;<code>default-three-spp</code>) &gt; click Save test and exit</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> The test recorder will quit, and your test will automatically execute</span></p>
 <p><br></p>
-</section>
-<section id="ft2-test1-fails" class="slide level2" data-menu-title="Failure?">
-<h2></h2>
-<p><span class="slide-title">What happens?</span></p>
-<hr>
 <div class="fragment">
-<p><br> <br> <br> <br> <br> <br></p>
-<div class="center-text body-text-xl">
-<p>All of our feature 1 tests failed??? What???</p>
+<p><span class="body-text-l">What happens?</span></p>
+<p><br></p>
 </div>
+<div class="fragment">
+<p><span class="body-text-l">All of our feature 1 tests failed??? What???</span></p>
 </div>
 </section>
 <section id="old-tests-fail" class="slide level2" data-menu-title="Old tests fail">
@@ -2079,7 +2080,7 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title3">Make a targeted value expectation using the test recorder</span></p>
 <hr>
-<p><span class="body-text-s">Let’s write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our <a href="#/ft2-assertions">original table</a>):</span></p>
+<p><span class="body-text-s">Let’s write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our <a href="#/ft2-assertions" target="_blank">original table</a>):</span></p>
 <ul>
 <li><span class="body-text-s"><strong>Action(s):</strong> Deselect Adelie</span></li>
 <li><span class="body-text-s"><strong>Expectation:</strong> A scatterplot with just Gentoo &amp; Chinstrap data rendered</span></li>
@@ -2125,7 +2126,7 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Write a test for the final feature 2 assertion</span></p>
 <hr>
-<p><span class="body-text-s">See the <a href="#/ft2-assertions">original table</a> for a reminder of our defined action and expectation. When complete, your updated <code>test-shinytest2.R</code> file should look similar to this (and all tests should pass!):</span></p>
+<p><span class="body-text-s">See the <a href="#/ft2-assertions" target="_blank">original table</a> for a reminder of our defined action and expectation. When complete, your updated <code>test-shinytest2.R</code> file should look similar to this (and all tests should pass!):</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -2468,37 +2469,12 @@ Packages introduced:
 <p><br></p>
 <p>Open <code>test-shinytest2.R</code>, click <strong>Run Tests</strong>, and watch all of your tests pass (or at least, they should!):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">0</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">16</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">9</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p><br></p>
 <p>Automated tests allow you to confidently refactor code / make sweeping changes while being able to verify that the expected functionality remains the same.</p>
-</div>
-</section>
-<section id="scoping-assertions" class="slide level2" data-menu-title="When to broaden scope?">
-<h2></h2>
-<p><span class="slide-title3">When do we <em>not</em> want to use targeted value expectations?</span></p>
-<hr>
-<p><br></p>
-<p>What if we want to capture our entire (completed) Shiny app in it’s default state, i.e.&nbsp;what users should see when they first visit the app?</p>
-<p><br></p>
-<div class="fragment">
-<p><strong>Make a non-targeted expectation of your app’s state!</strong> Start the app recorder, then click <em>Expect Shiny values</em> to capture the default state of your app.</p>
-<p><br></p>
-</div>
-<div class="fragment">
-<p>Your test should look something like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: default-app-state"</span>, {</span>
-<span id="cb29-2"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"default-app-state"</span>, <span class="at">height =</span> <span class="dv">754</span>, <span class="at">width =</span> <span class="dv">1137</span>)</span>
-<span id="cb29-3"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb29-4"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-</div>
-<div class="fragment">
-<p>Should our app’s default state change (e.g.&nbsp;if we add a new feature, we update exisiting code so that the default values are different, etc.), our test would break.</p>
 </div>
 </section>
 <section id="testing-tips" class="slide level2" data-menu-title="Testing tips">
@@ -2537,7 +2513,7 @@ End part 7.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_83af3707" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_64b6b5c2" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
