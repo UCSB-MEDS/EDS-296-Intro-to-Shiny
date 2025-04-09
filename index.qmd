@@ -23,7 +23,7 @@ The [`{shiny}` package](https://shiny.posit.co/) provides a framework that allow
 - deploying apps online via Posit’s free hosting service [shinyapps.io](https://www.shinyapps.io/)
 - and more!
 
-***Please note:** We are unlikely to cover all material included on this website in our 2-day short course. We will prioritize the skills necessary for getting started on building your first Shiny applications. You are welcome to reference and learn from any materials that we do not have time to cover together in class.*
+***Please note:** We will not be able to cover all material included on this website in our 2-day short course. We will prioritize the skills necessary for getting started on building your first Shiny applications. You are welcome to reference and learn from any materials that we do not have time to cover together in class.*
 
 ## Teaching Team
 

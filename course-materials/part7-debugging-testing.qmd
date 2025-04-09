@@ -32,6 +32,7 @@ library(reactlog)
 library(shinytest2)
 library(diffviewer)
 # library(chromote) # installed as a dependency of {shinytest2}, though there may be cases where you need to reinstall
+# library(testthat) # installed as a dependency of {shinytest2}
 ```
 
 ## {{< fa table title="a data table" >}} Required Data {#data}

@@ -48,7 +48,11 @@ editor_options:
 
 . . . 
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit tests
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the concept of a unit test, assertions, and using a testing framework to construct tests
+
+. . . 
+
+[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit tests for Shiny apps
 
 . . . 
 
@@ -58,9 +62,17 @@ editor_options:
 
 <p class="body-text-l teal-text topbr">Packages introduced:</p> 
 
+. . .
+
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{testthat}`:  provides tools for writing unit tests in R
+
 . . . 
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications; built on top of the `{testthat}` package
+
+. . . 
+
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{diffviewer}`:  an HTML widget for visually comparing files
 
 ---
 
@@ -82,13 +94,11 @@ There are lots of different *types* of testing. To name just a few:
 - [**Integration testing**, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)]{.body-text-s}
 - [**Performance testing** (which includes things like **load testing**, **stress testing**, etc.), where software is tested for its responsiveness and stability under a particular workload]{.body-text-s}
 
-<br>
-
 . . .
 
 Test can be:
 
-- [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
+- [**Performed manually**, where a person interacts with code (e.g. functions, app features) to identify bugs, errors, anomalies, etc.]{.body-text-s}
 - [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s}
 
 ---
@@ -109,20 +119,354 @@ There are lots of different *types* of testing. To name just a few:
 - [**Integration testing**, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)]{.body-text-s}
 - [**Performance testing** (which includes things like **load testing**, **stress testing**, etc.), where software is tested for its responsiveness and stability under a particular workload]{.body-text-s}
 
-<br>
-
 Test can be:
 
-- [**Performed manually**, where a person interacts with different app features to identify bugs, errors, anomalies, etc.]{.body-text-s}
+- [**Performed manually**, where a person interacts with code (e.g. functions, app features) to identify bugs, errors, anomalies, etc.]{.body-text-s}
 - [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s .teal-text}
- 
+
 ---
 
-##  {#shiny-workflow data-menu-title="Shiny workflow"}
+##  {#requirements data-menu-title="Requirements"}
 
-[This workflow should look a bit familiar . . .]{.slide-title}
+[For automated unit testing, we need . . .]{.slide-title}
 
 <hr>
+
+::: {.incremental}
+1. **some small unit of code** you want to test (e.g. a function)
+2. **assertions** i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)
+3. **a framework** for writing and executing your tests
+:::
+
+. . . 
+
+**Different languages have different testing frameworks. For example:**
+
+- [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
+- [Jest](https://jestjs.io/){target="_blank"} for JavaScript
+- [testthat](https://testthat.r-lib.org/) for R
+
+. . . 
+
+::: {.center-text .body-text-m}
+Before we try writing tests for a Shiny app, let's first consider a small (non-Shiny) example using the `{testthat}` framework. We'll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone [this GitHub repository](https://github.com/samanthacsik/testthat-unit-tests){target="_blank"} or create / add code to your own.
+:::
+
+----
+
+##  {#say_hello data-menu-title="say_hello()"}
+
+[1. Let's consider this small unit of code:]{.slide-title}
+
+<hr>
+
+Provide this function with a name, and it will return a greeting! If you don't give it a character string it throws a helpful error message:
+
+```{r filename="~/R/say_hello.R"}
+#| eval: true
+#| echo: true
+say_hello <- function(name = NULL) {
+  if (!is.character(name)) {
+    stop("Please include a name as a character string for me to greet!")
+  } else {
+    greeting <- paste0("Hello ", name, "!")
+    print(greeting)
+  }
+}
+```
+
+. . . 
+
+Manually test it out:
+
+```{r filename="Console"}
+#| eval: true
+#| echo: true
+say_hello("Sam")
+```
+
+. . . 
+
+What happens when you give it something unexpected? For example:
+
+```{r filename="Console"}
+#| eval: false
+#| echo: true
+say_hello(123)
+say_hello()
+```
+
+---
+
+##  {#say_hello-assertions data-menu-title="say_hello() assertions"}
+
+[2. Define your assertions]{.slide-title}
+ 
+<hr>
+
+Before we write any tests, it's helpful to jot down (in your own words) the expected behavior of this unit of code (`say_hello()`). These expectations will form the basis of the [assertions](https://en.wikipedia.org/wiki/Test_assertion){target="_blank"} made in your tests.
+
+. . . 
+
+I find it helpful to make a table that outlines both [**(a)**]{.teal-text} what possible **actions** can be taken by a user? and [**(b)**]{.teal-text} what are the **expected outputs / behaviors** that result from those actions?
+
+<br>
+
+. . . 
+
+[**For example:**]{.teal-text .body-text-l} 
+
+| Action(s)                                                                                      | Expectation(s)                                             |
+|------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| User provides a name as a character string as intended, e.g. `"Sam"`                           | Function returns `"Hello Sam!"`                            |
+| User provides a numeric value, e.g. `123` | Function returns an error message that reads, `"Please include a name as a character string for me to greet!"` |
+| User runs the function without providing an input | Function returns an error message that reads, `"Please include a name as a character string for me to greet!"` |
+
+
+---
+
+##  {#say_hello-testthat-intro data-menu-title="say_hello() testthat intro"}
+
+[3. Build and run tests using `{testthat}`]{.slide-title}
+ 
+<hr>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r}
+#| eval: true
+#| echo: false
+#| out-width: "1000%"
+#| fig-align: "center"
+knitr::include_graphics("images/part6/testthat-hex.png")
+```
+:::
+
+::: {.column width="60%" .center-text}
+
+<br>
+
+[The [`{testthat}` package](https://testthat.r-lib.org/){target="_blank"} is the go-to framework for writing unit tests in R.]{.body-text-m} 
+
+<br>
+
+The best (and encouraged) way to build and run these tests is by first turning your project into an R package. While we won't be doing that here, we'll still use `{testthat}` functions to construct our unit tests. Repository structure<sup>1</sup> is important (regardless of turning your project into a package) -- **be sure to follow the structure as defined by [our example repo](https://github.com/samanthacsik/testthat-unit-tests?tab=readme-ov-file).** 
+:::
+::::
+
+::: {.footer}
+<sup>1</sup>**Please be aware:** The required repository structure when using `{testthat}` in a package context differs from our non-package example here.
+:::
+
+---
+
+##  {#say_hello-testthat-anatomy data-menu-title="say_hello() testthat anatomy"}
+
+[3. Build and run tests using `{testthat}`]{.slide-title}
+ 
+<hr>
+
+The anatomy of a `{testthat}` tests generally looks like this:
+
+```{r}
+#| eval: false
+#| echo: true
+test_that("a short descriptive name for your test", {
+  expect_output(my_function(<a_known_input>, ...), <the_resulting_expected_output>) 
+})
+```
+
+. . . 
+
+For example: 
+
+```{r}
+#| eval: false
+#| echo: true
+test_that("say_hello works with a string", {
+  expect_output(say_hello("Sam"), "Hello Sam!") 
+})
+```
+
+<br>
+
+. . . 
+
+::: {.incremental}
+- there are a number of different `expect_*()` functions you might use
+- keep tests *small*: 
+  - [easier to debug]{.body-text-s}
+  - [lets you test edge cases and specific scenarios]{.body-text-s}
+  - [easier to maintain (can easily update / remove a specific small test than untangle a large, complex one)]{.body-text-s}
+  - [encourages modular code design]{.body-text-s}
+  - [act as mini-examples / documentation about how your codes should behave]{.body-text-s}
+:::
+
+---
+
+##  {#say_hello-testthat-tests data-menu-title="say_hello() testthat tests"}
+
+[3. Build and run tests using `{testthat}`]{.slide-title}
+ 
+<hr>
+
+[Tests files *must* begin with the prefix, `test`. By convention, this is followed by the name of the file / function being tested. For example, if your function is in a file named `say_hello.R`, the corresponding test file should be named `test_say_hello.R`.]{.body-text-s}
+
+[Be sure to import the `{testthat}` package and source your function file at the top of your test file, then add tests for each of your table items (see [this slide](part7.2-unit-testing-slides-ABRIDGED.qmd#say_hello-assertions)). Consider which `expect_*()` function is most appropriate for each test.]{.body-text-s}
+
+```{r filename="~/tests/test_say_hello.R"}
+#| eval: false
+#| echo: true
+#..........................load packages.........................
+library(testthat)
+
+#...........................source fxn...........................
+source(here::here("R", "say_hello.R"))
+
+#..............................tests.............................
+test_that("say_hello works with a string", { 
+  expect_output(say_hello("Sam"), "Hello Sam!")
+})
+
+test_that("say_hello throws error when no argument is provided", {
+  expect_error(say_hello(), "Please include a name as a character string for me to greet!")
+})
+
+test_that("say_hello throws error when numeric value is provided", {
+  expect_error(say_hello(123), "Please include a name as a character string for me to greet!")
+})
+```
+
+::: {.footer}
+Run tests by clicking the **Run Tests** button at the top of your test file, or by running `test_file(here::here("tests", "test_say_hello.R"))`.
+:::
+
+<!-- --- -->
+
+<!-- ##  {#improve-say_hello data-menu-title="improve say_hello()"} -->
+
+<!-- [Let's improve our function . . .]{.slide-title} -->
+
+<!-- <hr> -->
+
+<!-- If a user tries running `say_hello()` with an empty character string, it will still return a greeting (though an odd-looking one): -->
+
+<!-- ```{r} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- say_hello("") -->
+<!-- say_hello("   ") -->
+<!-- ``` -->
+
+<!-- <br> -->
+
+<!-- . . . -->
+
+<!-- We can modify our function to improve this:  -->
+
+<!-- ```{r filename="~/R/say_hello.R"} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- say_hello <- function(name = NULL) { -->
+<!--   if (!is.character(name) || trimws(name) == "") { -->
+<!--     stop("Please include a name as a character string for me to greet!") -->
+<!--   } else { -->
+<!--     greeting <- paste0("Hello ", name, "!") -->
+<!--     print(greeting) -->
+<!--   } -->
+<!-- } -->
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ##  {#improve-say_hello-test data-menu-title="improve say_hello() (tests)"} -->
+
+<!-- [. . . and write a couple new automated tests]{.slide-title} -->
+
+<!-- <hr> -->
+
+<!-- We can now add some additional tests: -->
+
+<!-- ```{r filename="~/tests/test_say_hello.R"} -->
+<!-- #| eval: false -->
+<!-- #| echo: true -->
+<!-- #| code-line-numbers: "20-26" -->
+<!-- #..........................load packages......................... -->
+<!-- library(testthat) -->
+
+<!-- #...........................source fxn........................... -->
+<!-- source(here::here("R", "say_hello.R")) -->
+
+<!-- #..............................tests............................. -->
+<!-- test_that("say_hello works with a string", {  -->
+<!--   expect_output(say_hello("Sam"), "Hello Sam!") -->
+<!-- }) -->
+
+<!-- test_that("say_hello throws error when no argument is provided", { -->
+<!--   expect_error(say_hello(), "Please include a name as a character string for me to greet!") -->
+<!-- }) -->
+
+<!-- test_that("say_hello throws error when numeric value is provided", { -->
+<!--   expect_error(say_hello(123), "Please include a name as a character string for me to greet!") -->
+<!-- }) -->
+
+<!-- test_that("say_hello throws error when an empty string is provided", { -->
+<!--   expect_error(say_hello(""), "Please include a name as a character string for me to greet!") -->
+<!-- }) -->
+
+<!-- test_that("say_hello throws error when empty string with white space is provided", { -->
+<!--   expect_error(say_hello(" "), "Please include a name as a character string for me to greet!") -->
+<!-- }) -->
+<!-- ``` -->
+
+---
+
+##  {#assertions-note data-menu-title="A note on assertions"}
+
+[One more important note (actually, a few)]{.slide-title}
+
+<hr>
+
+<br>
+
+::: {.center-text}
+As much as you try, **testing will never be exhaustive**. You can only test for scenarios that you think of.
+:::
+
+<br>
+
+. . . 
+
+::: {.center-text}
+The goal is to **put yourself in the shoes of a user**, and test scenarios that you think your users will encounter. If you test those use-cases, you'll cover the majority of expectations.
+:::
+
+<br>
+
+. . . 
+
+::: {.center-text}
+As users use your code or interact with your app, **they'll stumble upon and reveal use-cases / scenarios that you hadn't tested for**...and you can update your code / write tests accordingly.
+:::
+
+<br>
+
+. . . 
+
+::: {.center-text}
+Over time, **your ability to identify both how users will use your software *and* what to test will improve**.
+:::
+
+---
+
+##  {#app-testing data-menu-title="App testing"}
+
+[Okay, but should I be testing my *apps*?]{.slide-title}
+
+<hr>
+
+This workflow should look a bit familiar . . .
 
 1. Add / adjust some reactivity
 2. Click "Run App"
@@ -133,14 +477,7 @@ Test can be:
 
 . . . 
 
-But what if you have 20 apps? 
-
-<br>
-
-. . . 
-
-Or many team members? 
-
+But what if you have 20 apps? [Or many team members?]{.fragment .fade-in}
 
 <br>
 
@@ -154,13 +491,13 @@ Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`:
 
 ---
 
-##  {#why-test data-menu-title="Why test?"}
+##  {#apps-break data-menu-title="Apps will break"}
 
-[Why test our Shiny apps?]{.slide-title}
+[It's almost inevitable that our app(s) will break]{.slide-title2}
 
 <hr>
 
-**It's almost inevitable that our app(s) will (at some point) break** -- there are lots of reasons why this happens, but to name a few:
+There are lots of reasons why this happens, but to name a few:
 
 ::: {.incremental}
 - [**an upgraded R package(s)** has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators]{.body-text-s}
@@ -190,7 +527,7 @@ It can save a lot of time and headache to have an automated system that checks i
 
 <hr>
 
-The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html){target="_blank"} provides useful tools for **unit testing** Shiny apps. We'll use these unit tests to [**ensure that desired app behavior remains consistent, even after changes to the app's code**]{.teal-text} (the documentation refers to this type of unit testing as *regression testing* -- we'll use these tests to verify that app behavior *does not regress*).
+The [`{shinytest2}` package](https://rstudio.github.io/shinytest2/articles/shinytest2.html){target="_blank"} provides useful tools for **unit testing Shiny apps**. We'll use these unit tests to [**ensure that desired app behavior remains consistent, even after changes to the app's code**]{.teal-text} (the documentation refers to this type of unit testing as *regression testing* -- we'll use these tests to verify that app behavior *does not regress*).
 
 :::: {.columns}
 
@@ -238,7 +575,7 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 <hr>
 
-[Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. **Create a new folder, `testing-app/`, in your GitHub repo and add the following files:**]{.body-text-s}
+[Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. **If you've been following along with previous course modules, you can create a new folder, `testing-app/`, in your GitHub repo and add the following files. Alternatively, fork and clone [this repository](https://github.com/samanthacsik/shinytest2-unit-tests){target="_blank"}.**]{.body-text-s}
 
 <!-- --- -->
 
@@ -324,9 +661,13 @@ server <- function(input, output) {
 
 ##  {#run-ft1-app data-menu-title="Run the app"}
 
-[Manually test your app and make note of how it works]{.slide-title3}
+[Manually test this feature]{.slide-title2}
 
 <hr>
+
+::: {.center-text}
+Run the app and play around with the greeting generator: 
+:::
 
 ```{r}
 #| eval: true
@@ -350,13 +691,7 @@ Let's say that you are satisfied with your work (yay!) and are now ready to writ
 
 <hr>
 
-Before we dive into writing any tests, it's super helpful to inspect your app and *importantly*, **jot down (in your own words) the expected behaviors of your application**. These will form the basis of the [assertions](https://en.wikipedia.org/wiki/Test_assertion){target="_blank"} made in your tests.
-
-<br>
-
-. . . 
-
-I find it helpful to make a table that outlines both [**(a)**]{.teal-text} what **actions** can be taken by a user? and [**(b)**]{.teal-text} what are the **expected outputs / behaviors** that result from those actions?
+Just like we did in our previous non-Shiny example, let's **jot down the expected behaviors of our application**. These will form the basis of the [assertions](https://en.wikipedia.org/wiki/Test_assertion){target="_blank"} made in our tests. It's again helpful to create a table that outlines both [**(a)**]{.teal-text} what **actions** can be taken by a user? and [**(b)**]{.teal-text} what are the **expected outputs / behaviors** that result from those actions?
 
 <br>
 
@@ -388,44 +723,6 @@ I find it helpful to make a table that outlines both [**(a)**]{.teal-text} what 
 
 ---
 
-##  {#assertions-note data-menu-title="A note on assertions"}
-
-[One more important note (actually, a few)]{.slide-title}
-
-<hr>
-
-<br>
-
-::: {.center-text}
-As much as you try, **testing will never be exhaustive**. You can only test for scenarios that you think of.
-:::
-
-<br>
-
-. . . 
-
-::: {.center-text}
-The goal is to **put yourself in the shoes of a user**, and test scenarios that you think your users will encounter. If you test those use-cases, you'll cover the majority of expectations.
-:::
-
-<br>
-
-. . . 
-
-::: {.center-text}
-As users interact with your app, **they'll stumble upon and reveal use-cases / scenarios that you hadn't tested for**...and you can update your app / write tests accordingly.
-:::
-
-<br>
-
-. . . 
-
-::: {.center-text}
-Over time, **your ability to identify both how users will interact with your app *and* what to test will improve**.
-:::
-
----
-
 ##  {#testing-procedure data-menu-title="Testing procedure"}
 
 [Turn "plain language" assertions into actual tests using the `{shinytest2}` workflow]{.slide-title3}
@@ -440,7 +737,7 @@ Over time, **your ability to identify both how users will interact with your app
 
 . . . 
 
-[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` in your Console to launch the app recorder in a browser window
+[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` in your Console to launch the app recorder<sup>1</sup> in a browser window
 
 <br>
 
@@ -462,6 +759,11 @@ Over time, **your ability to identify both how users will interact with your app
 We'll repeat this workflow to write tests for each of our three assertions.
 :::
 
+<!-- This workflow looks a bit different than that of the `{testthat}` -- we'll record our interactions with our application -->
+
+
+<!-- because `{shinytest2}` automatically generates test code by simulating user interactions in a [headless browser](https://en.wikipedia.org/wiki/Headless_browser#:~:text=A%20headless%20browser%20is%20a,interface%20or%20using%20network%20communication.){target="_blank"}. -->
+
 ---
 
 ##  {#chromote-timeout data-menu-title="chromote time out"}
@@ -471,7 +773,9 @@ We'll repeat this workflow to write tests for each of our three assertions.
 <hr>
 
 <br>
-<br>
+
+`{shinytest2}` uses tests to simulating user interactions in a [headless browser](https://en.wikipedia.org/wiki/Headless_browser#:~:text=A%20headless%20browser%20is%20a,interface%20or%20using%20network%20communication.){target="_blank"} (i.e. a browser without a graphical user interface; often used for testing web pages). `{chromote}` is the R-based tool for opening a headless Chromium-based (e.g. Chrome) browser.
+
 <br>
 
 If you receive the following error message after running, `shinytest2::record_test("testing-app")`, you'll need to restart R:
@@ -488,7 +792,7 @@ Caused by error:
 
 <br>
 
-It's a pretty annoying error, which seems to be an [ongoing issue](https://github.com/rstudio/chromote/issues/94){target="_blank"} with `{chromote}`. R may be slow to restart (and I've had to restart numerous times {{< fa face-sad-tear title="a sad face with a tear" >}}).
+It's a pretty annoying error, which seems to be an [ongoing issue](https://github.com/rstudio/chromote/issues/94){target="_blank"} with `{chromote}`. R may be slow to restart.
 
 ---
 
@@ -498,7 +802,7 @@ It's a pretty annoying error, which seems to be an [ongoing issue](https://githu
 
 <hr>
 
-...which is that when a user types [some text value] into the text box and clicks the Greet button (**i.e. the actions**), the greeting output will return `Hello [some text value]!` (**i.e. the expectation**). We'll substitute a known value (e.g. "Sam") for [some text value] in our test.
+...which is that when a user types [some text value] into the text box and clicks the Greet button (**i.e. the actions**), the greeting output will return `Hello [some text value]!` (**i.e. the expectation**). We'll substitute a known value (e.g. `Sam`) for [some text value] in our test.
 
 <br>
 
@@ -616,9 +920,7 @@ After creating your first test, your repo structure should look something like t
 
 <hr>
 
-[All tests will be saved to `tests/testthat/test-shinytest2.R`. Yours should look similar to the code below (sans annotations). You may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you'll see multiple `app$set_inputs()` statements, reflecting these actions:]{.body-text-s}
-
-<br>
+[The anatomy of our test should look a bit similar those generated for our `say_hello()` function using `{testthat}`. Here, however, we need to spin up our Shiny app in a headless browser, then simulate user interactions using the appropriate functions. All tests will be saved to `tests/testthat/test-shinytest2.R`]{.body-text-s}
 
 ```{r filename="~/testing-app/tests/testthat/test-shinytest2.R"}
 #| eval: false
@@ -641,6 +943,11 @@ test_that("{shinytest2} recording: one-name-greeting", {
   app$expect_values()
 })
 ```
+
+::: {.footer}
+Your test may have a different viewport height / width (depending on the size of your viewport when you recorded your test), and if you mistyped / deleted any characters in the textInput, you'll see multiple `app$set_inputs()` statements, reflecting these actions. You can delete these.
+:::
+
 
 ---
 
@@ -2458,44 +2765,44 @@ Open `test-shinytest2.R`, click **Run Tests**, and watch all of your tests pass 
 
 Automated tests allow you to confidently refactor code / make sweeping changes while being able to verify that the expected functionality remains the same. 
 
----
+<!-- --- -->
 
-##  {#scoping-assertions data-menu-title="When to broaden scope?"}
+<!-- ##  {#scoping-assertions data-menu-title="When to broaden scope?"} -->
 
-[When do we *not* want to use targeted value expectations?]{.slide-title3}
+<!-- [When do we *not* want to use targeted value expectations?]{.slide-title3} -->
 
-<hr>
+<!-- <hr> -->
 
-<br>
+<!-- <br> -->
 
-What if we want to capture our entire (completed) Shiny app in it's default state, i.e. what users should see when they first visit the app? 
+<!-- What if we want to capture our entire (completed) Shiny app in it's default state, i.e. what users should see when they first visit the app?  -->
 
-<br>
+<!-- <br> -->
 
-. . .
+<!-- . . . -->
 
-**Make a non-targeted expectation of your app's state!** Start the app recorder, then click *Expect Shiny values* to capture the default state of your app. 
+<!-- **Make a non-targeted expectation of your app's state!** Start the app recorder, then click *Expect Shiny values* to capture the default state of your app.  -->
 
-<br>
+<!-- <br> -->
 
-. . .
+<!-- . . . -->
 
-Your test should look something like this:
+<!-- Your test should look something like this: -->
 
-```{r}
-#| eval: false
-#| echo: true
-test_that("{shinytest2} recording: default-app-state", {
-  app <- AppDriver$new(name = "default-app-state", height = 754, width = 1137)
-  app$expect_values()
-})
-```
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- #| echo: true -->
+<!-- test_that("{shinytest2} recording: default-app-state", { -->
+<!--   app <- AppDriver$new(name = "default-app-state", height = 754, width = 1137) -->
+<!--   app$expect_values() -->
+<!-- }) -->
+<!-- ``` -->
 
-<br>
+<!-- <br> -->
 
-. . .
+<!-- . . . -->
 
-Should our app's default state change (e.g. if we add a new feature, we update exisiting code so that the default values are different, etc.), our test would break.
+<!-- Should our app's default state change (e.g. if we add a new feature, we update exisiting code so that the default values are different, etc.), our test would break. -->
 
 ---
 
