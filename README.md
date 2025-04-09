@@ -1,4 +1,4 @@
-# EDS 430 - Workshops in Environmental Data Science (Intro to Shiny)
+# EDS 296 - Workshops in Environmental Data Science (Intro to Shiny)
 
 ## Important Note
 
@@ -6,9 +6,17 @@ This website is new as of winter 2024! Original course materials were maintained
 
 ## Course Description
 
-This website houses materials which accompany the 1-unit, 2-day, hands-on coding workshop, [EDS 430 - Intro to Shiny](https://bren.ucsb.edu/courses/eds-430), offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.
+This website houses materials which accompany the 2-unit, 2-day, hands-on coding workshop, EDS 296 - Intro to Shiny, offered through the Bren School of Environmental Science & Management, in partnership with the National Center for Ecological Analysis & Synthesis.
 
 In this workshop, students will learn how to build and deploy Shiny applications. The [`{shiny}` package](https://shiny.posit.co/) provides a framework that allows R users to build interactive web applications and dashboards, and has become a popular tool for sharing data analyses and data-derived outputs with broad audiences. In this two-part short course, students will learn the fundamentals of reactivity, how to customize an application user interface (UI), best practices and workflows for developing shiny apps, and how to deploy their apps online via RStudio’s hosting service, [shinyapps.io](https://www.shinyapps.io/).
+
+## Supplemental Materials
+
+These workshop materials reference a few other repositories:
+
+- [EDS-296-shiny-apps](https://github.com/samanthacsik/EDS-296-shiny-apps)
+- [testthat-unit-tests](https://github.com/samanthacsik/testthat-unit-tests)
+- [shinytest2-unit-tests](https://github.com/samanthacsik/shinytest2-unit-tests?tab=readme-ov-file)
 
 ## License
 
