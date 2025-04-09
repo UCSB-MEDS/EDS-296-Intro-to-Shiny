@@ -2,7 +2,7 @@
 
 ## Important Note
 
-This website is new as of winter 2024! Original course materials were maintained in a separate repository ([EDS430-Shiny](https://github.com/UCSB-MEDS/EDS430-Shiny)) and hosted at <https://ucsb-meds.github.io/EDS430-Shiny/#/banner> -- **these original materials will no longer be maintained**. Please refer to *this* website for the most up-to-date version of teaching materials.
+This website is new as of winter 2024! Original course materials were maintained in a separate repository ([EDS430-Shiny](https://github.com/UCSB-MEDS/EDS430-Shiny)) and hosted at <https://ucsb-meds.github.io/EDS430-Shiny/#/banner> -- **these original materials will no longer be maintained**. Please refer to *this* website (https://ucsb-meds.github.io/EDS-296-Intro-to-Shiny/) for the most up-to-date version of teaching materials.
 
 ## Course Description
 
