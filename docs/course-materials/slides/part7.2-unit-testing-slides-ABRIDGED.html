@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.56">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>EDS 296-1W – part7.2-unit-testing-slides-abridged</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -447,6 +447,9 @@ Packages introduced:
 </div>
 <div class="fragment">
 <p><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{diffviewer}</code>: an HTML widget for visually comparing files</p>
+</div>
+<div class="fragment">
+<p><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{diffviewer}</code>: an HTML widget to visually compare files</p>
 </div>
 </section>
 <section id="what-is-testing" class="slide level2" data-menu-title="What is testing?">
@@ -1366,7 +1369,7 @@ Packages introduced:
 <p><span class="slide-title">Rerun your tests after making your update</span></p>
 <hr>
 <div class="fragment">
-<p>Our first two tests pass, but <strong>the third one failed</strong> <i class="fa-solid fa-face-frown" title="a frowning face" aria-label="face-frown"></i>. You’ll see something like this to start:</p>
+<p>Our first tests pass, but <strong>the most recent one failed</strong> <i class="fa-solid fa-face-frown" title="a frowning face" aria-label="face-frown"></i>. You’ll see something like this to start:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1742,16 +1745,12 @@ Packages introduced:
 <p><span class="body-text-s"><span class="teal-text"><strong>(3)</strong></span> Give the test a unique name (e.g.&nbsp;<code>default-three-spp</code>) &gt; click Save test and exit</span></p>
 <p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> The test recorder will quit, and your test will automatically execute</span></p>
 <p><br></p>
-</section>
-<section id="ft2-test1-fails" class="slide level2" data-menu-title="Failure?">
-<h2></h2>
-<p><span class="slide-title">What happens?</span></p>
-<hr>
 <div class="fragment">
-<p><br> <br> <br> <br> <br> <br></p>
-<div class="center-text body-text-xl">
-<p>All of our feature 1 tests failed??? What???</p>
+<p><span class="body-text-l">What happens?</span></p>
+<p><br></p>
 </div>
+<div class="fragment">
+<p><span class="body-text-l">All of our feature 1 tests failed??? What???</span></p>
 </div>
 </section>
 <section id="old-tests-fail" class="slide level2" data-menu-title="Old tests fail">
@@ -2350,7 +2349,7 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title3">Make a targeted value expectation using the test recorder</span></p>
 <hr>
-<p><span class="body-text-s">Let’s write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our <a href="#/ft2-assertions">original table</a>):</span></p>
+<p><span class="body-text-s">Let’s write a test that makes a targeted value expectation for our second assertion of feature 2 (copied below from our <a href="#/ft2-assertions" target="_blank">original table</a>):</span></p>
 <ul>
 <li><span class="body-text-s"><strong>Action(s):</strong> Deselect Adelie</span></li>
 <li><span class="body-text-s"><strong>Expectation:</strong> A scatterplot with just Gentoo &amp; Chinstrap data rendered</span></li>
@@ -2396,7 +2395,7 @@ Packages introduced:
 <h2></h2>
 <p><span class="slide-title">Write a test for the final feature 2 assertion</span></p>
 <hr>
-<p><span class="body-text-s">See the <a href="#/ft2-assertions">original table</a> for a reminder of our defined action and expectation. When complete, your updated <code>test-shinytest2.R</code> file should look similar to this (and all tests should pass!):</span></p>
+<p><span class="body-text-s">See the <a href="#/ft2-assertions" target="_blank">original table</a> for a reminder of our defined action and expectation. When complete, your updated <code>test-shinytest2.R</code> file should look similar to this (and all tests should pass!):</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
