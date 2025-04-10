@@ -90,7 +90,7 @@ Generally speaking, testing refers to **the act of evaluating / verifying if a s
 
 There are lots of different *types* of testing. To name just a few:
 
-- [**Unit testing**, where isolated source code is tested to validate expected behavior]{.body-text-s}
+- [**Unit testing**, where isolated source code (e.g. functions, modules) is tested to validate expected behavior]{.body-text-s}
 - [**Integration testing**, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)]{.body-text-s}
 - [**Performance testing** (which includes things like **load testing**, **stress testing**, etc.), where software is tested for its responsiveness and stability under a particular workload]{.body-text-s}
 
@@ -98,7 +98,7 @@ There are lots of different *types* of testing. To name just a few:
 
 Test can be:
 
-- [**Performed manually**, where a person interacts with code (e.g. functions, app features) to identify bugs, errors, anomalies, etc.]{.body-text-s}
+- [**Performed manually**, where a person interacts with code (e.g. tests a function, plays with an app feature) to identify bugs, errors, anomalies, etc.]{.body-text-s}
 - [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s}
 
 ---
@@ -115,13 +115,13 @@ Generally speaking, testing refers to **the act of evaluating / verifying if a s
 
 There are lots of different *types* of testing. To name just a few:
 
-- [**Unit testing**, where isolated source code is tested to validate expected behavior]{.body-text-s .teal-text}
+- [**Unit testing**, where isolated source code (e.g. functions, modules) is tested to validate expected behavior]{.body-text-s .teal-text}
 - [**Integration testing**, where various software units or modules are tested as a combined unit (e.g. testing if your app and an API can communicate as intended)]{.body-text-s}
 - [**Performance testing** (which includes things like **load testing**, **stress testing**, etc.), where software is tested for its responsiveness and stability under a particular workload]{.body-text-s}
 
 Test can be:
 
-- [**Performed manually**, where a person interacts with code (e.g. functions, app features) to identify bugs, errors, anomalies, etc.]{.body-text-s}
+- [**Performed manually**, where a person interacts with code (e.g. tests a function, plays with an app feature) to identify bugs, errors, anomalies, etc.]{.body-text-s}
 - [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s .teal-text}
 
 ---
@@ -342,84 +342,6 @@ test_that("say_hello throws error when numeric value is provided", {
 Run tests by clicking the **Run Tests** button at the top of your test file, or by running `test_file(here::here("tests", "test_say_hello.R"))`.
 :::
 
-<!-- --- -->
-
-<!-- ##  {#improve-say_hello data-menu-title="improve say_hello()"} -->
-
-<!-- [Let's improve our function . . .]{.slide-title} -->
-
-<!-- <hr> -->
-
-<!-- If a user tries running `say_hello()` with an empty character string, it will still return a greeting (though an odd-looking one): -->
-
-<!-- ```{r} -->
-<!-- #| eval: true -->
-<!-- #| echo: true -->
-<!-- say_hello("") -->
-<!-- say_hello("   ") -->
-<!-- ``` -->
-
-<!-- <br> -->
-
-<!-- . . . -->
-
-<!-- We can modify our function to improve this:  -->
-
-<!-- ```{r filename="~/R/say_hello.R"} -->
-<!-- #| eval: true -->
-<!-- #| echo: true -->
-<!-- say_hello <- function(name = NULL) { -->
-<!--   if (!is.character(name) || trimws(name) == "") { -->
-<!--     stop("Please include a name as a character string for me to greet!") -->
-<!--   } else { -->
-<!--     greeting <- paste0("Hello ", name, "!") -->
-<!--     print(greeting) -->
-<!--   } -->
-<!-- } -->
-<!-- ``` -->
-
-<!-- --- -->
-
-<!-- ##  {#improve-say_hello-test data-menu-title="improve say_hello() (tests)"} -->
-
-<!-- [. . . and write a couple new automated tests]{.slide-title} -->
-
-<!-- <hr> -->
-
-<!-- We can now add some additional tests: -->
-
-<!-- ```{r filename="~/tests/test_say_hello.R"} -->
-<!-- #| eval: false -->
-<!-- #| echo: true -->
-<!-- #| code-line-numbers: "20-26" -->
-<!-- #..........................load packages......................... -->
-<!-- library(testthat) -->
-
-<!-- #...........................source fxn........................... -->
-<!-- source(here::here("R", "say_hello.R")) -->
-
-<!-- #..............................tests............................. -->
-<!-- test_that("say_hello works with a string", {  -->
-<!--   expect_output(say_hello("Sam"), "Hello Sam!") -->
-<!-- }) -->
-
-<!-- test_that("say_hello throws error when no argument is provided", { -->
-<!--   expect_error(say_hello(), "Please include a name as a character string for me to greet!") -->
-<!-- }) -->
-
-<!-- test_that("say_hello throws error when numeric value is provided", { -->
-<!--   expect_error(say_hello(123), "Please include a name as a character string for me to greet!") -->
-<!-- }) -->
-
-<!-- test_that("say_hello throws error when an empty string is provided", { -->
-<!--   expect_error(say_hello(""), "Please include a name as a character string for me to greet!") -->
-<!-- }) -->
-
-<!-- test_that("say_hello throws error when empty string with white space is provided", { -->
-<!--   expect_error(say_hello(" "), "Please include a name as a character string for me to greet!") -->
-<!-- }) -->
-<!-- ``` -->
-
 ---
 
 ##  {#assertions-note data-menu-title="A note on assertions"}
@@ -466,7 +388,7 @@ Over time, **your ability to identify both how users will use your software *and
 
 <hr>
 
-This workflow should look a bit familiar . . .
+Yes! Consider this workflow (which should look a bit familiar) . . .
 
 1. Add / adjust some reactivity
 2. Click "Run App"
@@ -737,7 +659,7 @@ Just like we did in our previous non-Shiny example, let's **jot down the expecte
 
 . . . 
 
-[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` in your Console to launch the app recorder<sup>1</sup> in a browser window
+[**(1)**]{.teal-text} Run `shinytest2::record_test(<app-directory>)` in your Console to launch the app recorder in a browser window
 
 <br>
 
