@@ -315,20 +315,6 @@
     "text": "EDS 296: Part 7.2\nUnit Testing (abridged version)\n\n\nExplore the complete lesson for additional testing examples"
   },
   {
-    "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#testing",
-    "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#testing",
-    "title": "EDS 296-1W",
-    "section": "",
-    "text": "Unit Testing\n\n\nCreating automated tests for your apps can save time and effort, ensuring that they continue working as expected."
-  },
-  {
-    "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#LO-testing",
-    "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#LO-testing",
-    "title": "EDS 296-1W",
-    "section": "",
-    "text": "Learning Objectives\n\n\nAfter this section, you should:\n\n\n understand some of the reasons why apps break and the benefit of having automated tests\n\n\n understand the concept of a unit test, assertions, and using a testing framework to construct tests\n\n\n have a basic understanding of how to use the {shinytest2} package to write appropriately scoped unit tests for Shiny apps\n\n\n know how to rerun and update tests as necessary\n\n\n\nPackages introduced:\n\n\n\n {testthat}: provides tools for writing unit tests in R\n\n\n {shinytest2}: provides tools for creating and running automated tests on Shiny applications; built on top of the {testthat} package\n\n\n {diffviewer}: an HTML widget for visually comparing files"
-  },
-  {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#what-is-testing",
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#what-is-testing",
     "title": "EDS 296-1W",
@@ -382,7 +368,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#say_hello-testthat-tests",
     "title": "EDS 296-1W",
     "section": "",
-    "text": "3. Build and run tests using {testthat}\n\nTests files must begin with the prefix, test. By convention, this is followed by the name of the file / function being tested. For example, if your function is in a file named say_hello.R, the corresponding test file should be named test_say_hello.R.\nBe sure to import the {testthat} package and source your function file at the top of your test file, then add tests for each of your table items (see this slide). Consider which expect_*() function is most appropriate for each test.\n\n\n\n~/tests/test_say_hello.R\n\n#..........................load packages.........................\nlibrary(testthat)\n\n#...........................source fxn...........................\nsource(here::here(\"R\", \"say_hello.R\"))\n\n#..............................tests.............................\ntest_that(\"say_hello works with a string\", { \n  expect_output(say_hello(\"Sam\"), \"Hello Sam!\")\n})\n\ntest_that(\"say_hello throws error when no argument is provided\", {\n  expect_error(say_hello(), \"Please include a name as a character string for me to greet!\")\n})\n\ntest_that(\"say_hello throws error when numeric value is provided\", {\n  expect_error(say_hello(123), \"Please include a name as a character string for me to greet!\")\n})\n\n\n\nRun tests by clicking the Run Tests button at the top of your test file, or by running test_file(here::here(\"tests\", \"test_say_hello.R\"))."
+    "text": "3. Build and run tests using {testthat}\n\nTests files must begin with the prefix, test. By convention, this is followed by the name of the file / function being tested. For example, if your function is in a file named say_hello.R, the corresponding test file should be named test_say_hello.R.\nBe sure to import the {testthat} package and source your function file at the top of your test file, then add tests for each of your table items (see this slide). Consider which expect_*() function is most appropriate for each test.\n\n\n\n~/tests/test_say_hello.R\n\n#..........................load packages.........................\nlibrary(testthat)\n\n#...........................source fxn...........................\nsource(here::here(\"R\", \"say_hello.R\"))\n\n#..............................tests.............................\ntest_that(\"say_hello works with a string\", { \n  expect_output(say_hello(\"Sam\"), \"Hello Sam!\")\n})\n\ntest_that(\"say_hello throws error when numeric value is provided\", {\n  expect_error(say_hello(123), \"Please include a name as a character string for me to greet!\")\n})\n\ntest_that(\"say_hello throws error when no argument is provided\", {\n  expect_error(say_hello(), \"Please include a name as a character string for me to greet!\")\n})\n\n\n\nRun tests by clicking the Run Tests button at the top of your test file, or by running test_file(here::here(\"tests\", \"test_say_hello.R\"))."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#assertions-note",

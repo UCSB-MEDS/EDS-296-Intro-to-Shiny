@@ -23,56 +23,56 @@ editor_options:
 
 *[Explore the [complete lesson](part7.2-unit-testing-slides.qmd){target="_blank"} for additional testing examples]{.custom-subtitle3}*
 
----
+<!-- --- -->
 
-##  {#testing data-menu-title="~~~ Unit Testing ~~~" background="#047C90"}
+<!-- ##  {#testing data-menu-title="~~~ Unit Testing ~~~" background="#047C90"} -->
 
-<div class="page-center vertical-center">
-<p class="custom-subtitle bottombr">{{< fa file-code title="a file with the code symbol, </>, on it" >}} Unit Testing</p>
-<p class="caption-text">*Creating automated tests for your apps can save time and effort, ensuring that they continue working as expected.*</p>
-</div>
+<!-- <div class="page-center vertical-center"> -->
+<!-- <p class="custom-subtitle bottombr">{{< fa file-code title="a file with the code symbol, </>, on it" >}} Unit Testing</p> -->
+<!-- <p class="caption-text">*Creating automated tests for your apps can save time and effort, ensuring that they continue working as expected.*</p> -->
+<!-- </div> -->
 
----
+<!-- --- -->
 
-##  {#LO-testing data-menu-title="Learning Objectives - Unit Testing"}
+<!-- ##  {#LO-testing data-menu-title="Learning Objectives - Unit Testing"} -->
 
-[{{< fa book-open title="an open book" >}} Learning Objectives]{.slide-title}
+<!-- [{{< fa book-open title="an open book" >}} Learning Objectives]{.slide-title} -->
 
-<hr>
+<!-- <hr> -->
 
-<p class="body-text-l teal-text bottombr">After this section, you should:</p>
+<!-- <p class="body-text-l teal-text bottombr">After this section, you should:</p> -->
 
-. . . 
+<!-- . . .  -->
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the reasons why apps break and the benefit of having automated tests
+<!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the reasons why apps break and the benefit of having automated tests -->
 
-. . . 
+<!-- . . .  -->
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the concept of a unit test, assertions, and using a testing framework to construct tests
+<!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the concept of a unit test, assertions, and using a testing framework to construct tests -->
 
-. . . 
+<!-- . . .  -->
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit tests for Shiny apps
+<!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit tests for Shiny apps -->
 
-. . . 
+<!-- . . .  -->
 
-[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun and update tests as necessary
+<!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun and update tests as necessary -->
 
-. . . 
+<!-- . . .  -->
 
-<p class="body-text-l teal-text topbr">Packages introduced:</p> 
+<!-- <p class="body-text-l teal-text topbr">Packages introduced:</p>  -->
 
-. . .
+<!-- . . . -->
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{testthat}`:  provides tools for writing unit tests in R
+<!-- [{{< fa box-open title="an open box" >}}]{.teal-text} `{testthat}`:  provides tools for writing unit tests in R -->
 
-. . . 
+<!-- . . .  -->
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications; built on top of the `{testthat}` package
+<!-- [{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications; built on top of the `{testthat}` package -->
 
-. . . 
+<!-- . . .  -->
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{diffviewer}`:  an HTML widget for visually comparing files
+<!-- [{{< fa box-open title="an open box" >}}]{.teal-text} `{diffviewer}`:  an HTML widget for visually comparing files -->
 
 ---
 
@@ -149,7 +149,7 @@ Test can be:
 . . . 
 
 ::: {.center-text .body-text-m}
-Before we try writing tests for a Shiny app, let's first consider a small (non-Shiny) example using the `{testthat}` framework. We'll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone [this GitHub repository](https://github.com/samanthacsik/testthat-unit-tests){target="_blank"} or create / add code to your own.
+Before we try writing tests for a Shiny app, let's first consider a small (non-Shiny) example using the `{testthat}` framework. We'll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone [this GitHub repository](https://github.com/UCSB-MEDS/testthat-unit-tests){target="_blank"} or create / add code to your own.
 :::
 
 ----
@@ -251,7 +251,7 @@ knitr::include_graphics("images/part6/testthat-hex.png")
 
 <br>
 
-The best (and encouraged) way to build and run these tests is by first turning your project into an R package. While we won't be doing that here, we'll still use `{testthat}` functions to construct our unit tests. Repository structure<sup>1</sup> is important (regardless of turning your project into a package) -- **be sure to follow the structure as defined by [our example repo](https://github.com/samanthacsik/testthat-unit-tests?tab=readme-ov-file).** 
+The best (and encouraged) way to build and run these tests is by first turning your project into an R package. While we won't be doing that here, we'll still use `{testthat}` functions to construct our unit tests. Repository structure<sup>1</sup> is important (regardless of turning your project into a package) -- **be sure to follow the structure as defined by [our example repo](https://github.com/UCSB-MEDS/testthat-unit-tests?tab=readme-ov-file#repository-structure).** 
 :::
 ::::
 
@@ -329,12 +329,12 @@ test_that("say_hello works with a string", {
   expect_output(say_hello("Sam"), "Hello Sam!")
 })
 
-test_that("say_hello throws error when no argument is provided", {
-  expect_error(say_hello(), "Please include a name as a character string for me to greet!")
-})
-
 test_that("say_hello throws error when numeric value is provided", {
   expect_error(say_hello(123), "Please include a name as a character string for me to greet!")
+})
+
+test_that("say_hello throws error when no argument is provided", {
+  expect_error(say_hello(), "Please include a name as a character string for me to greet!")
 })
 ```
 
@@ -497,7 +497,7 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 <hr>
 
-[Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. **If you've been following along with previous course modules, you can create a new folder, `testing-app/`, in your GitHub repo and add the following files. Alternatively, fork and clone [this repository](https://github.com/samanthacsik/shinytest2-unit-tests){target="_blank"}.**]{.body-text-s}
+[Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. **If you've been following along with previous course modules, you can create a new folder, `testing-app/`, in your GitHub repo and add the following files. Alternatively, fork and clone [this repository](https://github.com/UCSB-MEDS/shinytest2-unit-tests){target="_blank"}.**]{.body-text-s}
 
 <!-- --- -->
 

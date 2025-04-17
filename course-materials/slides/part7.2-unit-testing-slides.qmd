@@ -147,7 +147,7 @@ Test can be:
 . . . 
 
 ::: {.center-text .body-text-m}
-Before we try writing tests for a Shiny app, let's first consider a small (non-Shiny) example using the `{testthat}` framework. We'll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone [this GitHub repository](https://github.com/samanthacsik/testthat-unit-tests){target="_blank"} or create / add code to your own.
+Before we try writing tests for a Shiny app, let's first consider a small (non-Shiny) example using the `{testthat}` framework. We'll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone [this GitHub repository](https://github.com/UCSB-MEDS/testthat-unit-tests){target="_blank"} or create / add code to your own.
 :::
 
 ----
@@ -249,7 +249,7 @@ knitr::include_graphics("images/part6/testthat-hex.png")
 
 <br>
 
-The best (and encouraged) way to build and run these tests is by first turning your project into an R package. While we won't be doing that here, we'll still use `{testthat}` functions to construct our unit tests. Repository structure<sup>1</sup> is important (regardless of turning your project into a package) -- **be sure to follow the structure as defined by [our example repo](https://github.com/samanthacsik/testthat-unit-tests?tab=readme-ov-file).** 
+The best (and encouraged) way to build and run these tests is by first turning your project into an R package. While we won't be doing that here, we'll still use `{testthat}` functions to construct our unit tests. Repository structure<sup>1</sup> is important (regardless of turning your project into a package) -- **be sure to follow the structure as defined by [our example repo](https://github.com/UCSB-MEDS/testthat-unit-tests?tab=readme-ov-file).** 
 :::
 ::::
 
@@ -575,7 +575,7 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 
 <hr>
 
-[Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. **If you've been following along with previous course modules, you can create a new folder, `testing-app/`, in your GitHub repo and add the following files. Alternatively, fork and clone [this repository](https://github.com/samanthacsik/shinytest2-unit-tests){target="_blank"}.**]{.body-text-s}
+[Your boss has tasked you with building a Shiny app, and asks that you begin with a feature that greets users by name. **If you've been following along with previous course modules, you can create a new folder, `testing-app/`, in your GitHub repo and add the following files. Alternatively, fork and clone [this repository](https://github.com/UCSB-MEDS/shinytest2-unit-tests){target="_blank"}.**]{.body-text-s}
 
 <!-- --- -->
 
