@@ -238,7 +238,7 @@ Run the first example, which plots R’s built-in `faithful` data set with a con
 ```{r}
 #| eval: false
 #| echo: true
-runExample("01_hello")
+runExample("01_hello", display.mode = "showcase")
 ```
 
 Change the number of bins using the `sliderInput` widget and watch the histogram re-render.

@@ -38,23 +38,13 @@ editor_options:
 
 [By the end of building out this first app, you should be a bit more familiar with:]{.body-text-m .teal-text}
 
-. .  .
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} writing a single-file (`app.R`) shiny app]{.body-text-s}
-
-. . . 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} adding and styling text in the UI using `tags`]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} practicing data wrangling and visualization *outside* of your shiny app]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} following a general workflow for building reactive apps, which includes adding **inputs** and **outputs** to the **UI**, then writing the **server instructions** on how to assemble user input values into outputs]{.body-text-s}
-
-. .  .
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} running and quitting apps in RStudio]{.body-text-s}
 
@@ -62,19 +52,11 @@ editor_options:
 
 [Packages introduced:]{.body-text-m .teal-text}
 
-. . . 
-
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{shiny}`: framework for building our reactive app + standard widgets]{.body-text-s}
-
-. . . 
 
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{DT}`: interactive datatable widgets (that can be made reactive using shiny!)]{.body-text-s}
 
-. . . 
-
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{tidyverse}`: collection of packages for wrangling & visualizing data]{.body-text-s}
-
-. . . 
 
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{palmerpenguins}`: data]{.body-text-s}
 
