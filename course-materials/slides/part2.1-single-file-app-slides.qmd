@@ -38,23 +38,13 @@ editor_options:
 
 [By the end of building out this first app, you should be a bit more familiar with:]{.body-text-m .teal-text}
 
-. .  .
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} writing a single-file (`app.R`) shiny app]{.body-text-s}
-
-. . . 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} adding and styling text in the UI using `tags`]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} practicing data wrangling and visualization *outside* of your shiny app]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} following a general workflow for building reactive apps, which includes adding **inputs** and **outputs** to the **UI**, then writing the **server instructions** on how to assemble user input values into outputs]{.body-text-s}
-
-. .  .
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} running and quitting apps in RStudio]{.body-text-s}
 
@@ -62,19 +52,11 @@ editor_options:
 
 [Packages introduced:]{.body-text-m .teal-text}
 
-. . . 
-
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{shiny}`: framework for building our reactive app + standard widgets]{.body-text-s}
-
-. . . 
 
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{DT}`: interactive datatable widgets (that can be made reactive using shiny!)]{.body-text-s}
 
-. . . 
-
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{tidyverse}`: collection of packages for wrangling & visualizing data]{.body-text-s}
-
-. . . 
 
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{palmerpenguins}`: data]{.body-text-s}
 
@@ -130,7 +112,7 @@ We'll do this in the **UI** within `fluidPage()`, a layout function that sets up
 
 <br>
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 # user interface ----
@@ -157,7 +139,7 @@ Recall that the UI is actually just an HTML document. We can **style our text by
 
 <br>
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 # user interface ----
@@ -326,7 +308,7 @@ Check out the interactive [Shiny Widgets Gallery](https://shiny.rstudio.com/gall
 
 First let's add a `sliderInput()` that will allow users to select a range of penguin body masses (g).
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "6-8"
@@ -395,7 +377,7 @@ dataTableOutput(outputId = "penguin_data_output")
 
 Let's now add a `plotOutput()`, which will be updated based on the user inputs via the `sliderInput()`, then run the app.
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "10-11"
@@ -505,7 +487,7 @@ Examples of `*Output()` functions and their corresponding `render*()` functions:
 :::: {.columns}
 
 ::: {.column width="65%"}
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "21-22"
@@ -560,7 +542,7 @@ server <- function(input, output) {
 
 [Use the appropriate `render*()` function to make your output reactive (e.g. if you have a `plotOutput` in your UI, you will need to use `renderPlot()` in your server). Be sure to include a set of curly brackets, `{}` inside `render*()` -- this allows us to include as many lines of code as necessary to build our object.]{.body-text-s}
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "22-26"
@@ -681,7 +663,7 @@ ggplot(na.omit(penguins),
 
 [Copy your code over to your app, placing it inside the `{}` (and make sure to add any additional required packages to the top of your `app.R` script). Run your app. What do you notice?]{.body-text-s}
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "3-4,25-37" 
@@ -890,7 +872,7 @@ knitr::include_graphics("images/part2/3725-5191.png")
 
 [Recall that in our **UI**, we gave our `sliderInput()` an `inputId = "body_mass_input"`.]{.body-text-s}
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "9"
@@ -933,7 +915,7 @@ server <- function(input, output) {
 :::: {.columns}
 
 ::: {.column width="50%"}
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "20-24|28"
@@ -1154,7 +1136,7 @@ See next slide for a solution!
 
 [Press the right arrow key to advance through the newly added lines of code.]{.body-text-s}
 
-```{r filename="~/one-file-app/app.R"}
+```{r filename="~/single-file-app/app.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "5|23-29|62-75"

@@ -19,6 +19,10 @@ toc: true
 - **[Speeding Up R Shiny](https://www.r-bloggers.com/2021/06/speeding-up-r-shiny-the-definitive-guide/)**, by [Jakub Sobolewski](https://github.com/jakubsob) in R bloggers -- details methods on improving app performance
 - **[The Basics of Building Shiny Apps in R](https://github.com/allisonhorst/shiny-basics-sb-r-ladies)**, by [Allison Horst](https://allisonhorst.github.io/)
 
+### AI Tooling
+
+-  **[Shiny AI Assistant](https://gallery.shinyapps.io/assistant/?_gl=1*jo11qb*_ga*MTA1MTQ1MzA3NS4xNzc0MzAzNjkx*_ga_2C0WZ1JHG0*czE3NzQ5OTU1MzIkbzIkZzAkdDE3NzQ5OTU1NDAkajUyJGwwJGgw*_ga_SG5RN9F6BG*czE3NzQ5OTU1MzIkbzIkZzAkdDE3NzQ5OTU1NDAkajUyJGwwJGgw*_ga_4QVBMYL7WR*czE3NzQ5OTU1MzIkbzIkZzAkdDE3NzQ5OTU1NDAkajUyJGwwJGgw)**, an [AI-powered tool](https://shiny.posit.co/blog/posts/shiny-assistant/) for building Shiny apps
+
 ### Testing
 
 - **[{shinytest2}: Unit testing for Shiny applications](https://www.youtube.com/watch?v=DMgAW4m5aTI)**, rstudio::conf(2022) talk by [Barret Schloerke](http://schloerke.com/)

@@ -26,7 +26,7 @@ we do assume general familiarity with the R programming language. We also ask th
 
 1. [R](https://cloud.r-project.org/) & [RStudio](https://posit.co/products/open-source/rstudio/) installed  
 2. A [GitHub](https://github.com/) profile & [git](https://git-scm.com/) installed / configured
-3. The required following R packages installed. Install / update them all at once by running the following in your console:
+3. The following R packages installed. Install / update them all at once by running the following in your console:
  
 ```{r}
 #| eval: false
@@ -35,7 +35,7 @@ we do assume general familiarity with the R programming language. We also ask th
 install.packages(pkgs = c("here", "tidyverse", "shiny", "shinydashboard", "shinyWidgets", "shinycssloaders", "markdown", "DT", "leaflet", "bslib", "fresh", "sass", "reactlog", "shinytest2", "diffviewer", "palmerpenguins", "lterdatasampler", "gapminder"))
 ```
 
-4. **(Optional, but recommended)** Install the [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck){target="_blank"} Google Chrome extension
+<!-- 4. **(Optional, but recommended)** Install the [Let's get color blind](https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck){target="_blank"} Google Chrome extension -->
 
 <!-- ::: {.center-text .body-text-m .teal-text} -->
 <!-- **Please see the [MEDS Installation Guide](https://ucsb-meds.github.io/MEDS-installation-guide/){target="_blank"} for more detailed instructions on installing the above software.** -->
