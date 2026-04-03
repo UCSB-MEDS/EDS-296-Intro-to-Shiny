@@ -28,27 +28,15 @@ editor_options:
 
 [By the end of building out this second app, you should:]{.body-text-m .teal-text}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} be comfortable creating a shiny app using the two-file (`ui.R` & `server.R`) format along with a `global.R` file]{.body-text-s}
-
-. . .
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand how to use layout functions to customize the visual structure of your app's UI]{.body-text-s}
 
-. .  .
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} have more practice building reactive outputs -- and placing them within the layout structure of your app]{.body-text-s}
-
-. .  .
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} be able to create multiple inputs that control a given output]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to import larger bodies of text using `includeMarkdown()` (rather than writing & styling text within your UI)]{.body-text-s}
-
-. . . 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully deploy an app using [shinyapps.io](https://www.shinyapps.io/){target="_blank"}]{.body-text-s}
 
@@ -56,11 +44,7 @@ editor_options:
 
 [Packages introduced:]{.body-text-m .teal-text}
 
-. . .
-
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinyWidgets}`: extend shiny widgets with some different, fun options]{.body-text-s}
-
-. . .
 
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{lterdatasampler}`: data]{.body-text-s}
 

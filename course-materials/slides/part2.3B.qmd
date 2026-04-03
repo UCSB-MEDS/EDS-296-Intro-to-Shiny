@@ -28,27 +28,17 @@ editor_options:
 
 [By the end of this section, you should:]{.body-text-m .teal-text}
 
-. . .
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand how to provide users with helpful error messages using `validate()`]{.body-text-s}
-
-. . . 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to add customizable loading animations to alert users when reactive objects are re-rendering]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to add alternate (alt) text to rendered plots]{.body-text-s}
-
-. . . 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand how to *republish* an app using [shinyapps.io](https://www.shinyapps.io/){target="_blank"}]{.body-text-s}
 
 . . .
 
 [Packages introduced:]{.body-text-m .teal-text}
-
-. . . 
 
 [`r fontawesome::fa("box-open", fill = "#05859B", a11y = "sem")` `{shinycssloaders}`: add loading animations to shiny outputs]{.body-text-s}
 
