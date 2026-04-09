@@ -2182,6 +2182,208 @@ server <- function(input, output) {
 
 ---
 
+##  {#break-section2 data-menu-title="~~~ BREAK ~~~" background="#047C90"}
+
+<div class="page-center vertical-center">
+<p class="custom-subtitle bottombr">Take a break</p>
+<p class="caption-text">***Up next:** we’ll practice trying to reconstruct aspect of our dashboard using Shiny Assistant*</p>
+</div>
+
+```{r}
+countdown::countdown(
+  minutes = 5,
+  # left = 0, right = 0,
+  # Fanfare when it's over
+  # play_sound = TRUE,
+  color_border              = "#FFFFFF",
+  color_text                = "#7aa81e",
+  color_running_background  = "#7aa81e",
+  color_running_text        = "#FFFFFF",
+  color_finished_background = "#ffa07a",
+  color_finished_text       = "#FFFFFF",
+  font_size = "2em",
+  )
+```
+
+
+---
+
+##  {#exercise7-prompt data-menu-title="** Exercise 7 Prompt **" background="#d2e3f3"}
+
+[{{< fa question title="question mark" >}} Exercise 7: Use Shiny Assistant to recreate the UI]{.slide-title3}
+
+<hr>
+
+<br>
+
+[**To Do:**]{.body-text-m}
+
+- Craft a prompt to [Shiny Assistant](https://gallery.shinyapps.io/assistant/?_gl=1*npsls2*_ga*MTA1MTQ1MzA3NS4xNzc0MzAzNjkx*_ga_2C0WZ1JHG0*czE3NzU3NjA3NjUkbzYkZzAkdDE3NzU3NjA3NjUkajYwJGwwJGgw*_ga_SG5RN9F6BG*czE3NzU3NjA3NjUkbzYkZzAkdDE3NzU3NjA3NjUkajYwJGwwJGgw*_ga_4QVBMYL7WR*czE3NzU3NjA3NjUkbzYkZzAkdDE3NzU3NjA3NjUkajYwJGwwJGgw){target="_blank"} that recreates the UI we just built by hand. Your resulting output should include the following:
+  - The dashboard title, "Fish Creek Watershed Lake Monitoring"
+  - Our two menu items (Welcome & Dashboard)
+  - The same boxes with titles (placeholder text beneath the titles are fine)
+
+[**Tips:**]{.body-text-m}
+
+- Only focus on the UI development, for now!
+
+---
+
+##  {#exercise7-solution data-menu-title="** Exercise 7 Solution **" background="#d2e3f3"}
+
+[{{< fa check title="check mark" >}} Exercise 7: A solution]{.slide-title}
+
+<hr>
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.center-text}
+**My Prompt**
+:::
+
+```{.md}
+I want to build a shinydashboard with the following layout:
+
+- Title: Fish Creek Watershed Lake Monitoring
+- Sidebar with two menu items: Welcome & Dashboard
+- On the Welcome page, I want two columns that each take up half the width of the page. On the left is a box titled, Monitoring Fish Creek Watershed, and some placeholder text beneath it. On the right are two stacked boxes. The top is titled, Data Source, with some placeholder text beneath it. The bottom is titled, Disclaimer, with placeholder text beneath it.
+- The Dashboard page also should have two columns, the left which takes up 4 units of width is titled, Adjust lake parameter ranges. The right, which takes up 8 units of width is titled, Monitored lakes within Fish Creek Watershed
+```
+:::
+
+::: {.column width="50%"}
+::: {.center-text}
+**Resulting Code**
+:::
+```{r}
+#| eval: false
+#| echo: true
+library(shiny)
+library(shinydashboard)
+
+ui <- dashboardPage(
+  dashboardHeader(title = "Fish Creek Watershed Lake Monitoring"),
+  
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Welcome", tabName = "welcome", icon = icon("home")),
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard"))
+    )
+  ),
+  
+  dashboardBody(
+    tabItems(
+      # Welcome tab
+      tabItem(
+        tabName = "welcome",
+        fluidRow(
+          column(
+            width = 6,
+            box(
+              title = "Monitoring Fish Creek Watershed",
+              width = NULL,
+              status = "primary",
+              solidHeader = TRUE,
+              p("This is placeholder text for the monitoring information. 
+                 The Fish Creek Watershed Lake Monitoring program tracks 
+                 water quality parameters across multiple lakes in the watershed 
+                 to ensure environmental health and sustainability.")
+            )
+          ),
+          column(
+            width = 6,
+            box(
+              title = "Data Source",
+              width = NULL,
+              status = "info",
+              solidHeader = TRUE,
+              p("This is placeholder text for data source information. 
+                 Data is collected from monitoring stations across the watershed 
+                 and updated regularly.")
+            ),
+            box(
+              title = "Disclaimer",
+              width = NULL,
+              status = "warning",
+              solidHeader = TRUE,
+              p("This is placeholder text for the disclaimer. 
+                 The information provided is for monitoring purposes only. 
+                 Please consult with environmental specialists for detailed analysis.")
+            )
+          )
+        )
+      ),
+      
+      # Dashboard tab
+      tabItem(
+        tabName = "dashboard",
+        fluidRow(
+          column(
+            width = 4,
+            box(
+              title = "Adjust lake parameter ranges",
+              width = NULL,
+              status = "primary",
+              solidHeader = TRUE,
+              p("Parameter adjustment controls will go here.")
+            )
+          ),
+          column(
+            width = 8,
+            box(
+              title = "Monitored lakes within Fish Creek Watershed",
+              width = NULL,
+              status = "primary",
+              solidHeader = TRUE,
+              p("Lake monitoring data and visualizations will be displayed here.")
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  # Server logic will go here
+}
+
+shinyApp(ui, server)
+```
+:::
+::::
+
+::: {.footer}
+Shiny Assistant will also spin up a preview of your app in the browser -- it should already look quite similar to what we created earlier!
+:::
+
+---
+
+##  {#exercise8-prompt data-menu-title="** Exercise 8 Prompt **" background="#d2e3f3"}
+
+[{{< fa question title="question mark" >}} Exercise 8: Group Discussion]{.slide-title}
+
+<hr>
+
+<br>
+
+- Let's say you're unsure about how to construct sliderInputs. How might you use Shiny Assistant to build and implement these?
+
+<br>
+
+- What might be your approach for using Shiny Assistant and / or other AI tools to help with the construction and implementation of your leaflet map? Try it out.
+
+<br>
+
+- Where is your own understanding of how to build Shiny apps / dashboards most important? What can be easily outsourced to AI tooling?
+
+::: {.notes}
+- Prompt: How would I add three sliderInputs to the, "Adjust lake parameter ranges" box?
+- Prompt: i'm going to use these data, FCWO_lakemonitoringdata_2011_2022_daily.csv, which can be downloaded from the Arctic Data Center: https://arcticdata.io/catalog/view/doi%3A10.18739%2FA2JH3D41P. I want to summarize these data so that I have lat / lon, average elevation, average depth, and average lake bed temperature. These averages can be adjusted using my sliderInputs and the output will be a leaflet map with points at each of the lat / lon
+:::
+
+---
+
 ##  {#end data-menu-title="~~~ BREAK ~~~" background="#047C90"}
 
 <div class="page-center vertical-center">

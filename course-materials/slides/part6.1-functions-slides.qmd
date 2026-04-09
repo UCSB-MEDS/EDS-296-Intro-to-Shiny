@@ -40,22 +40,13 @@ editor_options:
 
 [By the end of this section, you should:]{.body-text-l .teal-text}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the benefits of turning UI elements and server logic into functions]{.body-text-s}
-
-. . . 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know where to write / save your functions]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully turn a repeated input into a function]{.body-text-s}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} successfully turn a piece of server logic into a function]{.body-text-s}
-
 
 ---
 
@@ -196,6 +187,9 @@ ui <- fluidPage(
 #| echo: true
 server <- function(input, output) {
   
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ##                         create penguin scatterplot                       ----
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   # filter penguin species (scatterplot) ----
   filtered_spp_scatterplot_df <- reactive ({
@@ -227,6 +221,9 @@ server <- function(input, output) {
     
   })
   
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ##                          create penguin histogram                        ----
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   # filter penguin species (histogram) ----
   filtered_spp_histogram_df <- reactive ({
@@ -372,8 +369,8 @@ Let's write a function for our **penguin species pickerInput** that we can use i
 
 ::: {.panel-tabset}
 
-## `penguin_spp-pickerInput.R`
-```{r filename="~/functions-app/R/penguin_spp-pickerInput.R"}
+## `penguin_spp_pickerInput.R`
+```{r filename="~/functions-app/R/penguin_spp_pickerInput.R"}
 #| eval: false  
 #| echo: true
 penguin_spp_pickerInput <- function(inputId) {
@@ -483,9 +480,12 @@ So...what's the big deal with this??
 ```{r filename="~/functions-app/server.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "4-32|35-56"
+#| code-line-numbers: "3-34|36-61"
 server <- function(input, output) {
   
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ##                         create penguin scatterplot                       ----
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   # filter penguin species (scatterplot) ----
   filtered_spp_scatterplot_df <- reactive ({
@@ -494,7 +494,6 @@ server <- function(input, output) {
       filter(species %in% input$penguin_spp_scatterplot_input)
 
   })
-
   
   # render the scatterplot output ----
   output$penguin_scatterplot_output <- renderPlot({
@@ -517,7 +516,10 @@ server <- function(input, output) {
     
   })
   
-  
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ##                          create penguin histogram                        ----
+  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   # filter penguin species (histogram) ----
   filtered_spp_histogram_df <- reactive ({
     
@@ -554,7 +556,7 @@ server <- function(input, output) {
 
 [The goal of this function is to filter the `penguins` data based on the user input *and* render our ggplot scatterplot. To start, I'm going to cut / paste both the code to generate the reactive `filtered_spp_scatterplot_df` data frame *and* the `renderPlot()` code from `server.R` into our `build_penguin_scatterplot()` function.]{.body-text-s}
 
-```{r filename="~/functions-app/R/build-penguin-scatterplot.R"}
+```{r filename="~/functions-app/R/build_penguin_scatterplot.R"}
 #| eval: false
 #| echo: true
 build_penguin_scatterplot <- function(input) {
@@ -604,7 +606,7 @@ build_penguin_scatterplot <- function(input) {
 
 <br>
 
-```{r filename="~/functions-app/R/build-penguin-scatterplot.R"}
+```{r filename="~/functions-app/R/build_penguin_scatterplot.R"}
 #| eval: false
 #| echo: true
 #| code-line-numbers: "1"
@@ -635,10 +637,8 @@ build_penguin_scatterplot <- function(input) {
 #| code-line-numbers: "4-5"
 server <- function(input, output) {
   
-  
   # filter data & create penguin scatterplot ----
   output$penguin_scatterplot_output <- build_penguin_scatterplot(input)
-  
   
   # filter penguin species (histogram) ----
   filtered_spp_histogram_df <- reactive ({
@@ -679,9 +679,9 @@ server <- function(input, output) {
 
 ::: {.panel-tabset}
 
-## `build-penguin-histogram.R`
+## `build_penguin_histogram.R`
 
-```{r filename="~/functions-app/R/build-penguin-histogram.R"}
+```{r filename="~/functions-app/R/build_penguin_histogram.R"}
 #| eval: false
 #| echo: true
 build_penguin_histogram <- function(input) {
@@ -847,9 +847,9 @@ penguin_spp_pickerInput <- function(inputId) {
 
 ::: {.panel-tabset}
 
-## `build-penguin-scatterplot.R`
+## `buil_-penguin_scatterplot.R`
 
-```{r filename="~/functions-app/R/build-penguin-scatterplot.R"}
+```{r filename="~/functions-app/R/build_penguin_scatterplot.R"}
 #| eval: false
 #| echo: true
 build_penguin_scatterplot <- function(input) {
@@ -862,7 +862,6 @@ build_penguin_scatterplot <- function(input) {
 
   })
 
-  
   # render the scatterplot output ----
   renderPlot({
     
@@ -887,9 +886,9 @@ build_penguin_scatterplot <- function(input) {
 }
 ```
 
-## `build-penguin-histogram.R`
+## `build_penguin_histogram.R`
 
-```{r filename="~/functions-app/R/build-penguin-histogram.R"}
+```{r filename="~/functions-app/R/build_penguin_histogram.R"}
 #| eval: false
 #| echo: true
 build_penguin_histogram <- function(input) {

@@ -42,23 +42,15 @@ editor_options:
 By the end of this section, you should have an intro-level understanding of:
 :::
 
-. .  .
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} what is a shiny module and when it might make sense to build one]{.body-text-s}
 
-. .  .
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} the structure of a shiny module]{.body-text-s}
-
-. .  .
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} how to use a module]{.body-text-s}
 
 . .  .
 
-[Packages introduced:]{.body-text-l .teal-text}
-
-. . . 
+[Packages introduced:]{.body-text-l .teal-text} 
 
 [`r fontawesome::fa("box-open", fill = "#05859B", a11y = "sem")` `{gapminder}`: data]{.body-text-s}
 

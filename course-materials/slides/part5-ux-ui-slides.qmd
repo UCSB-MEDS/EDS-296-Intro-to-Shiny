@@ -40,15 +40,9 @@ editor_options:
 
 <p class="body-text-l teal-text bottombr">By the end of this section, you should:</p>
 
-. . . 
-
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a checklist of considerations to reference each time you build an app
 
-. . .
-
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a general understanding of what web accessibility means and who it can benefit (spoiler alert: it benefits us all!)
-
-. . . 
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to make a few small tweaks / updates to your application to make it more accessible for all users
 
@@ -228,7 +222,7 @@ Ideally, you would only have one `<h1>` element (e.g. your app's **title**), a s
 
 <br>
 
-[You *should not* rely on headers for styling purposes -- for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide){target="_blank"} workshop for [instruction on how to construct CSS selectors](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types) for styling HTML elements){target="_blank"}.]{.body-text-s}
+[You *should not* rely on headers for styling purposes -- for example, you should not use a level-one header elsewhere in your app just because you want larger text. Instead, use CSS to increase text size (refer to the [Customizing Quarto Websites](https://ucsb-meds.github.io/customizing-quarto-websites/#/title-slide){target="_blank"} workshop for [instruction on how to construct CSS selectors](https://ucsb-meds.github.io/customizing-quarto-websites/#/selector-types){target="_blank"} for styling HTML elements).]{.body-text-s}
 :::
 
 ::::

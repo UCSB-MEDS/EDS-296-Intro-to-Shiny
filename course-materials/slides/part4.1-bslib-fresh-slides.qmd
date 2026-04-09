@@ -39,8 +39,7 @@ editor_options:
 <hr>
 
 [By the end of this section, you should be equipped with:]{.body-text-l .teal-text}
-
-. . . 
+ 
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} an understanding of how to use packaged-based tooling for theming and styling your shiny apps and dashboards]{.body-text-s}
 
@@ -50,11 +49,7 @@ editor_options:
 
 [Packages introduced:]{.body-text-l .teal-text}
 
-. . . 
-
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{bslib}`: provides tools for customizing Bootstrap themes directly from R for shiny apps and RMarkdown documents]{.body-text-s}
-
-. . . 
 
 [[{{< fa box-open title="an open box" >}}]{.teal-text} `{fresh}`: provides tools for creating custom themes for use with shiny, `shinydashboard`, and `bs4Dash` apps]{.body-text-s}
 
@@ -181,7 +176,8 @@ ui <- fluidPage(
 )
 ```
 
-[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s}
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s} -->
+
 :::
 
 ::: {.column width="50%"}
@@ -231,7 +227,8 @@ ui <- fluidPage(
 )
 ```
 
-[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s}
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s} -->
+
 :::
 
 ::: {.column width="50%"}
@@ -457,7 +454,7 @@ ui <- navbarPage(
 ) # END navbarPage
 ```
 
-[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app){target="_blank"} for App #2 (NOTE: applied themes are commented out).]{.body-text-s}
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app){target="_blank"} for App #2 (NOTE: applied themes are commented out).]{.body-text-s} -->
 
 :::
 
@@ -476,13 +473,46 @@ knitr::include_graphics("images/part4/fresh_app.gif")
 
 ---
 
-##  {#fresh-shinydashboard data-menu-title="{fresh} shiny dashboard"}
+##  {#exercise1-prompt data-menu-title="** Exercise 1 Prompt **" background="#d2e3f3"}
 
-[Creating a `{fresh}` theme for our `shinydashboard`]{.slide-title3}
+[{{< fa question title="question mark" >}} Exercise 1: Use Shiny Assistant to recreate the a `{fresh}` theme for our shinydashboard]{.slide-title3}
 
 <hr>
 
-[In this example, we update the colors of our app's header, body, and sidebar using the appropriate `{fresh}` [variables for shiny *dashboards*](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html){target="_blank"}. We specify a file path, `shinydashboard/www/` where our stylesheet (e.g. `dashboard-fresh-theme.css`, as shown here) file will be saved to. Again, these color combos are *not* recommended, but chosen purely for demonstration purposes.]{.body-text-s}
+[**To Do:**]{.body-text-m}
+
+- Use a new Shiny Assistant session to theme our shinydashboard. Generate colors for the following:
+  - the primary color (header) 
+  - sidebar
+  - menuItems 
+  - menuItem text 
+  - body 
+
+[**Tips:**]{.body-text-m}
+
+- You may want to ask AI to provide the code in it's own separate file, rather than itegrate the theme into your app directly (there are a number of ways to apply `{fresh}` themes, but I find writing the code that generate your `.css` file in it's own, separate script to be the cleanest approach).
+
+::: {.notes}
+Generate me a {fresh} theme for a shinydashboard, where:
+
+- the primary color (header) is dark blue
+- the sidebar is light blue
+- the menuItems are hot pink (when highlighted)
+- the menuItem text is red
+- the body is light pink
+
+Can you provide me the create_theme() code in it's own separate file (not integrated into my app.R file)
+:::
+
+---
+
+##  {#fresh-shinydashboard data-menu-title="{fresh} shiny dashboard"}
+
+[Creating a `{fresh}` theme, by hand, for `shinydashboard`]{.slide-title3}
+
+<hr>
+
+[In this example, we update the colors of our app's header, body, and sidebar using the appropriate `{fresh}` [variables for shiny *dashboards*](https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html){target="_blank"}. We specify a file path, `shinydashboard/www/` where our stylesheet (e.g. `dashboard-fresh-theme.css`, as shown here) file will be saved to. Again, these color combos are *not* recommended.]{.body-text-s}
 
 ```{r filename="~/scratch/create-fresh-theme-dashboard.R"}
 #| eval: false
@@ -545,7 +575,7 @@ body <- dashboardBody(
 )
 ```
 
-[Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/shinydashboard){target="_blank"} for the shinydashboard (NOTE: applied themes are commented out).]{.body-text-s}
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/shinydashboard){target="_blank"} for the shinydashboard (NOTE: applied themes are commented out).]{.body-text-s} -->
 
 :::
 

@@ -419,17 +419,11 @@
 <p><span class="slide-title"><i class="fa-solid fa-book-open" title="an open book" aria-label="book-open"></i> Learning Objectives - Theming/Styling Apps</span></p>
 <hr>
 <p><span class="body-text-l teal-text">By the end of this section, you should be equipped with:</span></p>
-<div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-angle-right" title="a bullet point" aria-label="angle-right"></i></span> an understanding of how to use packaged-based tooling for theming and styling your shiny apps and dashboards</span></p>
 <p><br></p>
-</div>
 <div class="fragment">
 <p><span class="body-text-l teal-text">Packages introduced:</span></p>
-</div>
-<div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{bslib}</code>: provides tools for customizing Bootstrap themes directly from R for shiny apps and RMarkdown documents</span></p>
-</div>
-<div class="fragment">
 <p><span class="body-text-s"><span class="teal-text"><i class="fa-solid fa-box-open" title="an open box" aria-label="box-open"></i></span> <code>{fresh}</code>: provides tools for creating custom themes for use with shiny, <code>shinydashboard</code>, and <code>bs4Dash</code> apps</span></p>
 </div>
 </section>
@@ -525,7 +519,7 @@
 <span id="cb1-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><span class="body-text-s">Check out the complete <a href="https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app" target="_blank">source code</a> for App #1 (NOTE: applied themes are commented out).</span></p>
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s} -->
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -568,7 +562,7 @@
 <span id="cb2-15"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><span class="body-text-s">Check out the complete <a href="https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app" target="_blank">source code</a> for App #1 (NOTE: applied themes are commented out).</span></p>
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/single-file-app){target="_blank"} for App #1 (NOTE: applied themes are commented out).]{.body-text-s} -->
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -739,7 +733,7 @@
 <span id="cb4-8"><a></a>) <span class="co"># </span><span class="re">END</span><span class="co"> navbarPage</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><span class="body-text-s">Check out the complete <a href="https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app" target="_blank">source code</a> for App #2 (NOTE: applied themes are commented out).</span></p>
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app){target="_blank"} for App #2 (NOTE: applied themes are commented out).]{.body-text-s} -->
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -752,11 +746,52 @@
 </div>
 </div></div>
 </section>
+<section id="exercise1-prompt" class="slide level2" data-menu-title="** Exercise 1 Prompt **" data-background="#d2e3f3">
+<h2></h2>
+<p><span class="slide-title3"><i class="fa-solid fa-question" title="question mark" aria-label="question"></i> Exercise 1: Use Shiny Assistant to recreate the a <code>{fresh}</code> theme for our shinydashboard</span></p>
+<hr>
+<p><span class="body-text-m"><strong>To Do:</strong></span></p>
+<ul>
+<li>Use a new Shiny Assistant session to theme our shinydashboard. Generate colors for the following:
+<ul>
+<li>the primary color (header)</li>
+<li>sidebar</li>
+<li>menuItems</li>
+<li>menuItem text</li>
+<li>body</li>
+</ul></li>
+</ul>
+<p><span class="body-text-m"><strong>Tips:</strong></span></p>
+<ul>
+<li>You may want to ask AI to provide the code in it’s own separate file, rather than itegrate the theme into your app directly (there are a number of ways to apply <code>{fresh}</code> themes, but I find writing the code that generate your <code>.css</code> file in it’s own, separate script to be the cleanest approach).</li>
+</ul>
+<aside class="notes">
+<p>Generate me a {fresh} theme for a shinydashboard, where:</p>
+<ul>
+<li>the primary color (header) is dark blue</li>
+<li>the sidebar is light blue</li>
+<li>the menuItems are hot pink (when highlighted)</li>
+<li>the menuItem text is red</li>
+<li>the body is light pink</li>
+</ul>
+<p>Can you provide me the create_theme() code in it’s own separate file (not integrated into my app.R file)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="fresh-shinydashboard" class="slide level2" data-menu-title="{fresh} shiny dashboard">
 <h2></h2>
-<p><span class="slide-title3">Creating a <code>{fresh}</code> theme for our <code>shinydashboard</code></span></p>
+<p><span class="slide-title3">Creating a <code>{fresh}</code> theme, by hand, for <code>shinydashboard</code></span></p>
 <hr>
-<p><span class="body-text-s">In this example, we update the colors of our app’s header, body, and sidebar using the appropriate <code>{fresh}</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html" target="_blank">variables for shiny <em>dashboards</em></a>. We specify a file path, <code>shinydashboard/www/</code> where our stylesheet (e.g.&nbsp;<code>dashboard-fresh-theme.css</code>, as shown here) file will be saved to. Again, these color combos are <em>not</em> recommended, but chosen purely for demonstration purposes.</span></p>
+<p><span class="body-text-s">In this example, we update the colors of our app’s header, body, and sidebar using the appropriate <code>{fresh}</code> <a href="https://dreamrs.github.io/fresh/articles/vars-shinydashboard.html" target="_blank">variables for shiny <em>dashboards</em></a>. We specify a file path, <code>shinydashboard/www/</code> where our stylesheet (e.g.&nbsp;<code>dashboard-fresh-theme.css</code>, as shown here) file will be saved to. Again, these color combos are <em>not</em> recommended.</span></p>
 <div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -814,7 +849,7 @@
 <span id="cb6-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p><span class="body-text-s">Check out the complete <a href="https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/shinydashboard" target="_blank">source code</a> for the shinydashboard (NOTE: applied themes are commented out).</span></p>
+<!-- [Check out the complete [source code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/shinydashboard){target="_blank"} for the shinydashboard (NOTE: applied themes are commented out).]{.body-text-s} -->
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -839,7 +874,7 @@ End part 4.1
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_93c7467d" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_dd0fb46b" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
