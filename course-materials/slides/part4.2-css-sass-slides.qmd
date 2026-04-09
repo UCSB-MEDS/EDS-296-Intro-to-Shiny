@@ -605,7 +605,7 @@ knitr::include_graphics("images/part4/inspecting.gif")
 
 ## Our updated shinydashboard
 
-:::: {.columns}
+<!-- :::: {.columns}
 
 ::: {.column width="50%"}
 
@@ -615,18 +615,18 @@ knitr::include_graphics("images/part4/inspecting.gif")
 Check out the [complete code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/dashboard_css_example){target="_blank"} for this small example dashboard.
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%"} -->
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "100%"
+#| out-width: "50%"
 #| fig-alt: "An example shinydashboard with default colors (light blue dashboardHeader, dark blue dashboardSidebar, gray/blue dashboardBody) and two boxes, one containing a checkboxGroupInput and the other containing a scatterplot -- the box colors are colored orange, rather than the default white."
 knitr::include_graphics("images/part4/orange-boxes.png")
 ```
-:::
+<!-- :::
 
-::::
+:::: -->
 
 ## `styles.css`
 ```{css filename="~/css-dashboard/www/styles.css"}
@@ -878,7 +878,7 @@ a {
 
 ## our updated app
 
-:::: {.columns}
+<!-- :::: {.columns}
 
 ::: {.column width="50%"}
 
@@ -888,18 +888,19 @@ a {
 Check out the [complete code](https://github.com/samanthacsik/EDS-296-shiny-apps/tree/main/two-file-app){target="_blank"} for App #2 (NOTE: applied themes are commented out).
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%"} -->
+
 ```{r}
 #| eval: true
 #| echo: false
 #| fig-align: "center"
-#| out-width: "100%"
+#| out-width: "50%"
 #| fig-alt: "Our app, with our sass and css styling applied. The navbar is yellow, body is green, level 4 headings are blue, text is white, hyperlinks are orange, and header and body text font styles have been changed from the default."
 knitr::include_graphics("images/part4/app2_sass_css.png")
 ```
-:::
+<!-- :::
 
-::::
+:::: -->
 
 ## `global.R`
 ```{r filename="~/two-file-app/global.R"}

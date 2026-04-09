@@ -40,19 +40,11 @@ editor_options:
 
 <p class="body-text-l teal-text bottombr">After this section, you should:</p>
 
-. . . 
-
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the reasons why apps break and the benefit of having automated tests
-
-. . . 
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand the concept of a unit test, assertions, and using a testing framework to construct tests
 
-. . . 
-
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} have a basic understanding of how to use the `{shinytest2}` package to write appropriately scoped unit tests
-
-. . . 
 
 [{{< fa angle-right title="a bullet point" >}}]{.teal-text} know how to rerun and update tests as necessary
 
@@ -60,15 +52,10 @@ editor_options:
 
 <p class="body-text-l teal-text topbr">Packages introduced:</p> 
 
-. . . 
-
 [{{< fa box-open title="an open box" >}}]{.teal-text} `{testthat}`:  provides tools for writing unit tests in R
 
-. . . 
 
-[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications; built on top of the `{testthat}` package
-
-. . . 
+[{{< fa box-open title="an open box" >}}]{.teal-text} `{shinytest2}`:  provides tools for creating and running automated tests on Shiny applications; built on top of the `{testthat}` package 
 
 [{{< fa box-open title="an open box" >}}]{.teal-text} `{diffviewer}`:  an HTML widget for visually comparing files
 

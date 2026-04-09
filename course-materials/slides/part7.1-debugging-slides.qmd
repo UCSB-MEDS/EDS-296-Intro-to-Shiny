@@ -40,19 +40,13 @@ editor_options:
 
 [After this section, you should:]{.body-text-l .teal-text}
 
-. . . 
-
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} understand some of the challenges associated with debugging shiny applications]{.body-text-s}
-
-. . .
 
 [[{{< fa angle-right title="a bullet point" >}}]{.teal-text} know to a few approaches and tools for debugging shiny applications, including using diagnostic messages and the `{reactlog}` package.]{.body-text-s}
 
 . . . 
 
 [Packages introduced:]{.body-text-l .teal-text}
-
-. . . 
 
 [[{{< fa book-open title="an open book" >}}]{.teal-text} `{reactlog}`:  a reactivity visualizer for shiny]{.body-text-s}
 

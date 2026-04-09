@@ -28,6 +28,7 @@ We'll be using the following R packages:
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
+library(arrow)
 library(shinycssloaders)
 library(leaflet)
 library(markdown)
