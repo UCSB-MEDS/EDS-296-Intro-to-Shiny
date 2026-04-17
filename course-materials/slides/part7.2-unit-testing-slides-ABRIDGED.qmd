@@ -96,7 +96,7 @@ There are lots of different *types* of testing. To name just a few:
 
 . . .
 
-Test can be:
+Tests can be:
 
 - [**Performed manually**, where a person interacts with code (e.g. tests a function, plays with an app feature) to identify bugs, errors, anomalies, etc.]{.body-text-s}
 - [**Automated**, where a person uses test scripts and programs to automate user interactions and validate assumed behavior]{.body-text-s}
@@ -142,7 +142,7 @@ Test can be:
 
 **Different languages have different testing frameworks. For example:**
 
-- [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
+- [Playwrite](https://playwright.dev/python/){target="_blank"} (see [Shiny for Python resources](https://shiny.posit.co/py/docs/end-to-end-testing.html){target="_blank"}) [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
 - [Jest](https://jestjs.io/){target="_blank"} for JavaScript
 - [testthat](https://testthat.r-lib.org/) for R
 
@@ -422,7 +422,6 @@ Slide adapted from Barret Schloerke's rstudio::conf(2022) talk, [`{shinytest2}`:
 There are lots of reasons why this happens, but to name a few:
 
 ::: {.incremental}
-- [**an upgraded R package(s)** has a different behavior (this includes `{shiny}`) -- this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators]{.body-text-s}
 - [**you make changes to your app** (e.g. add new features, refactor code)]{.body-text-s}
 - [**an external data source stops working** or returns data in a different format than that expected by your app]{.body-text-s}
 :::
@@ -772,28 +771,31 @@ After quitting the test recorder, the following will happen:
 - [if you're running in the RStudio IDE, `test-shinytest2.R` will automatically open in the editor]{.body-text-s} 
 - [`shinytest2::test_app()` is run behind the scenes to execute the test script]{.body-text-s}
 
-You should see the following in your RStudio Console: 
+You should see something like this in your Console: 
 
 ```{r}
 #| eval: false
 #| echo: true
 #| code-line-numbers: false
 • Saving test runner: tests/testthat.R
+✔ Adding 'shinytest2::load_app_support(test_path("../.."))' to 'tests/testthat/setup-shinytest2.R'
 • Saving test file: tests/testthat/test-shinytest2.R
-✔ Adding 'shinytest2::load_app_env()' to 'tests/testthat/setup-shinytest2.R'
+☐ Modify
+  /Users/samanthacsik/git/EDS-296-1W/shinytest2-unit-tests/testing-app/tests/testthat/test-shinytest2.R.
 • Running recorded test: tests/testthat/test-shinytest2.R
+Loading required package: testthat
 ✔ | F W  S  OK | Context
-✔ |   2      1 | shinytest2 [1.4s]                                                         
-───────────────────────────────────────────────────────────────────────────────────────────
-Warning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
-Adding new file snapshot: 'tests/testthat/_snaps/one-name-greeting-001_.png'
+✔ |   2      1 | shinytest2 [2.1s]                                                                  
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Warning (test-shinytest2.R:8:3): {shinytest2} recording: one-name-greeting
+Adding new file snapshot: 'tests/testthat/_snaps/shinytest2/one-name-greeting-001_.png'
 
-Warning (test-shinytest2.R:7:3): {shinytest2} recording: one-name-greeting
-Adding new file snapshot: 'tests/testthat/_snaps/one-name-greeting-001.json'
-───────────────────────────────────────────────────────────────────────────────────────────
+Warning (test-shinytest2.R:8:3): {shinytest2} recording: one-name-greeting
+Adding new file snapshot: 'tests/testthat/_snaps/shinytest2/one-name-greeting-001.json'
+────────────────────────────────────────────────────────────────────────────────────────────────────
 
-══ Results ════════════════════════════════════════════════════════════════════════════════
-Duration: 1.5 s
+══ Results ═════════════════════════════════════════════════════════════════════════════════════════
+Duration: 2.1 s
 
 [ FAIL 0 | WARN 2 | SKIP 0 | PASS 1 ]
 ```
@@ -824,15 +826,15 @@ After creating your first test, your repo structure should look something like t
 │      └── testthat.R             # see note below
 │      └── testthat/     
 │         └── setup-shinytest2.R  # see note below
-│         └── test-shinytest2.R   # see slide 18
+│         └── test-shinytest2.R   # see next slides
 │         └── snaps/               
 │            └── shinytest2/      
-│               └── *001.json     # see slide 19
-│               └── *001_.png     # see slide 19 
+│               └── *001.json     # see next slides
+│               └── *001_.png     # see next slides
 ```
 
 - [`testthat.R`: includes the code, `shinytest2::test_app()`, which is executed when you click the **Run Tests** button in RStudio]{.body-text-s}
-- [`setup-shinytest2.R`: includes the code, `shinytest2::load_app_env()`, which loads any application support files (e.g. `global.R` and / or anything inside `R/`) into the testing environment]{.body-text-s}
+- [`setup-shinytest2.R`: includes the code, `shinytest2::load_app_support()`, which loads any application support files (e.g. `global.R` and / or anything inside `R/`) into the testing environment]{.body-text-s}
 
 ---
 
@@ -851,16 +853,16 @@ library(shinytest2)
 
 # runs our test
 test_that("{shinytest2} recording: one-name-greeting", {
-  
+
   # start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions
-  app <- AppDriver$new(name = "one-name-greeting", height = 838, width = 1298)
-  
+  app <- AppDriver$new(test_path("../.."), name = "one-name-greeting", height = 719, width = 595)
+
   # set the textInput (with Id `name_input`) to the value `Sam`
   app$set_inputs(name_input = "Sam")
-  
+
   # click the actionButton (with Id `greeting_button_input`)
   app$click("greeting_button_input")
-  
+
   # save the expected input, output, and export values to a JSON snapshot and generates a screenshot of the app
   app$expect_values()
 })
@@ -1024,26 +1026,29 @@ countdown::countdown(
 library(shinytest2)
 
 test_that("{shinytest2} recording: one-name-greeting", {
-  app <- AppDriver$new(name = "one-name-greeting", height = 1335, width = 1126)
+  app <- AppDriver$new(test_path("../.."), name = "one-name-greeting", height = 719, 
+      width = 595)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values()
 })
 
 
-test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 961, width = 1322)
+test_that("{shinytest2} recording: two-name-greeting", {
+  app <- AppDriver$new(test_path("../.."), name = "two-name-greeting", height = 727, 
+      width = 501)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values()
-  app$set_inputs(name_input = "Kat")
+  app$set_inputs(name_input = "Carmen")
   app$click("greeting_button_input")
   app$expect_values()
 })
 
 
 test_that("{shinytest2} recording: no-name-greeting", {
-  app <- AppDriver$new(name = "no-name-greeting", height = 837, width = 1294)
+  app <- AppDriver$new(test_path("../.."), name = "no-name-greeting", height = 727, 
+      width = 501)
   app$click("greeting_button_input")
   app$expect_values()
 })
@@ -1124,29 +1129,47 @@ Click on the **Output tab** for more information on why the test failed (see nex
 
 <hr>
 
-[There's a lot of helpful information here, but lines 6-7 tell us that our `no-name-greeting` test failed, while lines 17-27 here tell us exactly what changed:]{.body-text-s}
+[We see that our `no-name-greeting` test failed and learn what caused that failure:]{.body-text-s}
 
 ```{r}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "6-7,17-27"
+#| code-line-numbers: "4,13-23,35-45"
 ==> Testing R file using 'testthat'
 
-Loading required package: shiny
-[ FAIL 1 | WARN 1 | SKIP 0 | PASS 3 ]
+[ FAIL 0 | WARN 1 | SKIP 0 | PASS 0 ]Loading required package: shiny
+[ FAIL 1 | WARN 2 | SKIP 0 | PASS 3 ]
 
-── Failure (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting ──
-Snapshot of `file` to 'shinytest2/no-name-greeting-001.json' has changed
-Run testthat::snapshot_review('shinytest2/') to review changes
+── Warning (test-shinytest2.R:1:1): (code run outside of `test_that()`) ────────
+package ‘shinytest2’ was built under R version 4.5.2
 Backtrace:
     ▆
- 1. └─app$expect_values() at test-shinytest2.R:25:3
+ 1. └─base::library(shinytest2) at test-shinytest2.R:1:1
+ 2.   └─base (local) testRversion(pkgInfo, package, pkgpath)
+
+── Failure (test-shinytest2.R:28:3): {shinytest2} recording: no-name-greeting ──
+Snapshot of `file` has changed.
+Differences:
+old[4:10] vs new[4:10]
+      "name_input": ""
+    },
+    "output": {
+-     "greeting_output": "Hello !"
++     "greeting_output": "Please type a name, then click the Greet button."
+    },
+    "export": {
+  
+* Run testthat::snapshot_accept("shinytest2/", "testing-app/tests/testthat") to accept the change.
+* Run testthat::snapshot_review("shinytest2/", "testing-app/tests/testthat") to review the change.
+Backtrace:
+    ▆
+ 1. └─app$expect_values() at test-shinytest2.R:28:3
  2.   └─shinytest2:::app_expect_values(...)
  3.     └─shinytest2:::app__expect_snapshot_file(...)
  4.       ├─base::withCallingHandlers(...)
  5.       └─testthat::expect_snapshot_file(...)
 
-── Warning (test-shinytest2.R:25:3): {shinytest2} recording: no-name-greeting ──
+── Warning (test-shinytest2.R:28:3): {shinytest2} recording: no-name-greeting ──
 Diff in snapshot file `shinytest2no-name-greeting-001.json`
 < before                                                                   
 > after                                                                    
@@ -1157,11 +1180,10 @@ Diff in snapshot file `shinytest2no-name-greeting-001.json`
 >     "greeting_output": "Please type a name, then click the Greet button."
     },                                                                     
     "export": {                                                            
-[ FAIL 1 | WARN 1 | SKIP 0 | PASS 3 ]
+[ FAIL 1 | WARN 2 | SKIP 0 | PASS 3 ]
 Warning messages:
-1: package ‘testthat’ was built under R version 4.3.1 
-2: package ‘shiny’ was built under R version 4.3.1 
-
+1: package ‘testthat’ was built under R version 4.5.2 
+2: package ‘shiny’ was built under R version 4.5.2 
 Test complete
 ```
 
@@ -1264,7 +1286,7 @@ knitr::include_graphics("images/part6/updated-snapshots.png")
 ```{r filename="~/testing-app/global.R"}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "4-5"
+#| code-line-numbers: "3-5"
 # load libraries ----
 library(shiny)
 library(tidyverse)
@@ -2163,7 +2185,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 library(shinytest2)
 
 test_that("{shinytest2} recording: one-name-greeting", {
-  app <- AppDriver$new(name = "one-name-greeting", height = 1097, width = 1277)
+  app <- AppDriver$new(test_path("../.."), name = "one-name-greeting", height = 1097, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -2171,7 +2193,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 
 test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 1112, width = 1277)
+  app <- AppDriver$new(test_path("../.."), name = "consecutive-name-greeting", height = 1112, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -2182,14 +2204,14 @@ test_that("{shinytest2} recording: consecutive-name-greeting", {
 
 
 test_that("{shinytest2} recording: no-name-greeting", {
-  app <- AppDriver$new(name = "no-name-greeting", height = 1097, width = 1277)
+  app <- AppDriver$new(test_path("../.."), name = "no-name-greeting", height = 1097, width = 1277)
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
 })
 
 
 test_that("{shinytest2} recording: default-three-spp", {
-  app <- AppDriver$new(name = "default-three-spp", height = 1099, width = 1209)
+  app <- AppDriver$new(test_path("../.."), name = "default-three-spp", height = 1099, width = 1209)
   app$expect_values(output = "scatterplot_output")
 })
 ```
@@ -2290,7 +2312,7 @@ knitr::include_graphics("images/part6/command-click-ABRIDGED.gif")
 ::::
 
 ::: {.footer}
-IMPORTANT: You'll likely encounter a popup each time you click on the `pickerInput`. **Be sure to click *Record*.** Read more about [input bindings](https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings).
+IMPORTANT: You'll likely encounter a popup each time you click on the `pickerInput`. **Be sure to click *Record*.** Read more about [input bindings](https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings){target="_blank"}.
 :::
 
 <!-- --- -->
@@ -2327,7 +2349,7 @@ IMPORTANT: You'll likely encounter a popup each time you click on the `pickerInp
 library(shinytest2)
 
 test_that("{shinytest2} recording: one-name-greeting", {
-  app <- AppDriver$new(name = "one-name-greeting", height = 1097, width = 1277)
+  app <- AppDriver$new(test_path("../.."), name = "one-name-greeting", height = 1097, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -2335,7 +2357,7 @@ test_that("{shinytest2} recording: one-name-greeting", {
 
 
 test_that("{shinytest2} recording: consecutive-name-greeting", {
-  app <- AppDriver$new(name = "consecutive-name-greeting", height = 1112, width = 1277)
+  app <- AppDriver$new(test_path("../.."), name = "consecutive-name-greeting", height = 1112, width = 1277)
   app$set_inputs(name_input = "Sam")
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
@@ -2346,20 +2368,20 @@ test_that("{shinytest2} recording: consecutive-name-greeting", {
 
 
 test_that("{shinytest2} recording: no-name-greeting", {
-  app <- AppDriver$new(name = "no-name-greeting", height = 1097, width = 1277)
+  app <- AppDriver$new(test_path("../.."), name = "no-name-greeting", height = 1097, width = 1277)
   app$click("greeting_button_input")
   app$expect_values(output = "greeting_output")
 })
 
 
 test_that("{shinytest2} recording: default-three-spp", {
-  app <- AppDriver$new(name = "default-three-spp", height = 1099, width = 1209)
+  app <- AppDriver$new(test_path("../.."), name = "default-three-spp", height = 1099, width = 1209)
   app$expect_values(output = "scatterplot_output")
 })
 
 
 test_that("{shinytest2} recording: deselect-adelie", {
-  app <- AppDriver$new(name = "deselect-adelie", height = 875, width = 1293)
+  app <- AppDriver$new(test_path("../.."), name = "deselect-adelie", height = 875, width = 1293)
   app$set_inputs(penguin_spp_input_open = TRUE, allow_no_input_binding_ = TRUE)
   app$set_inputs(penguin_spp_input = c("Chinstrap", "Gentoo"))
   app$expect_values(output = "scatterplot_output")
@@ -2368,7 +2390,7 @@ test_that("{shinytest2} recording: deselect-adelie", {
 
 
 test_that("{shinytest2} recording: consecutive-spp-selections", {
-  app <- AppDriver$new(name = "consecutive-spp-selections", height = 875, width = 1292)
+  app <- AppDriver$new(test_path("../.."), name = "consecutive-spp-selections", height = 875, width = 1292)
   app$set_inputs(penguin_spp_input_open = TRUE, allow_no_input_binding_ = TRUE)
   app$set_inputs(penguin_spp_input = character(0))
   app$expect_values(output = "scatterplot_output")
@@ -2737,6 +2759,8 @@ Automated tests allow you to confidently refactor code / make sweeping changes w
 -  **Think of both the most common *and* uncommon pathways that your user may take when interacting with your app.**
 E.g. your user types in a name, then deletes everything, then clicks the "Greet" button...would you app handle that use case?
 
+<br>
+
 <!-- . . . -->
 
 <!-- <br> -->
@@ -2744,8 +2768,8 @@ E.g. your user types in a name, then deletes everything, then clicks the "Greet"
 <!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`. -->
 
 <!-- . . . -->
-
-<br>
+<!-- 
+<br> -->
 
 <center><p class="body-text-l teal-text">This is only a brief intro to `{shinytest2}`! Dig into the [documentation](https://rstudio.github.io/shinytest2/index.html) to learn more.</p></center>
 

@@ -446,7 +446,7 @@
 </ul>
 </div>
 <div class="fragment">
-<p>Test can be:</p>
+<p>Tests can be:</p>
 <ul>
 <li><span class="body-text-s"><strong>Performed manually</strong>, where a person interacts with code (e.g.&nbsp;tests a function, plays with an app feature) to identify bugs, errors, anomalies, etc.</span></li>
 <li><span class="body-text-s"><strong>Automated</strong>, where a person uses test scripts and programs to automate user interactions and validate assumed behavior</span></li>
@@ -485,7 +485,7 @@
 <div class="fragment">
 <p><strong>Different languages have different testing frameworks. For example:</strong></p>
 <ul>
-<li><a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest</a> or <a href="https://pypi.org/project/pytest/" target="_blank">pytest</a> for Python</li>
+<li><a href="https://playwright.dev/python/" target="_blank">Playwrite</a> (see <a href="https://shiny.posit.co/py/docs/end-to-end-testing.html" target="_blank">Shiny for Python resources</a>) <a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest</a> or <a href="https://pypi.org/project/pytest/" target="_blank">pytest</a> for Python</li>
 <li><a href="https://jestjs.io/" target="_blank">Jest</a> for JavaScript</li>
 <li><a href="https://testthat.r-lib.org/">testthat</a> for R</li>
 </ul>
@@ -734,7 +734,6 @@
 <p>There are lots of reasons why this happens, but to name a few:</p>
 <div>
 <ul>
-<li class="fragment"><span class="body-text-s"><strong>an upgraded R package(s)</strong> has a different behavior (this includes <code>{shiny}</code>) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators</span></li>
 <li class="fragment"><span class="body-text-s"><strong>you make changes to your app</strong> (e.g.&nbsp;add new features, refactor code)</span></li>
 <li class="fragment"><span class="body-text-s"><strong>an external data source stops working</strong> or returns data in a different format than that expected by your app</span></li>
 </ul>
@@ -1002,26 +1001,29 @@
 <li><span class="body-text-s">if you’re running in the RStudio IDE, <code>test-shinytest2.R</code> will automatically open in the editor</span></li>
 <li><span class="body-text-s"><code>shinytest2::test_app()</code> is run behind the scenes to execute the test script</span></li>
 </ul>
-<p>You should see the following in your RStudio Console:</p>
+<p>You should see something like this in your Console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>• Saving test runner<span class="sc">:</span> tests<span class="sc">/</span>testthat.R</span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>• Saving test file<span class="sc">:</span> tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R</span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'shinytest2::load_app_env()'</span> to <span class="st">'tests/testthat/setup-shinytest2.R'</span></span>
-<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>• Running recorded test<span class="sc">:</span> tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R</span>
-<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span> F W  S  OK <span class="sc">|</span> Context</span>
-<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>   <span class="dv">2</span>      <span class="dv">1</span> <span class="sc">|</span> shinytest2 [<span class="fl">1.4</span>s]                                                         </span>
-<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>───────────────────────────────────────────────────────────────────────────────────────────</span>
-<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">7</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> one<span class="sc">-</span>name<span class="sc">-</span>greeting</span>
-<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>Adding new file snapshot<span class="sc">:</span> <span class="st">'tests/testthat/_snaps/one-name-greeting-001_.png'</span></span>
-<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">7</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> one<span class="sc">-</span>name<span class="sc">-</span>greeting</span>
-<span id="cb12-12"><a aria-hidden="true" tabindex="-1"></a>Adding new file snapshot<span class="sc">:</span> <span class="st">'tests/testthat/_snaps/one-name-greeting-001.json'</span></span>
-<span id="cb12-13"><a aria-hidden="true" tabindex="-1"></a>───────────────────────────────────────────────────────────────────────────────────────────</span>
-<span id="cb12-14"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a aria-hidden="true" tabindex="-1"></a>══ Results ════════════════════════════════════════════════════════════════════════════════</span>
-<span id="cb12-16"><a aria-hidden="true" tabindex="-1"></a>Duration<span class="sc">:</span> <span class="fl">1.5</span> s</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'shinytest2::load_app_support(test_path("../.."))'</span> to <span class="st">'tests/testthat/setup-shinytest2.R'</span></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>• Saving test file<span class="sc">:</span> tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>☐ Modify</span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">/</span>Users<span class="sc">/</span>samanthacsik<span class="sc">/</span>git<span class="sc">/</span>EDS<span class="dv">-296-1</span>W<span class="sc">/</span>shinytest2<span class="sc">-</span>unit<span class="sc">-</span>tests<span class="sc">/</span>testing<span class="sc">-</span>app<span class="sc">/</span>tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R.</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>• Running recorded test<span class="sc">:</span> tests<span class="sc">/</span>testthat<span class="sc">/</span>test<span class="sc">-</span>shinytest2.R</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>Loading required package<span class="sc">:</span> testthat</span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span> F W  S  OK <span class="sc">|</span> Context</span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>   <span class="dv">2</span>      <span class="dv">1</span> <span class="sc">|</span> shinytest2 [<span class="fl">2.1</span>s]                                                                  </span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>────────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">8</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> one<span class="sc">-</span>name<span class="sc">-</span>greeting</span>
+<span id="cb12-12"><a aria-hidden="true" tabindex="-1"></a>Adding new file snapshot<span class="sc">:</span> <span class="st">'tests/testthat/_snaps/shinytest2/one-name-greeting-001_.png'</span></span>
+<span id="cb12-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">8</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> one<span class="sc">-</span>name<span class="sc">-</span>greeting</span>
+<span id="cb12-15"><a aria-hidden="true" tabindex="-1"></a>Adding new file snapshot<span class="sc">:</span> <span class="st">'tests/testthat/_snaps/shinytest2/one-name-greeting-001.json'</span></span>
+<span id="cb12-16"><a aria-hidden="true" tabindex="-1"></a>────────────────────────────────────────────────────────────────────────────────────────────────────</span>
 <span id="cb12-17"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-18"><a aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">2</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">1</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-18"><a aria-hidden="true" tabindex="-1"></a>══ Results ═════════════════════════════════════════════════════════════════════════════════════════</span>
+<span id="cb12-19"><a aria-hidden="true" tabindex="-1"></a>Duration<span class="sc">:</span> <span class="fl">2.1</span> s</span>
+<span id="cb12-20"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">2</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">1</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="test-folder" class="slide level2" data-menu-title="Explore the tests/ folder">
@@ -1041,15 +1043,15 @@
 <span id="cb13-7"><a aria-hidden="true" tabindex="-1"></a>│      └── testthat.R             # see note below</span>
 <span id="cb13-8"><a aria-hidden="true" tabindex="-1"></a>│      └── testthat/     </span>
 <span id="cb13-9"><a aria-hidden="true" tabindex="-1"></a>│         └── setup-shinytest2.R  # see note below</span>
-<span id="cb13-10"><a aria-hidden="true" tabindex="-1"></a>│         └── test-shinytest2.R   # see slide 18</span>
+<span id="cb13-10"><a aria-hidden="true" tabindex="-1"></a>│         └── test-shinytest2.R   # see next slides</span>
 <span id="cb13-11"><a aria-hidden="true" tabindex="-1"></a>│         └── snaps/               </span>
 <span id="cb13-12"><a aria-hidden="true" tabindex="-1"></a>│            └── shinytest2/      </span>
-<span id="cb13-13"><a aria-hidden="true" tabindex="-1"></a>│               └── *001.json     # see slide 19</span>
-<span id="cb13-14"><a aria-hidden="true" tabindex="-1"></a>│               └── *001_.png     # see slide 19 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-13"><a aria-hidden="true" tabindex="-1"></a>│               └── *001.json     # see next slides</span>
+<span id="cb13-14"><a aria-hidden="true" tabindex="-1"></a>│               └── *001_.png     # see next slides</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><span class="body-text-s"><code>testthat.R</code>: includes the code, <code>shinytest2::test_app()</code>, which is executed when you click the <strong>Run Tests</strong> button in RStudio</span></li>
-<li><span class="body-text-s"><code>setup-shinytest2.R</code>: includes the code, <code>shinytest2::load_app_env()</code>, which loads any application support files (e.g.&nbsp;<code>global.R</code> and / or anything inside <code>R/</code>) into the testing environment</span></li>
+<li><span class="body-text-s"><code>setup-shinytest2.R</code>: includes the code, <code>shinytest2::load_app_support()</code>, which loads any application support files (e.g.&nbsp;<code>global.R</code> and / or anything inside <code>R/</code>) into the testing environment</span></li>
 </ul>
 </section>
 <section id="test-shinytest2" class="slide level2" data-menu-title="The test file">
@@ -1066,16 +1068,16 @@
 <span id="cb14-2"><a></a></span>
 <span id="cb14-3"><a></a><span class="co"># runs our test</span></span>
 <span id="cb14-4"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: one-name-greeting"</span>, {</span>
-<span id="cb14-5"><a></a>  </span>
+<span id="cb14-5"><a></a></span>
 <span id="cb14-6"><a></a>  <span class="co"># start Shiny app in a new R session along with chromote's headless browser that's used to simulate user actions</span></span>
-<span id="cb14-7"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">838</span>, <span class="at">width =</span> <span class="dv">1298</span>)</span>
-<span id="cb14-8"><a></a>  </span>
+<span id="cb14-7"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">719</span>, <span class="at">width =</span> <span class="dv">595</span>)</span>
+<span id="cb14-8"><a></a></span>
 <span id="cb14-9"><a></a>  <span class="co"># set the textInput (with Id `name_input`) to the value `Sam`</span></span>
 <span id="cb14-10"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
-<span id="cb14-11"><a></a>  </span>
+<span id="cb14-11"><a></a></span>
 <span id="cb14-12"><a></a>  <span class="co"># click the actionButton (with Id `greeting_button_input`)</span></span>
 <span id="cb14-13"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
-<span id="cb14-14"><a></a>  </span>
+<span id="cb14-14"><a></a></span>
 <span id="cb14-15"><a></a>  <span class="co"># save the expected input, output, and export values to a JSON snapshot and generates a screenshot of the app</span></span>
 <span id="cb14-16"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
 <span id="cb14-17"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1201,7 +1203,7 @@
 </table>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_f88a98e3" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_ce337e00" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1221,29 +1223,32 @@
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(shinytest2)</span>
 <span id="cb16-2"><a></a></span>
 <span id="cb16-3"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: one-name-greeting"</span>, {</span>
-<span id="cb16-4"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1335</span>, <span class="at">width =</span> <span class="dv">1126</span>)</span>
-<span id="cb16-5"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
-<span id="cb16-6"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
-<span id="cb16-7"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb16-8"><a></a>})</span>
-<span id="cb16-9"><a></a></span>
+<span id="cb16-4"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">719</span>, </span>
+<span id="cb16-5"><a></a>      <span class="at">width =</span> <span class="dv">595</span>)</span>
+<span id="cb16-6"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
+<span id="cb16-7"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
+<span id="cb16-8"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
+<span id="cb16-9"><a></a>})</span>
 <span id="cb16-10"><a></a></span>
-<span id="cb16-11"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: consecutive-name-greeting"</span>, {</span>
-<span id="cb16-12"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">961</span>, <span class="at">width =</span> <span class="dv">1322</span>)</span>
-<span id="cb16-13"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
-<span id="cb16-14"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
-<span id="cb16-15"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb16-16"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Kat"</span>)</span>
-<span id="cb16-17"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
-<span id="cb16-18"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb16-19"><a></a>})</span>
-<span id="cb16-20"><a></a></span>
-<span id="cb16-21"><a></a></span>
-<span id="cb16-22"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: no-name-greeting"</span>, {</span>
-<span id="cb16-23"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"no-name-greeting"</span>, <span class="at">height =</span> <span class="dv">837</span>, <span class="at">width =</span> <span class="dv">1294</span>)</span>
-<span id="cb16-24"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
-<span id="cb16-25"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
-<span id="cb16-26"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-11"><a></a></span>
+<span id="cb16-12"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: two-name-greeting"</span>, {</span>
+<span id="cb16-13"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"two-name-greeting"</span>, <span class="at">height =</span> <span class="dv">727</span>, </span>
+<span id="cb16-14"><a></a>      <span class="at">width =</span> <span class="dv">501</span>)</span>
+<span id="cb16-15"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
+<span id="cb16-16"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
+<span id="cb16-17"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
+<span id="cb16-18"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Carmen"</span>)</span>
+<span id="cb16-19"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
+<span id="cb16-20"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
+<span id="cb16-21"><a></a>})</span>
+<span id="cb16-22"><a></a></span>
+<span id="cb16-23"><a></a></span>
+<span id="cb16-24"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: no-name-greeting"</span>, {</span>
+<span id="cb16-25"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"no-name-greeting"</span>, <span class="at">height =</span> <span class="dv">727</span>, </span>
+<span id="cb16-26"><a></a>      <span class="at">width =</span> <span class="dv">501</span>)</span>
+<span id="cb16-27"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
+<span id="cb16-28"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>()</span>
+<span id="cb16-29"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="center-text body-text-s">
@@ -1311,41 +1316,58 @@
 <h2></h2>
 <p><span class="slide-title2">The Output tab tells us what caused our test to fail</span></p>
 <hr>
-<p><span class="body-text-s">There’s a lot of helpful information here, but lines 6-7 tell us that our <code>no-name-greeting</code> test failed, while lines 17-27 here tell us exactly what changed:</span></p>
+<p><span class="body-text-s">We see that our <code>no-name-greeting</code> test failed and learn what caused that failure:</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="6-7,17-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="sc">==</span><span class="er">&gt;</span> Testing R file using <span class="st">'testthat'</span></span>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="4,13-23,35-45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="sc">==</span><span class="er">&gt;</span> Testing R file using <span class="st">'testthat'</span></span>
 <span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a>Loading required package<span class="sc">:</span> shiny</span>
-<span id="cb18-4"><a></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span>
+<span id="cb18-3"><a></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">0</span> ]Loading required package<span class="sc">:</span> shiny</span>
+<span id="cb18-4"><a></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">2</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span>
 <span id="cb18-5"><a></a></span>
-<span id="cb18-6"><a></a>── <span class="fu">Failure</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">25</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> no<span class="sc">-</span>name<span class="sc">-</span>greeting ──</span>
-<span id="cb18-7"><a></a>Snapshot of <span class="st">`</span><span class="at">file</span><span class="st">`</span> to <span class="st">'shinytest2/no-name-greeting-001.json'</span> has changed</span>
-<span id="cb18-8"><a></a>Run testthat<span class="sc">::</span><span class="fu">snapshot_review</span>(<span class="st">'shinytest2/'</span>) to review changes</span>
-<span id="cb18-9"><a></a>Backtrace<span class="sc">:</span></span>
-<span id="cb18-10"><a></a>    ▆</span>
-<span id="cb18-11"><a></a> <span class="fl">1.</span> └─app<span class="sc">$</span><span class="fu">expect_values</span>() at test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">25</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb18-12"><a></a> <span class="fl">2.</span>   └─shinytest2<span class="sc">:::</span><span class="fu">app_expect_values</span>(...)</span>
-<span id="cb18-13"><a></a> <span class="fl">3.</span>     └─shinytest2<span class="sc">:::</span><span class="fu">app__expect_snapshot_file</span>(...)</span>
-<span id="cb18-14"><a></a> <span class="fl">4.</span>       ├─base<span class="sc">::</span><span class="fu">withCallingHandlers</span>(...)</span>
-<span id="cb18-15"><a></a> <span class="fl">5.</span>       └─testthat<span class="sc">::</span><span class="fu">expect_snapshot_file</span>(...)</span>
-<span id="cb18-16"><a></a></span>
-<span id="cb18-17"><a></a>── <span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">25</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> no<span class="sc">-</span>name<span class="sc">-</span>greeting ──</span>
-<span id="cb18-18"><a></a>Diff <span class="cf">in</span> snapshot file <span class="st">`</span><span class="at">shinytest2no-name-greeting-001.json</span><span class="st">`</span></span>
-<span id="cb18-19"><a></a><span class="sc">&lt;</span> before                                                                   </span>
-<span id="cb18-20"><a></a><span class="sc">&gt;</span> after                                                                    </span>
-<span id="cb18-21"><a></a><span class="sc">@</span><span class="er">@</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">/</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">@</span><span class="er">@</span>                                                            </span>
-<span id="cb18-22"><a></a>    <span class="er">}</span>,                                                                     </span>
-<span id="cb18-23"><a></a>    <span class="st">"output"</span><span class="sc">:</span> {                                                            </span>
-<span id="cb18-24"><a></a><span class="sc">&lt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello !"</span>                                         </span>
-<span id="cb18-25"><a></a><span class="sc">&gt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Please type a name, then click the Greet button."</span></span>
-<span id="cb18-26"><a></a>    },                                                                     </span>
-<span id="cb18-27"><a></a>    <span class="st">"export"</span><span class="sc">:</span> {                                                            </span>
-<span id="cb18-28"><a></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">1</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span>
-<span id="cb18-29"><a></a>Warning messages<span class="sc">:</span></span>
-<span id="cb18-30"><a></a><span class="dv">1</span><span class="sc">:</span> package ‘testthat’ was built under R version <span class="dv">4</span>.<span class="fl">3.1</span> </span>
-<span id="cb18-31"><a></a><span class="dv">2</span><span class="sc">:</span> package ‘shiny’ was built under R version <span class="dv">4</span>.<span class="fl">3.1</span> </span>
-<span id="cb18-32"><a></a></span>
-<span id="cb18-33"><a></a>Test complete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-6"><a></a>── <span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span>)<span class="sc">:</span> (code run outside of <span class="st">`</span><span class="at">test_that()</span><span class="st">`</span>) ────────</span>
+<span id="cb18-7"><a></a>package ‘shinytest2’ was built under R version <span class="dv">4</span>.<span class="fl">5.2</span></span>
+<span id="cb18-8"><a></a>Backtrace<span class="sc">:</span></span>
+<span id="cb18-9"><a></a>    ▆</span>
+<span id="cb18-10"><a></a> <span class="fl">1.</span> └─base<span class="sc">::</span><span class="fu">library</span>(shinytest2) at test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1</span></span>
+<span id="cb18-11"><a></a> <span class="fl">2.</span>   └─<span class="fu">base</span> (local) <span class="fu">testRversion</span>(pkgInfo, package, pkgpath)</span>
+<span id="cb18-12"><a></a></span>
+<span id="cb18-13"><a></a>── <span class="fu">Failure</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">28</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> no<span class="sc">-</span>name<span class="sc">-</span>greeting ──</span>
+<span id="cb18-14"><a></a>Snapshot of <span class="st">`</span><span class="at">file</span><span class="st">`</span> has changed.</span>
+<span id="cb18-15"><a></a>Differences<span class="sc">:</span></span>
+<span id="cb18-16"><a></a>old[<span class="dv">4</span><span class="sc">:</span><span class="dv">10</span>] vs new[<span class="dv">4</span><span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb18-17"><a></a>      <span class="st">"name_input"</span><span class="sc">:</span> <span class="st">""</span></span>
+<span id="cb18-18"><a></a>    <span class="er">}</span>,</span>
+<span id="cb18-19"><a></a>    <span class="st">"output"</span><span class="sc">:</span> {</span>
+<span id="cb18-20"><a></a><span class="sc">-</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello !"</span></span>
+<span id="cb18-21"><a></a><span class="sc">+</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Please type a name, then click the Greet button."</span></span>
+<span id="cb18-22"><a></a>    },</span>
+<span id="cb18-23"><a></a>    <span class="st">"export"</span><span class="sc">:</span> {</span>
+<span id="cb18-24"><a></a>  </span>
+<span id="cb18-25"><a></a><span class="sc">*</span> Run testthat<span class="sc">::</span><span class="fu">snapshot_accept</span>(<span class="st">"shinytest2/"</span>, <span class="st">"testing-app/tests/testthat"</span>) to accept the change.</span>
+<span id="cb18-26"><a></a><span class="sc">*</span> Run testthat<span class="sc">::</span><span class="fu">snapshot_review</span>(<span class="st">"shinytest2/"</span>, <span class="st">"testing-app/tests/testthat"</span>) to review the change.</span>
+<span id="cb18-27"><a></a>Backtrace<span class="sc">:</span></span>
+<span id="cb18-28"><a></a>    ▆</span>
+<span id="cb18-29"><a></a> <span class="fl">1.</span> └─app<span class="sc">$</span><span class="fu">expect_values</span>() at test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">28</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb18-30"><a></a> <span class="fl">2.</span>   └─shinytest2<span class="sc">:::</span><span class="fu">app_expect_values</span>(...)</span>
+<span id="cb18-31"><a></a> <span class="fl">3.</span>     └─shinytest2<span class="sc">:::</span><span class="fu">app__expect_snapshot_file</span>(...)</span>
+<span id="cb18-32"><a></a> <span class="fl">4.</span>       ├─base<span class="sc">::</span><span class="fu">withCallingHandlers</span>(...)</span>
+<span id="cb18-33"><a></a> <span class="fl">5.</span>       └─testthat<span class="sc">::</span><span class="fu">expect_snapshot_file</span>(...)</span>
+<span id="cb18-34"><a></a></span>
+<span id="cb18-35"><a></a>── <span class="fu">Warning</span> (test<span class="sc">-</span>shinytest2.R<span class="sc">:</span><span class="dv">28</span><span class="sc">:</span><span class="dv">3</span>)<span class="sc">:</span> {shinytest2} recording<span class="sc">:</span> no<span class="sc">-</span>name<span class="sc">-</span>greeting ──</span>
+<span id="cb18-36"><a></a>Diff <span class="cf">in</span> snapshot file <span class="st">`</span><span class="at">shinytest2no-name-greeting-001.json</span><span class="st">`</span></span>
+<span id="cb18-37"><a></a><span class="sc">&lt;</span> before                                                                   </span>
+<span id="cb18-38"><a></a><span class="sc">&gt;</span> after                                                                    </span>
+<span id="cb18-39"><a></a><span class="sc">@</span><span class="er">@</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">/</span> <span class="dv">5</span>,<span class="dv">5</span> <span class="sc">@</span><span class="er">@</span>                                                            </span>
+<span id="cb18-40"><a></a>    },                                                                     </span>
+<span id="cb18-41"><a></a>    <span class="st">"output"</span><span class="sc">:</span> {                                                            </span>
+<span id="cb18-42"><a></a><span class="sc">&lt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Hello !"</span>                                         </span>
+<span id="cb18-43"><a></a><span class="sc">&gt;</span>     <span class="st">"greeting_output"</span><span class="sc">:</span> <span class="st">"Please type a name, then click the Greet button."</span></span>
+<span id="cb18-44"><a></a>    },                                                                     </span>
+<span id="cb18-45"><a></a>    <span class="st">"export"</span><span class="sc">:</span> {                                                            </span>
+<span id="cb18-46"><a></a>[ FAIL <span class="dv">1</span> <span class="sc">|</span> WARN <span class="dv">2</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span>
+<span id="cb18-47"><a></a>Warning messages<span class="sc">:</span></span>
+<span id="cb18-48"><a></a><span class="dv">1</span><span class="sc">:</span> package ‘testthat’ was built under R version <span class="dv">4</span>.<span class="fl">5.2</span> </span>
+<span id="cb18-49"><a></a><span class="dv">2</span><span class="sc">:</span> package ‘shiny’ was built under R version <span class="dv">4</span>.<span class="fl">5.2</span> </span>
+<span id="cb18-50"><a></a>Test complete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="update-expectations" class="slide level2" data-menu-title="Update expected results">
@@ -1416,7 +1438,7 @@
 <div class="code-with-filename-file">
 <pre><strong>~/testing-app/global.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># load libraries ----</span></span>
+<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="co"># load libraries ----</span></span>
 <span id="cb21-2"><a></a><span class="fu">library</span>(shiny)</span>
 <span id="cb21-3"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb21-4"><a></a><span class="fu">library</span>(shinyWidgets)</span>
@@ -1588,7 +1610,7 @@
 <p>Chat with the person(s) next to you and try to come up with a few different actions / scenarios a user may encounter with Feature 2. You <em>do not</em> need to describe every single possible scenario, but ensure that they are varied and represent different user interactions.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d5e03e52" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_6a9fd663" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2212,7 +2234,7 @@
 <div class="sourceCode cell-code" id="cb28" data-code-line-numbers="7,15,18,25,31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(shinytest2)</span>
 <span id="cb28-2"><a></a></span>
 <span id="cb28-3"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: one-name-greeting"</span>, {</span>
-<span id="cb28-4"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
+<span id="cb28-4"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
 <span id="cb28-5"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
 <span id="cb28-6"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb28-7"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"greeting_output"</span>)</span>
@@ -2220,7 +2242,7 @@
 <span id="cb28-9"><a></a></span>
 <span id="cb28-10"><a></a></span>
 <span id="cb28-11"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: consecutive-name-greeting"</span>, {</span>
-<span id="cb28-12"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1112</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
+<span id="cb28-12"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1112</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
 <span id="cb28-13"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
 <span id="cb28-14"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb28-15"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"greeting_output"</span>)</span>
@@ -2231,14 +2253,14 @@
 <span id="cb28-20"><a></a></span>
 <span id="cb28-21"><a></a></span>
 <span id="cb28-22"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: no-name-greeting"</span>, {</span>
-<span id="cb28-23"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"no-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
+<span id="cb28-23"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"no-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
 <span id="cb28-24"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb28-25"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"greeting_output"</span>)</span>
 <span id="cb28-26"><a></a>})</span>
 <span id="cb28-27"><a></a></span>
 <span id="cb28-28"><a></a></span>
 <span id="cb28-29"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: default-three-spp"</span>, {</span>
-<span id="cb28-30"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"default-three-spp"</span>, <span class="at">height =</span> <span class="dv">1099</span>, <span class="at">width =</span> <span class="dv">1209</span>)</span>
+<span id="cb28-30"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"default-three-spp"</span>, <span class="at">height =</span> <span class="dv">1099</span>, <span class="at">width =</span> <span class="dv">1209</span>)</span>
 <span id="cb28-31"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
 <span id="cb28-32"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2299,7 +2321,7 @@
 <p><span class="body-text-s"><span class="teal-text"><strong>(4)</strong></span> Give the test a unique name (e.g.&nbsp;<code>deselect-adelie</code>) &gt; click Save test and exit (tests should automatically execute and pass!)</span></p>
 </div></div>
 <div class="footer">
-<p>IMPORTANT: You’ll likely encounter a popup each time you click on the <code>pickerInput</code>. <strong>Be sure to click <em>Record</em>.</strong> Read more about <a href="https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings">input bindings</a>.</p>
+<p>IMPORTANT: You’ll likely encounter a popup each time you click on the <code>pickerInput</code>. <strong>Be sure to click <em>Record</em>.</strong> Read more about <a href="https://rstudio.github.io/shinytest2/articles/in-depth.html?q=input%20binding#inputs-without-input-bindings" target="_blank">input bindings</a>.</p>
 </div>
 <!-- --- -->
 <!-- ::: {.center-text} -->
@@ -2329,7 +2351,7 @@
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">library</span>(shinytest2)</span>
 <span id="cb30-2"><a></a></span>
 <span id="cb30-3"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: one-name-greeting"</span>, {</span>
-<span id="cb30-4"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
+<span id="cb30-4"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"one-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
 <span id="cb30-5"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
 <span id="cb30-6"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb30-7"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"greeting_output"</span>)</span>
@@ -2337,7 +2359,7 @@
 <span id="cb30-9"><a></a></span>
 <span id="cb30-10"><a></a></span>
 <span id="cb30-11"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: consecutive-name-greeting"</span>, {</span>
-<span id="cb30-12"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1112</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
+<span id="cb30-12"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"consecutive-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1112</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
 <span id="cb30-13"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">name_input =</span> <span class="st">"Sam"</span>)</span>
 <span id="cb30-14"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb30-15"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"greeting_output"</span>)</span>
@@ -2348,20 +2370,20 @@
 <span id="cb30-20"><a></a></span>
 <span id="cb30-21"><a></a></span>
 <span id="cb30-22"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: no-name-greeting"</span>, {</span>
-<span id="cb30-23"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"no-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
+<span id="cb30-23"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"no-name-greeting"</span>, <span class="at">height =</span> <span class="dv">1097</span>, <span class="at">width =</span> <span class="dv">1277</span>)</span>
 <span id="cb30-24"><a></a>  app<span class="sc">$</span><span class="fu">click</span>(<span class="st">"greeting_button_input"</span>)</span>
 <span id="cb30-25"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"greeting_output"</span>)</span>
 <span id="cb30-26"><a></a>})</span>
 <span id="cb30-27"><a></a></span>
 <span id="cb30-28"><a></a></span>
 <span id="cb30-29"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: default-three-spp"</span>, {</span>
-<span id="cb30-30"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"default-three-spp"</span>, <span class="at">height =</span> <span class="dv">1099</span>, <span class="at">width =</span> <span class="dv">1209</span>)</span>
+<span id="cb30-30"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"default-three-spp"</span>, <span class="at">height =</span> <span class="dv">1099</span>, <span class="at">width =</span> <span class="dv">1209</span>)</span>
 <span id="cb30-31"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
 <span id="cb30-32"><a></a>})</span>
 <span id="cb30-33"><a></a></span>
 <span id="cb30-34"><a></a></span>
 <span id="cb30-35"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: deselect-adelie"</span>, {</span>
-<span id="cb30-36"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"deselect-adelie"</span>, <span class="at">height =</span> <span class="dv">875</span>, <span class="at">width =</span> <span class="dv">1293</span>)</span>
+<span id="cb30-36"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"deselect-adelie"</span>, <span class="at">height =</span> <span class="dv">875</span>, <span class="at">width =</span> <span class="dv">1293</span>)</span>
 <span id="cb30-37"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb30-38"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_input =</span> <span class="fu">c</span>(<span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>))</span>
 <span id="cb30-39"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
@@ -2370,7 +2392,7 @@
 <span id="cb30-42"><a></a></span>
 <span id="cb30-43"><a></a></span>
 <span id="cb30-44"><a></a><span class="fu">test_that</span>(<span class="st">"{shinytest2} recording: consecutive-spp-selections"</span>, {</span>
-<span id="cb30-45"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="at">name =</span> <span class="st">"consecutive-spp-selections"</span>, <span class="at">height =</span> <span class="dv">875</span>, <span class="at">width =</span> <span class="dv">1292</span>)</span>
+<span id="cb30-45"><a></a>  app <span class="ot">&lt;-</span> AppDriver<span class="sc">$</span><span class="fu">new</span>(<span class="fu">test_path</span>(<span class="st">"../.."</span>), <span class="at">name =</span> <span class="st">"consecutive-spp-selections"</span>, <span class="at">height =</span> <span class="dv">875</span>, <span class="at">width =</span> <span class="dv">1292</span>)</span>
 <span id="cb30-46"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_input_open =</span> <span class="cn">TRUE</span>, <span class="at">allow_no_input_binding_ =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb30-47"><a></a>  app<span class="sc">$</span><span class="fu">set_inputs</span>(<span class="at">penguin_spp_input =</span> <span class="fu">character</span>(<span class="dv">0</span>))</span>
 <span id="cb30-48"><a></a>  app<span class="sc">$</span><span class="fu">expect_values</span>(<span class="at">output =</span> <span class="st">"scatterplot_output"</span>)</span>
@@ -2707,11 +2729,13 @@
 <ul>
 <li><strong>Think of both the most common <em>and</em> uncommon pathways that your user may take when interacting with your app.</strong> E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?</li>
 </ul>
+<p><br></p>
 <!-- . . . -->
 <!-- <br> -->
 <!-- []{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`. -->
 <!-- . . . -->
-<p><br></p>
+<!-- 
+<br> -->
 <center>
 <p class="body-text-l teal-text">
 This is only a brief intro to <code>{shinytest2}</code>! Dig into the <a href="https://rstudio.github.io/shinytest2/index.html">documentation</a> to learn more.
@@ -2730,7 +2754,7 @@ End part 7.2
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_adb5fc44" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
+<div class="countdown" id="timer_2337fa50" data-update-every="1" tabindex="0" style="right:0;bottom:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

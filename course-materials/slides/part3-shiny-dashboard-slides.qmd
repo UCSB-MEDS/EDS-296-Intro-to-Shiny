@@ -1062,7 +1062,7 @@ lake_data <- read_parquet("data/lake_data_processed.parquet")
 
 [**Some important notes:**]{.teal-text}
 
-- [**Avoid using `here::here()` in your shiny apps**, since Shiny sets the working directory to the app's directory automatically. Using `{here}`, as it can cause some unexpected issues (read more about it in [this discussion](https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505){target="_blank"})]{.body-text-s}
+- [**Avoid using `here::here()` in your shiny apps**, since Shiny sets the working directory to the app's directory automatically. Using `{here}` can cause some unexpected issues (read more about it in [this discussion](https://community.rstudio.com/t/using-here-here-or-similar-with-shiny/45505){target="_blank"})]{.body-text-s}
 - [The **file path** specified for reading in our data **is relative** to the app files (`ui.R`, `server.R`). It's important to note, however, that you won't be able to run your code line-by-line (like in a typical script; the file path won't be recognized) -- this is expected!.]{.body-text-s}
 
 ---
