@@ -142,7 +142,7 @@ Test can be:
 
 **Different languages have different testing frameworks. For example:**
 
-- [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
+- [Playwrite](https://playwright.dev/python/){target="_blank"} (see [Shiny for Python resources](https://shiny.posit.co/py/docs/end-to-end-testing.html){target="_blank"}) [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
 - [Jest](https://jestjs.io/){target="_blank"} for JavaScript
 - [testthat](https://testthat.r-lib.org/) for R
 
@@ -2759,6 +2759,8 @@ Automated tests allow you to confidently refactor code / make sweeping changes w
 -  **Think of both the most common *and* uncommon pathways that your user may take when interacting with your app.**
 E.g. your user types in a name, then deletes everything, then clicks the "Greet" button...would you app handle that use case?
 
+<br>
+
 <!-- . . . -->
 
 <!-- <br> -->
@@ -2766,8 +2768,8 @@ E.g. your user types in a name, then deletes everything, then clicks the "Greet"
 <!-- [{{< fa angle-right title="a bullet point" >}}]{.teal-text} **Limit testing to objects under your control.** For example, let's say you have a reactive data frame that you then send to a `DT::datatable` -- if package maintainers update `{DT}`, your output might change which could lead to false positive failed tests. Instead, test just your data frame that gets sent to `{DT}`. -->
 
 <!-- . . . -->
-
-<br>
+<!-- 
+<br> -->
 
 <center><p class="body-text-l teal-text">This is only a brief intro to `{shinytest2}`! Dig into the [documentation](https://rstudio.github.io/shinytest2/index.html) to learn more.</p></center>
 

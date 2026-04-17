@@ -333,7 +333,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#requirements",
     "title": "EDS 296",
     "section": "",
-    "text": "For automated unit testing, we need . . .\n\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\n\nDifferent languages have different testing frameworks. For example:\n\nunittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
+    "text": "For automated unit testing, we need . . .\n\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\n\nDifferent languages have different testing frameworks. For example:\n\nPlaywrite (see Shiny for Python resources) unittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#say_hello",
@@ -655,7 +655,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#testing-tips",
     "title": "EDS 296",
     "section": "",
-    "text": "A couple final tips for testing\n\n\n\nUse record_test() fairly often – make a test recording for each feature of your app (many little recordings are encouraged!)\n\n\n\n\nThink of both the most common and uncommon pathways that your user may take when interacting with your app. E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?\n\n\n\n\n\n\n\n\nThis is only a brief intro to {shinytest2}! Dig into the documentation to learn more."
+    "text": "A couple final tips for testing\n\n\n\nUse record_test() fairly often – make a test recording for each feature of your app (many little recordings are encouraged!)\n\n\n\n\nThink of both the most common and uncommon pathways that your user may take when interacting with your app. E.g. your user types in a name, then deletes everything, then clicks the “Greet” button…would you app handle that use case?\n\n\n\n\n\n\n\n\n\nThis is only a brief intro to {shinytest2}! Dig into the documentation to learn more."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#end",
@@ -1026,7 +1026,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#requirements",
     "title": "EDS 296",
     "section": "",
-    "text": "For automated unit testing, we need . . .\n\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\n\nDifferent languages have different testing frameworks. For example:\n\nunittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
+    "text": "For automated unit testing, we need . . .\n\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\n\nDifferent languages have different testing frameworks. For example:\n\nPlaywrite (see Shiny for Python resources) unittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#say_hello",
