@@ -127,7 +127,7 @@ Test can be:
 
 **Different languages have different testing frameworks. For example:**
 
-- [Playwrite](https://playwright.dev/python/){target="_blank"} (see [Shiny for Python resources](https://shiny.posit.co/py/docs/end-to-end-testing.html){target="_blank"}) [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
+- [unittest](https://docs.python.org/3/library/unittest.html){target="_blank"} or [pytest](https://pypi.org/project/pytest/){target="_blank"} for Python
 - [Jest](https://jestjs.io/){target="_blank"} for JavaScript
 - [testthat](https://testthat.r-lib.org/) for R
 
@@ -551,7 +551,8 @@ knitr::include_graphics("images/part6/shinytest2-hex.png")
 <!-- ::: -->
 
 ::: {.footer}
-`{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/){target="_blank"} to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/){target="_blank"} -- by default, it uses Google Chrome, so make sure you have that installed on your OS
+`{shinytest2}` uses [`{chromote}`](https://rstudio.github.io/chromote/){target="_blank"} to render your app in a headless [Chromium browser](https://www.chromium.org/chromium-projects/){target="_blank"} -- by default, it uses Google Chrome, so make sure you have that installed on your OS | Check out [Playwrite](https://playwright.dev/python/){target="_blank"} for [Shiny for Python](https://shiny.posit.co/py/docs/end-to-end-testing.html){target="_blank"}
+
 :::
 
 ---
