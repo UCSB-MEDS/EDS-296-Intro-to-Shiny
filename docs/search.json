@@ -298,7 +298,7 @@
     "href": "course-materials/slides/part2.1-single-file-app-slides.html#common-mistakes",
     "title": "EDS 296",
     "section": "",
-    "text": "Common mistakes to look out for\n\nIt’s inevitable that you’ll make mistakes here and there as you build out your app…and they can be frustrating to catch. A few that I find myself making over and over again:\n\n\n\n\n\nmisspelling inputId as inputID (or outputId as outputID)\nmisspelling your inputId (or outputId) name in the server (e.g. UI: inputId = \"myInputID\", server: input$my_Input_ID)\nrepeating inputIds (each must be unique)\nforgetting to separate UI elements with a comma, ,\nforgetting the set of parentheses when calling the name of a reactive data frame (e.g. ggplot(my_reactive_df(), aes(...)))"
+    "text": "Common mistakes to look out for\n\nIt’s inevitable that you’ll make mistakes here and there as you build out your app…and they can be frustrating to catch. A few that I find myself making over and over again:\n\n\n\n\nmisspelling inputId as inputID (or outputId as outputID)\nmisspelling your inputId (or outputId) name in the server (e.g. UI: inputId = \"myInputID\", server: input$my_Input_ID)\nrepeating inputIds (each must be unique)\nforgetting to separate UI elements with a comma, ,\nforgetting the set of parentheses when calling the name of a reactive data frame (e.g. ggplot(my_reactive_df(), aes(...)))"
   },
   {
     "objectID": "course-materials/slides/part2.1-single-file-app-slides.html#end-section",
@@ -333,7 +333,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#requirements",
     "title": "EDS 296",
     "section": "",
-    "text": "For automated unit testing, we need . . .\n\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\n\nDifferent languages have different testing frameworks. For example:\n\nunittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
+    "text": "For automated unit testing, we need . . .\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\nDifferent languages have different testing frameworks. For example:\n\nunittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#say_hello",
@@ -361,7 +361,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#say_hello-testthat-anatomy",
     "title": "EDS 296",
     "section": "",
-    "text": "3. Build and run tests using {testthat}\n\nThe anatomy of a {testthat} tests generally looks like this:\n\ntest_that(\"a short descriptive name for your test\", {\n  expect_output(my_function(&lt;a_known_input&gt;, ...), &lt;the_resulting_expected_output&gt;) \n})\n\n\nFor example:\n\ntest_that(\"say_hello works with a string\", {\n  expect_output(say_hello(\"Sam\"), \"Hello Sam!\") \n})\n\n\n\n\n\n\nthere are a number of different expect_*() functions you might use\nkeep tests small:\n\neasier to debug\nlets you test edge cases and specific scenarios\neasier to maintain (can easily update / remove a specific small test than untangle a large, complex one)\nencourages modular code design\nact as mini-examples / documentation about how your codes should behave"
+    "text": "3. Build and run tests using {testthat}\n\nThe anatomy of a {testthat} tests generally looks like this:\n\ntest_that(\"a short descriptive name for your test\", {\n  expect_output(my_function(&lt;a_known_input&gt;, ...), &lt;the_resulting_expected_output&gt;) \n})\n\n\nFor example:\n\ntest_that(\"say_hello works with a string\", {\n  expect_output(say_hello(\"Sam\"), \"Hello Sam!\") \n})\n\n\n\n\n\nthere are a number of different expect_*() functions you might use\nkeep tests small:\n\neasier to debug\nlets you test edge cases and specific scenarios\neasier to maintain (can easily update / remove a specific small test than untangle a large, complex one)\nencourages modular code design\nact as mini-examples / documentation about how your codes should behave"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#say_hello-testthat-tests",
@@ -389,7 +389,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#apps-break",
     "title": "EDS 296",
     "section": "",
-    "text": "It’s almost inevitable that our app(s) will break\n\nThere are lots of reasons why this happens, but to name a few:\n\n\nyou make changes to your app (e.g. add new features, refactor code)\nan external data source stops working or returns data in a different format than that expected by your app\n\n\n\n\nManually testing Shiny apps is takes a lot of time and effort, is often inconsistent, and doesn’t scale well (e.g. for larger apps, many apps, or for larger teams of collaborators).\n\n\n\n\nIt can save a lot of time and headache to have an automated system that checks if your app is working as expected."
+    "text": "It’s almost inevitable that our app(s) will break\n\nThere are lots of reasons why this happens, but to name a few:\n\nyou make changes to your app (e.g. add new features, refactor code)\nan external data source stops working or returns data in a different format than that expected by your app\n\n\n\nManually testing Shiny apps is takes a lot of time and effort, is often inconsistent, and doesn’t scale well (e.g. for larger apps, many apps, or for larger teams of collaborators).\n\n\n\n\nIt can save a lot of time and headache to have an automated system that checks if your app is working as expected."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides-ABRIDGED.html#shinytest2",
@@ -1026,7 +1026,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#requirements",
     "title": "EDS 296",
     "section": "",
-    "text": "For automated unit testing, we need . . .\n\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\n\nDifferent languages have different testing frameworks. For example:\n\nunittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
+    "text": "For automated unit testing, we need . . .\n\n\nsome small unit of code you want to test (e.g. a function)\nassertions i.e. statements or conditions that verify the expected behavior of your unit of code (in other words, does the actual output match the expected output?)\na framework for writing and executing your tests\n\n\nDifferent languages have different testing frameworks. For example:\n\nunittest or pytest for Python\nJest for JavaScript\ntestthat for R\n\n\n\n\nBefore we try writing tests for a Shiny app, let’s first consider a small (non-Shiny) example using the {testthat} framework. We’ll explore a testable unit of code, define assertions, and write / run tests. You can fork and clone this GitHub repository or create / add code to your own."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#say_hello",
@@ -1054,7 +1054,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#say_hello-testthat-anatomy",
     "title": "EDS 296",
     "section": "",
-    "text": "3. Build and run tests using {testthat}\n\nThe anatomy of a {testthat} tests generally looks like this:\n\ntest_that(\"a short descriptive name for your test\", {\n  expect_output(my_function(&lt;a_known_input&gt;, ...), &lt;the_resulting_expected_output&gt;) \n})\n\n\nFor example:\n\ntest_that(\"say_hello works with a string\", {\n  expect_output(say_hello(\"Sam\"), \"Hello Sam!\") \n})\n\n\n\n\n\n\nthere are a number of different expect_*() functions you might use\nkeep tests small:\n\neasier to debug\nlets you test edge cases and specific scenarios\neasier to maintain (can easily update / remove a specific small test than untangle a large, complex one)\nencourages modular code design\nact as mini-examples / documentation about how your codes should behave"
+    "text": "3. Build and run tests using {testthat}\n\nThe anatomy of a {testthat} tests generally looks like this:\n\ntest_that(\"a short descriptive name for your test\", {\n  expect_output(my_function(&lt;a_known_input&gt;, ...), &lt;the_resulting_expected_output&gt;) \n})\n\n\nFor example:\n\ntest_that(\"say_hello works with a string\", {\n  expect_output(say_hello(\"Sam\"), \"Hello Sam!\") \n})\n\n\n\n\n\nthere are a number of different expect_*() functions you might use\nkeep tests small:\n\neasier to debug\nlets you test edge cases and specific scenarios\neasier to maintain (can easily update / remove a specific small test than untangle a large, complex one)\nencourages modular code design\nact as mini-examples / documentation about how your codes should behave"
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#say_hello-testthat-tests",
@@ -1096,7 +1096,7 @@
     "href": "course-materials/slides/part7.2-unit-testing-slides.html#apps-break",
     "title": "EDS 296",
     "section": "",
-    "text": "It’s almost inevitable that our app(s) will break\n\nThere are lots of reasons why this happens, but to name a few:\n\n\nan updated R package(s) has a different behavior (this includes {shiny}) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators\nyou make changes to your app (e.g. add new features, refactor code)\nan external data source stops working or returns data in a different format than that expected by your app\n\n\n\n\nManually testing Shiny apps is takes a lot of time and effort, is often inconsistent, and doesn’t scale well (e.g. for larger apps, many apps, or for larger teams of collaborators).\n\n\n\n\nIt can save a lot of time and headache to have an automated system that checks if your app is working as expected."
+    "text": "It’s almost inevitable that our app(s) will break\n\nThere are lots of reasons why this happens, but to name a few:\n\nan updated R package(s) has a different behavior (this includes {shiny}) – this is especially relevant for those apps hosted on servers, where server software (including packages) may be updated by system administrators\nyou make changes to your app (e.g. add new features, refactor code)\nan external data source stops working or returns data in a different format than that expected by your app\n\n\n\nManually testing Shiny apps is takes a lot of time and effort, is often inconsistent, and doesn’t scale well (e.g. for larger apps, many apps, or for larger teams of collaborators).\n\n\n\n\nIt can save a lot of time and headache to have an automated system that checks if your app is working as expected."
   },
   {
     "objectID": "course-materials/slides/part7.2-unit-testing-slides.html#shinytest2",
@@ -1943,7 +1943,7 @@
     "href": "course-materials/part3-building-shiny-dashboards.html#data",
     "title": "Building Shiny dashboards",
     "section": " Required Data",
-    "text": "Required Data\nWe’ll be using publicly-available data via the Arctic Data Center for our shiny dashboard.\n\n\n\n\n\n\nData citation\n\n\n\nChristopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. doi:10.18739/A2JH3D41P.\n\n\nTake a few moments to review the metadata record and download FCWO_lakemonitoringdata_2011_2022_daily.csv."
+    "text": "Required Data\nWe’ll be using publicly-available data via the Arctic Data Center for our shiny dashboard.\n\n\n\n\n\n\nNoteData citation\n\n\n\nChristopher Arp, Matthew Whitman, Katie Drew, and Allen Bondurant. 2022. Water depth, surface elevation, and water temperature of lakes in the Fish Creek Watershed in northern Alaska, USA, 2011-2022. Arctic Data Center. doi:10.18739/A2JH3D41P.\n\n\nTake a few moments to review the metadata record and download FCWO_lakemonitoringdata_2011_2022_daily.csv."
   },
   {
     "objectID": "course-materials/part3-building-shiny-dashboards.html#lecture-materials",
@@ -2489,7 +2489,7 @@
     "href": "course-materials/slides/part6.1-functions-slides.html#why-functions",
     "title": "EDS 296",
     "section": "",
-    "text": "Why write functions?\n\n\nFunctions are useful for a wide variety of reasons. Most notably:\n\n\n\nreducing redundancy\nreducing complexity\nincreasing code comprehension\nincreasing testability"
+    "text": "Why write functions?\n\n\nFunctions are useful for a wide variety of reasons. Most notably:\n\n\nreducing redundancy\nreducing complexity\nincreasing code comprehension\nincreasing testability"
   },
   {
     "objectID": "course-materials/slides/part6.1-functions-slides.html#storing-functions",
@@ -2832,7 +2832,7 @@
     "href": "course-materials/slides/part6.2-modules-slides.html#enter-modules",
     "title": "EDS 296",
     "section": "",
-    "text": "Enter Shiny modules\n\n\n\n\nA shiny module is a piece of a shiny app – it can’t be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.\nModules can represent inputs, outputs, or both (we’ll be building a module that represents both). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.\nModules help to solve a namespacing problem – recall that all inputIds must be unique across your app. Namespacing is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax package::function() e.g. plyr::arrange() vs dplyr::arrange())."
+    "text": "Enter Shiny modules\n\n\n\nA shiny module is a piece of a shiny app – it can’t be run directly, but instead is included as part of a larger app. While functions work well for code that that is either completely on the client (UI) side or completely on the server side, modules can be written for code that spans both.\nModules can represent inputs, outputs, or both (we’ll be building a module that represents both). Motivation for building modules can range from enabling reuse of code (once created, modules can be reused within the same app or even across different apps), to breaking up a large, complex app into smaller, separate components.\nModules help to solve a namespacing problem – recall that all inputIds must be unique across your app. Namespacing is a system for organizing objects with identical names (similar to namespacing functions from particular packages using the syntax package::function() e.g. plyr::arrange() vs dplyr::arrange())."
   },
   {
     "objectID": "course-materials/slides/part6.2-modules-slides.html#modules-structure",
@@ -3448,7 +3448,7 @@
     "href": "course-materials/part0-setup.html#prerequisites",
     "title": "Setup",
     "section": "Prerequisites",
-    "text": "Prerequisites\n\n\n\n\n\n\nNo prior Shiny experience is necessary for participating in this course! However,\n\n\n\nwe do assume general familiarity with the R programming language. We also ask that you arrive with all necessary software installed / configured. See the MEDS Installation Guide (steps 1 - 7) for detailed instructions.\n\n\nBefore class, you should have:\n\nR & RStudio installed\n\nA GitHub profile & git installed / configured\nThe following R packages installed. Install / update them all at once by running the following in your console:\n\n\ninstall.packages(pkgs = c(\"here\", \"tidyverse\", \"shiny\", \"shinydashboard\", \"shinyWidgets\", \"shinycssloaders\", \"markdown\", \"DT\", \"arrow\", \"leaflet\", \"bslib\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"diffviewer\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\"))"
+    "text": "Prerequisites\n\n\n\n\n\n\nNoteNo prior Shiny experience is necessary for participating in this course! However,\n\n\n\nwe do assume general familiarity with the R programming language. We also ask that you arrive with all necessary software installed / configured. See the MEDS Installation Guide (steps 1 - 7) for detailed instructions.\n\n\nBefore class, you should have:\n\nR & RStudio installed\n\nA GitHub profile & git installed / configured\nThe following R packages installed. Install / update them all at once by running the following in your console:\n\n\ninstall.packages(pkgs = c(\"here\", \"tidyverse\", \"shiny\", \"shinydashboard\", \"shinyWidgets\", \"shinycssloaders\", \"markdown\", \"DT\", \"arrow\", \"leaflet\", \"bslib\", \"fresh\", \"sass\", \"reactlog\", \"shinytest2\", \"diffviewer\", \"palmerpenguins\", \"lterdatasampler\", \"gapminder\"))"
   },
   {
     "objectID": "course-materials/part0-setup.html#reference-code",
